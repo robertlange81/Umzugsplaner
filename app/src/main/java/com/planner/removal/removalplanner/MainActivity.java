@@ -8,14 +8,20 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     String[] mobileArray = {"Java","C++","C#","CSS",
             "HTML","XML",".Net","VisualBasic", "SQL", "Python", "PHP", "Java","C++","C#","CSS",
             "HTML","XML",".Net","VisualBasic", "SQL", "Python", "PHP"};
+
+    final ArrayList<String> list = new ArrayList<>(Arrays.asList(mobileArray));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +39,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_listview, mobileArray);
         ListView listView = findViewById(R.id.mobile_list);
+        final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, list);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, final View view,
+                                    int position, long id) {
+                final String item = (String) parent.getItemAtPosition(position);
+                view.animate().setDuration(1000).alpha(0)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                list.remove(item);
+                                adapter.notifyDataSetChanged();
+                                view.setAlpha(1);
+                            }
+                        });
+            }
+
+        });
     }
 
     @Override
