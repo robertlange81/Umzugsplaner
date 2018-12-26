@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">RemovalPlanner</string>
     <string name="action_settings">Settings</string>
+    <string name="platzhalter_name">Aufgabe</string>
+    <string name="platzhalter_beschreibung">Beschreibung</string>
+    <string name="platzhalter_termin">Termin</string>
+    <string name="platzhalter_kosten">Kosten</string>
 </resources>

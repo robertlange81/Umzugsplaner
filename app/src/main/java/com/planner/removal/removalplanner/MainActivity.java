@@ -9,22 +9,22 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    String[] mobileArray = {"Java","C++","C#","CSS",
-            "HTML","XML",".Net","VisualBasic", "SQL", "Python", "PHP", "Java","C++","C#","CSS",
-            "HTML","XML",".Net","VisualBasic", "SQL", "Python", "PHP"};
-
-    final ArrayList<String> list = new ArrayList<>(Arrays.asList(mobileArray));
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        if(Helper.currentLocal == null) {
+            Helper.setCurrentLocale(this);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -40,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ListView listView = findViewById(R.id.mobile_list);
-        final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, list);
+        final List<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 10, 0, 0));
+
+        final AufgabenAdapter adapter = new AufgabenAdapter(this, aufgabenList);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                         .withEndAction(new Runnable() {
                             @Override
                             public void run() {
-                                list.remove(item);
+                                aufgabenList.remove(item);
                                 adapter.notifyDataSetChanged();
                                 view.setAlpha(1);
                             }

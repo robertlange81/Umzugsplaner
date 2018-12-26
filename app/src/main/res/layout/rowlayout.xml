@@ -1,24 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" >
+<RelativeLayout
+    android:id="@+id/list_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="3dip"
+    android:descendantFocusability="blocksDescendants">
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="4px"
-        android:layout_marginRight="10px"
-        android:layout_marginTop="4px"
-        android:src="@mipmap/ic_launcher" >
-    </ImageView>
 
-    <TextView
-        android:id="@+id/label"
+    <ImageView android:id="@+id/icon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="1dip"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@+id/label"
-        android:textSize="20px" >
-    </TextView>
+        android:layout_marginTop="0dip"
+        android:layout_marginRight="2dip"
+        android:layout_toRightOf="@id/icon"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dip"
+        android:layout_marginRight="2dip"
+        android:layout_toRightOf="@id/checkBox"
+        android:text="@string/platzhalter_name"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView android:id="@+id/termin"
+        android:text="@string/platzhalter_termin"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@id/checkBox"
+        android:layout_alignLeft="@id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="2dip"
+        android:layout_marginLeft="8dip"
+        android:layout_height="wrap_content"
+        android:textColor="#ff2d4fff" />
+
+    <TextView android:id="@+id/kosten"
+        android:text="@string/platzhalter_kosten"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:layout_toRightOf="@id/termin"
+        android:layout_below="@id/checkBox"
+        android:layout_marginLeft="10dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffff0000" />
+
+</RelativeLayout>
