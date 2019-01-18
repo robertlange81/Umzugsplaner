@@ -10,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -40,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         ListView listView = findViewById(R.id.mobile_list);
-        final List<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 10, 0, 0));
+
+        final List<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 0, 0, 0));
 
         final AufgabenAdapter adapter = new AufgabenAdapter(this, aufgabenList);
         listView.setAdapter(adapter);

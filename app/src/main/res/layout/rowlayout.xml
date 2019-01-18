@@ -18,31 +18,30 @@
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="0dip"
         android:layout_marginRight="2dip"
         android:layout_toRightOf="@id/icon"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="" />
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dip"
+        android:layout_height="match_parent"
+        android:layout_marginTop="3dip"
         android:layout_marginRight="2dip"
         android:layout_toRightOf="@id/checkBox"
         android:text="@string/platzhalter_name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView android:id="@+id/termin"
         android:text="@string/platzhalter_termin"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_below="@id/checkBox"
-        android:layout_alignLeft="@id/checkBox"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3dip"
         android:layout_width="wrap_content"
-        android:layout_marginRight="2dip"
-        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
         android:layout_height="wrap_content"
         android:textColor="#ff2d4fff" />
 
@@ -50,9 +49,11 @@
         android:text="@string/platzhalter_kosten"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:gravity="center"
-        android:layout_toRightOf="@id/termin"
-        android:layout_below="@id/checkBox"
-        android:layout_marginLeft="10dip"
+        android:adjustViewBounds="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/termin"
+        android:layout_marginTop="3dip"
+        android:layout_marginRight="8dip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffff0000" />

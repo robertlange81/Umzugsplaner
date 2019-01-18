@@ -9,6 +9,7 @@ public class Aufgabe {
     }
     public String Name;
     public String Beschreibung;
+    public Prio Prio;
     public Date Termin;
     public boolean istErledigt;
     public Typ Typ;

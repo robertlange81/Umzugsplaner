@@ -46,7 +46,8 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
 
         if(values.get(position).Termin != null) {
             TextView termin = (TextView) rowView.findViewById(R.id.termin);
-            termin.setText(Helper.formatDateTo(values.get(position).Termin));
+            String terminTxt = Helper.formatDateTo(values.get(position).Termin);
+            termin.setText(terminTxt);
         }
 
         TextView kosten = (TextView) rowView.findViewById(R.id.kosten);
@@ -54,14 +55,13 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
 
         ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
 
-        // change the icon for Windows and iPhone
-        //String s = values.get(position).getName();
-        /*
-        if (s.startsWith("iPhone")) {
-            imageView.setImageResource(R.drawable.no);
-        } else {
-            imageView.setImageResource(R.drawable.ok);
-        }*/
+        Prio prio = values.get(position).Prio;
+
+        if (prio == Prio.Niedrig) {
+            imageView.setImageResource(android.R.drawable.arrow_down_float);
+        } else if(prio == Prio.Hoch) {
+            imageView.setImageResource(android.R.drawable.arrow_up_float);
+        }
 
         return rowView;
     }
