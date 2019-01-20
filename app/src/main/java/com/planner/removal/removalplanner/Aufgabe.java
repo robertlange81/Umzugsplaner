@@ -6,6 +6,9 @@ public class Aufgabe {
     public Aufgabe(String name, String beschreibung) {
         Name = name;
         Beschreibung = beschreibung;
+        Termin = new Date(Long.MAX_VALUE);
+        Prio = com.planner.removal.removalplanner.Prio.Normal;
+        Kosten = 0;
     }
     public String Name;
     public String Beschreibung;
@@ -13,6 +16,6 @@ public class Aufgabe {
     public Date Termin;
     public boolean istErledigt;
     public Typ Typ;
-    public int Kosten; // in Cent
+    public long Kosten; // in Cent
     public String Link;
 }

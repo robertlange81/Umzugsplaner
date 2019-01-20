@@ -1,8 +1,11 @@
 <resources>
-    <string name="app_name">RemovalPlanner</string>
-    <string name="action_settings">Settings</string>
-    <string name="platzhalter_name">Aufgabe</string>
+    <string name="app_name">UmzugsPlanner</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="platzhalter_name">Aufgabe Aufgabe Aufgabe Aufgabe Aufgabe</string>
     <string name="platzhalter_beschreibung">Beschreibung</string>
+    <string name="platzhalter_typ">Typ</string>
     <string name="platzhalter_termin">Termin</string>
     <string name="platzhalter_kosten">Kosten</string>
+    <string name="erledigt">erledigt</string>
+    <string name="offen">offen</string>
 </resources>

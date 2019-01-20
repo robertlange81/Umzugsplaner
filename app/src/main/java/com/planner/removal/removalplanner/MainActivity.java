@@ -11,12 +11,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,29 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.mobile_list);
 
-        final List<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 0, 0, 0));
+        final ArrayList<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 0, 0, 0));
 
         final AufgabenAdapter adapter = new AufgabenAdapter(this, aufgabenList);
         listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view,
-                                    int position, long id) {
-                final String item = (String) parent.getItemAtPosition(position);
-                view.animate().setDuration(1000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                aufgabenList.remove(item);
-                                adapter.notifyDataSetChanged();
-                                view.setAlpha(1);
-                            }
-                        });
-            }
-
-        });
     }
 
     @Override
@@ -84,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.einstellungen) {
             return true;
         }
 
