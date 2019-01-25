@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">RemovalPlanner</string>
+    <string name="einstellungen">Settings</string>
+    <string name="platzhalter_name">Task TaskTask TaskTask TaskTask Task</string>
+    <string name="platzhalter_beschreibung">Description</string>
+    <string name="platzhalter_typ">type</string>
+    <string name="platzhalter_termin">deadline</string>
+    <string name="platzhalter_kosten">cost</string>
+    <string name="erledigt">done</string>
+    <string name="offen">todo</string>
+    <string name="geloescht">deleted</string>
+    <string name="undo">undo</string>
+    <string name="hohePrioText">high priority for task</string>
+    <string name="normalePrioText">normal priority for task</string>
+
+</resources>

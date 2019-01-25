@@ -3,9 +3,13 @@
     <string name="einstellungen">Einstellungen</string>
     <string name="platzhalter_name">Aufgabe Aufgabe Aufgabe Aufgabe Aufgabe</string>
     <string name="platzhalter_beschreibung">Beschreibung</string>
-    <string name="platzhalter_typ">Typ</string>
+    <string name="platzhalter_typ">Kategorie</string>
     <string name="platzhalter_termin">Termin</string>
     <string name="platzhalter_kosten">Kosten</string>
     <string name="erledigt">erledigt</string>
     <string name="offen">offen</string>
+    <string name="geloescht">offen</string>
+    <string name="undo">rückgängig</string>
+    <string name="hohePrioText">hohe Priorität für Aufgabe</string>
+    <string name="normalePrioText">normale Priorität für Aufgabe</string>
 </resources>

@@ -5,7 +5,6 @@ import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -34,12 +33,14 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
         name.setText(values.get(position).Name);
 
         final CheckBox checkBox = rowView.findViewById(R.id.checkBox);
-        final String aufgabenName = values.get(position).Name;
+        final Aufgabe aufgabe = values.get(position);
+        checkBox.setChecked(aufgabe.istErledigt);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String msg = AufgabenAdapter.this.context.getResources().getString(checkBox.isChecked() ? R.string.erledigt : R.string.offen);
-                Snackbar.make(view, aufgabenName + " " + msg, Snackbar.LENGTH_LONG)
+                aufgabe.istErledigt = checkBox.isChecked();
+                Snackbar.make(view, aufgabe.Name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -62,38 +63,49 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
         final Prio prio = values.get(position).Prio;
 
         if (prio == Prio.Hoch) {
-            imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-        } else {
             imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+        } else {
+            imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
         }
-
-        final ImageView imgLoeschen = (ImageView) rowView.findViewById(R.id.loeschen);
-        imgLoeschen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View view) {
-                ((View) view.getParent().getParent()).animate().setDuration(1000).alpha(0)
-                        .withEndAction(new Runnable() {
-                            @Override
-                            public void run() {
-                                AufgabenAdapter.this.remove(getItem(position));
-                                AufgabenAdapter.this.notifyDataSetChanged();
-                                ((View) view.getParent().getParent()).setAlpha(1);
-                            }
-                        });
-            }
-        });
 
         imgPrio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Aufgabe act = values.get(position);
-                if (act.Prio == Prio.Normal) {
+                if (act.Prio == Prio.Hoch) {
                     imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-                    act.Prio = Prio.Hoch;
+                    act.Prio = Prio.Normal;
                 } else {
                     imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
-                    act.Prio = Prio.Normal;
+                    act.Prio = Prio.Hoch;
                 }
+
+                Snackbar snack = Snackbar.make(view, AufgabenAdapter.this.context.getResources().getString(act.Prio == Prio.Normal ? R.string.normalePrioText : R.string.hohePrioText) + " " + act.Name, Snackbar.LENGTH_LONG);
+                snack.show();
+            }
+        });
+
+        final ImageView imgLoeschen = (ImageView) rowView.findViewById(R.id.loeschen);
+        imgLoeschen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                ((View) view.getParent().getParent()).animate().setDuration(300).alpha(0)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                Aufgabe toRemove = getItem(position);
+                                AufgabenAdapter.this.remove(toRemove);
+                                AufgabenAdapter.this.notifyDataSetChanged();
+                                ((View) view.getParent().getParent()).setAlpha(1);
+
+                                Snackbar snack = Snackbar.make(view, aufgabe.Name + " " + AufgabenAdapter.this.context.getResources().getString(R.string.geloescht), Snackbar.LENGTH_LONG);
+                                snack.setAction(
+                                        R.string.undo,
+                                        new Kommando(Kommando.KommandoTyp.Add, AufgabenAdapter.this, toRemove)
+                                );
+                                snack.show();
+                            }
+                        });
             }
         });
 
