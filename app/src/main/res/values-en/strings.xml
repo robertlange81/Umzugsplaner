@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Removal Planner</string>
+    <string name="app_name">RemovalPlanner</string>
     <string name="einstellungen">Settings</string>
     <string name="platzhalter_name">Task TaskTask TaskTask TaskTask Task</string>
     <string name="platzhalter_beschreibung">Description</string>

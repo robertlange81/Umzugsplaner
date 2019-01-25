@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umzug-Planer</string>
+    <string name="app_name">UmzugsPlanner</string>
     <string name="einstellungen">Einstellungen</string>
     <string name="platzhalter_name">Aufgabe Aufgabe Aufgabe Aufgabe Aufgabe</string>
     <string name="platzhalter_beschreibung">Beschreibung</string>
