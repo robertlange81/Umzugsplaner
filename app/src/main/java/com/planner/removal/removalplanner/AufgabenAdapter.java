@@ -2,6 +2,7 @@ package com.planner.removal.removalplanner;
 
 import android.content.Context;
 import android.support.design.widget.Snackbar;
+import android.text.method.DateTimeKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,25 +35,28 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
 
         final CheckBox checkBox = rowView.findViewById(R.id.checkBox);
         final Aufgabe aufgabe = values.get(position);
+
+        final TextView termin = (TextView) rowView.findViewById(R.id.termin);
+        if(values.get(position).Termin != null) {
+            String terminTxt = Helper.formatDateTo(values.get(position).Termin);
+            termin.setText(terminTxt);
+        }
+
+        final TextView kosten = (TextView) rowView.findViewById(R.id.kosten);
+        kosten.setText(Helper.intCentToString(values.get(position).Kosten));
+
         checkBox.setChecked(aufgabe.istErledigt);
+        OnAufgabeChecked(aufgabe, termin, kosten);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String msg = AufgabenAdapter.this.context.getResources().getString(checkBox.isChecked() ? R.string.erledigt : R.string.offen);
                 aufgabe.istErledigt = checkBox.isChecked();
+                OnAufgabeChecked(aufgabe, termin, kosten);
                 Snackbar.make(view, aufgabe.Name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-
-        if(values.get(position).Termin != null) {
-            TextView termin = (TextView) rowView.findViewById(R.id.termin);
-            String terminTxt = Helper.formatDateTo(values.get(position).Termin);
-            termin.setText(terminTxt);
-        }
-
-        TextView kosten = (TextView) rowView.findViewById(R.id.kosten);
-        kosten.setText(Helper.intCentToString(values.get(position).Kosten));
 
         TextView typ = (TextView) rowView.findViewById(R.id.typ);
         if(values.get(position).Typ != null)
@@ -110,5 +114,19 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
         });
 
         return rowView;
+    }
+
+    private void OnAufgabeChecked(Aufgabe aufgabe, TextView termin, TextView kosten) {
+        if(aufgabe.istErledigt) {
+            kosten.setTextColor(context.getResources().getColor(R.color.colorGreen));
+            termin.setTextColor(context.getResources().getColor(R.color.colorGreen));
+        } else {
+            kosten.setTextColor(context.getResources().getColor(R.color.colorYellow));
+            if(aufgabe.Termin.getTime() < System.currentTimeMillis()) {
+                termin.setTextColor(context.getResources().getColor(R.color.colorRed));
+            } else {
+                termin.setTextColor(context.getResources().getColor(R.color.colorWhite));
+            }
+        }
     }
 }

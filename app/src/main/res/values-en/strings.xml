@@ -3,7 +3,7 @@
     <string name="einstellungen">Settings</string>
     <string name="platzhalter_name">Task TaskTask TaskTask TaskTask Task</string>
     <string name="platzhalter_beschreibung">Description</string>
-    <string name="platzhalter_typ">type</string>
+    <string name="platzhalter_typ">category</string>
     <string name="platzhalter_termin">deadline</string>
     <string name="platzhalter_kosten">cost</string>
     <string name="erledigt">done</string>

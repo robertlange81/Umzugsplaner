@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.mobile_list);
 
-        final ArrayList<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(new Date(2018, 11, 1, 0, 0, 0));
+        Date defaultDate = new Date(118, 11, 1, 0, 0, 0);
+        final ArrayList<Aufgabe> aufgabenList = AufgabenInitialiser.GetStandardAufgaben(defaultDate);
 
         final AufgabenAdapter adapter = new AufgabenAdapter(this, aufgabenList);
         listView.setAdapter(adapter);
