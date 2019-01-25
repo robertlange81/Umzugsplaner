@@ -13,12 +13,12 @@
         android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginRight="2dip"
+        android:layout_marginRight="4dip"
         android:layout_marginTop="3dip"
         android:text=""
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:scaleX="1.5"
-        android:scaleY="1.5"/>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:scaleX="1.2"
+        android:scaleY="1.2"/>
 
 
     <TableRow
@@ -41,7 +41,7 @@
             android:maxLines="2"
             android:lineSpacingExtra="2dp"
             android:textSize="16dp"
-            android:textColor="#000000" />
+            android:textColor="#ffffff" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/icon"
@@ -71,7 +71,7 @@
                 android:maxLines="1"
                 android:gravity="end"
                 android:layout_height="wrap_content"
-                android:textColor="#ff2d4fff" />
+                android:textColor="#ffeaefff" />
 
             <TextView android:id="@+id/termin"
                 android:layout_below="@id/typ"
@@ -83,7 +83,7 @@
                 android:maxLines="1"
                 android:gravity="end"
                 android:layout_height="wrap_content"
-                android:textColor="#ff33aa33" />
+                android:textColor="#ff33ee33" />
 
             <TextView android:id="@+id/kosten"
                 android:text="@string/platzhalter_kosten"
@@ -96,7 +96,7 @@
                 android:layout_marginRight="1dip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffff0000" />
+                android:textColor="#ffffaa" />
         </RelativeLayout>
 
         <android.support.v7.widget.AppCompatImageView
@@ -104,13 +104,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="3dip"
-            android:layout_marginTop="5dip"
+            android:layout_marginTop="2dip"
             android:layout_toRightOf="@id/table"
             android:adjustViewBounds="false"
             app:srcCompat="@android:drawable/ic_delete" />
 
     </TableRow>
-
-
-
 </RelativeLayout>
