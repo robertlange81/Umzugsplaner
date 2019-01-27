@@ -1,7 +1,9 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Model;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+
+import com.planner.removal.removalplanner.Model.Aufgabe;
 
 public class Kommando implements View.OnClickListener{
 

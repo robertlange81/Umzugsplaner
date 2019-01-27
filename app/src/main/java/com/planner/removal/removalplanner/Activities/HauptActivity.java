@@ -1,41 +1,47 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Activities;
 
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.planner.removal.removalplanner.Model.Aufgabe;
+import com.planner.removal.removalplanner.Adapter.AufgabenAdapter;
+import com.planner.removal.removalplanner.Model.AufgabenInitialiser;
+import com.planner.removal.removalplanner.DetailDialogFragment;
+import com.planner.removal.removalplanner.Helfer;
+import com.planner.removal.removalplanner.R;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 
-public class MainActivity extends AppCompatActivity {
+public class HauptActivity extends AppCompatActivity implements DetailDialogFragment.DetailDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(Helper.currentLocal == null) {
-            Helper.setCurrentLocale(this);
+        if(Helfer.currentLocal == null) {
+            Helfer.setCurrentLocale(this);
         }
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_haupt);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton addNewAction = findViewById(R.id.fab);
+        addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                showDetailActivity();
             }
         });
 
@@ -68,5 +74,27 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showDetailActivity() {
+        Intent i = new Intent(this, DetailActivity.class);
+        startActivity(i);
+    }
+
+    public void showDetailDialog() {
+        FragmentManager fm = getFragmentManager();
+        DialogFragment dialog = new DetailDialogFragment();
+        dialog.setRetainInstance(true);
+        dialog.show(fm, "fragment_name");
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 }

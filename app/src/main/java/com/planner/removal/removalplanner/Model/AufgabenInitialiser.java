@@ -1,4 +1,4 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

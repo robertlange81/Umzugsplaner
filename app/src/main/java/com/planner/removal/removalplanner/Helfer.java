@@ -10,7 +10,7 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
-public class Helper {
+public class Helfer {
 
     public static Locale currentLocal;
 

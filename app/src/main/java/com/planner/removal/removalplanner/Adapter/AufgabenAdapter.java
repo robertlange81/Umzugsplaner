@@ -1,8 +1,7 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Adapter;
 
 import android.content.Context;
 import android.support.design.widget.Snackbar;
-import android.text.method.DateTimeKeyListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.planner.removal.removalplanner.Helfer;
+import com.planner.removal.removalplanner.Model.Aufgabe;
+import com.planner.removal.removalplanner.Model.Kommando;
+import com.planner.removal.removalplanner.Model.Prio;
+import com.planner.removal.removalplanner.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +33,7 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.rowlayout, parent, false);
+        View rowView = inflater.inflate(R.layout.zeile_layout, parent, false);
 
         TextView name = rowView.findViewById(R.id.name);
         name.setText(values.get(position).Name);
@@ -38,12 +43,12 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
 
         final TextView termin = (TextView) rowView.findViewById(R.id.termin);
         if(values.get(position).Termin != null) {
-            String terminTxt = Helper.formatDateTo(values.get(position).Termin);
+            String terminTxt = Helfer.formatDateTo(values.get(position).Termin);
             termin.setText(terminTxt);
         }
 
         final TextView kosten = (TextView) rowView.findViewById(R.id.kosten);
-        kosten.setText(Helper.intCentToString(values.get(position).Kosten));
+        kosten.setText(Helfer.intCentToString(values.get(position).Kosten));
 
         checkBox.setChecked(aufgabe.istErledigt);
         OnAufgabeChecked(aufgabe, termin, kosten);

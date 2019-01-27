@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Umzug-Planer</string>
+    <string name="aufgabe_bearbeiten">Aufgabe bearbeiten</string>
+    <string name="speichern">Speichern</string>
+    <string name="abbrechen">Abbrechen</string>
     <string name="einstellungen">Einstellungen</string>
     <string name="platzhalter_name">Aufgabe Aufgabe Aufgabe Aufgabe Aufgabe</string>
     <string name="platzhalter_beschreibung">Beschreibung</string>
