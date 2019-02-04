@@ -4,7 +4,7 @@
     <string name="speichern">Speichern</string>
     <string name="abbrechen">Abbrechen</string>
     <string name="einstellungen">Einstellungen</string>
-    <string name="platzhalter_name">Aufgabe Aufgabe Aufgabe Aufgabe Aufgabe</string>
+    <string name="platzhalter_name">Name der Aufgabe</string>
     <string name="platzhalter_beschreibung">Beschreibung</string>
     <string name="platzhalter_typ">Kategorie</string>
     <string name="platzhalter_termin">Termin</string>
@@ -15,4 +15,9 @@
     <string name="undo">rückgängig</string>
     <string name="hohePrioText">hohe Priorität für Aufgabe</string>
     <string name="normalePrioText">normale Priorität für Aufgabe</string>
+    <string name="normalePrioText_kurz">normale Priorität</string>
+    <string name="platzhalter_kosten_detail">0,00 €</string>
+    <string name="kategorie">Kategorie</string>
+    <string name="platzhalter_datum_detail">Datum</string>
+    <string name="platzhalter_zeit_detail">Zeit</string>
 </resources>

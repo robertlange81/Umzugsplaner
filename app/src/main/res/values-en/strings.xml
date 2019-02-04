@@ -4,16 +4,21 @@
     <string name="speichern">Save</string>
     <string name="abbrechen">Cancel</string>
     <string name="einstellungen">Settings</string>
-    <string name="platzhalter_name">Task TaskTask TaskTask TaskTask Task</string>
-    <string name="platzhalter_beschreibung">Description</string>
+    <string name="platzhalter_name">Task Name</string>
+    <string name="platzhalter_beschreibung">description</string>
     <string name="platzhalter_typ">category</string>
     <string name="platzhalter_termin">deadline</string>
-    <string name="platzhalter_kosten">cost</string>
+    <string name="platzhalter_kosten">costs</string>
     <string name="erledigt">done</string>
     <string name="offen">todo</string>
     <string name="geloescht">deleted</string>
     <string name="undo">undo</string>
     <string name="hohePrioText">high priority for task</string>
     <string name="normalePrioText">normal priority for task</string>
+    <string name="platzhalter_kosten_detail">$0.00</string>
+    <string name="kategorie">category</string>
+    <string name="platzhalter_datum_detail">date</string>
+    <string name="platzhalter_zeit_detail">time</string>
+
 
 </resources>

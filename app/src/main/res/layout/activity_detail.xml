@@ -8,23 +8,214 @@
     tools:context=".Activities.DetailActivity"
     android:id="@+id/snackbarPosition">
 
-    <ScrollView
-        android:layout_marginBottom="50dp"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/detail_header"
+        android:background="@drawable/detail_header"
+        android:padding="5dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/wage"
-            android:maxLength="12"
-            android:hint="@string/platzhalter_beschreibung"
+            android:id="@+id/detail_name"
+            android:hint="@string/platzhalter_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:gravity="left"
+            android:paddingTop="10sp"
             android:selectAllOnFocus="true"
             android:inputType="text" />
 
-    </ScrollView>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:padding="5dp"
+            android:weightSum="3">
+
+        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/detail_erledigt"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="3"
+                android:button="@null"
+                android:gravity="left|center"
+                android:hint="@string/erledigt"
+                android:layout_width="wrap_content"
+                android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+            <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_weight="1"
+                android:layout_marginRight="5sp"
+                android:orientation="horizontal"
+                android:weightSum="4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/detail_prio_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:layout_marginRight="6sp"
+                    android:textSize="16sp"
+                    android:gravity="right|center"
+                    android:text="@string/normalePrioText_kurz" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_prio"
+                    android:hint="@string/einstellungen"
+                    android:scaleX="1.4"
+                    android:scaleY="1.4"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2sp"
+                    android:adjustViewBounds="false"
+                    app:srcCompat="@android:drawable/btn_star_big_off" />
+
+            </TableRow>
+
+
+        </TableRow>
+
+    </LinearLayout>
+
+    <TableRow
+        android:id="@+id/detail_erste_zeile"
+        android:layout_below="@id/detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:paddingTop="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:weightSum="3">
+
+            <TextView
+                android:id="@+id/detail_kategorie_label"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/input_margin"
+                android:text="@string/kategorie" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/detail_kategorie"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detail_zweite_zeile"
+        android:layout_below="@id/detail_erste_zeile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:paddingTop="15dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/detail_kosten_label"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/input_margin"
+            android:text="@string/platzhalter_beschreibung" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/detail_kosten"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:selectAllOnFocus="true"
+            android:inputType="text"/>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detail_dritte_zeile"
+        android:layout_below="@id/detail_zweite_zeile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:paddingTop="15dp"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/detail_link_label"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/input_margin"
+            android:text="@string/platzhalter_kosten" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/detail_link"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:selectAllOnFocus="true"
+            android:hint="@string/platzhalter_kosten_detail"
+            android:inputType="numberDecimal"/>
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/detail_vierte_zeile"
+        android:layout_below="@id/detail_dritte_zeile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:paddingTop="15dp"
+        android:weightSum="8">
+
+        <EditText
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:id="@+id/in_date"
+            android:hint="@string/platzhalter_termin"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_height="match_parent"
+            android:text="@string/platzhalter_datum_detail"
+            android:id="@+id/btn_date"
+            android:layout_weight="3"
+            android:layout_alignBottom="@+id/in_date"
+            android:layout_toRightOf="@+id/in_date"
+            android:layout_toEndOf="@+id/in_date" />
+
+        <Button
+            android:layout_height="match_parent"
+            android:text="@string/platzhalter_zeit_detail"
+            android:layout_weight="3"
+            android:id="@+id/btn_time"
+            android:layout_toRightOf="@+id/btn_date"/>
+
+
+    </TableRow>
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/calculate"

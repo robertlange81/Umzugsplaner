@@ -33,7 +33,7 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.zeile_layout, parent, false);
+        View rowView = inflater.inflate(R.layout.zeile, parent, false);
 
         TextView name = rowView.findViewById(R.id.name);
         name.setText(values.get(position).Name);
@@ -43,7 +43,7 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
 
         final TextView termin = (TextView) rowView.findViewById(R.id.termin);
         if(values.get(position).Termin != null) {
-            String terminTxt = Helfer.formatDateTo(values.get(position).Termin);
+            String terminTxt = Helfer.formatDateToSring(values.get(position).Termin);
             termin.setText(terminTxt);
         }
 

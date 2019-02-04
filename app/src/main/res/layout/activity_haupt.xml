@@ -20,15 +20,15 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/zeile_inhalt" />
+    <include layout="@layout/zeile_rahmen" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:theme="@style/AlertDialog.AppCompat.Light"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:theme="@style/AlertDialog.AppCompat"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </android.support.design.widget.CoordinatorLayout>

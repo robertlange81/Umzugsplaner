@@ -36,7 +36,7 @@ public class Helfer {
         */
     }
 
-    public static String formatDateTo(Date date) {
+    public static String formatDateToSring(Date date) {
         if(date.getTime() == Long.MAX_VALUE)
             return "";
 
@@ -46,7 +46,6 @@ public class Helfer {
         } else {
             dfTime = DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.SHORT, currentLocal);
         }
-
         return dfTime.format(date);
     }
 

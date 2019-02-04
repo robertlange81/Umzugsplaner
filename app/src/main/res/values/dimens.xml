@@ -1,3 +1,45 @@
 <resources>
+<!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_default_margin">10dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="input_margin">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="input_insurance_autocomplete">4dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_h1">30dp</dimen>
+    <dimen name="text_size_h2">20dp</dimen>
+    <dimen name="text_size_h3">15dp</dimen>
+    <dimen name="text_size_content">16dp</dimen>
+    <dimen name="text_size_small">12dp</dimen>
+    <dimen name="textview_button_font_size">10dp</dimen>
+    <dimen name="text_size_result_big">16dp</dimen>
+    <dimen name="text_size_result_medium">14dp</dimen>
+    <dimen name="text_size_result_small">12dp</dimen>
+
+    <!-- Text margins -->
+    <dimen name="text_margin">5dp</dimen>
+    <dimen name="text_margin_bottom">5dp</dimen>
+    <dimen name="text_margin_bottom_h1">20dp</dimen>
+    <dimen name="text_margin_top_h2">5dp</dimen>
+    <dimen name="text_margin_result_employee_data_label">25dp</dimen>
+
+    <dimen name="textview_ball_radius">30dp</dimen>
+    <dimen name="textview_layout_marginTop">5dp</dimen>
+    <dimen name="textview_layout_marginBottom">10dp</dimen>
+    <dimen name="textview_layout_marginLeft">8dp</dimen>
+    <dimen name="textview_layout_marginLeft_wage_period">4dp</dimen>
+    <item name="textview_shadowRadius" format="float" type="dimen">1.5</item>
+    <item name="textview_shadowDx" format="float" type="dimen">3.0</item>
+    <item name="textview_shadowDy" format="float" type="dimen">3.0</item>
+
+    <!-- Elements -->
+    <dimen name="margin_result_hr">5dp</dimen>
+    <item name="spinner_fontColor" format="float" type="dimen">3.0</item>
+    <dimen name="action_button_text_size">20dp</dimen>
+    <dimen name="text_size_input">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
 </resources>
+
