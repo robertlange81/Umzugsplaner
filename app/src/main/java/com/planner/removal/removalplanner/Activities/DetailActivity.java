@@ -3,6 +3,7 @@ package com.planner.removal.removalplanner.Activities;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,9 +11,13 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TimePicker;
 
+import com.planner.removal.removalplanner.Adapter.AufgabenAdapter;
 import com.planner.removal.removalplanner.Helfer;
+import com.planner.removal.removalplanner.Model.Aufgabe;
+import com.planner.removal.removalplanner.Model.Prio;
 import com.planner.removal.removalplanner.R;
 
 import java.util.Calendar;
@@ -22,6 +27,7 @@ public class DetailActivity extends AppCompatActivity
         implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
 
     public static DetailActivity instance;
+    public static final String ARG_AUFGABE_ID = "aufgabe_id";
 
     Button btnDatePicker, btnTimePicker;
     EditText txtDate;
@@ -71,6 +77,41 @@ public class DetailActivity extends AppCompatActivity
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+
+        /*
+        if (getArguments().containsKey(ARG_ITEM_ID)) {
+            // Load the dummy content specified by the fragment
+            // arguments. In a real-world scenario, use a Loader
+            // to load content from a content provider.
+            mItem = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+        }
+
+        final ImageView imgPrio = (ImageView) findViewById(R.id.icon_fav_haupt);
+        final Prio prio = values.get(position).Prio;
+
+        if (prio == Prio.Hoch) {
+            imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+        } else {
+            imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+        }
+
+        imgPrio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Aufgabe act = values.get(position);
+                if (act.Prio == Prio.Hoch) {
+                    imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+                    act.Prio = Prio.Normal;
+                } else {
+                    imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+                    act.Prio = Prio.Hoch;
+                }
+
+                Snackbar snack = Snackbar.make(view, DetailActivity.this.getResources().getString(act.Prio == Prio.Normal ? R.string.normalePrioText : R.string.hohePrioText) + " " + act.Name, Snackbar.LENGTH_LONG);
+                snack.show();
+            }
+        });
+        */
     }
 
     @Override

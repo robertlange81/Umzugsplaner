@@ -67,7 +67,7 @@ public class AufgabenAdapter extends ArrayAdapter<Aufgabe> {
         if(values.get(position).Typ != null)
             typ.setText(values.get(position).Typ.toString());
 
-        final ImageView imgPrio = (ImageView) rowView.findViewById(R.id.icon);
+        final ImageView imgPrio = (ImageView) rowView.findViewById(R.id.icon_fav_haupt);
 
         final Prio prio = values.get(position).Prio;
 

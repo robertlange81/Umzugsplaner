@@ -44,7 +44,7 @@
             android:textSize="16sp" />
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/icon"
+            android:id="@+id/icon_fav_haupt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dip"

@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.planner.removal.removalplanner.Model.Aufgabe;
@@ -41,7 +42,7 @@ public class HauptActivity extends AppCompatActivity implements DetailDialogFrag
         addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDetailActivity();
+                showDetailActivity(null);
             }
         });
 
@@ -52,6 +53,16 @@ public class HauptActivity extends AppCompatActivity implements DetailDialogFrag
 
         final AufgabenAdapter adapter = new AufgabenAdapter(this, aufgabenList);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                    long arg3)
+            {
+                showDetailActivity(String.valueOf(position));
+            }
+        });
     }
 
     @Override
@@ -76,8 +87,9 @@ public class HauptActivity extends AppCompatActivity implements DetailDialogFrag
         return super.onOptionsItemSelected(item);
     }
 
-    public void showDetailActivity() {
+    public void showDetailActivity(String id) {
         Intent i = new Intent(this, DetailActivity.class);
+        i.putExtra(DetailActivity.ARG_AUFGABE_ID, id);
         startActivity(i);
     }
 
