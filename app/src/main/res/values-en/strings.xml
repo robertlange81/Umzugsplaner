@@ -1,24 +1,25 @@
 <resources>
     <string name="app_name">Removal Planner</string>
-    <string name="aufgabe_bearbeiten">Edit Task</string>
-    <string name="speichern">Save</string>
-    <string name="abbrechen">Cancel</string>
-    <string name="einstellungen">Settings</string>
-    <string name="platzhalter_name">Task Name</string>
-    <string name="platzhalter_beschreibung">description</string>
-    <string name="platzhalter_typ">category</string>
-    <string name="platzhalter_termin">deadline</string>
-    <string name="platzhalter_kosten">costs</string>
-    <string name="erledigt">done</string>
-    <string name="offen">todo</string>
-    <string name="geloescht">deleted</string>
+    <string name="placeholder_edit_task">Edit Task</string>
+    <string name="placeholder_save">Save</string>
+    <string name="placeholder_cancel">Cancel</string>
+    <string name="placeholder_settings">Settings</string>
+    <string name="placeholder_name">Task Name</string>
+    <string name="placeholder_description">description</string>
+    <string name="placeholder_type">category</string>
+    <string name="placeholder_date">deadline</string>
+    <string name="placeholder_costs">costs</string>
+    <string name="done">done</string>
+    <string name="todo">todo</string>
+    <string name="deleted">deleted</string>
     <string name="undo">undo</string>
-    <string name="hohePrioText">high priority for task</string>
-    <string name="normalePrioText">normal priority for task</string>
-    <string name="platzhalter_kosten_detail">$0.00</string>
-    <string name="kategorie">category</string>
-    <string name="platzhalter_datum_detail">date</string>
-    <string name="platzhalter_zeit_detail">time</string>
+    <string name="highPrioText">high priority for task</string>
+    <string name="normalPrioText">normal priority for task</string>
+    <string name="normalPrioText_short">normale Priorität</string>
+    <string name="placeholder_costs_detail">$0.00</string>
+    <string name="category">category</string>
+    <string name="placeholder_date_detail">date</string>
+    <string name="placeholde_time_detail">time</string>
 
 
 </resources>

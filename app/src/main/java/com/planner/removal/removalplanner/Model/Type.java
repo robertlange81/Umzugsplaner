@@ -1,5 +1,5 @@
 package com.planner.removal.removalplanner.Model;
 
-public enum Typ {
+public enum Type {
     Elektronik, Moebel, Orga
 }

@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.planner.removal.removalplanner.Activities.HauptActivity">
+    tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
-        android:id="@+id/einstellungen"
+        android:id="@+id/settings"
         android:orderInCategory="100"
-        android:title="@string/einstellungen"
+        android:title="@string/placeholder_settings"
         app:showAsAction="never" />
 </menu>

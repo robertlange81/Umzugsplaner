@@ -7,14 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class DetailDialogFragment extends DialogFragment {
 
@@ -28,13 +20,13 @@ public class DetailDialogFragment extends DialogFragment {
             builder = new AlertDialog.Builder(getActivity());
         }
 
-        builder.setMessage(R.string.aufgabe_bearbeiten)
-                .setPositiveButton(R.string.speichern, new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.placeholder_edit_task)
+                .setPositiveButton(R.string.placeholder_save, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }
                 })
-                .setNegativeButton(R.string.abbrechen, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.placeholder_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
                     }

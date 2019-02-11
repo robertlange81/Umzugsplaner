@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/list_item"
+    android:id="@+id/list_row_content"
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:descendantFocusability="blocksDescendants"
@@ -35,30 +35,31 @@
             android:layout_marginLeft="2sp"
             android:layout_marginRight="2sp"
             android:layout_toRightOf="@id/checkBox"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:gravity="center"
             android:lineSpacingExtra="2sp"
             android:maxLines="2"
-            android:text="@string/platzhalter_name"
+            android:text="@string/placeholder_name"
             android:textColor="#ffffff"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/icon_fav_haupt"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="5dip"
-            android:layout_toRightOf="@id/table"
+            android:layout_marginLeft="2dip"
+            android:layout_toLeftOf="@id/meta"
             android:adjustViewBounds="false"
             app:srcCompat="@android:drawable/btn_star_big_off" />
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/meta"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:layout_marginEnd="3dp"
-            android:layout_marginRight="3dp"
-            android:layout_weight="6"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="5"
             android:descendantFocusability="blocksDescendants"
             android:gravity="top">
 
@@ -70,7 +71,7 @@
                 android:layout_marginRight="1dip"
                 android:gravity="end"
                 android:maxLines="1"
-                android:text="@string/platzhalter_typ"
+                android:text="@string/placeholder_type"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffeaefff" />
 
@@ -83,7 +84,7 @@
                 android:layout_marginRight="1dip"
                 android:gravity="end"
                 android:maxLines="1"
-                android:text="@string/platzhalter_termin"
+                android:text="@string/placeholder_date"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ff33ee33" />
 
@@ -97,7 +98,7 @@
                 android:adjustViewBounds="true"
                 android:gravity="end"
                 android:maxLines="1"
-                android:text="@string/platzhalter_kosten"
+                android:text="@string/placeholder_costs"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffaa" />
         </RelativeLayout>
@@ -106,7 +107,7 @@
             android:id="@+id/loeschen"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="3dip"
+            android:layout_marginLeft="2dip"
             android:layout_marginTop="2dip"
             android:layout_toRightOf="@id/table"
             android:adjustViewBounds="false"
