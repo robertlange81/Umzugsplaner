@@ -1,4 +1,4 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+
+import com.planner.removal.removalplanner.R;
 
 public class DetailDialogFragment extends DialogFragment {
 

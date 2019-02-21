@@ -1,6 +1,12 @@
-package com.planner.removal.removalplanner.Model;
+package com.planner.removal.removalplanner.Helper;
 
+import com.planner.removal.removalplanner.Model.Prio;
+import com.planner.removal.removalplanner.Model.Task;
+import com.planner.removal.removalplanner.Model.TaskType;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class TaskInitializer {
 
@@ -10,9 +16,11 @@ public class TaskInitializer {
         if(!isInitialized) {
             isInitialized = true;
             Task task1 = new Task("Aufgabe1 seh lang bla bla bla bla bla", "Beschreibung1");
-            task1.link = "link";
+            task1.links.put("https://www.google.de", "https://www.google.de");
+            task1.links.put("robert.de", "http://www.robert-lange.eu");
             task1.prio = Prio.Normal;
-            task1.type = Type.Elektronik;
+            task1.type = TaskType.Furniture;
+            task1.description = "Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1";
 
             Task task2 = new Task("Aufgabe2", "Beschreibung2");
             task2.costs = 30000098739l;

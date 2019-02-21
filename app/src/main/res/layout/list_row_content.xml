@@ -104,7 +104,7 @@
         </RelativeLayout>
 
         <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/loeschen"
+            android:id="@+id/delete_task_icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="2dip"

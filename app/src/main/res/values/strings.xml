@@ -5,11 +5,11 @@
     <string name="placeholder_cancel">Abbrechen</string>
     <string name="placeholder_settings">Einstellungen</string>
     <string name="placeholder_name">Name der Aufgabe</string>
-    <string name="placeholder_description">Beschreibung</string>
+    <string name="placeholder_description">Info</string>
     <string name="placeholder_type">Kategorie</string>
     <string name="placeholder_date">Termin</string>
     <string name="placeholder_costs">Kosten</string>
-    <string name="done">erledigt</string>
+    <string name="done">fertig</string>
     <string name="todo">offen</string>
     <string name="deleted">offen</string>
     <string name="undo">rückgängig</string>
@@ -17,7 +17,15 @@
     <string name="normalPrioText">normale Priorität für Aufgabe</string>
     <string name="normalPrioText_short">normale Priorität</string>
     <string name="placeholder_costs_detail">0,00 €</string>
-    <string name="category">Kategorie</string>
+    <string name="category">Typ</string>
     <string name="placeholder_date_detail">Datum</string>
-    <string name="placeholde_time_detail">Zeit</string>
+    <string name="placeholder_time_detail">Zeit</string>
+    <string name="detail_links">Links</string>
+    <string-array name="roman_numbers">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>IV</item>
+        <item>V</item>
+    </string-array>
 </resources>

@@ -19,12 +19,12 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.planner.removal.removalplanner.TaskDetailFragment;
+import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Model.Task;
-import com.planner.removal.removalplanner.DetailDialogFragment;
-import com.planner.removal.removalplanner.Helper;
-import com.planner.removal.removalplanner.Model.TaskInitializer;
-import com.planner.removal.removalplanner.Model.Command;
+import com.planner.removal.removalplanner.Fragments.DetailDialogFragment;
+import com.planner.removal.removalplanner.Helper.Formater;
+import com.planner.removal.removalplanner.Helper.TaskInitializer;
+import com.planner.removal.removalplanner.Helper.Command;
 import com.planner.removal.removalplanner.Model.Prio;
 import com.planner.removal.removalplanner.R;
 
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(Helper.currentLocal == null) {
-            Helper.setCurrentLocale(this);
+        if(Formater.currentLocal == null) {
+            Formater.setCurrentLocale(this);
         }
 
         super.onCreate(savedInstanceState);
@@ -178,10 +178,10 @@ public static class SimpleItemRecyclerViewAdapter
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
             holder.ckBoxErledigt.setChecked(task.isDone);
-            holder.kosten.setText(Helper.intCentToString(task.costs));
+            holder.kosten.setText(Formater.intCentToString(task.costs));
 
             if(task.date != null) {
-                String terminTxt = Helper.formatDateToSring(task.date);
+                String terminTxt = Formater.formatDateToSring(task.date);
                 holder.termin.setText(terminTxt);
             }
 
@@ -229,34 +229,38 @@ public static class SimpleItemRecyclerViewAdapter
                 }
             });
 
-            holder.imgDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    ((View) view.getParent().getParent()).animate().setDuration(300).alpha(0)
-                    .withEndAction(new Runnable() {
-                        @Override
-                        public void run() {
-                            Task toRemove = mValues.get(actPosition);
-                            SimpleItemRecyclerViewAdapter.this.remove(toRemove);
-                            SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
-                            ((View) view.getParent().getParent()).setAlpha(1);
+            if(mTwoPane) {
+                holder.imgDelete.setVisibility(View.GONE);
+            } else {
+                holder.imgDelete.setVisibility(View.VISIBLE);
+                holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View view) {
+                        ((View) view.getParent().getParent()).animate().setDuration(300).alpha(0)
+                                .withEndAction(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Task toRemove = mValues.get(actPosition);
+                                        SimpleItemRecyclerViewAdapter.this.remove(toRemove);
+                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                                        ((View) view.getParent().getParent()).setAlpha(1);
 
-                            Snackbar snack = Snackbar.make(
-                                    view,
-                                    task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
-                                            .getResources().getString(R.string.deleted),
-                                    Snackbar.LENGTH_LONG);
+                                        Snackbar snack = Snackbar.make(
+                                                view,
+                                                task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
+                                                        .getResources().getString(R.string.deleted),
+                                                Snackbar.LENGTH_LONG);
 
-                            snack.setAction(
-                                    R.string.undo,
-                                    new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove)
-                            );
-                            snack.show();
-                        }
-                    });
-                }
-            });
-
+                                        snack.setAction(
+                                                R.string.undo,
+                                                new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove)
+                                        );
+                                        snack.show();
+                                    }
+                                });
+                    }
+                });
+            }
         }
 
         private void OnAufgabeChecked(Task task, TextView termin, TextView kosten) {
@@ -296,7 +300,7 @@ public static class SimpleItemRecyclerViewAdapter
                 kosten = rowView.findViewById(R.id.kosten);
                 typ = rowView.findViewById(R.id.typ);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
-                imgDelete = rowView.findViewById(R.id.loeschen);
+                imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }
         }
     }

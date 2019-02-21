@@ -1,4 +1,4 @@
-package com.planner.removal.removalplanner;
+package com.planner.removal.removalplanner.Helper;
 
 import android.content.Context;
 import android.os.Build;
@@ -10,7 +10,7 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
-public class Helper {
+public class Formater {
 
     public static Locale currentLocal;
 

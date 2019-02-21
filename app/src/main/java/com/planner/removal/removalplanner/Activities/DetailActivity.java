@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.planner.removal.removalplanner.TaskDetailFragment;
+import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.R;
 
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Task {
     public static final List<Task> TASK_LIST = new ArrayList<Task>();
@@ -27,6 +28,15 @@ public class Task {
     - Sortieren
      */
 
+    public String name;
+    public String description;
+    public com.planner.removal.removalplanner.Model.Prio prio;
+    public Date date;
+    public boolean isDone;
+    public TaskType type;
+    public long costs; // in Cent
+    public Map<String,String> links;
+
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
         this.name = name;
@@ -34,15 +44,9 @@ public class Task {
         date = new Date(Long.MAX_VALUE);
         prio = com.planner.removal.removalplanner.Model.Prio.Normal;
         costs = 0;
+        type = TaskType.Furniture;
+        links = new TreeMap<>();
     }
-    public String name;
-    public String description;
-    public com.planner.removal.removalplanner.Model.Prio prio;
-    public Date date;
-    public boolean isDone;
-    public com.planner.removal.removalplanner.Model.Type type;
-    public long costs; // in Cent
-    public String link;
 
     public static void addTask(Task task) {
         TASK_LIST.add(task);
