@@ -129,7 +129,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
                 task.isDone = checkIsDone.isChecked();
                 // MainActivity.SimpleItemRecyclerViewAdapter.class.notify();
-                //MainActivity.class.notify();
+                // MainActivity.class.notify();
                 MainActivity.notifyTaskChanged();
                 Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
@@ -155,7 +155,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 catsString.add(cat.toString());
             }
 
-            ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(rootView.getContext(), R.layout.spinner_left_item, catsString);
+            ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(rootView.getContext(), R.layout.simple_spinner_dropdown, catsString);
             spinnerDetailType.setAdapter(_categoryAdapter);
             if(task.type != null)
                 spinnerDetailType.setSelection(task.type.getValue());

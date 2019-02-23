@@ -17,7 +17,7 @@
     <string name="normalPrioText">normal priority for task</string>
     <string name="normalPrioText_short">normal priority</string>
     <string name="placeholder_costs_detail">$0.00</string>
-    <string name="category">category</string>
+    <string name="category">type</string>
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_time_detail">time</string>
     <string name="detail_links">links</string>
