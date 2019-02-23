@@ -3,7 +3,7 @@
     style="?android:attr/spinnerItemStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="left"
+    android:gravity="right"
     android:paddingStart="5dp"
     android:paddingLeft="5dp"
     android:textSize="@dimen/detail_text_size"

@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -35,6 +36,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements DetailDialogFragment.DetailDialogListener {
 
     private boolean mTwoPane;
+    private SimpleItemRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         View recyclerView = findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
+
     }
 
     @Override
@@ -120,7 +123,18 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane));
+        adapter = new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane);
+        recyclerView.setAdapter(adapter);
+        adapter.startTimerThread();
+    }
+
+    public static void notifyTaskChanged () {
+        SimpleItemRecyclerViewAdapter.needsUpdate = true;
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        adapter.stopTimerThread();
     }
 
 public static class SimpleItemRecyclerViewAdapter
@@ -177,7 +191,7 @@ public static class SimpleItemRecyclerViewAdapter
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
-            holder.ckBoxErledigt.setChecked(task.isDone);
+            holder.ckBoxTaskDone.setChecked(task.isDone);
             holder.kosten.setText(Formater.intCentToString(task.costs));
 
             if(task.date != null) {
@@ -198,14 +212,14 @@ public static class SimpleItemRecyclerViewAdapter
             holder.itemView.setTag(task);
             holder.itemView.setOnClickListener(mOnClickListener);
 
-            OnAufgabeChecked(task, holder.termin, holder.kosten);
-            holder.ckBoxErledigt.setOnClickListener(new View.OnClickListener() {
+            OnTaskChecked(task, holder.termin, holder.kosten);
+            holder.ckBoxTaskDone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String msg = SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources()
-                            .getString(holder.ckBoxErledigt.isChecked() ? R.string.done : R.string.todo);
-                    task.isDone = holder.ckBoxErledigt.isChecked();
-                    OnAufgabeChecked(task, holder.termin, holder.kosten);
+                            .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
+                    task.isDone = holder.ckBoxTaskDone.isChecked();
+                    OnTaskChecked(task, holder.termin, holder.kosten);
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
@@ -263,7 +277,7 @@ public static class SimpleItemRecyclerViewAdapter
             }
         }
 
-        private void OnAufgabeChecked(Task task, TextView termin, TextView kosten) {
+        private void OnTaskChecked(Task task, TextView termin, TextView kosten) {
             if(task.isDone) {
                 kosten.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
                 termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
@@ -285,7 +299,7 @@ public static class SimpleItemRecyclerViewAdapter
         class ViewHolder extends RecyclerView.ViewHolder {
             // rows content of main list
             final TextView name;
-            final CheckBox ckBoxErledigt;
+            final CheckBox ckBoxTaskDone;
             final TextView kosten;
             final TextView termin;
             final TextView typ;
@@ -295,13 +309,48 @@ public static class SimpleItemRecyclerViewAdapter
             ViewHolder(View rowView) {
                 super(rowView);
                 name = rowView.findViewById(R.id.name);
-                ckBoxErledigt = rowView.findViewById(R.id.checkBox);
+                ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
                 termin = rowView.findViewById(R.id.termin);
                 kosten = rowView.findViewById(R.id.kosten);
                 typ = rowView.findViewById(R.id.typ);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }
+        }
+
+        public static boolean needsUpdate = false;
+        Thread updaterThread;
+        private Thread startTimerThread() {
+            stopTimerThread();
+            final Handler handler = new Handler();
+            Runnable updater = new Runnable() {
+                public void run() {
+                    while (true) {
+                        try {
+                            if(needsUpdate) {
+                                handler.post(new Runnable(){
+                                    public void run() {
+                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                                    }
+                                });
+                                needsUpdate = false;
+                            }
+                            Thread.sleep(300);
+                        }
+                        catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
+            Thread thread = new Thread(updater);
+            thread.start();
+            return thread;
+        }
+
+        private void stopTimerThread() {
+            if(updaterThread != null && updaterThread.isAlive())
+                updaterThread.interrupt();
         }
     }
 }

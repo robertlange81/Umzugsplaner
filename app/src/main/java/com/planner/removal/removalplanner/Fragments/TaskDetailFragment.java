@@ -3,10 +3,12 @@ package com.planner.removal.removalplanner.Fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +34,7 @@ import com.planner.removal.removalplanner.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -95,7 +98,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.detail, container, false);
+        final View rootView = inflater.inflate(R.layout.detail, container, false);
 
         if(Formater.currentLocal == null) {
             Formater.setCurrentLocale(rootView.getContext());
@@ -108,17 +111,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         txtCosts = rootView.findViewById(R.id.detail_costs);
         spinnerDetailType = (Spinner) rootView.findViewById(R.id.detail_type);
 
-        txtLinks = new TextView[5];
-        txtLinks[0] = (TextView) rootView.findViewById(R.id.detail_links_x0);
-        txtLinks[0].setMovementMethod(LinkMovementMethod.getInstance());
-        txtLinks[1] = (TextView) rootView.findViewById(R.id.detail_links_x1);
-        txtLinks[1].setMovementMethod(LinkMovementMethod.getInstance());
-        txtLinks[2] = (TextView) rootView.findViewById(R.id.detail_links_x2);
-        txtLinks[2].setMovementMethod(LinkMovementMethod.getInstance());
-        txtLinks[3] = (TextView) rootView.findViewById(R.id.detail_links_x3);
-        txtLinks[3].setMovementMethod(LinkMovementMethod.getInstance());
-        txtLinks[4] = (TextView) rootView.findViewById(R.id.detail_links_x4);
-        txtLinks[4].setMovementMethod(LinkMovementMethod.getInstance());
+        _initLinks(rootView);
 
         // imgDelete =
 
@@ -129,6 +122,20 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
+        checkIsDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String msg = rootView.getContext().getResources()
+                        .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
+                task.isDone = checkIsDone.isChecked();
+                // MainActivity.SimpleItemRecyclerViewAdapter.class.notify();
+                //MainActivity.class.notify();
+                MainActivity.notifyTaskChanged();
+                Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+
         if (task != null) {
             txtName.setText(task.name);
             txtDescription.setText(task.description);
@@ -137,21 +144,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
             } else {
                 imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-            }
-
-            if(task.links != null && task.links.size() > 0) {
-                String link = "";
-                int i = 0;
-                for (Map.Entry<String, String> entry : task.links.entrySet())
-                {
-                    link = "&#8226; <a href='" + entry.getValue() + "' style=\"cursor: pointer;\">" + entry.getKey() + "</a>  ";
-                    txtLinks[i].setText(Html.fromHtml(link));
-                    txtLinks[i].setAutoLinkMask(Linkify.WEB_URLS);
-                    txtLinks[i].setLinksClickable(true);
-                    txtLinks[i].setCursorVisible(true);
-                    ((TableRow) txtLinks[i].getParent()).setVisibility(View.VISIBLE);
-                    i++;
-                }
             }
 
             if(task.costs > 0.00)
@@ -173,6 +165,88 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
 
         return rootView;
+    }
+
+    private void _initLinks(View rootView) {
+        final HashMap<TextView, String> linkMap = new HashMap<>();
+        txtLinks = new TextView[5];
+        txtLinks[0] = (TextView) rootView.findViewById(R.id.detail_links_x0);
+        txtLinks[1] = (TextView) rootView.findViewById(R.id.detail_links_x1);
+        txtLinks[2] = (TextView) rootView.findViewById(R.id.detail_links_x2);
+        txtLinks[3] = (TextView) rootView.findViewById(R.id.detail_links_x3);
+        txtLinks[4] = (TextView) rootView.findViewById(R.id.detail_links_x4);
+
+        for (final TextView txtLink : txtLinks) {
+            txtLink.setMovementMethod(LinkMovementMethod.getInstance());
+            if(txtLink != txtLinks[0])
+                ((TableRow) txtLink.getParent()).setVisibility(View.GONE);
+
+            txtLink.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if(!txtLink.hasFocus()) {
+                        try {
+                            String inputLink = txtLink.getText().toString();
+                            inputLink = inputLink.replaceAll("\\s+","");
+                            boolean showNewLine = false;
+                            String key = linkMap.get(txtLink);
+                            if(key == null) {
+                                showNewLine = true;
+                            } else {
+                                task.links.remove(key);
+                                linkMap.remove(txtLink);
+                            }
+
+                            if(!inputLink.equals("")) {
+                                task.links.put(inputLink, inputLink);
+                                linkMap.put(txtLink, inputLink);
+
+                                if(showNewLine) {
+                                    for (TextView t : txtLinks) {
+                                        if(((TableRow) t.getParent()).getVisibility() != View.VISIBLE) {
+                                            ((TableRow) t.getParent()).setVisibility(View.VISIBLE);
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                            _formatLink(txtLink, inputLink, inputLink);
+                        } catch (Exception x) {
+
+                        }
+                    }
+                }
+            });
+        }
+
+        if(task.links != null && task.links.size() > 0) {
+            int i = 0;
+            for (Map.Entry<String, String> entry : task.links.entrySet())
+            {
+                if(i > txtLinks.length)
+                    break;
+
+                linkMap.put(txtLinks[i], entry.getKey());
+                _formatLink(txtLinks[i], entry.getValue(), entry.getKey());
+                i++;
+            }
+
+            if(i < txtLinks.length)
+                _formatLink(txtLinks[i], "", "");
+        }
+    }
+
+    private void _formatLink(TextView linkInput, String href, String displayLink) {
+        String link = "";
+        if(!href.isEmpty() && !displayLink.isEmpty())
+            link += "<a href='" + href + "'>" + displayLink + "</a>  ";
+
+        linkInput.setText(Html.fromHtml(link));
+        linkInput.setAutoLinkMask(Linkify.WEB_URLS);
+        linkInput.setLinksClickable(true);
+        linkInput.setCursorVisible(true);
+        ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
     }
 
     public void onClick(View v) {

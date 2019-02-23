@@ -143,6 +143,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/detail_delete_info_dummy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            app:srcCompat="@android:drawable/ic_delete"
+            android:visibility="invisible" />
+
     </TableRow>
 
     <TableRow
@@ -210,7 +219,7 @@
             android:textSize="@dimen/detail_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:singleLine="true"
             android:selectAllOnFocus="false"
             android:linksClickable="true" />
 
@@ -251,7 +260,7 @@
             android:textSize="@dimen/detail_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:singleLine="true"
             android:selectAllOnFocus="false"
             android:linksClickable="true" />
 
@@ -292,7 +301,7 @@
             android:textSize="@dimen/detail_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:singleLine="true"
             android:selectAllOnFocus="false"
             android:linksClickable="true" />
 
@@ -333,7 +342,7 @@
             android:textSize="@dimen/detail_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:singleLine="true"
             android:selectAllOnFocus="false"
             android:linksClickable="true" />
 
@@ -374,7 +383,7 @@
             android:textSize="@dimen/detail_text_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="false"
+            android:singleLine="true"
             android:selectAllOnFocus="false"
             android:linksClickable="true" />
 
