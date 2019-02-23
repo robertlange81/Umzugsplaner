@@ -24,6 +24,10 @@ public class TaskInitializer {
 
             Task task2 = new Task("Aufgabe2", "Beschreibung2");
             task2.costs = 30000098739l;
+            task2.links.put("https://www.google.de", "https://www.google.de");
+            task2.links.put("robert.de", "http://www.robert-lange.eu");
+            task2.links.put("https://www.google.de", "https://www.google.de");
+            task2.links.put("gmx", "www.gmx.de");
             task2.prio = Prio.Normal;
             task2.date = defaultDate;
 
@@ -42,11 +46,18 @@ public class TaskInitializer {
             task4.date = zielTermin4;
             task4.isDone = true;
 
+            Task task5 = new Task("Aufgabe4", "Beschreibung4 sehr lang, bla bmla ");
+            task5.costs = 800000;
+            task5.prio = Prio.Normal;
+            task5.date = zielTermin4;
+            task5.isDone = true;
+
+
             Task.addTask(task1);
             Task.addTask(task2);
             Task.addTask(task3);
             Task.addTask(task4);
-            Task.addTask(task4);
+            Task.addTask(task5);
             Task.addTask(task4);
             Task.addTask(task4);
             Task.addTask(task4);

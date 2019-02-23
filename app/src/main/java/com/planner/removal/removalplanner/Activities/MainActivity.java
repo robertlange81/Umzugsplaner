@@ -220,6 +220,7 @@ public static class SimpleItemRecyclerViewAdapter
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
                     task.isDone = holder.ckBoxTaskDone.isChecked();
                     OnTaskChecked(task, holder.termin, holder.kosten);
+                    TaskDetailFragment.needsUpdate = true;
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }

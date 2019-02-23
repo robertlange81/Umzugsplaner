@@ -3,12 +3,12 @@ package com.planner.removal.removalplanner.Fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
-import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +59,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     EditText txtName;
     EditText txtDescription;
     CheckBox checkIsDone;
+    TextView lblIsDone;
     ImageView imgPrio;
+    TextView lblPrio;
     ImageView imgDelete;
     EditText txtCosts;
     Spinner spinnerDetailType;
@@ -67,6 +69,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Button btnTimePicker;
     EditText txtDate;
     TextView[] txtLinks;
+    ImageView[] imgDeleteLinks;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
 
@@ -106,18 +109,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         txtName = rootView.findViewById(R.id.detail_name);
         checkIsDone = rootView.findViewById(R.id.detail_isDone);
+        lblIsDone = rootView.findViewById(R.id.detail_isDone_label);
         imgPrio = rootView.findViewById(R.id.detail_prio);
+        lblPrio = rootView.findViewById(R.id.detail_prio_label);
         txtDescription = rootView.findViewById(R.id.detail_description);
         txtCosts = rootView.findViewById(R.id.detail_costs);
         spinnerDetailType = (Spinner) rootView.findViewById(R.id.detail_type);
 
         _initLinks(rootView);
-
-        // imgDelete =
+        _initDeleteIcons(rootView);
 
         btnDatePicker =(Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker =(Button) rootView.findViewById(R.id.detail_btn_time);
-        txtDate =(EditText) rootView.findViewById(R.id.detail_date);
+        txtDate =(EditText) rootView.findViewById(R.id.detail_deadline);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
@@ -128,22 +132,53 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 String msg = rootView.getContext().getResources()
                         .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
                 task.isDone = checkIsDone.isChecked();
-                // MainActivity.SimpleItemRecyclerViewAdapter.class.notify();
-                // MainActivity.class.notify();
+                lblIsDone.setText(msg);
                 MainActivity.notifyTaskChanged();
                 Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
+        imgPrio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (task.prio == Prio.High) {
+                    imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+                    task.prio = Prio.Normal;
+                    lblPrio.setText(R.string.normalPrioText_short);
+                } else {
+                    imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+                    task.prio = Prio.High;
+                    lblPrio.setText(R.string.highPrioText_short);
+                }
+
+                MainActivity.notifyTaskChanged();
+                String msg = rootView.getContext().getResources()
+                        .getString(task.prio == Prio.Normal ? R.string.normalPrioText : R.string.highPrioText)
+                        + " " + task.name;
+
+                Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
+                snack.show();
+            }
+        });
+
+
+
         if (task != null) {
             txtName.setText(task.name);
             txtDescription.setText(task.description);
             checkIsDone.setChecked(task.isDone);
+            String msg = rootView.getContext().getResources()
+                    .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
+            lblIsDone.setText(msg);
+
             if (task.prio == Prio.High) {
                 imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+                lblPrio.setText(R.string.highPrioText_short);
             } else {
                 imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+                lblPrio.setText(R.string.normalPrioText_short);
             }
 
             if(task.costs > 0.00)
@@ -164,7 +199,57 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 txtDate.setText(Formater.formatDateToSring(task.date));
         }
 
+        startTimerThread();
         return rootView;
+    }
+
+    private void _initDeleteIcons(View rootView) {
+        final HashMap<ImageView, TextView> deleteMap = new HashMap<>();
+        txtLinks = new TextView[8];
+        imgDeleteLinks = new ImageView[8];
+        txtLinks[0] = (TextView) rootView.findViewById(R.id.detail_links_x0);
+        txtLinks[1] = (TextView) rootView.findViewById(R.id.detail_links_x1);
+        txtLinks[2] = (TextView) rootView.findViewById(R.id.detail_links_x2);
+        txtLinks[3] = (TextView) rootView.findViewById(R.id.detail_links_x3);
+        txtLinks[4] = (TextView) rootView.findViewById(R.id.detail_links_x4);
+        txtLinks[5] = (TextView) rootView.findViewById(R.id.detail_description);
+        txtLinks[6] = (TextView) rootView.findViewById(R.id.detail_costs);
+        txtLinks[7] = (TextView) rootView.findViewById(R.id.detail_deadline);
+
+        imgDeleteLinks[0] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x0);
+        imgDeleteLinks[1] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x1);
+        imgDeleteLinks[2] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x2);
+        imgDeleteLinks[3] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x3);
+        imgDeleteLinks[4] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x4);
+        imgDeleteLinks[5] = (ImageView) rootView.findViewById(R.id.detail_delete_info_icon);
+        imgDeleteLinks[6] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
+        imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
+
+        txtLinks[5].setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus &&  txtLinks[5].getText() != null) {
+                    String inputLink = txtLinks[5].getText().toString();
+                    task.description = inputLink;
+                }
+            }
+        });
+
+        for (int i = 0; i < imgDeleteLinks.length; i++) {
+            deleteMap.put(imgDeleteLinks[i], txtLinks[i]);
+
+            imgDeleteLinks[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    TextView t = deleteMap.get(view);
+                    if(t.getText() != null && t.getText().toString() != "") {
+                        t.setText("");
+                        t.requestFocus();
+                        t.clearFocus();
+                    }
+                }
+            });
+        }
     }
 
     private void _initLinks(View rootView) {
@@ -184,7 +269,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             txtLink.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if(!txtLink.hasFocus()) {
+                    if(!hasFocus) {
                         try {
                             String inputLink = txtLink.getText().toString();
                             inputLink = inputLink.replaceAll("\\s+","");
@@ -311,4 +396,48 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { }
 
+    public static boolean needsUpdate = false;
+    Thread updaterThread;
+    private Thread startTimerThread() {
+        stopTimerThread();
+        final Handler handler = new Handler();
+        Runnable updater = new Runnable() {
+            public void run() {
+                while (true) {
+                    try {
+                        if(needsUpdate) {
+                            handler.post(new Runnable(){
+                                public void run() {
+                                    checkIsDone.setChecked(task.isDone);
+                                    if (task.prio == Prio.High) {
+                                        imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+                                    } else {
+                                        imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+                                    }
+                                }
+                            });
+                            needsUpdate = false;
+                        }
+                        Thread.sleep(300);
+                    }
+                    catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        Thread thread = new Thread(updater);
+        thread.start();
+        return thread;
+    }
+
+    private void stopTimerThread() {
+        if(updaterThread != null && updaterThread.isAlive())
+            updaterThread.interrupt();
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        stopTimerThread();
+    }
 }

@@ -14,6 +14,7 @@
     <string name="deleted">deleted</string>
     <string name="undo">undo</string>
     <string name="highPrioText">high priority for task</string>
+    <string name="highPrioText_short">high priority</string>
     <string name="normalPrioText">normal priority for task</string>
     <string name="normalPrioText_short">normal priority</string>
     <string name="placeholder_costs_detail">$0.00</string>

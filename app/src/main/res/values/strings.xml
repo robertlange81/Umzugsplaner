@@ -14,6 +14,7 @@
     <string name="deleted">offen</string>
     <string name="undo">rückgängig</string>
     <string name="highPrioText">hohe Priorität für Aufgabe</string>
+    <string name="highPrioText_short">hohe Priorität</string>
     <string name="normalPrioText">normale Priorität für Aufgabe</string>
     <string name="normalPrioText_short">normale Priorität</string>
     <string name="placeholder_costs_detail">0,00 €</string>

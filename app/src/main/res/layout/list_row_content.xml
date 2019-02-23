@@ -111,7 +111,7 @@
             android:layout_marginTop="2dip"
             android:layout_toRightOf="@id/table"
             android:adjustViewBounds="false"
-            app:srcCompat="@android:drawable/ic_delete" />
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </TableRow>
 </RelativeLayout>

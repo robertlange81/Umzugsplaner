@@ -18,6 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_width="0px"
+            android:layout_height="0px"/>
+
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/detail_name"
             android:hint="@string/placeholder_name"
@@ -113,460 +119,466 @@
 
     </LinearLayout>
 
-    <TableRow
-        android:id="@+id/detail_first_line"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@id/detail_header"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:paddingTop="15dp"
-        android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3">
-
-            <TextView
-                android:id="@+id/detail_type_label"
-                android:layout_weight="2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/input_margin"
-                android:textSize="@dimen/detail_text_size"
-                android:text="@string/category" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="3dp"
-            android:layout_weight="1"
-            android:textColor="#ff00ff"
-            android:background="@drawable/spinner_border"
-            android:orientation="horizontal">
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/detail_type"
-                android:filterTouchesWhenObscured="false"
-                android:fitsSystemWindows="false"
-                android:textSize="@dimen/detail_spinner_text_size"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center"
-                android:background="@android:color/transparent"
-                android:gravity="center"
-                android:layout_marginLeft="5dp"
-                android:spinnerMode="dropdown"/>
-
-            <ImageView
+        xmlns:android="http://schemas.android.com/apk/res/android">
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="false"
-                android:layout_gravity="right"
-                android:paddingRight="15sp"
-                android:src="@android:drawable/arrow_down_float" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TableRow
+                android:id="@+id/detail_first_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:paddingTop="15dp"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3">
 
+                <TextView
+                    android:id="@+id/detail_type_label"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="@string/category" />
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:layout_weight="1"
+                    android:textColor="#ff00ff"
+                    android:background="@drawable/spinner_border"
+                    android:orientation="horizontal">
 
-            <!--
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/detail_type"
+                        android:filterTouchesWhenObscured="false"
+                        android:fitsSystemWindows="false"
+                        android:textSize="@dimen/detail_spinner_text_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:spinnerMode="dropdown"/>
 
-            android:src="@mipmap/drop"
-                android:src="@android:drawable/arrow_down_float"-->
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="false"
+                        android:layout_gravity="right"
+                        android:paddingRight="15sp"
+                        android:src="@android:drawable/arrow_down_float" />
 
-        </RelativeLayout>
+                </RelativeLayout>
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_info_dummy"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete"
-            android:visibility="invisible" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_info_dummy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_delete"
+                    android:visibility="invisible" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_second_line"
-        android:layout_below="@id/detail_first_line"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3">
+            <TableRow
+                android:id="@+id/detail_second_line"
+                android:layout_below="@id/detail_first_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3">
 
-        <TextView
-            android:id="@+id/detail_description_label"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="@string/placeholder_description" />
+                <TextView
+                    android:id="@+id/detail_description_label"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="@string/placeholder_description" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_description"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="false"
-            android:selectAllOnFocus="false"
-            android:inputType="text|textMultiLine|textCapSentences" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_description"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:selectAllOnFocus="false"
+                    android:inputType="text|textMultiLine|textCapSentences" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_info_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_info_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_third_line_x0"
-        android:layout_below="@id/detail_second_line"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3">
+            <TableRow
+                android:id="@+id/detail_third_line_x0"
+                android:layout_below="@id/detail_second_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3">
 
-        <TextView
-            android:id="@+id/detail_links_label"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="@string/detail_links" />
+                <TextView
+                    android:id="@+id/detail_links_label"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="@string/detail_links" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_links_x0"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="false"
-            android:linksClickable="true" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_links_x0"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_links_icon_x0"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_links_icon_x0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_third_line_x1"
-        android:layout_below="@id/detail_third_line_x0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3"
-        android:visibility="gone">
+            <TableRow
+                android:id="@+id/detail_third_line_x1"
+                android:layout_below="@id/detail_third_line_x0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3"
+                android:visibility="gone">
 
-        <TextView
-            android:id="@+id/detail_links_label_dummy"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+                <TextView
+                    android:id="@+id/detail_links_label_dummy"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_links_x1"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="false"
-            android:linksClickable="true" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_links_x1"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_links_icon_x1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_links_icon_x1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_third_line_x2"
-        android:layout_below="@id/detail_third_line_x1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3"
-        android:visibility="gone">
+            <TableRow
+                android:id="@+id/detail_third_line_x2"
+                android:layout_below="@id/detail_third_line_x1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3"
+                android:visibility="gone">
 
-        <TextView
-            android:id="@+id/detail_links_label_dummy_x2"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+                <TextView
+                    android:id="@+id/detail_links_label_dummy_x2"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_links_x2"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="false"
-            android:linksClickable="true" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_links_x2"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_links_icon_x2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_links_icon_x2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_third_line_x3"
-        android:layout_below="@id/detail_third_line_x2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3"
-        android:visibility="gone" >
+            <TableRow
+                android:id="@+id/detail_third_line_x3"
+                android:layout_below="@id/detail_third_line_x2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/detail_links_label_dummy_x3"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+                <TextView
+                    android:id="@+id/detail_links_label_dummy_x3"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_links_x3"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="false"
-            android:linksClickable="true" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_links_x3"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_links_icon_x3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_links_icon_x3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_third_line_x4"
-        android:layout_below="@id/detail_third_line_x3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="-10dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3"
-        android:visibility="gone" >
+            <TableRow
+                android:id="@+id/detail_third_line_x4"
+                android:layout_below="@id/detail_third_line_x3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3"
+                android:visibility="gone" >
 
-        <TextView
-            android:id="@+id/detail_links_label_dummy_x4"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+                <TextView
+                    android:id="@+id/detail_links_label_dummy_x4"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_links_x4"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="false"
-            android:linksClickable="true" />
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_links_x4"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_links_icon_x4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_links_icon_x4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_fourth_line"
-        android:layout_below="@id/detail_third_line_x4"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3">
+            <TableRow
+                android:id="@+id/detail_fourth_line"
+                android:layout_below="@id/detail_third_line_x4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3">
 
-        <TextView
-            android:id="@+id/detail_costs_label"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="@string/placeholder_costs" />
+                <TextView
+                    android:id="@+id/detail_costs_label"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="@string/placeholder_costs" />
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_costs"
-            android:layout_weight="1"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:selectAllOnFocus="true"
-            android:hint="@string/placeholder_costs_detail"
-            android:inputType="numberDecimal"/>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/detail_costs"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:selectAllOnFocus="true"
+                    android:hint="@string/placeholder_costs_detail"
+                    android:inputType="numberDecimal"/>
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_costs_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_costs_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_fifth_line"
-        android:layout_below="@id/detail_fourth_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:layout_marginBottom="0dp"
-        android:weightSum="3">
+            <TableRow
+                android:id="@+id/detail_fifth_line"
+                android:layout_below="@id/detail_fourth_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="0dp"
+                android:weightSum="3">
 
-        <TextView
-            android:id="@+id/detail_deadline_label"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="@string/placeholder_date" />
+                <TextView
+                    android:id="@+id/detail_deadline_label"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="@string/placeholder_date" />
 
-        <EditText
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:id="@+id/detail_date"
-            android:textSize="@dimen/detail_text_size"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/detail_deadline"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/detail_delete_deadline_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/detail_delete_deadline_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    app:srcCompat="@android:drawable/ic_menu_delete" />
 
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:id="@+id/detail_sixth_line"
-        android:layout_below="@id/detail_fifth_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="3">
+            <TableRow
+                android:id="@+id/detail_sixth_line"
+                android:layout_below="@id/detail_fifth_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="3">
 
-        <TextView
-            android:id="@+id/detail_deadline_dummy"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+                <TextView
+                    android:id="@+id/detail_deadline_dummy"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/detail_text_size"
+                    android:text="" />
 
-    <TableRow
-        android:id="@+id/detail_deadline_buttons"
-        android:layout_weight="1"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="5dp"
-        android:weightSum="2">
+                <TableRow
+                    android:id="@+id/detail_deadline_buttons"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:weightSum="2">
 
-            <Button
-                android:layout_height="match_parent"
-                android:text="@string/placeholder_date_detail"
-                android:id="@+id/detail_btn_date"
-                android:layout_weight="1"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"/>
+                    <Button
+                        android:layout_height="match_parent"
+                        android:text="@string/placeholder_date_detail"
+                        android:id="@+id/detail_btn_date"
+                        android:layout_weight="1"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"/>
 
-            <Button
-                android:layout_height="match_parent"
-                android:text="@string/placeholder_time_detail"
-                android:layout_weight="1"
-                android:id="@+id/detail_btn_time"
-                android:layout_toRightOf="@+id/detail_btn_date" />
-        </TableRow>
+                    <Button
+                        android:layout_height="match_parent"
+                        android:text="@string/placeholder_time_detail"
+                        android:layout_weight="1"
+                        android:id="@+id/detail_btn_time"
+                        android:layout_toRightOf="@+id/detail_btn_date" />
+                </TableRow>
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/loeschen_dummy"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="2dip"
-            android:layout_marginTop="2dip"
-            android:layout_toRightOf="@id/detail_btn_time"
-            android:adjustViewBounds="false"
-            android:visibility="invisible"
-            app:srcCompat="@android:drawable/ic_delete" />
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/loeschen_dummy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    android:layout_toRightOf="@id/detail_btn_time"
+                    android:adjustViewBounds="false"
+                    android:visibility="invisible"
+                    app:srcCompat="@android:drawable/ic_delete" />
 
-    </TableRow>
-
+            </TableRow>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </RelativeLayout>
