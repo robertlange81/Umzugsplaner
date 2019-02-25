@@ -284,7 +284,7 @@ public static class SimpleItemRecyclerViewAdapter
                 termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
             } else {
                 kosten.setTextColor(mParentActivity.getResources().getColor(R.color.colorYellow));
-                if(task.date.getTime() < System.currentTimeMillis()) {
+                if(task.date != null && task.date.getTime() < System.currentTimeMillis()) {
                     termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorRed));
                 } else {
                     termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorWhite));

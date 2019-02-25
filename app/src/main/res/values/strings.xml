@@ -8,10 +8,12 @@
     <string name="placeholder_description">Info</string>
     <string name="placeholder_type">Kategorie</string>
     <string name="placeholder_date">Termin</string>
+    <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_costs">Kosten</string>
     <string name="done">fertig</string>
     <string name="todo">offen</string>
-    <string name="deleted">offen</string>
+    <string name="deleted">gelöscht</string>
+    <string name="removed">entfernt</string>
     <string name="undo">rückgängig</string>
     <string name="highPrioText">hohe Priorität für Aufgabe</string>
     <string name="highPrioText_short">hohe Priorität</string>
@@ -21,7 +23,10 @@
     <string name="category">Typ</string>
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_time_detail">Zeit</string>
-    <string name="detail_links">Links</string>
+    <string name="placeholder_links">Links</string>
+    <string name="placeholder_link">Link</string>
+    <string name="placeholder_link_input">Url oder Ressource</string>
+    <string name="detail_description_input">Beschreibung</string>
     <string-array name="roman_numbers">
         <item>I</item>
         <item>II</item>

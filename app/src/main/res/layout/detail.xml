@@ -161,7 +161,7 @@
                     android:orientation="horizontal">
 
                     <android.support.v7.widget.AppCompatSpinner
-                        android:id="@+id/detail_type"
+                        android:id="@+id/type"
                         android:filterTouchesWhenObscured="false"
                         android:fitsSystemWindows="false"
                         android:textSize="@dimen/detail_spinner_text_size"
@@ -217,7 +217,9 @@
                     android:text="@string/placeholder_description" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_description"
+                    android:id="@+id/description"
+                    android:tag="@string/detail_description_input"
+                    android:hint="@string/detail_description_input"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -253,16 +255,18 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/input_margin"
                     android:textSize="@dimen/detail_text_size"
-                    android:text="@string/detail_links" />
+                    android:text="@string/placeholder_links" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_links_x0"
+                    android:id="@+id/links_0"
                     android:layout_weight="1"
+                    android:tag="@string/placeholder_link"
+                    android:hint="@string/placeholder_link_input"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="false"
+                    android:selectAllOnFocus="true"
                     android:linksClickable="true" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -297,13 +301,15 @@
                     android:text="" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_links_x1"
+                    android:id="@+id/links_1"
+                    android:tag="@string/placeholder_link"
+                    android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="false"
+                    android:selectAllOnFocus="true"
                     android:linksClickable="true" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -338,13 +344,15 @@
                     android:text="" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_links_x2"
+                    android:id="@+id/links_2"
+                    android:tag="@string/placeholder_link"
+                    android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="false"
+                    android:selectAllOnFocus="true"
                     android:linksClickable="true" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -379,13 +387,15 @@
                     android:text="" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_links_x3"
+                    android:id="@+id/links_3"
+                    android:tag="@string/placeholder_link"
+                    android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="false"
+                    android:selectAllOnFocus="true"
                     android:linksClickable="true" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -401,6 +411,7 @@
             <TableRow
                 android:id="@+id/detail_third_line_x4"
                 android:layout_below="@id/detail_third_line_x3"
+                android:hint="@string/placeholder_link_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
@@ -420,13 +431,14 @@
                     android:text="" />
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/detail_links_x4"
+                    android:id="@+id/links_4"
+                    android:tag="@string/placeholder_link"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="false"
+                    android:selectAllOnFocus="true"
                     android:linksClickable="true" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -461,6 +473,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/detail_costs"
+                    android:tag="@string/placeholder_costs"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
@@ -502,6 +515,8 @@
 
                 <EditText
                     android:layout_weight="1"
+                    android:tag="@string/placeholder_date"
+                    android:hint="@string/placeholder_date_input"
                     android:layout_height="wrap_content"
                     android:id="@+id/detail_deadline"
                     android:textSize="@dimen/detail_text_size"

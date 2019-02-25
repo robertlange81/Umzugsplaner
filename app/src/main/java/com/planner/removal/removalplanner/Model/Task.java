@@ -35,7 +35,7 @@ public class Task {
     public boolean isDone;
     public TaskType type;
     public long costs; // in Cent
-    public Map<String,String> links;
+    public TreeMap<String,String> links;
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
@@ -46,6 +46,29 @@ public class Task {
         costs = 0;
         type = TaskType.Furniture;
         links = new TreeMap<>();
+    }
+
+    public Task(Task clone) {
+        id = clone.id;
+        this.name = clone.name;
+        this.description = clone.description;
+        date = clone.date;
+        prio = clone.prio;
+        costs = clone.costs;
+        type = clone.type;
+        links = (TreeMap) clone.links.clone();
+        isDone = clone.isDone;
+    }
+
+    public void CopyTask(Task clone) {
+        this.name = clone.name;
+        this.description = clone.description;
+        date = clone.date;
+        prio = clone.prio;
+        costs = clone.costs;
+        type = clone.type;
+        links = clone.links;
+        isDone = clone.isDone;
     }
 
     public static void addTask(Task task) {

@@ -18,6 +18,7 @@ public class TaskInitializer {
             Task task1 = new Task("Aufgabe1 seh lang bla bla bla bla bla", "Beschreibung1");
             task1.links.put("https://www.google.de", "https://www.google.de");
             task1.links.put("robert.de", "http://www.robert-lange.eu");
+            task1.links.put("gmx.de", "gmx.de");
             task1.prio = Prio.Normal;
             task1.type = TaskType.Furniture;
             task1.description = "Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1";
