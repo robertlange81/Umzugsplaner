@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,11 +69,13 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Spinner spinnerDetailType;
     Button btnDatePicker;
     Button btnTimePicker;
-    EditText txtDate;
-    TextView[] txtLinks;
+    EditText txtDeadline;
+    TextView[] txtInputs;
     ImageView[] imgDeleteLinks;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
+
+    public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -119,11 +122,30 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         btnDatePicker =(Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker =(Button) rootView.findViewById(R.id.detail_btn_time);
-        txtDate =(EditText) rootView.findViewById(R.id.detail_deadline);
+        txtDeadline =(EditText) rootView.findViewById(R.id.detail_deadline);
+
+        txtInputs = new TextView[8];
+        imgDeleteLinks = new ImageView[8];
+        txtInputs[0] = (TextView) rootView.findViewById(R.id.links_0);
+        txtInputs[1] = (TextView) rootView.findViewById(R.id.links_1);
+        txtInputs[2] = (TextView) rootView.findViewById(R.id.links_2);
+        txtInputs[3] = (TextView) rootView.findViewById(R.id.links_3);
+        txtInputs[4] = (TextView) rootView.findViewById(R.id.links_4);
+        txtInputs[5] = txtDescription;
+        txtInputs[6] = txtCosts;
+        txtInputs[7] = txtDeadline;
+
+        imgDeleteLinks[0] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x0);
+        imgDeleteLinks[1] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x1);
+        imgDeleteLinks[2] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x2);
+        imgDeleteLinks[3] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x3);
+        imgDeleteLinks[4] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x4);
+        imgDeleteLinks[5] = (ImageView) rootView.findViewById(R.id.detail_delete_info_icon);
+        imgDeleteLinks[6] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
+        imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
 
         _initListeners(rootView);
-
-        final HashMap<TextView, String> linkMap = _initLinks(rootView);
+        final HashMap<TextView, String> linkMap = _initLinks();
         _initDeleteIcons(rootView);
 
         if (task != null) {
@@ -212,6 +234,47 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+
+        txtDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus && txtDescription.getText() != null) {
+                    String input = txtDescription.getText().toString();
+                    if(!task.description.equals(input))
+                        task.description = input;
+                }
+            }
+        });
+
+        txtCosts.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus && txtCosts.getText() != null) {
+                    String input = txtCosts.getText().toString();
+
+                    if(input.equals("")) {
+                        task.costs = 0;
+                        MainActivity.notifyTaskChanged();
+                        return;
+                    }
+                }
+            }
+        });
+
+        txtDeadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus &&  txtDeadline.getText() != null) {
+                    String input = txtDeadline.getText().toString();
+
+                    if(input.equals("")) {
+                        task.date = null;
+                        MainActivity.notifyTaskChanged();
+                        return;
+                    }
+                }
+            }
+        });
     }
 
     private void setDetails(final HashMap<TextView, String> linkMap, View rootView) {
@@ -234,90 +297,30 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             int i = 0;
             for (Map.Entry<String, String> entry : task.links.entrySet())
             {
-                if(i > txtLinks.length)
+                if(i > MAX_INPUT_FIELDS_FOR_LINKS)
                     break;
 
-                linkMap.put(txtLinks[i], entry.getKey());
-                _formatLink(txtLinks[i], entry.getValue(), entry.getKey());
+                linkMap.put(txtInputs[i], entry.getKey());
+                _formatLink(txtInputs[i], entry.getValue(), entry.getKey());
                 i++;
             }
 
-            if(i < txtLinks.length)
-                _formatLink(txtLinks[i], "", "");
+            if(i < MAX_INPUT_FIELDS_FOR_LINKS)
+                _formatLink(txtInputs[i], "_", "_");
         }
 
         if(task.costs > 0.00)
             txtCosts.setText(Formater.intCentToString(task.costs));
 
         if(task.date != null)
-            txtDate.setText(Formater.formatDateToSring(task.date));
+            txtDeadline.setText(Formater.formatDateToSring(task.date));
     }
 
     private void _initDeleteIcons(final View rootView) {
         final HashMap<ImageView, TextView> deleteMap = new HashMap<>();
-        txtLinks = new TextView[8];
-        imgDeleteLinks = new ImageView[8];
-        txtLinks[0] = (TextView) rootView.findViewById(R.id.links_0);
-        txtLinks[1] = (TextView) rootView.findViewById(R.id.links_1);
-        txtLinks[2] = (TextView) rootView.findViewById(R.id.links_2);
-        txtLinks[3] = (TextView) rootView.findViewById(R.id.links_3);
-        txtLinks[4] = (TextView) rootView.findViewById(R.id.links_4);
-        txtLinks[5] = (TextView) rootView.findViewById(R.id.description);
-        txtLinks[6] = (TextView) rootView.findViewById(R.id.detail_costs);
-        txtLinks[7] = (TextView) rootView.findViewById(R.id.detail_deadline);
-
-        imgDeleteLinks[0] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x0);
-        imgDeleteLinks[1] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x1);
-        imgDeleteLinks[2] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x2);
-        imgDeleteLinks[3] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x3);
-        imgDeleteLinks[4] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x4);
-        imgDeleteLinks[5] = (ImageView) rootView.findViewById(R.id.detail_delete_info_icon);
-        imgDeleteLinks[6] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
-        imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
-
-        txtLinks[5].setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus && txtLinks[5].getText() != null) {
-                    String input = txtLinks[5].getText().toString();
-                    if(!task.description.equals(input))
-                        task.description = input;
-                }
-            }
-        });
-
-        txtLinks[6].setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus && txtLinks[6].getText() != null) {
-                    String input = txtLinks[6].getText().toString();
-
-                    if(input.equals("")) {
-                        task.costs = 0;
-                        MainActivity.notifyTaskChanged();
-                        return;
-                    }
-                }
-            }
-        });
-
-        txtLinks[7].setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus &&  txtLinks[7].getText() != null) {
-                    String input = txtLinks[7].getText().toString();
-
-                    if(input.equals("")) {
-                        task.date = null;
-                        MainActivity.notifyTaskChanged();
-                        return;
-                    }
-                }
-            }
-        });
 
         for (int i = 0; i < imgDeleteLinks.length; i++) {
-            deleteMap.put(imgDeleteLinks[i], txtLinks[i]);
+            deleteMap.put(imgDeleteLinks[i], txtInputs[i]);
 
             imgDeleteLinks[i].setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -339,6 +342,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                 R.string.undo,
                                 new Command(Command.CommandTyp.Undo, clone)
                         );
+                        Log.e("new command", "new command");
                         snack.show();
 
                         t.setText("");
@@ -350,18 +354,17 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
     }
 
-    private HashMap<TextView, String> _initLinks(View rootView) {
+    private HashMap<TextView, String> _initLinks() {
+        Log.e("setDetails", "setDetails");
         final HashMap<TextView, String> linkMap = new HashMap<>();
-        txtLinks = new TextView[5];
-        txtLinks[0] = (TextView) rootView.findViewById(R.id.links_0);
-        txtLinks[1] = (TextView) rootView.findViewById(R.id.links_1);
-        txtLinks[2] = (TextView) rootView.findViewById(R.id.links_2);
-        txtLinks[3] = (TextView) rootView.findViewById(R.id.links_3);
-        txtLinks[4] = (TextView) rootView.findViewById(R.id.links_4);
 
-        for (final TextView txtLink : txtLinks) {
+        for (final TextView txtLink : txtInputs) {
+
+            if(!txtLink.getTag().toString().equalsIgnoreCase("Link"))
+                continue;
+
             txtLink.setMovementMethod(LinkMovementMethod.getInstance());
-            if(txtLink != txtLinks[0])
+            if(txtLink != txtInputs[0])
                 ((TableRow) txtLink.getParent()).setVisibility(View.GONE);
 
             txtLink.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -376,16 +379,21 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             if(key == null) {
                                 showNewLine = true;
                             } else {
+                                Log.e("remove ", key);
                                 task.links.remove(key);
                                 linkMap.remove(txtLink);
                             }
 
                             if(!inputLink.equals("")) {
                                 task.links.put(inputLink, inputLink);
+                                Log.e("put ", inputLink);
                                 linkMap.put(txtLink, inputLink);
 
                                 if(showNewLine) {
-                                    for (TextView t : txtLinks) {
+                                    for (TextView t : txtInputs) {
+                                        if(!t.getTag().toString().equalsIgnoreCase("Link"))
+                                            continue;
+
                                         if(((TableRow) t.getParent()).getVisibility() != View.VISIBLE) {
                                             ((TableRow) t.getParent()).setVisibility(View.VISIBLE);
                                             break;
@@ -393,10 +401,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                     }
                                 }
                             }
-
-                            _formatLink(txtLink, inputLink, inputLink);
                         } catch (Exception x) {
-
+                            Log.e("Exception", x.getMessage());
                         }
                     }
                 }
@@ -406,6 +412,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     private void _formatLink(TextView linkInput, String href, String displayLink) {
+        Log.e("_formatLink, alt:  ", linkInput.getText().toString());
+        Log.e("_formatLink, neu:  ", href + ":" + displayLink);
+
         String link = "";
         if(!href.isEmpty() && !displayLink.isEmpty())
             link += "<a href='" + href + "'>" + displayLink + "</a>  ";
@@ -415,6 +424,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         linkInput.setLinksClickable(true);
         linkInput.setCursorVisible(true);
         ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
+
+        Log.e("_formatLink, neu:  ", linkInput.getText().toString());
     }
 
     public void onClick(View v) {
@@ -441,7 +452,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setYear(year);
                             tempDate.setMonth(monthOfYear);
                             tempDate.setDate(dayOfMonth);
-                            txtDate.setText(Formater.formatDateToSring(tempDate));
+                            txtDeadline.setText(Formater.formatDateToSring(tempDate));
 
                         }
                     }, mYear, mMonth, mDay);
@@ -469,7 +480,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setHours(hourOfDay);
                             tempDate.setMinutes(minute);
 
-                            txtDate.setText(Formater.formatDateToSring(tempDate));
+                            txtDeadline.setText(Formater.formatDateToSring(tempDate));
                         }
                     }, mHour, mMinute, false);
             timePickerDialog.show();
@@ -484,7 +495,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     public static boolean needsUpdate = false;
-    Thread updaterThread;
+    public static Thread updaterThread;
     private Thread startTimerThread(final View rootView) {
         stopTimerThread();
         final Handler handler = new Handler();
@@ -493,16 +504,16 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 while (true) {
                     try {
                         if(needsUpdate) {
+                            needsUpdate = false;
                             handler.post(new Runnable(){
                                 public void run() {
                                     task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
-                                    final HashMap<TextView, String> linkMap = _initLinks(rootView);
+                                    final HashMap<TextView, String> linkMap = _initLinks();
                                     setDetails(linkMap, rootView);
                                 }
                             });
-                            needsUpdate = false;
                         }
-                        Thread.sleep(300);
+                        Thread.sleep(250);
                     }
                     catch (InterruptedException e) {
                         e.printStackTrace();
@@ -512,11 +523,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         };
         Thread thread = new Thread(updater);
         thread.start();
+
         return thread;
     }
 
     private void stopTimerThread() {
-        if(updaterThread != null && updaterThread.isAlive())
+        if(updaterThread != null)
             updaterThread.interrupt();
     }
 
