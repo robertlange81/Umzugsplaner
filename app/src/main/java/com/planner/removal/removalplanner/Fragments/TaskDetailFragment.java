@@ -1,5 +1,6 @@
 package com.planner.removal.removalplanner.Fragments;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
      * The dummy content this fragment is presenting.
      */
     private Task task;
+    public static TaskDetailFragment instance;
 
     EditText txtName;
     EditText txtDescription;
@@ -87,6 +89,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.e("DEBUG", "onCreate of Fragment");
+        instance = this;
 
         if (getArguments().containsKey(TASK_ID)) {
             // Load the dummy content specified by the fragment
@@ -102,8 +106,29 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     @Override
+    public void onResume() {
+        Log.e("DEBUG", "onResume of Fragment");
+        super.onResume();
+        instance = this;
+        if (getArguments().containsKey(TASK_ID)) {
+            // Load the dummy content specified by the fragment
+            // arguments. In a real-world scenario, use a Loader
+            // to load content from a content provider.
+            if (getArguments().containsKey(TASK_ID)) {
+                // Load the dummy content specified by the fragment
+                // arguments. In a real-world scenario, use a Loader
+                // to load content from a content provider.
+                task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+            }
+        }
+    }
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        Log.e("DEBUG", "onCreateView");
 
         final View rootView = inflater.inflate(R.layout.detail, container, false);
 
@@ -163,7 +188,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 spinnerDetailType.setSelection(task.type.getValue());
         }
 
-        startTimerThread(rootView);
+        if(updaterThread == null)
+            startTimerThread(rootView);
+
         return rootView;
     }
 
@@ -238,6 +265,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         txtDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                Log.e("x","x");
                 if(!hasFocus && txtDescription.getText() != null) {
                     String input = txtDescription.getText().toString();
                     if(!task.description.equals(input))
@@ -306,7 +334,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
 
             if(i < MAX_INPUT_FIELDS_FOR_LINKS)
-                _formatLink(txtInputs[i], "_", "_");
+                _formatLink(txtInputs[i], "", "");
         }
 
         if(task.costs > 0.00)
@@ -412,9 +440,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     private void _formatLink(TextView linkInput, String href, String displayLink) {
-        Log.e("_formatLink, alt:  ", linkInput.getText().toString());
-        Log.e("_formatLink, neu:  ", href + ":" + displayLink);
-
         String link = "";
         if(!href.isEmpty() && !displayLink.isEmpty())
             link += "<a href='" + href + "'>" + displayLink + "</a>  ";
@@ -424,8 +449,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         linkInput.setLinksClickable(true);
         linkInput.setCursorVisible(true);
         ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
-
-        Log.e("_formatLink, neu:  ", linkInput.getText().toString());
     }
 
     public void onClick(View v) {
@@ -491,11 +514,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { }
 
     public static void notifyTaskChanged() {
-        needsUpdate = true;
+        if(instance != null)
+            instance.needsUpdate = true;
     }
 
-    public static boolean needsUpdate = false;
-    public static Thread updaterThread;
+    private boolean needsUpdate = false;
+    private Thread updaterThread;
     private Thread startTimerThread(final View rootView) {
         stopTimerThread();
         final Handler handler = new Handler();
@@ -505,11 +529,21 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     try {
                         if(needsUpdate) {
                             needsUpdate = false;
+
                             handler.post(new Runnable(){
                                 public void run() {
-                                    task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
-                                    final HashMap<TextView, String> linkMap = _initLinks();
-                                    setDetails(linkMap, rootView);
+                                    ((Activity) rootView.getContext()).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            final HashMap<TextView, String> linkMap = _initLinks();
+                                            //_initDeleteIcons(rootView);
+
+                                            task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+                                            if (task != null) {
+                                                setDetails(linkMap, rootView);
+                                            }
+                                        }
+                                    });
                                 }
                             });
                         }
@@ -521,6 +555,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 }
             }
         };
+
         Thread thread = new Thread(updater);
         thread.start();
 
@@ -533,7 +568,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     public void onDestroy() {
-        super.onDestroy();
         stopTimerThread();
+        super.onDestroy();
+        instance = null;
     }
 }

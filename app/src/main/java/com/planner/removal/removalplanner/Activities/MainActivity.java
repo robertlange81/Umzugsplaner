@@ -12,6 +12,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -220,7 +221,7 @@ public static class SimpleItemRecyclerViewAdapter
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
                     task.isDone = holder.ckBoxTaskDone.isChecked();
                     OnTaskChecked(task, holder.termin, holder.kosten);
-                    TaskDetailFragment.needsUpdate = true;
+                    TaskDetailFragment.notifyTaskChanged();
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
@@ -239,6 +240,7 @@ public static class SimpleItemRecyclerViewAdapter
                         act.prio = Prio.High;
                     }
 
+                    TaskDetailFragment.notifyTaskChanged();
                     Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.prio == Prio.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.name, Snackbar.LENGTH_LONG);
                     snack.show();
                 }
@@ -331,6 +333,7 @@ public static class SimpleItemRecyclerViewAdapter
                             if(needsUpdate) {
                                 handler.post(new Runnable(){
                                     public void run() {
+                                        Log.e("needsUpdate", "");
                                         SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
                                     }
                                 });
