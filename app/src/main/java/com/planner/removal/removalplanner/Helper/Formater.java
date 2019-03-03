@@ -14,7 +14,6 @@ public class Formater {
 
     public static Locale currentLocal;
 
-
     public static void setCurrentLocale(Context context){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){

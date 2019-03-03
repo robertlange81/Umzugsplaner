@@ -60,7 +60,7 @@ public class Task {
         isDone = clone.isDone;
     }
 
-    public void CopyTask(Task clone) {
+    public void ImportTask(Task clone) {
         this.name = clone.name;
         this.description = clone.description;
         date = clone.date;

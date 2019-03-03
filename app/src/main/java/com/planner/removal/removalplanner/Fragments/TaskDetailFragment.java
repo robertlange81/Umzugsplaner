@@ -29,6 +29,7 @@ import android.widget.TimePicker;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Helper.Command;
+import com.planner.removal.removalplanner.Helper.CurrencyWatcher;
 import com.planner.removal.removalplanner.Helper.Formater;
 import com.planner.removal.removalplanner.Model.Prio;
 import com.planner.removal.removalplanner.Model.Task;
@@ -277,6 +278,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         txtCosts.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
+                Log.d("costs", "focus out");
                 if(!hasFocus && txtCosts.getText() != null) {
                     String input = txtCosts.getText().toString();
 
@@ -288,6 +290,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 }
             }
         });
+
+        txtCosts.addTextChangedListener(new CurrencyWatcher(txtCosts, task,"#,###"));
 
         txtDeadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
