@@ -6,7 +6,7 @@
     <dimen name="input_margin">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="input_insurance_autocomplete">4dp</dimen>
-    <dimen name="app_bar_height">50sp</dimen>
+    <dimen name="app_bar_height">0sp</dimen>
 
     <!-- Text sizes -->
     <dimen name="text_size_h1">30dp</dimen>
@@ -46,6 +46,9 @@
     <dimen name="detail_row_height">50sp</dimen>
     <dimen name="detail_row_margin_top">10dp</dimen>
     <dimen name="headline_text_size">20sp</dimen>
+    <dimen name="detail_header_row_height">35sp</dimen>
+    <dimen name="list_row_image_height">50sp</dimen>
+    <dimen name="list_row_content_part">20sp</dimen>
 
 </resources>
 

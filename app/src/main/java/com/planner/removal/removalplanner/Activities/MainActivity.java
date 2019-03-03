@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -32,6 +33,9 @@ import com.planner.removal.removalplanner.R;
 
 import java.util.Date;
 import java.util.List;
+
+import static android.widget.LinearLayout.HORIZONTAL;
+import static android.widget.LinearLayout.VERTICAL;
 
 
 public class MainActivity extends AppCompatActivity implements DetailDialogFragment.DetailDialogListener {
@@ -73,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         View recyclerView = findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
-
     }
 
     @Override
@@ -124,6 +127,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
+        DividerItemDecoration itemDecor = new DividerItemDecoration(recyclerView.getContext(), VERTICAL);
+        itemDecor.setDrawable(recyclerView.getContext().getResources().getDrawable(R.drawable.listview_border));
+        recyclerView.addItemDecoration(itemDecor);
         adapter = new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane);
         recyclerView.setAdapter(adapter);
         adapter.startTimerThread();
