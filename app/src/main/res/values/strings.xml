@@ -34,4 +34,15 @@
         <item>IV</item>
         <item>V</item>
     </string-array>
+    <string-array name="base_task_types">
+        <item>Bad</item>
+        <item>Küche</item>
+        <item>Wohnzimmer</item>
+        <item>Schlafzimmer</item>
+        <item>Kinderzimmer</item>
+        <item>Arbeitszimmer</item>
+        <item>Bürokratie</item>
+        <item>Transport</item>
+        <item>Sonstiges</item>
+    </string-array>
 </resources>

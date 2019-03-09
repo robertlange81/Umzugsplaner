@@ -27,5 +27,15 @@
     <string name="placeholder_links">links</string>
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>
-
+    <string-array name="base_task_types">
+        <item>BATH</item>
+        <item>KITCHEN</item>
+        <item>LIVING ROOM</item>
+        <item>BEDROOM</item>
+        <item>NURSERY</item>
+        <item>WORKROOM</item>
+        <item>MANAGEMENT</item>
+        <item>TRANSPORT</item>
+        <item>MISC</item>
+    </string-array>
 </resources>

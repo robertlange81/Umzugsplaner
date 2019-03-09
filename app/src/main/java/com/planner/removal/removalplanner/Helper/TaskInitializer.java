@@ -4,9 +4,7 @@ import com.planner.removal.removalplanner.Model.Prio;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class TaskInitializer {
 
@@ -20,7 +18,7 @@ public class TaskInitializer {
             task1.links.put("robert.de", "http://www.robert-lange.eu");
             task1.links.put("gmx.de", "gmx.de");
             task1.prio = Prio.Normal;
-            task1.type = TaskType.Furniture;
+            task1.type = TaskType.KITCHEN;
             task1.description = "Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1";
 
             Task task2 = new Task("Aufgabe2", "Beschreibung2");

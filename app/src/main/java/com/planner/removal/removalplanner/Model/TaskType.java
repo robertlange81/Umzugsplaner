@@ -1,7 +1,7 @@
 package com.planner.removal.removalplanner.Model;
 
 public enum TaskType {
-    Organization(0), Furniture(1), Electronics(2), Transportation(3);
+    BATH(0), KITCHEN(1), LIVING_ROOM(2), BEDROOM(3),NURSERY(4), WORKROOM(5), ORGANISATION(6), TRANSPORT(7), MISCELLANEOUS(8);
 
     private int value;
 

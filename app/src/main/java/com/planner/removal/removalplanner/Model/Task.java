@@ -44,7 +44,7 @@ public class Task {
         date = new Date(Long.MAX_VALUE);
         prio = com.planner.removal.removalplanner.Model.Prio.Normal;
         costs = 0;
-        type = TaskType.Furniture;
+        type = TaskType.KITCHEN;
         links = new TreeMap<>();
     }
 

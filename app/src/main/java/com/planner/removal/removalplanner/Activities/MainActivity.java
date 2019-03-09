@@ -31,6 +31,7 @@ import com.planner.removal.removalplanner.Helper.Command;
 import com.planner.removal.removalplanner.Model.Prio;
 import com.planner.removal.removalplanner.R;
 
+import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.List;
 
@@ -206,8 +207,10 @@ public static class SimpleItemRecyclerViewAdapter
                 holder.termin.setText(terminTxt);
             }
 
+            String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
             if(task.type != null) {
-                holder.typ.setText(mValues.get(position).type.toString());
+                String str_type = (String) Array.get(str_task_types, mValues.get(position).type.getValue());
+                holder.typ.setText(str_type);
             }
 
             if (task.prio == Prio.High) {

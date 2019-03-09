@@ -176,14 +176,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         if (task != null) {
             setDetails(linkMap, rootView);
-
-            final TaskType[] categories = TaskType.values();
-            final List<String> catsString = new ArrayList<>();
-            for (TaskType cat : categories) {
-                catsString.add(cat.toString());
-            }
-
-            ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(rootView.getContext(), R.layout.simple_spinner_dropdown, catsString);
+            ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
+                    rootView.getContext(),
+                    R.layout.simple_spinner_dropdown,
+                    rootView.getContext().getResources().getStringArray(R.array.base_task_types)
+            );
             spinnerDetailType.setAdapter(_categoryAdapter);
             if(task.type != null)
                 spinnerDetailType.setSelection(task.type.getValue());
