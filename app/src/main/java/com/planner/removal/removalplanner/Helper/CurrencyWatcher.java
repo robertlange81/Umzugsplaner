@@ -37,32 +37,26 @@ public class CurrencyWatcher implements android.text.TextWatcher {
         if (s != null && !s.toString().isEmpty()) {
             try {
                 int inilen, endlen;
-                inilen = et.getText().length();
+                inilen = et.getText().toString().replaceAll("[^0-9.,]+","").length();
                 String v = s.toString().replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "").replace("$", "");
                 Number n = df.parse(v);
                 int cp = et.getSelectionStart();
-                if (hasFractionalPart) {
-                    StringBuilder trailingZeros = new StringBuilder();
-                    while (trailingZeroCount-- > 0)
-                        trailingZeros.append('0');
-                    et.setText(df.format(n) + trailingZeros.toString());
-                } else {
-                    et.setText(dfnd.format(n));
-                }
+
                 Double d = n.doubleValue() * 100;
-                _task.costs = d.longValue();
+                Long l = d.longValue();
+                if(!l.equals(_task.costs)) {
+                    _task.costs = d.longValue();
+                    et.setText(Formater.intCentToString(_task.costs));
 
-                et.setText(et.getText().toString());
-                //et.setText(Formater.intCentToString(_task.costs));
-
-                endlen = et.getText().length();
-                int sel = (cp + (endlen - inilen));
-                if (sel > 0 && sel < et.getText().length()) {
-                    et.setSelection(sel);
-                } else if (trailingZeroCount > -1) {
-                    et.setSelection(et.getText().length() - 3);
-                } else {
-                    et.setSelection(et.getText().length());
+                    endlen = et.getText().toString().replaceAll("[^0-9.,]+","").length();
+                    if(endlen - inilen != 3) {
+                        int sel = (cp + (endlen - inilen));
+                        if (sel > 0 && sel < et.getText().length()) {
+                            et.setSelection(sel);
+                        }
+                    } else {
+                        et.setSelection(cp);
+                    }
                 }
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();
