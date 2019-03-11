@@ -24,6 +24,8 @@
     <string name="category">type</string>
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_time_detail">time</string>
+    <string name="date_changed">date changed</string>
+    <string name="time_changed">time changed</string>
     <string name="placeholder_links">links</string>
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>

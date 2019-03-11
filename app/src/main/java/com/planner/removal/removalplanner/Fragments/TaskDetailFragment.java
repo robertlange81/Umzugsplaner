@@ -8,9 +8,11 @@ import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Html;
+import android.text.InputType;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -149,6 +151,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         btnDatePicker =(Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker =(Button) rootView.findViewById(R.id.detail_btn_time);
         txtDeadline =(EditText) rootView.findViewById(R.id.detail_deadline);
+        txtDeadline.setInputType(InputType.TYPE_NULL);
+        txtDeadline.setTextIsSelectable(false);
+        txtDeadline.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                return true;  // Blocks input from hardware keyboards.
+            }
+        });
 
         txtInputs = new TextView[8];
         imgDeleteLinks = new ImageView[8];
@@ -341,8 +351,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if(task.costs > 0.00)
             txtCosts.setText(Formater.intCentToString(task.costs));
 
-        if(task.date != null)
+        if(task.date != null) {
+            tempDate = new Date(task.date.getTime());
             txtDeadline.setText(Formater.formatDateToSring(task.date));
+        }
     }
 
     private void _initDeleteIcons(final View rootView) {
@@ -457,9 +469,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if (v == btnDatePicker) {
             // Get Current Date
             final Calendar c = Calendar.getInstance();
-            mYear = c.get(Calendar.YEAR);
-            mMonth = c.get(Calendar.MONTH);
-            mDay = c.get(Calendar.DAY_OF_MONTH);
+            mYear = tempDate != null ? tempDate.getYear() + 1900 : c.get(Calendar.YEAR);
+            mMonth = tempDate != null ? tempDate.getMonth() : c.get(Calendar.MONTH);
+            mDay = tempDate != null ? tempDate.getDate() : c.get(Calendar.DAY_OF_MONTH);
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(),
                     new DatePickerDialog.OnDateSetListener() {
@@ -473,11 +485,20 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                 tempDate.setMinutes(0);
                             }
 
-                            tempDate.setYear(year);
+                            tempDate.setYear(year - 1900);
                             tempDate.setMonth(monthOfYear);
                             tempDate.setDate(dayOfMonth);
                             txtDeadline.setText(Formater.formatDateToSring(tempDate));
+                            task.date = tempDate;
 
+                            MainActivity.notifyTaskChanged();
+                            /*
+                            String msg = getContext().getResources()
+                                    .getString(R.string.date_changed);
+
+                            Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
+                            snack.show();
+                            */
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -487,8 +508,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
             // Get Current Time
             final Calendar c = Calendar.getInstance();
-            mHour = c.get(Calendar.HOUR_OF_DAY);
-            mMinute = c.get(Calendar.MINUTE);
+            mHour = tempDate != null ? tempDate.getHours() : c.get(Calendar.HOUR_OF_DAY);
+            mMinute = tempDate != null ? tempDate.getMinutes() : c.get(Calendar.MINUTE);
 
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this.getContext(),
@@ -505,8 +526,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setMinutes(minute);
 
                             txtDeadline.setText(Formater.formatDateToSring(tempDate));
+                            task.date = tempDate;
+
+                            MainActivity.notifyTaskChanged();
+                            /*
+                            String msg = getContext().getResources()
+                                    .getString(R.string.time_changed);
+
+                            Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
+                            snack.show();
+                            */
                         }
-                    }, mHour, mMinute, false);
+                    }, mHour, mMinute, true);
             timePickerDialog.show();
         }
     }
