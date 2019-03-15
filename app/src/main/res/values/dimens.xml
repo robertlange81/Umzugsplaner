@@ -4,7 +4,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="input_margin">8dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="fab_margin">5dp</dimen>
     <dimen name="input_insurance_autocomplete">4dp</dimen>
     <dimen name="app_bar_height">0sp</dimen>
 
@@ -49,6 +49,7 @@
     <dimen name="detail_header_row_height">35sp</dimen>
     <dimen name="list_row_image_height">50sp</dimen>
     <dimen name="list_row_content_part">20sp</dimen>
+    <dimen name="bottom_border">50sp</dimen>
 
 </resources>
 

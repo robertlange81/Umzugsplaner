@@ -60,7 +60,17 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openAddNewTask(null);
+                if(mTwoPane) {
+                    Intent i = new Intent(view.getContext(), DetailActivity.class);
+                    i.putExtra(DetailActivity.ARG_TASK_ID, 0);
+                    startActivity(i);
+                } else {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra(TaskDetailFragment.TASK_ID, 0);
+
+                    context.startActivity(intent);
+                }
             }
         });
 
@@ -100,14 +110,6 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void openAddNewTask(String id) {
-        if(mTwoPane) {
-            Intent i = new Intent(this, DetailActivity.class);
-            i.putExtra(DetailActivity.ARG_TASK_ID, id);
-            startActivity(i);
-        }
     }
 
     public void showDetailDialog() {
