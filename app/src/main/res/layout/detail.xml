@@ -12,8 +12,9 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/detail_header"
         android:layout_below="@id/app_bar"
-        android:background="@drawable/detail_header"
-        android:padding="5dp"
+        android:background="@drawable/header"
+        android:padding="15sp"
+        android:paddingTop="0sp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -260,15 +261,17 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_0"
-                    android:layout_weight="1"
                     android:tag="@string/placeholder_link"
                     android:hint="@string/placeholder_link_input"
                     android:inputType="textWebEditText"
+                    android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:linksClickable="true" />
+                    android:selectAllOnFocus="false"
+                    android:textColorLink="@color/colorGreen"
+                    android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x0"
@@ -303,6 +306,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_1"
+                    android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:hint="@string/placeholder_link_input"
                     android:inputType="textWebEditText"
@@ -311,7 +315,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:linksClickable="true" />
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x1"
@@ -346,6 +351,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_2"
+                    android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:inputType="textWebEditText"
                     android:hint="@string/placeholder_link_input"
@@ -353,8 +359,8 @@
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:selectAllOnFocus="true"
-                    android:linksClickable="true" />
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x2"
@@ -389,6 +395,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_3"
+                    android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:inputType="textWebEditText"
                     android:hint="@string/placeholder_link_input"
@@ -397,7 +404,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:linksClickable="true" />
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x3"
@@ -433,6 +441,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_4"
+                    android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -440,7 +449,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:linksClickable="true" />
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x4"
@@ -480,8 +490,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:selectAllOnFocus="true"
                     android:hint="@string/placeholder_costs_detail"
+                    android:selectAllOnFocus="true"
                     android:inputType="numberDecimal"/>
 
                 <android.support.v7.widget.AppCompatImageView

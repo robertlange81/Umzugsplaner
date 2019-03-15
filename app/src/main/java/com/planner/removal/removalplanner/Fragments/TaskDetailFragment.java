@@ -16,6 +16,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -159,6 +160,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 return true;  // Blocks input from hardware keyboards.
             }
         });
+
+        txtDeadline.setOnClickListener(this);
 
         txtInputs = new TextView[8];
         imgDeleteLinks = new ImageView[8];
@@ -426,9 +429,22 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             }
 
                             if(!inputLink.equals("")) {
-                                task.links.put(inputLink, inputLink);
-                                Log.e("put ", inputLink);
-                                linkMap.put(txtLink, inputLink);
+                                String value = inputLink;
+                                if(!URLUtil.isValidUrl(value)) {
+                                    if(!value.contains("www")) {
+                                        value = "www." + value;
+                                    }
+
+                                    if(!value.contains("https")) {
+                                        value = "https://" + value;
+                                    }
+
+                                    if(URLUtil.isValidUrl(value)) {
+                                        task.links.put(inputLink, value);
+                                        Log.e("put ", inputLink);
+                                        linkMap.put(txtLink, inputLink);
+                                    }
+                                }
 
                                 if(showNewLine) {
                                     for (TextView t : txtInputs) {
@@ -466,7 +482,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     public void onClick(View v) {
 
-        if (v == btnDatePicker) {
+        if (v == btnDatePicker || v == txtDeadline) {
             // Get Current Date
             final Calendar c = Calendar.getInstance();
             mYear = tempDate != null ? tempDate.getYear() + 1900 : c.get(Calendar.YEAR);

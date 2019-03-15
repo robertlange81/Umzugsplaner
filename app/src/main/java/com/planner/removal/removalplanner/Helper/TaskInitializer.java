@@ -15,7 +15,7 @@ public class TaskInitializer {
             isInitialized = true;
             Task task1 = new Task("Aufgabe1 seh lang bla bla bla bla bla", "Beschreibung1");
             task1.links.put("https://www.google.de", "https://www.google.de");
-            task1.links.put("robert.de", "http://www.robert-lange.eu");
+            task1.links.put("https://www.uni-leipzig.de/", "https://www.uni-leipzig.de/");
             task1.links.put("gmx.de", "gmx.de");
             task1.prio = Prio.Normal;
             task1.type = TaskType.KITCHEN;
@@ -24,8 +24,8 @@ public class TaskInitializer {
             Task task2 = new Task("Aufgabe2", "Beschreibung2");
             task2.costs = 30000098739l;
             task2.links.put("https://www.google.de", "https://www.google.de");
-            task2.links.put("robert.de", "http://www.robert-lange.eu");
-            task2.links.put("https://www.google.de", "https://www.google.de");
+            task2.links.put("https://www.uni-leipzig.de/", "https://www.uni-leipzig.de/");
+            task2.links.put("gmx.de", "gmx.de");
             task2.links.put("gmx", "www.gmx.de");
             task2.prio = Prio.Normal;
             task2.date = defaultDate;
