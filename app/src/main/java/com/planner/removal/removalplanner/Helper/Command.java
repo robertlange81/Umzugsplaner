@@ -10,6 +10,7 @@ public class Command implements View.OnClickListener{
 
     private final CommandTyp _commandTyp;
     private final Task _task;
+    private final int _item;
     private MainActivity.SimpleItemRecyclerViewAdapter _adapter;
     private boolean _hasbeenExecuted;
 
@@ -31,11 +32,19 @@ public class Command implements View.OnClickListener{
         _commandTyp = commandTyp;
         _adapter = adapter;
         _task = task;
+        _item = 0;
     }
 
     public Command(CommandTyp commandTyp, Task task) {
         _commandTyp = commandTyp;
         _task = task;
+        _item = 0;
+    }
+
+    public Command(CommandTyp commandTyp, Task task, int item) {
+        _commandTyp = commandTyp;
+        _task = task;
+        _item = item;
     }
 
     @Override
@@ -55,7 +64,12 @@ public class Command implements View.OnClickListener{
             case 2: //CommandTyp.Undo
                 Log.e("command", "command");
                 Task oldTask = Task.TASK_MAP.get(_task.id);
-                oldTask.ImportTask(_task);
+
+                if(_item == 0) {
+                    oldTask.ImportTask(_task, 2 * 128 - 1); // all
+                } else {
+                    oldTask.ImportTask(_task, _item); // all
+                }
         }
 
         MainActivity.notifyTaskChanged();

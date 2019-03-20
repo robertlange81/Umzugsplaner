@@ -26,16 +26,17 @@ public class Task {
     - Amazon / Google
     - Content Provider
     - Sortieren
+    - Bild statt Link
      */
 
-    public String name;
-    public String description;
-    public com.planner.removal.removalplanner.Model.Prio prio;
-    public Date date;
-    public boolean isDone;
-    public TaskType type;
-    public long costs; // in Cent
-    public TreeMap<String,String> links;
+    public String name; // 1
+    public String description; // 2
+    public com.planner.removal.removalplanner.Model.Prio prio; // 4
+    public Date date; // 8
+    public boolean isDone; // 16
+    public TaskType type; // 32
+    public long costs; // 64 in Cent
+    public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
@@ -52,23 +53,28 @@ public class Task {
         id = clone.id;
         this.name = clone.name;
         this.description = clone.description;
-        date = clone.date;
         prio = clone.prio;
-        costs = clone.costs;
-        type = clone.type;
-        links = (TreeMap) clone.links.clone();
+        date = clone.date;
         isDone = clone.isDone;
+        type = clone.type;
+        costs = clone.costs;
+        links = (TreeMap) clone.links.clone();
     }
 
-    public void ImportTask(Task clone) {
-        this.name = clone.name;
+    public void ImportTask(Task clone, int item) {
+        int x = 0;
+
+        if((x = (item & 1)) == 1) {
+            this.name = clone.name;
+        }
+
         this.description = clone.description;
-        date = clone.date;
         prio = clone.prio;
-        costs = clone.costs;
-        type = clone.type;
-        links = clone.links;
+        date = clone.date;
         isDone = clone.isDone;
+        type = clone.type;
+        costs = clone.costs;
+        links = clone.links;
     }
 
     public static void addTask(Task task) {
