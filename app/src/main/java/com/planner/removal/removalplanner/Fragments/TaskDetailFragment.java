@@ -320,19 +320,29 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     private void setDetails(final HashMap<TextView, String> linkMap, View rootView) {
-        txtName.setText(task.name);
-        txtDescription.setText(task.description);
-        checkIsDone.setChecked(task.isDone);
-        String msg = rootView.getContext().getResources()
-                .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
-        lblIsDone.setText(msg);
 
-        if (task.prio == Prio.High) {
-            imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
-            lblPrio.setText(R.string.highPrioText_short);
-        } else {
-            imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-            lblPrio.setText(R.string.normalPrioText_short);
+        if(!txtName.getText().toString().equals(task.name))
+            txtName.setText(task.name);
+
+        if(!txtDescription.getText().toString().equals(task.description))
+            txtDescription.setText(task.description);
+
+        if(!checkIsDone.isChecked() && task.isDone || checkIsDone.isChecked() && !task.isDone) {
+            checkIsDone.setChecked(task.isDone);
+            String msg = rootView.getContext().getResources()
+                    .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
+            lblIsDone.setText(msg);
+        }
+
+        if(lblPrio.getText().toString().equals(R.string.highPrioText_short) && task.prio == Prio.Normal
+                || lblPrio.getText().equals(R.string.normalPrioText_short) && task.prio == Prio.High) {
+            if (task.prio == Prio.High) {
+                imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+                lblPrio.setText(R.string.highPrioText_short);
+            } else {
+                imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+                lblPrio.setText(R.string.normalPrioText_short);
+            }
         }
 
         if(task.links != null && task.links.size() > 0) {

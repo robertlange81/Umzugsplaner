@@ -61,13 +61,8 @@ public class Task {
         links = (TreeMap) clone.links.clone();
     }
 
-    public void ImportTask(Task clone, int item) {
-        int x = 0;
-
-        if((x = (item & 1)) == 1) {
-            this.name = clone.name;
-        }
-
+    public void ImportTask(Task clone) {
+        this.name = clone.name;
         this.description = clone.description;
         prio = clone.prio;
         date = clone.date;
