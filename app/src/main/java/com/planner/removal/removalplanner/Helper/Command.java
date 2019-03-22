@@ -56,7 +56,9 @@ public class Command implements View.OnClickListener{
             case 2: //CommandTyp.Undo
                 Log.e("command", "command");
                 Task oldTask = Task.TASK_MAP.get(_task.id);
-                oldTask.ImportTask(_task);
+
+                if(oldTask != null)
+                    oldTask.ImportTask(_task);
         }
 
         MainActivity.notifyTaskChanged();

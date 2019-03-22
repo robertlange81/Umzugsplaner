@@ -46,7 +46,8 @@ public class CurrencyWatcher implements android.text.TextWatcher {
                 Long l = d.longValue();
                 if(!l.equals(_task.costs)) {
                     _task.costs = d.longValue();
-                    et.setText(Formater.intCentToString(_task.costs));
+                    String currText = Formater.intCentToString(_task.costs);
+                    et.setText(currText);
 
                     endlen = et.getText().toString().replaceAll("[^0-9.,]+","").length();
                     if(endlen - inilen != 3) {
@@ -55,7 +56,11 @@ public class CurrencyWatcher implements android.text.TextWatcher {
                             et.setSelection(sel);
                         }
                     } else {
-                        et.setSelection(cp);
+                        if(currText.substring(0, 1).matches("\\d")) {
+                            et.setSelection(cp);
+                        } else {
+                            et.setSelection(cp + 1);
+                        }
                     }
                 }
             } catch (NumberFormatException | ParseException e) {

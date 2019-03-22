@@ -39,11 +39,9 @@ import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
 import com.planner.removal.removalplanner.R;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -62,7 +60,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     /**
      * The dummy content this fragment is presenting.
      */
-    private Task task;
+    private static Task _task;
     public static TaskDetailFragment instance;
 
     EditText txtName;
@@ -100,11 +98,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            if (getArguments().containsKey(TASK_ID)) {
-                // Load the dummy content specified by the fragment
-                // arguments. In a real-world scenario, use a Loader
-                // to load content from a content provider.
-                task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+            _task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+
+            if(_task == null) {
+                createNewTask();
             }
         }
     }
@@ -114,19 +111,22 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         Log.e("DEBUG", "onResume of Fragment");
         super.onResume();
         instance = this;
-        if (getArguments().containsKey(TASK_ID)) {
+        if (_task == null && getArguments().containsKey(TASK_ID)) {
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            if (getArguments().containsKey(TASK_ID)) {
-                // Load the dummy content specified by the fragment
-                // arguments. In a real-world scenario, use a Loader
-                // to load content from a content provider.
-                task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+            _task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+
+            if(_task == null) {
+                createNewTask();
             }
         }
     }
 
+    private void createNewTask() {
+        _task = new Task("", "");
+        Task.addTask(_task);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -187,7 +187,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         final HashMap<TextView, String> linkMap = _initLinks();
         _initDeleteIcons(rootView);
 
-        if (task != null) {
+        if (_task != null) {
             setDetails(linkMap, rootView);
             ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
                     rootView.getContext(),
@@ -195,8 +195,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     rootView.getContext().getResources().getStringArray(R.array.base_task_types)
             );
             spinnerDetailType.setAdapter(_categoryAdapter);
-            if(task.type != null)
-                spinnerDetailType.setSelection(task.type.getValue());
+            if(_task.type != null)
+                spinnerDetailType.setSelection(_task.type.getValue());
         }
 
         if(updaterThread == null)
@@ -214,10 +214,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             public void onClick(View view) {
                 String msg = rootView.getContext().getResources()
                         .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
-                task.isDone = checkIsDone.isChecked();
+                _task.isDone = checkIsDone.isChecked();
                 lblIsDone.setText(msg);
                 MainActivity.notifyTaskChanged();
-                Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
+                Snackbar.make(view, _task.name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -226,20 +226,20 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             @Override
             public void onClick(View view) {
 
-                if (task.prio == Prio.High) {
+                if (_task.prio == Prio.High) {
                     imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-                    task.prio = Prio.Normal;
+                    _task.prio = Prio.Normal;
                     lblPrio.setText(R.string.normalPrioText_short);
                 } else {
                     imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
-                    task.prio = Prio.High;
+                    _task.prio = Prio.High;
                     lblPrio.setText(R.string.highPrioText_short);
                 }
 
                 MainActivity.notifyTaskChanged();
                 String msg = rootView.getContext().getResources()
-                        .getString(task.prio == Prio.Normal ? R.string.normalPrioText : R.string.highPrioText)
-                        + " " + task.name;
+                        .getString(_task.prio == Prio.Normal ? R.string.normalPrioText : R.string.highPrioText)
+                        + " " + _task.name;
 
                 Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
                 snack.show();
@@ -252,8 +252,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 if(!hasFocus && txtName.getText() != null) {
                     String input = txtName.getText().toString();
 
-                    if(!input.equals(task.name)) {
-                        task.name = input;
+                    if(!input.equals(_task.name)) {
+                        _task.name = input;
                         MainActivity.notifyTaskChanged();
                         return;
                     }
@@ -264,8 +264,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         spinnerDetailType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                task.type = TaskType.values()[position];
-                MainActivity.notifyTaskChanged();
+                if(_task != null) {
+                    _task.type = TaskType.values()[position];
+                    MainActivity.notifyTaskChanged();
+                }
             }
 
             @Override
@@ -279,8 +281,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 Log.e("x","x");
                 if(!hasFocus && txtDescription.getText() != null) {
                     String input = txtDescription.getText().toString();
-                    if(!task.description.equals(input))
-                        task.description = input;
+                    if(!_task.description.equals(input))
+                        _task.description = input;
                 }
             }
         });
@@ -293,7 +295,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     String input = txtCosts.getText().toString();
 
                     if(input.equals("")) {
-                        task.costs = 0;
+                        _task.costs = 0;
                         MainActivity.notifyTaskChanged();
                         return;
                     }
@@ -301,7 +303,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
         });
 
-        txtCosts.addTextChangedListener(new CurrencyWatcher(txtCosts, task,"#,###"));
+        txtCosts.addTextChangedListener(new CurrencyWatcher(txtCosts, _task,"#,###"));
 
         txtDeadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -310,7 +312,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     String input = txtDeadline.getText().toString();
 
                     if(input.equals("")) {
-                        task.date = null;
+                        _task.date = null;
                         MainActivity.notifyTaskChanged();
                         return;
                     }
@@ -321,33 +323,30 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     private void setDetails(final HashMap<TextView, String> linkMap, View rootView) {
 
-        if(!txtName.getText().toString().equals(task.name))
-            txtName.setText(task.name);
+        if(!txtName.getText().toString().equals(_task.name))
+            txtName.setText(_task.name);
 
-        if(!txtDescription.getText().toString().equals(task.description))
-            txtDescription.setText(task.description);
+        if(!txtDescription.getText().toString().equals(_task.description))
+            txtDescription.setText(_task.description);
 
-        if(!checkIsDone.isChecked() && task.isDone || checkIsDone.isChecked() && !task.isDone) {
-            checkIsDone.setChecked(task.isDone);
+        if(!checkIsDone.isChecked() && _task.isDone || checkIsDone.isChecked() && !_task.isDone) {
+            checkIsDone.setChecked(_task.isDone);
             String msg = rootView.getContext().getResources()
                     .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
             lblIsDone.setText(msg);
         }
 
-        if(lblPrio.getText().toString().equals(R.string.highPrioText_short) && task.prio == Prio.Normal
-                || lblPrio.getText().equals(R.string.normalPrioText_short) && task.prio == Prio.High) {
-            if (task.prio == Prio.High) {
-                imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
-                lblPrio.setText(R.string.highPrioText_short);
-            } else {
-                imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-                lblPrio.setText(R.string.normalPrioText_short);
-            }
+        if (_task.prio == Prio.High) {
+            imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
+            lblPrio.setText(R.string.highPrioText_short);
+        } else {
+            imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
+            lblPrio.setText(R.string.normalPrioText_short);
         }
 
-        if(task.links != null && task.links.size() > 0) {
+        if(_task.links != null && _task.links.size() > 0) {
             int i = 0;
-            for (Map.Entry<String, String> entry : task.links.entrySet())
+            for (Map.Entry<String, String> entry : _task.links.entrySet())
             {
                 if(i > MAX_INPUT_FIELDS_FOR_LINKS)
                     break;
@@ -361,12 +360,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 _formatLink(txtInputs[i], "", "");
         }
 
-        if(task.costs > 0.00)
-            txtCosts.setText(Formater.intCentToString(task.costs));
+        if(_task.costs > 0.00)
+            txtCosts.setText(Formater.intCentToString(_task.costs));
 
-        if(task.date != null) {
-            tempDate = new Date(task.date.getTime());
-            txtDeadline.setText(Formater.formatDateToSring(task.date));
+        if(_task.date != null) {
+            tempDate = new Date(_task.date.getTime());
+            txtDeadline.setText(Formater.formatDateToSring(_task.date));
         }
     }
 
@@ -390,14 +389,16 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                 msg,
                                 Snackbar.LENGTH_LONG);
 
-                        Task clone = new Task(task);
+                        Task clone = new Task(_task);
 
-                        snack.setAction(
-                                R.string.undo,
-                                new Command(Command.CommandTyp.Undo, clone)
-                        );
-                        Log.e("new command", "new command");
-                        snack.show();
+                        if(Task.TASK_MAP.get(_task.id) != null) {
+                            snack.setAction(
+                                    R.string.undo,
+                                    new Command(Command.CommandTyp.Undo, clone)
+                            );
+                            Log.e("new command", "new command");
+                            snack.show();
+                        }
 
                         t.setText("");
                         t.requestFocus();
@@ -434,7 +435,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                 showNewLine = true;
                             } else {
                                 Log.e("remove ", key);
-                                task.links.remove(key);
+                                _task.links.remove(key);
                                 linkMap.remove(txtLink);
                             }
 
@@ -450,7 +451,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                     }
 
                                     if(URLUtil.isValidUrl(value)) {
-                                        task.links.put(inputLink, value);
+                                        _task.links.put(inputLink, value);
                                         Log.e("put ", inputLink);
                                         linkMap.put(txtLink, inputLink);
                                     }
@@ -515,7 +516,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setMonth(monthOfYear);
                             tempDate.setDate(dayOfMonth);
                             txtDeadline.setText(Formater.formatDateToSring(tempDate));
-                            task.date = tempDate;
+                            _task.date = tempDate;
 
                             MainActivity.notifyTaskChanged();
                             /*
@@ -552,7 +553,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setMinutes(minute);
 
                             txtDeadline.setText(Formater.formatDateToSring(tempDate));
-                            task.date = tempDate;
+                            _task.date = tempDate;
 
                             MainActivity.notifyTaskChanged();
                             /*
@@ -596,8 +597,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                             final HashMap<TextView, String> linkMap = _initLinks();
                                             //_initDeleteIcons(rootView);
 
-                                            task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
-                                            if (task != null) {
+                                            _task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+                                            if (_task != null) {
                                                 setDetails(linkMap, rootView);
                                             }
                                         }
