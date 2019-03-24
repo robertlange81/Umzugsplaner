@@ -1,11 +1,9 @@
-package com.planner.removal.removalplanner.Helper;
+package com.planner.removal.removalplanner.Helpers;
 
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
 
-import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
 import java.text.DecimalFormat;
@@ -31,7 +29,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        Log.d("costs", "afterTextChanged");
+        Log.d("Costs", "afterTextChanged");
         et.removeTextChangedListener(this);
 
         if (s != null && !s.toString().isEmpty()) {
@@ -44,9 +42,9 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
                 Double d = n.doubleValue() * 100;
                 Long l = d.longValue();
-                if(!l.equals(_task.costs)) {
-                    _task.costs = d.longValue();
-                    String currText = Formater.intCentToString(_task.costs);
+                if(!l.equals(_task.Costs)) {
+                    _task.Costs = d.longValue();
+                    String currText = Formater.intCentToString(_task.Costs);
                     et.setText(currText);
 
                     endlen = et.getText().toString().replaceAll("[^0-9.,]+","").length();

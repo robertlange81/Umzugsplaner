@@ -8,8 +8,33 @@
         android:title="@string/placeholder_settings"
         app:showAsAction="never" />
     <item
-    android:id="@+id/sortByDate"
-    android:orderInCategory="101"
-    android:title="@string/sortbydate"
-    app:showAsAction="never" />
+        android:id="@+id/sortByDate"
+        android:orderInCategory="101"
+        android:title="@string/sortbydate"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortByCosts"
+        android:orderInCategory="101"
+        android:title="@string/sortbyCosts"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortByPriority"
+        android:orderInCategory="101"
+        android:title="@string/sortbyPriority"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortByName"
+        android:orderInCategory="101"
+        android:title="@string/sortbyName"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortByType"
+        android:orderInCategory="101"
+        android:title="@string/sortbyType"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/sortByIsDone"
+        android:orderInCategory="101"
+        android:title="@string/sortbyIsDone"
+        app:showAsAction="never" />
 </menu>

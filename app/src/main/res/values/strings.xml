@@ -29,7 +29,12 @@
     <string name="placeholder_link">Link</string>
     <string name="placeholder_link_input">Url oder Ressource</string>
     <string name="detail_description_input">Beschreibung</string>
-    <string name="sortbydate">Sortieren nach Datum</string>
+    <string name="sortbydate">Sortiere nach Datum</string>
+    <string name="sortbyCosts">Sortiere nach Kosten</string>
+    <string name="sortbyPriority">Sortiere nach Priorität</string>
+    <string name="sortbyName">Sortiere nach Name</string>
+    <string name="sortbyType">Sortiere nach Typ</string>
+    <string name="sortbyIsDone">Sortiere nach Erledigt</string>
     <string-array name="roman_numbers">
         <item>I</item>
         <item>II</item>

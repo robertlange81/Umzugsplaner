@@ -23,15 +23,22 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
+import com.planner.removal.removalplanner.Helpers.Comparators.CostsComparator;
+import com.planner.removal.removalplanner.Helpers.Comparators.DateComparator;
+import com.planner.removal.removalplanner.Helpers.Comparators.IsDoneComparator;
+import com.planner.removal.removalplanner.Helpers.Comparators.NameComparator;
+import com.planner.removal.removalplanner.Helpers.Comparators.PriorityComparator;
+import com.planner.removal.removalplanner.Helpers.Comparators.TypeComparator;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Fragments.DetailDialogFragment;
-import com.planner.removal.removalplanner.Helper.Formater;
-import com.planner.removal.removalplanner.Helper.TaskInitializer;
-import com.planner.removal.removalplanner.Helper.Command;
-import com.planner.removal.removalplanner.Model.Prio;
+import com.planner.removal.removalplanner.Helpers.Formater;
+import com.planner.removal.removalplanner.Helpers.TaskInitializer;
+import com.planner.removal.removalplanner.Helpers.Command;
+import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -103,16 +110,47 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.settings) {
             return true;
         }
 
-        if (id == R.id.sortByDate) {
-            https://stackoverflow.com/questions/5927109/sort-objects-in-arraylist-by-date
+        if (id == R.id.sortByCosts) {
+
+            Collections.sort(Task.TASK_LIST, new CostsComparator());
+            //.thenComparing(new PriorityComparator())
+            //.thenComparing(new NameComparator()));
+            Collections.reverse(Task.TASK_LIST);
+
+            notifyTaskChanged();
             return true;
         }
-
+        if (id == R.id.sortByDate) {
+            Collections.sort(Task.TASK_LIST, new DateComparator());
+            notifyTaskChanged();
+            return true;
+        }
+        if (id == R.id.sortByIsDone) {
+            Collections.sort(Task.TASK_LIST, new IsDoneComparator());
+            Collections.reverse(Task.TASK_LIST);
+            notifyTaskChanged();
+            return true;
+        }
+        if (id == R.id.sortByName) {
+            Collections.sort(Task.TASK_LIST, new NameComparator());
+            notifyTaskChanged();
+            return true;
+        }
+        if (id == R.id.sortByPriority) {
+            Collections.sort(Task.TASK_LIST, new PriorityComparator());
+            Collections.reverse(Task.TASK_LIST);
+            notifyTaskChanged();
+            return true;
+        }
+        if (id == R.id.sortByType) {
+            Collections.sort(Task.TASK_LIST, new TypeComparator());
+            notifyTaskChanged();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -205,24 +243,24 @@ public static class SimpleItemRecyclerViewAdapter
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Task task = mValues.get(position);
-            holder.name.setText(task.name);
-            holder.ckBoxTaskDone.setChecked(task.isDone);
-            holder.kosten.setText(Formater.intCentToString(task.costs));
+            holder.name.setText(task.Name);
+            holder.ckBoxTaskDone.setChecked(task.IsDone);
+            holder.kosten.setText(Formater.intCentToString(task.Costs));
 
-            if(task.date != null) {
-                String terminTxt = Formater.formatDateToSring(task.date);
+            if(task.Date != null) {
+                String terminTxt = Formater.formatDateToSring(task.Date);
                 holder.termin.setText(terminTxt);
             } else {
                 holder.termin.setText("");
             }
 
             String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
-            if(task.type != null) {
-                String str_type = (String) Array.get(str_task_types, mValues.get(position).type.getValue());
+            if(task.Type != null) {
+                String str_type = (String) Array.get(str_task_types, mValues.get(position).Type.getValue());
                 holder.typ.setText(str_type);
             }
 
-            if (task.prio == Prio.High) {
+            if (task.Priority == Priority.High) {
                 holder.imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
             } else {
                 holder.imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
@@ -237,10 +275,10 @@ public static class SimpleItemRecyclerViewAdapter
                 public void onClick(View view) {
                     String msg = SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources()
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
-                    task.isDone = holder.ckBoxTaskDone.isChecked();
+                    task.IsDone = holder.ckBoxTaskDone.isChecked();
                     OnTaskChecked(task, holder.termin, holder.kosten);
                     TaskDetailFragment.notifyTaskChanged();
-                    Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, task.Name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             });
@@ -250,16 +288,16 @@ public static class SimpleItemRecyclerViewAdapter
                 @Override
                 public void onClick(View view) {
                     Task act = mValues.get(actPosition);
-                    if (act.prio == Prio.High) {
+                    if (act.Priority == Priority.High) {
                         holder.imgPrio.setImageResource(android.R.drawable.btn_star_big_off);
-                        act.prio = Prio.Normal;
+                        act.Priority = Priority.Normal;
                     } else {
                         holder.imgPrio.setImageResource(android.R.drawable.btn_star_big_on);
-                        act.prio = Prio.High;
+                        act.Priority = Priority.High;
                     }
 
                     TaskDetailFragment.notifyTaskChanged();
-                    Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.prio == Prio.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.name, Snackbar.LENGTH_LONG);
+                    Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.Priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.Name, Snackbar.LENGTH_LONG);
                     snack.show();
                 }
             });
@@ -282,7 +320,7 @@ public static class SimpleItemRecyclerViewAdapter
 
                                         Snackbar snack = Snackbar.make(
                                                 view,
-                                                task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
+                                                task.Name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
                                                         .getResources().getString(R.string.deleted),
                                                 Snackbar.LENGTH_LONG);
 
@@ -299,12 +337,12 @@ public static class SimpleItemRecyclerViewAdapter
         }
 
         private void OnTaskChecked(Task task, TextView termin, TextView kosten) {
-            if(task.isDone) {
+            if(task.IsDone) {
                 kosten.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
                 termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
             } else {
                 kosten.setTextColor(mParentActivity.getResources().getColor(R.color.colorYellow));
-                if(task.date != null && task.date.getTime() < System.currentTimeMillis()) {
+                if(task.Date != null && task.Date.getTime() < System.currentTimeMillis()) {
                     termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorRed));
                 } else {
                     termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorWhite));

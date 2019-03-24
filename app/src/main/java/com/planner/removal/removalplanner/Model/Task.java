@@ -16,7 +16,7 @@ public class Task {
     /*
     Ideen:
     - Hintergrundbild (Grundriss / Baby)
-    - Ziel-date im Hintergrund
+    - Ziel-Date im Hintergrund
     - mit Google-Kalender synchronisieren
     - Orte hinzufügen -> Routenplaner
     - Kostenübersicht
@@ -29,47 +29,47 @@ public class Task {
     - Bild statt Link
      */
 
-    public String name; // 1
-    public String description; // 2
-    public com.planner.removal.removalplanner.Model.Prio prio; // 4
-    public Date date; // 8
-    public boolean isDone; // 16
-    public TaskType type; // 32
-    public long costs; // 64 in Cent
-    public TreeMap<String,String> links; // 128
+    public String Name; // 1
+    public String Description; // 2
+    public com.planner.removal.removalplanner.Model.Priority Priority; // 4
+    public Date Date; // 8
+    public boolean IsDone; // 16
+    public TaskType Type; // 32
+    public Long Costs; // 64 in Cent
+    public TreeMap<String,String> Links; // 128
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
-        this.name = name;
-        this.description = description;
-        date = null;
-        prio = com.planner.removal.removalplanner.Model.Prio.Normal;
-        costs = 0;
-        type = TaskType.KITCHEN;
-        links = new TreeMap<>();
+        this.Name = name;
+        this.Description = description;
+        Date = null;
+        Priority = com.planner.removal.removalplanner.Model.Priority.Normal;
+        Costs = 0L;
+        Type = TaskType.KITCHEN;
+        Links = new TreeMap<>();
     }
 
     public Task(Task clone) {
         id = clone.id;
-        this.name = clone.name;
-        this.description = clone.description;
-        prio = clone.prio;
-        date = clone.date;
-        isDone = clone.isDone;
-        type = clone.type;
-        costs = clone.costs;
-        links = (TreeMap) clone.links.clone();
+        this.Name = clone.Name;
+        this.Description = clone.Description;
+        Priority = clone.Priority;
+        Date = clone.Date;
+        IsDone = clone.IsDone;
+        Type = clone.Type;
+        Costs = clone.Costs;
+        Links = (TreeMap) clone.Links.clone();
     }
 
     public void ImportTask(Task clone) {
-        this.name = clone.name;
-        this.description = clone.description;
-        prio = clone.prio;
-        date = clone.date;
-        isDone = clone.isDone;
-        type = clone.type;
-        costs = clone.costs;
-        links = clone.links;
+        this.Name = clone.Name;
+        this.Description = clone.Description;
+        Priority = clone.Priority;
+        Date = clone.Date;
+        IsDone = clone.IsDone;
+        Type = clone.Type;
+        Costs = clone.Costs;
+        Links = clone.Links;
     }
 
     public static void addTask(Task task) {

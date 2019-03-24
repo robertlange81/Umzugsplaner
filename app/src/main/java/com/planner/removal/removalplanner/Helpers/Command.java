@@ -1,4 +1,4 @@
-package com.planner.removal.removalplanner.Helper;
+package com.planner.removal.removalplanner.Helpers;
 
 import android.util.Log;
 import android.view.View;

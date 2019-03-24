@@ -1,8 +1,7 @@
-package com.planner.removal.removalplanner.Helper;
+package com.planner.removal.removalplanner.Helpers;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.LocaleList;
 
 import java.text.DateFormat;
 import java.text.NumberFormat;

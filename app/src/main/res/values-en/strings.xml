@@ -30,6 +30,11 @@
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>
     <string name="sortbydate">Sort By Date</string>
+    <string name="sortbyCosts">Sort By Costs</string>
+    <string name="sortbyPriority">Sort By Priorty</string>
+    <string name="sortbyName">Sort By Name</string>
+    <string name="sortbyType">Sort By Type</string>
+    <string name="sortbyIsDone">Sort By Done</string>
     <string-array name="base_task_types">
         <item>BATH</item>
         <item>KITCHEN</item>
