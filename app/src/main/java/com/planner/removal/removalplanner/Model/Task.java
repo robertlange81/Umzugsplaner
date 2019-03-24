@@ -42,7 +42,7 @@ public class Task {
         id = new Integer(maxId++).toString();
         this.name = name;
         this.description = description;
-        date = new Date(Long.MAX_VALUE);
+        date = null;
         prio = com.planner.removal.removalplanner.Model.Prio.Normal;
         costs = 0;
         type = TaskType.KITCHEN;

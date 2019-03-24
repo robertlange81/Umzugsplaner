@@ -29,6 +29,7 @@
     <string name="placeholder_links">links</string>
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>
+    <string name="sortbydate">Sort By Date</string>
     <string-array name="base_task_types">
         <item>BATH</item>
         <item>KITCHEN</item>

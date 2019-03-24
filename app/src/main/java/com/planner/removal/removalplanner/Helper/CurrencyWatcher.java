@@ -66,8 +66,6 @@ public class CurrencyWatcher implements android.text.TextWatcher {
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();
             }
-
-            MainActivity.notifyTaskChanged();
         }
 
         et.addTextChangedListener(this);

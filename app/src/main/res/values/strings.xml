@@ -29,6 +29,7 @@
     <string name="placeholder_link">Link</string>
     <string name="placeholder_link_input">Url oder Ressource</string>
     <string name="detail_description_input">Beschreibung</string>
+    <string name="sortbydate">Sortieren nach Datum</string>
     <string-array name="roman_numbers">
         <item>I</item>
         <item>II</item>

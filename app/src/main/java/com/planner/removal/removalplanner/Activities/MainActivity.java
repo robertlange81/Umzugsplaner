@@ -35,7 +35,6 @@ import java.lang.reflect.Array;
 import java.util.Date;
 import java.util.List;
 
-import static android.widget.LinearLayout.HORIZONTAL;
 import static android.widget.LinearLayout.VERTICAL;
 
 
@@ -62,12 +61,12 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             public void onClick(View view) {
                 if(mTwoPane) {
                     Intent i = new Intent(view.getContext(), DetailActivity.class);
-                    i.putExtra(DetailActivity.ARG_TASK_ID, 0);
+                    i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
                     startActivity(i);
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(TaskDetailFragment.TASK_ID, 0);
+                    intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
 
                     context.startActivity(intent);
                 }
@@ -108,6 +107,12 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         if (id == R.id.settings) {
             return true;
         }
+
+        if (id == R.id.sortByDate) {
+            https://stackoverflow.com/questions/5927109/sort-objects-in-arraylist-by-date
+            return true;
+        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -207,6 +212,8 @@ public static class SimpleItemRecyclerViewAdapter
             if(task.date != null) {
                 String terminTxt = Formater.formatDateToSring(task.date);
                 holder.termin.setText(terminTxt);
+            } else {
+                holder.termin.setText("");
             }
 
             String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);

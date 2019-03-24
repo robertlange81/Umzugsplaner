@@ -7,4 +7,9 @@
         android:orderInCategory="100"
         android:title="@string/placeholder_settings"
         app:showAsAction="never" />
+    <item
+    android:id="@+id/sortByDate"
+    android:orderInCategory="101"
+    android:title="@string/sortbydate"
+    app:showAsAction="never" />
 </menu>
