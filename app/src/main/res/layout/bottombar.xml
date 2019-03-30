@@ -19,7 +19,7 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="android.lekaha.mobile.bottomappbar.MainActivity"/>
+        tools:context="com.planner.removal.removalplanner.Activities.MainActivity"/>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -30,11 +30,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:paddingBottom="20dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabAlignmentMode="center"
             app:fabAttached="true"
-            app:fabCradleDiameter="0dp"
-            app:fabCradleVerticalOffset="0dp"
+            app:fabCradleDiameter="60dp"
             app:navigationIcon="@android:drawable/ic_menu_sort_alphabetically"/>
 
         <android.support.design.widget.FloatingActionButton
