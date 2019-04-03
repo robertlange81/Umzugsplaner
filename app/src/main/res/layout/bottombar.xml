@@ -26,24 +26,33 @@
         android:layout_height="match_parent">
 
         <android.support.design.bottomappbar.BottomAppBar
+            android:id="@+id/bottom_app_bar_fake"
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="center"
+            app:fabCradleVerticalOffset="4dp"
+            app:fabAttached="true"/>
+
+        <android.support.design.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:paddingBottom="20dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabAlignmentMode="center"
             app:fabAttached="true"
-            app:fabCradleDiameter="60dp"
+            app:fabCradleDiameter="62dp"
             app:navigationIcon="@android:drawable/ic_menu_sort_alphabetically"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/colorYellow"
-            app:layout_anchor="@id/bottom_app_bar"
-            app:rippleColor="@color/colorPrimary"
+            android:tint="@color/colorPrimaryDark"
+            android:backgroundTint="@color/colorGreen"
+            app:layout_anchor="@id/bottom_app_bar_fake"
+            app:backgroundTint="@color/colorPrimaryDark"
             app:srcCompat="@android:drawable/ic_input_add" />
 
     </android.support.design.widget.CoordinatorLayout>

@@ -260,7 +260,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         spinnerDetailType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(_task != null) {
+                if(_task != null && !_task.Type.equals(TaskType.values()[position])) {
                     _task.Type = TaskType.values()[position];
                     if(isNotifyEnabled)
                         MainActivity.notifyTaskChanged();
@@ -322,6 +322,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     private void setDetails(final HashMap<TextView, String> linkMap, View rootView) {
 
+        isNotifyEnabled = false;
         if(!txtName.getText().toString().equals(_task.Name))
             txtName.setText(_task.Name);
 
@@ -384,7 +385,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 @Override
                 public void onClick(final View view) {
                     TextView t = deleteMap.get(view);
-                    if(t.getText() != null && t.getText().toString() != "") {
+                    if(t.getText() != null && !t.getText().toString().equals("")) {
 
                         String msg = (t.getTag() != null ? t.getTag().toString() : t.getText())
                                 + " " + rootView.getResources().getString(R.string.removed);

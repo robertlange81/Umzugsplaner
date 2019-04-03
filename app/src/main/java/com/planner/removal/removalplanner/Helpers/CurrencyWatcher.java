@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.util.Log;
 import android.widget.EditText;
 
+import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
 import java.text.DecimalFormat;
@@ -44,6 +45,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
                 Long l = d.longValue();
                 if(!l.equals(_task.Costs)) {
                     _task.Costs = d.longValue();
+                    MainActivity.notifyTaskChanged();
                     String currText = Formater.intCentToString(_task.Costs);
                     et.setText(currText);
 

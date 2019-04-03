@@ -31,30 +31,30 @@
         android:gravity="top"
         android:weightSum="10">
 
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/icon_fav_haupt"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_row_image_height"
+            android:layout_marginTop="3sp"
+            android:layout_marginLeft="0sp"
+            android:layout_marginRight="0sp"
+            android:layout_toRightOf="@id/checkBox"
+            android:adjustViewBounds="false"
+            app:srcCompat="@android:drawable/btn_star_big_off" />
+
         <TextView
             android:id="@+id/name"
             android:layout_height="match_parent"
             android:layout_marginLeft="1sp"
             android:layout_marginRight="1sp"
-            android:layout_toRightOf="@id/checkBox"
             android:layout_weight="5"
             android:gravity="center"
+            android:layout_toLeftOf="@id/meta"
             android:lineSpacingExtra="2sp"
             android:maxLines="2"
             android:text="@string/placeholder_name"
             android:textColor="#ffffff"
             android:textSize="14sp" />
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/icon_fav_haupt"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/list_row_image_height"
-            android:layout_marginTop="4sp"
-            android:layout_marginLeft="0sp"
-            android:layout_marginRight="0sp"
-            android:layout_toLeftOf="@id/meta"
-            android:adjustViewBounds="false"
-            app:srcCompat="@android:drawable/btn_star_big_off" />
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/meta"

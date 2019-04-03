@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                view.setAlpha(1f);
                 if(mTwoPane) {
                     Intent i = new Intent(view.getContext(), DetailActivity.class);
                     i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
@@ -95,6 +96,14 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        findViewById(R.id.fab).setAlpha(0.75f);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -378,34 +387,36 @@ public static class SimpleItemRecyclerViewAdapter
         }
 
         public static boolean needsUpdate = false;
-        Thread updaterThread;
-        private Thread startTimerThread() {
+        public static Thread updaterThread;
+        private void startTimerThread() {
             stopTimerThread();
             final Handler handler = new Handler();
             Runnable updater = new Runnable() {
                 public void run() {
                     while (true) {
                         try {
-                            if(needsUpdate) {
-                                handler.post(new Runnable(){
-                                    public void run() {
-                                        Log.e("needsUpdate", "");
-                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
-                                    }
-                                });
-                                needsUpdate = false;
+                            synchronized (this) {
+                                if(needsUpdate) {
+                                    handler.post(new Runnable(){
+                                        public void run() {
+                                            Log.e("needsUpdate", "true");
+                                            SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                                        }
+                                    });
+                                    needsUpdate = false;
+                                }
+                                Thread.sleep(300);
                             }
-                            Thread.sleep(300);
                         }
                         catch (InterruptedException e) {
+                            String m = e.getMessage();
                             e.printStackTrace();
                         }
                     }
                 }
             };
-            Thread thread = new Thread(updater);
-            thread.start();
-            return thread;
+            updaterThread = new Thread(updater);
+            updaterThread.start();
         }
 
         private void stopTimerThread() {
