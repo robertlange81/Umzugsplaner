@@ -8,12 +8,15 @@ import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.R;
-
+// TODO : Remove, if not needed
 public class DetailDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        final CharSequence[] charSequence = new CharSequence[] {"As Guest","I have account here"};
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -31,6 +34,12 @@ public class DetailDialogFragment extends DialogFragment {
                 .setNegativeButton(R.string.placeholder_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
+                    }
+                })
+                .setSingleChoiceItems(charSequence, 1, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        MainActivity.SortBy(which);
                     }
                 });
 

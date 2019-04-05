@@ -49,7 +49,21 @@
     <dimen name="detail_header_row_height">35sp</dimen>
     <dimen name="list_row_image_height">50sp</dimen>
     <dimen name="list_row_content_part">20sp</dimen>
-    <dimen name="bottom_border">20sp</dimen>
+    <dimen name="bottom_border">30sp</dimen>
+
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+
+    <dimen name="md_bottom_sheet_separator_top_margin">7dp</dimen>
 
 </resources>
 

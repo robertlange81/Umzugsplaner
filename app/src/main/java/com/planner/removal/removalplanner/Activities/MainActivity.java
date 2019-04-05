@@ -4,15 +4,17 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,8 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.planner.removal.removalplanner.Fragments.BottomSheetFragment;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Comparators.CostsComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.DateComparator;
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
     private boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
+    private BottomSheetFragment bottomDialogFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +64,17 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+
+
+        //Toolbar toolbar = findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
+
+        BottomAppBar bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        Drawable drawable = getBaseContext().getResources().getDrawable(android.R.drawable.ic_menu_sort_by_size);
+        bottomAppBar.setOverflowIcon(drawable);
+        setSupportActionBar(bottomAppBar);
+
+        bottomDialogFragment = BottomSheetFragment.newInstance();
 
         FloatingActionButton addNewAction = findViewById(R.id.fab);
         addNewAction.setOnClickListener(new View.OnClickListener() {
@@ -108,22 +122,33 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.bottomappbar_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        // showDetailDialog();
+        // bottomDialogFragment.show(getSupportFragmentManager(), "bla");
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        SortBy(id);
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public static boolean SortBy(int id) {
 
         if (id == R.id.settings) {
             return true;
         }
 
-        if (id == R.id.sortByCosts) {
+        if (id == R.id.sortByCosts || id == 0) {
 
             Collections.sort(Task.TASK_LIST, new CostsComparator());
             //.thenComparing(new PriorityComparator())
@@ -133,35 +158,35 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             notifyTaskChanged();
             return true;
         }
-        if (id == R.id.sortByDate) {
+        if (id == R.id.sortByDate || id == 1) {
             Collections.sort(Task.TASK_LIST, new DateComparator());
             notifyTaskChanged();
             return true;
         }
-        if (id == R.id.sortByIsDone) {
+        if (id == R.id.sortByIsDone || id == 2) {
             Collections.sort(Task.TASK_LIST, new IsDoneComparator());
             Collections.reverse(Task.TASK_LIST);
             notifyTaskChanged();
             return true;
         }
-        if (id == R.id.sortByName) {
+        if (id == R.id.sortByName || id == 3) {
             Collections.sort(Task.TASK_LIST, new NameComparator());
             notifyTaskChanged();
             return true;
         }
-        if (id == R.id.sortByPriority) {
+        if (id == R.id.sortByPriority || id == 4) {
             Collections.sort(Task.TASK_LIST, new PriorityComparator());
             Collections.reverse(Task.TASK_LIST);
             notifyTaskChanged();
             return true;
         }
-        if (id == R.id.sortByType) {
+        if (id == R.id.sortByType || id == 5) {
             Collections.sort(Task.TASK_LIST, new TypeComparator());
             notifyTaskChanged();
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     public void showDetailDialog() {

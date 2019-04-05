@@ -6,33 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.planner.removal.removalplanner.Activities.MainActivity"/>
-
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <android.support.design.bottomappbar.BottomAppBar
-            android:id="@+id/bottom_app_bar_fake"
-            android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_gravity="bottom"
-            app:fabAlignmentMode="center"
-            app:fabCradleVerticalOffset="4dp"
-            app:fabAttached="true"/>
 
         <android.support.design.bottomappbar.BottomAppBar
             android:id="@+id/bottom_app_bar"
@@ -42,8 +18,7 @@
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabAlignmentMode="center"
             app:fabAttached="true"
-            app:fabCradleDiameter="62dp"
-            app:navigationIcon="@android:drawable/ic_menu_sort_alphabetically"/>
+            app:fabCradleDiameter="65dp"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -51,7 +26,7 @@
             android:layout_height="wrap_content"
             android:tint="@color/colorPrimaryDark"
             android:backgroundTint="@color/colorGreen"
-            app:layout_anchor="@id/bottom_app_bar_fake"
+            app:layout_anchor="@id/bottom_app_bar"
             app:backgroundTint="@color/colorPrimaryDark"
             app:srcCompat="@android:drawable/ic_input_add" />
 

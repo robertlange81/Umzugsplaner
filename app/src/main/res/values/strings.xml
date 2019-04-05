@@ -33,7 +33,7 @@
     <string name="sortbyCosts">Sortiere nach Kosten</string>
     <string name="sortbyPriority">Sortiere nach Priorität</string>
     <string name="sortbyName">Sortiere nach Name</string>
-    <string name="sortbyType">Sortiere nach Typ</string>
+    <string name="sortbyType">Sortiere nach Kategorie</string>
     <string name="sortbyIsDone">Sortiere nach Erledigt</string>
     <string-array name="roman_numbers">
         <item>I</item>
