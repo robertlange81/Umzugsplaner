@@ -14,14 +14,16 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" >
-        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item -->
     </style>
 
     <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_launcher_foreground</item>
+        <item name="android:src">@android:drawable/ic_menu_view</item>
         <item name="android:background">?android:attr/actionBarItemBackground</item>
-        <item name="android:contentDescription">"Lala"</item>
+        <item name="android:contentDescription">""</item>
     </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

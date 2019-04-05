@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -70,9 +71,11 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         //setSupportActionBar(toolbar);
 
         BottomAppBar bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
-        Drawable drawable = getBaseContext().getResources().getDrawable(android.R.drawable.ic_menu_sort_by_size);
-        bottomAppBar.setOverflowIcon(drawable);
-        setSupportActionBar(bottomAppBar);
+        if(bottomAppBar != null) {
+            Drawable drawable = getBaseContext().getResources().getDrawable(android.R.drawable.ic_menu_sort_by_size);
+            bottomAppBar.setOverflowIcon(drawable);
+            setSupportActionBar(bottomAppBar);
+        }
 
         bottomDialogFragment = BottomSheetFragment.newInstance();
 
@@ -124,6 +127,19 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         // Inflate the menu; this adds items to the action bar if it is present.
         // getMenuInflater().inflate(R.menu.menu_main, menu);
         getMenuInflater().inflate(R.menu.bottomappbar_menu, menu);
+
+        // Inflate and initialize the top main menu
+        ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_toolbar);
+        Menu topMenu = topBar.getMenu();
+        getMenuInflater().inflate(R.menu.menu_main, topMenu);
+        for (int i = 0; i < topMenu.size(); i++) {
+            topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    return onOptionsItemSelected(item);
+                }
+            });
+        }
         return true;
     }
 

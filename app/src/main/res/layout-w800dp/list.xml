@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/top_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:weightSum="2"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/list"
             android:layout_weight="1"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <FrameLayout

@@ -12,12 +12,14 @@
         android:background="@drawable/header"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.v7.widget.ActionMenuView
+            android:id="@+id/top_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp" />
+
 
     </android.support.design.widget.AppBarLayout>
 
@@ -50,12 +52,5 @@
         layout="@layout/bottombar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!--android.support.design.widget.NavigationView
-        android:id="@+id/navigation_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:menu="@menu/drawer_menu" /-->
 
 </android.support.design.widget.CoordinatorLayout>
