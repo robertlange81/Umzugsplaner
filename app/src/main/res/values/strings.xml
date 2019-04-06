@@ -1,4 +1,5 @@
 <resources>
+    <string name="sortMode" translatable="false">sortMode</string>
     <string name="app_name">Umzug-Planer</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
     <string name="placeholder_save">Speichern</string>

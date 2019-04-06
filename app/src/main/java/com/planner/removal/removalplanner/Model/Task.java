@@ -33,7 +33,7 @@ public class Task {
     public String Description; // 2
     public com.planner.removal.removalplanner.Model.Priority Priority; // 4
     public Date Date; // 8
-    public boolean IsDone; // 16
+    public boolean Is_Done; // 16
     public TaskType Type; // 32
     public Long Costs; // 64 in Cent
     public TreeMap<String,String> Links; // 128
@@ -55,7 +55,7 @@ public class Task {
         this.Description = clone.Description;
         Priority = clone.Priority;
         Date = clone.Date;
-        IsDone = clone.IsDone;
+        Is_Done = clone.Is_Done;
         Type = clone.Type;
         Costs = clone.Costs;
         Links = (TreeMap) clone.Links.clone();
@@ -66,7 +66,7 @@ public class Task {
         this.Description = clone.Description;
         Priority = clone.Priority;
         Date = clone.Date;
-        IsDone = clone.IsDone;
+        Is_Done = clone.Is_Done;
         Type = clone.Type;
         Costs = clone.Costs;
         Links = clone.Links;

@@ -43,13 +43,13 @@ public class TaskInitializer {
             Date zielTermin4 = new Date(119, 0, 1);
             zielTermin4.setHours(10);
             task4.Date = zielTermin4;
-            task4.IsDone = true;
+            task4.Is_Done = true;
 
             Task task5 = new Task("Aufgabe4", "Beschreibung4 sehr lang, bla bmla ");
             task5.Costs = 600000L;
             task5.Priority = Priority.Normal;
             task5.Date = zielTermin4;
-            task5.IsDone = true;
+            task5.Is_Done = true;
 
 
             Task.addTask(task1);

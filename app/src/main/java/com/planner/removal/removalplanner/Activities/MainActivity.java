@@ -11,7 +11,6 @@ import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.DividerItemDecoration;
@@ -28,12 +27,14 @@ import android.widget.TextView;
 
 import com.planner.removal.removalplanner.Fragments.BottomSheetFragment;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.Helpers.Comparators.CostsComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.DateComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.IsDoneComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.NameComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.PriorityComparator;
 import com.planner.removal.removalplanner.Helpers.Comparators.TypeComparator;
+import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Fragments.DetailDialogFragment;
 import com.planner.removal.removalplanner.Helpers.Formater;
@@ -66,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
 
-
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
@@ -83,23 +83,32 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setAlpha(1f);
-                if(mTwoPane) {
-                    Intent i = new Intent(view.getContext(), DetailActivity.class);
-                    i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
-                    startActivity(i);
-                } else {
-                    Context context = view.getContext();
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
+            view.setAlpha(1f);
+            if(mTwoPane) {
+                Intent i = new Intent(view.getContext(), DetailActivity.class);
+                i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
+                startActivity(i);
+            } else {
+                Context context = view.getContext();
+                Intent intent = new Intent(context, DetailActivity.class);
+                intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
 
-                    context.startActivity(intent);
-                }
+                context.startActivity(intent);
+            }
             }
         });
 
         Date defaultDate = new Date(118, 11, 1, 0, 0, 0);
-        TaskInitializer.CreateDefaultTasks(defaultDate);
+
+        if(true) {
+            // TODO load saved list
+        } else {
+            TaskInitializer.CreateDefaultTasks(defaultDate);
+        }
+
+        int sortId = Persistance.GetSetting(Persistance.SaveType.Sort, getParent());
+        if(sortId > 0)
+            SortBy(sortId);
 
         if (findViewById(R.id.task_detail_container) != null) {
             // The detail container view will be present only in the
@@ -149,60 +158,50 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         // showDetailDialog();
         // bottomDialogFragment.show(getSupportFragmentManager(), "bla");
 
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        SortBy(id);
+        ComparatorConfig.SortType sortType = SortBy(id);
+        if(!sortType.equals(ComparatorConfig.SortType.NONE)) {
+            NotifyTaskChanged();
+            Persistance.SaveSetting(Persistance.SaveType.Sort, sortType.getValue(), getParent());
+        }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public static boolean SortBy(int id) {
+    public static ComparatorConfig.SortType SortBy(int id) {
 
-        if (id == R.id.settings) {
-            return true;
-        }
-
-        if (id == R.id.sortByCosts || id == 0) {
+        if (id == R.id.sortByCosts || id == ComparatorConfig.SortType.COSTS.getValue()) {
 
             Collections.sort(Task.TASK_LIST, new CostsComparator());
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
             Collections.reverse(Task.TASK_LIST);
-
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.COSTS;
         }
-        if (id == R.id.sortByDate || id == 1) {
+        if (id == R.id.sortByDate || id == ComparatorConfig.SortType.DATE.getValue()) {
             Collections.sort(Task.TASK_LIST, new DateComparator());
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.DATE;
         }
-        if (id == R.id.sortByIsDone || id == 2) {
+        if (id == R.id.sortByIsDone || id == ComparatorConfig.SortType.IS_DONE.getValue()) {
             Collections.sort(Task.TASK_LIST, new IsDoneComparator());
             Collections.reverse(Task.TASK_LIST);
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.IS_DONE;
         }
-        if (id == R.id.sortByName || id == 3) {
+        if (id == R.id.sortByName|| id == ComparatorConfig.SortType.NAME.getValue()) {
             Collections.sort(Task.TASK_LIST, new NameComparator());
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.NAME;
         }
-        if (id == R.id.sortByPriority || id == 4) {
+        if (id == R.id.sortByPriority || id == ComparatorConfig.SortType.PRIORITY.getValue()) {
             Collections.sort(Task.TASK_LIST, new PriorityComparator());
             Collections.reverse(Task.TASK_LIST);
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.PRIORITY;
         }
-        if (id == R.id.sortByType || id == 5) {
+        if (id == R.id.sortByType || id == ComparatorConfig.SortType.TYPE.getValue()) {
             Collections.sort(Task.TASK_LIST, new TypeComparator());
-            notifyTaskChanged();
-            return true;
+            return ComparatorConfig.SortType.TYPE;
         }
 
-        return false;
+        return ComparatorConfig.SortType.NONE;
     }
 
     public void showDetailDialog() {
@@ -231,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         adapter.startTimerThread();
     }
 
-    public static void notifyTaskChanged () {
+    public static void NotifyTaskChanged() {
         SimpleItemRecyclerViewAdapter.needsUpdate = true;
     }
 
@@ -294,7 +293,7 @@ public static class SimpleItemRecyclerViewAdapter
         public void onBindViewHolder(final ViewHolder holder, int position) {
             final Task task = mValues.get(position);
             holder.name.setText(task.Name);
-            holder.ckBoxTaskDone.setChecked(task.IsDone);
+            holder.ckBoxTaskDone.setChecked(task.Is_Done);
             holder.kosten.setText(Formater.intCentToString(task.Costs));
 
             if(task.Date != null) {
@@ -325,7 +324,7 @@ public static class SimpleItemRecyclerViewAdapter
                 public void onClick(View view) {
                     String msg = SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources()
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
-                    task.IsDone = holder.ckBoxTaskDone.isChecked();
+                    task.Is_Done = holder.ckBoxTaskDone.isChecked();
                     OnTaskChecked(task, holder.termin, holder.kosten);
                     TaskDetailFragment.notifyTaskChanged();
                     Snackbar.make(view, task.Name + " " + msg, Snackbar.LENGTH_LONG)
@@ -387,7 +386,7 @@ public static class SimpleItemRecyclerViewAdapter
         }
 
         private void OnTaskChecked(Task task, TextView termin, TextView kosten) {
-            if(task.IsDone) {
+            if(task.Is_Done) {
                 kosten.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
                 termin.setTextColor(mParentActivity.getResources().getColor(R.color.colorGreen));
             } else {

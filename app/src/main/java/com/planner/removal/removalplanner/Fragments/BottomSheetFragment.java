@@ -3,7 +3,6 @@ package com.planner.removal.removalplanner.Fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +27,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 String x = view.getTag().toString();
-                MainActivity.notifyTaskChanged();
+                MainActivity.NotifyTaskChanged();
             }
         });
 
