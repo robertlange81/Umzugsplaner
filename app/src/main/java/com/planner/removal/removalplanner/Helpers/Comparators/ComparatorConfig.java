@@ -5,17 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ComparatorConfig {
-    public static Map<SortType, ASortable> sortables;
+    public static Map<SortType, ComparatorSortable> sortableMap;
 
-    public ComparatorConfig() throws Exception {
-        sortables = GetComparators();
-        for (SortType sortType : SortType.values()) {
-            ASortable s = sortables.get(sortType);
-            if(!s.getSortType().equals(sortType)) {
-                throw new Exception("Missing Comparator for Sort Type");
-            }
-        }
-
+    public ComparatorConfig() {
+        sortableMap = GetComparators();
     }
 
     public enum SortType {
@@ -39,8 +32,8 @@ public class ComparatorConfig {
         }
     }
 
-    public static Map<SortType, ASortable> GetComparators() {
-        Map<SortType, ASortable> sortingComparator = new HashMap<SortType, ASortable>();
+    public static Map<SortType, ComparatorSortable> GetComparators() {
+        Map<SortType, ComparatorSortable> sortingComparator = new HashMap<SortType, ComparatorSortable>();
 
         sortingComparator.put(SortType.COSTS, new CostsComparator());
         sortingComparator.put(SortType.DATE, new DateComparator());

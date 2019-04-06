@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.R;
 // TODO : Remove, if not needed
 public class DetailDialogFragment extends DialogFragment {
@@ -38,8 +39,10 @@ public class DetailDialogFragment extends DialogFragment {
                 })
                 .setSingleChoiceItems(charSequence, 1, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        MainActivity.SortBy(which);
+                    public void onClick(DialogInterface dialog, int sortId) {
+                        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                            MainActivity.SortBy(ComparatorConfig.SortType.values()[sortId]);
+                        }
                     }
                 });
 

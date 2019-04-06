@@ -2,12 +2,10 @@ package com.planner.removal.removalplanner.Helpers.Comparators;
 
 import com.planner.removal.removalplanner.Model.Task;
 
-import java.util.Comparator;
-
-public class TypeComparator implements Comparator<Task>, ASortable {
+public class TypeComparator implements ComparatorSortable {
     @Override
     public int compare(Task o1, Task o2) {
-        return o1.Type.compareTo(o2.Type);
+        return o1.type.compareTo(o2.type);
     }
 
     @Override

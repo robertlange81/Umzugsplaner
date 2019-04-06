@@ -30,7 +30,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
     @Override
     public void afterTextChanged(Editable s) {
-        Log.d("Costs", "afterTextChanged");
+        Log.d("costs", "afterTextChanged");
         et.removeTextChangedListener(this);
 
         if (s != null && !s.toString().isEmpty()) {
@@ -43,10 +43,10 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
                 Double d = n.doubleValue() * 100;
                 Long l = d.longValue();
-                if(!l.equals(_task.Costs)) {
-                    _task.Costs = d.longValue();
+                if(!l.equals(_task.costs)) {
+                    _task.costs = d.longValue();
                     MainActivity.NotifyTaskChanged();
-                    String currText = Formater.intCentToString(_task.Costs);
+                    String currText = Formater.intCentToString(_task.costs);
                     et.setText(currText);
 
                     endlen = et.getText().toString().replaceAll("[^0-9.,]+","").length();

@@ -7,16 +7,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Task {
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+import java.io.Serializable;
+
+@Entity
+public class Task implements Serializable {
+
     public static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<String, Task> TASK_MAP = new HashMap<String, Task>();
     public static int maxId = 0;
-    public String id;
 
     /*
     Ideen:
     - Hintergrundbild (Grundriss / Baby)
-    - Ziel-Date im Hintergrund
+    - Ziel-date im Hintergrund
     - mit Google-Kalender synchronisieren
     - Orte hinzufügen -> Routenplaner
     - Kostenübersicht
@@ -27,49 +34,68 @@ public class Task {
     - Content Provider
     - Sortieren
     - Bild statt Link
+    - Einkaufsliste
      */
 
-    public String Name; // 1
-    public String Description; // 2
-    public com.planner.removal.removalplanner.Model.Priority Priority; // 4
-    public Date Date; // 8
-    public boolean Is_Done; // 16
-    public TaskType Type; // 32
-    public Long Costs; // 64 in Cent
-    public TreeMap<String,String> Links; // 128
+    @PrimaryKey(autoGenerate = true)
+    public String id;
+
+    @ColumnInfo(name = "name")
+    public String name; // 1
+
+    @ColumnInfo(name = "description")
+    public String description; // 2
+
+    @ColumnInfo(name = "priority")
+    public com.planner.removal.removalplanner.Model.Priority priority; // 4
+
+    @ColumnInfo(name = "date")
+    public Date date; // 8
+
+    @ColumnInfo(name = "is_Done")
+    public boolean is_Done; // 16
+
+    @ColumnInfo(name = "type")
+    public TaskType type; // 32
+
+    @ColumnInfo(name = "costs")
+    public Long costs; // 64 in Cent
+
+    @ColumnInfo(name = "links")
+    public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
-        this.Name = name;
-        this.Description = description;
-        Date = null;
-        Priority = com.planner.removal.removalplanner.Model.Priority.Normal;
-        Costs = 0L;
-        Type = TaskType.KITCHEN;
-        Links = new TreeMap<>();
+        this.name = name;
+        this.description = description;
+        date = null;
+        priority = com.planner.removal.removalplanner.Model.Priority.Normal;
+        costs = 0L;
+        type = TaskType.KITCHEN;
+        links = new TreeMap<>();
     }
 
     public Task(Task clone) {
         id = clone.id;
-        this.Name = clone.Name;
-        this.Description = clone.Description;
-        Priority = clone.Priority;
-        Date = clone.Date;
-        Is_Done = clone.Is_Done;
-        Type = clone.Type;
-        Costs = clone.Costs;
-        Links = (TreeMap) clone.Links.clone();
+        this.name = clone.name;
+        this.description = clone.description;
+        priority = clone.priority;
+        date = clone.date;
+        is_Done = clone.is_Done;
+        type = clone.type;
+        costs = clone.costs;
+        links = (TreeMap) clone.links.clone();
     }
 
     public void ImportTask(Task clone) {
-        this.Name = clone.Name;
-        this.Description = clone.Description;
-        Priority = clone.Priority;
-        Date = clone.Date;
-        Is_Done = clone.Is_Done;
-        Type = clone.Type;
-        Costs = clone.Costs;
-        Links = clone.Links;
+        this.name = clone.name;
+        this.description = clone.description;
+        priority = clone.priority;
+        date = clone.date;
+        is_Done = clone.is_Done;
+        type = clone.type;
+        costs = clone.costs;
+        links = clone.links;
     }
 
     public static void addTask(Task task) {

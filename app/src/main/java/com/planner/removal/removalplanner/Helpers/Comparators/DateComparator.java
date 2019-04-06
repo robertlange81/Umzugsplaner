@@ -1,20 +1,19 @@
 package com.planner.removal.removalplanner.Helpers.Comparators;
 
 import com.planner.removal.removalplanner.Model.Task;
-import java.util.Comparator;
 
-public class DateComparator implements Comparator<Task>, ASortable {
+public class DateComparator implements ComparatorSortable {
     @Override
     public int compare(Task o1, Task o2) {
 
-        if(o1.Date == null && o2.Date != null)
+        if(o1.date == null && o2.date != null)
             return -1;
-        if(o1.Date != null && o2.Date == null)
+        if(o1.date != null && o2.date == null)
             return 1;
-        if(o1.Date == null && o2.Date == null)
+        if(o1.date == null && o2.date == null)
             return 0;
 
-        return o1.Date.compareTo(o2.Date);
+        return o1.date.compareTo(o2.date);
     }
 
     @Override
