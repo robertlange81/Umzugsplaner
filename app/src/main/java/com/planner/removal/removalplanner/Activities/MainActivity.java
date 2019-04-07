@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
         if(false) {
             // TODO load saved list
+            Persistance.LoadTasks(this);
         } else {
             TaskInitializer.CreateDefaultTasks(defaultDate);
         }
@@ -228,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
     public void onDestroy() {
         super.onDestroy();
-        Persistance.SaveTasks();
+        Persistance.SaveTasks(this);
         adapter.stopTimerThread();
     }
 
