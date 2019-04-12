@@ -56,6 +56,16 @@
             android:textColor="#ffffff"
             android:textSize="14sp" />
 
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/delete_task_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_row_image_height"
+            android:layout_marginLeft="1dip"
+            android:layout_marginTop="4sp"
+            android:layout_toRightOf="@id/name"
+            android:adjustViewBounds="false"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/meta"
             android:layout_width="fill_parent"
@@ -108,16 +118,6 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffaa" />
         </RelativeLayout>
-
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/delete_task_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/list_row_image_height"
-            android:layout_marginLeft="1dip"
-            android:layout_marginTop="4sp"
-            android:layout_toRightOf="@id/table"
-            android:adjustViewBounds="false"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </TableRow>
 </RelativeLayout>

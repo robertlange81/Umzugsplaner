@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <!--android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -18,7 +18,7 @@
             android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout-->
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -34,11 +34,11 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/list"
             android:name="com.planner.removal.removalplanner.AufgabeDetailFragment"
-            android:layout_width="400dp"
+            android:layout_width="500dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".Activities.MainActivity"
             tools:listitem="@layout/list_row_content" />
@@ -46,10 +46,11 @@
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_toRightOf="@id/list"
             android:layout_weight="1"
+            android:layout_marginLeft="15dp"
             android:orientation="horizontal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -60,7 +61,6 @@
                 android:layout_height="match_parent" />
 
         </LinearLayout>
-
 
     </RelativeLayout>
 

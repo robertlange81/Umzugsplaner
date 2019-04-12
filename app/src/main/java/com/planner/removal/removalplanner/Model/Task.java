@@ -10,6 +10,13 @@ import java.util.TreeMap;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+import android.support.annotation.NonNull;
+
+import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.TaskTypeConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.TimestampConverter;
 
 import java.io.Serializable;
 
@@ -37,7 +44,8 @@ public class Task implements Serializable {
     - Einkaufsliste
      */
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
+    @NonNull
     public String id;
 
     @ColumnInfo(name = "name")
@@ -47,21 +55,25 @@ public class Task implements Serializable {
     public String description; // 2
 
     @ColumnInfo(name = "priority")
+    @TypeConverters({PriorityConverter.class})
     public com.planner.removal.removalplanner.Model.Priority priority; // 4
 
     @ColumnInfo(name = "date")
+    @TypeConverters({TimestampConverter.class})
     public Date date; // 8
 
     @ColumnInfo(name = "is_Done")
     public boolean is_Done; // 16
 
     @ColumnInfo(name = "type")
+    @TypeConverters({TaskTypeConverter.class})
     public TaskType type; // 32
 
     @ColumnInfo(name = "costs")
     public Long costs; // 64 in Cent
 
     @ColumnInfo(name = "links")
+    @TypeConverters({LinkMapConverter.class})
     public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
@@ -100,7 +112,7 @@ public class Task implements Serializable {
 
     public static void addTask(Task task) {
         TASK_LIST.add(task);
-        TASK_MAP.put(task.id, task);
+        TASK_MAP.put(task.id.toString(), task);
     }
     public static void removeTask(Task task) {
         TASK_LIST.remove(task);

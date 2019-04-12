@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -79,18 +80,18 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         addNewAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            view.setAlpha(1f);
-            if(mTwoPane) {
-                Intent i = new Intent(view.getContext(), DetailActivity.class);
-                i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
-                startActivity(i);
-            } else {
-                Context context = view.getContext();
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
+                view.setAlpha(1f);
+                if(mTwoPane) {
+                    Intent i = new Intent(view.getContext(), DetailActivity.class);
+                    i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
+                    startActivity(i);
+                } else {
+                    Context context = view.getContext();
+                    Intent intent = new Intent(context, DetailActivity.class);
+                    intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
 
-                context.startActivity(intent);
-            }
+                    context.startActivity(intent);
+                }
             }
         });
 
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         }
 
         comparatorConfig = new ComparatorConfig();
-        int sortId = Persistance.GetSetting(Persistance.SettingType.Sort, getParent());
+        int sortId = Persistance.GetSetting(Persistance.SettingType.Sort, this);
         if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
             SortBy(ComparatorConfig.SortType.values()[sortId]);
         }
@@ -115,6 +116,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }
 
         View recyclerView = findViewById(R.id.list);
@@ -163,21 +167,29 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         switch (id) {
             case R.id.sortByCosts:
                 sortType = ComparatorConfig.SortType.COSTS;
+                break;
             case R.id.sortByDate:
                 sortType = ComparatorConfig.SortType.DATE;
+                break;
             case R.id.sortByIsDone:
                 sortType = ComparatorConfig.SortType.IS_DONE;
+                break;
             case R.id.sortByName:
                 sortType = ComparatorConfig.SortType.NAME;
+                break;
             case R.id.sortByPriority:
                 sortType = ComparatorConfig.SortType.PRIORITY;
+                break;
             case R.id.sortByType:
                 sortType = ComparatorConfig.SortType.TYPE;
+                break;
+            default:
+                sortType = ComparatorConfig.SortType.IS_DONE;
         }
 
         if(!sortType.equals(ComparatorConfig.SortType.NONE) && SortBy(sortType)) {
             NotifyTaskChanged();
-            Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), getParent());
+            Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
             return true;
         }
 

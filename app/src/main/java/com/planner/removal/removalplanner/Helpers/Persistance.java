@@ -22,11 +22,14 @@ public class Persistance {
             protected Void doInBackground(Void... voids) {
 
                 for (Task t : Task.TASK_LIST) {
-                    //adding to database
                     // TODO validate
-                    TaskDatabaseClient.getInstance(activity).getAppDatabase()
-                            .taskDao()
-                            .insert(t);
+                    try {
+                        TaskDatabaseClient.getInstance(activity).getAppDatabase()
+                                .taskDao()
+                                .insert(t);
+                    } catch (Exception e) {
+                        Log.e("Save Task to sqlite", e.getMessage());
+                    }
                 }
                 return null;
             }
