@@ -14,6 +14,9 @@ public interface TaskDao {
     @Query("SELECT * FROM task")
     List<Task> getAll();
 
+    @Query("SELECT * FROM task where id = :id")
+    Task get(String id);
+
     @Insert
     void insert(Task task);
 

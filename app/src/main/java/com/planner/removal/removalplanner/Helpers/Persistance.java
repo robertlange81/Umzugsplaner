@@ -8,11 +8,59 @@ import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
+import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;
 
 import java.util.List;
 
 public class Persistance {
+
+    public static void ReplaceAllTasks(final Activity activity) {
+
+        class SaveTask extends AsyncTask<Void, Void, Void> {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                TaskDao dao = TaskDatabaseClient.getInstance(activity)
+                        .getAppDatabase()
+                        .taskDao();
+
+                List<Task> oldTasks = dao.getAll();
+
+                for (Task t : oldTasks) {
+                    try {
+                        dao.delete(t);
+                    } catch (Exception e) {
+                        Log.e("Error Delete Task: ", e.getMessage());
+                    }
+                }
+
+                for (Task t : Task.TASK_LIST) {
+                    // TODO validate
+                    try {
+                        Task old = dao.get(t.id);
+                        if(old == null) {
+                            dao.insert(t);
+                        } else {
+                            dao.update(t);
+                        }
+                    } catch (Exception e) {
+                        Log.e("Save Task to sqlite", e.getMessage());
+                    }
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+            }
+        }
+
+        SaveTask st = new SaveTask();
+        st.execute();
+    }
 
     public static void SaveTasks(final Activity activity) {
 
