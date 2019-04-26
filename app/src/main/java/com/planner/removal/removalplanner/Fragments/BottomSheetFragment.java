@@ -27,7 +27,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 String x = view.getTag().toString();
-                MainActivity.NotifyTaskChanged();
+                MainActivity.NotifyTaskChanged(null, null);
             }
         });
 

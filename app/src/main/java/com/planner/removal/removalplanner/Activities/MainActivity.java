@@ -1,5 +1,6 @@
 package com.planner.removal.removalplanner.Activities;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
@@ -97,18 +98,8 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
         Date defaultDate = new Date(118, 11, 1, 0, 0, 0);
 
-        if(false) {
-            // TODO load saved list
-            Persistance.LoadTasks(this);
-        } else {
-            TaskInitializer.CreateDefaultTasks(defaultDate);
-        }
 
-        comparatorConfig = new ComparatorConfig();
-        int sortId = Persistance.GetSetting(Persistance.SettingType.Sort, this);
-        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-            SortBy(ComparatorConfig.SortType.values()[sortId]);
-        }
+        int orientation = this.getResources().getConfiguration().orientation;
 
         if (findViewById(R.id.task_detail_container) != null) {
             // The detail container view will be present only in the
@@ -116,9 +107,22 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        } else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+            if(orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+                return;
+            }
+        }
+
+        Persistance.LoadTasks(this);
+        if(Task.TASK_LIST.size() == 10) {
+            TaskInitializer.CreateDefaultTasks(defaultDate);
+        }
+
+        comparatorConfig = new ComparatorConfig();
+        int sortId = Persistance.GetSetting(Persistance.SettingType.Sort, this);
+        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+            SortBy(ComparatorConfig.SortType.values()[sortId]);
         }
 
         View recyclerView = findViewById(R.id.list);
@@ -188,7 +192,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         }
 
         if(!sortType.equals(ComparatorConfig.SortType.NONE) && SortBy(sortType)) {
-            NotifyTaskChanged();
+            NotifyTaskChanged(null, this);
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
             return true;
         }
@@ -235,14 +239,17 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         adapter.startTimerThread();
     }
 
-    public static void NotifyTaskChanged() {
+    public static void NotifyTaskChanged(Task t, Activity a) {
+        if(t != null && a != null) {
+            Persistance.SaveOrUpdateTask(t, a);
+        }
         SimpleItemRecyclerViewAdapter.needsUpdate = true;
     }
 
     public void onDestroy() {
         super.onDestroy();
-        Persistance.SaveTasks(this);
-        adapter.stopTimerThread();
+        if(adapter != null)
+            adapter.stopTimerThread();
     }
 
 public static class SimpleItemRecyclerViewAdapter
@@ -357,38 +364,35 @@ public static class SimpleItemRecyclerViewAdapter
                 }
             });
 
-            if(mTwoPane) {
-                holder.imgDelete.setVisibility(View.GONE);
-            } else {
-                holder.imgDelete.setVisibility(View.VISIBLE);
-                holder.imgDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(final View view) {
-                        ((View) view.getParent().getParent()).animate().setDuration(300).alpha(0)
-                                .withEndAction(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        Task toRemove = mValues.get(actPosition);
-                                        SimpleItemRecyclerViewAdapter.this.remove(toRemove);
-                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
-                                        ((View) view.getParent().getParent()).setAlpha(1);
+            holder.imgDelete.setVisibility(View.VISIBLE);
+            holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View view) {
+                    ((View) view.getParent().getParent()).animate().setDuration(300).alpha(0)
+                        .withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                            Persistance.DeleteTask(task, mParentActivity);
+                            Task toRemove = mValues.get(actPosition);
+                            SimpleItemRecyclerViewAdapter.this.remove(toRemove);
+                            SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                            ((View) view.getParent().getParent()).setAlpha(1);
 
-                                        Snackbar snack = Snackbar.make(
-                                                view,
-                                                task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
-                                                        .getResources().getString(R.string.deleted),
-                                                Snackbar.LENGTH_LONG);
+                            Snackbar snack = Snackbar.make(
+                                    view,
+                                    task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
+                                            .getResources().getString(R.string.deleted),
+                                    Snackbar.LENGTH_LONG);
 
-                                        snack.setAction(
-                                                R.string.undo,
-                                                new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove)
-                                        );
-                                        snack.show();
-                                    }
-                                });
-                    }
-                });
-            }
+                            snack.setAction(
+                                    R.string.undo,
+                                    new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove, mParentActivity)
+                            );
+                            snack.show();
+                            }
+                        });
+                }
+            });
         }
 
         private void OnTaskChecked(Task task, TextView termin, TextView kosten) {

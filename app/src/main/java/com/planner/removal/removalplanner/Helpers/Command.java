@@ -1,5 +1,6 @@
 package com.planner.removal.removalplanner.Helpers;
 
+import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import com.planner.removal.removalplanner.Activities.MainActivity;
@@ -11,6 +12,7 @@ public class Command implements View.OnClickListener{
     private final CommandTyp _commandTyp;
     private final Task _task;
     private MainActivity.SimpleItemRecyclerViewAdapter _adapter;
+    private Activity _activity;
     private boolean _hasbeenExecuted;
 
     public enum CommandTyp {
@@ -27,15 +29,17 @@ public class Command implements View.OnClickListener{
         }
     }
 
-    public Command(CommandTyp commandTyp, MainActivity.SimpleItemRecyclerViewAdapter adapter, Task task) {
+    public Command(CommandTyp commandTyp, MainActivity.SimpleItemRecyclerViewAdapter adapter, Task task, Activity mParentActivity) {
         _commandTyp = commandTyp;
         _adapter = adapter;
         _task = task;
+        _activity = mParentActivity;
     }
 
-    public Command(CommandTyp commandTyp, Task task) {
+    public Command(CommandTyp commandTyp, Task task, Activity mParentActivity) {
         _commandTyp = commandTyp;
         _task = task;
+        _activity = mParentActivity;
     }
 
 
@@ -61,7 +65,7 @@ public class Command implements View.OnClickListener{
                     oldTask.ImportTask(_task);
         }
 
-        MainActivity.NotifyTaskChanged();
+        MainActivity.NotifyTaskChanged(_task, _activity);
         TaskDetailFragment.notifyTaskChanged();
     }
 }

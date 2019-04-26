@@ -11,13 +11,62 @@ import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Persistance {
 
+    public static Queue<AsyncTask<Void, Void, Void>> queue;
+
+    static void addTaskToQueue(AsyncTask t) {
+        if(queue == null) {
+            queue = new LinkedList<AsyncTask<Void, Void, Void>>();
+            t.execute();
+        } else {
+            if (CheckQueue()) {
+                t.execute();
+            } else {
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+
+                    @Override
+                    public void run() {
+                        CheckQueue();
+                    }
+                }, 0, 500);
+            }
+        }
+        queue.add(t);
+    }
+
+    public static boolean CheckQueue() {
+
+        while(queue.peek() != null) {
+            AsyncTask at = queue.peek();
+
+            if(at.getStatus() == AsyncTask.Status.FINISHED) {
+                queue.remove();
+            }
+
+            if(at.getStatus() == AsyncTask.Status.PENDING) {
+                at.execute();
+                return false;
+            }
+
+            if(at.getStatus() == AsyncTask.Status.RUNNING) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static void ReplaceAllTasks(final Activity activity) {
 
-        class SaveTask extends AsyncTask<Void, Void, Void> {
+        class ReplaceAllTasks extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -58,8 +107,8 @@ public class Persistance {
             }
         }
 
-        SaveTask st = new SaveTask();
-        st.execute();
+        ReplaceAllTasks rt = new ReplaceAllTasks();
+        addTaskToQueue(rt);
     }
 
     public static void SaveTasks(final Activity activity) {
@@ -92,7 +141,7 @@ public class Persistance {
         }
 
         SaveTask st = new SaveTask();
-        st.execute();
+        addTaskToQueue(st);
     }
 
     public static void LoadTasks(final Activity activity) {
@@ -105,6 +154,7 @@ public class Persistance {
                         .getAppDatabase()
                         .taskDao()
                         .getAll();
+
                 return taskList;
             }
 
@@ -116,24 +166,34 @@ public class Persistance {
                 for (Task t : tasks) {
                     Task.addTask(t);
                 }
-                MainActivity.NotifyTaskChanged();
+                MainActivity.NotifyTaskChanged(null, null);
             }
         }
 
         GetTasks gt = new GetTasks();
         gt.execute();
+        //addTaskToQueue(gt);
     }
 
-    private void updateTask(final Task task, final Activity activity) {
+    public static void SaveOrUpdateTask(final Task task, final Activity activity) {
 
         class UpdateTask extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
 
-                TaskDatabaseClient.getInstance(activity).getAppDatabase()
-                        .taskDao()
-                        .update(task);
+                TaskDao dao = TaskDatabaseClient.getInstance(activity)
+                        .getAppDatabase()
+                        .taskDao();
+
+                Task old = dao.get(task.id);
+
+                if(old == null) {
+                    dao.insert(task);
+                } else {
+                    dao.update(task);
+                }
+
                 return null;
             }
 
@@ -144,18 +204,25 @@ public class Persistance {
         }
 
         UpdateTask ut = new UpdateTask();
-        ut.execute();
+        addTaskToQueue(ut);
     }
 
 
-    private void deleteTask(final Task task, final Activity activity) {
+    public static void DeleteTask(final Task task, final Activity activity) {
         class DeleteTask extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                TaskDatabaseClient.getInstance(activity).getAppDatabase()
-                        .taskDao()
-                        .delete(task);
+
+                TaskDao dao = TaskDatabaseClient.getInstance(activity)
+                        .getAppDatabase()
+                        .taskDao();
+
+                Task old = dao.get(task.id);
+
+                if(old != null) {
+                    dao.update(task);
+                }
                 return null;
             }
 
@@ -166,7 +233,7 @@ public class Persistance {
         }
 
         DeleteTask dt = new DeleteTask();
-        dt.execute();
+        addTaskToQueue(dt);
     }
 
     public enum SettingType {

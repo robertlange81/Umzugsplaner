@@ -45,7 +45,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
                 Long l = d.longValue();
                 if(!l.equals(_task.costs)) {
                     _task.costs = d.longValue();
-                    MainActivity.NotifyTaskChanged();
+                    MainActivity.NotifyTaskChanged(_task, null);
                     String currText = Formater.intCentToString(_task.costs);
                     et.setText(currText);
 

@@ -86,9 +86,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
      * fragment (e.g. upon screen orientation changes).
      */
     public TaskDetailFragment() {
-
         int x = 0;
-
     }
 
     @Override
@@ -101,7 +99,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             // Load the dummy content specified by the fragment
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
-            _task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
+            String taskId = getArguments().getString(TASK_ID);
+            _task = Task.TASK_MAP.get(taskId);
 
             if(_task == null) {
                 createNewTask();
@@ -212,7 +211,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
                 _task.is_Done = checkIsDone.isChecked();
                 lblIsDone.setText(msg);
-                MainActivity.NotifyTaskChanged();
+                MainActivity.NotifyTaskChanged(_task, getActivity());
                 Snackbar.make(view, _task.name + " " + msg, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -232,7 +231,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     lblPrio.setText(R.string.highPrioText_short);
                 }
 
-                MainActivity.NotifyTaskChanged();
+                MainActivity.NotifyTaskChanged(_task, getActivity());
                 String msg = rootView.getContext().getResources()
                         .getString(_task.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText)
                         + " " + _task.name;
@@ -250,7 +249,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
                     if(!input.equals(_task.name)) {
                         _task.name = input;
-                        MainActivity.NotifyTaskChanged();
+                        MainActivity.NotifyTaskChanged(_task, getActivity());
                         return;
                     }
                 }
@@ -263,7 +262,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 if(_task != null && !_task.type.equals(TaskType.values()[position])) {
                     _task.type = TaskType.values()[position];
                     if(isNotifyEnabled)
-                        MainActivity.NotifyTaskChanged();
+                        MainActivity.NotifyTaskChanged(_task, getActivity());
                 }
             }
 
@@ -294,7 +293,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     if(input.equals("")) {
                         _task.costs = 0L;
                         if(isNotifyEnabled)
-                            MainActivity.NotifyTaskChanged();
+                            MainActivity.NotifyTaskChanged(_task, getActivity());
                         return;
                     }
                 }
@@ -312,7 +311,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     if(input.equals("")) {
                         _task.date = null;
                         if(isNotifyEnabled)
-                            MainActivity.NotifyTaskChanged();
+                            MainActivity.NotifyTaskChanged(_task, getActivity());
                         return;
                     }
                 }
@@ -400,7 +399,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         if(Task.TASK_MAP.get(_task.id) != null) {
                             snack.setAction(
                                     R.string.undo,
-                                    new Command(Command.CommandTyp.Undo, clone)
+                                    new Command(Command.CommandTyp.Undo, clone, getActivity())
                             );
                             Log.e("new command", "new command");
                             snack.show();
@@ -409,7 +408,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         t.setText("");
                         if(t == txtDeadline) {
                             _task.date = null;
-                            MainActivity.NotifyTaskChanged();
+                            MainActivity.NotifyTaskChanged(_task, getActivity());
                         } else {
                             t.requestFocus();
                             t.clearFocus();
@@ -530,7 +529,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             _task.date = tempDate;
 
                             if(isNotifyEnabled)
-                                MainActivity.NotifyTaskChanged();
+                                MainActivity.NotifyTaskChanged(_task, getActivity());
                             /*
                             String msg = getContext().getResources()
                                     .getString(R.string.date_changed);
@@ -568,7 +567,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             _task.date = tempDate;
 
                             if(isNotifyEnabled)
-                                MainActivity.NotifyTaskChanged();
+                                MainActivity.NotifyTaskChanged(_task, getActivity());
                             /*
                             String msg = getContext().getResources()
                                     .getString(R.string.time_changed);

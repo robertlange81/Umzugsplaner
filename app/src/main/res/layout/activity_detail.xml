@@ -24,11 +24,11 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <!--android.support.v4.widget.DrawerLayout
+    <android.support.v4.widget.DrawerLayout
         android:id="@+id/task_detail_container"
         android:layout_below="@id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" /-->
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </RelativeLayout>
