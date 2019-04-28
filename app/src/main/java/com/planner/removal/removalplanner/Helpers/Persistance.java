@@ -21,7 +21,7 @@ public class Persistance {
 
     public static Queue<AsyncTask<Void, Void, Void>> queue;
 
-    static void addTaskToQueue(AsyncTask t) {
+    static void addTaskToQueue(AsyncTask<Void, Void, Void> t) {
         if(queue == null) {
             queue = new LinkedList<AsyncTask<Void, Void, Void>>();
             t.execute();
@@ -45,7 +45,7 @@ public class Persistance {
     public static boolean CheckQueue() {
 
         while(queue.peek() != null) {
-            AsyncTask at = queue.peek();
+            AsyncTask<Void, Void, Void> at = queue.peek();
 
             if(at.getStatus() == AsyncTask.Status.FINISHED) {
                 queue.remove();

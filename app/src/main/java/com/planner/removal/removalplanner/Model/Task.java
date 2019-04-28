@@ -42,6 +42,7 @@ public class Task implements Serializable {
     - Sortieren
     - Bild statt Link
     - Einkaufsliste
+    - nach oben scrollen nach Sortieren
      */
 
     @PrimaryKey(autoGenerate = false)

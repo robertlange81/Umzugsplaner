@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     }
 
     public void onDestroy() {
+        Persistance.CheckQueue();
         super.onDestroy();
         if(adapter != null)
             adapter.stopTimerThread();
