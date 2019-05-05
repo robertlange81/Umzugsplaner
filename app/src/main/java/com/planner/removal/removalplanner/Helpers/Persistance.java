@@ -221,7 +221,7 @@ public class Persistance {
                 Task old = dao.get(task.id);
 
                 if(old != null) {
-                    dao.update(task);
+                    dao.delete(old);
                 }
                 return null;
             }
@@ -258,8 +258,8 @@ public class Persistance {
             editor.putInt(settingType.toString(), value);
             editor.commit();
             return true;
-        } catch (Exception ex) {
-            Log.e("Save setting", ex.getMessage());
+        } catch (Throwable t) {
+            Log.e("Save setting", t.getMessage());
         }
 
         return false;

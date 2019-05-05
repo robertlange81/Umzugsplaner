@@ -29,11 +29,13 @@ public class Task implements Serializable {
 
     /*
     Ideen:
+    - Assistenz
+    - Kosten auch negativ
+    - Kostenübersicht - gesamt, erledigt, offen
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
     - mit Google-Kalender synchronisieren
     - Orte hinzufügen -> Routenplaner
-    - Kostenübersicht
     - Ausdrucken / PDF erstellen / per Mail senden
     - Import / Export
     - Standard neu importieren
@@ -118,5 +120,15 @@ public class Task implements Serializable {
     public static void removeTask(Task task) {
         TASK_LIST.remove(task);
         TASK_MAP.remove(task.id);
+    }
+
+    public static int sumCosts() {
+        int retval = 0;
+
+        for (Task t: TASK_LIST) {
+            retval += t.costs;
+        }
+
+        return retval;
     }
 }

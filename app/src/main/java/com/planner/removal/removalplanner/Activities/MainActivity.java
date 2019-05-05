@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     private SimpleItemRecyclerViewAdapter adapter;
     private BottomSheetFragment bottomDialogFragment;
     private static ComparatorConfig comparatorConfig;
+    private static View recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             SortBy(ComparatorConfig.SortType.values()[sortId]);
         }
 
-        View recyclerView = findViewById(R.id.list);
+        recyclerView = findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
     }
@@ -205,6 +206,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
         if(comparatorSortable != null) {
             Collections.sort(Task.TASK_LIST, comparatorSortable);
+            recyclerView.scrollTo(0,0);
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
             return true;
