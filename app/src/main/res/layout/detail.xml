@@ -267,7 +267,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:singleLine="true"
                     android:selectAllOnFocus="false"
                     android:textColorLink="@color/colorGreen"
@@ -313,7 +313,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:singleLine="true"
                     android:selectAllOnFocus="false"
                     android:linksClickable="false" />
@@ -358,7 +358,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:selectAllOnFocus="false"
                     android:linksClickable="false" />
 
@@ -402,7 +402,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:singleLine="true"
                     android:selectAllOnFocus="false"
                     android:linksClickable="false" />
@@ -447,7 +447,7 @@
                     android:textSize="@dimen/detail_text_size"
                     android:inputType="textWebEditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:singleLine="true"
                     android:selectAllOnFocus="false"
                     android:linksClickable="false" />
@@ -488,7 +488,7 @@
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:singleLine="true"
                     android:hint="@string/placeholder_costs_detail"
                     android:selectAllOnFocus="true"
@@ -530,7 +530,7 @@
                     android:focusable="false"
                     android:tag="@string/placeholder_date"
                     android:hint="@string/placeholder_date_input"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:id="@+id/detail_deadline"
                     android:textSize="@dimen/detail_text_size"
                     android:inputType="text|time"

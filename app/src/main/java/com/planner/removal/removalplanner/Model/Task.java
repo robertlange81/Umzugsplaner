@@ -29,6 +29,7 @@ public class Task implements Serializable {
 
     /*
     Ideen:
+    - Markiere aktuelle (Sortier-)Einstellung
     - Assistenz
     - Kosten auch negativ
     - Kostenübersicht - gesamt, erledigt, offen

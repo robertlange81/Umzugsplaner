@@ -121,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         }
 
         comparatorConfig = new ComparatorConfig();
-        int sortId = Persistance.GetSetting(Persistance.SettingType.Sort, this);
-        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-            SortBy(ComparatorConfig.SortType.values()[sortId]);
-        }
 
         recyclerView = findViewById(R.id.list);
         assert recyclerView != null;
@@ -192,9 +188,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
                 sortType = ComparatorConfig.SortType.IS_DONE;
         }
 
-        if(!sortType.equals(ComparatorConfig.SortType.NONE) && SortBy(sortType)) {
-            NotifyTaskChanged(null, this);
+        if(!sortType.equals(ComparatorConfig.SortType.NONE)) {
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
+            NotifyTaskChanged(null, this);
             return true;
         }
 
@@ -206,7 +202,8 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
         if(comparatorSortable != null) {
             Collections.sort(Task.TASK_LIST, comparatorSortable);
-            recyclerView.scrollTo(0,0);
+            if(recyclerView != null)
+                recyclerView.scrollTo(0,0);
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
             return true;
@@ -245,6 +242,13 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         if(t != null && a != null) {
             Persistance.SaveOrUpdateTask(t, a);
         }
+        if(a != null) {
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, a);
+            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                SortBy(ComparatorConfig.SortType.values()[sortId]);
+            }
+        }
+
         SimpleItemRecyclerViewAdapter.needsUpdate = true;
     }
 

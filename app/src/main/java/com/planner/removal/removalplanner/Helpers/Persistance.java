@@ -166,7 +166,7 @@ public class Persistance {
                 for (Task t : tasks) {
                     Task.addTask(t);
                 }
-                MainActivity.NotifyTaskChanged(null, null);
+                MainActivity.NotifyTaskChanged(null, activity);
             }
         }
 
@@ -265,7 +265,7 @@ public class Persistance {
         return false;
     }
 
-    public static int GetSetting(SettingType settingType, Activity activity) {
+    public static int LoadSetting(SettingType settingType, Activity activity) {
         SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
         return sharedPref.getInt(settingType.toString(), 0);
     }
