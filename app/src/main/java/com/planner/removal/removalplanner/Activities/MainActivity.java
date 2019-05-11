@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,7 +57,8 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     private SimpleItemRecyclerViewAdapter adapter;
     private BottomSheetFragment bottomDialogFragment;
     private static ComparatorConfig comparatorConfig;
-    private static View recyclerView;
+    private static RecyclerView recyclerView;
+    MenuItem lastItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,9 +126,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
 
         comparatorConfig = new ComparatorConfig();
 
-        recyclerView = findViewById(R.id.list);
+        recyclerView = (RecyclerView) findViewById(R.id.list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        setupRecyclerView(recyclerView);
     }
 
     @Override
@@ -162,9 +166,21 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         // showDetailDialog();
         // bottomDialogFragment.show(getSupportFragmentManager(), "bla");
 
-        ComparatorConfig.SortType sortType = ComparatorConfig.SortType.NONE;
-        int id = item.getItemId();
+        ComparatorConfig.SortType sortType;
+        SpannableString s;
 
+        if(lastItem != null && lastItem != item) {
+            s = new SpannableString(lastItem.getTitle());
+            s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+            lastItem.setTitle(s);
+        }
+
+        s = new SpannableString(item.getTitle());
+        s.setSpan(new ForegroundColorSpan(Color.rgb(73,0,33)), 0, s.length(), 0);
+        item.setTitle(s);
+        lastItem = item;
+
+        int id = item.getItemId();
         switch (id) {
             case R.id.sortByCosts:
                 sortType = ComparatorConfig.SortType.COSTS;
@@ -202,10 +218,12 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
         if(comparatorSortable != null) {
             Collections.sort(Task.TASK_LIST, comparatorSortable);
-            if(recyclerView != null)
-                recyclerView.scrollTo(0,0);
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
+
+            if(recyclerView != null)
+                recyclerView.smoothScrollToPosition(0);
+
             return true;
         }
 
@@ -384,18 +402,23 @@ public static class SimpleItemRecyclerViewAdapter
                             SimpleItemRecyclerViewAdapter.this.remove(toRemove);
                             SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
                             ((View) view.getParent().getParent()).setAlpha(1);
+                                try {
+                                    if(view != null) {
+                                        Snackbar snack = Snackbar.make(
+                                                view,
+                                                task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
+                                                        .getResources().getString(R.string.deleted),
+                                                Snackbar.LENGTH_LONG);
 
-                            Snackbar snack = Snackbar.make(
-                                    view,
-                                    task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
-                                            .getResources().getString(R.string.deleted),
-                                    Snackbar.LENGTH_LONG);
-
-                            snack.setAction(
-                                    R.string.undo,
-                                    new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove, mParentActivity)
-                            );
-                            snack.show();
+                                        snack.setAction(
+                                                R.string.undo,
+                                                new Command(Command.CommandTyp.Add, SimpleItemRecyclerViewAdapter.this, toRemove, mParentActivity)
+                                        );
+                                        snack.show();
+                                    }
+                                } catch (Exception e) {
+                                    Log.e("Main Snack", e.getMessage());
+                                }
                             }
                         });
                 }

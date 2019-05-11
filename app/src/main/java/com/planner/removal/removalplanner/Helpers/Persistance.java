@@ -44,7 +44,7 @@ public class Persistance {
 
     public static boolean CheckQueue() {
 
-        while(queue.peek() != null) {
+        while(queue != null && queue.peek() != null) {
             AsyncTask<Void, Void, Void> at = queue.peek();
 
             if(at.getStatus() == AsyncTask.Status.FINISHED) {

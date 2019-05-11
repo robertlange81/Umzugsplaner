@@ -29,10 +29,9 @@ public class Task implements Serializable {
 
     /*
     Ideen:
-    - Markiere aktuelle (Sortier-)Einstellung
-    - Assistenz
     - Kosten auch negativ
     - Kostenübersicht - gesamt, erledigt, offen
+    - Assistenz
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
     - mit Google-Kalender synchronisieren
