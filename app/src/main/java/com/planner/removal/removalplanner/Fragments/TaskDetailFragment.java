@@ -642,6 +642,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     public void onDestroy() {
+        MainActivity.NotifyTaskChanged(_task, getActivity());
         stopTimerThread();
         super.onDestroy();
         instance = null;
