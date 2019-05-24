@@ -11,6 +11,12 @@
         android:id="@+id/sortByDate"
         android:icon="@android:drawable/ic_menu_search"
         android:orderInCategory="101"
-        android:title="@string/sortbydate"
+        android:title=""
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/showCosts"
+        android:icon="@mipmap/coins_xxl"
+        android:orderInCategory="102"
+        android:title=""
         app:showAsAction="always" />
 </menu>
