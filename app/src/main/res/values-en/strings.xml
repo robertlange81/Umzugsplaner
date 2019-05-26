@@ -10,7 +10,7 @@
     <string name="placeholder_type">category</string>
     <string name="placeholder_date">deadline</string>
     <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_costs">costs</string>
+    <string name="placeholder_amount">amount</string>
     <string name="done">done</string>
     <string name="todo">todo</string>
     <string name="deleted">deleted</string>

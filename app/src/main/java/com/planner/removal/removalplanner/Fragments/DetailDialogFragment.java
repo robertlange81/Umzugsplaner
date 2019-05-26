@@ -17,7 +17,8 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        final CharSequence[] charSequence = new CharSequence[] {"As Guest","I have account here"};
+        final String msg  = getArguments().getString("message");
+
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -26,7 +27,7 @@ public class DetailDialogFragment extends DialogFragment {
             builder = new AlertDialog.Builder(getActivity());
         }
 
-        builder.setMessage(R.string.placeholder_edit_task)
+        builder.setMessage(msg)
                 .setPositiveButton(R.string.placeholder_save, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
@@ -35,14 +36,6 @@ public class DetailDialogFragment extends DialogFragment {
                 .setNegativeButton(R.string.placeholder_cancel, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
 
-                    }
-                })
-                .setSingleChoiceItems(charSequence, 1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int sortId) {
-                        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                            MainActivity.SortBy(ComparatorConfig.SortType.values()[sortId]);
-                        }
                     }
                 });
 

@@ -480,11 +480,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/input_margin"
                     android:textSize="@dimen/detail_text_size"
-                    android:text="@string/placeholder_costs" />
+                    android:text="@string/placeholder_amount" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/detail_costs"
-                    android:tag="@string/placeholder_costs"
+                    android:tag="@string/placeholder_amount"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
@@ -492,7 +492,7 @@
                     android:singleLine="true"
                     android:hint="@string/placeholder_costs_detail"
                     android:selectAllOnFocus="true"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal|numberSigned"/>
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_costs_icon"

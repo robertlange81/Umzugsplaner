@@ -9,7 +9,7 @@ import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
-public class Formater {
+public class TaskFormater {
 
     public static Locale currentLocal;
 

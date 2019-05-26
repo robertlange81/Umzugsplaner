@@ -31,7 +31,7 @@ import android.widget.TimePicker;
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Helpers.CurrencyWatcher;
-import com.planner.removal.removalplanner.Helpers.Formater;
+import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
@@ -139,8 +139,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         final View rootView = inflater.inflate(R.layout.detail, container, false);
 
-        if(Formater.currentLocal == null) {
-            Formater.setCurrentLocale(rootView.getContext());
+        if(TaskFormater.currentLocal == null) {
+            TaskFormater.setCurrentLocale(rootView.getContext());
         }
 
         txtName = rootView.findViewById(R.id.detail_name);
@@ -364,11 +364,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
 
         if(_task.costs > 0.00)
-            txtCosts.setText(Formater.intCentToString(_task.costs));
+            txtCosts.setText(TaskFormater.intCentToString(_task.costs));
 
         if(_task.date != null) {
             tempDate = new Date(_task.date.getTime());
-            txtDeadline.setText(Formater.formatDateToSring(_task.date));
+            txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
         }
 
         isNotifyEnabled = true;
@@ -525,7 +525,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setYear(year - 1900);
                             tempDate.setMonth(monthOfYear);
                             tempDate.setDate(dayOfMonth);
-                            txtDeadline.setText(Formater.formatDateToSring(tempDate));
+                            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
                             _task.date = tempDate;
 
                             if(isNotifyEnabled)
@@ -563,7 +563,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             tempDate.setHours(hourOfDay);
                             tempDate.setMinutes(minute);
 
-                            txtDeadline.setText(Formater.formatDateToSring(tempDate));
+                            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
                             _task.date = tempDate;
 
                             if(isNotifyEnabled)
@@ -596,7 +596,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         final Handler handler = new Handler();
         Runnable updater = new Runnable() {
             public void run() {
-                while (true) {
+                while (!updaterThread.isInterrupted()) {
                     try {
                         if(needsUpdate) {
                             needsUpdate = false;
@@ -630,10 +630,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
         };
 
-        Thread thread = new Thread(updater);
-        thread.start();
+        updaterThread = new Thread(updater);
+        updaterThread.start();
 
-        return thread;
+        return updaterThread;
     }
 
     private void stopTimerThread() {

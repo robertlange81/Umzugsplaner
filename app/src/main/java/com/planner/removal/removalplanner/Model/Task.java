@@ -29,9 +29,10 @@ public class Task implements Serializable {
 
     /*
     Ideen:
-    - Kosten auch negativ
+    - Sortiere nach Kosten: negativ vor null
     - Kostenübersicht - gesamt, erledigt, offen
     - Assistenz
+    - UpdateTask als Action
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
     - mit Google-Kalender synchronisieren
@@ -44,7 +45,6 @@ public class Task implements Serializable {
     - Sortieren
     - Bild statt Link
     - Einkaufsliste
-    - nach oben scrollen nach Sortieren
      */
 
     @PrimaryKey(autoGenerate = false)
@@ -122,8 +122,8 @@ public class Task implements Serializable {
         TASK_MAP.remove(task.id);
     }
 
-    public static int sumCosts() {
-        int retval = 0;
+    public static long sumCosts() {
+        long retval = 0;
 
         for (Task t: TASK_LIST) {
             retval += t.costs;

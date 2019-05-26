@@ -10,7 +10,7 @@
     <string name="placeholder_type">Kategorie</string>
     <string name="placeholder_date">Termin</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
-    <string name="placeholder_costs">Kosten</string>
+    <string name="placeholder_amount">Summe</string>
     <string name="done">fertig</string>
     <string name="todo">offen</string>
     <string name="deleted">gelöscht</string>

@@ -114,7 +114,7 @@
                 android:adjustViewBounds="true"
                 android:gravity="end"
                 android:maxLines="1"
-                android:text="@string/placeholder_costs"
+                android:text="@string/placeholder_amount"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffaa" />
         </RelativeLayout>

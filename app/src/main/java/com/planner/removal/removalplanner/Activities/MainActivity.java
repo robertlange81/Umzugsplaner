@@ -37,7 +37,7 @@ import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Fragments.DetailDialogFragment;
-import com.planner.removal.removalplanner.Helpers.Formater;
+import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Model.Priority;
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     private BottomSheetFragment bottomDialogFragment;
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
-    MenuItem lastItem;
+    MenuItem lastItem, showCostsMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        if(Formater.currentLocal == null) {
-            Formater.setCurrentLocale(this);
+        if(TaskFormater.currentLocal == null) {
+            TaskFormater.setCurrentLocale(this);
         }
 
         super.onCreate(savedInstanceState);
@@ -149,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_toolbar);
         Menu topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
+        showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
@@ -163,8 +164,12 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // showDetailDialog();
-        // bottomDialogFragment.show(getSupportFragmentManager(), "bla");
+        if(item == showCostsMenuItem) {
+            String msgLabel = getResources().getString(R.string.placeholder_amount);
+            String msgValue = TaskFormater.intCentToString(Task.sumCosts());
+            showDetailDialog(msgLabel, msgValue);
+            return true;
+        }
 
         ComparatorConfig.SortType sortType;
         SpannableString s;
@@ -176,7 +181,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         }
 
         s = new SpannableString(item.getTitle());
-        s.setSpan(new ForegroundColorSpan(Color.rgb(73,0,33)), 0, s.length(), 0);
+        s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         item.setTitle(s);
         lastItem = item;
 
@@ -230,11 +235,14 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         return false;
     }
 
-    public void showDetailDialog() {
+    public void showDetailDialog(String msgLabel, String msgValue) {
         FragmentManager fm = getFragmentManager();
         DialogFragment dialog = new DetailDialogFragment();
+        Bundle args = new Bundle();
+        args.putString("message", msgLabel + ": " + msgValue);
+        dialog.setArguments(args);
         dialog.setRetainInstance(true);
-        dialog.show(fm, "fragment_name");
+        dialog.show(fm, msgLabel);
     }
 
     @Override
@@ -332,10 +340,10 @@ public static class SimpleItemRecyclerViewAdapter
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
-            holder.kosten.setText(Formater.intCentToString(task.costs));
+            holder.kosten.setText(TaskFormater.intCentToString(task.costs));
 
             if(task.date != null) {
-                String terminTxt = Formater.formatDateToSring(task.date);
+                String terminTxt = TaskFormater.formatDateToSring(task.date);
                 holder.termin.setText(terminTxt);
             } else {
                 holder.termin.setText("");
@@ -471,9 +479,9 @@ public static class SimpleItemRecyclerViewAdapter
         private void startTimerThread() {
             stopTimerThread();
             final Handler handler = new Handler();
-            Runnable updater = new Runnable() {
+            final Runnable updater = new Runnable() {
                 public void run() {
-                    while (true) {
+                    while (!updaterThread.isInterrupted()) {
                         try {
                             synchronized (this) {
                                 if(needsUpdate) {
@@ -489,6 +497,7 @@ public static class SimpleItemRecyclerViewAdapter
                             }
                         }
                         catch (InterruptedException e) {
+                            updaterThread.interrupt();
                             String m = e.getMessage();
                             e.printStackTrace();
                         }

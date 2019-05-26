@@ -3,20 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
+        android:id="@+id/showCostsMenuItem"
+        android:icon="@drawable/coins_xxl"
+        android:iconTint="@color/colorGreen"
+        android:orderInCategory="105"
+        android:title=""
+        app:showAsAction="always" />
+    <item
         android:id="@+id/settings"
-        android:orderInCategory="100"
+        android:orderInCategory="110"
         android:title="@string/placeholder_settings"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByDate"
-        android:icon="@android:drawable/ic_menu_search"
-        android:orderInCategory="101"
-        android:title=""
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/showCosts"
-        android:icon="@mipmap/coins_xxl"
-        android:orderInCategory="102"
-        android:title=""
-        app:showAsAction="always" />
+
 </menu>
