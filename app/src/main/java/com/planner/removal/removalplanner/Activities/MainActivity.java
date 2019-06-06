@@ -46,7 +46,11 @@ import com.planner.removal.removalplanner.R;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -165,9 +169,20 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item == showCostsMenuItem) {
-            String msgLabel = getResources().getString(R.string.placeholder_amount);
-            String msgValue = TaskFormater.intCentToString(Task.sumCosts());
-            showDetailDialog(msgLabel, msgValue);
+
+            long sumAll     = Task.sumCosts(false);
+            long sumDone    = Task.sumCosts(true);
+            long sumUndone  = sumAll - sumDone;
+
+            String sumAllString     = TaskFormater.intCentToString(sumAll);
+            String sumDoneString    = TaskFormater.intCentToString(sumDone);
+            String sumUndoneString  = TaskFormater.intCentToString(sumUndone);
+
+            HashMap<String, String> msg = new HashMap<>();
+            msg.put(getResources().getString(R.string.placeholder_amount), sumAllString);
+            msg.put(getResources().getString(R.string.done), sumDoneString);
+            msg.put(getResources().getString(R.string.todo), sumUndoneString);
+            showDetailDialog(msg);
             return true;
         }
 
@@ -235,14 +250,19 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         return false;
     }
 
-    public void showDetailDialog(String msgLabel, String msgValue) {
+    public void showDetailDialog(HashMap<String, String> msgMap) {
         FragmentManager fm = getFragmentManager();
         DialogFragment dialog = new DetailDialogFragment();
         Bundle args = new Bundle();
-        args.putString("message", msgLabel + ": " + msgValue);
+        String msg = "";
+        SortedSet<String> keys = new TreeSet<>(msgMap.keySet());
+        for (String key : keys) {
+            msg += key + ":     " + msgMap.get(key) + "      \n";
+        }
+        args.putString("message", msg);
         dialog.setArguments(args);
         dialog.setRetainInstance(true);
-        dialog.show(fm, msgLabel);
+        dialog.show(fm, "sdfsdfsdf");
     }
 
     @Override

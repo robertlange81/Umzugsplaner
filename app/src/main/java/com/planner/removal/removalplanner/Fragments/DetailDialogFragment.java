@@ -1,17 +1,13 @@
 package com.planner.removal.removalplanner.Fragments;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.TextView;
 import com.planner.removal.removalplanner.R;
 
@@ -32,10 +28,9 @@ public class DetailDialogFragment extends DialogFragment {
         TextView msgTxtView = new TextView(getActivity());
         msgTxtView.setText(msg);
         msgTxtView.setTextSize(22);
-        msgTxtView.setGravity(Gravity.CENTER);
-        msgTxtView.setBackgroundColor(Color.RED);
-
-
+        msgTxtView.setGravity(Gravity.END | Gravity.CENTER);
+        msgTxtView.setBackgroundColor(0xFF770033);
+        msgTxtView.setHeight(600);
 
         builder.setView(msgTxtView);
 
@@ -47,9 +42,6 @@ public class DetailDialogFragment extends DialogFragment {
         // https://www.amazon.de/dp/B079Z3DVC2/ref=cm_sw_em_r_mt_dp_U_jlntCbVXDEPCV
 
         AlertDialog ad = builder.create();
-        int w = ad.getWindow().getDecorView().getHeight();
-        msgTxtView.setHeight(ad.getWindow().getDecorView().getHeight());
-        msgTxtView.setGravity(Gravity.CENTER);
         return ad;
     }
 

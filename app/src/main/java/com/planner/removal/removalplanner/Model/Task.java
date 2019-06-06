@@ -122,10 +122,13 @@ public class Task implements Serializable {
         TASK_MAP.remove(task.id);
     }
 
-    public static long sumCosts() {
+    public static long sumCosts(boolean onlyDone) {
         long retval = 0;
 
         for (Task t: TASK_LIST) {
+            if(onlyDone && !t.is_Done)
+                continue;
+
             retval += t.costs;
         }
 
