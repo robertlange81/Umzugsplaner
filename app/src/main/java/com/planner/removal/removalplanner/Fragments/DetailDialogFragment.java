@@ -1,24 +1,26 @@
 package com.planner.removal.removalplanner.Fragments;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-
-import com.planner.removal.removalplanner.Activities.MainActivity;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.TextView;
 import com.planner.removal.removalplanner.R;
-// TODO : Remove, if not needed
+
 public class DetailDialogFragment extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
         final String msg  = getArguments().getString("message");
-
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -27,20 +29,27 @@ public class DetailDialogFragment extends DialogFragment {
             builder = new AlertDialog.Builder(getActivity());
         }
 
-        builder.setMessage(msg)
-                .setPositiveButton(R.string.placeholder_save, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+        TextView msgTxtView = new TextView(getActivity());
+        msgTxtView.setText(msg);
+        msgTxtView.setTextSize(22);
+        msgTxtView.setGravity(Gravity.CENTER);
+        msgTxtView.setBackgroundColor(Color.RED);
 
-                    }
-                })
-                .setNegativeButton(R.string.placeholder_cancel, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
 
-                    }
-                });
+
+        builder.setView(msgTxtView);
+
+        builder.setView(msgTxtView)
+                .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {}
+         });
 
         // https://www.amazon.de/dp/B079Z3DVC2/ref=cm_sw_em_r_mt_dp_U_jlntCbVXDEPCV
+
         AlertDialog ad = builder.create();
+        int w = ad.getWindow().getDecorView().getHeight();
+        msgTxtView.setHeight(ad.getWindow().getDecorView().getHeight());
+        msgTxtView.setGravity(Gravity.CENTER);
         return ad;
     }
 
