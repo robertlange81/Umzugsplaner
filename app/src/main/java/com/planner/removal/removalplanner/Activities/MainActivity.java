@@ -257,7 +257,11 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         String msg = "";
         SortedSet<String> keys = new TreeSet<>(msgMap.keySet());
         for (String key : keys) {
-            msg += key + ":     " + msgMap.get(key) + "      \n";
+            // https://stackoverflow.com/questions/388461/how-can-i-pad-a-string-in-java
+            msg += String.format("%-" + (15 + key.length() - msgMap.get(key).length()) + "s", key + ":")
+                    + msgMap.get(key)
+                    //+ String.format("%" + (30 - msgMap.get(key).length()) + "s", msgMap.get(key))
+                    + "\n";
         }
         args.putString("message", msg);
         dialog.setArguments(args);

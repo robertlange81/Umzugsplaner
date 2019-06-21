@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.TabStopSpan;
 import android.view.Gravity;
 import android.widget.TextView;
 import com.planner.removal.removalplanner.R;
@@ -26,8 +30,13 @@ public class DetailDialogFragment extends DialogFragment {
         }
 
         TextView msgTxtView = new TextView(getActivity());
+
+        //SpannableStringBuilder span = new SpannableStringBuilder(msg);
+        //span.setSpan(new TabStopSpan.Standard(300), 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
+        //msgTxtView.setText( span, TextView.BufferType.SPANNABLE);
         msgTxtView.setText(msg);
         msgTxtView.setTextSize(22);
+        msgTxtView.setPadding( 10, 100, 100, 10 );
         msgTxtView.setGravity(Gravity.END | Gravity.CENTER);
         msgTxtView.setBackgroundColor(0xFF770033);
         msgTxtView.setHeight(600);
