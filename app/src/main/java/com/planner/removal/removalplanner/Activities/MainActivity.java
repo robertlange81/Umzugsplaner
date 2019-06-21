@@ -178,11 +178,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             String sumDoneString    = TaskFormater.intCentToString(sumDone);
             String sumUndoneString  = TaskFormater.intCentToString(sumUndone);
 
-            HashMap<String, String> msg = new HashMap<>();
-            msg.put(getResources().getString(R.string.placeholder_amount), sumAllString);
-            msg.put(getResources().getString(R.string.done), sumDoneString);
-            msg.put(getResources().getString(R.string.todo), sumUndoneString);
-            showDetailDialog(msg);
+            String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
+            showDetailDialog(costs);
+
             return true;
         }
 
@@ -250,23 +248,14 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         return false;
     }
 
-    public void showDetailDialog(HashMap<String, String> msgMap) {
+    public void showDetailDialog(String[] msg) {
         FragmentManager fm = getFragmentManager();
         DialogFragment dialog = new DetailDialogFragment();
         Bundle args = new Bundle();
-        String msg = "";
-        SortedSet<String> keys = new TreeSet<>(msgMap.keySet());
-        for (String key : keys) {
-            // https://stackoverflow.com/questions/388461/how-can-i-pad-a-string-in-java
-            msg += String.format("%-" + (15 + key.length() - msgMap.get(key).length()) + "s", key + ":")
-                    + msgMap.get(key)
-                    //+ String.format("%" + (30 - msgMap.get(key).length()) + "s", msgMap.get(key))
-                    + "\n";
-        }
-        args.putString("message", msg);
+        args.putStringArray("message", msg);
         dialog.setArguments(args);
-        dialog.setRetainInstance(true);
-        dialog.show(fm, "sdfsdfsdf");
+        // dialog.setRetainInstance(true);
+        dialog.show(fm, "Kosten");
     }
 
     @Override

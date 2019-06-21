@@ -7,12 +7,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.TabStopSpan;
-import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.widget.TextView;
+
 import com.planner.removal.removalplanner.R;
 
 public class DetailDialogFragment extends DialogFragment {
@@ -20,7 +17,7 @@ public class DetailDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        final String msg  = getArguments().getString("message");
+        final String[] msg  = getArguments().getStringArray("message");
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -29,29 +26,35 @@ public class DetailDialogFragment extends DialogFragment {
             builder = new AlertDialog.Builder(getActivity());
         }
 
-        TextView msgTxtView = new TextView(getActivity());
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_costs, null))
+                .setTitle("Kosten")
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // do nothing
+                    }
+                });
 
-        //SpannableStringBuilder span = new SpannableStringBuilder(msg);
-        //span.setSpan(new TabStopSpan.Standard(300), 0, span.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE );
-        //msgTxtView.setText( span, TextView.BufferType.SPANNABLE);
-        msgTxtView.setText(msg);
-        msgTxtView.setTextSize(22);
-        msgTxtView.setPadding( 10, 100, 100, 10 );
-        msgTxtView.setGravity(Gravity.END | Gravity.CENTER);
-        msgTxtView.setBackgroundColor(0xFF770033);
-        msgTxtView.setHeight(600);
+        AlertDialog alert = builder.create();
 
-        builder.setView(msgTxtView);
+        alert.show();
+        TextView txtPaidUndone = alert.findViewById(R.id.paid_undone);
+        if(txtPaidUndone != null)
+            txtPaidUndone.setText(msg[0]);
 
-        builder.setView(msgTxtView)
-                .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {}
-         });
+        TextView txtPaidDone = alert.findViewById(R.id.paid_done);
+        if(txtPaidDone != null)
+            txtPaidDone.setText(msg[1]);
 
+        TextView txtPaidSum = alert.findViewById(R.id.paid_sum);
+        if(txtPaidSum != null)
+            txtPaidSum.setText(msg[2]);
+
+        return alert;
         // https://www.amazon.de/dp/B079Z3DVC2/ref=cm_sw_em_r_mt_dp_U_jlntCbVXDEPCV
-
-        AlertDialog ad = builder.create();
-        return ad;
     }
 
     /* The activity that creates an instance of this dialog fragment must

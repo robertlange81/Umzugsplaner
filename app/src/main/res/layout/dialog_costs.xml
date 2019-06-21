@@ -1,0 +1,130 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:src="@drawable/coins_xxl"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:scaleType="center"
+        android:background="#FFFFBB33"
+        android:contentDescription="@string/app_name" />
+    <TableRow
+        android:id="@+id/table"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:layout_toRightOf="@id/checkBox"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="top"
+        android:weightSum="10">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="5"
+            android:weightSum="3"
+            android:descendantFocusability="blocksDescendants"
+            android:gravity="top">
+
+            <TextView
+                android:id="@+id/paid_undone_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dip"
+                android:layout_marginRight="0dip"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@string/todo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffeaefff" />
+
+            <TextView
+                android:id="@+id/paid_done_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paid_undone_label"
+                android:layout_marginTop="@dimen/dialog_row_margin_top"
+                android:layout_marginRight="0dip"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@string/paid_done"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ff33ee33" />
+
+            <TextView
+                android:id="@+id/paid_sum_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paid_done_label"
+                android:layout_marginTop="@dimen/dialog_row_margin_top"
+                android:layout_marginBottom="@dimen/dialog_row_margin_top"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dip"
+                android:adjustViewBounds="true"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@string/placeholder_amount"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffaa" />
+        </RelativeLayout>
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="5"
+            android:weightSum="3"
+            android:descendantFocusability="blocksDescendants"
+            android:gravity="top">
+
+            <TextView
+                android:id="@+id/paid_undone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dip"
+                android:layout_marginRight="0dip"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffeaefff" />
+
+            <TextView
+                android:id="@+id/paid_done"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paid_undone"
+                android:layout_marginTop="@dimen/dialog_row_margin_top"
+                android:layout_marginRight="0dip"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ff33ee33" />
+
+            <TextView
+                android:id="@+id/paid_sum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/paid_done"
+                android:layout_marginTop="@dimen/dialog_row_margin_top"
+                android:layout_marginBottom="30dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="0dip"
+                android:adjustViewBounds="true"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffffaa" />
+        </RelativeLayout>
+
+    </TableRow>
+
+</LinearLayout>

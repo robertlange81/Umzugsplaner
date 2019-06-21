@@ -25,7 +25,7 @@
     <string name="placeholder_type">category</string>
     <string name="placeholder_date">deadline</string>
     <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_amount">amount</string>
+    <string name="placeholder_amount">sum</string>
     <string name="removed">removed</string>
     <string name="sortbyCosts">Sort By Costs</string>
     <string name="sortbydate">Sort By Date</string>
@@ -36,6 +36,7 @@
     <string name="time_changed">time changed</string>
     <string name="todo">todo</string>
     <string name="undo">undo</string>
+    <string name="paid_done">paid</string>
     <string-array name="base_task_types">
         <item>BATH</item>
         <item>KITCHEN</item>

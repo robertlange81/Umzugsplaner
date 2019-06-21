@@ -64,6 +64,7 @@
     <dimen name="dp_160">160dp</dimen>
 
     <dimen name="md_bottom_sheet_separator_top_margin">7dp</dimen>
+    <dimen name="dialog_row_margin_top">25dip</dimen>
 
 </resources>
 
