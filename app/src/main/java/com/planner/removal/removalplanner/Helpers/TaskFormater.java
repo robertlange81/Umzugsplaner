@@ -58,4 +58,29 @@ public class TaskFormater {
         double d = (cent.doubleValue()) / 100;
         return nf.format(d);
     }
+
+    public static String intSigToString(Long cent) {
+
+        if(cent == 0)
+            return "";
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocal);
+        nf.setCurrency(Currency.getInstance(currentLocal));
+
+        double d = (cent.doubleValue()) / 100;
+        return nf.format(d).substring(0, 4);
+    }
+
+    public static String intFractionsToString(Long cent) {
+
+        if(cent == 0)
+            return "";
+
+        NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocal);
+        nf.setCurrency(Currency.getInstance(currentLocal));
+
+        double d = (cent.doubleValue()) / 100;
+        String retval = nf.format(d);
+        return retval.substring(retval.length() - 2);
+    }
 }

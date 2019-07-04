@@ -37,9 +37,11 @@ import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
 import com.planner.removal.removalplanner.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -374,10 +376,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             mapTrashCanToInput(linkMap);
 
         if(_task.costs > 0.00) {
-            long sig = _task.costs / 100;
-            txtCostsSig.setText(TaskFormater.intDecimalsToString(sig));
-            long frac = _task.costs % 100;
-            txtCostsFractions.setText(TaskFormater.intDecimalsToString(frac));
+            txtCostsSig.setText(TaskFormater.intSigToString(_task.costs));
+            txtCostsFractions.setText(TaskFormater.intFractionsToString(_task.costs));
         }
 
         if(_task.date != null) {
@@ -407,15 +407,23 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     private void _initDeleteIcons(final View rootView) {
-        final HashMap<ImageView, TextView> deleteMap = new HashMap<>();
+        final HashMap<ImageView, List<TextView>> deleteMap = new HashMap<>();
 
         for (int i = 0; i < imgDeleteLinks.length; i++) {
-            deleteMap.put(imgDeleteLinks[i], txtInputs[i]);
+
+            List<TextView> inputList = deleteMap.get(imgDeleteLinks[i]);
+            if(inputList == null || inputList.size() == 0) {
+                inputList = new ArrayList<>();
+            }
+
+            inputList.add(txtInputs[i]);
+            deleteMap.put(imgDeleteLinks[i], inputList);
 
             imgDeleteLinks[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
-                    TextView t = deleteMap.get(view);
+                List<TextView> tlist = deleteMap.get(view);
+                for (TextView t:tlist) {
                     if(t.getText() != null && !t.getText().toString().equals("")) {
 
                         String msg = (t.getTag() != null ? t.getTag().toString() : t.getText())
@@ -446,6 +454,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                             t.clearFocus();
                         }
                     }
+                }
                 }
             });
         }

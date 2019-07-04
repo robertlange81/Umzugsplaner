@@ -53,21 +53,22 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
                 MainActivity.NotifyTaskChanged(_task, null);
 
-                // String currText = TaskFormater.intDecimalsToString(_task.costs);
+                String currText = TaskFormater.intDecimalsToString(_task.costs);
 
-                /*
                 if(currText != null && currText.length() > 0) {
                     int cp = current.getSelectionStart();
                     sigNumbers.setText(currText.substring(0, currText.length() - 3));
                     fractionNumbers.setText(currText.substring(currText.length() - 2));
 
+                    /* TODO: set Selection
                     if(currText.substring(0, 1).matches("\\d")) {
                         current.setSelection(cp);
                     } else {
                         current.setSelection(cp + 1);
                     }
+                    */
                 }
-                */
+
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();
             }
