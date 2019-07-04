@@ -181,10 +181,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
         imgDeleteLinks[8] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
 
-        _initListeners(rootView);
-        final HashMap<TextView, String> linkMap = _initLinks();
-        _initDeleteIcons(rootView);
-
         if (_task != null) {
             ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
                     rootView.getContext(),
@@ -192,8 +188,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     rootView.getContext().getResources().getStringArray(R.array.base_task_types)
             );
             spinnerDetailType.setAdapter(_categoryAdapter);
-            setDetails(linkMap, rootView);
+            setDetails(null, rootView);
         }
+
+        _initListeners(rootView);
+        final HashMap<TextView, String> linkMap = _initLinks();
+        _initDeleteIcons(rootView);
 
         if(updaterThread == null)
             startTimerThread(rootView);
@@ -370,6 +370,25 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             lblPrio.setText(R.string.normalPrioText_short);
         }
 
+        if(linkMap != null)
+            mapTrashCanToInput(linkMap);
+
+        if(_task.costs > 0.00) {
+            long sig = _task.costs / 100;
+            txtCostsSig.setText(TaskFormater.intDecimalsToString(sig));
+            long frac = _task.costs % 100;
+            txtCostsFractions.setText(TaskFormater.intDecimalsToString(frac));
+        }
+
+        if(_task.date != null) {
+            tempDate = new Date(_task.date.getTime());
+            txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
+        }
+
+        isNotifyEnabled = true;
+    }
+
+    private void mapTrashCanToInput(HashMap<TextView, String> linkMap) {
         if(_task.links != null && _task.links.size() > 0) {
             int i = 0;
             for (Map.Entry<String, String> entry : _task.links.entrySet())
@@ -385,20 +404,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             if(i < MAX_INPUT_FIELDS_FOR_LINKS)
                 _formatLink(txtInputs[i], "", "");
         }
-
-        if(_task.costs > 0.00) {
-            long sig = _task.costs / 100;
-            txtCostsSig.setText(TaskFormater.intDecimalsToString(sig));
-            long frac = _task.costs % 100;
-            txtCostsFractions.setText(TaskFormater.intDecimalsToString(frac));
-        }
-
-        if(_task.date != null) {
-            tempDate = new Date(_task.date.getTime());
-            txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
-        }
-
-        isNotifyEnabled = true;
     }
 
     private void _initDeleteIcons(final View rootView) {
