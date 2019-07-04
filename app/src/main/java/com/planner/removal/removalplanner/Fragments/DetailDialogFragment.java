@@ -30,7 +30,7 @@ public class DetailDialogFragment extends DialogFragment {
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setView(inflater.inflate(R.layout.dialog_costs, null))
-                .setTitle("Kosten")
+                .setTitle(getResources().getString(R.string.placeholder_costs) + " - " + getResources().getString(R.string.placeholder_overview))
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {

@@ -47,7 +47,7 @@ public class TaskFormater {
         return dfTime.format(date);
     }
 
-    public static String intCentToString(Long cent) {
+    public static String intDecimalsToString(Long cent) {
 
         if(cent == 0)
             return "";

@@ -46,11 +46,7 @@ import com.planner.removal.removalplanner.R;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -174,9 +170,9 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             long sumDone    = Task.sumCosts(true);
             long sumUndone  = sumAll - sumDone;
 
-            String sumAllString     = TaskFormater.intCentToString(sumAll);
-            String sumDoneString    = TaskFormater.intCentToString(sumDone);
-            String sumUndoneString  = TaskFormater.intCentToString(sumUndone);
+            String sumAllString     = TaskFormater.intDecimalsToString(sumAll);
+            String sumDoneString    = TaskFormater.intDecimalsToString(sumDone);
+            String sumUndoneString  = TaskFormater.intDecimalsToString(sumUndone);
 
             String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
             showDetailDialog(costs);
@@ -353,7 +349,7 @@ public static class SimpleItemRecyclerViewAdapter
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
-            holder.kosten.setText(TaskFormater.intCentToString(task.costs));
+            holder.kosten.setText(TaskFormater.intDecimalsToString(task.costs));
 
             if(task.date != null) {
                 String terminTxt = TaskFormater.formatDateToSring(task.date);

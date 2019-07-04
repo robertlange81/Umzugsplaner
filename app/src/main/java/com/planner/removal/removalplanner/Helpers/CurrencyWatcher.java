@@ -1,7 +1,6 @@
 package com.planner.removal.removalplanner.Helpers;
 
 import android.text.Editable;
-import android.util.Log;
 import android.widget.EditText;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
@@ -13,62 +12,69 @@ import java.text.ParseException;
 public class CurrencyWatcher implements android.text.TextWatcher {
 
     private final DecimalFormat df;
-    private final DecimalFormat dfnd;
-    private final EditText et;
+    private final EditText sigNumbers, fractionNumbers;
     private final Task _task;
     private boolean hasFractionalPart;
     private int trailingZeroCount;
 
-    public CurrencyWatcher(EditText editText, Task task, String pattern) {
+    public CurrencyWatcher(EditText sigNumbers, EditText fractionNumbers, Task task, String pattern) {
         df = new DecimalFormat(pattern);
         df.setDecimalSeparatorAlwaysShown(true);
-        dfnd = new DecimalFormat("#,###.00");
-        this.et = editText;
+        this.sigNumbers = sigNumbers;
+        this.fractionNumbers = fractionNumbers;
         hasFractionalPart = false;
         this._task = task;
     }
 
     @Override
     public void afterTextChanged(Editable s) {
-        Log.d("costs", "afterTextChanged");
-        et.removeTextChangedListener(this);
+
+        sigNumbers.removeTextChangedListener(this);
+        fractionNumbers.removeTextChangedListener(this);
+
+        EditText current = null;
+
+        if (s == sigNumbers.getEditableText()) {
+            current = sigNumbers;
+            _task.costs = _task.costs % 100;
+        } else if (s == fractionNumbers.getEditableText()) {
+            current = fractionNumbers;
+            _task.costs = (_task.costs / 100) * 100;
+        }
 
         if (s != null && !s.toString().isEmpty()) {
             try {
-                int inilen, endlen;
-                inilen = et.getText().toString().replaceAll("[^0-9.,]+","").length();
-                String v = s.toString().replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "").replace("$", "");
-                Number n = df.parse(v);
-                int cp = et.getSelectionStart();
+                String newStringCurrent = current.getText().toString().replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                        .replace("$", "")
+                        .replace("€", "");
+                Long newNumber = df.parse(newStringCurrent).longValue();
 
-                Double d = n.doubleValue() * 100;
-                Long l = d.longValue();
-                if(!l.equals(_task.costs)) {
-                    _task.costs = d.longValue();
-                    MainActivity.NotifyTaskChanged(_task, null);
-                    String currText = TaskFormater.intCentToString(_task.costs);
-                    et.setText(currText);
+                _task.costs += current == sigNumbers ? (newNumber * 100) : newNumber;
 
-                    endlen = et.getText().toString().replaceAll("[^0-9.,]+","").length();
-                    if(endlen - inilen != 3) {
-                        int sel = (cp + (endlen - inilen));
-                        if (sel > 0 && sel < et.getText().length()) {
-                            et.setSelection(sel);
-                        }
+                MainActivity.NotifyTaskChanged(_task, null);
+
+                // String currText = TaskFormater.intDecimalsToString(_task.costs);
+
+                /*
+                if(currText != null && currText.length() > 0) {
+                    int cp = current.getSelectionStart();
+                    sigNumbers.setText(currText.substring(0, currText.length() - 3));
+                    fractionNumbers.setText(currText.substring(currText.length() - 2));
+
+                    if(currText.substring(0, 1).matches("\\d")) {
+                        current.setSelection(cp);
                     } else {
-                        if(currText.substring(0, 1).matches("\\d")) {
-                            et.setSelection(cp);
-                        } else {
-                            et.setSelection(cp + 1);
-                        }
+                        current.setSelection(cp + 1);
                     }
                 }
+                */
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();
             }
         }
 
-        et.addTextChangedListener(this);
+        sigNumbers.addTextChangedListener(this);
+        fractionNumbers.addTextChangedListener(this);
     }
 
     @Override
@@ -77,19 +83,5 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        int index = s.toString().indexOf(String.valueOf(df.getDecimalFormatSymbols().getDecimalSeparator()));
-        trailingZeroCount = 0;
-        if (index > -1) {
-            for (index++; index < s.length(); index++) {
-                if (s.charAt(index) == '0')
-                    trailingZeroCount++;
-                else {
-                    trailingZeroCount = 0;
-                }
-            }
-            hasFractionalPart = true;
-        } else {
-            hasFractionalPart = false;
-        }
     }
 }
