@@ -30,9 +30,8 @@ public class Task implements Serializable {
     /*
     Ideen:
     - Sortiere nach Kosten: negativ vor null
-    - Kostenübersicht - gesamt, erledigt, offen
     - Assistenz
-    - UpdateTask als Action
+    - Amazon / Google
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
     - mit Google-Kalender synchronisieren
@@ -40,7 +39,6 @@ public class Task implements Serializable {
     - Ausdrucken / PDF erstellen / per Mail senden
     - Import / Export
     - Standard neu importieren
-    - Amazon / Google
     - Content Provider
     - Sortieren
     - Bild statt Link

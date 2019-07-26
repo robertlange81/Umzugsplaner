@@ -375,7 +375,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if(linkMap != null)
             mapTrashCanToInput(linkMap);
 
-        if(_task.costs > 0.00) {
+        if(_task.costs != 0.00) {
             txtCostsSig.setText(TaskFormater.intSigToString(_task.costs));
             txtCostsFractions.setText(TaskFormater.intFractionsToString(_task.costs));
         }

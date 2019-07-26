@@ -68,7 +68,8 @@ public class TaskFormater {
         nf.setCurrency(Currency.getInstance(currentLocal));
 
         double d = (cent.doubleValue()) / 100;
-        return nf.format(d).substring(0, 4);
+        String retval = nf.format(d);
+        return retval.substring(0, retval.length() - 3);
     }
 
     public static String intFractionsToString(Long cent) {

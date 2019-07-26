@@ -29,27 +29,31 @@ public class CurrencyWatcher implements android.text.TextWatcher {
     @Override
     public void afterTextChanged(Editable s) {
 
-        sigNumbers.removeTextChangedListener(this);
-        fractionNumbers.removeTextChangedListener(this);
-
-        EditText current = null;
-
         if (s == sigNumbers.getEditableText()) {
-            current = sigNumbers;
             _task.costs = _task.costs % 100;
+            sigNumbersChanged(sigNumbers);
         } else if (s == fractionNumbers.getEditableText()) {
-            current = fractionNumbers;
             _task.costs = (_task.costs / 100) * 100;
+            fracNumbersChanged(fractionNumbers);
         }
 
-        if (s != null && !s.toString().isEmpty()) {
+    }
+
+    private void sigNumbersChanged(EditText current) {
+
+        sigNumbers.removeTextChangedListener(this);
+
+        if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
             try {
-                String newStringCurrent = current.getText().toString().replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
-                        .replace("$", "")
-                        .replace("€", "");
+                String oldSig = current.getText().toString();
+                String newStringCurrent = oldSig
+                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                        .replaceAll("[^0-9.,-]", "");
+
+                newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
                 Long newNumber = df.parse(newStringCurrent).longValue();
 
-                _task.costs += current == sigNumbers ? (newNumber * 100) : newNumber;
+                _task.costs += newNumber * 100;
 
                 MainActivity.NotifyTaskChanged(_task, null);
 
@@ -57,16 +61,15 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
                 if(currText != null && currText.length() > 0) {
                     int cp = current.getSelectionStart();
-                    sigNumbers.setText(currText.substring(0, currText.length() - 3));
-                    fractionNumbers.setText(currText.substring(currText.length() - 2));
+                    String newSig = currText.substring(0, currText.length() - 3);
+                    sigNumbers.setText(newSig); // exclude fractions
 
-                    /* TODO: set Selection
-                    if(currText.substring(0, 1).matches("\\d")) {
-                        current.setSelection(cp);
-                    } else {
-                        current.setSelection(cp + 1);
-                    }
-                    */
+                    current.setSelection(
+                        Math.max(
+                          0,
+                          Math.min(newSig.length(), cp + (newSig.length() - oldSig.length()))
+                        )
+                    );
                 }
 
             } catch (NumberFormatException | ParseException e) {
@@ -75,6 +78,29 @@ public class CurrencyWatcher implements android.text.TextWatcher {
         }
 
         sigNumbers.addTextChangedListener(this);
+    }
+
+    private void fracNumbersChanged(EditText current) {
+
+        fractionNumbers.removeTextChangedListener(this);
+
+        if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
+            try {
+                String newStringCurrent = current.getText().toString()
+                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "");
+
+                newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
+                Long newNumber = df.parse(newStringCurrent).longValue();
+
+                _task.costs += newNumber;
+
+                MainActivity.NotifyTaskChanged(_task, null);
+
+            } catch (NumberFormatException | ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
         fractionNumbers.addTextChangedListener(this);
     }
 
