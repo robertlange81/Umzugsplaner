@@ -28,6 +28,10 @@ public class Task implements Serializable {
     public static int maxId = 0;
 
     /*
+    Fehler:
+    - Tablet: neuer Task, Tablet muss gedreht werden => keine neue Activity starten
+    - Tablet: Link zu Kostenübersicht fehlt
+
     Ideen:
     - Sortiere nach Kosten: negativ vor null
     - Assistenz
@@ -115,6 +119,7 @@ public class Task implements Serializable {
         TASK_LIST.add(task);
         TASK_MAP.put(task.id.toString(), task);
     }
+
     public static void removeTask(Task task) {
         TASK_LIST.remove(task);
         TASK_MAP.remove(task.id);

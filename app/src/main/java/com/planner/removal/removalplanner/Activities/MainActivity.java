@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.design.bottomappbar.BottomAppBar;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.DividerItemDecoration;
@@ -88,9 +89,10 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             public void onClick(View view) {
                 view.setAlpha(1f);
                 if(mTwoPane) {
-                    Intent i = new Intent(view.getContext(), DetailActivity.class);
-                    i.putExtra(DetailActivity.ARG_TASK_ID, Task.maxId + 1);
-                    startActivity(i);
+                    Task _task = new Task("", "");
+                    Task.addTask(_task);
+                    NotifyTaskChanged(null, null);
+                    adapter.setFragmentTwoPane(_task);
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetailActivity.class);
@@ -322,6 +324,23 @@ public static class SimpleItemRecyclerViewAdapter
         }
     };
 
+    public void setFragmentTwoPane (Task t) {
+        Bundle arguments = new Bundle();
+
+        arguments.putString(TaskDetailFragment.TASK_ID, t.id);
+        TaskDetailFragment fragment = new TaskDetailFragment();
+        fragment.setArguments(arguments);
+        mParentActivity.getSupportFragmentManager().beginTransaction()
+                .replace(R.id.task_detail_container, fragment)
+                .commit();
+    }
+
+    public void removeFragments() {
+        for (Fragment fragment :  mParentActivity.getSupportFragmentManager().getFragments()) {
+            mParentActivity.getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+        }
+    }
+
     SimpleItemRecyclerViewAdapter(MainActivity parent, List<Task> aufgaben, boolean twoPane) {
             mValues = aufgaben;
             mParentActivity = parent;
@@ -418,6 +437,9 @@ public static class SimpleItemRecyclerViewAdapter
                             Task toRemove = mValues.get(actPosition);
                             SimpleItemRecyclerViewAdapter.this.remove(toRemove);
                             SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                            if(mTwoPane) {
+                                removeFragments();
+                            }
                             ((View) view.getParent().getParent()).setAlpha(1);
                                 try {
                                     if(view != null) {
