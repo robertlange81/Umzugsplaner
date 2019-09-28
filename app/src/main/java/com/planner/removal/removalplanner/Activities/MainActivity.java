@@ -31,13 +31,14 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.planner.removal.removalplanner.Fragments.BottomSheetFragment;
+import com.planner.removal.removalplanner.Fragments.InitDialogFragment;
+import com.planner.removal.removalplanner.Fragments.InitDialogFragment.InitDialogListener;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Model.Task;
-import com.planner.removal.removalplanner.Fragments.DetailDialogFragment;
+import com.planner.removal.removalplanner.Fragments.CostsDialogFragment;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Helpers.Command;
@@ -51,15 +52,13 @@ import java.util.List;
 
 import static android.widget.LinearLayout.VERTICAL;
 
-
-public class MainActivity extends AppCompatActivity implements DetailDialogFragment.DetailDialogListener {
+public class MainActivity extends AppCompatActivity implements InitDialogListener {
 
     private boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
-    private BottomSheetFragment bottomDialogFragment;
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
-    MenuItem lastItem, showCostsMenuItem;
+    MenuItem initDialog, lastItem, showCostsMenuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +79,6 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             bottomAppBar.setOverflowIcon(drawable);
             setSupportActionBar(bottomAppBar);
         }
-
-        bottomDialogFragment = BottomSheetFragment.newInstance();
 
         FloatingActionButton addNewAction = findViewById(R.id.fab);
         addNewAction.setOnClickListener(new View.OnClickListener() {
@@ -152,6 +149,7 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         Menu topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
+        initDialog = topMenu.findItem(R.id.settings);
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
@@ -177,7 +175,15 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
             String sumUndoneString  = TaskFormater.intDecimalsToString(sumUndone);
 
             String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
-            showDetailDialog(costs);
+            showDetailDialog(CostsDialogFragment.class, costs);
+
+            return true;
+        }
+
+        if(item == initDialog) {
+
+            String[] init = new String[0];
+            showDetailDialog(InitDialogFragment.class, init);
 
             return true;
         }
@@ -246,24 +252,33 @@ public class MainActivity extends AppCompatActivity implements DetailDialogFragm
         return false;
     }
 
-    public void showDetailDialog(String[] msg) {
+    public void showDetailDialog(Class<?> clazz, String[] msg) {
         FragmentManager fm = getFragmentManager();
-        DialogFragment dialog = new DetailDialogFragment();
-        Bundle args = new Bundle();
-        args.putStringArray("message", msg);
-        dialog.setArguments(args);
-        // dialog.setRetainInstance(true);
-        dialog.show(fm, "Kosten");
+        DialogFragment dialog = null;
+
+        if (clazz == CostsDialogFragment.class) {
+            dialog = new CostsDialogFragment();
+        } else if (clazz == InitDialogFragment.class) {
+            dialog = new InitDialogFragment();
+        }
+
+        if (dialog != null) {
+            Bundle args = new Bundle();
+            args.putStringArray("message", msg);
+            dialog.setArguments(args);
+            // dialog.setRetainInstance(true);
+            dialog.show(fm, "Kosten");
+        }
     }
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog) {
-
+        int pos = 0;
     }
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
+        int neg = 0;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

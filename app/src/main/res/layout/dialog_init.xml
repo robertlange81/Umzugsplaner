@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#FFFFFF"
+        android:contentDescription="@string/app_name"
+        android:scaleType="center"
+        android:src="@drawable/moving_van" />
+    <TableRow
+        android:layout_below="@id/detail_fifth_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/detail_row_margin_top"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/input_margin"
+            android:textSize="@dimen/detail_text_size"
+            android:text="@string/placeholder_date_removal" />
+
+        <TableRow
+            android:id="@+id/detail_deadline_buttons"
+            android:layout_weight="1"
+            android:layout_height="@dimen/detail_row_height"
+            android:minHeight="@dimen/detail_row_height"
+            android:gravity="top"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="5dp"
+            android:weightSum="2">
+
+            <Button
+                android:layout_height="match_parent"
+                android:text="@string/placeholder_date_detail"
+                android:id="@+id/init_btn_date"
+                android:layout_weight="1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:text="@string/placeholder_time_detail"
+                android:layout_weight="1"
+                android:id="@+id/init_btn_time"
+                android:layout_toRightOf="@+id/detail_btn_date" />
+        </TableRow>
+    </TableRow>
+    <TableRow
+        android:layout_below="@id/detail_fourth_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/detail_deadline_label"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/input_margin"
+            android:textSize="@dimen/detail_text_size"
+            android:text="" />
+
+        <EditText
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:tag="@string/placeholder_date"
+            android:gravity="bottom|center_vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/detail_deadline"
+            android:textSize="@dimen/detail_text_size"
+            android:inputType="text|time"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </TableRow>
+
+
+</LinearLayout>

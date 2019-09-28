@@ -26,14 +26,10 @@ public class Task implements Serializable {
     public static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<String, Task> TASK_MAP = new HashMap<String, Task>();
     public static int maxId = 0;
+    public static Date deadline;
 
     /*
-    Fehler:
-    - Tablet: neuer Task, Tablet muss gedreht werden => keine neue Activity starten
-    - Tablet: Link zu Kostenübersicht fehlt
-
     Ideen:
-    - Sortiere nach Kosten: negativ vor null
     - Assistenz
     - Amazon / Google
     - Hintergrundbild (Grundriss / Baby)
@@ -44,7 +40,6 @@ public class Task implements Serializable {
     - Import / Export
     - Standard neu importieren
     - Content Provider
-    - Sortieren
     - Bild statt Link
     - Einkaufsliste
      */
