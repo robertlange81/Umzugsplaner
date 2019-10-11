@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
@@ -58,7 +59,25 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private SimpleItemRecyclerViewAdapter adapter;
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
-    MenuItem initDialog, lastItem, showCostsMenuItem;
+    MenuItem initDialogMenuItem, lastItem, showCostsMenuItem;
+    DialogFragment dialog;
+
+
+    @Override
+    public void onClick(DialogInterface dialogInterface, int which) {
+        if(dialog != null && dialog instanceof InitDialogFragment) {
+            InitDialogFragment initdialog = (InitDialogFragment) dialog;
+            if(initdialog.getRemovalDate() == null) {
+                return;
+            }
+
+            if(initdialog.getDeleteOld()) {
+                Persistance.DeleteAllTasks(this);
+            }
+
+            Task.init(initdialog.getRemovalDate());
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         Menu topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
-        initDialog = topMenu.findItem(R.id.settings);
+        initDialogMenuItem = topMenu.findItem(R.id.settings);
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
@@ -180,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
-        if(item == initDialog) {
+        if(item == initDialogMenuItem) {
 
             String[] init = new String[0];
             showDetailDialog(InitDialogFragment.class, init);
@@ -254,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     public void showDetailDialog(Class<?> clazz, String[] msg) {
         FragmentManager fm = getFragmentManager();
-        DialogFragment dialog = null;
+        dialog = null;
 
         if (clazz == CostsDialogFragment.class) {
             dialog = new CostsDialogFragment();
@@ -269,16 +288,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             // dialog.setRetainInstance(true);
             dialog.show(fm, "Kosten");
         }
-    }
-
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        int pos = 0;
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        int neg = 0;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -311,7 +320,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             adapter.stopTimerThread();
     }
 
-public static class SimpleItemRecyclerViewAdapter
+    public static class SimpleItemRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
     private final MainActivity mParentActivity;

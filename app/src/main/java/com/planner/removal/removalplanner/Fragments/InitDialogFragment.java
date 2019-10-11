@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
@@ -29,6 +30,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
     AlertDialog alert;
     Button btnDatePicker;
     Button btnTimePicker;
+    CheckBox checkBoxDeleteOld;
     EditText txtDeadline;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
@@ -56,6 +58,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         btnDatePicker =(Button) view.findViewById(R.id.init_btn_date);
         btnTimePicker =(Button) view.findViewById(R.id.init_btn_time);
         txtDeadline = (EditText) view.findViewById(R.id.detail_deadline);
+        checkBoxDeleteOld = (CheckBox) view.findViewById(R.id.init_checkBox_delete_old);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
@@ -64,9 +67,8 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         if(mListener != null) {
             builder.setView(view)
                     .setTitle(getResources().getString(R.string.placeholder_init))
-                    .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener); // FIXME
+                    .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener);
         }
-
 
         alert = builder.create();
 
@@ -83,9 +85,8 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
     /* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.
      * Each method passes the DialogFragment in case the host needs to query it. */
-    public interface InitDialogListener {
-        public void onDialogPositiveClick(DialogFragment dialog);
-        public void onDialogNegativeClick(DialogFragment dialog);
+    public interface InitDialogListener extends DialogInterface.OnClickListener{
+
     }
 
     // Override the Fragment.onAttach() method to instantiate the InitDialogListener
@@ -158,5 +159,13 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
                     }, mHour, mMinute, true);
             timePickerDialog.show();
         }
+    }
+
+    public Date getRemovalDate() {
+        return tempDate;
+    }
+
+    public boolean getDeleteOld() {
+        return checkBoxDeleteOld.isChecked();
     }
 }

@@ -22,7 +22,8 @@
     <string name="placeholder_description">info</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
-    <string name="placeholder_init">Set up removal</string>
+    <string name="placeholder_init">Set up new removal</string>
+    <string name="placeholder_init_delete_old_tasks">delete all existing tasks !</string>
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>
     <string name="placeholder_links">links</string>

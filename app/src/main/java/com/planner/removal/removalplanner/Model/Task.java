@@ -99,6 +99,10 @@ public class Task implements Serializable {
         links = (TreeMap) clone.links.clone();
     }
 
+    public static void init(Date removalDate) {
+        // FIXME init new task serial
+    }
+
     public void ImportTask(Task clone) {
         this.name = clone.name;
         this.description = clone.description;
@@ -112,13 +116,19 @@ public class Task implements Serializable {
 
     public static void addTask(Task task) {
         TASK_LIST.add(task);
-        TASK_MAP.put(task.id.toString(), task);
+        TASK_MAP.put(task.id, task);
     }
 
     public static void removeTask(Task task) {
         TASK_LIST.remove(task);
         TASK_MAP.remove(task.id);
     }
+
+    public static void clearAll() {
+        TASK_MAP.remove(TASK_LIST);
+        TASK_LIST.removeAll(TASK_LIST);
+    }
+
 
     public static long sumCosts(boolean onlyDone) {
         long retval = 0;

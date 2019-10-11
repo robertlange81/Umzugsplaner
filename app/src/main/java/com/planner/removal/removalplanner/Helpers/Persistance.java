@@ -98,6 +98,7 @@ public class Persistance {
                         Log.e("Save Task to sqlite", e.getMessage());
                     }
                 }
+
                 return null;
             }
 
@@ -109,6 +110,43 @@ public class Persistance {
 
         ReplaceAllTasks rt = new ReplaceAllTasks();
         addTaskToQueue(rt);
+    }
+
+    public static void DeleteAllTasks(final Activity activity) {
+
+        class DeleteAllTasks extends AsyncTask<Void, Void, Void> {
+
+            @Override
+            protected Void doInBackground(Void... voids) {
+
+                TaskDao dao = TaskDatabaseClient.getInstance(activity)
+                        .getAppDatabase()
+                        .taskDao();
+
+                List<Task> oldTasks = dao.getAll();
+
+                for (Task t : oldTasks) {
+                    try {
+                        dao.delete(t);
+                    } catch (Exception e) {
+                        Log.e("Error Delete Task: ", e.getMessage());
+                    }
+                }
+
+                Task.clearAll();
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+                MainActivity.NotifyTaskChanged(null, activity);
+            }
+        }
+
+        DeleteAllTasks dt = new DeleteAllTasks();
+        addTaskToQueue(dt);
     }
 
     public static void SaveTasks(final Activity activity) {
@@ -134,6 +172,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+                MainActivity.NotifyTaskChanged(null, activity);
                 // finish();
                 // startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 // Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
