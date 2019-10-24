@@ -11,7 +11,6 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/detail_header"
-        android:background="@drawable/header"
         android:padding="15sp"
         android:paddingTop="0sp"
         android:orientation="vertical"
@@ -223,7 +222,8 @@
                     android:tag="@string/detail_description_input"
                     android:hint="@string/detail_description_input"
                     android:layout_weight="1"
-                    android:gravity="bottom|center_vertical"
+                    android:layout_height="match_parent"
+                    android:gravity="start|center_vertical"
                     android:inputType="textImeMultiLine"
                     android:lines="4"
                     android:textSize="@dimen/detail_text_size"
@@ -262,7 +262,7 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_0"
-                    android:gravity="bottom|center_vertical"
+                    android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_link_input"
                     android:inputType="textWebEditText"
                     android:layout_height="match_parent"
@@ -503,7 +503,7 @@
                         android:id="@+id/detail_costs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="bottom|end"
+                        android:gravity="center_vertical|end"
                         android:layout_weight="1"
                         android:hint="@string/placeholder_costs_significant_detail"
                         android:inputType="numberSigned"
@@ -519,7 +519,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
-                        android:gravity="bottom|center_vertical"
+                        android:gravity="center_vertical|center_horizontal"
                         android:hint="@string/placeholder_costs_decimal_detail"
                         android:inputType="number"
                         android:maxLength="2"
@@ -566,7 +566,7 @@
                     android:clickable="false"
                     android:focusable="false"
                     android:tag="@string/placeholder_date"
-                    android:gravity="bottom|center_vertical"
+                    android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_date_input"
                     android:layout_height="match_parent"
                     android:id="@+id/detail_deadline"
@@ -645,6 +645,61 @@
                     app:srcCompat="@android:drawable/ic_delete" />
 
             </TableRow>
+
+            <TableRow
+                    android:id="@+id/detail_seventh_line"
+                    android:layout_below="@id/detail_sixth_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:weightSum="3">
+
+                    <TextView
+                        android:id="@+id/detail_ok_dummy"
+                        android:layout_weight="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/input_margin"
+                        android:textSize="@dimen/detail_text_size"
+                        android:text="" />
+
+                    <TableRow
+                        android:id="@+id/detail_ok_button"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/detail_row_height"
+                        android:gravity="top"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="5dp"
+                        android:weightSum="2">
+
+                        <Button
+                            android:layout_height="match_parent"
+                            android:text="@string/detail_save_task"
+                            android:id="@+id/detail_btn_ok"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryDark"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:visibility="invisible" />
+                    </TableRow>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="2dip"
+                        android:layout_marginTop="2dip"
+                        android:layout_toRightOf="@id/detail_btn_time"
+                        android:adjustViewBounds="false"
+                        android:visibility="invisible"
+                        app:srcCompat="@android:drawable/ic_delete" />
+
+                </TableRow>
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -4,6 +4,7 @@
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>
     <string name="detail_description_input">Beschreibung</string>
+    <string name="detail_save_task">Aufgabe speichern</string>
     <string name="done">fertig</string>
     <string name="highPrioText">hohe Priorität für Aufgabe</string>
     <string name="highPrioText_short">hohe Priorität</string>

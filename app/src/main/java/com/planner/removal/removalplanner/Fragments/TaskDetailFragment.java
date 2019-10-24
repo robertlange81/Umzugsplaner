@@ -79,6 +79,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
 
+    Button btnSave;
     boolean isNotifyEnabled = true;
 
     public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
@@ -155,8 +156,16 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         txtCostsFractions = rootView.findViewById(R.id.detail_costs_decimal);
         spinnerDetailType = (Spinner) rootView.findViewById(R.id.type);
 
-        btnDatePicker =(Button) rootView.findViewById(R.id.detail_btn_date);
-        btnTimePicker =(Button) rootView.findViewById(R.id.detail_btn_time);
+        btnDatePicker = (Button) rootView.findViewById(R.id.detail_btn_date);
+        btnTimePicker = (Button) rootView.findViewById(R.id.detail_btn_time);
+        btnSave = (Button) rootView.findViewById(R.id.detail_btn_ok);
+
+        if(MainActivity.mTwoPane) {
+            btnSave.setVisibility(View.GONE);
+        } else {
+            btnSave.setVisibility(View.VISIBLE);
+        }
+
         txtDeadline =(EditText) rootView.findViewById(R.id.detail_deadline);
         //txtDeadline.setInputType(InputType.TYPE_NULL);
         txtDeadline.setOnClickListener(this);
@@ -208,6 +217,13 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private void _initListeners(final View rootView) {
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
 
         checkIsDone.setOnClickListener(new View.OnClickListener() {
             @Override

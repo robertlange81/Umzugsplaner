@@ -55,7 +55,7 @@ import static android.widget.LinearLayout.VERTICAL;
 
 public class MainActivity extends AppCompatActivity implements InitDialogListener {
 
-    private boolean mTwoPane;
+    public static boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
