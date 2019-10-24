@@ -133,7 +133,11 @@ public class Persistance {
                     }
                 }
 
-                Task.clearAll();
+                try {
+                    Task.clearAll();
+                } catch (Exception e) {
+                    Log.e("Error Clear all Task: ", e.getMessage());
+                }
 
                 return null;
             }
