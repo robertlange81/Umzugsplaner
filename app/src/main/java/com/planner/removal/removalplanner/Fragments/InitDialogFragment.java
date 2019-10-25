@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
+import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
 
 import java.util.Calendar;
@@ -60,6 +61,12 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         txtDeadline = (EditText) view.findViewById(R.id.detail_deadline);
         checkBoxDeleteOld = (CheckBox) view.findViewById(R.id.init_checkBox_delete_old);
 
+        if(Task.TASK_LIST != null && Task.TASK_LIST.size() == 0) {
+            checkBoxDeleteOld.setVisibility(View.GONE);
+        } else {
+            checkBoxDeleteOld.setVisibility(View.VISIBLE);
+        }
+
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
@@ -67,6 +74,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         if(mListener != null) {
             builder.setView(view)
                     .setTitle(getResources().getString(R.string.placeholder_init))
+                    .setNegativeButton(R.string.cancel, null)
                     .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener);
         }
 

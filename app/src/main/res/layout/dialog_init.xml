@@ -4,31 +4,44 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:paddingLeft="30dp"
-        android:contentDescription="@string/app_name"
-        android:scaleType="fitStart"
-        android:src="@drawable/moving_box" />
     <TableRow
         android:id="@+id/init_first_line"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
+        android:layout_height="wrap_content"
         android:minHeight="@dimen/detail_row_height"
         android:gravity="top"
         android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:weightSum="3">
+        android:weightSum="2">
+
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="80sp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitStart"
+            android:src="@drawable/moving_box" />
 
         <TextView
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
             android:layout_marginLeft="@dimen/input_margin"
             android:textSize="@dimen/detail_text_size"
             android:text="@string/placeholder_date_removal" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/init_second_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/detail_row_margin_top"
+        android:weightSum="3">
 
         <TableRow
             android:layout_weight="1"
@@ -57,22 +70,12 @@
         </TableRow>
     </TableRow>
     <TableRow
-        android:id="@+id/init_second_line"
-        android:layout_below="@id/init_first_line"
+        android:id="@+id/init_third_line"
+        android:layout_below="@id/init_second_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_row_height"
         android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:weightSum="3">
-
-        <TextView
-            android:id="@+id/detail_deadline_label"
-            android:layout_weight="2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/input_margin"
-            android:textSize="@dimen/detail_text_size"
-            android:text="" />
+        android:gravity="top">
 
         <EditText
             android:layout_weight="1"
@@ -90,13 +93,12 @@
 
     </TableRow>
     <TableRow
-        android:id="@+id/init_third_line"
-        android:layout_below="@id/init_second_line"
+        android:id="@+id/init_fourth_line"
+        android:layout_below="@id/init_third_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_row_height"
         android:minHeight="@dimen/detail_row_height"
-        android:gravity="top"
-        android:weightSum="3">
+        android:gravity="end">
         <CheckBox
             android:id="@+id/init_checkBox_delete_old"
             android:layout_marginLeft="@dimen/input_margin"
@@ -104,7 +106,6 @@
             android:textColor="@color/colorRed"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:layout_marginTop="5sp"
             android:text="@string/placeholder_init_delete_old_tasks"
             android:textAppearance="?android:attr/textAppearanceMedium"
             app:buttonTint="@drawable/checkbox_state_list" />

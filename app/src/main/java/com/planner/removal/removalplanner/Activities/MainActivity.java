@@ -62,12 +62,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     MenuItem initDialogMenuItem, lastItem, showCostsMenuItem;
     DialogFragment dialog;
 
-
     @Override
     public void onClick(DialogInterface dialogInterface, int which) {
         if(dialog != null && dialog instanceof InitDialogFragment) {
             InitDialogFragment initdialog = (InitDialogFragment) dialog;
             if(initdialog.getRemovalDate() == null) {
+                Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
                 return;
             }
 
