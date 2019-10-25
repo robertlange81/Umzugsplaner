@@ -8,29 +8,51 @@
     tools:context=".Fragments.TaskDetailFragment"
     android:id="@+id/detail">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <android.support.v7.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/detail_header"
+        android:orientation="vertical"
         android:padding="15sp"
         android:paddingTop="0sp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="3dp" >
 
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/detail_name"
-            android:hint="@string/placeholder_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:paddingTop="10sp"
-            android:textSize="@dimen/headline_text_size"
-            android:selectAllOnFocus="true"
-            android:inputType="text" />
+            android:orientation="vertical">
 
-        <TableRow
+            <TableRow
+            android:id="@+id/detail_header_top"
             android:layout_width="match_parent"
-            android:layout_height="35sp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/detail_header_row_height"
+            android:gravity="center_vertical"
+            android:paddingStart="5sp"
+            android:paddingLeft="5sp">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/detail_name"
+                android:hint="@string/placeholder_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:singleLine="true"
+                android:paddingTop="10sp"
+                android:textSize="@dimen/headline_text_size"
+                android:selectAllOnFocus="true"
+                android:inputType="text" />
+
+        </TableRow>
+
+            <TableRow
+            android:layout_width="match_parent"
+            android:layout_below="@+id/detail_header_top"
+            android:layout_height="wrap_content"
             android:minHeight="@dimen/detail_header_row_height"
             android:gravity="center_vertical"
             android:paddingStart="5sp"
@@ -110,7 +132,9 @@
         </TableRow>
         </TableRow>
 
-    </LinearLayout>
+        </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -124,6 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
             <TableRow
                 android:id="@+id/detail_first_line"
                 android:layout_width="match_parent"

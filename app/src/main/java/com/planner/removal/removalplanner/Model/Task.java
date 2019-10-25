@@ -29,17 +29,18 @@ public class Task implements Serializable {
     public static Date deadline;
 
     /*
-    Ideen:
+    TODO / FIXME / Ideen:
+    - zweiten Klick auf Mülleimer verhindern
+    - extra Menü in Bottom für Möbel
     - Assistenz
     - Amazon / Google
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
-    - mit Google-Kalender synchronisieren
-    - Orte hinzufügen -> Routenplaner
+    - mit Google-Kalender synchronisieren !!!
+    - Orte hinzufügen -> Routenplaner !!!
     - Ausdrucken / PDF erstellen / per Mail senden
-    - Import / Export
-    - Standard neu importieren
-    - Content Provider
+    - Import / Export (zuletzt) !!!
+    - Content Provider ???
     - Bild statt Link
     - Einkaufsliste
      */
