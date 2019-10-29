@@ -88,6 +88,17 @@ public class Task implements Serializable {
         links = new TreeMap<>();
     }
 
+    public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
+        id = new Integer(maxId++).toString();
+        this.name = _name;
+        this.description = _description;
+        this.date = _date;
+        this.priority = _priority;
+        this.costs = _costs;
+        this.type = _type;
+        links = new TreeMap<>();
+    }
+
     public Task(Task clone) {
         id = clone.id;
         this.name = clone.name;
@@ -98,10 +109,6 @@ public class Task implements Serializable {
         type = clone.type;
         costs = clone.costs;
         links = (TreeMap) clone.links.clone();
-    }
-
-    public static void init(Date removalDate) {
-        // FIXME init new task serial
     }
 
     public void ImportTask(Task clone) {

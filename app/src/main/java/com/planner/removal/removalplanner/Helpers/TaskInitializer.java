@@ -4,7 +4,9 @@ import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TreeMap;
 
 public class TaskInitializer {
 
@@ -26,7 +28,7 @@ public class TaskInitializer {
             task2.links.put("https://www.google.de", "https://www.google.de");
             task2.links.put("https://www.uni-leipzig.de/", "https://www.uni-leipzig.de/");
             task2.links.put("gmx.de", "gmx.de");
-            task2.links.put("gmx", "www.gmx.de");
+            task2.links.put("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
             task2.priority = Priority.Normal;
             task2.date = defaultDate;
 
@@ -63,5 +65,20 @@ public class TaskInitializer {
             Task.addTask(task4);
             Task.addTask(task4);
         }
+    }
+
+    public static void InitTasks(Date removalDate) {
+        // FIXME init new task serial ; Mietkautionskonto
+        Task rentalContractOld = new Task("Alten Mietvertrag kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", Calendar.getInstance().getTime(), Priority.Normal, 0L, TaskType.ORGANISATION);
+        rentalContractOld.links.put("3-Monats-Frist?", "https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html");
+        rentalContractOld.links.put("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
+    }
+
+    public static Date addMonthDaysToJavaUtilDate(Date date, int months, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, months);
+        calendar.add(Calendar.DATE, days);
+        return calendar.getTime();
     }
 }

@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 Persistance.DeleteAllTasks(this);
             }
 
-            Task.init(initdialog.getRemovalDate());
+            TaskInitializer.InitTasks(initdialog.getRemovalDate());
         }
     }
 
