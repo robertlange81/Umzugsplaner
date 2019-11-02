@@ -14,64 +14,40 @@ public class TaskInitializer {
     public static void CreateDefaultTasks(Date defaultDate) {
 
         if(!isInitialized) {
-            isInitialized = true;
-            Task task1 = new Task("Aufgabe1 seh lang bla bla bla bla bla", "Beschreibung1");
-            task1.links.put("https://www.google.de", "https://www.google.de");
-            task1.links.put("https://www.uni-leipzig.de/", "https://www.uni-leipzig.de/");
-            task1.links.put("gmx.de", "gmx.de");
-            task1.priority = Priority.Normal;
-            task1.type = TaskType.KITCHEN;
-            task1.description = "Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1 Beschreibung1";
 
-            Task task2 = new Task("Aufgabe2", "Beschreibung2");
-            task2.costs = 30000098739l;
-            task2.links.put("https://www.google.de", "https://www.google.de");
-            task2.links.put("https://www.uni-leipzig.de/", "https://www.uni-leipzig.de/");
-            task2.links.put("gmx.de", "gmx.de");
-            task2.links.put("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
-            task2.priority = Priority.Normal;
-            task2.date = defaultDate;
-
-            Task task3 = new Task("Aufgabe3", "Beschreibung3");
-            task3.costs = 3000L;
-            task3.priority = Priority.High;
-            Date zielTermin3 = new Date(defaultDate.getTime());
-            zielTermin3.setYear(119);
-            task3.date = zielTermin3;
-
-            Task task4 = new Task("Aufgabe4", "Beschreibung4 sehr lang, bla bmla ");
-            task4.costs = 800000L;
-            task4.priority = Priority.Normal;
-            Date zielTermin4 = new Date(119, 0, 1);
-            zielTermin4.setHours(10);
-            task4.date = zielTermin4;
-            task4.is_Done = true;
-
-            Task task5 = new Task("Aufgabe4", "Beschreibung4 sehr lang, bla bmla ");
-            task5.costs = 600000L;
-            task5.priority = Priority.Normal;
-            task5.date = zielTermin4;
-            task5.is_Done = true;
-
-
-            Task.addTask(task1);
-            Task.addTask(task2);
-            Task.addTask(task3);
-            Task.addTask(task4);
-            Task.addTask(task5);
-            Task.addTask(task4);
-            Task.addTask(task4);
-            Task.addTask(task4);
-            Task.addTask(task4);
-            Task.addTask(task4);
         }
     }
 
     public static void InitTasks(Date removalDate) {
-        // FIXME init new task serial ; Mietkautionskonto
-        Task rentalContractOld = new Task("Alten Mietvertrag kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", Calendar.getInstance().getTime(), Priority.Normal, 0L, TaskType.ORGANISATION);
-        rentalContractOld.links.put("3-Monats-Frist?", "https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html");
-        rentalContractOld.links.put("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
+        // FIXME Notizen in Task
+        // FIXME init new task serial ; Mietkautionskonto; Verträge; Bank etc. neue Adresse mitteilen
+        Task rentalContractOld = new Task("Alten Mietvertrag kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", Calendar.getInstance().getTime(), Priority.High, 0L, TaskType.ORGANISATION);
+        rentalContractOld.addLink("3-Monats-Frist?", "https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html");
+        rentalContractOld.addLink("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
+        Task.addTask(rentalContractOld.build());
+
+        Task rentalContractNew = new Task("Neuen Mietvertrag unterschreiben", "Prüfen Sie Ihren Mietvertrag auf Rechtskonformität und bindende Klauseln (Mindestmietdauer, angemessene Betriebskostenvorauszahlung, zu hohe Staffelmiete, sichtbare Mängel melden, Kleinreparaturklausel, WG-Miete, Maklerprovision, Vergleich Mietspiegel / Mietendeckel)", Calendar.getInstance().getTime(), Priority.High, 0L, TaskType.ORGANISATION);
+        rentalContractNew.addLink("Mietvertrag: Vorsicht Fallen", "https://ratgeber.immowelt.de/a/mietvertrag-vorsicht-fallen.html");
+        rentalContractNew.addLink("Tipps zum Mietvertrag", "https://www.nach-dem-abitur.de/mietvertrag-tipps");
+        Task.addTask(rentalContractNew.build());
+
+        Task informOldAndNewNeighbours = new Task("Alte und Neue Nachbarn informieren", "Informieren Sie Ihre alten und neuen Nachbarn per Aushang über Ihren Umzug. Beachten Sie auch die Ruhezeiten. Üblicherweise von 13 Uhr bis 15 Uhr und 20 Uhr bis 7 Uhr. Nutzen Sie zudem die Gelegenheit, um Ihre Türschilder anzubringen, damit die Post und Speditionen Sie erreichen.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
+        rentalContractNew.addLink("Türschilder aussuchen", "https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b");
+        Task.addTask(informOldAndNewNeighbours.build());
+
+        Task informAuthoritiesAndContractors = new Task("Behörden etc. ummelden", "Nach Ihrem Umzug (aber nicht davor!) müssen Sie sich in Ihrem Einwohnermeldeamt ummelden. Geben Sie auch Ihre neue Adresse an Ihre Vertragspartner weiter und verlasen Sie sich nicht auf den Nachsendeauftrag:" +
+                "\n* Einwohnermeldeamt" +
+                "\n* KFZ, Parkausweis, Umwelt-Plakette" +
+                "\n* Arbeitgeber" +
+                "\n* Bank(en) und Versicherungen", addMonthDaysToJavaUtilDate(removalDate, 0, 13), Priority.High, 0L, TaskType.ORGANISATION);
+        informAuthoritiesAndContractors.addLink("Wohnsitz ummelden", "https://umziehen.de/an-ab-ummelden/wohnsitz-anmelden-192");
+        informAuthoritiesAndContractors.addLink("Auto ummelden", "https://www.umzug.de/tipps/ummelden/auto-ummelden.html");
+        Task.addTask(informAuthoritiesAndContractors.build());
+
+        Task fireAndBurglaryProtection = new Task("Brandschutz und Einbruchschutz", "Rauchmelder sind in einigen Bundesländern Pflicht und können Leben retten. Vergessen Sie zudem nicht den Einbruchsschutz.", addMonthDaysToJavaUtilDate(removalDate, 0, -6), Priority.Normal, 0L, TaskType.SECURITY);
+        fireAndBurglaryProtection.addLink("Feuermelder", "https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031");
+        fireAndBurglaryProtection.addLink("Einbruchsschutz", "https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031");
+        Task.addTask(fireAndBurglaryProtection.build());
     }
 
     public static Date addMonthDaysToJavaUtilDate(Date date, int months, int days) {

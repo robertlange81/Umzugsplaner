@@ -518,7 +518,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                     }
 
                                     if(URLUtil.isValidUrl(value)) {
-                                        _task.links.put(inputLink, value);
+                                        _task.addLink(inputLink, value, true);
                                         Log.e("put ", inputLink);
                                         linkMap.put(txtLink, inputLink);
                                     }

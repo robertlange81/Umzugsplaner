@@ -12,6 +12,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
@@ -30,6 +31,7 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - erledigte ausblenden , nur hohe prio
     - zweiten Klick auf Mülleimer verhindern
     - extra Menü in Bottom für Möbel
     - Assistenz
@@ -75,7 +77,8 @@ public class Task implements Serializable {
 
     @ColumnInfo(name = "links")
     @TypeConverters({LinkMapConverter.class})
-    public TreeMap<String,String> links; // 128
+    private TreeMap<String,String> links; // 128
+    private boolean close;
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
@@ -122,6 +125,23 @@ public class Task implements Serializable {
         links = clone.links;
     }
 
+    public void addLink(String key, String value, boolean force) {
+        this.links.put(key, value);
+    }
+
+    public void addLink(String key, String value) {
+        if(this.close || this.links.put(key, value) == null)
+            Log.e("Error Adding Task: ", key + ":" + value);
+    }
+
+    public Task build() {
+        if(this.close)
+            Log.e("Error Closing Task: ", this.name);
+
+        this.close = true;
+        return this;
+    }
+
     public static void addTask(Task task) {
         TASK_LIST.add(task);
         TASK_MAP.put(task.id, task);
@@ -136,7 +156,6 @@ public class Task implements Serializable {
         TASK_MAP.remove(TASK_LIST);
         TASK_LIST.removeAll(TASK_LIST);
     }
-
 
     public static long sumCosts(boolean onlyDone) {
         long retval = 0;
