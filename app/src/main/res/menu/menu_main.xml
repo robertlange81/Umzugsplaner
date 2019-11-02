@@ -5,9 +5,9 @@
     <item
         android:id="@+id/showCostsMenuItem"
         android:icon="@drawable/coins_xxl"
-        android:iconTint="@color/colorGreen"
         android:orderInCategory="105"
-        android:title=""
+        android:text="@string/currency"
+        android:title="@string/currency"
         app:showAsAction="always" />
     <item
         android:id="@+id/settings"

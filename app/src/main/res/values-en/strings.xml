@@ -47,6 +47,7 @@
     <string name="todo">todo</string>
     <string name="undo">undo</string>
     <string name="paid_done">paid</string>
+    <string name="currency">$</string>
     <string-array name="base_task_types">
         <item>BATH</item>
         <item>KITCHEN</item>

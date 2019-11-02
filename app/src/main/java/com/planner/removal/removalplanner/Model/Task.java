@@ -77,8 +77,7 @@ public class Task implements Serializable {
 
     @ColumnInfo(name = "links")
     @TypeConverters({LinkMapConverter.class})
-    private TreeMap<String,String> links; // 128
-    private boolean close;
+    public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
         id = new Integer(maxId++).toString();
@@ -130,16 +129,7 @@ public class Task implements Serializable {
     }
 
     public void addLink(String key, String value) {
-        if(this.close || this.links.put(key, value) == null)
-            Log.e("Error Adding Task: ", key + ":" + value);
-    }
-
-    public Task build() {
-        if(this.close)
-            Log.e("Error Closing Task: ", this.name);
-
-        this.close = true;
-        return this;
+        this.links.put(key, value);
     }
 
     public static void addTask(Task task) {

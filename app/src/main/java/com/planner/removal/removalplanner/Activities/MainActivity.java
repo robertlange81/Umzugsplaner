@@ -69,14 +69,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             if(initdialog.getRemovalDate() == null) {
                 Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
-                return;
             }
 
             if(initdialog.getDeleteOld()) {
-                Persistance.DeleteAllTasks(this);
+                Persistance.PruneAllTasks(this, initdialog.getRemovalDate());
+            } else {
+                TaskInitializer.InitTasks(initdialog.getRemovalDate());
             }
-
-            TaskInitializer.InitTasks(initdialog.getRemovalDate());
         }
     }
 

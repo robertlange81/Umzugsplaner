@@ -11,6 +11,7 @@ import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -112,9 +113,9 @@ public class Persistance {
         addTaskToQueue(rt);
     }
 
-    public static void DeleteAllTasks(final Activity activity) {
+    public static void PruneAllTasks(final Activity activity, final Date callbackNewInitDate) {
 
-        class DeleteAllTasks extends AsyncTask<Void, Void, Void> {
+        class PruneAllTasks extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
@@ -145,11 +146,11 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                MainActivity.NotifyTaskChanged(null, activity);
+                TaskInitializer.InitTasks(callbackNewInitDate);
             }
         }
 
-        DeleteAllTasks dt = new DeleteAllTasks();
+        PruneAllTasks dt = new PruneAllTasks();
         addTaskToQueue(dt);
     }
 

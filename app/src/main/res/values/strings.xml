@@ -48,6 +48,7 @@
     <string name="todo">offen</string>
     <string name="undo">rückgängig</string>
     <string name="paid_done">bezahlt</string>
+    <string name="currency">€</string>
     <string-array name="roman_numbers">
         <item>I</item>
         <item>II</item>
