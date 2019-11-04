@@ -167,7 +167,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
 
         txtDeadline =(EditText) rootView.findViewById(R.id.detail_deadline);
-        //txtDeadline.setInputType(InputType.TYPE_NULL);
         txtDeadline.setOnClickListener(this);
 
         txtInputs = new TextView[9];
@@ -192,6 +191,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
         imgDeleteLinks[8] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
 
+        _initListeners(rootView);
+        final HashMap<TextView, String> linkMap = _initLinks();
+
         if (_task != null) {
             ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
                     rootView.getContext(),
@@ -199,11 +201,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     rootView.getContext().getResources().getStringArray(R.array.base_task_types)
             );
             spinnerDetailType.setAdapter(_categoryAdapter);
-            setDetails(null, rootView);
+            setDetails(linkMap, rootView);
         }
 
-        _initListeners(rootView);
-        final HashMap<TextView, String> linkMap = _initLinks();
         _initDeleteIcons(rootView);
 
         if(updaterThread == null)
@@ -389,7 +389,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
 
         if(linkMap != null)
-            mapTrashCanToInput(linkMap);
+            setLinks(linkMap);
 
         if(_task.costs != 0.00) {
             txtCostsSig.setText(TaskFormater.intSigToString(_task.costs));
@@ -404,7 +404,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         isNotifyEnabled = true;
     }
 
-    private void mapTrashCanToInput(HashMap<TextView, String> linkMap) {
+    private void setLinks(HashMap<TextView, String> linkMap) {
         if(_task.links != null && _task.links.size() > 0) {
             int i = 0;
             for (Map.Entry<String, String> entry : _task.links.entrySet())
@@ -482,7 +482,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         for (final TextView txtLink : txtInputs) {
 
-            if(!txtLink.getTag().toString().equalsIgnoreCase("Link"))
+            if(!txtLink.getTag(  ).toString().equalsIgnoreCase("Link"))
                 continue;
 
             txtLink.setMovementMethod(LinkMovementMethod.getInstance());

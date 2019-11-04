@@ -58,5 +58,6 @@
         <item>MANAGEMENT</item>
         <item>TRANSPORT</item>
         <item>MISC</item>
+        <item>MISC</item>
     </string-array>
 </resources>

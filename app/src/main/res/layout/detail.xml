@@ -156,8 +156,8 @@
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
                 android:paddingTop="15dp"
-                android:layout_marginTop="@dimen/detail_row_margin_top"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
                 android:weightSum="3">
 
                 <TextView
@@ -166,7 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/input_margin"
-                    android:layout_marginTop="4sp"
+                    android:layout_marginTop="2sp"
                     android:textSize="@dimen/detail_text_size"
                     android:text="@string/category" />
 
@@ -241,10 +241,11 @@
                     android:tag="@string/detail_description_input"
                     android:hint="@string/detail_description_input"
                     android:layout_weight="1"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:gravity="start|center_vertical"
-                    android:inputType="textImeMultiLine"
-                    android:lines="4"
+                    android:minLines="2"
+                    android:maxLines="12"
+                    android:inputType="textMultiLine"
                     android:textSize="@dimen/detail_text_size"
                     android:scrollHorizontally="false" />
 
