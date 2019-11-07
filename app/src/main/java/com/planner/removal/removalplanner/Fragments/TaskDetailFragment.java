@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -83,6 +84,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     boolean isNotifyEnabled = true;
 
     public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
+    private static View.OnClickListener clickListener;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -435,19 +437,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private void _initDeleteIcons(final View rootView) {
         final HashMap<ImageView, List<TextView>> deleteMap = new HashMap<>();
 
-        for (int i = 0; i < imgDeleteLinks.length; i++) {
-
-            List<TextView> inputList = deleteMap.get(imgDeleteLinks[i]);
-            if(inputList == null || inputList.size() == 0) {
-                inputList = new ArrayList<>();
-            }
-
-            inputList.add(txtInputs[i]);
-            deleteMap.put(imgDeleteLinks[i], inputList);
-
-            imgDeleteLinks[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
+        clickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
                 List<TextView> tlist = deleteMap.get(view);
                 for (TextView t : tlist) {
                     if(t.getText() != null && !t.getText().toString().equals("")) {
@@ -462,7 +454,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
                         Task clone = new Task(_task);
 
-                        if(Task.TASK_MAP.get(_task.id) != null) {
+                        if(t.getTag() != null && Task.TASK_MAP.get(_task.id) != null) {
                             snack.setAction(
                                     R.string.undo,
                                     new Command(Command.CommandTyp.Undo, clone, getActivity())
@@ -481,8 +473,20 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         }
                     }
                 }
-                }
-            });
+            }
+        };
+
+        for (int i = 0; i < imgDeleteLinks.length; i++) {
+
+            List<TextView> inputList = deleteMap.get(imgDeleteLinks[i]);
+            if(inputList == null || inputList.size() == 0) {
+                inputList = new ArrayList<>();
+            }
+
+            inputList.add(txtInputs[i]);
+            deleteMap.put(imgDeleteLinks[i], inputList);
+
+            imgDeleteLinks[i].setOnClickListener(clickListener);
         }
     }
 
@@ -492,14 +496,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         for (final TextView txtLink : txtInputs) {
 
-            if(!txtLink.getTag().toString().equalsIgnoreCase("Link"))
+            if(txtLink.getTag() == null || !txtLink.getTag().toString().equalsIgnoreCase("Link"))
                 continue;
 
             txtLink.setMovementMethod(LinkMovementMethod.getInstance());
             if(txtLink != txtInputs[0])
                 ((TableRow) txtLink.getParent()).setVisibility(View.GONE);
 
-            /* make links readonly
+            /* make money links readonly */
             txtLink.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
@@ -552,7 +556,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         }
                     }
                 }
-            }); */
+            });
         }
         return linkMap;
     }

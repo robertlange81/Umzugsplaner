@@ -168,9 +168,9 @@
                     android:id="@+id/detail_type_label"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/input_margin"
-                    android:layout_marginTop="2sp"
+                    android:layout_marginTop="6sp"
                     android:textSize="@dimen/detail_text_size"
                     android:text="@string/category" />
 
@@ -282,7 +282,7 @@
                     android:layout_marginLeft="@dimen/input_margin"
                     android:layout_gravity="center_vertical"
                     android:textSize="@dimen/detail_text_size"
-                    android:text="@string/placeholder_links" />
+                    android:text="@string/placeholder_link" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/links_0"
@@ -547,7 +547,6 @@
                         android:maxLength="2"
                         android:selectAllOnFocus="true"
                         android:singleLine="true"
-                        android:tag="@string/placeholder_amount"
                         android:textSize="@dimen/detail_text_size" />
 
 
