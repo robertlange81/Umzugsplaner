@@ -15,6 +15,8 @@ public class Command implements View.OnClickListener{
     private Activity _activity;
     private boolean _hasbeenExecuted;
 
+    public static boolean isOpenCommand = false;
+
     public enum CommandTyp {
         Add(0), Remove(1), Undo(2);
 

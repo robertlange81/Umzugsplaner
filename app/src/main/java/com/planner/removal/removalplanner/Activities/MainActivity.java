@@ -392,13 +392,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
-            holder.kosten.setText(TaskFormater.intDecimalsToString(task.costs));
+            holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
 
             if(task.date != null) {
                 String terminTxt = TaskFormater.formatDateToSring(task.date);
-                holder.termin.setText(terminTxt);
+                holder.date.setText(terminTxt);
             } else {
-                holder.termin.setText("");
+                holder.date.setText("");
             }
 
             String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
@@ -416,14 +416,14 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             holder.itemView.setTag(task);
             holder.itemView.setOnClickListener(mOnClickListener);
 
-            OnTaskChecked(task, holder.termin, holder.kosten);
+            OnTaskChecked(task, holder.date, holder.costs);
             holder.ckBoxTaskDone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String msg = SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources()
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
                     task.is_Done = holder.ckBoxTaskDone.isChecked();
-                    OnTaskChecked(task, holder.termin, holder.kosten);
+                    OnTaskChecked(task, holder.date, holder.costs);
                     TaskDetailFragment.notifyTaskChanged();
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
@@ -511,8 +511,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             // rows content of main list
             final TextView name;
             final CheckBox ckBoxTaskDone;
-            final TextView kosten;
-            final TextView termin;
+            final TextView costs;
+            final TextView date;
             final TextView typ;
             final ImageView imgPrio;
             final ImageView imgDelete;
@@ -521,8 +521,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 super(rowView);
                 name = rowView.findViewById(R.id.name);
                 ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
-                termin = rowView.findViewById(R.id.termin);
-                kosten = rowView.findViewById(R.id.kosten);
+                date = rowView.findViewById(R.id.termin);
+                costs = rowView.findViewById(R.id.kosten);
                 typ = rowView.findViewById(R.id.typ);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);

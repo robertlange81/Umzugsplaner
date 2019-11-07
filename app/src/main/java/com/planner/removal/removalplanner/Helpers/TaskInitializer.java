@@ -65,6 +65,10 @@ public class TaskInitializer {
         fireAndBurglaryProtection.addLink("Einbruchsschutz", "https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031");
         Task.addTask(fireAndBurglaryProtection);
 
+        Task requestSpecialLeave = new Task("Sonderurlaub beantragen", "In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichst!", Calendar.getInstance().getTime(), Priority.Normal, 0L, TaskType.SECURITY);
+        requestSpecialLeave.addLink("Sonderurlaub", "https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031");
+        Task.addTask(requestSpecialLeave);
+
         MainActivity.NotifyTaskChanged(null, null);
     }
 

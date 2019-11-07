@@ -48,26 +48,28 @@ public class CurrencyWatcher implements android.text.TextWatcher {
                 String oldSig = current.getText().toString();
                 String newStringCurrent = oldSig
                         .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                        .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
                         .replaceAll("[^0-9.,-]", "");
 
-                newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
+                newStringCurrent = newStringCurrent.trim().equals("-") ? "-0" : newStringCurrent;
                 Long newNumber = df.parse(newStringCurrent).longValue();
 
-                _task.costs += newNumber * 100;
+                if(newNumber < 0) {
+                    _task.costs = newNumber * 100 - _task.costs;
+                } else {
+                    _task.costs = newNumber * 100 - _task.costs;
+                }
 
-                MainActivity.NotifyTaskChanged(_task, null);
-
-                String currText = TaskFormater.intDecimalsToString(_task.costs);
+                String currText = TaskFormater.intSigToString(_task.costs);
 
                 if(currText != null && currText.length() > 0) {
                     int cp = current.getSelectionStart();
-                    String newSig = currText.substring(0, currText.length() - 3);
-                    sigNumbers.setText(newSig); // exclude fractions
+                    sigNumbers.setText(currText);
 
                     current.setSelection(
                         Math.max(
                           0,
-                          Math.min(newSig.length(), cp + (newSig.length() - oldSig.length()))
+                          Math.min(currText.length(), cp + (currText.length() - oldSig.length()))
                         )
                     );
                 }
@@ -84,17 +86,17 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
         fractionNumbers.removeTextChangedListener(this);
 
-        if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
+        if (current.getEditableText() != null) {
             try {
                 String newStringCurrent = current.getText().toString()
-                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "");
+                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                        .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
+                        .replaceAll( "[^\\d]", "" );
 
                 newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
-                Long newNumber = df.parse(newStringCurrent).longValue();
+                Long newNumber = newStringCurrent.isEmpty() ? 0L : df.parse(newStringCurrent).longValue();
 
                 _task.costs += newNumber;
-
-                MainActivity.NotifyTaskChanged(_task, null);
 
             } catch (NumberFormatException | ParseException e) {
                 e.printStackTrace();

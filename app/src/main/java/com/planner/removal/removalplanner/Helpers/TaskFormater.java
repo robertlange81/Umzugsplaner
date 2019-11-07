@@ -3,15 +3,16 @@ package com.planner.removal.removalplanner.Helpers;
 import android.content.Context;
 import android.os.Build;
 
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Date;
 import java.util.Locale;
 
 public class TaskFormater {
 
     public static Locale currentLocal;
+    private static NumberFormat numberFormat;
 
     public static void setCurrentLocale(Context context){
 
@@ -20,6 +21,8 @@ public class TaskFormater {
         } else{
             currentLocal = context.getResources().getConfiguration().locale;
         }
+
+        numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
 
         /*
         if (BuildConfig.DEBUG) {
@@ -52,11 +55,10 @@ public class TaskFormater {
         if(cent == 0)
             return "";
 
-        NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocal);
-        nf.setCurrency(Currency.getInstance(currentLocal));
-
+        numberFormat.setMaximumFractionDigits(2);
+        numberFormat.setRoundingMode(RoundingMode.HALF_UP);
         double d = (cent.doubleValue()) / 100;
-        return nf.format(d);
+        return getNumberFormat().format(d);
     }
 
     public static String intSigToString(Long cent) {
@@ -64,12 +66,10 @@ public class TaskFormater {
         if(cent == 0)
             return "";
 
-        NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocal);
-        nf.setCurrency(Currency.getInstance(currentLocal));
-
+        numberFormat.setMaximumFractionDigits(0);
+        numberFormat.setRoundingMode(RoundingMode.DOWN);
         double d = (cent.doubleValue()) / 100;
-        String retval = nf.format(d);
-        return retval.substring(0, retval.length() - 3);
+        return transformCurrencySymbol(numberFormat.format(d), true, true);
     }
 
     public static String intFractionsToString(Long cent) {
@@ -77,11 +77,32 @@ public class TaskFormater {
         if(cent == 0)
             return "";
 
-        NumberFormat nf = NumberFormat.getCurrencyInstance(currentLocal);
-        nf.setCurrency(Currency.getInstance(currentLocal));
+        numberFormat.setMaximumFractionDigits(2);
+        numberFormat.setRoundingMode(RoundingMode.HALF_UP);
 
-        double d = (cent.doubleValue()) / 100;
-        String retval = nf.format(d);
-        return retval.substring(retval.length() - 2);
+        double d = Math.abs(cent.doubleValue()) % 100;
+        String noCurrency = transformCurrencySymbol(numberFormat.format(d), true, false);
+        String noCurrencyDoubleDigit = noCurrency.length() == 1 ? "0" + noCurrency : noCurrency;
+        return noCurrencyDoubleDigit;
+    }
+
+    private static String transformCurrencySymbol(String number, boolean removeTrailing, boolean addLeading) {
+        if(number.isEmpty()) {
+            return number;
+        }
+
+        if(removeTrailing && number.contains(numberFormat.getCurrency().getSymbol())) {
+            number = number.replaceAll("\u00A0","").replaceAll(numberFormat.getCurrency().getSymbol(), "");
+        }
+
+        if(addLeading && !number.contains(numberFormat.getCurrency().getSymbol())) {
+            number = numberFormat.getCurrency().getSymbol() + " " + number;
+        }
+
+        return number;
+    }
+
+    public static NumberFormat getNumberFormat() {
+        return numberFormat;
     }
 }

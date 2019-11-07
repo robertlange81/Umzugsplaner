@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.URLUtil;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -61,6 +60,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
      * The dummy content this fragment is presenting.
      */
     private Task _task;
+    private CurrencyWatcher currencyWatcher;
     public static TaskDetailFragment instance;
 
     EditText txtName;
@@ -89,7 +89,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
      * fragment (e.g. upon screen orientation changes).
      */
     public TaskDetailFragment() {
-        int x = 0;
     }
 
     @Override
@@ -211,6 +210,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         isNotifyEnabled = true;
 
+        if(_task.name == null || _task.name.isEmpty()) {
+            txtName.requestFocus();
+        } else {
+            txtName.setSelected(false);
+        }
+
         return rootView;
     }
 
@@ -321,8 +326,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
         });
 
-        CurrencyWatcher cw = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task,"#,###");
-        txtCostsSig.addTextChangedListener(cw);
+        currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task,"#,###");
+        txtCostsSig.addTextChangedListener(currencyWatcher);
 
         txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -341,7 +346,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
         });
 
-        txtCostsFractions.addTextChangedListener(cw);
+        txtCostsFractions.addTextChangedListener(currencyWatcher);
 
         txtDeadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -392,8 +397,13 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             setLinks(linkMap);
 
         if(_task.costs != 0.00) {
+            txtCostsSig.removeTextChangedListener(currencyWatcher);
             txtCostsSig.setText(TaskFormater.intSigToString(_task.costs));
+            txtCostsSig.addTextChangedListener(currencyWatcher);
+
+            txtCostsFractions.removeTextChangedListener(currencyWatcher);
             txtCostsFractions.setText(TaskFormater.intFractionsToString(_task.costs));
+            txtCostsFractions.addTextChangedListener(currencyWatcher);
         }
 
         if(_task.date != null) {
@@ -439,7 +449,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 @Override
                 public void onClick(final View view) {
                 List<TextView> tlist = deleteMap.get(view);
-                for (TextView t:tlist) {
+                for (TextView t : tlist) {
                     if(t.getText() != null && !t.getText().toString().equals("")) {
 
                         String msg = (t.getTag() != null ? t.getTag().toString() : t.getText())
@@ -482,13 +492,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         for (final TextView txtLink : txtInputs) {
 
-            if(!txtLink.getTag(  ).toString().equalsIgnoreCase("Link"))
+            if(!txtLink.getTag().toString().equalsIgnoreCase("Link"))
                 continue;
 
             txtLink.setMovementMethod(LinkMovementMethod.getInstance());
             if(txtLink != txtInputs[0])
                 ((TableRow) txtLink.getParent()).setVisibility(View.GONE);
 
+            /* make links readonly
             txtLink.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
@@ -541,7 +552,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         }
                     }
                 }
-            });
+            }); */
         }
         return linkMap;
     }
@@ -554,7 +565,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         linkInput.setText(Html.fromHtml(link));
         linkInput.setAutoLinkMask(Linkify.WEB_URLS);
         linkInput.setLinksClickable(true);
-        linkInput.setCursorVisible(true);
+        linkInput.setCursorVisible(false);
+        linkInput.setFocusable(false);
+        linkInput.setFocusableInTouchMode(false);
+        linkInput.setClickable(false);
+        linkInput.setEnabled(false);
         ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
     }
 
