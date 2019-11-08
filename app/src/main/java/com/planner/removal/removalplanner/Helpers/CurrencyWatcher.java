@@ -3,7 +3,6 @@ package com.planner.removal.removalplanner.Helpers;
 import android.text.Editable;
 import android.widget.EditText;
 
-import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
 import java.text.DecimalFormat;
@@ -11,106 +10,103 @@ import java.text.ParseException;
 
 public class CurrencyWatcher implements android.text.TextWatcher {
 
-    private final DecimalFormat df;
-    private final EditText sigNumbers, fractionNumbers;
-    private final Task _task;
-    private boolean hasFractionalPart;
-    private int trailingZeroCount;
+  private final DecimalFormat df;
+  private final EditText sigNumbers, fractionNumbers;
+  private final Task _task;
 
-    public CurrencyWatcher(EditText sigNumbers, EditText fractionNumbers, Task task, String pattern) {
-        df = new DecimalFormat(pattern);
-        df.setDecimalSeparatorAlwaysShown(true);
-        this.sigNumbers = sigNumbers;
-        this.fractionNumbers = fractionNumbers;
-        hasFractionalPart = false;
-        this._task = task;
+  public CurrencyWatcher(EditText sigNumbers, EditText fractionNumbers, Task task, String pattern) {
+    df = new DecimalFormat(pattern);
+    df.setDecimalSeparatorAlwaysShown(true);
+    this.sigNumbers = sigNumbers;
+    this.fractionNumbers = fractionNumbers;
+    this._task = task;
+  }
+
+  @Override
+  public void afterTextChanged(Editable s) {
+
+    if (s == sigNumbers.getEditableText()) {
+      _task.costs = _task.costs % 100;
+      sigNumbersChanged(sigNumbers);
+    } else if (s == fractionNumbers.getEditableText()) {
+      _task.costs = (_task.costs / 100) * 100;
+      fracNumbersChanged(fractionNumbers);
     }
 
-    @Override
-    public void afterTextChanged(Editable s) {
+  }
 
-        if (s == sigNumbers.getEditableText()) {
-            _task.costs = _task.costs % 100;
-            sigNumbersChanged(sigNumbers);
-        } else if (s == fractionNumbers.getEditableText()) {
-            _task.costs = (_task.costs / 100) * 100;
-            fracNumbersChanged(fractionNumbers);
+  private void sigNumbersChanged(EditText current) {
+
+    sigNumbers.removeTextChangedListener(this);
+
+    if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
+      try {
+        String oldSig = current.getText().toString();
+        String newStringCurrent = oldSig
+                .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
+                .replaceAll("[^0-9.,-]", "");
+
+        newStringCurrent = newStringCurrent.trim().equals("-") ? "-0" : newStringCurrent;
+        Long newNumber = df.parse(newStringCurrent).longValue();
+
+        if (newNumber < 0) {
+          _task.costs = newNumber * 100 - _task.costs;
+        } else {
+          _task.costs = newNumber * 100 - _task.costs;
         }
 
-    }
+        String currText = TaskFormater.intSigToString(_task.costs);
 
-    private void sigNumbersChanged(EditText current) {
+        if (currText != null && currText.length() > 0) {
+          int cp = current.getSelectionStart();
+          sigNumbers.setText(currText);
 
-        sigNumbers.removeTextChangedListener(this);
-
-        if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
-            try {
-                String oldSig = current.getText().toString();
-                String newStringCurrent = oldSig
-                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
-                        .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
-                        .replaceAll("[^0-9.,-]", "");
-
-                newStringCurrent = newStringCurrent.trim().equals("-") ? "-0" : newStringCurrent;
-                Long newNumber = df.parse(newStringCurrent).longValue();
-
-                if(newNumber < 0) {
-                    _task.costs = newNumber * 100 - _task.costs;
-                } else {
-                    _task.costs = newNumber * 100 - _task.costs;
-                }
-
-                String currText = TaskFormater.intSigToString(_task.costs);
-
-                if(currText != null && currText.length() > 0) {
-                    int cp = current.getSelectionStart();
-                    sigNumbers.setText(currText);
-
-                    current.setSelection(
-                        Math.max(
+          current.setSelection(
+                  Math.max(
                           0,
                           Math.min(currText.length(), cp + (currText.length() - oldSig.length()))
-                        )
-                    );
-                }
-
-            } catch (NumberFormatException | ParseException e) {
-                e.printStackTrace();
-            }
+                  )
+          );
         }
 
-        sigNumbers.addTextChangedListener(this);
+      } catch (NumberFormatException | ParseException e) {
+        e.printStackTrace();
+      }
     }
 
-    private void fracNumbersChanged(EditText current) {
+    sigNumbers.addTextChangedListener(this);
+  }
 
-        fractionNumbers.removeTextChangedListener(this);
+  private void fracNumbersChanged(EditText current) {
 
-        if (current.getEditableText() != null) {
-            try {
-                String newStringCurrent = current.getText().toString()
-                        .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
-                        .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
-                        .replaceAll( "[^\\d]", "" );
+    fractionNumbers.removeTextChangedListener(this);
 
-                newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
-                Long newNumber = newStringCurrent.isEmpty() ? 0L : df.parse(newStringCurrent).longValue();
+    if (current.getEditableText() != null) {
+      try {
+        String newStringCurrent = current.getText().toString()
+                .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
+                .replace(TaskFormater.getNumberFormat().getCurrency().getSymbol(), "")
+                .replaceAll("[^\\d]", "");
 
-                _task.costs += newNumber;
+        newStringCurrent = newStringCurrent.equals("-") ? "-0" : newStringCurrent;
+        Long newNumber = newStringCurrent.isEmpty() ? 0L : df.parse(newStringCurrent).longValue();
 
-            } catch (NumberFormatException | ParseException e) {
-                e.printStackTrace();
-            }
-        }
+        _task.costs += newNumber;
 
-        fractionNumbers.addTextChangedListener(this);
+      } catch (NumberFormatException | ParseException e) {
+        e.printStackTrace();
+      }
     }
 
-    @Override
-    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-    }
+    fractionNumbers.addTextChangedListener(this);
+  }
 
-    @Override
-    public void onTextChanged(CharSequence s, int start, int before, int count) {
-    }
+  @Override
+  public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+  }
+
+  @Override
+  public void onTextChanged(CharSequence s, int start, int before, int count) {
+  }
 }

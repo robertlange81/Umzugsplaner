@@ -21,7 +21,7 @@
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_removal">Wann wollen Sie umziehen?</string>
-    <string name="placeholder_description">Info</string>
+    <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
     <string name="placeholder_init">Neuen Umzug einrichten</string>

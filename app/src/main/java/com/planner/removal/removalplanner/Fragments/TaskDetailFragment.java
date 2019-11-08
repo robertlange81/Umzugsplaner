@@ -429,8 +429,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 i++;
             }
 
-            if(i < MAX_INPUT_FIELDS_FOR_LINKS)
-                _formatLink(txtInputs[i], "", "");
+            // disable next
+            // if(i < MAX_INPUT_FIELDS_FOR_LINKS)
+            //    _formatLink(txtInputs[i], "", "");
         }
     }
 
@@ -539,6 +540,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                     }
                                 }
 
+                                /*
                                 if(showNewLine) {
                                     for (TextView t : txtInputs) {
                                         if(!t.getTag().toString().equalsIgnoreCase("Link"))
@@ -550,6 +552,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                                         }
                                     }
                                 }
+                                */
                             }
                         } catch (Exception x) {
                             Log.e("Exception", x.getMessage());
@@ -558,6 +561,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 }
             });
         }
+
         return linkMap;
     }
 
@@ -569,11 +573,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         linkInput.setText(Html.fromHtml(link));
         linkInput.setAutoLinkMask(Linkify.WEB_URLS);
         linkInput.setLinksClickable(true);
-        linkInput.setCursorVisible(false);
-        linkInput.setFocusable(false);
-        linkInput.setFocusableInTouchMode(false);
-        linkInput.setClickable(false);
-        linkInput.setEnabled(false);
         ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
     }
 

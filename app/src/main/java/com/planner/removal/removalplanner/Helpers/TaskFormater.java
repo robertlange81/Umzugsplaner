@@ -77,11 +77,12 @@ public class TaskFormater {
         if(cent == 0)
             return "";
 
-        numberFormat.setMaximumFractionDigits(2);
-        numberFormat.setRoundingMode(RoundingMode.HALF_UP);
+        NumberFormat basicNumberFormat = NumberFormat.getInstance();
+        basicNumberFormat.setMaximumFractionDigits(2);
+        basicNumberFormat.setRoundingMode(RoundingMode.HALF_UP);
 
         double d = Math.abs(cent.doubleValue()) % 100;
-        String noCurrency = transformCurrencySymbol(numberFormat.format(d), true, false);
+        String noCurrency = transformCurrencySymbol(basicNumberFormat.format(d), true, false);
         String noCurrencyDoubleDigit = noCurrency.length() == 1 ? "0" + noCurrency : noCurrency;
         return noCurrencyDoubleDigit;
     }
@@ -92,7 +93,7 @@ public class TaskFormater {
         }
 
         if(removeTrailing && number.contains(numberFormat.getCurrency().getSymbol())) {
-            number = number.replaceAll("\u00A0","").replaceAll(numberFormat.getCurrency().getSymbol(), "");
+            number = number.replace("\u00A0","").replace(numberFormat.getCurrency().getSymbol(), "");
         }
 
         if(addLeading && !number.contains(numberFormat.getCurrency().getSymbol())) {

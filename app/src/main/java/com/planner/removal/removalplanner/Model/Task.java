@@ -32,7 +32,6 @@ public class Task implements Serializable {
     /*
     TODO / FIXME / Ideen:
     - erledigte ausblenden , nur hohe prio
-    - zweiten Klick auf Mülleimer verhindern
     - extra Menü in Bottom für Möbel
     - Assistenz
     - Amazon / Google

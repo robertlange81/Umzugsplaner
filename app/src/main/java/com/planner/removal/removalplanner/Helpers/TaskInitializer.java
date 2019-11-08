@@ -21,12 +21,12 @@ public class TaskInitializer {
     public static void InitTasks(Date removalDate) {
         // FIXME Notizen in Task
         // FIXME init new task serial ; Mietkautionskonto; Verträge; Bank etc. neue Adresse mitteilen
-        Task rentalContractOld = new Task("Mietvertrag (alt) kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", removalDate != null ? Calendar.getInstance().getTime() : null, Priority.High, 0L, TaskType.ORGANISATION);
+        Task rentalContractOld = new Task("Alten Mietvertrag kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", removalDate != null ? Calendar.getInstance().getTime() : null, Priority.High, 0L, TaskType.ORGANISATION);
         rentalContractOld.addLink("3-Monats-Frist?", "https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html");
         rentalContractOld.addLink("Sonderkündigungsrecht", "https://www.hausgold.de/sonderkuendigungsrecht/");
         Task.addTask(rentalContractOld);
 
-        Task rentalContractNew = new Task("Mietvertrag (neu) unterschreiben", "Prüfen Sie Ihren Mietvertrag auf Rechtskonformität und bindende Klauseln (Mindestmietdauer, angemessene Betriebskostenvorauszahlung, zu hohe Staffelmiete, sichtbare Mängel melden, Kleinreparaturklausel, WG-Miete, Maklerprovision, Vergleich Mietspiegel / Mietendeckel)", removalDate != null ? Calendar.getInstance().getTime() : null, Priority.High, 0L, TaskType.ORGANISATION);
+        Task rentalContractNew = new Task("Neuen Mietvertrag unterschreiben", "Prüfen Sie Ihren Mietvertrag auf Rechtskonformität und bindende Klauseln (Mindestmietdauer, angemessene Betriebskostenvorauszahlung, zu hohe Staffelmiete, sichtbare Mängel melden, Kleinreparaturklausel, WG-Miete, Maklerprovision, Vergleich Mietspiegel / Mietendeckel)", removalDate != null ? Calendar.getInstance().getTime() : null, Priority.High, 0L, TaskType.ORGANISATION);
         rentalContractNew.addLink("Mietvertrag: Vorsicht Fallen", "https://ratgeber.immowelt.de/a/mietvertrag-vorsicht-fallen.html");
         rentalContractNew.addLink("Tipps zum Mietvertrag", "https://www.nach-dem-abitur.de/mietvertrag-tipps");
         Task.addTask(rentalContractNew);
