@@ -10,9 +10,9 @@
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/start_new"
         android:orderInCategory="110"
-        android:title="@string/placeholder_settings"
-        app:showAsAction="never" />
-
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/placeholder_init"
+        app:showAsAction="always" />
 </menu>

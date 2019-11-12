@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -108,7 +107,7 @@
             android:layout_height="match_parent"
             android:text="@string/placeholder_init_delete_old_tasks"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            app:buttonTint="@drawable/checkbox_state_list" />
+             />
     </TableRow>
 
 

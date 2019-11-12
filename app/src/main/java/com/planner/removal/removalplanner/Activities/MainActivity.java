@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             if(initdialog.getDeleteOld()) {
                 Persistance.PruneAllTasks(this, initdialog.getRemovalDate());
             } else {
-                TaskInitializer.InitTasks(initdialog.getRemovalDate());
+                TaskInitializer.InitTasks(initdialog.getRemovalDate(), this);
             }
         }
     }
@@ -168,7 +168,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         Menu topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
-        initDialogMenuItem = topMenu.findItem(R.id.settings);
+        initDialogMenuItem = topMenu.findItem(R.id.start_new);
+
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
@@ -177,6 +178,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 }
             });
         }
+
         return true;
     }
 
@@ -303,6 +305,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         if(t != null && a != null) {
             Persistance.SaveOrUpdateTask(t, a);
         }
+
         if(a != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, a);
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {

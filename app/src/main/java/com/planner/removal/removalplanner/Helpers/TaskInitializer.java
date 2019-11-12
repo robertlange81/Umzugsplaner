@@ -1,5 +1,7 @@
 package com.planner.removal.removalplanner.Helpers;
 
+import android.app.Activity;
+
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
@@ -7,7 +9,6 @@ import com.planner.removal.removalplanner.Model.TaskType;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TreeMap;
 
 public class TaskInitializer {
 
@@ -18,7 +19,7 @@ public class TaskInitializer {
         }
     }
 
-    public static void InitTasks(Date removalDate) {
+    public static void InitTasks(Date removalDate, Activity mainActivity) {
         // FIXME Notizen in Task
         // FIXME init new task serial ; Mietkautionskonto; Verträge; Bank etc. neue Adresse mitteilen
         Task rentalContractOld = new Task("Alten Mietvertrag kündigen", "Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.", removalDate != null ? Calendar.getInstance().getTime() : null, Priority.High, 0L, TaskType.ORGANISATION);
@@ -69,6 +70,7 @@ public class TaskInitializer {
         requestSpecialLeave.addLink("Sonderurlaub", "https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031");
         Task.addTask(requestSpecialLeave);
 
+        Persistance.SaveTasks(mainActivity);
         MainActivity.NotifyTaskChanged(null, null);
     }
 

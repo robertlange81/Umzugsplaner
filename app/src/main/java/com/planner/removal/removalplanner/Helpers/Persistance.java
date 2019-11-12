@@ -146,7 +146,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                TaskInitializer.InitTasks(callbackNewInitDate);
+                TaskInitializer.InitTasks(callbackNewInitDate, activity);
             }
         }
 
