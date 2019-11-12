@@ -37,7 +37,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
     Date tempDate;
 
     // Use this instance of the interface to deliver action events
-    InitDialogListener mListener;
+    private InitDialogListener mListener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -70,13 +70,10 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
 
-        // Pass null as the parent view because its going in the dialog layout
-        if(mListener != null) {
-            builder.setView(view)
-                    .setTitle(getResources().getString(R.string.placeholder_init))
-                    .setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener);
-        }
+        builder.setView(view)
+                .setTitle(getResources().getString(R.string.placeholder_init))
+                .setNegativeButton(R.string.cancel, null)
+                .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener);
 
         alert = builder.create();
 
@@ -88,6 +85,10 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
 
     public void onDateSet(DatePicker view, int year, int month, int day) {
         // Do something with the date chosen by the user
+    }
+
+    public void setmListener(InitDialogListener mListener) {
+        this.mListener = mListener;
     }
 
     /* The activity that creates an instance of this dialog fragment must
@@ -104,7 +105,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
         // Verify that the host activity implements the callback interface
         try {
             // Instantiate the InitDialogListener so we can send events to the host
-            mListener = (InitDialogListener) context;
+            setmListener((InitDialogListener) context);
         } catch (ClassCastException e) {
             // The activity doesn't implement the interface, throw exception
             throw new ClassCastException("Main Activity must implement InitDialogListener");
