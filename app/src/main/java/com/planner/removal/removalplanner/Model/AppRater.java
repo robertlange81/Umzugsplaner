@@ -34,7 +34,6 @@ public class AppRater {
             date_firstLaunch = System.currentTimeMillis();
             editor.putLong("date_firstlaunch", date_firstLaunch);
         }
-                    showRateDialog(mContext, editor, APP_PNAME, APP_TITLE);
 
         // Wait at least n days before opening
         if (launch_count >= LAUNCHES_UNTIL_PROMPT) {

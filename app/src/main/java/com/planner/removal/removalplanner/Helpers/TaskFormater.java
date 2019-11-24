@@ -6,6 +6,7 @@ import android.os.Build;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -43,11 +44,23 @@ public class TaskFormater {
 
         DateFormat dfTime;
         if(date.getHours() == 0 && date.getMinutes() == 0) {
-            dfTime = DateFormat.getDateInstance(DateFormat.SHORT, currentLocal);
+            dfTime = getShortDateInstanceWithoutYears(currentLocal);
         } else {
-            dfTime = DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.SHORT, currentLocal);
+            dfTime = getShortDateTimeInstanceWithoutYears(currentLocal);
         }
         return dfTime.format(date);
+    }
+
+    public static DateFormat getShortDateInstanceWithoutYears(Locale locale) {
+        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateInstance(DateFormat.SHORT, locale);
+        sdf.applyPattern(sdf.toPattern().replaceAll("y+", ""));
+        return sdf;
+    }
+
+    public static DateFormat getShortDateTimeInstanceWithoutYears(Locale locale) {
+        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.SHORT, locale);
+        sdf.applyPattern(sdf.toPattern().replaceAll("y+", ""));
+        return sdf;
     }
 
     public static String intDecimalsToString(Long cent) {

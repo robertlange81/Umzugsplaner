@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -157,6 +158,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
 
+        SharedPreferences prefs = MainActivity.this.getSharedPreferences("did_init", 0);
+        if (!prefs.getBoolean("did_init", false)) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("did_init", true);
+            editor.commit();
+            showDetailDialog(InitDialogFragment.class, new String[0]);
+            return;
+        }
+
         try {
             AppRater.app_launched(
                     MainActivity.this,
@@ -166,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         } catch (Exception x) {
             // Log.w("cache", "Wo ist der Debugger?");
         }
+
     }
 
 
@@ -275,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             Collections.sort(Task.TASK_LIST, comparatorSortable);
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
-
+            
             if(recyclerView != null)
                 recyclerView.smoothScrollToPosition(0);
 
