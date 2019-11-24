@@ -14,7 +14,7 @@
         android:layout_height="@dimen/list_row_image_height"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5sp"
+        android:layout_marginTop="4sp"
         android:layout_marginRight="2sp"
         android:scaleX="1"
         android:scaleY="1"
@@ -56,16 +56,6 @@
             android:textColor="#ffffff"
             android:textSize="14sp" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/delete_task_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/list_row_image_height"
-            android:layout_marginLeft="1dip"
-            android:layout_marginTop="4sp"
-            android:layout_toRightOf="@id/name"
-            android:adjustViewBounds="false"
-            app:srcCompat="@android:drawable/ic_menu_delete" />
-
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/meta"
             android:layout_width="fill_parent"
@@ -84,41 +74,53 @@
                 android:layout_height="@dimen/list_row_content_part"
                 android:layout_marginTop="0dip"
                 android:layout_marginRight="0dip"
-                android:gravity="end"
+                android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/placeholder_type"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffeaefff" />
 
             <TextView
-                android:id="@+id/termin"
+                android:id="@+id/kosten"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_row_content_part"
                 android:layout_below="@id/typ"
                 android:layout_marginTop="-1dip"
-                android:layout_marginLeft="-1dip"
-                android:layout_marginRight="0dip"
-                android:gravity="end"
-                android:maxLines="1"
-                android:text="@string/placeholder_date"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#ff33ee33" />
-
-            <TextView
-                android:id="@+id/kosten"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/list_row_content_part"
-                android:layout_below="@id/termin"
-                android:layout_marginTop="-1dip"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="0dip"
                 android:adjustViewBounds="true"
-                android:gravity="end"
+                android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/placeholder_amount"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="#ffffaa" />
+
+            <TextView
+                android:id="@+id/termin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_row_content_part"
+                android:layout_below="@id/kosten"
+                android:layout_marginTop="-1dip"
+                android:layout_marginLeft="-3dip"
+                android:layout_marginRight="-3dip"
+                android:gravity="center"
+                android:maxLines="1"
+                android:forceHasOverlappingRendering="true"
+                android:text="@string/placeholder_date"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#ff33ee33" />
         </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/delete_task_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_row_image_height"
+            android:layout_marginLeft="0dip"
+            android:layout_marginRight="-4dip"
+            android:layout_marginTop="5sp"
+            android:layout_toRightOf="@id/name"
+            android:adjustViewBounds="false"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </TableRow>
 </RelativeLayout>
