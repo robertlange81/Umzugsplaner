@@ -60,4 +60,8 @@
         <item>MISC</item>
         <item>MISC</item>
     </string-array>
+    <string name="Rate_App">Rate App</string>
+    <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
+    <string name="Remind_me_later">Remind me later</string>
+    <string name="No_thanks">No, thanks</string>
 </resources>

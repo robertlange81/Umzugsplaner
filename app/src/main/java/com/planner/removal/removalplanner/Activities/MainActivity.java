@@ -39,6 +39,7 @@ import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.Helpers.Persistance;
+import com.planner.removal.removalplanner.Model.AppRater;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Fragments.CostsDialogFragment;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
@@ -155,6 +156,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     {
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
+
+        try {
+            AppRater.app_launched(
+                    MainActivity.this,
+                    MainActivity.this.getPackageName(),
+                    getResources().getString(R.string.app_name)
+            );
+        } catch (Exception x) {
+            // Log.w("cache", "Wo ist der Debugger?");
+        }
     }
 
 
