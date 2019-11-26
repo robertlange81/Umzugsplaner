@@ -37,7 +37,6 @@ public class Task implements Serializable {
     - Amazon / Google
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
-    - mit Google-Kalender synchronisieren !!!
     - Orte hinzufügen -> Routenplaner !!!
     - Ausdrucken / PDF erstellen / per Mail senden
     - Import / Export (zuletzt) !!!

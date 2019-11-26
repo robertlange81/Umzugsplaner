@@ -644,14 +644,25 @@
                 android:layout_marginBottom="5dp"
                 android:weightSum="3">
 
-                <TextView
-                    android:id="@+id/detail_deadline_dummy"
+                <TableRow
+                    android:id="@+id/detail_export_button"
                     android:layout_weight="2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/input_margin"
-                    android:textSize="@dimen/detail_text_size"
-                    android:text="" />
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp">
+
+                    <Button
+                        android:layout_height="match_parent"
+                        android:text="@string/placeholder_date_export"
+                        android:id="@+id/detail_btn_date_export"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"/>
+                </TableRow>
 
                 <TableRow
                     android:id="@+id/detail_deadline_buttons"

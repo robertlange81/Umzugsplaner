@@ -3,8 +3,11 @@ package com.planner.removal.removalplanner.Fragments;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.CalendarContract;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -74,6 +77,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Spinner spinnerDetailType;
     Button btnDatePicker;
     Button btnTimePicker;
+    Button btnExportPicker;
     EditText txtDeadline;
     TextView[] txtInputs;
     ImageView[] imgDeleteLinks;
@@ -162,6 +166,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         btnDatePicker = (Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker = (Button) rootView.findViewById(R.id.detail_btn_time);
+        btnExportPicker = (Button) rootView.findViewById(R.id.detail_btn_date_export);
         btnSave = (Button) rootView.findViewById(R.id.detail_btn_ok);
 
         if(MainActivity.mTwoPane) {
@@ -227,6 +232,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private void _initListeners(final View rootView) {
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+        btnExportPicker.setOnClickListener(this);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -641,6 +647,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                         }
                     }, mHour, mMinute, true);
             timePickerDialog.show();
+        }
+
+        if(v == btnExportPicker) {
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", _task.date.getTime());
+            intent.putExtra(CalendarContract.Events.ALL_DAY, false);
+            intent.putExtra("endTime", _task.date.getTime()+60*60*1000);
+            intent.putExtra(CalendarContract.Events.DESCRIPTION, _task.description);
+            intent.putExtra(CalendarContract.Events.DISPLAY_COLOR, Color.MAGENTA);
+            intent.putExtra(CalendarContract.Events.TITLE, _task.name);
+            startActivity(intent);
         }
     }
 
