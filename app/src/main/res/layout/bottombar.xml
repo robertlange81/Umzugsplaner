@@ -15,10 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginTop="50dp"
             app:backgroundTint="@color/colorPrimaryDark"
             app:fabAlignmentMode="center"
+            app:fabCradleVerticalOffset="0dp"
             app:fabAttached="true"
-            app:fabCradleDiameter="50dp"/>
+            app:fabCradleDiameter="20dp"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
@@ -27,7 +29,7 @@
             android:background="@drawable/fab"
             android:layout_margin="@dimen/fab_margin"
             android:layout_gravity="bottom|center"
-            app:fabSize="normal"
+            app:fabSize="mini"
             app:backgroundTint="@color/colorWhite"
             android:tint="@color/colorPrimaryDark"
             app:rippleColor="@android:color/black"

@@ -45,12 +45,12 @@ public class TaskInitializer {
         Task.addTask(informContractors);
 
         Task currentContract = new Task("Energieversorger", "Prüfen Sie, ob Sie Ihren alten Gas - bzw. Stromvertrag behalten (aber über Adresswechsel informieren) oder wechseln müssen / dürfen.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        currentContract.addLink("Stromanbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        currentContract.addLink("Anbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
         Task.addTask(currentContract);
 
         Task internetContract = new Task("Internetanschluss", "Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        internetContract.addLink("Internetanbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
-        internetContract.addLink("alter Anbieter am neuen Wohnort?", "https://www.verivox.de"); // FIXME: link kann ich versorgt werden (Gebiet)
+        internetContract.addLink("Anbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        internetContract.addLink("Anbieter am neuen Wohnort?", "https://www.check24.de/dsl/verfuegbarkeit/"); // FIXME: link kann ich versorgt werden (Gebiet)
         Task.addTask(internetContract);
 
         Task phoneContract = new Task("Festnetztelefon", "Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen und ob eine Mitnahme der alten Nummer möglich ist.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);

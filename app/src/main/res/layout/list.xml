@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="5dp"
-            android:layout_marginBottom="20sp"
+            android:layout_marginBottom="5dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".Activities.MainActivity"
             tools:listitem="@layout/list_row_content" />

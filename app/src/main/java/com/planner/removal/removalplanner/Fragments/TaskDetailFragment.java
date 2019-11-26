@@ -77,6 +77,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     EditText txtDeadline;
     TextView[] txtInputs;
     ImageView[] imgDeleteLinks;
+    TableRow firstLinkRow;
+
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
 
@@ -156,6 +158,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         txtCostsSig = rootView.findViewById(R.id.detail_costs);
         txtCostsFractions = rootView.findViewById(R.id.detail_costs_decimal);
         spinnerDetailType = (Spinner) rootView.findViewById(R.id.type);
+        firstLinkRow = (TableRow) rootView.findViewById(R.id.detail_third_line_links0);
 
         btnDatePicker = (Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker = (Button) rootView.findViewById(R.id.detail_btn_time);
@@ -330,24 +333,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task,"#,###");
         txtCostsSig.addTextChangedListener(currencyWatcher);
-
-        txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                Log.d("costs", "focus out");
-                if(!hasFocus && txtCostsFractions.getText() != null) {
-                    String input = txtCostsFractions.getText().toString();
-
-                    if(input.equals("")) {
-                        _task.costs = 0L;
-                        if(isNotifyEnabled)
-                            MainActivity.NotifyTaskChanged(_task, getActivity());
-                        return;
-                    }
-                }
-            }
-        });
-
         txtCostsFractions.addTextChangedListener(currencyWatcher);
 
         txtDeadline.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -432,6 +417,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             // disable next
             // if(i < MAX_INPUT_FIELDS_FOR_LINKS)
             //    _formatLink(txtInputs[i], "", "");
+            firstLinkRow.setVisibility(View.VISIBLE);
+        } else {
+            firstLinkRow.setVisibility(View.GONE);
         }
     }
 

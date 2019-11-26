@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
-        app:cardElevation="4dp"
+        app:cardElevation="1dp"
         app:cardCornerRadius="3dp" >
 
         <LinearLayout
@@ -45,6 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                android:ellipsize="start"
+                android:gravity="center"
                 android:singleLine="true"
                 android:paddingTop="10sp"
                 android:textSize="@dimen/headline_text_size"
@@ -234,14 +236,16 @@
                     android:id="@+id/detail_description_label"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/input_margin"
+                    android:layout_marginTop="6sp"
+                    android:gravity="center_vertical"
                     android:textSize="@dimen/detail_text_size"
-                    android:layout_gravity="center_vertical"
                     android:text="@string/placeholder_description" />
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/description"
+                    android:scrollbars = "vertical"
                     android:tag="@string/detail_description_input"
                     android:hint="@string/detail_description_input"
                     android:layout_weight="1"
@@ -264,7 +268,7 @@
             </TableRow>
 
             <TableRow
-                android:id="@+id/detail_third_line_x0"
+                android:id="@+id/detail_third_line_links0"
                 android:layout_below="@id/detail_second_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -293,8 +297,10 @@
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:selectAllOnFocus="true"
-                    android:singleLine="true"
                     android:tag="@string/placeholder_link"
+                    android:singleLine="false"
+                    android:minLines="1"
+                    android:maxLines="2"
                     android:paddingLeft="5dp"
                     android:textColorLink="@color/colorGreen"
                     android:textSize="@dimen/detail_text_size"
@@ -313,7 +319,7 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_x1"
-                android:layout_below="@id/detail_third_line_x0"
+                android:layout_below="@id/detail_third_line_links0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
@@ -344,7 +350,9 @@
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:singleLine="true"
+                    android:singleLine="false"
+                    android:minLines="1"
+                    android:maxLines="2"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 
@@ -439,7 +447,9 @@
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:singleLine="true"
+                    android:singleLine="false"
+                    android:minLines="1"
+                    android:maxLines="2"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 
@@ -487,7 +497,9 @@
                     android:inputType="textWebEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:singleLine="true"
+                    android:singleLine="false"
+                    android:minLines="1"
+                    android:maxLines="2"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 
@@ -541,7 +553,9 @@
                         android:hint="@string/placeholder_costs_significant_detail"
                         android:inputType="numberSigned"
                         android:selectAllOnFocus="true"
-                        android:singleLine="true"
+                        android:singleLine="false"
+                        android:minLines="1"
+                        android:maxLines="2"
                         android:tag="@string/placeholder_amount"
                         android:textAlignment="textEnd"
                         android:textSize="@dimen/detail_text_size"
@@ -556,7 +570,9 @@
                         android:inputType="number"
                         android:maxLength="2"
                         android:selectAllOnFocus="true"
-                        android:singleLine="true"
+                        android:singleLine="false"
+                        android:minLines="1"
+                        android:maxLines="2"
                         android:textSize="@dimen/detail_text_size" />
 
 
