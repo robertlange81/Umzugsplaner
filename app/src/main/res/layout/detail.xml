@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Fragments.TaskDetailFragment"
     android:id="@+id/detail">
 
 
+    <include
+        layout="@layout/topbar_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <android.support.v7.widget.CardView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/detail_header"
@@ -44,9 +54,8 @@
                 android:hint="@string/placeholder_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:ellipsize="start"
-                android:gravity="center"
+                android:gravity="start|center_vertical"
                 android:singleLine="true"
                 android:paddingTop="10sp"
                 android:textSize="@dimen/headline_text_size"
@@ -147,8 +156,10 @@
         android:layout_height="fill_parent"
         android:layout_below="@id/detail_header"
         xmlns:android="http://schemas.android.com/apk/res/android">
+
         <ScrollView
             android:layout_width="fill_parent"
+            android:paddingBottom="10dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -226,34 +237,24 @@
                 android:layout_below="@id/detail_first_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
+                android:orientation="horizontal"
+                android:minHeight="@dimen/detail_row_height"
                 android:layout_marginTop="@dimen/detail_row_margin_top"
-                android:layout_marginBottom="5dp"
-                android:weightSum="3">
-
-                <TextView
-                    android:id="@+id/detail_description_label"
-                    android:layout_weight="2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/input_margin"
-                    android:layout_marginTop="6sp"
-                    android:gravity="center_vertical"
-                    android:textSize="@dimen/detail_text_size"
-                    android:text="@string/placeholder_description" />
+                android:layout_marginBottom="5dp">
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/description"
-                    android:scrollbars = "vertical"
+                    android:scrollbars="vertical"
+                    android:layout_gravity="center_vertical"
                     android:tag="@string/detail_description_input"
                     android:hint="@string/detail_description_input"
                     android:layout_weight="1"
+                    android:minLines="2"
                     android:layout_height="wrap_content"
-                    android:gravity="start|center_vertical"
-                    android:minLines="4"
-                    android:maxLines="12"
-                    android:inputType="textMultiLine"
+                    android:layout_marginLeft="4dp"
+                    android:gravity="top"
+                    android:inputType="textMultiLine|textCapSentences"
                     android:textSize="@dimen/detail_text_size"
                     android:scrollHorizontally="false" />
 
@@ -657,6 +658,8 @@
                         android:layout_height="match_parent"
                         android:text="@string/placeholder_date_export"
                         android:id="@+id/detail_btn_date_export"
+                        android:drawableLeft="@android:drawable/ic_menu_add"
+                        android:drawableRight="@android:drawable/ic_menu_my_calendar"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimaryDark"
                         android:layout_alignParentTop="true"
@@ -703,62 +706,8 @@
                     app:srcCompat="@android:drawable/ic_delete" />
 
             </TableRow>
-
-            <TableRow
-                    android:id="@+id/detail_seventh_line"
-                    android:layout_below="@id/detail_sixth_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/detail_row_height"
-                    android:minHeight="@dimen/detail_row_height"
-                    android:gravity="top"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:weightSum="3">
-
-                    <TextView
-                        android:id="@+id/detail_ok_dummy"
-                        android:layout_weight="2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/input_margin"
-                        android:textSize="@dimen/detail_text_size"
-                        android:text="" />
-
-                    <TableRow
-                        android:id="@+id/detail_ok_button"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:minHeight="@dimen/detail_row_height"
-                        android:gravity="top"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginBottom="5dp"
-                        android:weightSum="2">
-
-                        <Button
-                            android:layout_height="match_parent"
-                            android:text="@string/detail_save_task"
-                            android:id="@+id/detail_btn_ok"
-                            android:layout_weight="1"
-                            android:background="@color/colorPrimaryDark"
-                            android:layout_alignParentTop="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentStart="true"
-                            android:visibility="invisible" />
-                    </TableRow>
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="2dip"
-                        android:layout_marginTop="2dip"
-                        android:layout_toRightOf="@id/detail_btn_time"
-                        android:adjustViewBounds="false"
-                        android:visibility="invisible"
-                        app:srcCompat="@android:drawable/ic_delete" />
-
-                </TableRow>
-
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
 </RelativeLayout>
+</LinearLayout>

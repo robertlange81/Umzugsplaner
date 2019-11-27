@@ -12,7 +12,6 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;

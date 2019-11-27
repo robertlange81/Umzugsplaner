@@ -1,6 +1,7 @@
 package com.planner.removal.removalplanner.Activities;
 
 import android.os.Bundle;
+import android.support.design.bottomappbar.BottomAppBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
@@ -56,6 +57,19 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onResume()
     {
+
+        if(!MainActivity.mTwoPane) {
+            BottomAppBar appBar = (BottomAppBar) findViewById(R.id.bottombar_detail);
+            if(appBar != null) {
+                setSupportActionBar(appBar);
+
+                // add back arrow to toolbar
+                if (getSupportActionBar() != null){
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                    getSupportActionBar().setDisplayShowHomeEnabled(true);
+                }
+            }
+        }
         super.onResume();
     }
 

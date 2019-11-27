@@ -86,7 +86,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
 
-    Button btnSave;
     boolean isNotifyEnabled = true;
 
     public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
@@ -167,13 +166,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         btnDatePicker = (Button) rootView.findViewById(R.id.detail_btn_date);
         btnTimePicker = (Button) rootView.findViewById(R.id.detail_btn_time);
         btnExportPicker = (Button) rootView.findViewById(R.id.detail_btn_date_export);
-        btnSave = (Button) rootView.findViewById(R.id.detail_btn_ok);
-
-        if(MainActivity.mTwoPane) {
-            btnSave.setVisibility(View.GONE);
-        } else {
-            btnSave.setVisibility(View.VISIBLE);
-        }
 
         txtDeadline =(EditText) rootView.findViewById(R.id.detail_deadline);
         txtDeadline.setOnClickListener(this);
@@ -233,13 +225,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
         btnExportPicker.setOnClickListener(this);
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
 
         checkIsDone.setOnClickListener(new View.OnClickListener() {
             @Override

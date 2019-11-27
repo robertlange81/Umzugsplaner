@@ -45,20 +45,20 @@ public class TaskInitializer {
         Task.addTask(informContractors);
 
         Task currentContract = new Task("Energieversorger", "Prüfen Sie, ob Sie Ihren alten Gas - bzw. Stromvertrag behalten (aber über Adresswechsel informieren) oder wechseln müssen / dürfen.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        currentContract.addLink("Anbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        currentContract.addLink("Anbieter vergleichen", "https://www.verivox.de"); // FIXME: partner-id
         Task.addTask(currentContract);
 
         Task internetContract = new Task("Internetanschluss", "Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        internetContract.addLink("Anbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        internetContract.addLink("Anbieter vergleichen", "https://www.verivox.de"); // FIXME: partner-id
         internetContract.addLink("Anbieter am neuen Wohnort?", "https://www.check24.de/dsl/verfuegbarkeit/"); // FIXME: link kann ich versorgt werden (Gebiet)
         Task.addTask(internetContract);
 
         Task phoneContract = new Task("Festnetztelefon", "Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen und ob eine Mitnahme der alten Nummer möglich ist.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        phoneContract.addLink("Telefonanbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        phoneContract.addLink("Telefonanbieter vergleichen", "https://www.verivox.de"); // FIXME: partner-id
         Task.addTask(phoneContract);
 
         Task tvContract = new Task("TV-Anschluss", "Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.", addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L, TaskType.ORGANISATION);
-        tvContract.addLink("TV-Anbieter wechseln", "https://www.verivox.de"); // FIXME: partner-id
+        tvContract.addLink("TV-Anbieter vergleichen", "https://www.verivox.de"); // FIXME: partner-id
         Task.addTask(tvContract);
 
         Task fireAndBurglaryProtection = new Task("Brandschutz und Einbruchsschutz", "Rauchmelder sind in einigen Bundesländern Pflicht und können Leben retten. Vergessen Sie zudem nicht den Einbruchsschutz.", removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -6) : null, Priority.Normal, 0L, TaskType.SECURITY);

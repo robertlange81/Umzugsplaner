@@ -19,7 +19,7 @@
     <string name="placeholder_costs_decimal_detail">Cent</string>
     <string name="placeholder_date">deadline</string>
     <string name="placeholder_date_detail">date</string>
-    <string name="placeholder_date_export">export</string>
+    <string name="placeholder_date_export"></string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
     <string name="placeholder_description">notes</string>
