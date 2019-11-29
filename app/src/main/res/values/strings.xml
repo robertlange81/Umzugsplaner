@@ -73,4 +73,5 @@
     <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht supportet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung.Vielen Dank!</string>
     <string name="Remind_me_later">Später erinnern</string>
     <string name="No_thanks">No, thanks</string>
+    <string name="back">zurück</string>
 </resources>

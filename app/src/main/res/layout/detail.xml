@@ -10,11 +10,27 @@
     tools:context=".Fragments.TaskDetailFragment"
     android:id="@+id/detail">
 
-
-    <include
-        layout="@layout/topbar_detail"
+    <android.support.v7.widget.Toolbar
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar_wrapper_detail"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:background="?attr/colorPrimary"
+        android:gravity="center_vertical|start"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <android.support.v7.widget.ActionMenuView
+            android:id="@+id/top_actionmenu_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="40sp"
+            android:gravity="start"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp" />
+    </android.support.v7.widget.Toolbar>
 
 <RelativeLayout
     android:layout_width="match_parent"

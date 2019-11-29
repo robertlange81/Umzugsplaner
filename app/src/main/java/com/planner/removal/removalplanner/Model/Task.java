@@ -26,7 +26,6 @@ public class Task implements Serializable {
     public static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<String, Task> TASK_MAP = new HashMap<String, Task>();
     public static int maxId = 0;
-    public static Date deadline;
 
     /*
     TODO / FIXME / Ideen:

@@ -179,7 +179,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -187,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         getMenuInflater().inflate(R.menu.bottomappbar_menu, menu);
 
         // Inflate and initialize the top main menu
-        ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_toolbar);
+        ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu);
         Menu topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);

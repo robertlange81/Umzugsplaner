@@ -143,6 +143,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setHasOptionsMenu(true);
+
         isNotifyEnabled = false;
         Log.e("DEBUG", "onCreateView");
 

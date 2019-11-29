@@ -1,13 +1,14 @@
 package com.planner.removal.removalplanner.Activities;
 
 import android.os.Bundle;
-import android.support.design.bottomappbar.BottomAppBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ActionMenuView;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.R;
-
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -18,10 +19,11 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
 
-        //Toolbar toolbar = findViewById(R.id.detail_toolbar);
-        //setSupportActionBar(toolbar);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
+       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_detail);
 
         // Show the Up button in the action bar.
         /*ActionBar actionBar = getSupportActionBar();
@@ -57,20 +59,43 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onResume()
     {
+        super.onResume();
 
         if(!MainActivity.mTwoPane) {
-            BottomAppBar appBar = (BottomAppBar) findViewById(R.id.bottombar_detail);
-            if(appBar != null) {
-                setSupportActionBar(appBar);
+            // Inflate and initialize the top main menu
+            ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu_detail);
+            if(topBar != null) {
+                Menu topMenu = topBar.getMenu();
+                getMenuInflater().inflate(R.menu.menu_detail, topMenu);
 
-                // add back arrow to toolbar
-                if (getSupportActionBar() != null){
-                    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                    getSupportActionBar().setDisplayShowHomeEnabled(true);
+                for (int i = 0; i < topMenu.size(); i++) {
+                    topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            return onOptionsItemSelectedDetail(item);
+                        }
+                    });
                 }
+                findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.VISIBLE);
             }
+        } else {
+            if(findViewById(R.id.toolbar_wrapper_detail) != null)
+                findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.GONE);
         }
-        super.onResume();
+    }
+
+    public boolean onOptionsItemSelectedDetail(MenuItem item) {
+
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.back:
+                this.finish();
+                break;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 
