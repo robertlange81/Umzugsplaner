@@ -50,16 +50,10 @@
     <string name="paid_done">paid</string>
     <string name="currency">$</string>
     <string-array name="base_task_types">
-        <item>BATH</item>
-        <item>KITCHEN</item>
-        <item>LIVING ROOM</item>
-        <item>BEDROOM</item>
-        <item>NURSERY</item>
-        <item>WORKROOM</item>
-        <item>MANAGEMENT</item>
-        <item>TRANSPORT</item>
-        <item>MISC</item>
-        <item>MISC</item>
+        <item>Old Flat</item>
+        <item>New Flat</item>
+        <item>Contracts</item>
+        <item>Movement</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>

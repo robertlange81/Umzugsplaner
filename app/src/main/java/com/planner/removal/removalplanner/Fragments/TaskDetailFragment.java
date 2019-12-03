@@ -38,6 +38,7 @@ import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
+import com.planner.removal.removalplanner.Model.TaskTypeMain;
 import com.planner.removal.removalplanner.R;
 
 import java.util.ArrayList;
@@ -283,8 +284,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         spinnerDetailType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(_task != null && !_task.type.equals(TaskType.values()[position])) {
-                    _task.type = TaskType.values()[position];
+                if(_task != null && !_task.type.equals(TaskTypeMain.values()[position].getValue())) {
+                    _task.type = new TaskType(TaskTypeMain.values()[position].getValue());
                     if(isNotifyEnabled)
                         MainActivity.NotifyTaskChanged(_task, getActivity());
                 }
@@ -352,7 +353,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             txtName.setText(_task.name);
 
         if(_task.type != null) {
-            spinnerDetailType.setSelection(_task.type.getValue());
+            int counter = -1;
+            for (TaskTypeMain taskTypeMain : TaskTypeMain.values()) {
+                counter++;
+
+                // extra case for zero
+                if (counter == 0 &&_task.type.getValue() != 0)
+                    continue;
+
+                if((taskTypeMain.getValue() & _task.type.getValue()) == taskTypeMain.getValue()) {
+                    spinnerDetailType.setSelection(counter);
+                    break;
+                }
+            }
         }
 
         if(!txtDescription.getText().toString().equals(_task.description))

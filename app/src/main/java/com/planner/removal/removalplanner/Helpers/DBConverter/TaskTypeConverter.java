@@ -8,26 +8,7 @@ public class TaskTypeConverter {
 
     @TypeConverter
     public static TaskType fromInt(int value) {
-        switch (value) {
-            case 0:
-                return TaskType.BATH;
-            case 1:
-                return TaskType.KITCHEN;
-            case 2:
-                return TaskType.LIVING_ROOM;
-            case 3:
-                return TaskType.BEDROOM;
-            case 4:
-                return TaskType.NURSERY;
-            case 5:
-                return TaskType.WORKROOM;
-            case 6:
-                return TaskType.ORGANISATION;
-            case 7:
-                return TaskType.TRANSPORT;
-            default:
-                return TaskType.MISCELLANEOUS;
-        }
+        return new TaskType(value);
     }
 
 

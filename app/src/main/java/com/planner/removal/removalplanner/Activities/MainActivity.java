@@ -47,6 +47,7 @@ import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Model.Priority;
+import com.planner.removal.removalplanner.Model.TaskTypeMain;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
@@ -431,8 +432,21 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
             if(task.type != null) {
-                String str_type = (String) Array.get(str_task_types, mValues.get(position).type.getValue());
-                holder.typ.setText(str_type);
+                int number = -1;
+                for (TaskTypeMain t : TaskTypeMain.values()) {
+                    number++;
+                    if (number == str_task_types.length)
+                        break;
+
+                    // extra case for zero
+                    if (number == 0 && mValues.get(position).type.getValue() != 0)
+                        continue;
+
+                    if ((t.getValue() & mValues.get(position).type.getValue()) == t.getValue()) {
+                        holder.type.setText((String) Array.get(str_task_types, number));
+                        break;
+                    }
+                }
             }
 
             if (task.priority == Priority.High) {
@@ -541,7 +555,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             final CheckBox ckBoxTaskDone;
             final TextView costs;
             final TextView date;
-            final TextView typ;
+            final TextView type;
             final ImageView imgPrio;
             final ImageView imgDelete;
 
@@ -551,7 +565,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
                 date = rowView.findViewById(R.id.termin);
                 costs = rowView.findViewById(R.id.kosten);
-                typ = rowView.findViewById(R.id.typ);
+                type = rowView.findViewById(R.id.typ);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }

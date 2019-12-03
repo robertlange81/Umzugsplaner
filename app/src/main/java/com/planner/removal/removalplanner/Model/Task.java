@@ -82,7 +82,7 @@ public class Task implements Serializable {
         date = null;
         priority = com.planner.removal.removalplanner.Model.Priority.Normal;
         costs = 0L;
-        type = TaskType.KITCHEN;
+        type = new TaskType(TaskTypeMain.Movement);
         links = new TreeMap<>();
     }
 

@@ -1,15 +1,42 @@
 package com.planner.removal.removalplanner.Model;
 
-public enum TaskType {
-    BATH(0), KITCHEN(1), LIVING_ROOM(2), BEDROOM(3), NURSERY(4), WORKROOM(5), ORGANISATION(6), TRANSPORT(7), SECURITY(8), MISCELLANEOUS(9);
+public class TaskType implements Comparable<Object>{
 
     private int value;
 
-    TaskType(int value) {
+    public TaskType(int value) {
         this.value = value;
+    }
+
+    public TaskType(TaskTypeMain base) {
+        this.value = base.getValue();
     }
 
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return this.compareTo(o) == 0;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+
+        if(o == null)
+            return 1;
+
+        if(o.getClass() == this.getClass())
+            return new Integer(this.getValue()).compareTo(new Integer(((TaskType) o).getValue()));
+
+        if(o.getClass() == TaskTypeMain.class)
+            return new Integer(this.getValue()).compareTo(new Integer(((TaskTypeMain) o).getValue()));
+
+        if(o.getClass() == int.class)
+            return new Integer(this.getValue()).compareTo(new Integer((int) o));
+
+        return 1;
+    }
 }
+
