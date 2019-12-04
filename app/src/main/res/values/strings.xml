@@ -28,6 +28,7 @@
     <string name="placeholder_init">Neuen Umzug einrichten</string>
     <string name="placeholder_init_delete_old_tasks">alle bisherigen Aufgaben löschen!</string>
     <string name="placeholder_init_no_date">Kein Datum angegeben - Standard-Aufgaben werden ohne Datum angelegt.</string>
+    <string name="placeholder_export_no_date">Für Export in Kalender bitte Datum wählen.</string>
     <string name="placeholder_links">Links</string>
     <string name="placeholder_link">Link</string>
     <string name="placeholder_link_input">Url oder Ressource</string>
@@ -43,7 +44,6 @@
     <string name="sortbyCosts">Sortiere nach Kosten</string>
     <string name="sortbyPriority">Sortiere nach Priorität</string>
     <string name="sortbyName">Sortiere nach Name</string>
-    <string name="sortbyType">Sortiere nach Kategorie</string>
     <string name="sortbyIsDone">Sortiere nach Erledigt</string>
     <string name="time_changed">Zeit geändert</string>
     <string name="todo">offen</string>

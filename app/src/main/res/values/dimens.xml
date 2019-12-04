@@ -49,6 +49,7 @@
     <dimen name="headline_text_size">20sp</dimen>
     <dimen name="detail_header_row_height">35sp</dimen>
     <dimen name="list_row_image_height">50sp</dimen>
+    <dimen name="list_row_image_height_small">40sp</dimen>
     <dimen name="list_row_content_part">20sp</dimen>
     <dimen name="bottom_border">30sp</dimen>
 

@@ -14,6 +14,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public static DetailActivity instance;
     public static final String ARG_TASK_ID = "task_id";
+    boolean didAddTopBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,6 +61,11 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
+
+        if (didAddTopBar)
+            return;
+
+        didAddTopBar = true;
 
         if(!MainActivity.mTwoPane) {
             // Inflate and initialize the top main menu

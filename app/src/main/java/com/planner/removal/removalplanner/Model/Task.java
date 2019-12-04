@@ -29,8 +29,10 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - erledigte ausblenden , nur hohe prio
+    - extra Menü für Kategorie
     - extra Menü in Bottom für Möbel
+    - kurzes Tutorial am Anfang
+    - erledigte ausblenden , nur hohe prio
     - Assistenz
     - Amazon / Google
     - Hintergrundbild (Grundriss / Baby)

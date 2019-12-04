@@ -25,6 +25,7 @@
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
+    <string name="placeholder_export_no_date">Please choose a date first.</string>
     <string name="placeholder_init">Set up new removal</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
     <string name="placeholder_init_no_date">No date specified - Standard tasks are created without a date.</string>
@@ -43,7 +44,6 @@
     <string name="sortbyIsDone">Sort By Done</string>
     <string name="sortbyName">Sort By Name</string>
     <string name="sortbyPriority">Sort By Priorty</string>
-    <string name="sortbyType">Sort By Type</string>
     <string name="time_changed">time changed</string>
     <string name="todo">todo</string>
     <string name="undo">undo</string>

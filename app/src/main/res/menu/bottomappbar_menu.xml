@@ -27,11 +27,4 @@
         android:orderInCategory="5"
         android:title="@string/sortbyPriority"
         app:showAsAction="never" />
-
-    <item
-        android:id="@+id/sortByType"
-        android:orderInCategory="6"
-        android:title="@string/sortbyType"
-        app:showAsAction="never" />
-
 </menu>

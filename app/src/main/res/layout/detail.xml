@@ -41,6 +41,7 @@
         android:orientation="vertical"
         android:padding="15sp"
         android:paddingTop="0sp"
+        android:layout_marginTop="-5sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
@@ -80,13 +81,14 @@
 
         </TableRow>
 
-            <TableRow
+        <TableRow
             android:layout_width="match_parent"
             android:layout_below="@+id/detail_header_top"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/detail_header_row_height"
             android:minHeight="@dimen/detail_header_row_height"
             android:gravity="center_vertical"
             android:paddingStart="5sp"
+            android:layout_marginTop="-10sp"
             android:paddingLeft="5sp"
             android:weightSum="3">
 
@@ -309,7 +311,7 @@
                     android:id="@+id/links_0"
                     android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_link_input"
-                    android:inputType="textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_width="match_parent"

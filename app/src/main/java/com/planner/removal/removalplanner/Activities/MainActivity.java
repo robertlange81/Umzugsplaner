@@ -263,9 +263,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             case R.id.sortByPriority:
                 sortType = ComparatorConfig.SortType.PRIORITY;
                 break;
-            case R.id.sortByType:
-                sortType = ComparatorConfig.SortType.TYPE;
-                break;
             default:
                 sortType = ComparatorConfig.SortType.IS_DONE;
         }
@@ -563,8 +560,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 super(rowView);
                 name = rowView.findViewById(R.id.name);
                 ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
-                date = rowView.findViewById(R.id.termin);
-                costs = rowView.findViewById(R.id.kosten);
+                date = rowView.findViewById(R.id.date_detail);
+                costs = rowView.findViewById(R.id.costs_detail);
                 type = rowView.findViewById(R.id.typ);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);

@@ -27,16 +27,17 @@ public class TaskType implements Comparable<Object>{
         if(o == null)
             return 1;
 
-        if(o.getClass() == this.getClass())
-            return new Integer(this.getValue()).compareTo(new Integer(((TaskType) o).getValue()));
+        int other = 0;
+        if(o.getClass() == TaskType.class)
+            other = ((TaskType) o).getValue();
 
         if(o.getClass() == TaskTypeMain.class)
-            return new Integer(this.getValue()).compareTo(new Integer(((TaskTypeMain) o).getValue()));
+            other = ((TaskTypeMain) o).getValue();
 
         if(o.getClass() == int.class)
-            return new Integer(this.getValue()).compareTo(new Integer((int) o));
+            other = (int) o;
 
-        return 1;
+        return new Integer(this.getValue()).compareTo(new Integer(other));
     }
 }
 

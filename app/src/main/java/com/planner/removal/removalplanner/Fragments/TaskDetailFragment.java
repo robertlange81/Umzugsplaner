@@ -91,6 +91,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
     private static View.OnClickListener clickListener;
+    View rootView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -149,7 +150,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         isNotifyEnabled = false;
         Log.e("DEBUG", "onCreateView");
 
-        final View rootView = inflater.inflate(R.layout.detail, container, false);
+        rootView = inflater.inflate(R.layout.detail, container, false);
 
         if(TaskFormater.currentLocal == null) {
             TaskFormater.setCurrentLocale(rootView.getContext());
@@ -650,6 +651,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
 
         if(v == btnExportPicker) {
+            if (_task.date == null) {
+                Snackbar.make(rootView, getResources().getString(R.string.placeholder_export_no_date), Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                return;
+            }
+
             Intent intent = new Intent(Intent.ACTION_EDIT);
             intent.setType("vnd.android.cursor.item/event");
             intent.putExtra("beginTime", _task.date.getTime());

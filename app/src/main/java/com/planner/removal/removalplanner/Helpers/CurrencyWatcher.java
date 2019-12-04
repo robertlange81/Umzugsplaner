@@ -53,7 +53,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
         if (newNumber < 0) {
           _task.costs = newNumber * 100 - _task.costs;
         } else {
-          _task.costs = newNumber * 100 - _task.costs;
+          _task.costs = newNumber * 100 + _task.costs;
         }
 
         String currText = TaskFormater.intSigToString(_task.costs);
