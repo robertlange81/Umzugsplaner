@@ -87,7 +87,7 @@
                 android:layout_marginTop="0dip"
                 android:layout_marginLeft="0dip"
                 android:layout_marginRight="-5dip"
-                android:gravity="start"
+                android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/placeholder_type"
                 android:textAppearance="?android:attr/textAppearanceSmall"

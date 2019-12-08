@@ -32,6 +32,8 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.planner.removal.removalplanner.Fragments.InitDialogFragment;
@@ -355,7 +357,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            view.setBackgroundColor(Color.parseColor("#000000"));
             Task item = (Task) view.getTag();
+            activeRowIndex = item.id;
+
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
                 arguments.putString(TaskDetailFragment.TASK_ID, item.id);
@@ -401,6 +406,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             mValues.add(task);
         }
 
+        static String activeRowIndex = "";
+
         public void remove(Task task) {
             mValues.remove(task);
         }
@@ -414,11 +421,19 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         @Override
-        public void onBindViewHolder(final ViewHolder holder, int position) {
+        public void onBindViewHolder(final ViewHolder holder, final int position) {
             final Task task = mValues.get(position);
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
+
+            if(activeRowIndex == task.id){
+                holder.row.setBackgroundColor(Color.parseColor("#000000"));
+            }
+            else
+            {
+                holder.row.setBackgroundColor(Color.TRANSPARENT);
+            }
 
             if(task.date != null) {
                 String terminTxt = TaskFormater.formatDateToSring(task.date);
@@ -548,6 +563,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         class ViewHolder extends RecyclerView.ViewHolder {
             // rows content of main list
+            final RelativeLayout row;
             final TextView name;
             final CheckBox ckBoxTaskDone;
             final TextView costs;
@@ -558,6 +574,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             ViewHolder(View rowView) {
                 super(rowView);
+                row = rowView.findViewById(R.id.list_row_content);
                 name = rowView.findViewById(R.id.name);
                 ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
                 date = rowView.findViewById(R.id.date_detail);

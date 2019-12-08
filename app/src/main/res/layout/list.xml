@@ -21,6 +21,7 @@
         android:paddingTop="?android:attr/actionBarSize"
         android:layout_height="match_parent"
         android:layout_below="@+id/top_actionmenu"
+        android:layout_marginTop="-8dp"
         android:layout_marginBottom="@dimen/bottom_border"
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -33,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="0dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="0dp"
             android:layout_marginBottom="5dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".Activities.MainActivity"
