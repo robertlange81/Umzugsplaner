@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="start"
                 android:gravity="start|center_vertical"
-                android:singleLine="true"
+                android:singleLine="false"
                 android:paddingTop="10sp"
                 android:textSize="@dimen/headline_text_size"
                 android:selectAllOnFocus="true"

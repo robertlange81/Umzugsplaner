@@ -69,7 +69,7 @@
             android:gravity="top">
 
             <TextView
-                android:id="@+id/typ"
+                android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_row_content_part"
                 android:layout_marginTop="0dip"
@@ -82,10 +82,10 @@
                 android:textColor="#ffeaefff" />
 
             <TextView
-                android:id="@+id/kosten"
+                android:id="@+id/costs_detail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_row_content_part"
-                android:layout_below="@id/typ"
+                android:layout_below="@id/type"
                 android:layout_marginTop="-1dip"
                 android:layout_marginLeft="-3dip"
                 android:layout_marginRight="-3dip"
@@ -97,10 +97,10 @@
                 android:textColor="#ffffaa" />
 
             <TextView
-                android:id="@+id/termin"
+                android:id="@+id/date_detail"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_row_content_part"
-                android:layout_below="@id/kosten"
+                android:layout_below="@id/costs_detail"
                 android:layout_marginTop="-1dip"
                 android:layout_marginLeft="-3dip"
                 android:layout_marginRight="-3dip"

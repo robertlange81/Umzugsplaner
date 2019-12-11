@@ -29,12 +29,15 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - Loader + Hinweis
+    - Synchronisieren
+    - andere Nutzer einladen
     - extra Menü für Kategorie
     - extra Menü in Bottom für Möbel
     - kurzes Tutorial am Anfang
     - erledigte ausblenden , nur hohe prio
     - Assistenz
-    - Amazon / Google
+    - Amazon / Google / Verivox
     - Hintergrundbild (Grundriss / Baby)
     - Ziel-date im Hintergrund
     - Orte hinzufügen -> Routenplaner !!!

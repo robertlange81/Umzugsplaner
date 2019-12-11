@@ -33,7 +33,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.planner.removal.removalplanner.Fragments.InitDialogFragment;
@@ -359,7 +358,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         public void onClick(View view) {
             view.setBackgroundColor(Color.parseColor("#000000"));
             Task item = (Task) view.getTag();
-            activeRowIndex = item.id;
+
+            if(activeRowItemId != null && activeRowItemId != item.id) {
+                activeRowItemId = item.id;
+                if(activeRowPosition > 0) {
+                    View v = recyclerView.getLayoutManager().findViewByPosition(activeRowPosition);
+                    if(v != null)
+                        v.setBackgroundColor(Color.TRANSPARENT);
+                }
+                //notifyDataSetChanged();
+            }
 
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
@@ -406,7 +414,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             mValues.add(task);
         }
 
-        static String activeRowIndex = "";
+        static String activeRowItemId = "";
+        static int activeRowPosition = -1;
 
         public void remove(Task task) {
             mValues.remove(task);
@@ -427,8 +436,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             holder.ckBoxTaskDone.setChecked(task.is_Done);
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
 
-            if(activeRowIndex == task.id){
+            if(activeRowItemId != null && activeRowItemId == task.id){
                 holder.row.setBackgroundColor(Color.parseColor("#000000"));
+                activeRowPosition = position;
             }
             else
             {
@@ -579,7 +589,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 ckBoxTaskDone = rowView.findViewById(R.id.checkBox);
                 date = rowView.findViewById(R.id.date_detail);
                 costs = rowView.findViewById(R.id.costs_detail);
-                type = rowView.findViewById(R.id.typ);
+                type = rowView.findViewById(R.id.type);
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }

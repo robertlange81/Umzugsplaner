@@ -62,11 +62,6 @@ public class DetailActivity extends AppCompatActivity {
     {
         super.onResume();
 
-        if (didAddTopBar)
-            return;
-
-        didAddTopBar = true;
-
         if(!MainActivity.mTwoPane) {
             // Inflate and initialize the top main menu
             ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu_detail);
@@ -87,6 +82,11 @@ public class DetailActivity extends AppCompatActivity {
         } else {
             if(findViewById(R.id.toolbar_wrapper_detail) != null)
                 findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.GONE);
+
+            if (didAddTopBar)
+                return;
+
+            didAddTopBar = true;
         }
     }
 
