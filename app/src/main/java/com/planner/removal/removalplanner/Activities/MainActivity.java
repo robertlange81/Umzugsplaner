@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static RecyclerView recyclerView;
     MenuItem initDialogMenuItem, lastItem, showCostsMenuItem;
     DialogFragment dialog;
+    Menu topMenu;
 
     @Override
     public void onClick(DialogInterface dialogInterface, int which) {
@@ -189,8 +190,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         // Inflate and initialize the top main menu
         ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu);
-        Menu topMenu = topBar.getMenu();
+
+        if(topMenu != null)
+            return true;
+
+        topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
+
         showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
 
