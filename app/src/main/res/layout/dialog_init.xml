@@ -49,7 +49,7 @@
             android:gravity="top"
             android:layout_marginTop="0dp"
             android:layout_marginBottom="5dp"
-            android:weightSum="3">
+            android:weightSum="2">
 
             <Button
                 android:layout_height="match_parent"
@@ -67,12 +67,12 @@
                 android:id="@+id/init_btn_time"
                 android:layout_toRightOf="@+id/detail_btn_date" />
 
-            <Button
+            <!-- Button
                 android:layout_height="match_parent"
                 android:text="Ort"
                 android:layout_weight="1"
                 android:id="@+id/init_btn_location"
-                android:layout_toRightOf="@+id/init_btn_time" />
+                android:layout_toRightOf="@+id/init_btn_time" /-->
         </TableRow>
     </TableRow>
     <TableRow

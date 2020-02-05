@@ -18,8 +18,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
-import com.planner.removal.removalplanner.Activities.DetailActivity;
-import com.planner.removal.removalplanner.Activities.MapActivity;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
@@ -34,7 +32,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
     AlertDialog alert;
     Button btnDatePicker;
     Button btnTimePicker;
-    Button btnLocationPicker;
+    // Button btnLocationPicker;
     CheckBox checkBoxDeleteOld;
     EditText txtDeadline;
     private int mYear, mMonth, mDay, mHour, mMinute;
@@ -62,7 +60,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
 
         btnDatePicker =(Button) view.findViewById(R.id.init_btn_date);
         btnTimePicker =(Button) view.findViewById(R.id.init_btn_time);
-        btnLocationPicker =(Button) view.findViewById(R.id.init_btn_location);
+        //btnLocationPicker =(Button) view.findViewById(R.id.init_btn_location);
         txtDeadline = (EditText) view.findViewById(R.id.detail_deadline);
         checkBoxDeleteOld = (CheckBox) view.findViewById(R.id.init_checkBox_delete_old);
 
@@ -74,7 +72,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
-        btnLocationPicker.setOnClickListener(this);
+        // btnLocationPicker.setOnClickListener(this);
 
         builder.setView(view)
                 .setTitle(getResources().getString(R.string.placeholder_init))
@@ -175,10 +173,12 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
             timePickerDialog.show();
         }
 
+        /*
         if (v == btnLocationPicker) {
             Intent intent = new Intent(getActivity(), MapActivity.class);
             getActivity().startActivity(intent);
         }
+        */
     }
 
     public Date getRemovalDate() {

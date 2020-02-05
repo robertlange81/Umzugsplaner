@@ -281,7 +281,7 @@ public class Persistance {
     }
 
     public enum SettingType {
-        Sort(0);
+        Sort(0), HideDone(1);
 
         private int value;
 

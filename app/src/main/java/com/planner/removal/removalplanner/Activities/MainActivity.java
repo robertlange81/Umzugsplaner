@@ -48,12 +48,13 @@ import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Model.Priority;
-import com.planner.removal.removalplanner.Model.TaskTypeMain;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -64,7 +65,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private SimpleItemRecyclerViewAdapter adapter;
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
-    MenuItem initDialogMenuItem, lastItem, showCostsMenuItem;
+    BottomAppBar bottomAppBar;
+    MenuItem initDialogMenuItem, hideDoneTasks, lastItem, showCostsMenuItem;
     DialogFragment dialog;
     Menu topMenu;
 
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        BottomAppBar bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
+        bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         if(bottomAppBar != null) {
             Drawable drawable = getBaseContext().getResources().getDrawable(android.R.drawable.ic_menu_sort_by_size);
             bottomAppBar.setOverflowIcon(drawable);
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
 
-        SharedPreferences prefs = MainActivity.this.getSharedPreferences("did_init", 0);
+        SharedPreferences prefs = MainActivity.this.getSharedPreferences("removal", 0);
         if (!prefs.getBoolean("did_init", false)) {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("did_init", true);
@@ -177,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     getResources().getString(R.string.app_name)
             );
         } catch (Exception x) {
-            // Log.w("cache", "Wo ist der Debugger?");
+            Log.d("cache", x.getMessage());
         }
 
     }
@@ -197,8 +199,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
 
-        showCostsMenuItem = topMenu.findItem(R.id.showCostsMenuItem);
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
+        hideDoneTasks = topMenu.findItem(R.id.show_hide_done);
+        hideDoneTasks.setChecked(isHideDoneTasksChecked(this));
 
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -215,22 +218,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if(item == showCostsMenuItem) {
-
-            long sumAll     = Task.sumCosts(false);
-            long sumDone    = Task.sumCosts(true);
-            long sumUndone  = sumAll - sumDone;
-
-            String sumAllString     = TaskFormater.intDecimalsToString(sumAll);
-            String sumDoneString    = TaskFormater.intDecimalsToString(sumDone);
-            String sumUndoneString  = TaskFormater.intDecimalsToString(sumUndone);
-
-            String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
-            showDetailDialog(CostsDialogFragment.class, costs);
-
-            return true;
-        }
-
         if(item == initDialogMenuItem) {
 
             String[] init = new String[0];
@@ -239,7 +226,29 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
-        ComparatorConfig.SortType sortType;
+        if(item == hideDoneTasks) {
+
+            setHideDoneTasksChecked(this, !item.isChecked());
+            item.setChecked(!item.isChecked());
+
+            if(item.isChecked()) {
+                ArrayList<Task> undoneTasks = new ArrayList<Task>();
+                for (Task t : Task.TASK_LIST) {
+                    if (!t.is_Done) {
+                        undoneTasks.add(t);
+                    }
+                }
+                adapter.updateData(undoneTasks);
+            } else {
+                adapter.updateData(Task.TASK_LIST);
+            }
+
+            adapter.notifyDataSetChanged();
+
+            return true;
+        }
+
+        ComparatorConfig.SortType sortType = null;
         SpannableString s;
 
         if(lastItem != null && lastItem != item) {
@@ -270,20 +279,38 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             case R.id.sortByPriority:
                 sortType = ComparatorConfig.SortType.PRIORITY;
                 break;
+            case R.id.showCostsMenuItem:
+                showCosts();
+                break;
             default:
                 sortType = ComparatorConfig.SortType.IS_DONE;
         }
 
-        if(!sortType.equals(ComparatorConfig.SortType.NONE)) {
+        if(sortType != null && !sortType.equals(ComparatorConfig.SortType.NONE)) {
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
-            NotifyTaskChanged(null, this);
+            adapter.notifyDataSetChanged();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public static boolean SortBy(ComparatorConfig.SortType sortType) {
+    private boolean showCosts() {
+        long sumAll     = Task.sumCosts(false);
+        long sumDone    = Task.sumCosts(true);
+        long sumUndone  = sumAll - sumDone;
+
+        String sumAllString     = TaskFormater.intDecimalsToString(sumAll);
+        String sumDoneString    = TaskFormater.intDecimalsToString(sumDone);
+        String sumUndoneString  = TaskFormater.intDecimalsToString(sumUndone);
+
+        String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
+        showDetailDialog(CostsDialogFragment.class, costs);
+
+        return true;
+    }
+
+    public static boolean SortBy(ComparatorConfig.SortType sortType, boolean hideDone) {
 
         ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
         if(comparatorSortable != null) {
@@ -338,8 +365,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(a != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, a);
+            boolean hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, a) > 0;
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId]);
+                SortBy(ComparatorConfig.SortType.values()[sortId], hideDone);
             }
         }
 
@@ -353,11 +381,20 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             adapter.stopTimerThread();
     }
 
+    public static boolean isHideDoneTasksChecked(Activity a) {
+        int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, a);
+        return hideDone > 0;
+    }
+
+    public static void setHideDoneTasksChecked(Activity a, boolean hideDoneTasksChecked) {
+        Persistance.SaveSetting(Persistance.SettingType.HideDone, hideDoneTasksChecked ? 1 : 0, a);
+    }
+
     public static class SimpleItemRecyclerViewAdapter
         extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
     private final MainActivity mParentActivity;
-    private final List<Task> mValues;
+    private List<Task> mValues;
     private final boolean mTwoPane;
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -416,6 +453,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             mTwoPane = twoPane;
         }
 
+        public void updateData(List<Task> list){
+            mValues = list;
+        }
+
         public void add(Task task) {
             mValues.add(task);
         }
@@ -437,7 +478,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, final int position) {
+
             final Task task = mValues.get(position);
+
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
@@ -459,22 +502,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
 
             String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
-            if(task.type != null) {
-                int number = -1;
-                for (TaskTypeMain t : TaskTypeMain.values()) {
-                    number++;
-                    if (number == str_task_types.length)
-                        break;
-
-                    // extra case for zero
-                    if (number == 0 && mValues.get(position).type.getValue() != 0)
-                        continue;
-
-                    if ((t.getValue() & mValues.get(position).type.getValue()) == t.getValue()) {
-                        holder.type.setText((String) Array.get(str_task_types, number));
-                        break;
-                    }
-                }
+            if(task.type != null && task.type.getValue() < str_task_types.length) {
+                holder.type.setText((String) Array.get(str_task_types, task.type.getValue()));
             }
 
             if (task.priority == Priority.High) {

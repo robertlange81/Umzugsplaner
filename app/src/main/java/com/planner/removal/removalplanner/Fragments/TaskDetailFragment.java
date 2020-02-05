@@ -87,7 +87,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
 
-    boolean isNotifyEnabled = true;
+    boolean isNotifyEnabled = false;
 
     public static final int MAX_INPUT_FIELDS_FOR_LINKS = 5;
     private static View.OnClickListener clickListener;
@@ -134,6 +134,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 createNewTask();
             }
         }
+
+        isNotifyEnabled = true;
     }
 
     private void createNewTask() {
@@ -144,10 +146,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         setHasOptionsMenu(true);
 
-        isNotifyEnabled = false;
         Log.e("DEBUG", "onCreateView");
 
         rootView = inflater.inflate(R.layout.detail, container, false);
@@ -214,14 +214,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if(updaterThread == null)
             startTimerThread(rootView);
 
-        isNotifyEnabled = true;
 
         if(_task.name == null || _task.name.isEmpty()) {
             txtName.requestFocus();
         } else {
             txtName.setSelected(false);
         }
-
         return rootView;
     }
 
@@ -285,8 +283,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         spinnerDetailType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(_task != null && !_task.type.equals(TaskTypeMain.values()[position].getValue())) {
-                    _task.type = new TaskType(TaskTypeMain.values()[position].getValue());
+                if(_task != null && _task.type.getValue() != position) {
+
+                    _task.type = new TaskType(position);
+
                     if(isNotifyEnabled)
                         MainActivity.NotifyTaskChanged(_task, getActivity());
                 }
@@ -359,7 +359,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 counter++;
 
                 // extra case for zero
-                if (counter == 0 &&_task.type.getValue() != 0)
+                if (counter == 0 && _task.type.getValue() != 0)
                     continue;
 
                 if((taskTypeMain.getValue() & _task.type.getValue()) == taskTypeMain.getValue()) {
@@ -404,8 +404,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             tempDate = new Date(_task.date.getTime());
             txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
         }
-
-        isNotifyEnabled = true;
     }
 
     private void setLinks(HashMap<TextView, String> linkMap) {

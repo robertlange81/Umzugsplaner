@@ -68,4 +68,6 @@
     <string name="Remind_me_later">Später erinnern</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">zurück</string>
+    <string name="placeholder_hide_done">fertige Aufgaben ausblenden</string>
+    <string name="placeholder_show_done">fertige Aufgaben anzeigen</string>
 </resources>

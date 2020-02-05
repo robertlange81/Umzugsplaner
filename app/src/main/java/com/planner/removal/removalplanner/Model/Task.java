@@ -29,13 +29,14 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - DetailView nicht jedes Mal neu erzeugen -> Resume
+    - erledigte ausblenden , nur hohe prio
+    - extra Menü für Kategorie
+    - extra Menü in Bottom für Möbel
     - Loader + Hinweis
     - Synchronisieren
     - andere Nutzer einladen
-    - extra Menü für Kategorie
-    - extra Menü in Bottom für Möbel
     - kurzes Tutorial am Anfang
-    - erledigte ausblenden , nur hohe prio
     - Assistenz
     - Amazon / Google / Verivox
     - Hintergrundbild (Grundriss / Baby)

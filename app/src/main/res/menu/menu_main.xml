@@ -2,17 +2,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
-    <item
+    <!--item
         android:id="@+id/showCostsMenuItem"
         android:icon="@drawable/coins_xxl"
         android:orderInCategory="105"
         android:text="@string/currency"
         android:title="@string/currency"
-        app:showAsAction="always" />
+        app:showAsAction="always" /-->
     <item
         android:id="@+id/start_new"
         android:orderInCategory="110"
         android:icon="@android:drawable/ic_input_add"
         android:title="@string/placeholder_init"
-        app:showAsAction="always" />
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/show_hide_done"
+        android:checkable="true"
+        android:title="@string/placeholder_hide_done" />
 </menu>

@@ -60,4 +60,6 @@
     <string name="Remind_me_later">Remind me later</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">back</string>
+    <string name="placeholder_hide_done">hide done task</string>
+    <string name="placeholder_show_done">show done task</string>
 </resources>

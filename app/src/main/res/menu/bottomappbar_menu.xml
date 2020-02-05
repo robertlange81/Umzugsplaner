@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/showCostsMenuItem"
+        android:icon="@drawable/coins_xxl"
+        android:orderInCategory="105"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/sortByIsDone"
         android:orderInCategory="1"
         android:title="@string/sortbyIsDone"
