@@ -1,5 +1,7 @@
 package com.planner.removal.removalplanner.Activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
@@ -58,11 +60,19 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     protected void onResume()
     {
         super.onResume();
 
         if(!MainActivity.mTwoPane) {
+            if(didAddTopBar)
+                return;
+
             // Inflate and initialize the top main menu
             ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu_detail);
             if(topBar != null) {
@@ -78,15 +88,11 @@ public class DetailActivity extends AppCompatActivity {
                     });
                 }
                 findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.VISIBLE);
+                this.didAddTopBar = true;
             }
         } else {
             if(findViewById(R.id.toolbar_wrapper_detail) != null)
                 findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.GONE);
-
-            if (didAddTopBar)
-                return;
-
-            didAddTopBar = true;
         }
     }
 
@@ -95,7 +101,10 @@ public class DetailActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.back:
-                this.finish();
+                //this.finish();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                startActivity(intent);
                 break;
             default:
                 break;

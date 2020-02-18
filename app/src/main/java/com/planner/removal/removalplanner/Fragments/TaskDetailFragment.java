@@ -135,6 +135,15 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             }
         }
 
+        if(updaterThread == null)
+            startTimerThread(rootView);
+
+        if(_task.name == null || _task.name.isEmpty()) {
+            txtName.requestFocus();
+        } else {
+            txtName.setSelected(false);
+        }
+
         isNotifyEnabled = true;
     }
 
@@ -211,15 +220,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         _initDeleteIcons(rootView);
 
-        if(updaterThread == null)
-            startTimerThread(rootView);
-
-
-        if(_task.name == null || _task.name.isEmpty()) {
-            txtName.requestFocus();
-        } else {
-            txtName.setSelected(false);
-        }
         return rootView;
     }
 
