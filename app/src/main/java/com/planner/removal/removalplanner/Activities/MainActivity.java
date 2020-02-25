@@ -423,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             } else {
                 Context context = view.getContext();
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra(TaskDetailFragment.TASK_ID, item.id);
 
                 context.startActivity(intent);

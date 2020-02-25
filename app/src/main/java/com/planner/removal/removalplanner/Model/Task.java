@@ -29,6 +29,7 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - implement equals / hashCode
     - DetailView nicht jedes Mal neu erzeugen -> Resume
     - erledigte ausblenden , nur hohe prio
     - extra Menü für Kategorie

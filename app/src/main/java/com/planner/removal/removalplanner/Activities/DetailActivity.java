@@ -1,10 +1,10 @@
 package com.planner.removal.removalplanner.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,12 +15,15 @@ import com.planner.removal.removalplanner.R;
 public class DetailActivity extends AppCompatActivity {
 
     public static DetailActivity instance;
+    TaskDetailFragment fragment;
     public static final String ARG_TASK_ID = "task_id";
+    String currentTaskId;
     boolean didAddTopBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        Log.e("DEBUG", "onCreate DetailActivity");
         super.onCreate(savedInstanceState);
 
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -46,28 +49,40 @@ public class DetailActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
-            Bundle arguments = new Bundle();
-            arguments.putString(TaskDetailFragment.TASK_ID,
-                    getIntent().getStringExtra(TaskDetailFragment.TASK_ID));
-            TaskDetailFragment fragment = new TaskDetailFragment();
-            fragment.setArguments(arguments);
+            fragment = new TaskDetailFragment();
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.task_detail_container, fragment)
                     .commit();
         }
 
+        currentTaskId = getIntent().getStringExtra(TaskDetailFragment.TASK_ID);
         instance = this;
+        Log.e("DEBUG", "onCreate DetailActivity End");
     }
 
     @Override
     protected void onPause() {
+        Log.e("DEBUG", "DetailActivity onPause");
         super.onPause();
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        Log.e("DEBUG", "DetailActivity onNewIntent");
+        currentTaskId = intent.getStringExtra(TaskDetailFragment.TASK_ID);
+        Log.e("DEBUG", "DetailActivity onNewIntent End");
     }
 
     @Override
     protected void onResume()
     {
+        Log.e("DEBUG", "onResume DetailActivity");
         super.onResume();
+
+        Bundle arguments = new Bundle();
+        arguments.putString(TaskDetailFragment.TASK_ID, currentTaskId);
+        fragment.setArguments(arguments);
 
         if(!MainActivity.mTwoPane) {
             if(didAddTopBar)
@@ -102,9 +117,7 @@ public class DetailActivity extends AppCompatActivity {
         switch (id) {
             case R.id.back:
                 //this.finish();
-                Intent intent = new Intent(this, MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                startActivity(intent);
+                exit();
                 break;
             default:
                 break;
@@ -125,7 +138,14 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item)
     {
         super.onOptionsItemSelected(item);
-        this.finish();
+        // this.finish();
+        exit();
         return true;
+    }
+
+    private void exit() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(intent);
     }
 }
