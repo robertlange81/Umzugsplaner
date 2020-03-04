@@ -1,8 +1,12 @@
 package com.planner.removal.removalplanner.Activities;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -54,12 +58,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import static android.widget.LinearLayout.VERTICAL;
 
-public class MainActivity extends AppCompatActivity implements InitDialogListener {
+public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver {
 
     public static boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
@@ -69,6 +72,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     MenuItem initDialogMenuItem, hideDoneTasks, lastItem, showCostsMenuItem;
     DialogFragment dialog;
     Menu topMenu;
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_START)
+    public void onEnterForeground() {
+        Log.d("AppController", "Foreground");
+    }
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    public void onEnterBackground() {
+        Log.d("AppController", "Background");
+    }
 
     @Override
     public void onClick(DialogInterface dialogInterface, int which) {
@@ -376,9 +388,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     public void onDestroy() {
         Persistance.CheckQueue();
+        Persistance.SaveTasks(this);
         super.onDestroy();
         if(adapter != null)
             adapter.stopTimerThread();
+    }
+
+    public void onStop() {
+        if(!isAppOnForeground(this)) {
+            Persistance.ReplaceAllTasks(this);
+        }
+        super.onStop();
     }
 
     public static boolean isHideDoneTasksChecked(Activity a) {
@@ -669,5 +689,21 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             if(updaterThread != null && updaterThread.isAlive())
                 updaterThread.interrupt();
         }
+    }
+
+    public static boolean isAppOnForeground(Context context) {
+        boolean ret = false;
+        ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningAppProcessInfo> appProcesses = activityManager.getRunningAppProcesses();
+        if(appProcesses != null){
+            String packageName = context.getPackageName();
+            for (ActivityManager.RunningAppProcessInfo appProcess : appProcesses) {
+                if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
+                        && appProcess.processName.equals(packageName)) {
+                    ret = true;
+                }
+            }
+        }
+        return ret;
     }
 }

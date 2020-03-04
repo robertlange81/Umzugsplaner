@@ -10,7 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
+import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.R;
+
+import static com.planner.removal.removalplanner.Activities.MainActivity.isAppOnForeground;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -64,6 +67,13 @@ public class DetailActivity extends AppCompatActivity {
     protected void onPause() {
         Log.e("DEBUG", "DetailActivity onPause");
         super.onPause();
+    }
+
+    public void onStop() {
+        if(!isAppOnForeground(this)) {
+            Persistance.ReplaceAllTasks(this);
+        }
+        super.onStop();
     }
 
     @Override

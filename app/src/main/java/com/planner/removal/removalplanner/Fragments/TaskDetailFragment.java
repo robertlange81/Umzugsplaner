@@ -138,7 +138,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      if(Task.TASK_MAP.get(taskId).equals(_task))
+      if(_task != null &&_task.equals(Task.TASK_MAP.get(taskId)))
         return;
 
       _task = Task.TASK_MAP.get(taskId);
@@ -224,6 +224,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     if (_task.name == null || _task.name.isEmpty()) {
       txtName.requestFocus();
     } else {
+      txtName.clearFocus();
       txtName.setSelected(false);
     }
 
