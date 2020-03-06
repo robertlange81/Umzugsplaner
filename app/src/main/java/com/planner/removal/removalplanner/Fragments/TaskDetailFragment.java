@@ -767,15 +767,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   @Override
   public void onPause() {
     Log.e("DEBUG", "TaskDetailFragment onPause");
+
     if (isNotifyEnabled) {
-      MainActivity.NotifyTaskChanged(_task, getActivity());
+      txtName.requestFocus();
+      txtName.clearFocus();
     }
     stopTimerThread();
     super.onPause();
   }
 
   public void onDestroy() {
-    MainActivity.NotifyTaskChanged(_task, getActivity());
+    Log.e("DEBUG", "TaskDetailFragment onDestroy");
+    txtName.requestFocus();
+    txtName.clearFocus();
     stopTimerThread();
     super.onDestroy();
     instance = null;
