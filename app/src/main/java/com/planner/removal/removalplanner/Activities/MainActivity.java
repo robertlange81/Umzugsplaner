@@ -30,32 +30,31 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.planner.removal.removalplanner.Fragments.CostsDialogFragment;
 import com.planner.removal.removalplanner.Fragments.InitDialogFragment;
 import com.planner.removal.removalplanner.Fragments.InitDialogFragment.InitDialogListener;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
+import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
 import com.planner.removal.removalplanner.Helpers.Persistance;
-import com.planner.removal.removalplanner.Model.AppRater;
-import com.planner.removal.removalplanner.Model.Task;
-import com.planner.removal.removalplanner.Fragments.CostsDialogFragment;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
-import com.planner.removal.removalplanner.Helpers.Command;
+import com.planner.removal.removalplanner.Model.AppRater;
 import com.planner.removal.removalplanner.Model.Priority;
+import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -213,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
         hideDoneTasks = topMenu.findItem(R.id.show_hide_done);
-        hideDoneTasks.setChecked(isHideDoneTasksChecked(this));
+        hideDoneTasks.setChecked(getHideDoneTasksChecked(this));
 
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -231,7 +230,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if(item == initDialogMenuItem) {
-
             String[] init = new String[0];
             showDetailDialog(InitDialogFragment.class, init);
 
@@ -239,22 +237,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         if(item == hideDoneTasks) {
-
-            setHideDoneTasksChecked(this, !item.isChecked());
             item.setChecked(!item.isChecked());
-
-            if(item.isChecked()) {
-                ArrayList<Task> undoneTasks = new ArrayList<Task>();
-                for (Task t : Task.TASK_LIST) {
-                    if (!t.is_Done) {
-                        undoneTasks.add(t);
-                    }
-                }
-                adapter.updateData(undoneTasks);
-            } else {
-                adapter.updateData(Task.TASK_LIST);
-            }
-
+            setHideDoneTasksChecked(this, item.isChecked());
+            adapter.setHideDone(item.isChecked());
             adapter.notifyDataSetChanged();
 
             return true;
@@ -365,12 +350,18 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         DividerItemDecoration itemDecor = new DividerItemDecoration(recyclerView.getContext(), VERTICAL);
         itemDecor.setDrawable(recyclerView.getContext().getResources().getDrawable(R.drawable.listview_border));
         recyclerView.addItemDecoration(itemDecor);
+
         adapter = new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane);
+        adapter.setHideDone(getHideDoneTasksChecked(this));
         recyclerView.setAdapter(adapter);
         adapter.startTimerThread();
     }
 
     public static void NotifyTaskChanged(Task t, Activity a) {
+        NotifyTaskChanged(t, a, true);
+    }
+
+    public static void NotifyTaskChanged(Task t, Activity a, boolean doUpdate) {
         if(t != null && a != null) {
             Persistance.SaveOrUpdateTask(t, a);
         }
@@ -383,7 +374,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
 
-        SimpleItemRecyclerViewAdapter.needsUpdate = true;
+        SimpleItemRecyclerViewAdapter.needsUpdate = doUpdate;
     }
 
     public void onDestroy() {
@@ -401,7 +392,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         super.onStop();
     }
 
-    public static boolean isHideDoneTasksChecked(Activity a) {
+    public static boolean getHideDoneTasksChecked(Activity a) {
         int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, a);
         return hideDone > 0;
     }
@@ -450,8 +441,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
     };
+        private boolean hideDoneTasks;
 
-    public void setFragmentTwoPane (Task t) {
+        public void setFragmentTwoPane (Task t) {
         Bundle arguments = new Bundle();
 
         arguments.putString(TaskDetailFragment.TASK_ID, t.id);
@@ -468,8 +460,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
     }
 
-    SimpleItemRecyclerViewAdapter(MainActivity parent, List<Task> aufgaben, boolean twoPane) {
-            mValues = aufgaben;
+    SimpleItemRecyclerViewAdapter(MainActivity parent, List<Task> taskList, boolean twoPane) {
+            mValues = taskList;
             mParentActivity = parent;
             mTwoPane = twoPane;
         }
@@ -502,11 +494,20 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             final Task task = mValues.get(position);
 
+            if(task.is_Done && this.hideDoneTasks) {
+                holder.itemView.setVisibility(View.GONE);
+                holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+                return;
+            } else {
+                holder.itemView.setVisibility(View.VISIBLE);
+                holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            }
+
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
 
-            if(activeRowItemId != null && activeRowItemId == task.id){
+            if(activeRowItemId == task.id){
                 holder.row.setBackgroundColor(Color.parseColor("#000000"));
                 activeRowPosition = position;
             }
@@ -547,6 +548,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     TaskDetailFragment.notifyTaskChanged();
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+
+                    NotifyTaskChanged(task, mParentActivity, false);
+
+                    if(task.is_Done && hideDoneTasks)
+                        notifyDataSetChanged();
                 }
             });
 
@@ -625,6 +631,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         @Override
         public int getItemCount() {
             return mValues.size();
+        }
+
+        public void setHideDone(boolean hideDone) {
+            hideDoneTasks = hideDone;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {

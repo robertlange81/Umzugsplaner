@@ -284,7 +284,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           if (!input.equals(_task.name)) {
             _task.name = input;
             MainActivity.NotifyTaskChanged(_task, getActivity());
-            return;
           }
         }
       }
@@ -769,17 +768,22 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Log.e("DEBUG", "TaskDetailFragment onPause");
 
     if (isNotifyEnabled) {
-      txtName.requestFocus();
-      txtName.clearFocus();
+      View f = instance.getView().findFocus();
+      if(f != null)
+        f.clearFocus();
     }
+
     stopTimerThread();
     super.onPause();
   }
 
   public void onDestroy() {
     Log.e("DEBUG", "TaskDetailFragment onDestroy");
-    txtName.requestFocus();
-    txtName.clearFocus();
+    if (isNotifyEnabled) {
+      View f = instance.getView().findFocus();
+      if(f != null)
+        f.clearFocus();
+    }
     stopTimerThread();
     super.onDestroy();
     instance = null;
