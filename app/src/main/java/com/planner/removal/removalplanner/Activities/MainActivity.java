@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
         hideDoneTasks = topMenu.findItem(R.id.show_hide_done);
-        hideDoneTasks.setChecked(getHideDoneTasksChecked(this));
+        hideDoneTasks.setChecked(getHideDoneTasksChecked());
 
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -238,7 +238,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(item == hideDoneTasks) {
             item.setChecked(!item.isChecked());
-            setHideDoneTasksChecked(this, item.isChecked());
+            setHideDoneTasksChecked(item.isChecked());
             adapter.setHideDone(item.isChecked());
             adapter.notifyDataSetChanged();
 
@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         recyclerView.addItemDecoration(itemDecor);
 
         adapter = new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane);
-        adapter.setHideDone(getHideDoneTasksChecked(this));
+        adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
         adapter.startTimerThread();
     }
@@ -392,13 +392,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         super.onStop();
     }
 
-    public static boolean getHideDoneTasksChecked(Activity a) {
-        int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, a);
+    public boolean getHideDoneTasksChecked() {
+        int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, this);
         return hideDone > 0;
     }
 
-    public static void setHideDoneTasksChecked(Activity a, boolean hideDoneTasksChecked) {
-        Persistance.SaveSetting(Persistance.SettingType.HideDone, hideDoneTasksChecked ? 1 : 0, a);
+    public void setHideDoneTasksChecked(boolean hideDoneTasksChecked) {
+        Persistance.SaveSetting(Persistance.SettingType.HideDone, hideDoneTasksChecked ? 1 : 0, this);
     }
 
     public static class SimpleItemRecyclerViewAdapter
@@ -410,19 +410,18 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private final View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
             view.setBackgroundColor(Color.parseColor("#000000"));
-            Task item = (Task) view.getTag();
-
-            if(activeRowItemId != null && activeRowItemId != item.id) {
-                activeRowItemId = item.id;
-                if(activeRowPosition > 0) {
-                    View v = recyclerView.getLayoutManager().findViewByPosition(activeRowPosition);
-                    if(v != null)
-                        v.setBackgroundColor(Color.TRANSPARENT);
-                }
-                //notifyDataSetChanged();
+            int rowCount = recyclerView.getLayoutManager().getChildCount();
+            for(int i = 0; i < rowCount; i++) {
+                View v = recyclerView.getLayoutManager().findViewByPosition(i);
+                if(v != null && v != view)
+                    v.setBackgroundColor(Color.TRANSPARENT);
             }
+            // alternativ notifyDataSetChanged();
 
+            Task item = (Task) view.getTag();
+            activeRowItemId = item.id;
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
                 arguments.putString(TaskDetailFragment.TASK_ID, item.id);
@@ -475,7 +474,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         static String activeRowItemId = "";
-        static int activeRowPosition = -1;
 
         public void remove(Task task) {
             mValues.remove(task);
@@ -494,9 +492,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             final Task task = mValues.get(position);
 
+            ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
             if(task.is_Done && this.hideDoneTasks) {
                 holder.itemView.setVisibility(View.GONE);
                 holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+                holder.row.setBackgroundColor(Color.TRANSPARENT);
                 return;
             } else {
                 holder.itemView.setVisibility(View.VISIBLE);
@@ -509,7 +509,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             if(activeRowItemId == task.id){
                 holder.row.setBackgroundColor(Color.parseColor("#000000"));
-                activeRowPosition = position;
             }
             else
             {

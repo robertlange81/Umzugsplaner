@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.provider.CalendarContract;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
@@ -41,6 +42,7 @@ import com.planner.removal.removalplanner.Model.TaskType;
 import com.planner.removal.removalplanner.Model.TaskTypeMain;
 import com.planner.removal.removalplanner.R;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -128,7 +130,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   @Override
   public void onResume() {
     Log.e("DEBUG", "onResume of TaskDetailFragment");
-
+    isNotifyEnabled = false;
     super.onResume();
     instance = this;
 
@@ -296,7 +298,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           _task.type = new TaskType(position);
 
-          if (isNotifyEnabled && MainActivity.mTwoPane)
+          if (isNotifyEnabled)
             MainActivity.NotifyTaskChanged(_task, getActivity());
         }
       }
@@ -327,7 +329,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (input.equals("")) {
             _task.costs = 0L;
-            if (isNotifyEnabled && MainActivity.mTwoPane)
+            if (isNotifyEnabled)
               MainActivity.NotifyTaskChanged(_task, getActivity());
             return;
           }
@@ -342,7 +344,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     txtCostsSig.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
-        if (!hasFocus && isNotifyEnabled && MainActivity.mTwoPane) {
+        if (!hasFocus && isNotifyEnabled) {
           MainActivity.NotifyTaskChanged(_task, getActivity());
         }
       }
@@ -351,7 +353,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
-        if (!hasFocus && isNotifyEnabled && MainActivity.mTwoPane) {
+        if (!hasFocus && isNotifyEnabled) {
           MainActivity.NotifyTaskChanged(_task, getActivity());
         }
       }
@@ -365,7 +367,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (input.equals("")) {
             _task.date = null;
-            if (isNotifyEnabled && MainActivity.mTwoPane)
+            if (isNotifyEnabled)
               MainActivity.NotifyTaskChanged(_task, getActivity());
             return;
           }
@@ -434,6 +436,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
     }
     Log.e("DEBUG", "setDetails - END");
+    isNotifyEnabled = true;
   }
 
   private void setLinks(HashMap<TextView, String> linkMap) {
@@ -492,7 +495,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             t.setText("");
             if (t == txtDeadline) {
               _task.date = null;
-              if (isNotifyEnabled && MainActivity.mTwoPane)
+              if (isNotifyEnabled)
                 MainActivity.NotifyTaskChanged(_task, getActivity());
             } else {
               t.requestFocus();
@@ -631,15 +634,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
             _task.date = tempDate;
 
-            if (isNotifyEnabled && MainActivity.mTwoPane)
+            if (isNotifyEnabled)
               MainActivity.NotifyTaskChanged(_task, getActivity());
-                            /*
-                            String msg = getContext().getResources()
-                                    .getString(R.string.date_changed);
-
-                            Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
-                            snack.show();
-                            */
           }
         }, mYear, mMonth, mDay);
       datePickerDialog.show();
@@ -669,15 +665,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
             _task.date = tempDate;
 
-            if (isNotifyEnabled && MainActivity.mTwoPane)
+            if (isNotifyEnabled)
               MainActivity.NotifyTaskChanged(_task, getActivity());
-                            /*
-                            String msg = getContext().getResources()
-                                    .getString(R.string.time_changed);
-
-                            Snackbar snack = Snackbar.make(view, msg, Snackbar.LENGTH_SHORT);
-                            snack.show();
-                            */
           }
         }, mHour, mMinute, true);
       timePickerDialog.show();
@@ -767,19 +756,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   public void onPause() {
     Log.e("DEBUG", "TaskDetailFragment onPause");
 
-    if (isNotifyEnabled) {
+    if (isNotifyEnabled && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
         f.clearFocus();
     }
-
     stopTimerThread();
     super.onPause();
   }
 
   public void onDestroy() {
     Log.e("DEBUG", "TaskDetailFragment onDestroy");
-    if (isNotifyEnabled) {
+    if (isNotifyEnabled && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
         f.clearFocus();
@@ -787,5 +775,41 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     stopTimerThread();
     super.onDestroy();
     instance = null;
+  }
+
+  class TextInputFocusChangeListener implements View.OnFocusChangeListener {
+
+    String fieldName;
+    public TextInputFocusChangeListener(String field) {
+      fieldName = field;
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+      Field field = null;
+      String oldValue = null;
+      String input = null;
+
+      try {
+        field = _task.getClass().getDeclaredField(fieldName);
+        field.setAccessible(true);
+        oldValue = (String) field.get(_task);
+        Editable et = ((EditText)v).getText();
+
+        if(et != null) {
+          input = et.toString();
+        }
+
+        if (input != null && !input.equals(oldValue)) {
+          field.set(_task, input);
+          MainActivity.NotifyTaskChanged(_task, getActivity());
+        }
+
+      } catch (NoSuchFieldException e) {
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        e.printStackTrace();
+      }
+    }
   }
 }
