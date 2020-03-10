@@ -492,7 +492,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             final Task task = mValues.get(position);
 
-            ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
             if(task.is_Done && this.hideDoneTasks) {
                 holder.itemView.setVisibility(View.GONE);
                 holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
@@ -505,6 +504,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             holder.name.setText(task.name);
             holder.ckBoxTaskDone.setChecked(task.is_Done);
+
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
 
             if(activeRowItemId == task.id){

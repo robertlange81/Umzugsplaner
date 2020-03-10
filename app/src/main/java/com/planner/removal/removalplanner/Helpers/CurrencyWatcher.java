@@ -12,7 +12,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
   private final DecimalFormat df;
   private final EditText sigNumbers, fractionNumbers;
-  private final Task _task;
+  private Task _task;
 
   public CurrencyWatcher(EditText sigNumbers, EditText fractionNumbers, Task task, String pattern) {
     df = new DecimalFormat(pattern);
@@ -108,5 +108,9 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
   @Override
   public void onTextChanged(CharSequence s, int start, int before, int count) {
+  }
+
+  public void setTask(Task t) {
+    _task = t;
   }
 }

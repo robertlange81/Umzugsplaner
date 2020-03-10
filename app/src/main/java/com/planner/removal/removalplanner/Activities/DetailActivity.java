@@ -112,12 +112,8 @@ public class DetailActivity extends AppCompatActivity {
                         }
                     });
                 }
-                findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.VISIBLE);
                 this.didAddTopBar = true;
             }
-        } else {
-            if(findViewById(R.id.toolbar_wrapper_detail) != null)
-                findViewById(R.id.toolbar_wrapper_detail).setVisibility(View.GONE);
         }
     }
 

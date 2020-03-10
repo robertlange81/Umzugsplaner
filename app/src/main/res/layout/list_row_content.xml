@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/list_row_content_part"
                         android:layout_marginLeft="-1dip"
-                        android:layout_marginRight="0dip"
+                        android:layout_marginRight="1dip"
                         android:adjustViewBounds="true"
                         android:gravity="end"
                         android:maxLines="1"
@@ -138,7 +138,7 @@
                         android:layout_below="@id/costs_detail"
                         android:layout_marginTop="-1dip"
                         android:layout_marginLeft="-1dip"
-                        android:layout_marginRight="0dip"
+                        android:layout_marginRight="1dip"
                         android:gravity="end"
                         android:maxLines="1"
                         android:forceHasOverlappingRendering="true"
@@ -166,7 +166,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dip"
                         android:layout_marginRight="0dip"
-                        android:layout_marginTop="-5sp"
+                        android:layout_marginTop="0sp"
                         android:adjustViewBounds="false"
                         app:srcCompat="@android:drawable/ic_menu_delete" />
                 </RelativeLayout>

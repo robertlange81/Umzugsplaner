@@ -67,7 +67,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
    * The dummy content this fragment is presenting.
    */
   private Task _task;
-  private CurrencyWatcher currencyWatcher;
+  private static CurrencyWatcher currencyWatcher;
   public static TaskDetailFragment instance;
 
   EditText txtName;
@@ -337,7 +337,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
-    currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
+    if(currencyWatcher == null) {
+      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
+    } else {
+      currencyWatcher.setTask(_task);
+    }
+
     txtCostsSig.addTextChangedListener(currencyWatcher);
     txtCostsFractions.addTextChangedListener(currencyWatcher);
 
@@ -369,7 +374,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             _task.date = null;
             if (isNotifyEnabled)
               MainActivity.NotifyTaskChanged(_task, getActivity());
-            return;
           }
         }
       }

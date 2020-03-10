@@ -71,7 +71,7 @@
             <TextView
                 android:id="@+id/type"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_row_content_part"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="0dip"
                 android:layout_marginLeft="-3dip"
                 android:layout_marginRight="-3dip"
@@ -84,7 +84,7 @@
             <TextView
                 android:id="@+id/costs_detail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_row_content_part"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/type"
                 android:layout_marginTop="-1dip"
                 android:layout_marginLeft="-3dip"
@@ -99,9 +99,8 @@
             <TextView
                 android:id="@+id/date_detail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_row_content_part"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/costs_detail"
-                android:layout_marginTop="-1dip"
                 android:layout_marginLeft="-3dip"
                 android:layout_marginRight="-3dip"
                 android:gravity="center"
