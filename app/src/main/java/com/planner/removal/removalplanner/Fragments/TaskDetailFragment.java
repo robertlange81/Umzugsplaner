@@ -122,7 +122,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     setHasOptionsMenu(true);
     rootView = inflater.inflate(R.layout.detail, container, false);
     Log.e("DEBUG", "onCreateView TaskDetailFragment 1");
-
     Log.e("DEBUG", "onCreateView TaskDetailFragment END");
     return rootView;
   }
@@ -131,8 +130,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   public void onResume() {
     Log.e("DEBUG", "onResume of TaskDetailFragment");
     isNotifyEnabled = false;
+    Log.e("isNotifyEnabled", "onResume false");
     super.onResume();
-    instance = this;
 
     if (getArguments().containsKey(TASK_ID)) {
       // Load the dummy content specified by the fragment
@@ -140,7 +139,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      if(_task != null &&_task.equals(Task.TASK_MAP.get(taskId)))
+      if(_task != null && _task.id == taskId)
         return;
 
       _task = Task.TASK_MAP.get(taskId);
@@ -209,17 +208,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     _initDeleteIcons(rootView);
 
-    if (_task == null && getArguments().containsKey(TASK_ID)) {
-      // Load the dummy content specified by the fragment
-      // arguments. In a real-world scenario, use a Loader
-      // to load content from a content provider.
-      _task = Task.TASK_MAP.get(getArguments().getString(TASK_ID));
-
-      if (_task == null) {
-        createNewTask();
-      }
-    }
-
     if (updaterThread == null)
       startTimerThread(rootView);
 
@@ -231,6 +219,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     isNotifyEnabled = true;
+    Log.e("isNotifyEnabled", "onResume true");
     Log.e("DEBUG", "onResume of TaskDetailFragment END");
   }
 
@@ -320,6 +309,25 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
+    //if(currencyWatcher == null) {
+      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
+    //} else {
+      //currencyWatcher.setTask(_task);
+    //}
+
+    txtCostsSig.addTextChangedListener(currencyWatcher);
+    txtCostsFractions.addTextChangedListener(currencyWatcher);
+
+
+    txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (!hasFocus && isNotifyEnabled) {
+          MainActivity.NotifyTaskChanged(_task, getActivity());
+        }
+      }
+    });
+
     txtCostsSig.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
@@ -327,39 +335,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if (!hasFocus && txtCostsSig.getText() != null) {
           String input = txtCostsSig.getText().toString();
 
-          if (input.equals("")) {
-            _task.costs = 0L;
-            if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity());
-            return;
-          }
-        }
-      }
-    });
-
-    if(currencyWatcher == null) {
-      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
-    } else {
-      currencyWatcher.setTask(_task);
-    }
-
-    txtCostsSig.addTextChangedListener(currencyWatcher);
-    txtCostsFractions.addTextChangedListener(currencyWatcher);
-
-    txtCostsSig.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-      @Override
-      public void onFocusChange(View v, boolean hasFocus) {
-        if (!hasFocus && isNotifyEnabled) {
-          MainActivity.NotifyTaskChanged(_task, getActivity());
-        }
-      }
-    });
-
-    txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-      @Override
-      public void onFocusChange(View v, boolean hasFocus) {
-        if (!hasFocus && isNotifyEnabled) {
-          MainActivity.NotifyTaskChanged(_task, getActivity());
+          if (!hasFocus && isNotifyEnabled)
+            MainActivity.NotifyTaskChanged(_task, getActivity());
         }
       }
     });
@@ -385,6 +362,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     Log.e("DEBUG", "setDetails");
     isNotifyEnabled = false;
+    Log.e("isNotifyEnabled", "setDetails false");
     if (!txtName.getText().toString().equals(_task.name))
       txtName.setText(_task.name);
 
@@ -425,22 +403,23 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     if (linkMap != null)
       setLinks(linkMap);
 
-    if (_task.costs != 0.00) {
-      txtCostsSig.removeTextChangedListener(currencyWatcher);
-      txtCostsSig.setText(TaskFormater.intSigToString(_task.costs));
-      txtCostsSig.addTextChangedListener(currencyWatcher);
+    txtCostsSig.removeTextChangedListener(currencyWatcher);
+    txtCostsSig.setText(_task.costs > 0 ? TaskFormater.intSigToString(_task.costs) : "");
+    txtCostsSig.addTextChangedListener(currencyWatcher);
 
-      txtCostsFractions.removeTextChangedListener(currencyWatcher);
-      txtCostsFractions.setText(TaskFormater.intFractionsToString(_task.costs));
-      txtCostsFractions.addTextChangedListener(currencyWatcher);
-    }
+    txtCostsFractions.removeTextChangedListener(currencyWatcher);
+    txtCostsFractions.setText(_task.costs > 0 ? TaskFormater.intFractionsToString(_task.costs) : "");
+    txtCostsFractions.addTextChangedListener(currencyWatcher);
 
     if (_task.date != null) {
       tempDate = new Date(_task.date.getTime());
       txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
+    } else {
+      txtDeadline.setText("");
     }
     Log.e("DEBUG", "setDetails - END");
     isNotifyEnabled = true;
+    Log.e("isNotifyEnabled", "setDetails true");
   }
 
   private void setLinks(HashMap<TextView, String> linkMap) {
@@ -760,7 +739,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   public void onPause() {
     Log.e("DEBUG", "TaskDetailFragment onPause");
 
-    if (isNotifyEnabled && instance.getView() != null) {
+    if (isNotifyEnabled && instance != null && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
         f.clearFocus();
@@ -771,7 +750,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
   public void onDestroy() {
     Log.e("DEBUG", "TaskDetailFragment onDestroy");
-    if (isNotifyEnabled && instance.getView() != null) {
+    if (isNotifyEnabled && instance != null && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
         f.clearFocus();

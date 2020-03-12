@@ -1,6 +1,7 @@
 package com.planner.removal.removalplanner.Helpers;
 
 import android.text.Editable;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.planner.removal.removalplanner.Model.Task;
@@ -41,6 +42,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
     if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
       try {
+        Log.d("sigNumbers", _task.id);
         String oldSig = current.getText().toString();
         String newStringCurrent = oldSig
                 .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")
