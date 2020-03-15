@@ -300,7 +300,7 @@ public class Persistance {
             SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt(settingType.toString(), value);
-            editor.commit();
+            editor.apply();
             return true;
         } catch (Throwable t) {
             Log.e("Save setting", t.getMessage());

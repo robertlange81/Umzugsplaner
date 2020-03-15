@@ -22,6 +22,11 @@ public class TaskType implements Comparable<Object>{
     }
 
     @Override
+    public int hashCode() {
+        return getValue();
+    }
+
+    @Override
     public int compareTo(Object o) {
 
         if(o == null)
@@ -37,7 +42,7 @@ public class TaskType implements Comparable<Object>{
         if(o.getClass() == int.class)
             other = (int) o;
 
-        return new Integer(this.getValue()).compareTo(new Integer(other));
+        return Integer.valueOf(this.getValue()).compareTo(other);
     }
 }
 

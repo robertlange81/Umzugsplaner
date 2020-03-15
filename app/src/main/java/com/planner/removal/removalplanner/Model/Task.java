@@ -1,5 +1,6 @@
 package com.planner.removal.removalplanner.Model;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +13,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
@@ -29,7 +31,6 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - implement equals / hashCode
     - DetailView nicht jedes Mal neu erzeugen -> Resume
     - erledigte ausblenden , nur hohe prio
     - extra Menü für Kategorie
@@ -83,7 +84,7 @@ public class Task implements Serializable {
     public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
-        id = new Integer(maxId++).toString();
+        id = (Integer.valueOf(maxId++)).toString();
         this.name = name;
         this.description = description;
         date = null;
@@ -94,7 +95,7 @@ public class Task implements Serializable {
     }
 
     public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
-        id = new Integer(maxId++).toString();
+        id = (Integer.valueOf(maxId++)).toString();
         this.name = _name;
         this.description = _description;
         this.date = _date;
@@ -161,5 +162,57 @@ public class Task implements Serializable {
         }
 
         return retval;
+    }
+
+    public boolean equals(Object obj) {
+        if(obj==null) return false;
+        if (!(obj instanceof Task))
+            return false;
+        if (obj == this)
+            return true;
+
+        Task other = (Task) obj;
+
+        Field[] fields = other.getClass().getDeclaredFields();
+        for(Field field : fields) {
+            field.setAccessible(true);
+            try {
+                Object thisValue = field.get(this);
+                Object otherValue = field.get(other);
+
+                if(thisValue == null && otherValue == null)
+                    continue;
+
+                if(thisValue == null || otherValue == null)
+                    return false;
+
+                if(!thisValue.equals(otherValue))
+                    return false;
+
+            } catch (IllegalAccessException ex) {
+                Log.e("DEBUG", "Task.equals: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+
+        if(other.is_Done != this.is_Done)
+            return false;
+
+
+        return true;
+    }
+
+    public int hashCode(){
+        int hash = 7;
+        hash = 3 * hash + this.id.hashCode();
+        hash = 3 * hash + this.type.hashCode();
+        hash = 3 * hash + this.costs.hashCode();
+        hash = 3 * hash + this.date.hashCode();
+        hash = 3 * hash + this.description.hashCode();
+        hash = 3 * hash + this.name.hashCode();
+        hash = 3 * hash + this.priority.hashCode();
+
+        // TODO: hashCode for links necessary (currently final)?
+        return hash;
     }
 }
