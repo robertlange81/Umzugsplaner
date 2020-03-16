@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem initDialogMenuItem, hideDoneTasks, lastItem, showCostsMenuItem;
+    MenuItem initDialogMenuItem, hideDoneTasks, hideNormalPrio, lastItem, showCostsMenuItem;
     DialogFragment dialog;
     Menu topMenu;
 
@@ -211,8 +211,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
 
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
-        hideDoneTasks = topMenu.findItem(R.id.show_hide_done);
+        hideDoneTasks = topMenu.findItem(R.id.show_open_only);
         hideDoneTasks.setChecked(getHideDoneTasksChecked());
+
+        hideNormalPrio = topMenu.findItem(R.id.show_high_prio_only);
+        hideNormalPrio.setChecked(getHideNormalPrioTasksChecked());
 
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -240,6 +243,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             item.setChecked(!item.isChecked());
             setHideDoneTasksChecked(item.isChecked());
             adapter.setHideDone(item.isChecked());
+            adapter.notifyDataSetChanged();
+
+            return true;
+        }
+
+        if(item == hideNormalPrio) {
+            item.setChecked(!item.isChecked());
+            setHideNormalPrioTasksChecked(item.isChecked());
+            adapter.setHideNormalPrio(item.isChecked());
             adapter.notifyDataSetChanged();
 
             return true;
@@ -397,8 +409,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         return hideDone > 0;
     }
 
-    public void setHideDoneTasksChecked(boolean hideDoneTasksChecked) {
-        Persistance.SaveSetting(Persistance.SettingType.HideDone, hideDoneTasksChecked ? 1 : 0, this);
+    public void setHideDoneTasksChecked(boolean hideNormalPrioChecked) {
+        Persistance.SaveSetting(Persistance.SettingType.HideDone, hideNormalPrioChecked ? 1 : 0, this);
+    }
+
+    public boolean getHideNormalPrioTasksChecked() {
+        int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideNormalPrio, this);
+        return hideDone > 0;
+    }
+
+    public void setHideNormalPrioTasksChecked(boolean hideNormalPrioChecked) {
+        Persistance.SaveSetting(Persistance.SettingType.HideNormalPrio, hideNormalPrioChecked ? 1 : 0, this);
     }
 
     public static class SimpleItemRecyclerViewAdapter
@@ -440,7 +461,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
     };
-        private boolean hideDoneTasks;
+        private boolean hideDoneTasks, hideNormalPrio;
 
         public void setFragmentTwoPane (Task t) {
         Bundle arguments = new Bundle();
@@ -492,7 +513,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             final Task task = mValues.get(position);
 
-            if(task.is_Done && this.hideDoneTasks) {
+            if(task.is_Done && this.hideDoneTasks || task.priority == Priority.Normal && this.hideNormalPrio) {
                 holder.itemView.setVisibility(View.GONE);
                 holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
                 holder.row.setBackgroundColor(Color.TRANSPARENT);
@@ -634,6 +655,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         public void setHideDone(boolean hideDone) {
             hideDoneTasks = hideDone;
+        }
+
+        public void setHideNormalPrio(boolean hideNormalPrio) {
+            hideNormalPrio = hideNormalPrio;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {

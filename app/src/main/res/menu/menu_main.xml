@@ -17,7 +17,11 @@
         app:showAsAction="withText" />
 
     <item
-        android:id="@+id/show_hide_done"
+        android:id="@+id/show_open_only"
         android:checkable="true"
-        android:title="@string/placeholder_hide_done" />
+        android:title="@string/placeholder_show_done" />
+    <item
+        android:id="@+id/show_high_prio_only"
+        android:checkable="true"
+        android:title="@string/placeholder_hide_prio" />
 </menu>
