@@ -589,6 +589,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                         act.priority = Priority.High;
                     }
 
+                    if(act.priority == Priority.Normal && hideNormalPrio)
+                        notifyDataSetChanged();
+
                     TaskDetailFragment.notifyTaskChanged();
                     Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.name, Snackbar.LENGTH_LONG);
                     snack.show();
@@ -658,7 +661,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         public void setHideNormalPrio(boolean hideNormalPrio) {
-            hideNormalPrio = hideNormalPrio;
+            this.hideNormalPrio = hideNormalPrio;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {
