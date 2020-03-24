@@ -15,19 +15,20 @@ import android.arch.persistence.room.TypeConverters;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.planner.removal.removalplanner.Helpers.DBConverter.UuidConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.TaskTypeConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.TimestampConverter;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 public class Task implements Serializable {
 
     public static final List<Task> TASK_LIST = new ArrayList<Task>();
-    public static final Map<String, Task> TASK_MAP = new HashMap<String, Task>();
-    public static int maxId = 0;
+    public static final Map<UUID, Task> TASK_MAP = new HashMap<UUID, Task>();
 
     /*
     TODO / FIXME / Ideen:
@@ -53,7 +54,8 @@ public class Task implements Serializable {
 
     @PrimaryKey(autoGenerate = false)
     @NonNull
-    public String id;
+    @TypeConverters({UuidConverter.class})
+    public UUID id;
 
     @ColumnInfo(name = "name")
     public String name; // 1
@@ -84,7 +86,7 @@ public class Task implements Serializable {
     public TreeMap<String,String> links; // 128
 
     public Task(String name, String description) {
-        id = (Integer.valueOf(maxId++)).toString();
+        id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         date = null;
@@ -95,14 +97,11 @@ public class Task implements Serializable {
     }
 
     public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
-        id = (Integer.valueOf(maxId++)).toString();
-        this.name = _name;
-        this.description = _description;
+        this(_name, _description);
         this.date = _date;
         this.priority = _priority;
         this.costs = _costs;
         this.type = _type;
-        links = new TreeMap<>();
     }
 
     public Task(Task clone) {
@@ -147,7 +146,8 @@ public class Task implements Serializable {
     }
 
     public static void clearAll() {
-        TASK_MAP.remove(TASK_LIST);
+        TASK_MAP.clear();
+        // TASK_MAP.remove(TASK_LIST);
         TASK_LIST.removeAll(TASK_LIST);
     }
 
@@ -198,19 +198,20 @@ public class Task implements Serializable {
         if(other.is_Done != this.is_Done)
             return false;
 
-
         return true;
     }
 
     public int hashCode(){
         int hash = 7;
         hash = 3 * hash + this.id.hashCode();
-        hash = 3 * hash + this.type.hashCode();
-        hash = 3 * hash + this.costs.hashCode();
-        hash = 3 * hash + this.date.hashCode();
-        hash = 3 * hash + this.description.hashCode();
-        hash = 3 * hash + this.name.hashCode();
-        hash = 3 * hash + this.priority.hashCode();
+        /*
+        hash = 3 * hash + (this.type == null ? 1 : this.type.hashCode());
+        hash = 3 * hash + (this.costs == null ? 1 : this.costs.hashCode());
+        hash = 3 * hash + (this.date == null ? 1 : this.date.hashCode());
+        hash = 3 * hash + (this.description == null ? 1 : this.description.hashCode());
+        hash = 3 * hash + (this.name == null ? 1 : this.name.hashCode());
+        hash = 3 * hash + (this.priority == null ? 1 : this.priority.hashCode());
+        */
 
         // TODO: hashCode for links necessary (currently final)?
         return hash;

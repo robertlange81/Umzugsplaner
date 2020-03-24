@@ -42,7 +42,7 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
     if (current.getEditableText() != null && !current.getEditableText().toString().isEmpty()) {
       try {
-        Log.d("sigNumbers", _task.id);
+        Log.d("sigNumbers", _task.id.toString());
         String oldSig = current.getText().toString();
         String newStringCurrent = oldSig
                 .replace(String.valueOf(df.getDecimalFormatSymbols().getGroupingSeparator()), "")

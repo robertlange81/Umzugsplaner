@@ -58,6 +58,7 @@ import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
 
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(TaskDetailFragment.TASK_ID, Task.maxId + 1);
+                    intent.putExtra(TaskDetailFragment.TASK_ID, UUID.randomUUID());
 
                     context.startActivity(intent);
                 }
@@ -445,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             activeRowItemId = item.id;
             if (mTwoPane) {
                 Bundle arguments = new Bundle();
-                arguments.putString(TaskDetailFragment.TASK_ID, item.id);
+                arguments.putString(TaskDetailFragment.TASK_ID, item.id.toString());
                 TaskDetailFragment fragment = new TaskDetailFragment();
                 fragment.setArguments(arguments);
                 mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -466,7 +467,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         public void setFragmentTwoPane (Task t) {
         Bundle arguments = new Bundle();
 
-        arguments.putString(TaskDetailFragment.TASK_ID, t.id);
+        arguments.putString(TaskDetailFragment.TASK_ID, t.id.toString());
         TaskDetailFragment fragment = new TaskDetailFragment();
         fragment.setArguments(arguments);
         mParentActivity.getSupportFragmentManager().beginTransaction()
@@ -494,7 +495,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             mValues.add(task);
         }
 
-        static String activeRowItemId = "";
+        static UUID activeRowItemId = null;
 
         public void remove(Task task) {
             mValues.remove(task);

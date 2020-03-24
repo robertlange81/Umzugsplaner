@@ -139,7 +139,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      if(_task != null && _task.id == taskId)
+      if(_task != null && _task.id.toString() == taskId)
         return;
 
       _task = Task.TASK_MAP.get(taskId);

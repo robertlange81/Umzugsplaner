@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
+import com.planner.removal.removalplanner.Model.AppDatabase;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;
@@ -89,7 +90,7 @@ public class Persistance {
                 for (Task t : Task.TASK_LIST) {
                     // TODO validate
                     try {
-                        Task old = dao.get(t.id);
+                        Task old = dao.get(t.id.toString());
                         if(old == null) {
                             dao.insert(t);
                         } else {
@@ -120,26 +121,16 @@ public class Persistance {
             @Override
             protected Void doInBackground(Void... voids) {
 
-                TaskDao dao = TaskDatabaseClient.getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao();
-
-                List<Task> oldTasks = dao.getAll();
-
-                for (Task t : oldTasks) {
-                    try {
-                        dao.delete(t);
-                    } catch (Exception e) {
-                        Log.e("Error Delete Task: ", e.getMessage());
-                    }
-                }
-
                 try {
                     Task.clearAll();
                 } catch (Exception e) {
                     Log.e("Error Clear all Task: ", e.getMessage());
                 }
 
+                TaskDatabaseClient.getInstance(activity)
+                        .getAppDatabase()
+                        .taskDao()
+                        .truncate();
                 return null;
             }
 
@@ -230,7 +221,7 @@ public class Persistance {
                         .getAppDatabase()
                         .taskDao();
 
-                Task old = dao.get(task.id);
+                Task old = dao.get(task.id.toString());
 
                 if(old == null) {
                     dao.insert(task);
@@ -262,7 +253,7 @@ public class Persistance {
                         .getAppDatabase()
                         .taskDao();
 
-                Task old = dao.get(task.id);
+                Task old = dao.get(task.id.toString());
 
                 if(old != null) {
                     dao.delete(old);
