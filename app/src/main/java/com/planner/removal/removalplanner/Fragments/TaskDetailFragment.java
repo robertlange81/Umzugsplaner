@@ -49,6 +49,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -142,7 +143,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if(_task != null && _task.id.toString() == taskId)
         return;
 
-      _task = Task.TASK_MAP.get(taskId);
+      _task = Task.TASK_MAP.get(UUID.fromString(taskId));
 
       if (_task == null) {
         createNewTask();

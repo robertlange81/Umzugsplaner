@@ -28,6 +28,7 @@
         </activity>
         <activity
             android:name=".Activities.DetailActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleInstance"
             android:alwaysRetainTaskState="true">
         </activity>

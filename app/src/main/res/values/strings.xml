@@ -5,7 +5,7 @@
     <string name="deleted">gelöscht</string>
     <string name="detail_description_input">Beschreibung</string>
     <string name="detail_save_task">zur Übersicht</string>
-    <string name="done">fertig</string>
+    <string name="done">erledigt</string>
     <string name="highPrioText">hohe Priorität für Aufgabe</string>
     <string name="highPrioText_short">hohe Priorität</string>
     <string name="normalPrioText">normale Priorität für Aufgabe</string>

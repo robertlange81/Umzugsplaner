@@ -456,7 +456,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 Context context = view.getContext();
                 Intent intent = new Intent(context, DetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                intent.putExtra(TaskDetailFragment.TASK_ID, item.id);
+                intent.putExtra(TaskDetailFragment.TASK_ID, item.id.toString());
 
                 context.startActivity(intent);
             }
