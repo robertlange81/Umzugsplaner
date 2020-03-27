@@ -51,7 +51,7 @@
     <dimen name="list_row_image_height">50sp</dimen>
     <dimen name="list_row_image_height_small">40sp</dimen>
     <dimen name="list_row_content_part">20sp</dimen>
-    <dimen name="bottom_border">30sp</dimen>
+    <dimen name="bottom_border">45sp</dimen>
 
     <dimen name="dp_8">8dp</dimen>
     <dimen name="dp_16">16dp</dimen>

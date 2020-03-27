@@ -434,7 +434,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         public void onClick(View view) {
 
             view.setBackgroundColor(Color.parseColor("#000000"));
-            int rowCount = recyclerView.getLayoutManager().getChildCount();
+            int rowCount = Task.TASK_LIST.size();
             for(int i = 0; i < rowCount; i++) {
                 View v = recyclerView.getLayoutManager().findViewByPosition(i);
                 if(v != null && v != view)

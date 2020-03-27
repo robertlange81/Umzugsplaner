@@ -309,6 +309,7 @@
 
                 <TextView
                     android:id="@+id/links_0"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_link_input"
                     android:inputType="textMultiLine|textWebEditText"

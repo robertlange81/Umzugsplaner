@@ -124,35 +124,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     rootView = inflater.inflate(R.layout.detail, container, false);
     Log.e("DEBUG", "onCreateView TaskDetailFragment 1");
     Log.e("DEBUG", "onCreateView TaskDetailFragment END");
-    return rootView;
-  }
-
-  @Override
-  public void onResume() {
-    Log.e("DEBUG", "onResume of TaskDetailFragment");
-    isNotifyEnabled = false;
-    Log.e("isNotifyEnabled", "onResume false");
-    super.onResume();
-
-    if (getArguments().containsKey(TASK_ID)) {
-      // Load the dummy content specified by the fragment
-      // arguments. In a real-world scenario, use a Loader
-      // to load content from a content provider.
-      String taskId = getArguments().getString(TASK_ID);
-
-      if(_task != null && _task.id.toString() == taskId)
-        return;
-
-      _task = Task.TASK_MAP.get(UUID.fromString(taskId));
-
-      if (_task == null) {
-        createNewTask();
-      }
-    }
-
-    if (TaskFormater.currentLocal == null) {
-      TaskFormater.setCurrentLocale(rootView.getContext());
-    }
 
     txtName = rootView.findViewById(R.id.detail_name);
     checkIsDone = rootView.findViewById(R.id.detail_isDone);
@@ -174,11 +145,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     txtInputs = new TextView[9];
     imgDeleteLinks = new ImageView[9];
-    txtInputs[0] = (TextView) rootView.findViewById(R.id.links_0);
-    txtInputs[1] = (TextView) rootView.findViewById(R.id.links_1);
-    txtInputs[2] = (TextView) rootView.findViewById(R.id.links_2);
-    txtInputs[3] = (TextView) rootView.findViewById(R.id.links_3);
-    txtInputs[4] = (TextView) rootView.findViewById(R.id.links_4);
     txtInputs[5] = txtDescription;
     txtInputs[6] = txtCostsSig;
     txtInputs[7] = txtCostsFractions;
@@ -194,6 +160,37 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
     imgDeleteLinks[8] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
 
+    return rootView;
+  }
+
+  @Override
+  public void onResume() {
+    Log.e("DEBUG", "onResume of TaskDetailFragment");
+    isNotifyEnabled = false;
+    Log.e("isNotifyEnabled", "onResume false");
+    super.onResume();
+
+    if (getArguments().containsKey(TASK_ID)) {
+      // Load the dummy content specified by the fragment
+      // arguments. In a real-world scenario, use a Loader
+      // to load content from a content provider.
+      String taskId = getArguments().getString(TASK_ID);
+
+      if(_task != null && _task.id.toString() == taskId)
+        return;
+
+      if(taskId != null)
+        _task = Task.TASK_MAP.get(UUID.fromString(taskId));
+
+      if (_task == null) {
+        createNewTask();
+      }
+    }
+
+    if (TaskFormater.currentLocal == null) {
+      TaskFormater.setCurrentLocale(rootView.getContext());
+    }
+
     _initListeners(rootView);
     final HashMap<TextView, String> linkMap = _initLinks();
 
@@ -205,6 +202,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       );
       spinnerDetailType.setAdapter(_categoryAdapter);
       setDetails(linkMap, rootView);
+    } else {
+      int x = 5 / 0;
     }
 
     _initDeleteIcons(rootView);
@@ -310,11 +309,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
-    //if(currencyWatcher == null) {
+    if(currencyWatcher == null) {
       currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
-    //} else {
-      //currencyWatcher.setTask(_task);
-    //}
+    } else {
+      currencyWatcher.setTask(_task);
+    }
 
     txtCostsSig.addTextChangedListener(currencyWatcher);
     txtCostsFractions.addTextChangedListener(currencyWatcher);
@@ -425,6 +424,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
   private void setLinks(HashMap<TextView, String> linkMap) {
     Log.e("DEBUG", "setLinks");
+
     if (_task.links != null && _task.links.size() > 0) {
       int i = 0;
       for (Map.Entry<String, String> entry : _task.links.entrySet()) {
@@ -509,6 +509,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Log.e("DEBUG", "_initLinks");
     final HashMap<TextView, String> linkMap = new HashMap<>();
 
+    txtInputs[0] = (TextView) rootView.findViewById(R.id.links_0);
+    txtInputs[1] = (TextView) rootView.findViewById(R.id.links_1);
+    txtInputs[2] = (TextView) rootView.findViewById(R.id.links_2);
+    txtInputs[3] = (TextView) rootView.findViewById(R.id.links_3);
+    txtInputs[4] = (TextView) rootView.findViewById(R.id.links_4);
+
     for (final TextView txtLink : txtInputs) {
 
       if (txtLink.getTag() == null || !txtLink.getTag().toString().equalsIgnoreCase("Link"))
@@ -583,11 +589,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   private void _formatLink(TextView linkInput, String href, String displayLink) {
     String link = "";
     if (!href.isEmpty() && !displayLink.isEmpty())
-      link += "<a href='" + href + "'>" + displayLink + "</a>  ";
+      link += "<a href=\"" + href + "\">" + displayLink + "</a>";
 
     linkInput.setText(Html.fromHtml(link));
-    linkInput.setAutoLinkMask(Linkify.WEB_URLS);
-    linkInput.setLinksClickable(true);
     ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
   }
 
@@ -683,7 +687,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     if (instance != null)
       instance.needsUpdate = true;
   }
-
   private boolean needsUpdate = false;
   private Thread updaterThread;
 
