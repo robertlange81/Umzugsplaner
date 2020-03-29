@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        Log.e("DEBUG", "onCreate DetailActivity");
+        Log.d("DEBUG", "onCreate DetailActivity");
         super.onCreate(savedInstanceState);
 
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -60,12 +60,12 @@ public class DetailActivity extends AppCompatActivity {
 
         currentTaskId = getIntent().getStringExtra(TaskDetailFragment.TASK_ID);
         instance = this;
-        Log.e("DEBUG", "onCreate DetailActivity End");
+        Log.d("DEBUG", "onCreate DetailActivity End");
     }
 
     @Override
     protected void onPause() {
-        Log.e("DEBUG", "DetailActivity onPause");
+        Log.d("DEBUG", "DetailActivity onPause");
         super.onPause();
     }
 
@@ -79,15 +79,16 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.e("DEBUG", "DetailActivity onNewIntent");
+        Log.d("DEBUG", "DetailActivity onNewIntent");
         currentTaskId = intent.getStringExtra(TaskDetailFragment.TASK_ID);
-        Log.e("DEBUG", "DetailActivity onNewIntent End");
+        Log.d("DEBUG", "DetailActivity currentTaskId: " + currentTaskId);
+        Log.d("DEBUG", "DetailActivity onNewIntent End");
     }
 
     @Override
     protected void onResume()
     {
-        Log.e("DEBUG", "onResume DetailActivity");
+        Log.d("DEBUG", "onResume DetailActivity");
         super.onResume();
 
         Bundle arguments = new Bundle();

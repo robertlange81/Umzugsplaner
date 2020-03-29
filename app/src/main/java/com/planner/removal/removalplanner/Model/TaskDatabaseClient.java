@@ -16,7 +16,10 @@ public class TaskDatabaseClient {
 
         // creating the app database with Room database builder
         // RemovalPlanner is the name of the database
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "RemovalPlanner").build();
+        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "RemovalPlanner")
+                //.fallbackToDestructiveMigration()
+                .addMigrations(AppDatabase.MIGRATION_1_2)
+                .build();
     }
 
     public static synchronized TaskDatabaseClient getInstance(Context mCtx) {
@@ -27,6 +30,7 @@ public class TaskDatabaseClient {
     }
 
     public AppDatabase getAppDatabase() {
+
         return appDatabase;
     }
 }

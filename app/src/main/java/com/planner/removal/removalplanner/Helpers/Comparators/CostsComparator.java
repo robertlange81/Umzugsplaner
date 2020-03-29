@@ -1,12 +1,38 @@
 package com.planner.removal.removalplanner.Helpers.Comparators;
 
+import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
 
 public class CostsComparator implements ComparatorSortable {
     @Override
     public int compare(Task o1, Task o2) {
-        return -1 * o1.costs.compareTo(o2.costs);
+
+        int cmpr = 0;
+
+        if(MainActivity.instance.getHideDoneTasksChecked()) {
+            if(o1.is_Done && !o2.is_Done)
+                cmpr = 1;
+            if(!o1.is_Done && o2.is_Done)
+                cmpr = -1;
+        }
+
+        if(cmpr == 0 && MainActivity.instance.getHideNormalPrioTasksChecked()) {
+            cmpr = o1.priority.compareTo(o2.priority) * -1;
+        }
+
+        if(cmpr == 0)
+            cmpr = -1 * o1.costs.compareTo(o2.costs);
+
+        // then by name
+        if(cmpr == 0)
+            cmpr = o1.name.compareToIgnoreCase(o2.name);
+
+        // then by createdAt
+        if(cmpr == 0)
+            cmpr = o1.createdAt.compareTo(o2.createdAt);
+
+        return cmpr;
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 import android.arch.persistence.room.ColumnInfo;
@@ -32,6 +33,7 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - ausgeblendete Tasks ganz nach oben
     - alle menu icons nach oben
     - Loader + Hinweis
     - Synchronisieren
@@ -67,6 +69,10 @@ public class Task implements Serializable {
     @TypeConverters({TimestampConverter.class})
     public Date date; // 8
 
+    @ColumnInfo(name = "createdAt")
+    @TypeConverters({TimestampConverter.class})
+    public Date createdAt; // 8
+
     @ColumnInfo(name = "is_Done")
     public boolean is_Done; // 16
 
@@ -81,8 +87,20 @@ public class Task implements Serializable {
     @TypeConverters({LinkMapConverter.class})
     public TreeMap<String,String> links; // 128
 
+    public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
+        this(_name, _description);
+        this.date = _date;
+        this.priority = _priority;
+        this.costs = _costs;
+        this.type = _type;
+    }
+
     public Task(String name, String description) {
-        id = UUID.randomUUID();
+        this(UUID.randomUUID(), name, description);
+    }
+
+    public Task(UUID uuid, String name, String description) {
+        this.id = uuid;
         this.name = name;
         this.description = description;
         date = null;
@@ -90,14 +108,7 @@ public class Task implements Serializable {
         costs = 0L;
         type = new TaskType(TaskTypeMain.Movement);
         links = new TreeMap<>();
-    }
-
-    public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
-        this(_name, _description);
-        this.date = _date;
-        this.priority = _priority;
-        this.costs = _costs;
-        this.type = _type;
+        createdAt = new Date();
     }
 
     public Task(Task clone) {
@@ -110,6 +121,7 @@ public class Task implements Serializable {
         type = clone.type;
         costs = clone.costs;
         links = (TreeMap) clone.links.clone();
+        createdAt = clone.createdAt;
     }
 
     public void ImportTask(Task clone) {
@@ -186,7 +198,7 @@ public class Task implements Serializable {
                     return false;
 
             } catch (IllegalAccessException ex) {
-                Log.e("DEBUG", "Task.equals: " + ex.getMessage());
+                Log.e("ERROR", "Task.equals: " + ex.getMessage());
                 ex.printStackTrace();
             }
         }

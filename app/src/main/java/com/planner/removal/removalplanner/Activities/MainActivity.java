@@ -64,6 +64,7 @@ import static android.widget.LinearLayout.VERTICAL;
 
 public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver {
 
+    public static MainActivity instance;
     public static boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
     private static ComparatorConfig comparatorConfig;
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        instance = this;
         if(TaskFormater.currentLocal == null) {
             TaskFormater.setCurrentLocale(this);
         }
@@ -129,11 +131,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     Task.addTask(_task);
                     NotifyTaskChanged(null, null);
                     adapter.setFragmentTwoPane(_task);
+                    adapter.activeRowItemId = _task.id;
                 } else {
                     Context context = view.getContext();
                     Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra(TaskDetailFragment.TASK_ID, UUID.randomUUID());
-
+                    UUID id = UUID.randomUUID();
+                    intent.putExtra(TaskDetailFragment.TASK_ID, id.toString());
+                    adapter.activeRowItemId = id;
                     context.startActivity(intent);
                 }
             }
@@ -191,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     getResources().getString(R.string.app_name)
             );
         } catch (Exception x) {
-            Log.d("cache", x.getMessage());
+            Log.e("cache", x.getMessage());
         }
 
     }
@@ -216,7 +220,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         hideDoneTasks.setChecked(getHideDoneTasksChecked());
 
         hideNormalPrio = topMenu.findItem(R.id.show_high_prio_only);
-        hideNormalPrio.setChecked(getHideNormalPrioTasksChecked());
+
+        if(getHideNormalPrioTasksChecked()) {
+            hideNormalPrio.setChecked(true);
+            adapter.setHideNormalPrio(true);
+
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                SortBy(ComparatorConfig.SortType.values()[sortId]);
+            }
+        }
 
         for (int i = 0; i < topMenu.size(); i++) {
             topMenu.getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -246,6 +259,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             adapter.setHideDone(item.isChecked());
             adapter.notifyDataSetChanged();
 
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                SortBy(ComparatorConfig.SortType.values()[sortId]);
+            }
+
             return true;
         }
 
@@ -254,6 +272,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             setHideNormalPrioTasksChecked(item.isChecked());
             adapter.setHideNormalPrio(item.isChecked());
             adapter.notifyDataSetChanged();
+
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                SortBy(ComparatorConfig.SortType.values()[sortId]);
+            }
 
             return true;
         }
@@ -298,7 +321,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(sortType != null && !sortType.equals(ComparatorConfig.SortType.NONE)) {
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
+            SortBy(sortType);
             adapter.notifyDataSetChanged();
+
             return true;
         }
 
@@ -320,16 +345,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         return true;
     }
 
-    public static boolean SortBy(ComparatorConfig.SortType sortType, boolean hideDone) {
+    public static boolean SortBy(ComparatorConfig.SortType sortType) {
 
         ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
         if(comparatorSortable != null) {
             Collections.sort(Task.TASK_LIST, comparatorSortable);
+            // JAVA 8
             //.thenComparing(new PriorityComparator())
             //.thenComparing(new NameComparator()));
-            
-            if(recyclerView != null)
-                recyclerView.smoothScrollToPosition(0);
+
+//            if(recyclerView != null)
+//                recyclerView.smoothScrollToPosition(0);
 
             return true;
         }
@@ -380,10 +406,22 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         if(a != null) {
-            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, a);
-            boolean hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, a) > 0;
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort,
+                    (a instanceof DetailActivity ? MainActivity.instance : a)
+            );
+
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId], hideDone);
+                SortBy(ComparatorConfig.SortType.values()[sortId]);
+            }
+
+            int i = 0;
+            for(Task task: Task.TASK_LIST) {
+                                                        // TODO use t.id
+                if(task.id.equals(SimpleItemRecyclerViewAdapter.activeRowItemId)) {
+                    if(recyclerView != null)
+                        recyclerView.smoothScrollToPosition(i);
+                }
+                i++;
             }
         }
 
@@ -463,6 +501,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
     };
         private boolean hideDoneTasks, hideNormalPrio;
+        private int activeRowPos;
 
         public void setFragmentTwoPane (Task t) {
         Bundle arguments = new Bundle();
@@ -529,8 +568,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             holder.costs.setText(TaskFormater.intDecimalsToString(task.costs));
 
-            if(activeRowItemId == task.id){
+            if(task.id.equals(activeRowItemId)){
                 holder.row.setBackgroundColor(Color.parseColor("#000000"));
+                activeRowPos = position;
+
+                if(recyclerView != null)
+                    recyclerView.smoothScrollToPosition(activeRowPos);
             }
             else
             {
@@ -702,7 +745,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                 if(needsUpdate) {
                                     handler.post(new Runnable(){
                                         public void run() {
-                                            Log.e("needsUpdate", "true");
+                                            Log.d("needsUpdate", "true");
                                             SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
                                         }
                                     });

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
-import com.planner.removal.removalplanner.Model.AppDatabase;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;

@@ -60,7 +60,7 @@ public class Command implements View.OnClickListener{
                 _adapter.remove(_task);
                 break;
             case 2: //CommandTyp.Undo
-                Log.e("command", "command");
+                Log.d("command", "command");
                 Task oldTask = Task.TASK_MAP.get(_task.id);
 
                 if(oldTask != null)

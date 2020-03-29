@@ -106,24 +106,24 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Log.e("DEBUG", "onCreate of TaskDetailFragment");
+    Log.d("DEBUG", "onCreate of TaskDetailFragment");
     instance = this;
-    Log.e("DEBUG", "onCreate of TaskDetailFragment END");
+    Log.d("DEBUG", "onCreate of TaskDetailFragment END");
   }
 
-  private void createNewTask() {
-    _task = new Task("", "");
+  private void createNewTask(String taskId) {
+    _task = new Task(UUID.fromString(taskId), "", "");
     Task.addTask(_task);
   }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    Log.e("DEBUG", "onCreateView TaskDetailFragment");
+    Log.d("DEBUG", "onCreateView TaskDetailFragment");
     setHasOptionsMenu(true);
     rootView = inflater.inflate(R.layout.detail, container, false);
-    Log.e("DEBUG", "onCreateView TaskDetailFragment 1");
-    Log.e("DEBUG", "onCreateView TaskDetailFragment END");
+    Log.d("DEBUG", "onCreateView TaskDetailFragment 1");
+    Log.d("DEBUG", "onCreateView TaskDetailFragment END");
 
     txtName = rootView.findViewById(R.id.detail_name);
     checkIsDone = rootView.findViewById(R.id.detail_isDone);
@@ -165,9 +165,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
   @Override
   public void onResume() {
-    Log.e("DEBUG", "onResume of TaskDetailFragment");
+    Log.d("DEBUG", "onResume of TaskDetailFragment");
     isNotifyEnabled = false;
-    Log.e("isNotifyEnabled", "onResume false");
+    Log.d("isNotifyEnabled", "onResume false");
     super.onResume();
 
     if (getArguments().containsKey(TASK_ID)) {
@@ -176,14 +176,16 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      if(_task != null && _task.id.toString() == taskId)
+      if(_task != null && _task.id.toString().equals(taskId)) {
+        isNotifyEnabled = true;
         return;
+      }
 
       if(taskId != null)
         _task = Task.TASK_MAP.get(UUID.fromString(taskId));
 
       if (_task == null) {
-        createNewTask();
+        createNewTask(taskId);
       }
     }
 
@@ -219,12 +221,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
 
     isNotifyEnabled = true;
-    Log.e("isNotifyEnabled", "onResume true");
-    Log.e("DEBUG", "onResume of TaskDetailFragment END");
+    Log.d("isNotifyEnabled", "onResume true");
+    Log.d("DEBUG", "onResume of TaskDetailFragment END");
   }
 
   private void _initListeners(final View rootView) {
-    Log.e("DEBUG", "_initListeners");
+    Log.d("DEBUG", "_initListeners");
     btnDatePicker.setOnClickListener(this);
     btnTimePicker.setOnClickListener(this);
     btnExportPicker.setOnClickListener(this);
@@ -300,7 +302,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     txtDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
-        Log.e("DEBUG", "txt changed");
+        Log.d("DEBUG", "txt changed");
         if (!hasFocus && txtDescription.getText() != null) {
           String input = txtDescription.getText().toString();
           if (!_task.description.equals(input))
@@ -355,14 +357,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
       }
     });
-    Log.e("DEBUG", "_initListeners END");
+    Log.d("DEBUG", "_initListeners END");
   }
 
   private void setDetails(final HashMap<TextView, String> linkMap, View rootView) {
 
-    Log.e("DEBUG", "setDetails");
+    Log.d("DEBUG", "setDetails");
     isNotifyEnabled = false;
-    Log.e("isNotifyEnabled", "setDetails false");
+    Log.d("isNotifyEnabled", "setDetails false");
     if (!txtName.getText().toString().equals(_task.name))
       txtName.setText(_task.name);
 
@@ -417,13 +419,13 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     } else {
       txtDeadline.setText("");
     }
-    Log.e("DEBUG", "setDetails - END");
+    Log.d("DEBUG", "setDetails - END");
     isNotifyEnabled = true;
-    Log.e("isNotifyEnabled", "setDetails true");
+    Log.d("isNotifyEnabled", "setDetails true");
   }
 
   private void setLinks(HashMap<TextView, String> linkMap) {
-    Log.e("DEBUG", "setLinks");
+    Log.d("DEBUG", "setLinks");
 
     if (_task.links != null && _task.links.size() > 0) {
       int i = 0;
@@ -443,11 +445,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     } else {
       firstLinkRow.setVisibility(View.GONE);
     }
-    Log.e("DEBUG", "setLinks - END");
+    Log.d("DEBUG", "setLinks - END");
   }
 
   private void _initDeleteIcons(final View rootView) {
-    Log.e("DEBUG", "_initDeleteIcons");
+    Log.d("DEBUG", "_initDeleteIcons");
     final HashMap<ImageView, List<TextView>> deleteMap = new HashMap<>();
 
     clickListener = new View.OnClickListener() {
@@ -472,7 +474,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                 R.string.undo,
                 new Command(Command.CommandTyp.Undo, clone, getActivity())
               );
-              Log.e("new command", "new command");
+              Log.d("new command", "new command");
               snack.show();
             }
 
@@ -502,11 +504,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       imgDeleteLinks[i].setOnClickListener(clickListener);
     }
-    Log.e("DEBUG", "_initDeleteIcons - END");
+    Log.d("DEBUG", "_initDeleteIcons - END");
   }
 
   private HashMap<TextView, String> _initLinks() {
-    Log.e("DEBUG", "_initLinks");
+    Log.d("DEBUG", "_initLinks");
     final HashMap<TextView, String> linkMap = new HashMap<>();
 
     txtInputs[0] = (TextView) rootView.findViewById(R.id.links_0);
@@ -537,7 +539,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
               if (key == null) {
                 showNewLine = true;
               } else {
-                Log.e("remove ", key);
+                Log.d("remove ", key);
                 _task.links.remove(key);
                 linkMap.remove(txtLink);
               }
@@ -555,7 +557,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
                   if (URLUtil.isValidUrl(value)) {
                     _task.addLink(inputLink, value, true);
-                    Log.e("put ", inputLink);
+                    Log.d("put ", inputLink);
                     linkMap.put(txtLink, inputLink);
                   }
                 }
@@ -582,7 +584,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       });
     }
 
-    Log.e("DEBUG", "_initLinks - END");
+    Log.d("DEBUG", "_initLinks - END");
     return linkMap;
   }
 
@@ -741,19 +743,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
   @Override
   public void onPause() {
-    Log.e("DEBUG", "TaskDetailFragment onPause");
+    Log.d("DEBUG", "TaskDetailFragment onPause");
 
     if (isNotifyEnabled && instance != null && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
         f.clearFocus();
     }
-    stopTimerThread();
     super.onPause();
+    stopTimerThread();
   }
 
   public void onDestroy() {
-    Log.e("DEBUG", "TaskDetailFragment onDestroy");
+    Log.d("DEBUG", "TaskDetailFragment onDestroy");
     if (isNotifyEnabled && instance != null && instance.getView() != null) {
       View f = instance.getView().findFocus();
       if(f != null)
