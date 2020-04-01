@@ -107,7 +107,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Log.d("DEBUG", "onCreate of TaskDetailFragment");
-    instance = this;
     Log.d("DEBUG", "onCreate of TaskDetailFragment END");
   }
 
@@ -166,6 +165,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   @Override
   public void onResume() {
     Log.d("DEBUG", "onResume of TaskDetailFragment");
+    instance = this;
     isNotifyEnabled = false;
     Log.d("isNotifyEnabled", "onResume false");
     super.onResume();
@@ -311,7 +311,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
-    if(currencyWatcher == null) {
+    if(currencyWatcher == null || MainActivity.mTwoPane) {
       currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
     } else {
       currencyWatcher.setTask(_task);

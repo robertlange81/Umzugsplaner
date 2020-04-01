@@ -47,9 +47,9 @@ public class TaskInitializer {
         informAuthorities.addLink("Auto ummelden / neue Plakette", "https://www.umzug.de/tipps/ummelden/auto-ummelden.html");
         Task.addTask(informAuthorities);
 
-        Task postalAftermath = new Task("Nachsendeauftrag", "Richten Sie einen Nachsendeauftrag ein. Vorsicht, hier gibt es schwarze Schafe im Internet! Nutzen Sei nur die Webseite der Post und keine Abzocher wie nachsenden.info oder Ähnliches.", addMonthDaysToJavaUtilDate(removalDate, 0, 0), Priority.Normal, 0L,
+        Task postalAftermath = new Task("Nachsendeauftrag", "Richten Sie einen Nachsendeauftrag ein. Vorsicht, hier gibt es schwarze Schafe im Internet! Nutzen Sie nur die Webseite der Post und keine Abzocher wie nachsenden.info oder Ähnliches.", addMonthDaysToJavaUtilDate(removalDate, 0, 0), Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.OldFlat.getValue()));
-        postalAftermath.addLink("Auftrag einrichten.", "https://shop.deutschepost.de/nachsendeservice-beauftragen");
+        postalAftermath.addLink("Jetzt Nachsendeauftrag einrichten", "https://shop.deutschepost.de/nachsendeservice-beauftragen");
         Task.addTask(postalAftermath);
 
         Task informContractors = new Task("Vertragspartner informieren", "Informieren Sie Banken, Versicherungen, Mobilfunkanbieter, Arbeitgeber und andere Vertragspartner über Ihre neue Adresse. Verlassen Sie sich nicht nur auf den Nachsendeauftrag", addMonthDaysToJavaUtilDate(removalDate, 0, -14), Priority.Normal, 0L,

@@ -25,8 +25,8 @@
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
-    <string name="placeholder_export_no_date">Please choose a date first.</string>
-    <string name="placeholder_init">Set up new removal</string>
+    <string name="placeholder_export_no_date">Please choose a date first before export.</string>
+    <string name="placeholder_init">Set up !NEW! removal</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
     <string name="placeholder_init_no_date">No date specified - Standard tasks are created without a date.</string>
     <string name="placeholder_link">link</string>

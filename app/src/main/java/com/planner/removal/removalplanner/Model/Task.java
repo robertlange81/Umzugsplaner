@@ -33,8 +33,7 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - ausgeblendete Tasks ganz nach oben
-    - alle menu icons nach oben
+    - Links in Translations
     - Loader + Hinweis
     - Synchronisieren
     - kurzes Tutorial am Anfang

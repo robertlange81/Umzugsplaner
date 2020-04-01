@@ -4,10 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/transparent"
     android:layout_height="match_parent">
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
+        android:background="@android:color/transparent"
         android:layout_height="match_parent">
 
         <android.support.design.bottomappbar.BottomAppBar
@@ -16,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|left"
             android:layout_marginTop="50dp"
-            app:backgroundTint="@color/colorPrimaryDark"
-            app:fabAlignmentMode="center"
-            app:fabCradleVerticalOffset="0dp"
+            android:background="@android:color/holo_red_dark"
+            app:fabAlignmentMode="end"
+            app:fabCradleVerticalOffset="30sp"
             app:fabAttached="true"
             app:fabCradleDiameter="20dp"/>
 

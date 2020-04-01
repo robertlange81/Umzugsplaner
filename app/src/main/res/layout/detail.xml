@@ -70,7 +70,7 @@
                 android:id="@+id/detail_name"
                 android:hint="@string/placeholder_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/detail_row_height"
                 android:ellipsize="start"
                 android:gravity="start|center_vertical"
                 android:singleLine="false"
@@ -84,7 +84,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_below="@+id/detail_header_top"
-            android:layout_height="@dimen/detail_header_row_height"
+            android:layout_height="@dimen/detail_row_height"
             android:minHeight="@dimen/detail_header_row_height"
             android:gravity="center_vertical"
             android:paddingStart="5sp"

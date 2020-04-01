@@ -202,9 +202,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // getMenuInflater().inflate(R.menu.menu_main, menu);
-        getMenuInflater().inflate(R.menu.bottomappbar_menu, menu);
 
         // Inflate and initialize the top main menu
         ActionMenuView topBar = (ActionMenuView)findViewById(R.id.top_actionmenu);
@@ -224,10 +221,36 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         if(getHideNormalPrioTasksChecked()) {
             hideNormalPrio.setChecked(true);
             adapter.setHideNormalPrio(true);
+        }
 
-            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
-            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId]);
+        int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+            SortBy(ComparatorConfig.SortType.values()[sortId]);
+
+            MenuItem item = null;
+            if (sortId == ComparatorConfig.SortType.COSTS.getValue()) {
+                item = topMenu.findItem(R.id.sortByCosts);
+            } else if (sortId == ComparatorConfig.SortType.DATE.getValue()) {
+                item = topMenu.findItem(R.id.sortByDate);
+            } else if (sortId == ComparatorConfig.SortType.IS_DONE.getValue()) {
+                item = topMenu.findItem(R.id.sortByIsDone);
+            } else if (sortId == ComparatorConfig.SortType.NAME.getValue()) {
+                item = topMenu.findItem(R.id.sortByName);
+            } else if (sortId == ComparatorConfig.SortType.PRIORITY.getValue()) {
+                item = topMenu.findItem(R.id.sortByPriority);
+            }
+
+            /* TODO
+            if(sortId == ComparatorConfig.SortType.TYPE.getValue()) {
+                id = findViewById(R.id.sortBy);
+            }
+            */
+
+            if (item != null) {
+                SpannableString s = new SpannableString(item.getTitle());
+                s.setSpan(new ForegroundColorSpan(Color.rgb(0, 255, 60)), 0, s.length(), 0);
+                item.setTitle(s);
+                lastItem = item;
             }
         }
 
@@ -281,6 +304,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
+        // assume sorting select
         ComparatorConfig.SortType sortType = null;
         SpannableString s;
 
@@ -294,7 +318,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         item.setTitle(s);
         lastItem = item;
-
         int id = item.getItemId();
         switch (id) {
             case R.id.sortByCosts:
