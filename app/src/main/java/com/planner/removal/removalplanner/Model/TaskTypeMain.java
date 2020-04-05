@@ -1,7 +1,7 @@
 package com.planner.removal.removalplanner.Model;
 
 public enum TaskTypeMain {
-    OldFlat(0), NewFlat(1), Contracts(2), Movement(3);
+    OldFlat(0), NewFlat(1), Contracts(2), Movement(3), Electronics(4), Furniture(5), KITCHEN(6);
 
     private int value;
 

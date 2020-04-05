@@ -50,10 +50,13 @@
     <string name="paid_done">paid</string>
     <string name="currency">$</string>
     <string-array name="base_task_types">
-        <item>Old Flat</item>
-        <item>New Flat</item>
-        <item>Contracts</item>
-        <item>Movement</item>
+        <item>OLD FLAT</item>
+        <item>NEW FLAT</item>
+        <item>CONTRACTS</item>
+        <item>MOVEMENT</item>
+        <item>ELECTRONICS</item>
+        <item>FURNITURE</item>
+        <item>KITCHEN</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
@@ -62,4 +65,7 @@
     <string name="back">back</string>
     <string name="placeholder_show_done">show open tasks only</string>
     <string name="placeholder_hide_prio">show high priority only</string>
+    <string name="Amazon">Amazon</string>
+    <string name="amazon_link_electronics"><![CDATA[https://www.amazon.com/s?i=electronics&tag=robroyrich-21&k=]]></string>
+    <string name="amazon_link_kitchen"><![CDATA[https://www.amazon.com/s?i=kitchen&tag=robroyrich-21&k=]]></string>
 </resources>

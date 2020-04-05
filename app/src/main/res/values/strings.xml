@@ -58,16 +58,22 @@
         <item>V</item>
     </string-array>
     <string-array name="base_task_types">
-        <item>Alte Wohnung</item>
-        <item>Neue Wohnung</item>
-        <item>Verträge</item>
-        <item>Umzug</item>
+        <item>ALTE WOHNUNG</item>
+        <item>NEUE WOHNUNG</item>
+        <item>VERTRÄGE</item>
+        <item>UMZUG</item>
+        <item>ELEKTRONIK</item>
+        <item>MÖBEL</item>
+        <item>KÜCHE</item>
     </string-array>
     <string name="Rate_App">App bewerten</string>
-    <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht supportet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung.Vielen Dank!</string>
+    <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht gewartet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung. Vielen Dank!</string>
     <string name="Remind_me_later">Später erinnern</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">zurück</string>
     <string name="placeholder_show_done">nur offene Aufgaben anzeigen</string>
     <string name="placeholder_hide_prio">nur hohe Priorität anzeigen</string>
+    <string name="Amazon">Amazon</string>
+    <string name="amazon_link_electronics"><![CDATA[https://www.amazon.de/s?i=electronics&tag=robroyrich-21&k=]]></string>
+    <string name="amazon_link_kitchen"><![CDATA[https://www.amazon.de/s?i=kitchen&tag=robroyrich-21&k=]]></string>
 </resources>

@@ -36,7 +36,7 @@ public class TaskType implements Comparable<Object>{
         if(o.getClass() == TaskType.class)
             other = ((TaskType) o).getValue();
 
-        if(o.getClass() == TaskTypeMain.class)
+        if(o instanceof TaskTypeMain)
             other = ((TaskTypeMain) o).getValue();
 
         if(o.getClass() == int.class)

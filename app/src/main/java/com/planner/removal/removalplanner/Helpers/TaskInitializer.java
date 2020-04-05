@@ -38,7 +38,7 @@ public class TaskInitializer {
         Task informOldAndNewNeighbours = new Task("Nachbarn (Alte und Neue) informieren", "Informieren Sie Ihre alten und neuen Nachbarn per Aushang über Ihren Umzug. Beachten Sie auch die Ruhezeiten. Üblicherweise von 13 Uhr bis 15 Uhr und 20 Uhr bis 7 Uhr. Nutzen Sie zudem die Gelegenheit, um Ihre Türschilder anzubringen, damit die Post und Speditionen Sie erreichen.", removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -7) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Movement));
         // TODO partner-link
-        rentalContractNew.addLink("Türschilder aussuchen", "https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b");
+        rentalContractNew.addLink("Türschilder aussuchen", "https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b&tag=robroyrich-21");
         Task.addTask(informOldAndNewNeighbours);
 
         Task informAuthorities = new Task("Ummeldung Behörden etc.", "Nach Ihrem Umzug (aber nicht davor!) müssen Sie sich in Ihrem Einwohnermeldeamt ummelden. Geben Sie auch Ihre neue Adresse an Ihre Vertragspartner weiter und verlassen Sie sich nicht auf den Nachsendeauftrag.", addMonthDaysToJavaUtilDate(removalDate, 0, 13), Priority.High, 0L,
@@ -79,8 +79,8 @@ public class TaskInitializer {
 
         Task fireAndBurglaryProtection = new Task("Brandschutz und Einbruchsschutz", "Rauchmelder sind in einigen Bundesländern Pflicht und können Leben retten. Vergessen Sie zudem nicht den Einbruchsschutz.", removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -6) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.NewFlat));
-        fireAndBurglaryProtection.addLink("Feuermelder", "https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031");
-        fireAndBurglaryProtection.addLink("Einbruchsschutz", "https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031");
+        fireAndBurglaryProtection.addLink("Feuermelder", "https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031&tag=robroyrich-21");
+        fireAndBurglaryProtection.addLink("Einbruchsschutz", "https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031&tag=robroyrich-21");
         Task.addTask(fireAndBurglaryProtection);
 
         Task requestSpecialLeave = new Task("Sonderurlaub beantragen", "In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!", Calendar.getInstance().getTime(), Priority.Normal, 0L,

@@ -49,6 +49,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.UUID;
 
 /**
@@ -204,8 +205,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       );
       spinnerDetailType.setAdapter(_categoryAdapter);
       setDetails(linkMap, rootView);
-    } else {
-      int x = 5 / 0;
     }
 
     _initDeleteIcons(rootView);
@@ -276,6 +275,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
+            generateLinks();
             MainActivity.NotifyTaskChanged(_task, getActivity());
           }
         }
@@ -288,6 +288,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if (_task != null && _task.type.getValue() != position) {
 
           _task.type = new TaskType(position);
+          generateLinks();
 
           if (isNotifyEnabled)
             MainActivity.NotifyTaskChanged(_task, getActivity());
@@ -586,6 +587,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     Log.d("DEBUG", "_initLinks - END");
     return linkMap;
+  }
+
+  // generate links for Electronis and Furniture
+  public void generateLinks() {
+    // TODO: partner-id
+    if(_task.type.getValue() >= 4) { // user type
+      _task.links = new TreeMap<>();
+      _task.addLink(
+        _task.name.isEmpty() ? getResources().getString(R.string.Amazon) : _task.name,
+        getResources().getString(_task.type.equals(TaskTypeMain.Electronics) ? R.string.amazon_link_electronics : R.string.amazon_link_kitchen) + _task.name
+      );
+      setLinks(_initLinks());
+    }
   }
 
   private void _formatLink(TextView linkInput, String href, String displayLink) {
