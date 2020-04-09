@@ -76,4 +76,62 @@
     <string name="Amazon">Amazon</string>
     <string name="amazon_link_electronics"><![CDATA[https://www.amazon.de/s?i=electronics&tag=robroyrich-21&k=]]></string>
     <string name="amazon_link_kitchen"><![CDATA[https://www.amazon.de/s?i=kitchen&tag=robroyrich-21&k=]]></string>
+    <string name="taskRentalContractOld3Months">3-Monats-Frist?</string>
+    <string name="taskRentalContractOld">Alten Mietvertrag kündigen</string>
+    <string name="taskRentalContractOldDesc">Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.</string>
+    <string name="taskRentalContractOld3MonthsLINK">https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html</string>
+    <string name="rentalContractOldSpecialRightOfTermination">Sonderkündigungsrecht</string>
+    <string name="rentalContractOldSpecialRightOfTerminationLINK">https://www.hausgold.de/sonderkuendigungsrecht/</string>
+    <string name="rentalContractNew">Neuer Mietvertrag</string>
+    <string name="rentalContractNewDesc">Prüfen Sie Ihren Mietvertrag auf Rechtskonformität und bindende Klauseln (Mindestmietdauer, angemessene Betriebskostenvorauszahlung, zu hohe Staffelmiete, sichtbare Mängel melden, Kleinreparaturklausel, WG-Miete, Maklerprovision, Vergleich Mietspiegel / Mietendeckel)</string>
+    <string name="rentalContractNewTraps">Mietvertrag: Vorsicht Fallen</string>
+    <string name="rentalContractNewTrapsLink">https://ratgeber.immowelt.de/a/mietvertrag-vorsicht-fallen.html</string>
+    <string name="rentalContractNewTips">Tipps zum Mietvertrag</string>
+    <string name="rentalContractNewTipsLINK">https://www.nach-dem-abitur.de/mietvertrag-tipps</string>
+    <string name="informOldAndNewNeighbours">Nachbarn (Alte und Neue) informieren</string>
+    <string name="informOldAndNewNeighboursDesc">Informieren Sie Ihre alten und neuen Nachbarn per Aushang über Ihren Umzug. Beachten Sie auch die Ruhezeiten. Üblicherweise von 13 Uhr bis 15 Uhr und 20 Uhr bis 7 Uhr. Nutzen Sie zudem die Gelegenheit, um Ihre Türschilder anzubringen, damit die Post und Speditionen Sie erreichen.</string>
+    <string name="informOldAndNewNeighboursDoorSigns">Türschilder aussuchen</string>
+    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b&tag=robroyrich-21]]></string>
+    <string name="informAuthorities">Ummeldung Behörden etc.</string>
+    <string name="informAuthoritiesDesc">Nach Ihrem Umzug (aber nicht davor!) müssen Sie sich in Ihrem Einwohnermeldeamt ummelden. Geben Sie auch Ihre neue Adresse an Ihre Vertragspartner weiter und verlassen Sie sich nicht auf den Nachsendeauftrag.</string>
+    <string name="informAuthoritiesResidence">Wohnsitz ummelden</string>
+    <string name="informAuthoritiesResidenceLINK">https://umziehen.de/an-ab-ummelden/wohnsitz-anmelden-192</string>
+    <string name="informAuthoritiesCar">Auto ummelden / neue Plakette</string>
+    <string name="informAuthoritiesCarLINK">https://www.umzug.de/tipps/ummelden/auto-ummelden.html</string>
+    <string name="postalAftermath">Nachsendeauftrag</string>
+    <string name="postalAftermathDesc">Richten Sie einen Nachsendeauftrag ein. Vorsicht, hier gibt es schwarze Schafe im Internet! Nutzen Sie nur die Webseite der Deutschen Post shop.deutschepost.de/nachsendeservice-beauftragen.</string>
+    <string name="postalAftermathSetup">Jetzt Nachsendeauftrag einrichten</string>
+    <string name="informContractors">Vertragspartner informieren</string>
+    <string name="informContractorsDesc">Informieren Sie Banken, Versicherungen, Mobilfunkanbieter, Arbeitgeber und andere Vertragspartner über Ihre neue Adresse. Verlassen Sie sich nicht nur auf den Nachsendeauftrag</string>
+    <string name="energyContract">Energieversorger</string>
+    <string name="energyContractDesc">Prüfen Sie, ob Sie Ihren alten Gas - bzw. Stromvertrag behalten (aber über Adresswechsel informieren) oder wechseln müssen / dürfen.</string>
+    <string name="compareContractVerivox">Anbieter bei Verivox vergleichen</string>
+    <string name="energyContractVerivoxLINK">https://www.verivox.de</string>
+    <string name="internetContract">Internetanschluss</string>
+    <string name="internetContractDesc">Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.</string>
+    <string name="internetContractVerivoxLINK">https://www.verivox.de</string>
+    <string name="internetContractAvailability">Anbieter am neuen Wohnort?</string>
+    <string name="internetContractAvailabilityLINK">https://www.check24.de/dsl/verfuegbarkeit/</string>
+    <string name="phoneContract">Festnetztelefon</string>
+    <string name="phoneContractDesc">Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen und ob eine Mitnahme der alten Nummer möglich ist.</string>
+    <string name="phoneContractCompare">Telefonanbieter vergleichen</string>
+    <string name="phoneContractCompareLINK">https://www.verivox.de</string>
+    <string name="tvContract">TV-Anschluss</string>
+    <string name="tvContractDesc">Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.</string>
+    <string name="tvContractCompare">TV-Anbieter vergleichen</string>
+    <string name="tvContractCompareLINK">https://www.verivox.de</string>
+    <string name="fireAndBurglaryProtection">Brandschutz und Einbruchsschutz</string>
+    <string name="fireAndBurglaryProtectionDesc">Rauchmelder sind in einigen Bundesländern Pflicht und können Leben retten. Vergessen Sie zudem nicht den Einbruchsschutz.</string>
+    <string name="fireAndBurglaryProtectionSmokeDetector">Feuermelder vergleichen</string>
+    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031&tag=robroyrich-21]]></string>
+    <string name="fireAndBurglaryProtectionBurglary">Einbruchsschutz prüfen</string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031&tag=robroyrich-21]]></string>
+    <string name="requestSpecialLeave">Sonderurlaub beantragen</string>
+    <string name="requestSpecialLeaveDesc">In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
+    <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
+    <string name="rentalDepositAccount">Kautionssparbuch</string>
+    <string name="rentalDepositAccountDesc">Die Kaution können Sie statt dem Vermieter direkt zu überweisen alternativ auf einem sog. Mietkautionssparbuch hinterlegen. Vorteil ist eine Absicherung vor Insolvenz etc. des Vermieters.</string>
+    <string name="rentalDepositAccountExplanation">Was ist ein Kautionssparbuch?</string>
+    <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
+    <string name="start">start</string>
 </resources>

@@ -44,21 +44,29 @@ public class TaskFormater {
 
         DateFormat dfTime;
         if(date.getHours() == 0 && date.getMinutes() == 0) {
-            dfTime = getShortDateInstanceWithoutYears(currentLocal);
+            dfTime = getShortDateInstance(currentLocal);
         } else {
             dfTime = getShortDateTimeInstanceWithoutYears(currentLocal);
         }
         return dfTime.format(date);
     }
 
+    public static DateFormat getShortDateInstance(Locale locale) {
+        return DateFormat.getDateInstance(DateFormat.SHORT, locale);
+    }
+
     public static DateFormat getShortDateInstanceWithoutYears(Locale locale) {
-        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateInstance(DateFormat.SHORT, locale);
+        SimpleDateFormat sdf = (SimpleDateFormat) getShortDateInstance(locale);
         sdf.applyPattern(sdf.toPattern().replaceAll("y+", ""));
         return sdf;
     }
 
+    public static DateFormat getShortDateTimeInstance(Locale locale) {
+        return DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.SHORT, locale);
+    }
+
     public static DateFormat getShortDateTimeInstanceWithoutYears(Locale locale) {
-        SimpleDateFormat sdf = (SimpleDateFormat) DateFormat.getDateTimeInstance(DateFormat.DATE_FIELD, DateFormat.SHORT, locale);
+        SimpleDateFormat sdf = (SimpleDateFormat) getShortDateTimeInstance(locale);
         sdf.applyPattern(sdf.toPattern().replaceAll("y+", ""));
         return sdf;
     }
