@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umzug-Planer</string>
+    <string name="app_name">Umzug</string>
     <string name="category">Typ</string>
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>

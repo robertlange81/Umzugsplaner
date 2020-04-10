@@ -33,7 +33,8 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - Links in Translations
+    - Coronaliste
+    - Babyliste
     - Loader + Hinweis
     - Synchronisieren
     - kurzes Tutorial am Anfang
@@ -46,7 +47,6 @@ public class Task implements Serializable {
     - Import / Export (zuletzt) !!!
     - Content Provider ???
     - Bild statt Link
-    - Einkaufsliste
      */
 
     @PrimaryKey(autoGenerate = false)

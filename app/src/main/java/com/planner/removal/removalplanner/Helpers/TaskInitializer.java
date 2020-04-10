@@ -41,7 +41,7 @@ public class TaskInitializer {
         rentalContractNew.addLink(mainActivity.getString(R.string.rentalContractNewTips), mainActivity.getString(R.string.rentalContractNewTipsLINK));
         Task.addTask(rentalContractNew);
 
-        Task informOldAndNewNeighbours = new Task(mainActivity.getString(R.string.informOldAndNewNeighbours), mainActivity.getString(R.string.informOldAndNewNeighboursDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -7) : null, Priority.High, 0L,
+        Task informOldAndNewNeighbours = new Task(mainActivity.getString(R.string.informOldAndNewNeighbours), mainActivity.getString(R.string.informOldAndNewNeighboursDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -7) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Movement));
         // TODO partner-link
         rentalContractNew.addLink(mainActivity.getString(R.string.informOldAndNewNeighboursDoorSigns), mainActivity.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
