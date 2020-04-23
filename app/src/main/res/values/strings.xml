@@ -66,6 +66,9 @@
         <item>MÖBEL</item>
         <item>KÜCHE</item>
     </string-array>
+    <string name="contractCancel">Falls Sie Ihren alten Vertrag kündigen wollen bietet sich durch Ihren Umzug oft ein Sonderkündigungsrecht, wenn Sie durch Ihren bisherigen Anbieter am neuen Wohnort nicht beliefert werden können. Vorsicht! Senden Sie Nachweise möglichst per Einschreiben. Einige Anbieter wie PYUR könnten Sie sonst übervorteilen.</string>
+    <string name="partner_verivox_Id">2812</string>
+    <string name="partner_check24_Id">133701</string>
     <string name="Rate_App">App bewerten</string>
     <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht gewartet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung. Vielen Dank!</string>
     <string name="Remind_me_later">Später erinnern</string>
@@ -102,16 +105,13 @@
     <string name="postalAftermathDesc">Richten Sie einen Nachsendeauftrag ein. Vorsicht, hier gibt es schwarze Schafe im Internet! Nutzen Sie nur die Webseite der Deutschen Post shop.deutschepost.de/nachsendeservice-beauftragen.</string>
     <string name="postalAftermathSetup">Jetzt Nachsendeauftrag einrichten</string>
     <string name="informContractors">Vertragspartner informieren</string>
-    <string name="informContractorsDesc">Informieren Sie Banken, Versicherungen, Mobilfunkanbieter, Arbeitgeber und andere Vertragspartner über Ihre neue Adresse. Verlassen Sie sich nicht nur auf den Nachsendeauftrag</string>
+    <string name="informContractorsDesc">Informieren Sie Banken, Versicherungen, Mobilfunkanbieter, Arbeitgeber, GEZ und andere Vertragspartner über Ihre neue Adresse. Verlassen Sie sich nicht nur auf den Nachsendeauftrag</string>
     <string name="energyContract">Energieversorger</string>
-    <string name="energyContractDesc">Prüfen Sie, ob Sie Ihren alten Gas - bzw. Stromvertrag behalten (aber über Adresswechsel informieren) oder wechseln müssen / dürfen.</string>
-    <string name="compareContractVerivox">Anbieter bei Verivox vergleichen</string>
-    <string name="energyContractVerivoxLINK">https://www.verivox.de</string>
-    <string name="internetContract">Internetanschluss</string>
+    <string name="energyContractDesc">Prüfen Sie, ob Sie Ihren alten Strom - und Gasvertrag behalten (aber über Adresswechsel informieren) oder wechseln müssen / dürfen.</string>
+    <string name="internetContract">Internet- und TV-Anschluss</string>
     <string name="internetContractDesc">Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen. Andernfalls muss dieser zumindest informiert werden.</string>
-    <string name="internetContractVerivoxLINK">https://www.verivox.de</string>
     <string name="internetContractAvailability">Anbieter am neuen Wohnort?</string>
-    <string name="internetContractAvailabilityLINK">https://www.check24.de/dsl/verfuegbarkeit/</string>
+    <string name="internetContractAvailabilityLINK"><![CDATA[https://www.check24.de/dsl/verfuegbarkeit/?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="phoneContract">Festnetztelefon</string>
     <string name="phoneContractDesc">Prüfen Sie, ob Sie Ihren Anbieter wechseln müssen / dürfen und ob eine Mitnahme der alten Nummer möglich ist.</string>
     <string name="phoneContractCompare">Telefonanbieter vergleichen</string>
@@ -126,12 +126,49 @@
     <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031&tag=robroyrich-21]]></string>
     <string name="fireAndBurglaryProtectionBurglary">Einbruchsschutz prüfen</string>
     <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031&tag=robroyrich-21]]></string>
-    <string name="requestSpecialLeave">Sonderurlaub beantragen</string>
-    <string name="requestSpecialLeaveDesc">In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
+    <string name="requestSpecialLeave">(Sonder-)Urlaub beantragen</string>
+    <string name="requestSpecialLeaveDesc">Vergessen Sie nicht Urlaub zu beantragen. In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
     <string name="rentalDepositAccount">Kautionssparbuch</string>
     <string name="rentalDepositAccountDesc">Die Kaution können Sie statt dem Vermieter direkt zu überweisen alternativ auf einem sog. Mietkautionssparbuch hinterlegen. Vorteil ist eine Absicherung vor Insolvenz etc. des Vermieters.</string>
     <string name="rentalDepositAccountExplanation">Was ist ein Kautionssparbuch?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
     <string name="start">start</string>
+    <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
+    <string name="compareContracts">Jetzt Tarife vergleichen</string>
+    <string name="compareContractVerivox">Jetzt Tarife bei Verivox vergleichen</string>
+    <string name="compareContractCheck24">Jetzt Tarife bei Check24 vergleichen</string>
+    <string name="compareEnergyContractVerivox">Jetzt Stromtarife bei Verivox vergleichen</string>
+    <string name="compareEnergyContractCheck24">Jetzt Stromtarife bei Check24 vergleichen</string>
+    <string name="energyContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=stromanbieter-wechseln&cat=1]]></string>
+    <string name="energyContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=37&cpid=1&prid=93&subid=&target=stromvergleich_2019-09]]></string>
+    <string name="compareGasContractVerivox">Jetzt Gastarife bei Verivox vergleichen</string>
+    <string name="compareGasContractCheck24">Jetzt Gastarife bei Check24 vergleichen</string>
+    <string name="gasContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=31&cpid=1&prid=99&subid=&target=gasvergleich_2019-09]]></string>
+    <string name="gasContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=gasanbieter-wechseln&cat=3]]></string>
+    <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
+    <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
+    <string name="householdInsurance">Hausratversicherung</string>
+    <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln.</string>
+    <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
+    <string name="movingVan">Umzugswagen</string>
+    <string name="movingVanDesc">Organisieren Sie ein oder mehrere Fahrzeuge zum Transport. Selbst bei Beauftragung einer Spedition kann dies sinnvoll sein.</string>
+    <string name="movingVanCompare">Mietwagen finden</string>
+    <string name="movingVanCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
+    <string name="organizeHelper">Umzugshelfer organisieren</string>
+    <string name="organizeHelperDesc">Fragen Sie in Ihrem Freundeskreis, nutzen Sie eine Doodle-Umfrage, beauftragen Sie ein Umzugsunternehmen oder heuern Sie Hilfkräfte an. Falls Sie planen ohne Spedition umzuziehen, sollten Sie sich eine Sackkarre und / oder Tragegurte beschaffen. Ihr Rücken wird es Ihnen danken ;-)</string>
+    <string name="handoverOldFlat">Übergabe alte Wohnung</string>
+    <string name="handoverOldFlatDesc">Vereinbaren Sie einen Termin zur Wohnungsübergabe der alten Wohnung. Lesen Sie ggfls. Zählerstände vorher ab und melden dies an den Versorger.</string>
+    <string name="handoverNewFlat">Übergabe neue Wohnung</string>
+    <string name="handoverNewFlatDesc">Vereinbaren Sie einen Termin zur Schlüsselübergabe für die neue Wohnung. Notieren Sie sorgfältig mit Fotos Schäden. Die Bestätigung der Übergabe können Sie für die Ummeldung des Wohnsitzes verwenden.</string>
+    <string name="renovateOldFlat">Wohnungsrenovierung</string>
+    <string name="renovateOldFlatDesc">Prüfen Sie inwieweit Sie vertraglich verpflichtet sind, die alte Wohnung zu streichen. Falls nötig beauftragen Sie ein günstiges Unternehmen bei MyHammer etc. oder führen die Arbeiten selbst fachmännisch durch.</string>
+    <string name="renovationObligation">Renovierungspflicht</string>
+    <string name="renovationObligationLINK">https://www.immobilienscout24.de/umzug/ratgeber/wohnungsuebergabe/renovierungspflicht.html</string>
+    <string name="preserveArtisanBills">Belege für Steuererklärung</string>
+    <string name="preserveArtisanBillsDesc">Bewahren Sie Handwerkerrechnungen für die Steuererklärung gut auf. Sie können damit pro Jahr bis zu 1.200 Euro Steuern sparen. Wenn Sie wegen Ihres Arbeitgebers umziehen, bekommen Sie umso mehr erstattet.</string>
+    <string name="preserveArtisanBillsTip">Steuertipp</string>
+    <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
+    <string name="bulkyWaste">Sperrmüll</string>
+    <string name="bulkyWasteDesc">Was Sie nicht mitnehmen oder verschenken wollen, kommt auf des Sperrmüll. Diesen können Sie bei der Stadt anmelden.</string>
 </resources>

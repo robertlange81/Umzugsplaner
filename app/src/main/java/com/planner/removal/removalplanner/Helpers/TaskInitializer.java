@@ -2,7 +2,6 @@ package com.planner.removal.removalplanner.Helpers;
 
 import android.app.Activity;
 
-import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
@@ -29,7 +28,7 @@ public class TaskInitializer {
         today.setHours(0);
         today.setMinutes(0);
         Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 13);
-        Task rentalContractOld = new Task(mainActivity.getString(R.string.taskRentalContractOld), mainActivity.getString(R.string.taskRentalContractOldDesc), removalDate != null ? tomorrow : null, Priority.High, 0L,
+        Task rentalContractOld = new Task(mainActivity.getString(R.string.taskRentalContractOld), (mainActivity.getString(R.string.taskRentalContractOldDesc) + ' ' + mainActivity.getString(R.string.contractCancel)), removalDate != null ? tomorrow : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts.getValue()));
         rentalContractOld.addLink(mainActivity.getString(R.string.taskRentalContractOld3Months), mainActivity.getString(R.string.taskRentalContractOld3MonthsLINK));
         rentalContractOld.addLink(mainActivity.getString(R.string.rentalContractOldSpecialRightOfTermination), mainActivity.getString(R.string.rentalContractOldSpecialRightOfTerminationLINK));
@@ -55,7 +54,7 @@ public class TaskInitializer {
 
         Task postalAftermath = new Task(mainActivity.getString(R.string.postalAftermath), mainActivity.getString(R.string.postalAftermathDesc), addMonthDaysToJavaUtilDate(removalDate, 0, 0), Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.OldFlat.getValue()));
-        postalAftermath.addLink(mainActivity.getString(R.string.postalAftermathSetup), "https://shop.deutschepost.de/nachsendeservice-beauftragen");
+        postalAftermath.addLink(mainActivity.getString(R.string.postalAftermathSetup), mainActivity.getString(R.string.postalAftermathLINK));
         Task.addTask(postalAftermath);
 
         Task informContractors = new Task(mainActivity.getString(R.string.informContractors), mainActivity.getString(R.string.informContractorsDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -14), Priority.Normal, 0L,
@@ -64,24 +63,23 @@ public class TaskInitializer {
 
         Task energyContract = new Task(mainActivity.getString(R.string.energyContract), mainActivity.getString(R.string.energyContractDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts));
-        energyContract.addLink(mainActivity.getString(R.string.compareContractVerivox), mainActivity.getString(R.string.energyContractVerivoxLINK)); // FIXME: partner-id
+        energyContract.addLink(mainActivity.getString(R.string.compareEnergyContractVerivox), mainActivity.getString(R.string.energyContractVerivoxLINK));
+        energyContract.addLink(mainActivity.getString(R.string.compareEnergyContractCheck24), mainActivity.getString(R.string.energyContractCheck24LINK));
+        energyContract.addLink(mainActivity.getString(R.string.compareGasContractVerivox), mainActivity.getString(R.string.gasContractVerivoxLINK));
+        energyContract.addLink(mainActivity.getString(R.string.compareGasContractCheck24), mainActivity.getString(R.string.gasContractCheck24LINK));
         Task.addTask(energyContract);
 
-        Task internetContract = new Task(mainActivity.getString(R.string.internetContract), mainActivity.getString(R.string.internetContractDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L,
+        Task internetContract = new Task(mainActivity.getString(R.string.internetContract)  + ' ' + mainActivity.getString(R.string.contractCancel), mainActivity.getString(R.string.internetContractDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts));
-        internetContract.addLink(mainActivity.getString(R.string.internetContractAvailability), mainActivity.getString(R.string.internetContractAvailabilityLINK)); // FIXME: link kann ich versorgt werden (Gebiet)
-        internetContract.addLink(mainActivity.getString(R.string.compareContractVerivox), mainActivity.getString(R.string.internetContractVerivoxLINK)); // FIXME: partner-id
+        internetContract.addLink(mainActivity.getString(R.string.internetContractAvailability), mainActivity.getString(R.string.internetContractAvailabilityLINK));
+        internetContract.addLink(mainActivity.getString(R.string.compareContractCheck24), mainActivity.getString(R.string.internetContractCheck24LINK));
+        internetContract.addLink(mainActivity.getString(R.string.compareContractVerivox), mainActivity.getString(R.string.internetContractVerivoxLINK));
         Task.addTask(internetContract);
 
-        Task phoneContract = new Task(mainActivity.getString(R.string.phoneContract), mainActivity.getString(R.string.phoneContractDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L,
+        Task householdInsurance = new Task(mainActivity.getString(R.string.householdInsurance), mainActivity.getString(R.string.householdInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -10) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Contracts));
-        phoneContract.addLink(mainActivity.getString(R.string.phoneContractCompare), mainActivity.getString(R.string.phoneContractCompareLINK)); // FIXME: partner-id
-        Task.addTask(phoneContract);
-
-        Task tvContract = new Task(mainActivity.getString(R.string.tvContract), mainActivity.getString(R.string.tvContractDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -7), Priority.High, 0L,
-                new TaskType(TaskTypeMain.Contracts));
-        tvContract.addLink(mainActivity.getString(R.string.tvContractCompare), mainActivity.getString(R.string.tvContractCompareLINK)); // FIXME: partner-id
-        Task.addTask(tvContract);
+        householdInsurance.addLink(mainActivity.getString(R.string.compareContracts), mainActivity.getString(R.string.compareContractVerivoxLINK));
+        Task.addTask(householdInsurance);
 
         Task fireAndBurglaryProtection = new Task(mainActivity.getString(R.string.fireAndBurglaryProtection), mainActivity.getString(R.string.fireAndBurglaryProtectionDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -6) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.NewFlat));
@@ -99,9 +97,40 @@ public class TaskInitializer {
         requestSpecialLeave.addLink(mainActivity.getString(R.string.rentalDepositAccountExplanation), mainActivity.getString(R.string.rentalDepositAccountExplanationLINK));
         Task.addTask(rentalDepositAccount);
 
+        Task organizeHelper = new Task(mainActivity.getString(R.string.organizeHelper), mainActivity.getString(R.string.organizeHelperDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.Movement));
+        Task.addTask(organizeHelper);
+
+        Task movingVan = new Task(mainActivity.getString(R.string.movingVan), mainActivity.getString(R.string.movingVanDesc), tomorrow, Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.Movement));
+        movingVan.addLink(mainActivity.getString(R.string.movingVanCompare), mainActivity.getString(R.string.movingVanCheck24LINK));
+        Task.addTask(movingVan);
+
+        Task handoverOldFlat = new Task(mainActivity.getString(R.string.handoverOldFlat), mainActivity.getString(R.string.handoverOldFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -7) : null, Priority.High, 0L,
+                new TaskType(TaskTypeMain.OldFlat));
+        Task.addTask(handoverOldFlat);
+
+        Task handoverNewFlat = new Task(mainActivity.getString(R.string.handoverNewFlat), mainActivity.getString(R.string.handoverNewFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.High, 0L,
+                new TaskType(TaskTypeMain.NewFlat));
+        Task.addTask(handoverNewFlat);
+
+        Task renovateOldFlat = new Task(mainActivity.getString(R.string.renovateOldFlat), mainActivity.getString(R.string.renovateOldFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.High, 0L,
+                new TaskType(TaskTypeMain.OldFlat));
+        renovateOldFlat.addLink(mainActivity.getString(R.string.renovationObligation), mainActivity.getString(R.string.renovationObligationLINK));
+        Task.addTask(renovateOldFlat);
+
+        Task preserveArtisanBills = new Task(mainActivity.getString(R.string.preserveArtisanBills), mainActivity.getString(R.string.preserveArtisanBillsDesc), getLastDayInYearOf(today), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.Movement));
+        preserveArtisanBills.addLink(mainActivity.getString(R.string.preserveArtisanBillsTip), mainActivity.getString(R.string.preserveArtisanBillsLINK));
+        Task.addTask(preserveArtisanBills);
+
+        Task bulkyWaste = new Task(mainActivity.getString(R.string.bulkyWaste), mainActivity.getString(R.string.bulkyWasteDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.OldFlat));
+        Task.addTask(bulkyWaste);
+
+        // alte Kaution / Nebenkostenabrechnung
+
         Persistance.SaveTasks(mainActivity);
-        // FIXME: Necessary?
-        //MainActivity.NotifyTaskChanged(null, null);
     }
 
     public static Date addMonthDaysToJavaUtilDate(Date date, int months, int days) {
@@ -114,5 +143,17 @@ public class TaskInitializer {
         calendar.add(Calendar.MONTH, months);
         calendar.add(Calendar.DATE, days);
         return calendar.getTime();
+    }
+
+    public static Date getLastDayInYearOf(Date date) {
+
+        if(date == null)
+            return null;
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.set(Calendar.MONTH, 11); // 11 = december
+        cal.set(Calendar.DAY_OF_MONTH, 31); // new years eve
+        return cal.getTime();
     }
 }

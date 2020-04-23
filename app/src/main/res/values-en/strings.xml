@@ -58,6 +58,9 @@
         <item>FURNITURE</item>
         <item>KITCHEN</item>
     </string-array>
+    <string name="contractCancel">If you want to cancel your old contract, your move often offers a special right of termination if you cannot be supplied by your previous provider at your new place of residence. Take Care! Send evidences by registered mail if possible. You could otherwise take disadvantage of some providers.</string>
+    <string name="partner_verivox_Id">2812</string>
+    <string name="partner_check24_Id">133701</string>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
     <string name="Remind_me_later">Remind me later</string>
@@ -95,15 +98,12 @@
     <string name="postalAftermathSetup">Set up forwarding order now</string>
     <string name="informContractors">Inform contractual partners</string>
     <string name="informContractorsDesc">Inform banks, insurance companies, mobile operators, employers and other contractual partners about your new address. Don\'t just rely on Your forwarding order</string>
-    <string name="energyContract">Supplier of electric energy</string>
+    <string name="energyContract">Supplier of gas and power</string>
     <string name="energyContractDesc">Check whether you keep your old gas or electricity contract (but inform about a change of address) or if you are allowed to.</string>
-    <string name="compareContractVerivox">Compare providers</string>
-    <string name="energyContractVerivoxLINK">https://www.verivox.de</string>
     <string name="internetContract">Internet contract</string>
     <string name="internetContractDesc">Check whether you have to / may change your provider. Otherwise this must at least be informed.</string>
-    <string name="internetContractVerivoxLINK">https://www.verivox.de</string>
     <string name="internetContractAvailability">Providers at your new place of residence?</string>
-    <string name="internetContractAvailabilityLINK">https://www.check24.de/dsl/verfuegbarkeit/</string>
+    <string name="internetContractAvailabilityLINK"><![CDATA[https://www.check24.de/dsl/verfuegbarkeit/?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="phoneContract">Landline phone</string>
     <string name="phoneContractDesc">Check whether you have to / may change your provider and whether you can take your old number with you.</string>
     <string name="phoneContractCompare">Compare telephone providers</string>
@@ -126,4 +126,42 @@
     <string name="rentalDepositAccountExplanation">What is a deposit savings book?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
     <string name="start">start</string>
+    <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
+    <string name="compareContracts">Compare tariffs</string>
+    <string name="compareContractVerivox">Compare tariffs on Verivox</string>
+    <string name="compareContractCheck24">Compare tariffs on Check24</string>
+    <string name="compareEnergyContractVerivox">Compare power providers on Verivox</string>
+    <string name="energyContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=37&cpid=1&prid=93&subid=&target=stromvergleich_2019-09]]></string>
+    <string name="compareEnergyContractCheck24">Compare power providers on Check24</string>
+    <string name="energyContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=stromanbieter-wechseln&cat=1]]></string>
+    <string name="compareGasContractVerivox">Compare gas providers on Verivox</string>
+    <string name="compareGasContractCheck24">Compare gas providers on Check24</string>
+    <string name="gasContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=31&cpid=1&prid=99&subid=&target=gasvergleich_2019-09]]></string>
+    <string name="gasContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=gasanbieter-wechseln&cat=3]]></string>
+    <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
+    <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
+    <string name="householdInsurance">household insurance</string>
+    <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch.</string>
+    <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
+    <string name="movingVan">find moving van</string>
+    <string name="movingVanDesc">Organize one or more vehicles for transportation.  This can even make sense if a freight forwarder is commissioned.</string>
+    <string name="movingVanCompare">Find a rental car</string>
+    <string name="movingVanCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
+    <string name="organizeHelper">Organize moving helpers</string>
+    <string name="organizeHelperDesc">Ask your friends, use a doodle survey, hire a moving company or hire helpers. If you plan to move without a freight forwarder, you should get a hand truck and / or carrying straps.</string>
+    <string name="handoverOldFlat">Handover of old apartment</string>
+    <string name="handoverOldFlatDesc">Make an appointment to hand over the old apartment.Read if necessary. Meter readings beforehand and report this to the supplier.</string>
+    <string name="handoverNewFlat">Handover of new apartment</string>
+    <string name="handoverNewFlatDesc">Make an appointment to collect the keys for the new apartment. Note damage carefully by photos. You can use the confirmation of the transfer to change your place of residence.</string>
+    <string name="renovateOldFlat">Apartment renovation</string>
+    <string name="renovateOldFlatDesc">Check to what extent you are contractually obliged to paint the old apartment. If necessary, hire a cheap company from MyHammer etc. or carry out the work yourself professionally.</string>
+    <string name="renovationObligation">Renovation obligation</string>
+    <string name="renovationObligationLINK">https://www.immobilienscout24.de/umzug/ratgeber/wohnungsuebergabe/renovierungspflicht.html</string>
+    <string name="preserveArtisanBills">Preserve artisan bills</string>
+    <string name="preserveArtisanBillsDesc">Keep artisan bills for tax returns. You can save up to 1,200 euros in taxes each year.</string>
+    <string name="preserveArtisanBillsTip">Tax tip</string>
+    <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
+    <string name="bulkyWaste">Bulky waste</string>
+    <string name="bulkyWasteDesc">Anything you don\'t want to take with you or give away comes with bulky waste. You can register this with the city.</string>
+
 </resources>
