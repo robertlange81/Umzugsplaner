@@ -8,8 +8,13 @@
         android:icon="@drawable/ic_fiber_new_black_24dp"
         android:text="@string/start"
         android:title="@string/start"
-        app:showAsAction="ifRoom" />
-
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/overview"
+        android:orderInCategory="96"
+        android:text=""
+        android:title=""
+        app:showAsAction="always" />
     <item
         android:id="@+id/show_open_only"
         app:showAsAction="ifRoom"

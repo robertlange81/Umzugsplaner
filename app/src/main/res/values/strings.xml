@@ -135,7 +135,7 @@
     <string name="rentalDepositAccountDesc">Die Kaution können Sie statt dem Vermieter direkt zu überweisen alternativ auf einem sog. Mietkautionssparbuch hinterlegen. Vorteil ist eine Absicherung vor Insolvenz etc. des Vermieters.</string>
     <string name="rentalDepositAccountExplanation">Was ist ein Kautionssparbuch?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
-    <string name="start">start</string>
+    <string name="start">neuen Umzug anlegen</string>
     <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
     <string name="compareContracts">Jetzt Tarife vergleichen</string>
     <string name="compareContractVerivox">Jetzt Tarife bei Verivox vergleichen</string>

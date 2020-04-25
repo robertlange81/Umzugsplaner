@@ -127,7 +127,7 @@
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
     <string name="rentalDepositAccountExplanation">What is a deposit savings book?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
-    <string name="start">start</string>
+    <string name="start">New Removal</string>
     <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
     <string name="compareContracts">Compare tariffs</string>
     <string name="compareContractVerivox">Compare tariffs on Verivox</string>

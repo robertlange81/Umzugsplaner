@@ -3,29 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
+        android:id="@+id/showCostsMenuItem"
+        android:icon="@drawable/ic_attach_money_black_24dp"
+        android:orderInCategory="70"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/overview"
+        android:orderInCategory="80"
+        android:text=""
+        android:title=""
+        app:showAsAction="always" />
+    <item
         android:id="@+id/start_new"
-        android:orderInCategory="100"
+        android:orderInCategory="98"
         android:icon="@drawable/ic_fiber_new_black_24dp"
         android:text="@string/start"
         android:title="@string/start"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/show_open_only"
         android:checkable="true"
+        android:orderInCategory="99"
         android:title="@string/placeholder_hide_done"
         />
     <item
         android:id="@+id/show_high_prio_only"
         android:checkable="true"
+        android:orderInCategory="100"
         android:title="@string/placeholder_hide_low_prio" />
-    <item
-        android:id="@+id/showCostsMenuItem"
-        android:icon="@drawable/ic_attach_money_black_24dp"
-        android:orderInCategory="105"
-        android:text="@string/currency"
-        android:title="@string/currency"
-        app:showAsAction="always" />
     <item
         android:id="@+id/sortByIsDone"
         android:orderInCategory="101"

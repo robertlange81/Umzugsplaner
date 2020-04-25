@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem initDialogMenuItem, hideDoneTasks, hideNormalPrio, lastItem, showCostsMenuItem;
+    MenuItem showOverview, initDialogMenuItem, hideDoneTasks, hideNormalPrio, lastItem, showCostsMenuItem;
     DialogFragment dialog;
     Menu topMenu;
 
@@ -211,12 +211,28 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
+        SpannableString s;
+
+        showOverview = topMenu.findItem(R.id.overview);
+        int taskCount = 0, done = 0;
+        for(Task task: Task.TASK_LIST) {
+            if(task.is_Done) {
+                done++;
+            }
+            taskCount++;
+        }
+        s = new SpannableString(done + "/" + taskCount);
+        if(done < taskCount) {
+            s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+        } else {
+            s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+        }
+        instance.showOverview.setTitle(s);
 
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
         hideDoneTasks = topMenu.findItem(R.id.show_open_only);
         hideDoneTasks.setChecked(getHideDoneTasksChecked());
 
-        SpannableString s;
         if(!hideDoneTasks.isChecked()) {
             s = new SpannableString(hideDoneTasks.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
@@ -283,6 +299,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public boolean onOptionsItemSelected(MenuItem item) {
 
         SpannableString s;
+
+        if(item == showOverview) {
+            // TODO Overlay to show progress / date
+            return true;
+        }
 
         if(item == initDialogMenuItem) {
             String[] init = new String[0];
@@ -463,6 +484,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             Persistance.SaveOrUpdateTask(t, a);
         }
 
+        int taskCount = 0, done = 0;
+
         if(a != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort,
                     (a instanceof DetailActivity ? MainActivity.instance : a)
@@ -472,15 +495,36 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
-            int i = 0;
             for(Task task: Task.TASK_LIST) {
-                                                        // TODO use t.id
+                // TODO use t.id
                 if(task.id.equals(SimpleItemRecyclerViewAdapter.activeRowItemId)) {
                     if(recyclerView != null)
-                        recyclerView.smoothScrollToPosition(i);
+                        recyclerView.smoothScrollToPosition(taskCount);
                 }
-                i++;
+                if(task.is_Done) {
+                    done++;
+                }
+
+                taskCount++;
             }
+        } else {
+            for(Task task: Task.TASK_LIST) {
+                if(task.is_Done) {
+                    done++;
+                }
+                taskCount++;
+            }
+        }
+
+        if(instance.showOverview != null) {
+            SpannableString s;
+            s = new SpannableString(done + "/" + taskCount);
+            if(done < taskCount) {
+                s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+            } else {
+                s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+            }
+            instance.showOverview.setTitle(s);
         }
 
         SimpleItemRecyclerViewAdapter.needsUpdate = doUpdate;
@@ -732,6 +776,25 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                     }
                                 } catch (Exception e) {
                                     Log.e("Main Snack", e.getMessage());
+                                }
+
+                                int done = 0, taskCount = 0;
+                                for(Task task: Task.TASK_LIST) {
+                                    if(task.is_Done) {
+                                        done++;
+                                    }
+                                    taskCount++;
+                                }
+
+                                if(instance.showOverview != null) {
+                                    SpannableString s;
+                                    s = new SpannableString(done + "/" + taskCount);
+                                    if(done < taskCount) {
+                                        s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+                                    } else {
+                                        s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+                                    }
+                                    instance.showOverview.setTitle(s);
                                 }
                             }
                         });
