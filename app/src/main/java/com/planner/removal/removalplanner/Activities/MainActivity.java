@@ -335,6 +335,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             case R.id.sortByPriority:
                 sortType = ComparatorConfig.SortType.PRIORITY;
                 break;
+            case R.id.sortByType:
+                sortType = ComparatorConfig.SortType.TYPE;
+                break;
             case R.id.showCostsMenuItem:
                 showCosts();
                 break;

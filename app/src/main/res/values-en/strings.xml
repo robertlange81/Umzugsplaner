@@ -43,7 +43,8 @@
     <string name="sortbydate">Sort By Date</string>
     <string name="sortbyIsDone">Sort By Done</string>
     <string name="sortbyName">Sort By Name</string>
-    <string name="sortbyPriority">Sort By Priorty</string>
+    <string name="sortbyPriority">Sort By Priority</string>
+    <string name="sortbyType">Sort By Type</string>
     <string name="time_changed">time changed</string>
     <string name="todo">todo</string>
     <string name="undo">undo</string>
@@ -69,8 +70,9 @@
     <string name="placeholder_show_done">show open tasks only</string>
     <string name="placeholder_hide_prio">show high priority only</string>
     <string name="Amazon">Amazon</string>
-    <string name="amazon_link_electronics"><![CDATA[https://www.amazon.com/s?i=electronics&tag=robroyrich-21&k=]]></string>
-    <string name="amazon_link_kitchen"><![CDATA[https://www.amazon.com/s?i=kitchen&tag=robroyrich-21&k=]]></string>
+    <string name="Ebay">Ebay</string>
+    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&i=electronics&linkCode=ur2&tag=robroyrich-21&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
+    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.com/s?i=kitchen&linkCode=ur2&tag=robroyrich-21&camp=1638&k=]]></string>
     <string name="taskRentalContractOld3Months">3 month period?</string>
     <string name="taskRentalContractOld">Cancel old lease</string>
     <string name="taskRentalContractOldDesc">Cancel your old tenancy on time. You may be able to shorten the notice period with a new tenant.</string>
@@ -163,5 +165,32 @@
     <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
     <string name="bulkyWaste">Bulky waste</string>
     <string name="bulkyWasteDesc">Anything you don\'t want to take with you or give away comes with bulky waste. You can register this with the city.</string>
+    <string name="organizeHelperCarryingStraps">carrying straps on ebay</string>
+    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xtragegurt.TRS0%26_nkw%3Dtragegurt%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dumzugshelfer]]></string>
+    <string name="organizeHelperhandTruck">hand trucks on Ebay</string>
+    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DSackkarre%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DSackkarre]]></string>
+    <string name="organizeHelperWorkGloves">Work Gloves on Amazon</string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/product/B0798RGXS1/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=B0798RGXS1&linkCode=as2&tag=robroyrich-21&linkId=d6687bc4bd9f826e6b127ac172413183]]></string>
+    <string name="previousDay">Previous day</string>
+    <string name="previousDayDesc">Charge your phone, get food, get tips, keep important documents at hand and check your medicine chest. Last but not least, remember to go to bed early.</string>
+    <string name="oldRentDepositHowItWorks">How does the repayment of the rental deposit work?</string>
+    <string name="oldRentDeposit">Old rental deposit</string>
+    <string name="oldRentDepositDesc">Don\'t forget your old landlord\'s security deposit. Attention! Please stay active: In your own interest, you should not simply wait until the landlord fulfills his duties on a fine day, because there is a 3-year limitation period for your claim to the repayment of the deposit. If the deadline has passed without you demonstrably doing anything about it, your money is gone, even if you are not at fault. You are also entitled to a service charge settlement. You can deduct this proportionally from your tax return and often receive a refund if you move out during the year.</string>
+    <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
+    <string name="cordonOffParkingLot">Cordon off parking lot</string>
+    <string name="cordonOffParkingLotDesc">Sperren Sie rechtzeitig vor dem Unzug die Parkpläte nah vor dem alten und neuen Domizil ab.</string>
+    <string name="cordonOffParkingLotHowTo">How to shut off properly?</string>
+    <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
+    <string name="packingMaterial">Packing material</string>
+    <string name="packingMaterialDesc">Get enough moving boxes, garbage bags, parcel tape, bubble wrap or old newspapers in good time.</string>
+    <string name="packingMaterialMovingBoxes">Moving boxes</string>
+    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XUmzugskartons.TRS0%26_nkw%3DUmzugskartons%26_sacat%3D0]]></string>
+    <string name="packingMaterialTrashBags">Trash bags</string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=03a4f280e143d7a90051095b239b3f5b&camp=1638&creative=6742&index=diy&keywords=Müllsäcke]]></string>
+    <string name="packingMaterialAirCushionFoil">Air cushion foil</string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=Luftpolsterfolie]]></string>
+    <string name="lookFor">find</string>
+    <string name="on">on</string>
+    <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
 
 </resources>

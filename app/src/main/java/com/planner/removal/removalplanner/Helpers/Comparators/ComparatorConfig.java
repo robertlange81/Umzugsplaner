@@ -40,6 +40,7 @@ public class ComparatorConfig {
         sortingComparator.put(SortType.IS_DONE, new IsDoneComparator());
         sortingComparator.put(SortType.NAME, new NameComparator());
         sortingComparator.put(SortType.PRIORITY, new PriorityComparator());
+        sortingComparator.put(SortType.TYPE, new TypeComparator());
 
         Collections.unmodifiableMap(sortingComparator);
         return sortingComparator;

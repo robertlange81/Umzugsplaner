@@ -35,6 +35,8 @@ public class Task implements Serializable {
     TODO / FIXME / Ideen:
     - Coronaliste
     - Babyliste
+    - Fehler Aktualisierung Kosten
+    - Kosten übersicht immer mit Komma
     - Loader + Hinweis
     - Synchronisieren
     - kurzes Tutorial am Anfang

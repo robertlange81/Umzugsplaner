@@ -12,8 +12,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -275,9 +275,29 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
-            generateLinks();
+            generateMarketLinks(null);
             MainActivity.NotifyTaskChanged(_task, getActivity());
           }
+        }
+      }
+    });
+
+    txtName.addTextChangedListener(new TextWatcher() {
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+      }
+
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        if(s.toString() != _task.name && _task.type.getValue() >= 4) { // user type
+          generateMarketLinks(s.toString());
         }
       }
     });
@@ -288,7 +308,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         if (_task != null && _task.type.getValue() != position) {
 
           _task.type = new TaskType(position);
-          generateLinks();
+          generateMarketLinks(null);
 
           if (isNotifyEnabled)
             MainActivity.NotifyTaskChanged(_task, getActivity());
@@ -535,11 +555,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             try {
               String inputLink = txtLink.getText().toString();
               inputLink = inputLink.replaceAll("\\s+", "");
-              boolean showNewLine = false;
               String key = linkMap.get(txtLink);
-              if (key == null) {
-                showNewLine = true;
-              } else {
+              if (key != null) {
                 Log.d("remove ", key);
                 _task.links.remove(key);
                 linkMap.remove(txtLink);
@@ -562,20 +579,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     linkMap.put(txtLink, inputLink);
                   }
                 }
-
-                                /*
-                                if(showNewLine) {
-                                    for (TextView t : txtInputs) {
-                                        if(!t.getTag().toString().equalsIgnoreCase("Link"))
-                                            continue;
-
-                                        if(((TableRow) t.getParent()).getVisibility() != View.VISIBLE) {
-                                            ((TableRow) t.getParent()).setVisibility(View.VISIBLE);
-                                            break;
-                                        }
-                                    }
-                                }
-                                */
               }
             } catch (Exception x) {
               Log.e("Exception", x.getMessage());
@@ -590,14 +593,31 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   }
 
   // generate links for Electronis and Furniture
-  public void generateLinks() {
-    // TODO: partner-id
-    if(_task.type.getValue() >= 4) { // user type
-      _task.links = new TreeMap<>();
+  public void generateMarketLinks(String searchFor) {
+    if(searchFor == null || searchFor.isEmpty()) {
+      searchFor = _task.name;
+    }
+
+    if(_task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty()) { // user type
+
+      TreeMap<String,String> newLinks = new TreeMap<>();
+      for(Map.Entry<String,String> entry : _task.links.entrySet()) {
+        if(!entry.getValue().contains("amazon") && !entry.getValue().contains("ebay")) {
+          newLinks.put(entry.getKey(), entry.getValue());
+        }
+      }
+
+      _task.links = newLinks;
       _task.addLink(
-        _task.name.isEmpty() ? getResources().getString(R.string.Amazon) : _task.name,
-        getResources().getString(_task.type.equals(TaskTypeMain.Electronics) ? R.string.amazon_link_electronics : R.string.amazon_link_kitchen) + _task.name
+        getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + getResources().getString(R.string.Amazon),
+        getResources().getString(_task.type.equals(TaskTypeMain.Electronics) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
       );
+
+      _task.addLink(
+              getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + getResources().getString(R.string.Ebay),
+              getResources().getString(R.string.ebay_generic_link) + searchFor
+      );
+
       setLinks(_initLinks());
     }
   }

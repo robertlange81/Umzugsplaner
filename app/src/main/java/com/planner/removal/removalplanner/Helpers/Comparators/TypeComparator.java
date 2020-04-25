@@ -3,7 +3,7 @@ package com.planner.removal.removalplanner.Helpers.Comparators;
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
-public class PriorityComparator implements ComparatorSortable {
+public class TypeComparator implements ComparatorSortable {
     @Override
     public int compare(Task o1, Task o2) {
         // first by priority
@@ -17,7 +17,7 @@ public class PriorityComparator implements ComparatorSortable {
         }
 
         if(cmpr == 0)
-            cmpr = o1.priority.compareTo(o2.priority) * -1;
+            cmpr = new Integer(o1.type.getValue()).compareTo(o2.type.getValue());
 
         // then by date
         if(o1.date == null && o2.date != null)

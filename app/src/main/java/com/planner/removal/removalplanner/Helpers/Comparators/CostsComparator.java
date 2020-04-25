@@ -24,13 +24,19 @@ public class CostsComparator implements ComparatorSortable {
         if(cmpr == 0)
             cmpr = -1 * o1.costs.compareTo(o2.costs);
 
+        // then by date
+        if(o1.date == null && o2.date != null)
+            return -1;
+        if(o1.date != null && o2.date == null)
+            return 1;
+
+        if(cmpr == 0 && o1.date != null)
+            cmpr = o1.date.compareTo(o2.date);
+
         // then by name
         if(cmpr == 0)
             cmpr = o1.name.compareToIgnoreCase(o2.name);
 
-        // then by createdAt
-        if(cmpr == 0)
-            cmpr = o1.createdAt.compareTo(o2.createdAt);
 
         return cmpr;
     }

@@ -43,6 +43,7 @@
     <string name="sortbydate">Sortiere nach Datum</string>
     <string name="sortbyCosts">Sortiere nach Kosten</string>
     <string name="sortbyPriority">Sortiere nach Priorität</string>
+    <string name="sortbyType">Sortiere nach Typ</string>
     <string name="sortbyName">Sortiere nach Name</string>
     <string name="sortbyIsDone">Sortiere nach Erledigt</string>
     <string name="time_changed">Zeit geändert</string>
@@ -77,8 +78,9 @@
     <string name="placeholder_show_done">nur offene Aufgaben anzeigen</string>
     <string name="placeholder_hide_prio">nur hohe Priorität anzeigen</string>
     <string name="Amazon">Amazon</string>
-    <string name="amazon_link_electronics"><![CDATA[https://www.amazon.de/s?i=electronics&tag=robroyrich-21&k=]]></string>
-    <string name="amazon_link_kitchen"><![CDATA[https://www.amazon.de/s?i=kitchen&tag=robroyrich-21&k=]]></string>
+    <string name="Ebay">Ebay</string>
+    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&i=electronics&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
+    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.com/s?i=kitchen&linkCode=ur2&tag=robroyrich-21&camp=1638&k=]]></string>
     <string name="taskRentalContractOld3Months">3-Monats-Frist?</string>
     <string name="taskRentalContractOld">Alten Mietvertrag kündigen</string>
     <string name="taskRentalContractOldDesc">Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.</string>
@@ -156,9 +158,9 @@
     <string name="movingVanCompare">Mietwagen finden</string>
     <string name="movingVanCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="organizeHelper">Umzugshelfer organisieren</string>
-    <string name="organizeHelperDesc">Fragen Sie in Ihrem Freundeskreis, nutzen Sie eine Doodle-Umfrage, beauftragen Sie ein Umzugsunternehmen oder heuern Sie Hilfkräfte an. Falls Sie planen ohne Spedition umzuziehen, sollten Sie sich eine Sackkarre und / oder Tragegurte beschaffen. Ihr Rücken wird es Ihnen danken ;-)</string>
-    <string name="handoverOldFlat">Übergabe alte Wohnung</string>
-    <string name="handoverOldFlatDesc">Vereinbaren Sie einen Termin zur Wohnungsübergabe der alten Wohnung. Lesen Sie ggfls. Zählerstände vorher ab und melden dies an den Versorger.</string>
+    <string name="organizeHelperDesc">Fragen Sie in Ihrem Freundeskreis, nutzen Sie eine Doodle-Umfrage, beauftragen Sie ein Umzugsunternehmen oder heuern Sie Hilfkräfte an. Falls Sie planen ohne Spedition umzuziehen, sollten Sie sich eine Sackkarre, Tragegurte, Handschuhe und alte Decken beschaffen. Ihr Rücken wird es Ihnen danken ;-)</string>
+    <string name="handoverOldFlat">Wohnungsabnahme</string>
+    <string name="handoverOldFlatDesc">Vereinbaren Sie einen Termin zur Wohnungsübergabe der alten Wohnung. Lesen Sie ggfls. Zählerstände vorher ab und melden dies an den Versorger. Leeren Sie auch noch einmal Ihren Briefkasten.</string>
     <string name="handoverNewFlat">Übergabe neue Wohnung</string>
     <string name="handoverNewFlatDesc">Vereinbaren Sie einen Termin zur Schlüsselübergabe für die neue Wohnung. Notieren Sie sorgfältig mit Fotos Schäden. Die Bestätigung der Übergabe können Sie für die Ummeldung des Wohnsitzes verwenden.</string>
     <string name="renovateOldFlat">Wohnungsrenovierung</string>
@@ -171,4 +173,31 @@
     <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
     <string name="bulkyWaste">Sperrmüll</string>
     <string name="bulkyWasteDesc">Was Sie nicht mitnehmen oder verschenken wollen, kommt auf des Sperrmüll. Diesen können Sie bei der Stadt anmelden.</string>
+    <string name="organizeHelperCarryingStraps">Tragegurte bei Ebay</string>
+    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xtragegurt.TRS0%26_nkw%3Dtragegurt%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dumzugshelfer]]></string>
+    <string name="organizeHelperhandTruck">Sackkarren bei Ebay</string>
+    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DSackkarre%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DSackkarre]]></string>
+    <string name="organizeHelperWorkGloves">Arbeitshandschuhe bei Amazon</string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/product/B0798RGXS1/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=B0798RGXS1&linkCode=as2&tag=robroyrich-21&linkId=d6687bc4bd9f826e6b127ac172413183]]></string>
+    <string name="previousDay">Vorbereitungen am Vortag</string>
+    <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Zuguterletzte, denken Sie daran früh ins Bett zu gehen.</string>
+    <string name="oldRentDepositHowItWorks">Wie funktioniert die Rückzahlung der Mietkaution?</string>
+    <string name="oldRentDeposit">Alte Kaution</string>
+    <string name="oldRentDepositDesc">Vergessen Sie nicht die Mietkaution Ihres alten Vermieters. Vorsicht! Bleiben Sie bitte aktiv : Sie sollten in Ihrem eigenen Interesse nicht einfach abwarten, bis der Vermieter eines schönen Tages seinen Pflichten nachzukommt, denn es gibt eine 3-jährige Verjährungsfrist für Ihren Anspruch auf die Rückzahlung der Kaution. Ist die Frist verstrichen, ohne dass Sie nachweislich etwas dagegen unternommen haben, ist Ihr Geld weg, auch wenn Sie sich nichts haben zuschulden kommen lassen. Ebenso hzaben Sie Anrecht auf eine Nebenkostenabrechnung. Diese können Sie anteilig bei der Steuererklärung absetzen und erhalten oft eine Rückzahlung bei unterjährigem Auszug.</string>
+    <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
+    <string name="cordonOffParkingLot">Parkplatz sperren</string>
+    <string name="cordonOffParkingLotDesc">Block off the parking spaces in front of the old and new domicile in good time before the move.</string>
+    <string name="cordonOffParkingLotHowTo">Wie richtig absperren?</string>
+    <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
+    <string name="packingMaterial">Verpackungsmaterial</string>
+    <string name="packingMaterialDesc">Besorgen Sie sich rechtzeitig ausreichend Umzugskartons, Müllsäcke, Paketklebeband, Luftpolsterfolie bzw. alte Zeitungen.</string>
+    <string name="packingMaterialMovingBoxes">Umzugskartons</string>
+    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XUmzugskartons.TRS0%26_nkw%3DUmzugskartons%26_sacat%3D0]]></string>
+    <string name="packingMaterialTrashBags">Müllsäcke</string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=03a4f280e143d7a90051095b239b3f5b&camp=1638&creative=6742&index=diy&keywords=Müllsäcke]]></string>
+    <string name="packingMaterialAirCushionFoil">Luftpolsterfolie</string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=Luftpolsterfolie]]></string>
+    <string name="lookFor">Suche</string>
+    <string name="on">bei</string>
+    <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
 </resources>
