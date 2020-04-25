@@ -216,12 +216,31 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         hideDoneTasks = topMenu.findItem(R.id.show_open_only);
         hideDoneTasks.setChecked(getHideDoneTasksChecked());
 
+        SpannableString s;
+        if(!hideDoneTasks.isChecked()) {
+            s = new SpannableString(hideDoneTasks.getTitle());
+            s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+        } else {
+            s = new SpannableString(hideDoneTasks.getTitle());
+            s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+        }
+        hideDoneTasks.setTitle(s);
+
         hideNormalPrio = topMenu.findItem(R.id.show_high_prio_only);
 
         if(getHideNormalPrioTasksChecked()) {
             hideNormalPrio.setChecked(true);
             adapter.setHideNormalPrio(true);
         }
+
+        if(!hideNormalPrio.isChecked()) {
+            s = new SpannableString(hideNormalPrio.getTitle());
+            s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+        } else {
+            s = new SpannableString(hideNormalPrio.getTitle());
+            s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+        }
+        hideNormalPrio.setTitle(s);
 
         int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
         if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
@@ -240,14 +259,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 item = topMenu.findItem(R.id.sortByPriority);
             }
 
-            /* TODO
-            if(sortId == ComparatorConfig.SortType.TYPE.getValue()) {
-                id = findViewById(R.id.sortBy);
-            }
-            */
-
             if (item != null) {
-                SpannableString s = new SpannableString(item.getTitle());
+                s = new SpannableString(item.getTitle());
                 s.setSpan(new ForegroundColorSpan(Color.rgb(0, 255, 60)), 0, s.length(), 0);
                 item.setTitle(s);
                 lastItem = item;
@@ -269,6 +282,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        SpannableString s;
+
         if(item == initDialogMenuItem) {
             String[] init = new String[0];
             showDetailDialog(InitDialogFragment.class, init);
@@ -281,6 +296,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             setHideDoneTasksChecked(item.isChecked());
             adapter.setHideDone(item.isChecked());
             adapter.notifyDataSetChanged();
+
+            if(!item.isChecked()) {
+                s = new SpannableString(item.getTitle());
+                s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+            } else {
+                s = new SpannableString(item.getTitle());
+                s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+            }
+            item.setTitle(s);
 
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
@@ -301,12 +325,20 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
+            if(!item.isChecked()) {
+                s = new SpannableString(item.getTitle());
+                s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+            } else {
+                s = new SpannableString(item.getTitle());
+                s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+            }
+            item.setTitle(s);
+
             return true;
         }
 
         // assume sorting select
         ComparatorConfig.SortType sortType = null;
-        SpannableString s;
 
         if(lastItem != null && lastItem != item) {
             s = new SpannableString(lastItem.getTitle());

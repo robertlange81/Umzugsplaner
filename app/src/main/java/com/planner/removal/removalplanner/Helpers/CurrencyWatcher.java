@@ -33,7 +33,6 @@ public class CurrencyWatcher implements android.text.TextWatcher {
       _task.costs = (_task.costs / 100) * 100;
       fracNumbersChanged(fractionNumbers);
     }
-
   }
 
   private void sigNumbersChanged(EditText current) {

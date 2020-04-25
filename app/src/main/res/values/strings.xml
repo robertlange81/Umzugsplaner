@@ -75,8 +75,8 @@
     <string name="Remind_me_later">Später erinnern</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">zurück</string>
-    <string name="placeholder_show_done">nur offene Aufgaben anzeigen</string>
-    <string name="placeholder_hide_prio">nur hohe Priorität anzeigen</string>
+    <string name="placeholder_hide_done">nur offene Aufgaben anzeigen</string>
+    <string name="placeholder_hide_low_prio">nur hohe Priorität anzeigen</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&i=electronics&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>

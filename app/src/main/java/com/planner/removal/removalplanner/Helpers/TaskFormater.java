@@ -3,6 +3,8 @@ package com.planner.removal.removalplanner.Helpers;
 import android.content.Context;
 import android.os.Build;
 
+import com.planner.removal.removalplanner.BuildConfig;
+
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.NumberFormat;
@@ -25,17 +27,16 @@ public class TaskFormater {
 
         numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
 
-        /*
+
+        currentLocal = Locale.getDefault();
         if (BuildConfig.DEBUG) {
             for (Locale loc : Locale.getAvailableLocales()) {
                 if (loc.getISO3Language().equals("deu") && loc.getCountry().equalsIgnoreCase("DE")) {
                     Locale.setDefault(loc);
+                    break;
                 }
             }
-
-            currentLocal = Locale.getDefault();
         }
-        */
     }
 
     public static String formatDateToSring(Date date) {

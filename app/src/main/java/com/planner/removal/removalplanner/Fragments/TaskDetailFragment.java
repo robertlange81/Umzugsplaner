@@ -188,6 +188,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if (_task == null) {
         createNewTask(taskId);
       }
+
+      if(currencyWatcher == null || MainActivity.mTwoPane) {
+        currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
+      } else {
+        currencyWatcher.setTask(_task);
+      }
     }
 
     if (TaskFormater.currentLocal == null) {
@@ -334,13 +340,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     if(currencyWatcher == null || MainActivity.mTwoPane) {
       currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
-    } else {
-      currencyWatcher.setTask(_task);
     }
-
-    txtCostsSig.addTextChangedListener(currencyWatcher);
-    txtCostsFractions.addTextChangedListener(currencyWatcher);
-
 
     txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
@@ -609,12 +609,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       _task.links = newLinks;
       _task.addLink(
-        getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + getResources().getString(R.string.Amazon),
+        getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
         getResources().getString(_task.type.equals(TaskTypeMain.Electronics) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
       );
 
       _task.addLink(
-              getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + getResources().getString(R.string.Ebay),
+              getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Ebay),
               getResources().getString(R.string.ebay_generic_link) + searchFor
       );
 
@@ -795,6 +795,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if(f != null)
         f.clearFocus();
     }
+    txtCostsSig.removeTextChangedListener(currencyWatcher);
+    txtCostsFractions.removeTextChangedListener(currencyWatcher);
     stopTimerThread();
     super.onDestroy();
     instance = null;
