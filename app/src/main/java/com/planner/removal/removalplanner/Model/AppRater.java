@@ -36,6 +36,7 @@ public class AppRater {
         }
 
         // Wait at least n days before opening
+        /*
         if (launch_count >= LAUNCHES_UNTIL_PROMPT) {
             if (System.currentTimeMillis() >= date_firstLaunch +
                     (DAYS_UNTIL_PROMPT * 24 * 60 * 60 * 1000)) {
@@ -43,6 +44,7 @@ public class AppRater {
                     showRateDialog(mContext, editor, APP_PNAME, APP_TITLE);
             }
         }
+        */
 
         editor.commit();
     }
@@ -82,21 +84,6 @@ public class AppRater {
             }
         });
         ll.addView(b2);
-
-    /*
-    Button b3 = new Button(mContext);
-    b3.setText(mContext.getResources().getString(R.string.No_thanks));
-    b3.setOnClickListener(new View.OnClickListener() {
-      public void onClick(View v) {
-        if (editor != null) {
-          editor.putBoolean("dontshowagain", true);
-          editor.commit();
-        }
-        dialog.dismiss();
-      }
-    });
-    ll.addView(b3);
-    */
 
         dialog.setContentView(ll);
         dialog.show();

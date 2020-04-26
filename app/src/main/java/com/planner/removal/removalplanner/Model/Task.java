@@ -33,7 +33,9 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - Countdown
+    - Countdown oder kurzes Tutorial am Anfang
+    - Ziel-date im Hintergrund
+    - Bilder speichern
     - Ausdrucken / PDF erstellen / per Mail senden
     - Import / Export (zuletzt) !!!
     - Coronaliste
@@ -41,11 +43,8 @@ public class Task implements Serializable {
     - Babyliste
     - Loader + Hinweis
     - Synchronisieren
-    - kurzes Tutorial am Anfang
     - Assistenz
-    - Amazon / Google / Verivox
     - Hintergrundbild (Grundriss / Baby)
-    - Ziel-date im Hintergrund
     - Orte hinzufügen -> Routenplaner !!!
     - Content Provider ???
     - Bild statt Link

@@ -96,7 +96,7 @@ public class TaskInitializer {
         Task.addTask(internetContract);
 
         // Haftplficht
-        Task liabilityInsurance = new Task("Haftplfichtversicherung", "Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Mit einer Haftpflichtversicherung sind sie gegen alle Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen. ", removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.Normal, 0L,
+        Task liabilityInsurance = new Task(mainActivity.getString(R.string.liabilityInsurance), mainActivity.getString(R.string.liabilityInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Contracts));
         liabilityInsurance.addLink(mainActivity.getString(R.string.compareLiabilityInsurance), mainActivity.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
         Task.addTask(liabilityInsurance);

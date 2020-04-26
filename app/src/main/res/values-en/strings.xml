@@ -196,5 +196,6 @@
     <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
     <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
-
+    <string name="liabilityInsurance">liability insurance</string>
+    <string name="liabilityInsuranceDesc">There are a number of different types of insurance available to protect your own home from damage. Private liability insurance is an absolute must.  With liability insurance, you are insured against all claims for property damage, personal injury or financial loss if a third party has been damaged. In contrast to other insurance companies, private liability is also relatively cheap.  You have to budget around 70 euros a year.</string>
 </resources>
