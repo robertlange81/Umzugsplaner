@@ -143,7 +143,7 @@
     <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
     <string name="householdInsurance">household insurance</string>
-    <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch.</string>
+    <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch. You are optimally protected against damage caused by burglary, theft, fire or the weather on your household items.</string>
     <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
     <string name="movingVan">find moving van</string>
     <string name="movingVanDesc">Organize one or more vehicles for transportation.  This can even make sense if a freight forwarder is commissioned.</string>
@@ -192,5 +192,9 @@
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
+    <string name="removalDate">MOVING DATE</string>
+    <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
+    <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
+    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
 
 </resources>

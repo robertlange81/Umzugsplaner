@@ -26,7 +26,7 @@ public class TaskFormater {
         }
 
         numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
-
+        numberFormat.setMinimumFractionDigits(2);
 
         currentLocal = Locale.getDefault();
         if (BuildConfig.DEBUG) {

@@ -151,7 +151,7 @@
     <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
     <string name="householdInsurance">Hausratversicherung</string>
-    <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln.</string>
+    <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln. Gegen Schäden, die durch Einbruch, Diebstahl, Feuer oder das Wetter am Hausrat entstehen, sind Sie damit optimal abgesichert.</string>
     <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
     <string name="movingVan">Umzugswagen</string>
     <string name="movingVanDesc">Organisieren Sie ein oder mehrere Fahrzeuge zum Transport. Selbst bei Beauftragung einer Spedition kann dies sinnvoll sein.</string>
@@ -180,7 +180,7 @@
     <string name="organizeHelperWorkGloves">Arbeitshandschuhe bei Amazon</string>
     <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/product/B0798RGXS1/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=B0798RGXS1&linkCode=as2&tag=robroyrich-21&linkId=d6687bc4bd9f826e6b127ac172413183]]></string>
     <string name="previousDay">Vorbereitungen am Vortag</string>
-    <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Zuguterletzte, denken Sie daran früh ins Bett zu gehen.</string>
+    <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Sinnvoll ist es auch, Ihr Umzugsgut zu beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten. Zuguterletzte, denken Sie daran früh ins Bett zu gehen.</string>
     <string name="oldRentDepositHowItWorks">Wie funktioniert die Rückzahlung der Mietkaution?</string>
     <string name="oldRentDeposit">Alte Kaution</string>
     <string name="oldRentDepositDesc">Vergessen Sie nicht die Mietkaution Ihres alten Vermieters. Vorsicht! Bleiben Sie bitte aktiv : Sie sollten in Ihrem eigenen Interesse nicht einfach abwarten, bis der Vermieter eines schönen Tages seinen Pflichten nachzukommt, denn es gibt eine 3-jährige Verjährungsfrist für Ihren Anspruch auf die Rückzahlung der Kaution. Ist die Frist verstrichen, ohne dass Sie nachweislich etwas dagegen unternommen haben, ist Ihr Geld weg, auch wenn Sie sich nichts haben zuschulden kommen lassen. Ebenso hzaben Sie Anrecht auf eine Nebenkostenabrechnung. Diese können Sie anteilig bei der Steuererklärung absetzen und erhalten oft eine Rückzahlung bei unterjährigem Auszug.</string>
@@ -200,4 +200,8 @@
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
+    <string name="removalDate">UMZUGSTERMIN</string>
+    <string name="removalDateDesc"><![CDATA[Denken Sie daran, die Möbel zuerst zu verladen. Wenn noch nicht geschehen, sollten Sie Ihr Umzugsgut beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten.]]></string>
+    <string name="compareLiabilityInsurance">compare liability insurances</string>
+    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
 </resources>

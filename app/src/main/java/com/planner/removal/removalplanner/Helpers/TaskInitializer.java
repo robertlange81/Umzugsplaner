@@ -29,6 +29,16 @@ public class TaskInitializer {
         today.setMinutes(0);
         Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 13);
 
+        // Umzugstermin selbst
+        if(removalDate != null) {
+            Task removal = new Task(mainActivity.getString(R.string.removalDate), mainActivity.getString(R.string.removalDateDesc), new Date(removalDate.getTime()), Priority.High, 0L,
+                    new TaskType(TaskTypeMain.Movement));
+            Task.addTask(removal);
+
+            removalDate.setHours(0);
+            removalDate.setMinutes(0);
+        }
+
         // Vertrag alt
         Task rentalContractOld = new Task(mainActivity.getString(R.string.taskRentalContractOld), (mainActivity.getString(R.string.taskRentalContractOldDesc) + ' ' + mainActivity.getString(R.string.contractCancel)), removalDate != null ? tomorrow : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts.getValue()));
@@ -84,6 +94,12 @@ public class TaskInitializer {
         internetContract.addLink(mainActivity.getString(R.string.compareContractCheck24), mainActivity.getString(R.string.internetContractCheck24LINK));
         internetContract.addLink(mainActivity.getString(R.string.compareContractVerivox), mainActivity.getString(R.string.internetContractVerivoxLINK));
         Task.addTask(internetContract);
+
+        // Haftplficht
+        Task liabilityInsurance = new Task("Haftplfichtversicherung", "Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Mit einer Haftpflichtversicherung sind sie gegen alle Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen. ", removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.Contracts));
+        liabilityInsurance.addLink(mainActivity.getString(R.string.compareLiabilityInsurance), mainActivity.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
+        Task.addTask(liabilityInsurance);
 
         // Hausrat
         Task householdInsurance = new Task(mainActivity.getString(R.string.householdInsurance), mainActivity.getString(R.string.householdInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -10) : null, Priority.Normal, 0L,
