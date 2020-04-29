@@ -25,7 +25,7 @@ import com.planner.removal.removalplanner.R;
 import java.util.Calendar;
 import java.util.Date;
 
-public class InitDialogFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener, View.OnClickListener {
+public class DialogFragmentInit extends DialogFragment implements DatePickerDialog.OnDateSetListener, View.OnClickListener {
 
     // https://guides.codepath.com/android/using-dialogfragment
     // https://developer.android.com/guide/topics/ui/controls/pickers#java
@@ -72,6 +72,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
+        txtDeadline.setOnClickListener(this);
         // btnLocationPicker.setOnClickListener(this);
 
         builder.setView(view)
@@ -118,7 +119,7 @@ public class InitDialogFragment extends DialogFragment implements DatePickerDial
 
     public void onClick(View v) {
 
-        if (v == btnDatePicker) {
+        if (v == btnDatePicker || v == txtDeadline) {
             // Get Current date
             final Calendar c = Calendar.getInstance();
             mYear = tempDate != null ? tempDate.getYear() + 1900 : c.get(Calendar.YEAR);

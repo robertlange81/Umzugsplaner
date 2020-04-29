@@ -26,9 +26,9 @@
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
     <string name="placeholder_export_no_date">Please choose a date first before export.</string>
-    <string name="placeholder_init">Set up !NEW! removal</string>
+    <string name="placeholder_init">Set up a NEW removal</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
-    <string name="placeholder_init_no_date">No date specified - Standard tasks are created without a date.</string>
+    <string name="placeholder_init_no_date">No date specified - Standard tasks are created without date.</string>
     <string name="placeholder_link">link</string>
     <string name="placeholder_link_input">url or ressource</string>
     <string name="placeholder_links">links</string>
@@ -49,7 +49,7 @@
     <string name="todo">todo</string>
     <string name="undo">undo</string>
     <string name="paid_done">paid</string>
-    <string name="currency">$</string>
+    <string name="currency">$sss</string>
     <string-array name="base_task_types">
         <item>OLD FLAT</item>
         <item>NEW FLAT</item>
@@ -67,8 +67,8 @@
     <string name="Remind_me_later">Remind me later</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">back</string>
-    <string name="placeholder_hide_done">hide done tasks</string>
-    <string name="placeholder_hide_low_prio">hide low priority</string>
+    <string name="placeholder_hide_done">hide done</string>
+    <string name="placeholder_hide_low_prio">hide low prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&i=electronics&linkCode=ur2&tag=robroyrich-21&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
@@ -121,7 +121,7 @@
     <string name="fireAndBurglaryProtectionBurglary">Burglary protection systems</string>
     <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031&tag=robroyrich-21]]></string>
     <string name="requestSpecialLeave">Apply for special leave</string>
-    <string name="requestSpecialLeaveDesc">CDATA[Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
+    <string name="requestSpecialLeaveDesc">Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
     <string name="rentalDepositAccount">Security deposit book</string>
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
@@ -142,10 +142,10 @@
     <string name="gasContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=gasanbieter-wechseln&cat=3]]></string>
     <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
-    <string name="householdInsurance">household insurance</string>
+    <string name="householdInsurance">Household insurance</string>
     <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch. You are optimally protected against damage caused by burglary, theft, fire or the weather on your household items.</string>
     <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
-    <string name="movingVan">find moving van</string>
+    <string name="movingVan">Find moving van</string>
     <string name="movingVanDesc">Organize one or more vehicles for transportation.  This can even make sense if a freight forwarder is commissioned.</string>
     <string name="movingVanCompare">Find a rental car</string>
     <string name="movingVanCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
@@ -178,7 +178,7 @@
     <string name="oldRentDepositDesc">Don\'t forget your old landlord\'s security deposit. Attention! Please stay active: In your own interest, you should not simply wait until the landlord fulfills his duties on a fine day, because there is a 3-year limitation period for your claim to the repayment of the deposit. If the deadline has passed without you demonstrably doing anything about it, your money is gone, even if you are not at fault. You are also entitled to a service charge settlement. You can deduct this proportionally from your tax return and often receive a refund if you move out during the year.</string>
     <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
     <string name="cordonOffParkingLot">Cordon off parking lot</string>
-    <string name="cordonOffParkingLotDesc">Sperren Sie rechtzeitig vor dem Unzug die Parkpläte nah vor dem alten und neuen Domizil ab.</string>
+    <string name="cordonOffParkingLotDesc">Block off the parking spaces in front of the old and new domicile in good time before the move.</string>
     <string name="cordonOffParkingLotHowTo">How to shut off properly?</string>
     <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
     <string name="packingMaterial">Packing material</string>
@@ -196,6 +196,33 @@
     <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
     <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
-    <string name="liabilityInsurance">liability insurance</string>
+    <string name="liabilityInsurance">Liability insurance</string>
     <string name="liabilityInsuranceDesc">There are a number of different types of insurance available to protect your own home from damage. Private liability insurance is an absolute must.  With liability insurance, you are insured against all claims for property damage, personal injury or financial loss if a third party has been damaged. In contrast to other insurance companies, private liability is also relatively cheap.  You have to budget around 70 euros a year.</string>
+    <string name="go">GO ON!</string>
+    <string name="introExampleRelation">0/25</string>
+    <string name="party">Official opening</string>
+    <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
+    <string name="introDesc">Plan your move with this app. All important tasks are created automatically - including tips and links to further information.</string>
+    <string name="introDesc2">Individualize, categorize and prioritize your checklist with all important tasks for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
+    <string name="introLegend">Legend</string>
+    <string name="placeholder_place_removal">Where Are You Moving?</string>
+    <string name="postal">zip code</string>
+    <string name="place">place</string>
+    <string name="street">street</string>
+    <string name="houseNumber">number</string>
+    <string name="deleteAll">delete all tasks</string>
+    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
+    <string name="partyEbay">Party items on Ebay</string>
+    <string name="legendExportLong">Export to Google Calendar</string>
+    <string name="legendPrioLong">Set normal or high priority</string>
+    <string name="legendSetDoneLong">Set task done or undone</string>
+    <string name="legendFilterLong">Filter tasks by title</string>
+    <string name="legendCostsLong">Overview of all costs</string>
+    <string name="legendOverviewLong">Overview of completed tasks / open tasks</string>
+    <string name="legendDoneLong">done/all tasks</string>
+    <string name="legentCosts">costs overview</string>
+    <string name="legendFilter">filter by name</string>
+    <string name="legendDone">set task done</string>
+    <string name="legendPrio">set priority</string>
+    <string name="legendExport">calendar export</string>
 </resources>

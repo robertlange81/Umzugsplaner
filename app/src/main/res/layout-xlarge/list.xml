@@ -37,12 +37,11 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/list"
             android:name="com.planner.removal.removalplanner.AufgabeDetailFragment"
-            android:layout_width="550dp"
+            android:layout_width="450dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:paddingBottom="50dp"
             app:layoutManager="LinearLayoutManager"
             tools:context=".Activities.MainActivity"
             tools:listitem="@layout/list_row_content" />

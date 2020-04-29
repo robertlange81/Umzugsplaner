@@ -123,8 +123,11 @@ public class DetailActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.back:
-                //this.finish();
-                exit();
+                if(MainActivity.mTwoPane) {
+                    exit();
+                } else {
+                    this.finish();
+                }
                 break;
             default:
                 break;

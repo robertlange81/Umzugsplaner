@@ -93,6 +93,7 @@
 
             <TextView
                 android:id="@+id/detail_isDone_label"
+                android:fontFamily="serif-monospace"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/detail_text_size"
@@ -115,6 +116,7 @@
 
             <TextView
                 android:id="@+id/detail_prio_label"
+                android:fontFamily="serif-monospace"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -174,6 +176,7 @@
 
                 <TextView
                     android:id="@+id/detail_type_label"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -276,6 +279,7 @@
 
                 <TextView
                     android:id="@+id/detail_links_label"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -286,6 +290,8 @@
 
                 <TextView
                     android:id="@+id/links_0"
+                    android:fontFamily="serif-monospace"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_link_input"
                     android:inputType="textMultiLine|textWebEditText"
@@ -320,13 +326,14 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="-30dp"
+                android:layout_marginTop="-10dp"
                 android:layout_marginBottom="5dp"
                 android:weightSum="3"
                 android:visibility="gone">
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -336,12 +343,14 @@
 
                 <TextView
                     android:id="@+id/links_1"
+                    android:fontFamily="serif-monospace"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="bottom|center_vertical"
                     android:hint="@string/placeholder_link_input"
-                    android:inputType="textWebEditText"
+                    android:gravity="start|center_vertical"
+                    android:inputType="textMultiLine|textWebEditText"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
@@ -377,6 +386,7 @@
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy_x2"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -386,11 +396,13 @@
 
                 <TextView
                     android:id="@+id/links_2"
+                    android:fontFamily="serif-monospace"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:inputType="textWebEditText"
-                    android:gravity="bottom|center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:inputType="textMultiLine|textWebEditText"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -424,6 +436,7 @@
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy_x3"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -433,11 +446,13 @@
 
                 <TextView
                     android:id="@+id/links_3"
+                    android:fontFamily="serif-monospace"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:inputType="textWebEditText"
-                    android:gravity="bottom|center_vertical"
+                    android:gravity="start|center_vertical"
+                    android:inputType="textMultiLine|textWebEditText"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -475,6 +490,7 @@
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy_x4"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -484,13 +500,15 @@
 
                 <TextView
                     android:id="@+id/links_4"
+                    android:fontFamily="serif-monospace"
+                    android:drawableRight="@drawable/ic_link_black_24dp"
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="bottom|center_vertical"
+                    android:gravity="start|bottom"
+                    android:inputType="textMultiLine|textWebEditText"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
-                    android:inputType="textWebEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="false"
@@ -523,6 +541,7 @@
 
                 <TextView
                     android:id="@+id/detail_costs_label"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -597,6 +616,7 @@
 
                 <TextView
                     android:id="@+id/detail_deadline_label"
+                    android:fontFamily="serif-monospace"
                     android:layout_weight="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
