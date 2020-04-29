@@ -35,17 +35,16 @@ public class Task implements Serializable {
     TODO / FIXME / Ideen:
     - Countdown oder kurzes Tutorial am Anfang
     - Ziel-date im Hintergrund
+    - Suche
+    - Orte hinzufügen -> Routenplaner !!!
     - Bilder speichern
-    - Ausdrucken / PDF erstellen / per Mail senden
     - Import / Export (zuletzt) !!!
+    - Ausdrucken / PDF erstellen / per Mail senden
     - Coronaliste
     - Hochzeitsliste
     - Babyliste
-    - Loader + Hinweis
     - Synchronisieren
-    - Assistenz
     - Hintergrundbild (Grundriss / Baby)
-    - Orte hinzufügen -> Routenplaner !!!
     - Content Provider ???
     - Bild statt Link
      */

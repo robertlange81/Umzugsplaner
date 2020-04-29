@@ -81,6 +81,7 @@
 
             <TextView
                 android:id="@+id/type"
+                android:fontFamily="serif-monospace"
                 android:layout_weight="2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/list_row_content_part"
@@ -120,6 +121,7 @@
 
                     <TextView
                         android:id="@+id/costs_detail"
+                        android:fontFamily="serif-monospace"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/list_row_content_part"
                         android:layout_marginLeft="-1dip"
@@ -133,8 +135,10 @@
 
                     <TextView
                         android:id="@+id/date_detail"
+                        android:fontFamily="serif-monospace"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/list_row_content_part"
+                        android:textStyle="bold|italic"
                         android:layout_below="@id/costs_detail"
                         android:layout_marginTop="-1dip"
                         android:layout_marginLeft="-1dip"

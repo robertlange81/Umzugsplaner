@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.planner.removal.removalplanner">
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"  />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <!-- android:screenOrientation="landscape" -->
+    <!-- android:noHistory="true" -->
     <application
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
@@ -15,23 +17,51 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity
-            android:name=".Activities.MainActivity"
-            android:label="@string/app_name"
-            android:launchMode="singleInstance"
-            android:alwaysRetainTaskState="true"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".Activities.SplashScreen"
+            android:screenOrientation="locked"
+            android:configChanges="keyboardHidden|orientation"
+            tools:ignore="ManifestResource"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.IntroActivity"
+            android:screenOrientation="locked"
+            android:configChanges="keyboardHidden|orientation"
+            tools:ignore="ManifestResource"
+            android:label="@string/app_name">
+            <!--intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter-->
+        </activity>
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="locked"
+            android:configChanges="keyboardHidden|orientation"
+            tools:ignore="ManifestResource"
+            android:launchMode="singleInstance"
+            android:alwaysRetainTaskState="true"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter android:label="@string/app_name">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="www.robert-lange.eu"
+                    android:pathPrefix="/removalPlanner" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Activities.DetailActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="locked"
+            android:configChanges="keyboardHidden|orientation"
+            tools:ignore="ManifestResource"
             android:launchMode="singleInstance"
             android:alwaysRetainTaskState="true">
         </activity>
     </application>
-
 </manifest>

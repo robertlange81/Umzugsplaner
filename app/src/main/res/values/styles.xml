@@ -19,10 +19,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
-        <!-- item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item -->
     </style>
 
-    <!-- Style to replace actionbar overflow icon. set item 'android:actionOverflowButtonStyle' in AppTheme -->
     <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
         <item name="android:src">@android:drawable/ic_menu_view</item>
         <item name="android:background">?android:attr/actionBarItemBackground</item>

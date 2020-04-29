@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umzug</string>
+    <string name="app_name">Umzugplaner</string>
     <string name="category">Typ</string>
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>
@@ -75,8 +75,8 @@
     <string name="Remind_me_later">Später erinnern</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">zurück</string>
-    <string name="placeholder_hide_done">nur offene Aufgaben anzeigen</string>
-    <string name="placeholder_hide_low_prio">nur hohe Priorität anzeigen</string>
+    <string name="placeholder_hide_done">nur offene</string>
+    <string name="placeholder_hide_low_prio">nur hohe Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&i=electronics&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
@@ -186,7 +186,7 @@
     <string name="oldRentDepositDesc">Vergessen Sie nicht die Mietkaution Ihres alten Vermieters. Vorsicht! Bleiben Sie bitte aktiv : Sie sollten in Ihrem eigenen Interesse nicht einfach abwarten, bis der Vermieter eines schönen Tages seinen Pflichten nachzukommt, denn es gibt eine 3-jährige Verjährungsfrist für Ihren Anspruch auf die Rückzahlung der Kaution. Ist die Frist verstrichen, ohne dass Sie nachweislich etwas dagegen unternommen haben, ist Ihr Geld weg, auch wenn Sie sich nichts haben zuschulden kommen lassen. Ebenso hzaben Sie Anrecht auf eine Nebenkostenabrechnung. Diese können Sie anteilig bei der Steuererklärung absetzen und erhalten oft eine Rückzahlung bei unterjährigem Auszug.</string>
     <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
     <string name="cordonOffParkingLot">Parkplatz sperren</string>
-    <string name="cordonOffParkingLotDesc">Block off the parking spaces in front of the old and new domicile in good time before the move.</string>
+    <string name="cordonOffParkingLotDesc">Sperren Sie rechtzeitig vor dem Unzug die Parkplätze vor dem alten und neuen Domizil ab.</string>
     <string name="cordonOffParkingLotHowTo">Wie richtig absperren?</string>
     <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
     <string name="packingMaterial">Verpackungsmaterial</string>
@@ -197,6 +197,7 @@
     <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=03a4f280e143d7a90051095b239b3f5b&camp=1638&creative=6742&index=diy&keywords=Müllsäcke]]></string>
     <string name="packingMaterialAirCushionFoil">Luftpolsterfolie</string>
     <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=Luftpolsterfolie]]></string>
+    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
@@ -206,4 +207,30 @@
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
     <string name="liabilityInsurance">Haftplfichtversicherung</string>
     <string name="liabilityInsuranceDesc">Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Mit einer Haftpflichtversicherung sind sie gegen alle Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen.</string>
+    <string name="go">LOS!</string>
+    <string name="introExampleRelation">0/25</string>
+    <string name="party">Einweihungsfeier</string>
+    <string name="partyDesc">Geben Sie eine Einweihungsfeier für Freunde und Helfer in Ihrer neuen Wohnung.</string>
+    <string name="introDesc">Planen Sie Ihren Umzug mit dieser App. Alle wichtigen Aufgaben werden automatisch angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
+    <string name="introDesc2">Kategorisieren und priorisieren Sie Ihre Checkliste mit allen wichtigen Aufgaben für jede Umzugsphase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
+    <string name="introLegend">Legende</string>
+    <string name="placeholder_place_removal">Wohin wollen Sie umziehen?</string>
+    <string name="postal">Plz</string>
+    <string name="place">Ort</string>
+    <string name="street">Straße</string>
+    <string name="houseNumber">Hausnummer</string>
+    <string name="deleteAll">alle löschen</string>
+    <string name="partyEbay">Partyartikel bei Ebay</string>
+    <string name="legendExportLong">in Google Kalender exportieren</string>
+    <string name="legendPrioLong">normale oder hohe Priorität setzen</string>
+    <string name="legendSetDoneLong">Aufgabe auf erledigt oder offen setzen</string>
+    <string name="legendFilterLong">Aufgaben nach Title filtern</string>
+    <string name="legendCostsLong">Übersicht aller Kosten</string>
+    <string name="legendOverviewLong">Übersicht erledigte Aufgabe / offene Aufgaben</string>
+    <string name="legendDoneLong">erledigt / alle Aufgaben</string>
+    <string name="legentCosts">Kostenübersicht</string>
+    <string name="legendFilter">nach Titel filtern</string>
+    <string name="legendDone">Aufgabe erledigt</string>
+    <string name="legendPrio">Priorität setzen</string>
+    <string name="legendExport">Kalenderexport</string>
 </resources>

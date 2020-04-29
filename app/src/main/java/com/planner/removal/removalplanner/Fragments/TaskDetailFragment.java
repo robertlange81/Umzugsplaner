@@ -1,9 +1,11 @@
 package com.planner.removal.removalplanner.Fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -189,11 +191,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         createNewTask(taskId);
       }
 
-      if(currencyWatcher == null || MainActivity.mTwoPane) {
-        currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
-      } else {
-        currencyWatcher.setTask(_task);
-      }
+      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
     }
 
     if (TaskFormater.currentLocal == null) {
@@ -625,7 +623,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   private void _formatLink(TextView linkInput, String href, String displayLink) {
     String link = "";
     if (!href.isEmpty() && !displayLink.isEmpty())
-      link += "<a href=\"" + href + "\">" + displayLink + "</a>";
+      link += "<a href=\"" + href + "\"> " + displayLink + "</a>";
 
     linkInput.setText(Html.fromHtml(link));
     ((TableRow) linkInput.getParent()).setVisibility(View.VISIBLE);
@@ -640,28 +638,34 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       mMonth = tempDate != null ? tempDate.getMonth() : c.get(Calendar.MONTH);
       mDay = tempDate != null ? tempDate.getDate() : c.get(Calendar.DAY_OF_MONTH);
 
-      DatePickerDialog datePickerDialog = new DatePickerDialog(this.getContext(),
-        new DatePickerDialog.OnDateSetListener() {
+      DatePickerDialog datePickerDialog;
+      DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
 
-          @Override
-          public void onDateSet(DatePicker view, int year,
-                                int monthOfYear, int dayOfMonth) {
-            if (tempDate == null) {
-              tempDate = Calendar.getInstance().getTime(); // stattdessen Zieltermin?
-              tempDate.setHours(0);
-              tempDate.setMinutes(0);
-            }
-
-            tempDate.setYear(year - 1900);
-            tempDate.setMonth(monthOfYear);
-            tempDate.setDate(dayOfMonth);
-            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
-            _task.date = tempDate;
-
-            if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity());
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+          if (tempDate == null) {
+            tempDate = Calendar.getInstance().getTime(); // stattdessen Zieltermin?
+            tempDate.setHours(0);
+            tempDate.setMinutes(0);
           }
-        }, mYear, mMonth, mDay);
+
+          tempDate.setYear(year - 1900);
+          tempDate.setMonth(monthOfYear);
+          tempDate.setDate(dayOfMonth);
+          txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
+          _task.date = tempDate;
+
+          if (isNotifyEnabled)
+            MainActivity.NotifyTaskChanged(_task, getActivity());
+        }
+      };
+
+      if(rootView.getContext().getResources().getInteger(R.integer.orientation) == 0) { // tablet
+        datePickerDialog = new DatePickerDialog(this.getContext(), listener, mYear, mMonth, mDay);
+      } else { // small device
+        datePickerDialog = new DatePickerDialog(this.getContext(), AlertDialog.THEME_TRADITIONAL, listener, mYear, mMonth, mDay);
+      }
+
       datePickerDialog.show();
     }
 

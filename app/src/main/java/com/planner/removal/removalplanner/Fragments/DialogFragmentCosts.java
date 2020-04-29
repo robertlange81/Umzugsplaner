@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.planner.removal.removalplanner.R;
 
-public class CostsDialogFragment extends DialogFragment {
+public class DialogFragmentCosts extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

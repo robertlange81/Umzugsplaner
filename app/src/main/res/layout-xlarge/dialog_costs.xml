@@ -1,20 +1,25 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <ImageView
+        android:id="@+id/coins_xxl"
         android:src="@drawable/coins_xl"
-        android:layout_width="match_parent"
-        android:layout_height="120sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_default_margin"
+        android:layout_marginLeft="@dimen/activity_default_margin"
         android:scaleType="center"
-        android:layout_gravity="center_horizontal"
         android:contentDescription="@string/app_name" />
+    <LinearLayout
+        android:layout_toRightOf="@id/coins_xxl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <TableRow
         android:id="@+id/table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
-        android:layout_toRightOf="@id/checkBox"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
@@ -27,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:layout_marginRight="2dp"
-            android:layout_weight="6"
+            android:layout_weight="5"
             android:weightSum="3"
             android:descendantFocusability="blocksDescendants"
             android:gravity="top">
@@ -84,7 +89,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="2dp"
             android:layout_marginRight="2dp"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:weightSum="3"
             android:descendantFocusability="blocksDescendants"
             android:gravity="top">
@@ -132,5 +137,6 @@
         </RelativeLayout>
 
     </TableRow>
+    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

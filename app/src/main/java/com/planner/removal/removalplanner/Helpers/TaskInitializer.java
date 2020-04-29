@@ -2,6 +2,7 @@ package com.planner.removal.removalplanner.Helpers;
 
 import android.app.Activity;
 
+import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskType;
@@ -20,9 +21,7 @@ public class TaskInitializer {
         }
     }
 
-    public static void InitTasks(Date removalDate, Activity mainActivity) {
-        // FIXME Notizen in Task
-        // FIXME init new task serial ; Mietkautionskonto; Verträge; Bank etc. neue Adresse mitteilen
+    public static void InitTasks(Date removalDate, Location location, Activity mainActivity) {
 
         Date today = Calendar.getInstance().getTime();
         today.setHours(0);
@@ -57,7 +56,7 @@ public class TaskInitializer {
         Task informOldAndNewNeighbours = new Task(mainActivity.getString(R.string.informOldAndNewNeighbours), mainActivity.getString(R.string.informOldAndNewNeighboursDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -7) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Movement));
         // TODO partner-link
-        rentalContractNew.addLink(mainActivity.getString(R.string.informOldAndNewNeighboursDoorSigns), mainActivity.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
+        informOldAndNewNeighbours.addLink(mainActivity.getString(R.string.informOldAndNewNeighboursDoorSigns), mainActivity.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
         Task.addTask(informOldAndNewNeighbours);
 
         // Ummeldung
@@ -74,7 +73,7 @@ public class TaskInitializer {
         Task.addTask(postalAftermath);
 
         // Vertragspartner
-        Task informContractors = new Task(mainActivity.getString(R.string.informContractors), mainActivity.getString(R.string.informContractorsDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -14), Priority.Normal, 0L,
+        Task informContractors = new Task(mainActivity.getString(R.string.informContractors), mainActivity.getString(R.string.informContractorsDesc), addMonthDaysToJavaUtilDate(removalDate, 0, -14), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts));
         Task.addTask(informContractors);
 
@@ -96,13 +95,13 @@ public class TaskInitializer {
         Task.addTask(internetContract);
 
         // Haftplficht
-        Task liabilityInsurance = new Task(mainActivity.getString(R.string.liabilityInsurance), mainActivity.getString(R.string.liabilityInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.Normal, 0L,
+        Task liabilityInsurance = new Task(mainActivity.getString(R.string.liabilityInsurance), mainActivity.getString(R.string.liabilityInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts));
         liabilityInsurance.addLink(mainActivity.getString(R.string.compareLiabilityInsurance), mainActivity.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
         Task.addTask(liabilityInsurance);
 
         // Hausrat
-        Task householdInsurance = new Task(mainActivity.getString(R.string.householdInsurance), mainActivity.getString(R.string.householdInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -10) : null, Priority.Normal, 0L,
+        Task householdInsurance = new Task(mainActivity.getString(R.string.householdInsurance), mainActivity.getString(R.string.householdInsuranceDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -10) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts));
         householdInsurance.addLink(mainActivity.getString(R.string.compareContracts), mainActivity.getString(R.string.compareContractVerivoxLINK));
         Task.addTask(householdInsurance);
@@ -123,7 +122,7 @@ public class TaskInitializer {
         // Kautionskonto
         Task rentalDepositAccount = new Task(mainActivity.getString(R.string.rentalDepositAccount), mainActivity.getString(R.string.rentalDepositAccountDesc), today, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Contracts));
-        requestSpecialLeave.addLink(mainActivity.getString(R.string.rentalDepositAccountExplanation), mainActivity.getString(R.string.rentalDepositAccountExplanationLINK));
+        rentalDepositAccount.addLink(mainActivity.getString(R.string.rentalDepositAccountExplanation), mainActivity.getString(R.string.rentalDepositAccountExplanationLINK));
         Task.addTask(rentalDepositAccount);
 
         // Umzugshelfer
@@ -191,6 +190,12 @@ public class TaskInitializer {
         packingMaterial.addLink(mainActivity.getString(R.string.packingMaterialTrashBags), mainActivity.getString(R.string.packingMaterialTrashBagsAmazonLINK));
         packingMaterial.addLink(mainActivity.getString(R.string.packingMaterialAirCushionFoil), mainActivity.getString(R.string.packingMaterialAirCushionFoilAmazonLINK));
         Task.addTask(packingMaterial);
+
+        // Einweihungsfeier
+        Task party = new Task(mainActivity.getString(R.string.party), mainActivity.getString(R.string.partyDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, 30) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.NewFlat));
+        party.addLink(mainActivity.getString(R.string.partyEbay), mainActivity.getString(R.string.partyEbayLINK));
+        Task.addTask(party);
 
         Persistance.SaveTasks(mainActivity);
     }

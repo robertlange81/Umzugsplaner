@@ -3,24 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
-        android:id="@+id/showCostsMenuItem"
-        android:icon="@drawable/ic_attach_money_black_24dp"
-        android:orderInCategory="70"
-        android:text="@string/currency"
-        android:title="@string/currency"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/overview"
-        android:orderInCategory="80"
+        android:orderInCategory="0"
+        app:actionLayout="@layout/menu_item_overview"
         android:text=""
         android:title=""
         app:showAsAction="always" />
     <item
+        android:id="@+id/showCostsMenuItem"
+        android:icon="@drawable/ic_currency"
+        android:orderInCategory="80"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        android:textSize="200sp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="90"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/start_new"
-        android:orderInCategory="98"
+        android:orderInCategory="97"
         android:icon="@drawable/ic_fiber_new_black_24dp"
         android:text="@string/start"
         android:title="@string/start"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/delete_all"
+        android:orderInCategory="98"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:text="@string/deleteAll"
+        android:title="@string/deleteAll"
         app:showAsAction="never" />
 
     <item

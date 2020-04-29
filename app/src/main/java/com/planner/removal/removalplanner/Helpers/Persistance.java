@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
+import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.Model.TaskDao;
 import com.planner.removal.removalplanner.Model.TaskDatabaseClient;
@@ -113,7 +114,11 @@ public class Persistance {
         addTaskToQueue(rt);
     }
 
-    public static void PruneAllTasks(final Activity activity, final Date callbackNewInitDate) {
+    public static void PruneAllTasks(
+            final Activity activity,
+            final boolean createNewTaskList,
+            final Date callbackNewInitDate,
+            final Location location) {
 
         class PruneAllTasks extends AsyncTask<Void, Void, Void> {
 
@@ -136,7 +141,9 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                TaskInitializer.InitTasks(callbackNewInitDate, activity);
+
+                if(createNewTaskList)
+                    TaskInitializer.InitTasks(callbackNewInitDate, location, activity);
             }
         }
 

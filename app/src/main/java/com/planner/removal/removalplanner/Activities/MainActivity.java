@@ -2,6 +2,7 @@ package com.planner.removal.removalplanner.Activities;
 
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.arch.lifecycle.Lifecycle;
@@ -39,9 +40,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.planner.removal.removalplanner.Fragments.CostsDialogFragment;
-import com.planner.removal.removalplanner.Fragments.InitDialogFragment;
-import com.planner.removal.removalplanner.Fragments.InitDialogFragment.InitDialogListener;
+import com.planner.removal.removalplanner.BuildConfig;
+import com.planner.removal.removalplanner.Fragments.DialogFragmentCosts;
+import com.planner.removal.removalplanner.Fragments.DialogFragmentInit;
+import com.planner.removal.removalplanner.Fragments.DialogFragmentInit.InitDialogListener;
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
@@ -56,8 +58,8 @@ import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -70,9 +72,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem showOverview, initDialogMenuItem, hideDoneTasks, hideNormalPrio, lastItem, showCostsMenuItem;
+    MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem;
+    TextView showOverview;
     DialogFragment dialog;
     Menu topMenu;
+    public static final String START_FROM_PAUSED_ACTIVITY_FLAG = "START_FROM_PAUSED_ACTIVITY_FLAG";
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onEnterForeground() {
@@ -85,17 +89,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     @Override
     public void onClick(DialogInterface dialogInterface, int which) {
-        if(dialog != null && dialog instanceof InitDialogFragment) {
-            InitDialogFragment initdialog = (InitDialogFragment) dialog;
+        if(dialog != null && dialog instanceof DialogFragmentInit) {
+            DialogFragmentInit initdialog = (DialogFragmentInit) dialog;
             if(initdialog.getRemovalDate() == null) {
                 Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
 
             if(initdialog.getDeleteOld()) {
-                Persistance.PruneAllTasks(this, initdialog.getRemovalDate());
+                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), null);
             } else {
-                TaskInitializer.InitTasks(initdialog.getRemovalDate(), this);
+                TaskInitializer.InitTasks(initdialog.getRemovalDate(), null, this);
             }
         }
     }
@@ -103,16 +107,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        super.onCreate(savedInstanceState);
+
+        if (isStartedFromBackgroundActivity())
+            moveTaskToBack(true);
+
         instance = this;
         if(TaskFormater.currentLocal == null) {
             TaskFormater.setCurrentLocale(this);
         }
 
-        super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
-
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
         bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         if(bottomAppBar != null) {
@@ -143,34 +148,35 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         });
 
-        Date defaultDate = new Date(118, 11, 1, 0, 0, 0);
-
-
-        int orientation = this.getResources().getConfiguration().orientation;
-
-        if (findViewById(R.id.task_detail_container) != null) {
+        if (getBaseContext().getResources().getInteger(R.integer.orientation) == 0) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w800dp).
             // If this view is present, then the
             // activity should be in two-pane mode.
             mTwoPane = true;
 
-            if(orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
+            if(this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 return;
             }
         }
 
         Persistance.LoadTasks(this);
-        if(Task.TASK_LIST.size() == 10) {
-            TaskInitializer.CreateDefaultTasks(defaultDate);
-        }
-
         comparatorConfig = new ComparatorConfig();
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
+        // moveTaskToBack(true);
+    }
+
+    private boolean isStartedFromBackgroundActivity() {
+        return getIntent().getBooleanExtra(START_FROM_PAUSED_ACTIVITY_FLAG, false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
     @Override
@@ -184,7 +190,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("did_init", true);
             editor.commit();
-            showDetailDialog(InitDialogFragment.class, new String[0]);
+            showDetailDialog(DialogFragmentInit.class, new String[0]);
             return;
         }
 
@@ -213,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         SpannableString s;
 
-        showOverview = topMenu.findItem(R.id.overview);
         int taskCount = 0, done = 0;
         for(Task task: Task.TASK_LIST) {
             if(task.is_Done) {
@@ -227,36 +232,63 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         } else {
             s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         }
-        instance.showOverview.setTitle(s);
-
+        showOverview = findViewById(R.id.menuText);
+        if(showOverview != null) {
+            instance.showOverview.setText(done + "/" + taskCount);
+            if(done < taskCount) {
+                instance.showOverview.setTextColor(Color.WHITE);
+            } else {
+                instance.showOverview.setTextColor(Color.rgb(0,255,60));
+            }
+        }
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
-        hideDoneTasks = topMenu.findItem(R.id.show_open_only);
-        hideDoneTasks.setChecked(getHideDoneTasksChecked());
 
-        if(!hideDoneTasks.isChecked()) {
-            s = new SpannableString(hideDoneTasks.getTitle());
+        if(initDialogMenuItem != null) {
+            s = new SpannableString(initDialogMenuItem.getTitle());
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorYellow)), 0, s.length(), 0);
+        }
+        initDialogMenuItem.setTitle(s);
+
+        deleteAllMenuItem = topMenu.findItem(R.id.delete_all);
+        if (BuildConfig.DEBUG) {
+            if(deleteAllMenuItem != null) {
+                s = new SpannableString(deleteAllMenuItem.getTitle());
+                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
+            }
+            deleteAllMenuItem.setTitle(s);
+        } else {
+            deleteAllMenuItem.setVisible(false);
+        }
+
+        hideDoneTasksMenuItem = topMenu.findItem(R.id.show_open_only);
+        hideDoneTasksMenuItem.setChecked(getHideDoneTasksChecked());
+
+        if(hideDoneTasksMenuItem != null && !hideDoneTasksMenuItem.isChecked()) {
+            s = new SpannableString(hideDoneTasksMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
         } else {
-            s = new SpannableString(hideDoneTasks.getTitle());
+            s = new SpannableString(hideDoneTasksMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         }
-        hideDoneTasks.setTitle(s);
+        hideDoneTasksMenuItem.setTitle(s);
 
-        hideNormalPrio = topMenu.findItem(R.id.show_high_prio_only);
+        hideNormalPrioMenuItem = topMenu.findItem(R.id.show_high_prio_only);
 
         if(getHideNormalPrioTasksChecked()) {
-            hideNormalPrio.setChecked(true);
-            adapter.setHideNormalPrio(true);
+            hideNormalPrioMenuItem.setChecked(true);
+            if(adapter != null) {
+                adapter.setHideNormalPrio(true);
+            }
         }
 
-        if(!hideNormalPrio.isChecked()) {
-            s = new SpannableString(hideNormalPrio.getTitle());
+        if(!hideNormalPrioMenuItem.isChecked()) {
+            s = new SpannableString(hideNormalPrioMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
         } else {
-            s = new SpannableString(hideNormalPrio.getTitle());
+            s = new SpannableString(hideNormalPrioMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         }
-        hideNormalPrio.setTitle(s);
+        hideNormalPrioMenuItem.setTitle(s);
 
         int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
         if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
@@ -279,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 s = new SpannableString(item.getTitle());
                 s.setSpan(new ForegroundColorSpan(Color.rgb(0, 255, 60)), 0, s.length(), 0);
                 item.setTitle(s);
-                lastItem = item;
+                lastMenuItem = item;
             }
         }
 
@@ -307,12 +339,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(item == initDialogMenuItem) {
             String[] init = new String[0];
-            showDetailDialog(InitDialogFragment.class, init);
+            showDetailDialog(DialogFragmentInit.class, init);
 
             return true;
         }
 
-        if(item == hideDoneTasks) {
+        if(item == hideDoneTasksMenuItem) {
             item.setChecked(!item.isChecked());
             setHideDoneTasksChecked(item.isChecked());
             adapter.setHideDone(item.isChecked());
@@ -335,7 +367,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
-        if(item == hideNormalPrio) {
+        if(item == hideNormalPrioMenuItem) {
             item.setChecked(!item.isChecked());
             setHideNormalPrioTasksChecked(item.isChecked());
             adapter.setHideNormalPrio(item.isChecked());
@@ -358,19 +390,23 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
+        if(item == deleteAllMenuItem) {
+            Persistance.PruneAllTasks(MainActivity.this, false,null, null);
+        }
+
         // assume sorting select
         ComparatorConfig.SortType sortType = null;
 
-        if(lastItem != null && lastItem != item) {
-            s = new SpannableString(lastItem.getTitle());
+        if(lastMenuItem != null && lastMenuItem != item) {
+            s = new SpannableString(lastMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
-            lastItem.setTitle(s);
+            lastMenuItem.setTitle(s);
         }
 
         s = new SpannableString(item.getTitle());
         s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         item.setTitle(s);
-        lastItem = item;
+        lastMenuItem = item;
         int id = item.getItemId();
         switch (id) {
             case R.id.sortByCosts:
@@ -419,24 +455,22 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         String sumUndoneString  = TaskFormater.intDecimalsToString(sumUndone);
 
         String[] costs = new String[] {sumUndoneString, sumDoneString, sumAllString};
-        showDetailDialog(CostsDialogFragment.class, costs);
+        showDetailDialog(DialogFragmentCosts.class, costs);
 
         return true;
     }
 
     public static boolean SortBy(ComparatorConfig.SortType sortType) {
 
-        ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
-        if(comparatorSortable != null) {
-            Collections.sort(Task.TASK_LIST, comparatorSortable);
-            // JAVA 8
-            //.thenComparing(new PriorityComparator())
-            //.thenComparing(new NameComparator()));
-
-//            if(recyclerView != null)
-//                recyclerView.smoothScrollToPosition(0);
-
-            return true;
+        if(comparatorConfig.sortableMap != null) {
+            ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
+            if(comparatorSortable != null) {
+                Collections.sort(Task.TASK_LIST, comparatorSortable);
+                // JAVA 8
+                //.thenComparing(new PriorityComparator())
+                //.thenComparing(new NameComparator()));
+                return true;
+            }
         }
 
         return false;
@@ -446,13 +480,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         FragmentManager fm = getFragmentManager();
         dialog = null;
 
-        if (clazz == CostsDialogFragment.class) {
-            dialog = new CostsDialogFragment();
-        } else if (clazz == InitDialogFragment.class) {
-            dialog = new InitDialogFragment();
+        if (clazz == DialogFragmentCosts.class) {
+            dialog = new DialogFragmentCosts();
+        } else if (clazz == DialogFragmentInit.class) {
+            dialog = new DialogFragmentInit();
 
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M)
-                ((InitDialogFragment) dialog).setmListener(this);
+                ((DialogFragmentInit) dialog).setmListener(this);
         }
 
         if (dialog != null) {
@@ -516,15 +550,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
 
-        if(instance.showOverview != null) {
-            SpannableString s;
-            s = new SpannableString(done + "/" + taskCount);
+        if(instance != null && instance.showOverview != null) {
+            instance.showOverview.setText(done + "/" + taskCount);
             if(done < taskCount) {
-                s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+                instance.showOverview.setTextColor(Color.WHITE);
             } else {
-                s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+                instance.showOverview.setTextColor(Color.rgb(0,255,60));
             }
-            instance.showOverview.setTitle(s);
         }
 
         SimpleItemRecyclerViewAdapter.needsUpdate = doUpdate;
@@ -580,7 +612,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 if(v != null && v != view)
                     v.setBackgroundColor(Color.TRANSPARENT);
             }
-            // alternativ notifyDataSetChanged();
 
             Task item = (Task) view.getTag();
             activeRowItemId = item.id;
@@ -787,14 +818,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                 }
 
                                 if(instance.showOverview != null) {
-                                    SpannableString s;
-                                    s = new SpannableString(done + "/" + taskCount);
+                                    instance.showOverview.setText(done + "/" + taskCount);
                                     if(done < taskCount) {
-                                        s.setSpan(new ForegroundColorSpan(Color.WHITE), 0, s.length(), 0);
+                                        instance.showOverview.setTextColor(Color.WHITE);
                                     } else {
-                                        s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
+                                        instance.showOverview.setTextColor(Color.rgb(0,255,60));
                                     }
-                                    instance.showOverview.setTitle(s);
                                 }
                             }
                         });
@@ -877,7 +906,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                         }
                         catch (InterruptedException e) {
                             updaterThread.interrupt();
-                            String m = e.getMessage();
                             e.printStackTrace();
                         }
                     }

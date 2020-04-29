@@ -10,12 +10,12 @@
         android:minHeight="@dimen/detail_row_height"
         android:gravity="top"
         android:layout_marginTop="@dimen/detail_row_margin_top"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <ImageView
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_width="match_parent"
-            android:layout_height="80sp"
+            android:layout_height="50sp"
             android:paddingBottom="15dp"
             android:paddingLeft="30dp"
             android:contentDescription="@string/app_name"
@@ -24,6 +24,7 @@
 
         <TextView
             android:layout_weight="1"
+            android:fontFamily="serif-monospace"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -113,7 +114,6 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="@string/placeholder_init_delete_old_tasks"
-            android:textAppearance="?android:attr/textAppearanceMedium"
              />
     </TableRow>
 
