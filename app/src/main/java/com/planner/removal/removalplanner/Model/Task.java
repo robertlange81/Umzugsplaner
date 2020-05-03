@@ -37,17 +37,19 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - DetailFragment wirklich immer zerstören?
     - beim ersten Release Links verstecken
+    - MyHammer Alternative
+    - DetailFragment wirklich immer zerstören vs Bug CurrencyWatcher?
+    - negative Beträge
     - Hinweis, wenn keine neue Liste erzeugt wurde
     - Ortsangabe auch bei Neustart auf Liste / Dialog
     - Orte -> Routenplaner !!! Parkplatz, Umzugstag usw.
     - Import / Export !!!
     - Icon / Bild zu jedem Task (im Hintergrund)
-    - Ziel-date im Hintergrund
     - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
     - Ausdrucken / PDF erstellen / per Mail senden
+
     - Coronaliste
     - Hochzeitsliste
     - Babyliste

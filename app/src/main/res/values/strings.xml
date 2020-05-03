@@ -152,7 +152,7 @@
     <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="internetContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=89&cpid=1&prid=104&subid=&target=Telekommunikation_DSL_Gewerbe]]></string>
     <string name="householdInsurance">Hausratversicherung</string>
-    <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln. Gegen Schäden, die durch Einbruch, Diebstahl, Feuer oder das Wetter am Hausrat entstehen, sind Sie damit optimal abgesichert.</string>
+    <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln. Gegen Schäden, die durch Einbruch, Diebstahl, Feuer oder das Wetter am Hausrat entstehen, sind Sie damit abgesichert.</string>
     <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
     <string name="movingVan">Umzugswagen organisieren</string>
     <string name="movingVanDesc">Organisieren Sie ein oder mehrere Fahrzeuge zum Transport. Selbst bei Beauftragung einer Spedition kann dies sinnvoll sein.</string>
@@ -207,7 +207,7 @@
     <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
     <string name="liabilityInsurance">Haftplfichtversicherung</string>
-    <string name="liabilityInsuranceDesc">Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Mit einer Haftpflichtversicherung sind sie gegen alle Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen.</string>
+    <string name="liabilityInsuranceDesc">Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Damit sind sie gegen Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen.</string>
     <string name="go">LOS!</string>
     <string name="introExampleRelation">0/25</string>
     <string name="party">Einweihungsfeier</string>

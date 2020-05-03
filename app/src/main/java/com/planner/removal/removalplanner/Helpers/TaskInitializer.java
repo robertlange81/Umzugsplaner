@@ -17,13 +17,6 @@ import java.util.TimeZone;
 
 public class TaskInitializer {
 
-    public static boolean isInitialized;
-    public static void CreateDefaultTasks(Date defaultDate) {
-        if(!isInitialized) {
-
-        }
-    }
-
     public static void InitTasks(Date removalDate, Location location, Activity mainActivity) {
 
         Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
@@ -155,12 +148,12 @@ public class TaskInitializer {
         Task.addTask(handoverOldFlat);
 
         // Schlüsselübergabe
-        Task handoverNewFlat = new Task(mainActivity.getString(R.string.handoverNewFlat), mainActivity.getString(R.string.handoverNewFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.High, 0L,
+        Task handoverNewFlat = new Task(mainActivity.getString(R.string.handoverNewFlat), mainActivity.getString(R.string.handoverNewFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -3) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.NewFlat), location);
         Task.addTask(handoverNewFlat);
 
         // Malern - Schönheitsreparaturen
-        Task renovateOldFlat = new Task(mainActivity.getString(R.string.renovateOldFlat), mainActivity.getString(R.string.renovateOldFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.High, 0L,
+        Task renovateOldFlat = new Task(mainActivity.getString(R.string.renovateOldFlat), mainActivity.getString(R.string.renovateOldFlatDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, 3) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.OldFlat), location);
         renovateOldFlat.addLink(mainActivity.getString(R.string.renovationObligation), mainActivity.getString(R.string.renovationObligationLINK));
         Task.addTask(renovateOldFlat);
@@ -172,7 +165,7 @@ public class TaskInitializer {
         Task.addTask(preserveArtisanBills);
 
         // Sperrmüll
-        Task bulkyWaste = new Task(mainActivity.getString(R.string.bulkyWaste), mainActivity.getString(R.string.bulkyWasteDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.Normal, 0L,
+        Task bulkyWaste = new Task(mainActivity.getString(R.string.bulkyWaste), mainActivity.getString(R.string.bulkyWasteDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, 1) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.OldFlat), location);
         Task.addTask(bulkyWaste);
 
@@ -194,8 +187,8 @@ public class TaskInitializer {
         Task.addTask(oldRentDeposit);
 
         // Umzugskartons / Müllsäcke
-        Task packingMaterial = new Task(mainActivity.getString(R.string.packingMaterial), mainActivity.getString(R.string.packingMaterialDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -14) : null, Priority.High, 0L,
-                new TaskType(TaskTypeMain.OldFlat), location);
+        Task packingMaterial = new Task(mainActivity.getString(R.string.packingMaterial), mainActivity.getString(R.string.packingMaterialDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -20) : null, Priority.High, 0L,
+                new TaskType(TaskTypeMain.Movement), location);
         packingMaterial.addLink(mainActivity.getString(R.string.packingMaterialMovingBoxes), mainActivity.getString(R.string.packingMaterialMovingBoxesEbayLINK));
         packingMaterial.addLink(mainActivity.getString(R.string.packingMaterialTrashBags), mainActivity.getString(R.string.packingMaterialTrashBagsAmazonLINK));
         packingMaterial.addLink(mainActivity.getString(R.string.packingMaterialAirCushionFoil), mainActivity.getString(R.string.packingMaterialAirCushionFoilAmazonLINK));

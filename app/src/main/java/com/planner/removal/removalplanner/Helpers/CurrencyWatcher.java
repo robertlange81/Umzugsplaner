@@ -26,6 +26,9 @@ public class CurrencyWatcher implements android.text.TextWatcher {
   @Override
   public void afterTextChanged(Editable s) {
 
+    if(_task == null)
+      return;
+
     if (s == sigNumbers.getEditableText()) {
       _task.costs = _task.costs % 100;
       sigNumbersChanged(sigNumbers);
@@ -36,6 +39,9 @@ public class CurrencyWatcher implements android.text.TextWatcher {
   }
 
   private void sigNumbersChanged(EditText current) {
+
+    if(_task == null)
+      return;
 
     sigNumbers.removeTextChangedListener(this);
 
@@ -113,5 +119,9 @@ public class CurrencyWatcher implements android.text.TextWatcher {
 
   public void setTask(Task t) {
     _task = t;
+  }
+
+  public void destroy() {
+    this._task = null;
   }
 }

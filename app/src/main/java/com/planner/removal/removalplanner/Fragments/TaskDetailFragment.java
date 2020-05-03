@@ -786,6 +786,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if(f != null)
         f.clearFocus();
     }
+
+    txtCostsSig.removeTextChangedListener(currencyWatcher);
+    txtCostsFractions.removeTextChangedListener(currencyWatcher);
+    currencyWatcher.destroy();
     super.onPause();
     stopTimerThread();
   }
@@ -799,6 +803,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     }
     txtCostsSig.removeTextChangedListener(currencyWatcher);
     txtCostsFractions.removeTextChangedListener(currencyWatcher);
+    currencyWatcher.destroy();
     stopTimerThread();
     super.onDestroy();
     instance = null;
