@@ -1,7 +1,9 @@
 package com.planner.removal.removalplanner.Helpers;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 
+import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
@@ -11,6 +13,7 @@ import com.planner.removal.removalplanner.R;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 public class TaskInitializer {
 
@@ -23,16 +26,23 @@ public class TaskInitializer {
 
     public static void InitTasks(Date removalDate, Location location, Activity mainActivity) {
 
-        Date today = Calendar.getInstance().getTime();
+        Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
         today.setHours(0);
         today.setMinutes(0);
-        Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 13);
+        Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 1);
 
         // Umzugstermin selbst
         if(removalDate != null) {
             Task removal = new Task(mainActivity.getString(R.string.removalDate), mainActivity.getString(R.string.removalDateDesc), new Date(removalDate.getTime()), Priority.High, 0L,
                     new TaskType(TaskTypeMain.Movement), location);
             Task.addTask(removal);
+
+            SharedPreferences prefs = MainActivity.instance.getSharedPreferences("removal", 0);
+            if(prefs != null) {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putLong("removal_timestamp", removalDate.getTime());
+                editor.apply();
+            }
 
             removalDate.setHours(0);
             removalDate.setMinutes(0);
@@ -120,7 +130,7 @@ public class TaskInitializer {
         Task.addTask(requestSpecialLeave);
 
         // Kautionskonto
-        Task rentalDepositAccount = new Task(mainActivity.getString(R.string.rentalDepositAccount), mainActivity.getString(R.string.rentalDepositAccountDesc), today, Priority.Normal, 0L,
+        Task rentalDepositAccount = new Task(mainActivity.getString(R.string.rentalDepositAccount), mainActivity.getString(R.string.rentalDepositAccountDesc), removalDate != null ? addMonthDaysToJavaUtilDate(removalDate, 0, -30) : null , Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Contracts), location);
         rentalDepositAccount.addLink(mainActivity.getString(R.string.rentalDepositAccountExplanation), mainActivity.getString(R.string.rentalDepositAccountExplanationLINK));
         Task.addTask(rentalDepositAccount);

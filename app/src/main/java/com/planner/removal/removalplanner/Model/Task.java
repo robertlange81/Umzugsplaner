@@ -12,9 +12,12 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.planner.removal.removalplanner.Activities.MainActivity;
+import com.planner.removal.removalplanner.Fragments.DialogFragmentInit;
 import com.planner.removal.removalplanner.Helpers.DBConverter.UuidConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
@@ -32,8 +35,10 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - beim ersten Release Links verstecken
+    - Hinweis, wenn keine neue Liste erzeugt wurde
+    - Ortsangabe auch bei Neustart auf Liste / Dialog
     - Orte -> Routenplaner !!! Parkplatz, Umzugstag usw.
-    - Countdown wenn Liste vorhanden
     - Import / Export !!!
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Ziel-date im Hintergrund

@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         if (!prefs.getBoolean("did_init", false)) {
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("did_init", true);
-            editor.commit();
+            editor.apply();
             showDetailDialog(DialogFragmentInit.class, new String[0]);
             return;
         }
@@ -922,23 +922,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             final Runnable updater = new Runnable() {
                 public void run() {
                     while (!updaterThread.isInterrupted()) {
-                        try {
-                            synchronized (this) {
-                                if(needsUpdate) {
-                                    handler.post(new Runnable(){
-                                        public void run() {
-                                            Log.d("needsUpdate", "true");
-                                            SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
-                                        }
-                                    });
-                                    needsUpdate = false;
-                                }
-                                Thread.sleep(300);
+                        synchronized (this) {
+                            if(needsUpdate) {
+                                handler.postDelayed(new Runnable(){
+                                    public void run() {
+                                        Log.d("needsUpdate", "true");
+                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
+                                    }
+                                }, 300);
+                                needsUpdate = false;
                             }
-                        }
-                        catch (InterruptedException e) {
-                            updaterThread.interrupt();
-                            e.printStackTrace();
                         }
                     }
                 }

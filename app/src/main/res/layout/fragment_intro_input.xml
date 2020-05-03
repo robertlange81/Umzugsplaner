@@ -23,12 +23,12 @@
             <!-- label location -->
             <TableRow
                 android:id="@+id/intro_location_label"
-                android:paddingTop="15sp"
+                android:paddingTop="@dimen/introTopMargin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/detail_row_margin_top">
+                android:layout_marginTop="50dp">
 
                 <LinearLayout
                     android:layout_height="wrap_content"
@@ -132,13 +132,14 @@
                     android:layout_alignParentStart="true" />
 
             </TableRow>
+
             <!-- label date / time -->
             <TableRow
                 android:id="@+id/intro_init_date_label"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
-                android:layout_marginTop="50sp"
+                android:layout_marginTop="40sp"
                 android:gravity="top">
 
                 <LinearLayout
@@ -213,7 +214,8 @@
                 android:id="@+id/init_date_display"
                 android:layout_below="@id/init_second_line"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/detail_row_height"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/detail_row_height"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top">
 
@@ -223,7 +225,7 @@
                     android:focusable="false"
                     android:tag="@string/placeholder_date_long"
                     android:gravity="bottom|center_vertical"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:id="@+id/init_deadline"
                     android:textSize="@dimen/detail_text_size"
                     android:inputType="text|time"

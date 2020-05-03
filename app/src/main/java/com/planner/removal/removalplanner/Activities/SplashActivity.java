@@ -32,12 +32,12 @@ public class SplashActivity extends Activity {
             //some heavy processing resulting in a Data String
             try {
                 Thread.sleep(1000);
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                intent.putExtra(MainActivity.START_FROM_PAUSED_ACTIVITY_FLAG, true);
-                startActivity(intent);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            intent.putExtra(MainActivity.START_FROM_PAUSED_ACTIVITY_FLAG, true);
+            startActivity(intent);
             return "done";
         }
 

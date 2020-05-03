@@ -231,4 +231,5 @@
     <string name="find_by_name">Find task by name</string>
     <string name="name_of_task">task title</string>
     <string name="filter">search</string>
+    <string name="zero">0</string>
 </resources>

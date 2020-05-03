@@ -324,7 +324,7 @@
                     android:tag="@string/placeholder_link"
                     android:singleLine="false"
                     android:minLines="1"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:paddingLeft="5dp"
                     android:textColorLink="@color/colorGreen"
                     android:textSize="@dimen/detail_text_size"
@@ -378,7 +378,7 @@
                     android:layout_height="match_parent"
                     android:singleLine="false"
                     android:minLines="1"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 
@@ -425,7 +425,7 @@
                     android:inputType="textMultiLine|textWebEditText"
                     android:singleLine="false"
                     android:minLines="1"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -482,7 +482,7 @@
                     android:layout_height="match_parent"
                     android:singleLine="false"
                     android:minLines="1"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 
@@ -534,7 +534,7 @@
                     android:layout_height="match_parent"
                     android:singleLine="false"
                     android:minLines="1"
-                    android:maxLines="2"
+                    android:maxLines="3"
                     android:selectAllOnFocus="true"
                     android:linksClickable="false" />
 

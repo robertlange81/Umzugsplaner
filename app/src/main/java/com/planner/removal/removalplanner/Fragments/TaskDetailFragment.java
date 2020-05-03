@@ -736,11 +736,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Runnable updater = new Runnable() {
       public void run() {
         while (!updaterThread.isInterrupted()) {
-          try {
             if (needsUpdate) {
               needsUpdate = false;
 
-              handler.post(new Runnable() {
+              handler.postDelayed(new Runnable() {
                 public void run() {
                   ((Activity) rootView.getContext()).runOnUiThread(new Runnable() {
                     @Override
@@ -758,12 +757,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
                     }
                   });
                 }
-              });
+              }, 250);
             }
-            Thread.sleep(250);
-          } catch (InterruptedException e) {
-            e.printStackTrace();
-          }
         }
       }
     };

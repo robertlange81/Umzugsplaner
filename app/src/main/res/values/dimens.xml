@@ -41,7 +41,7 @@
     <dimen name="action_button_text_size">20dp</dimen>
     <dimen name="text_size_input">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
-    <dimen name="detail_text_size">18sp</dimen>
+    <dimen name="detail_text_size">16sp</dimen>
     <dimen name="detail_text_size_small">13sp</dimen>
     <dimen name="detail_text_size_large">28sp</dimen>
     <dimen name="detail_spinner_text_size">22sp</dimen>
@@ -69,8 +69,11 @@
 
     <dimen name="md_bottom_sheet_separator_top_margin">7dp</dimen>
     <dimen name="dialog_row_margin_top">25dip</dimen>
-    <dimen name="introLineHeigth">40sp</dimen>
     <dimen name="init_row_edit_padding_bottom">10sp</dimen>
-
+    <dimen name="introLineHeight">30dp</dimen>
+    <dimen name="introTopMargin">0dp</dimen>
+    <dimen name="introOverviewMarginLR">5dp</dimen>
+    <dimen name="introTopTextMargin">15sp</dimen>
+    <dimen name="introTextMarginLR">20sp</dimen>
 </resources>
 
