@@ -94,7 +94,7 @@
     <string name="rentalContractNewTrapsLink">https://ratgeber.immowelt.de/a/mietvertrag-vorsicht-fallen.html</string>
     <string name="rentalContractNewTips">Tipps zum Mietvertrag</string>
     <string name="rentalContractNewTipsLINK">https://www.nach-dem-abitur.de/mietvertrag-tipps</string>
-    <string name="informOldAndNewNeighbours">Nachbarn (Alte und Neue) informieren</string>
+    <string name="informOldAndNewNeighbours">Alte und neue Nachbarn informieren</string>
     <string name="informOldAndNewNeighboursDesc">Informieren Sie Ihre alten und neuen Nachbarn per Aushang über Ihren Umzug. Beachten Sie auch die Ruhezeiten. Üblicherweise von 13 Uhr bis 15 Uhr und 20 Uhr bis 7 Uhr. Nutzen Sie zudem die Gelegenheit, um Ihre Türschilder anzubringen, damit die Post und Speditionen Sie erreichen.</string>
     <string name="informOldAndNewNeighboursDoorSigns">Türschilder aussuchen</string>
     <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b&tag=robroyrich-21]]></string>
@@ -132,21 +132,21 @@
     <string name="requestSpecialLeave">(Sonder-)Urlaub beantragen</string>
     <string name="requestSpecialLeaveDesc">Vergessen Sie nicht Urlaub zu beantragen. In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
-    <string name="rentalDepositAccount">Kautionssparbuch</string>
+    <string name="rentalDepositAccount">Kaution überweisen</string>
     <string name="rentalDepositAccountDesc">Die Kaution können Sie statt dem Vermieter direkt zu überweisen alternativ auf einem sog. Mietkautionssparbuch hinterlegen. Vorteil ist eine Absicherung vor Insolvenz etc. des Vermieters.</string>
     <string name="rentalDepositAccountExplanation">Was ist ein Kautionssparbuch?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
     <string name="start">neuen Umzug anlegen</string>
     <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
     <string name="compareContracts">Jetzt Tarife vergleichen</string>
-    <string name="compareContractVerivox">Jetzt Tarife bei Verivox vergleichen</string>
-    <string name="compareContractCheck24">Jetzt Tarife bei Check24 vergleichen</string>
-    <string name="compareEnergyContractVerivox">Jetzt Stromtarife bei Verivox vergleichen</string>
-    <string name="compareEnergyContractCheck24">Jetzt Stromtarife bei Check24 vergleichen</string>
+    <string name="compareContractVerivox">Tarife bei Verivox</string>
+    <string name="compareContractCheck24">Tarife bei Check24</string>
+    <string name="compareEnergyContractVerivox">Stromtarife bei Verivox</string>
+    <string name="compareEnergyContractCheck24">Stromtarife bei Check24</string>
     <string name="energyContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=stromanbieter-wechseln&cat=1]]></string>
     <string name="energyContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=37&cpid=1&prid=93&subid=&target=stromvergleich_2019-09]]></string>
-    <string name="compareGasContractVerivox">Jetzt Gastarife bei Verivox vergleichen</string>
-    <string name="compareGasContractCheck24">Jetzt Gastarife bei Check24 vergleichen</string>
+    <string name="compareGasContractVerivox">Gastarife bei Verivox</string>
+    <string name="compareGasContractCheck24">Gastarife bei Check24</string>
     <string name="gasContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=31&cpid=1&prid=99&subid=&target=gasvergleich_2019-09]]></string>
     <string name="gasContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=gasanbieter-wechseln&cat=3]]></string>
     <string name="internetContractCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
@@ -154,15 +154,15 @@
     <string name="householdInsurance">Hausratversicherung</string>
     <string name="householdInsuranceDesc">Passen Sie Ihre alte Hausratversicherung an und informieren Sie Ihren Versicherer über ihre neue Adresse. Sollten Sie noch über keine (günstige) Hausratversicherung verfügen, ist jetzt ein guter Zeitpunkt zum Abschließen bzw. Wechseln. Gegen Schäden, die durch Einbruch, Diebstahl, Feuer oder das Wetter am Hausrat entstehen, sind Sie damit optimal abgesichert.</string>
     <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
-    <string name="movingVan">Umzugswagen</string>
+    <string name="movingVan">Umzugswagen organisieren</string>
     <string name="movingVanDesc">Organisieren Sie ein oder mehrere Fahrzeuge zum Transport. Selbst bei Beauftragung einer Spedition kann dies sinnvoll sein.</string>
     <string name="movingVanCompare">Mietwagen finden</string>
     <string name="movingVanCheck24LINK"><![CDATA[https://a.check24.net/misc/click.php?pid=133701&aid=18&deep=dsl-anbieterwechsel&cat=4]]></string>
     <string name="organizeHelper">Umzugshelfer organisieren</string>
-    <string name="organizeHelperDesc">Fragen Sie in Ihrem Freundeskreis, nutzen Sie eine Doodle-Umfrage, beauftragen Sie ein Umzugsunternehmen oder heuern Sie Hilfkräfte an. Falls Sie planen ohne Spedition umzuziehen, sollten Sie sich eine Sackkarre, Tragegurte, Handschuhe und alte Decken beschaffen. Ihr Rücken wird es Ihnen danken ;-)</string>
+    <string name="organizeHelperDesc">Fragen Sie in Ihrem Freundeskreis, nutzen Sie eine Doodle-Umfrage, beauftragen Sie ein Umzugsunternehmen oder heuern Sie Hilfskräfte an. Falls Sie planen ohne Spedition umzuziehen, sollten Sie sich eine Sackkarre, Tragegurte, Handschuhe und alte Decken beschaffen. Ihr Rücken wird es Ihnen danken ;-)</string>
     <string name="handoverOldFlat">Wohnungsabnahme</string>
     <string name="handoverOldFlatDesc">Vereinbaren Sie einen Termin zur Wohnungsübergabe der alten Wohnung. Lesen Sie ggfls. Zählerstände vorher ab und melden dies an den Versorger. Leeren Sie auch noch einmal Ihren Briefkasten.</string>
-    <string name="handoverNewFlat">Übergabe neue Wohnung</string>
+    <string name="handoverNewFlat">Übernahme neue Wohnung</string>
     <string name="handoverNewFlatDesc">Vereinbaren Sie einen Termin zur Schlüsselübergabe für die neue Wohnung. Notieren Sie sorgfältig mit Fotos Schäden. Die Bestätigung der Übergabe können Sie für die Ummeldung des Wohnsitzes verwenden.</string>
     <string name="renovateOldFlat">Wohnungsrenovierung</string>
     <string name="renovateOldFlatDesc">Prüfen Sie inwieweit Sie vertraglich verpflichtet sind, die alte Wohnung zu streichen. Falls nötig beauftragen Sie ein günstiges Unternehmen bei MyHammer etc. oder führen die Arbeiten selbst fachmännisch durch.</string>
@@ -181,13 +181,13 @@
     <string name="organizeHelperWorkGloves">Arbeitshandschuhe bei Amazon</string>
     <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/product/B0798RGXS1/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=B0798RGXS1&linkCode=as2&tag=robroyrich-21&linkId=d6687bc4bd9f826e6b127ac172413183]]></string>
     <string name="previousDay">Vorbereitungen am Vortag</string>
-    <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Sinnvoll ist es auch, Ihr Umzugsgut zu beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten. Zuguterletzte, denken Sie daran früh ins Bett zu gehen.</string>
+    <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Sinnvoll ist es auch, Ihr Umzugsgut zu beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten. Zuguterletzt: denken Sie daran früh ins Bett zu gehen.</string>
     <string name="oldRentDepositHowItWorks">Wie funktioniert die Rückzahlung der Mietkaution?</string>
     <string name="oldRentDeposit">Alte Kaution</string>
-    <string name="oldRentDepositDesc">Vergessen Sie nicht die Mietkaution Ihres alten Vermieters. Vorsicht! Bleiben Sie bitte aktiv : Sie sollten in Ihrem eigenen Interesse nicht einfach abwarten, bis der Vermieter eines schönen Tages seinen Pflichten nachzukommt, denn es gibt eine 3-jährige Verjährungsfrist für Ihren Anspruch auf die Rückzahlung der Kaution. Ist die Frist verstrichen, ohne dass Sie nachweislich etwas dagegen unternommen haben, ist Ihr Geld weg, auch wenn Sie sich nichts haben zuschulden kommen lassen. Ebenso hzaben Sie Anrecht auf eine Nebenkostenabrechnung. Diese können Sie anteilig bei der Steuererklärung absetzen und erhalten oft eine Rückzahlung bei unterjährigem Auszug.</string>
+    <string name="oldRentDepositDesc">Vergessen Sie nicht die Mietkaution Ihres alten Vermieters. Vorsicht! Bleiben Sie bitte aktiv : Sie sollten in Ihrem eigenen Interesse nicht einfach abwarten, bis der Vermieter eines schönen Tages seinen Pflichten nachkommt, denn es gibt eine 3-jährige Verjährungsfrist für Ihren Anspruch auf die Rückzahlung der Kaution. Ist die Frist verstrichen, ohne dass Sie nachweislich etwas dagegen unternommen haben, ist Ihr Geld weg, auch wenn Sie sich nichts haben zuschulden kommen lassen. Ebenso haben Sie Anrecht auf eine Nebenkostenabrechnung. Diese können Sie anteilig bei der Steuererklärung absetzen und erhalten oft eine Rückzahlung bei unterjährigem Auszug.</string>
     <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
     <string name="cordonOffParkingLot">Parkplatz sperren</string>
-    <string name="cordonOffParkingLotDesc">Sperren Sie rechtzeitig vor dem Unzug die Parkplätze vor dem alten und neuen Domizil ab.</string>
+    <string name="cordonOffParkingLotDesc">Sperren Sie rechtzeitig vor dem Umzug die Parkplätze vor dem alten und neuen Domizil ab.</string>
     <string name="cordonOffParkingLotHowTo">Wie richtig absperren?</string>
     <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
     <string name="packingMaterial">Verpackungsmaterial</string>
@@ -204,7 +204,7 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="removalDate">UMZUGSTERMIN</string>
     <string name="removalDateDesc"><![CDATA[Denken Sie daran, die Möbel zuerst zu verladen. Wenn noch nicht geschehen, sollten Sie Ihr Umzugsgut beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten.]]></string>
-    <string name="compareLiabilityInsurance">compare liability insurances</string>
+    <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
     <string name="liabilityInsurance">Haftplfichtversicherung</string>
     <string name="liabilityInsuranceDesc">Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Mit einer Haftpflichtversicherung sind sie gegen alle Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen.</string>
@@ -219,7 +219,7 @@
     <string name="postal">Plz</string>
     <string name="place">Ort</string>
     <string name="street">Straße</string>
-    <string name="houseNumber">Hausnummer</string>
+    <string name="houseNumber">HausNr</string>
     <string name="deleteAll">alle löschen</string>
     <string name="partyEbay">Partyartikel bei Ebay</string>
     <string name="legendExportLong">in Google Kalender exportieren</string>
@@ -240,4 +240,10 @@
     <string name="name_of_task">Name der Aufgabe</string>
     <string name="filter">Suche</string>
     <string name="zero">0</string>
+    <string name="introDateNecessary">Richten Sie einen (neuen) Umzug ein. Geben Sie möglichst ein Datum an.</string>
+    <string name="days">Tage</string>
+    <string name="hours">Stunden</string>
+    <string name="minits">Minuten</string>
+    <string name="untilRemoval">BIS ZUM UMZUG</string>
+    <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
 </resources>

@@ -139,12 +139,12 @@
                                 android:layout_marginTop="@dimen/dialog_row_margin_top"
                                 android:layout_weight="1">
                                 <Button
+                                    android:id="@+id/detail_btn_date_export"
                                     android:layout_height="@dimen/introLineHeight"
                                     android:layout_width="wrap_content"
                                     android:layout_marginLeft="5sp"
                                     android:layout_marginRight="5sp"
                                     android:text="@string/placeholder_date_export"
-                                    android:id="@+id/detail_btn_date_export"
                                     android:drawableLeft="@android:drawable/ic_menu_add"
                                     android:drawableRight="@android:drawable/ic_menu_my_calendar"
                                     android:backgroundTint="@color/colorPrimaryDark"

@@ -4,19 +4,31 @@ import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Model.Task;
 
 public class DateComparator implements ComparatorSortable {
+
+    private final boolean ignoreSpecialOptions;
+
+    public DateComparator(boolean ignoreSpecialOptions) {
+        this.ignoreSpecialOptions = ignoreSpecialOptions;
+    }
+
+    public DateComparator() {
+        super();
+        ignoreSpecialOptions = false;
+    }
+
     @Override
     public int compare(Task o1, Task o2) {
 
         int cmpr = 0;
 
-        if(MainActivity.instance.getHideDoneTasksChecked()) {
+        if(!ignoreSpecialOptions && MainActivity.instance.getHideDoneTasksChecked()) {
             if(o1.is_Done && !o2.is_Done)
                 cmpr = 1;
             if(!o1.is_Done && o2.is_Done)
                 cmpr = -1;
         }
 
-        if(cmpr == 0 && MainActivity.instance.getHideNormalPrioTasksChecked()) {
+        if(!ignoreSpecialOptions && cmpr == 0 && MainActivity.instance.getHideNormalPrioTasksChecked()) {
             cmpr = o1.priority.compareTo(o2.priority) * -1;
         }
 

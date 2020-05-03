@@ -124,7 +124,7 @@
     <string name="requestSpecialLeave">Apply for special leave</string>
     <string name="requestSpecialLeaveDesc">Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
-    <string name="rentalDepositAccount">Security deposit book</string>
+    <string name="rentalDepositAccount">Security deposit</string>
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
     <string name="rentalDepositAccountExplanation">What is a deposit savings book?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
@@ -195,7 +195,7 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="removalDate">MOVING DATE</string>
     <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
-    <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
+    <string name="compareLiabilityInsurance">compare liability insurances</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
     <string name="liabilityInsurance">Liability insurance</string>
     <string name="liabilityInsuranceDesc">There are a number of different types of insurance available to protect your own home from damage. Private liability insurance is an absolute must.  With liability insurance, you are insured against all claims for property damage, personal injury or financial loss if a third party has been damaged. In contrast to other insurance companies, private liability is also relatively cheap.  You have to budget around 70 euros a year.</string>
@@ -232,4 +232,10 @@
     <string name="name_of_task">task title</string>
     <string name="filter">search</string>
     <string name="zero">0</string>
+    <string name="introDateNecessary">Set up a (new) move. If possible, enter a date.</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minits">Minutes</string>
+    <string name="untilRemoval">UNTIL MOVING DATE</string>
+    <string name="introNextTasks">Your next tasks:</string>
 </resources>

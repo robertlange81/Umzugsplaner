@@ -7,7 +7,6 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -64,7 +63,7 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
         txtDeadline = (EditText) view.findViewById(R.id.detail_deadline);
         checkBoxDeleteOld = (CheckBox) view.findViewById(R.id.init_checkBox_delete_old);
 
-        if(Task.TASK_LIST != null && Task.TASK_LIST.size() == 0) {
+        if(Task.getTaskList() != null && Task.getTaskList().size() == 0) {
             checkBoxDeleteOld.setVisibility(View.GONE);
         } else {
             checkBoxDeleteOld.setVisibility(View.VISIBLE);

@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -107,11 +106,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        super.onCreate(savedInstanceState);
-
         if (isStartedFromBackgroundActivity())
             moveTaskToBack(true);
+
+        super.onCreate(savedInstanceState);
 
         instance = this;
         if(TaskFormater.currentLocal == null) {
@@ -150,25 +148,25 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         });
 
         if (getBaseContext().getResources().getInteger(R.integer.orientation) == 0) {
-            // The detail container view will be present only in the
-            // large-screen layouts (res/values-w800dp).
-            // If this view is present, then the
-            // activity should be in two-pane mode.
             mTwoPane = true;
-
+            /*
             if(this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 return;
             }
+            */
         }
 
-        Persistance.LoadTasks(this);
         comparatorConfig = new ComparatorConfig();
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
-        // moveTaskToBack(true);
+
+        moveTaskToBack(true);
+        Intent intent = new Intent(MainActivity.this, SplashActivity.class);
+        intent.putExtra(MainActivity.START_FROM_PAUSED_ACTIVITY_FLAG, true);
+        startActivity(intent);
     }
 
     private boolean isStartedFromBackgroundActivity() {
@@ -178,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-        if(Task.TASK_LIST.size() > 0) {
+        if(Task.getTaskList().size() > 0) {
             Intent intent = new Intent(this, IntroActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             this.startActivity(intent);
@@ -226,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         SpannableString s;
 
         int taskCount = 0, done = 0;
-        for(Task task: Task.TASK_LIST) {
+        for(Task task: Task.getTaskList()) {
             if(task.is_Done) {
                 done++;
             }
@@ -490,7 +488,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         if(comparatorConfig.sortableMap != null) {
             ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
             if(comparatorSortable != null) {
-                Collections.sort(Task.TASK_LIST, comparatorSortable);
+                Collections.sort(Task.getTaskList(), comparatorSortable);
                 // JAVA 8
                 //.thenComparing(new PriorityComparator())
                 //.thenComparing(new NameComparator()));
@@ -528,12 +526,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         itemDecor.setDrawable(recyclerView.getContext().getResources().getDrawable(R.drawable.listview_border));
         recyclerView.addItemDecoration(itemDecor);
 
-        adapter = new SimpleItemRecyclerViewAdapter(this, Task.TASK_LIST, mTwoPane);
+        adapter = new SimpleItemRecyclerViewAdapter(this, Task.getTaskList(), mTwoPane);
         adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
         adapter.startTimerThread();
     }
 
+    /**
+     *
+     * @param t null to update all tasts
+     * @param a null to only update recycler view
+     */
     public static void NotifyTaskChanged(Task t, Activity a) {
         NotifyTaskChanged(t, a, true);
     }
@@ -554,7 +557,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
-            for(Task task: Task.TASK_LIST) {
+            for(Task task: Task.getTaskList()) {
                 // TODO use t.id
                 if(task.id.equals(SimpleItemRecyclerViewAdapter.activeRowItemId)) {
                     if(recyclerView != null)
@@ -567,7 +570,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 taskCount++;
             }
         } else {
-            for(Task task: Task.TASK_LIST) {
+            for(Task task: Task.getTaskList()) {
                 if(task.is_Done) {
                     done++;
                 }
@@ -590,16 +593,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void onDestroy() {
         Persistance.CheckQueue();
         Persistance.SaveTasks(this);
-        super.onDestroy();
         if(adapter != null)
             adapter.stopTimerThread();
-    }
-
-    public void onStop() {
-        if(!isAppOnForeground(this)) {
-            Persistance.ReplaceAllTasks(this);
-        }
-        super.onStop();
+        super.onDestroy();
     }
 
     public boolean getHideDoneTasksChecked() {
@@ -631,7 +627,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         public void onClick(View view) {
 
             view.setBackgroundColor(Color.parseColor("#000000"));
-            int rowCount = Task.TASK_LIST.size();
+            int rowCount = Task.getTaskList().size();
             for(int i = 0; i < rowCount; i++) {
                 View v = recyclerView.getLayoutManager().findViewByPosition(i);
                 if(v != null && v != view)
@@ -683,10 +679,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             mValues = taskList;
             mParentActivity = parent;
             mTwoPane = twoPane;
-        }
-
-        public void updateData(List<Task> list){
-            mValues = list;
         }
 
         public void add(Task task) {
@@ -838,7 +830,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                 }
 
                                 int done = 0, taskCount = 0;
-                                for(Task task: Task.TASK_LIST) {
+                                for(Task task: Task.getTaskList()) {
                                     if(task.is_Done) {
                                         done++;
                                     }
@@ -1031,7 +1023,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 Persistance.PruneAllTasks(instance, false,null, null);
-                instance.adapter.notifyDataSetChanged();
+                NotifyTaskChanged(null, null);
                 Intent intent = new Intent(instance, IntroActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 instance.startActivity(intent);

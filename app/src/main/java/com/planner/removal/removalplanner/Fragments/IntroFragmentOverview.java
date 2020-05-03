@@ -1,6 +1,7 @@
 package com.planner.removal.removalplanner.Fragments;
 
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Helpers.Comparators.DateComparator;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
@@ -20,9 +20,9 @@ import java.util.TimeZone;
 public class IntroFragmentOverview extends Fragment {
 
     TextView days, hours, minits;
-    TextView task1, task2, task3;
+    TextView taskTextView;
 
-    static String bullet = " • ";
+    static String bullet = "• ";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,12 +30,11 @@ public class IntroFragmentOverview extends Fragment {
 
         View rootView   = inflater.inflate(R.layout.fragment_intro_overview, container, false);
 
-        SharedPreferences prefs = MainActivity.instance.getSharedPreferences("removal", 0);
+        SharedPreferences prefs = this.getContext().getSharedPreferences("removal", 0);
         long removalTimestamp = prefs.getLong("removal_timestamp", 0L);
 
         long now = Calendar.getInstance(TimeZone.getDefault()).getTimeInMillis();
         if(removalTimestamp != 0) {
-
 
             // print days
             long diff = removalTimestamp - now;
@@ -56,33 +55,40 @@ public class IntroFragmentOverview extends Fragment {
             minits.setText(String.valueOf(minitsNumber));
         }
 
-        Collections.sort(Task.TASK_LIST, new DateComparator());
-
+        Task.lock.lock();
+        Collections.sort(Task.getTaskList(), new DateComparator(true));
         int showNextTasksNumber = 0;
         String nextTaskName[] = new String[3];
-        for(Task task: Task.TASK_LIST) {
-            if(!task.is_Done && task.date != null && task.date.getTime() > now) {
+        for(Task task: Task.getTaskList()) {
+            if(!task.is_Done && task.date != null) {
                 nextTaskName[showNextTasksNumber] = task.name;
-                showNextTasksNumber++;
 
-                if(showNextTasksNumber >= 3)
+                if(showNextTasksNumber == 0) {
+                    taskTextView = rootView.findViewById(R.id.intro_overview_next_0);
+                }
+
+                if(showNextTasksNumber == 1) {
+                    taskTextView = rootView.findViewById(R.id.intro_overview_next_1);
+                }
+
+                if(showNextTasksNumber == 2) {
+                    taskTextView = rootView.findViewById(R.id.intro_overview_next_2);
+                }
+
+                taskTextView.setText(bullet + nextTaskName[showNextTasksNumber]);
+                if(task.date.getTime() < now) {
+                    taskTextView.setTextColor(Color.RED);
+                }
+
+                if(++showNextTasksNumber >= 3)
                     break;
             }
         }
+        Task.lock.unlock();
 
-        if(nextTaskName[0] != null) {
-            task1  = rootView.findViewById(R.id.intro_overview_next_1);
-            task1.setText(bullet + nextTaskName[0]);
-        }
-
-        if(nextTaskName[1] != null) {
-            task2  = rootView.findViewById(R.id.intro_overview_next_2);
-            task2.setText(bullet + nextTaskName[1]);
-        }
-
-        if(nextTaskName[2] != null) {
-            task3  = rootView.findViewById(R.id.intro_overview_next_3);
-            task3.setText(bullet + nextTaskName[2]);
+        if(taskTextView == null) {
+            taskTextView = rootView.findViewById(R.id.intro_overview_next_0);
+            taskTextView.setText(bullet + getString(R.string.introDateNecessary));
         }
 
         return rootView;

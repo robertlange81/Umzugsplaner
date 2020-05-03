@@ -3,5 +3,5 @@
     <dimen name="introOverviewMarginLR">50dp</dimen>
     <dimen name="introTopMargin">80dp</dimen>
     <dimen name="introTopTextMargin">40sp</dimen>
-    <dimen name="introTextMarginLR">20sp</dimen>
+    <dimen name="introTextMarginLR">5sp</dimen>
 </resources>

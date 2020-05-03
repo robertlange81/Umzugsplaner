@@ -72,8 +72,8 @@
     <dimen name="init_row_edit_padding_bottom">10sp</dimen>
     <dimen name="introLineHeight">30dp</dimen>
     <dimen name="introTopMargin">0dp</dimen>
-    <dimen name="introOverviewMarginLR">5dp</dimen>
+    <dimen name="introOverviewMarginLR">0dp</dimen>
     <dimen name="introTopTextMargin">15sp</dimen>
-    <dimen name="introTextMarginLR">20sp</dimen>
+    <dimen name="introTextMarginLR">10sp</dimen>
 </resources>
 

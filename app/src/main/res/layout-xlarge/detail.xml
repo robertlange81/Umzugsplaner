@@ -55,7 +55,7 @@
                 android:paddingTop="10sp"
                 android:textSize="@dimen/headline_text_size"
                 android:selectAllOnFocus="true"
-                android:inputType="text" />
+                android:inputType="textNoSuggestions" />
 
         </TableRow>
 
@@ -294,7 +294,7 @@
                     android:drawableRight="@drawable/ic_link_black_24dp"
                     android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_link_input"
-                    android:inputType="textMultiLine|textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
@@ -350,7 +350,7 @@
                     android:paddingLeft="5dp"
                     android:hint="@string/placeholder_link_input"
                     android:gravity="start|center_vertical"
-                    android:inputType="textMultiLine|textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
@@ -402,7 +402,7 @@
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
                     android:gravity="start|center_vertical"
-                    android:inputType="textMultiLine|textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -452,7 +452,7 @@
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
                     android:gravity="start|center_vertical"
-                    android:inputType="textMultiLine|textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
@@ -506,7 +506,7 @@
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
                     android:gravity="start|bottom"
-                    android:inputType="textMultiLine|textWebEditText"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
                     android:layout_width="match_parent"
@@ -670,9 +670,9 @@
                     android:layout_marginBottom="5dp">
 
                     <Button
+                        android:id="@+id/detail_btn_date_export"
                         android:layout_height="match_parent"
                         android:text="@string/placeholder_date_export"
-                        android:id="@+id/detail_btn_date_export"
                         android:drawableLeft="@android:drawable/ic_menu_add"
                         android:drawableRight="@android:drawable/ic_menu_my_calendar"
                         android:layout_weight="1"

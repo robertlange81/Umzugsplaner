@@ -26,15 +26,18 @@ import com.planner.removal.removalplanner.Helpers.DBConverter.TimestampConverter
 
 import java.io.Serializable;
 import java.util.UUID;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Entity
 public class Task implements Serializable {
 
-    public static final List<Task> TASK_LIST = new ArrayList<Task>();
+    private static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<UUID, Task> TASK_MAP = new HashMap<UUID, Task>();
+    public static ReentrantLock lock = new ReentrantLock();
 
     /*
     TODO / FIXME / Ideen:
+    - DetailFragment wirklich immer zerstören?
     - beim ersten Release Links verstecken
     - Hinweis, wenn keine neue Liste erzeugt wurde
     - Ortsangabe auch bei Neustart auf Liste / Dialog
@@ -153,6 +156,10 @@ public class Task implements Serializable {
         createdAt = clone.createdAt;
     }
 
+    public static synchronized List<Task> getTaskList() {
+        return TASK_LIST;
+    }
+
     public void ImportTask(Task clone) {
         this.name = clone.name;
         this.description = clone.description;
@@ -172,23 +179,27 @@ public class Task implements Serializable {
         this.links.put(key, value);
     }
 
-    public static void addTask(Task task) {
+    public static synchronized void addTask(Task task) {
+        lock.lock();
         TASK_LIST.add(task);
         TASK_MAP.put(task.id, task);
+        lock.unlock();
     }
 
-    public static void removeTask(Task task) {
+    public static synchronized void removeTask(Task task) {
         TASK_LIST.remove(task);
         TASK_MAP.remove(task.id);
     }
 
-    public static void clearAll() {
+    public static synchronized void clearAll() {
+        lock.lock();
         TASK_MAP.clear();
         // TASK_MAP.remove(TASK_LIST);
         TASK_LIST.removeAll(TASK_LIST);
+        lock.unlock();
     }
 
-    public static long sumCosts(boolean onlyDone) {
+    public static synchronized long sumCosts(boolean onlyDone) {
         long retval = 0;
 
         for (Task t: TASK_LIST) {

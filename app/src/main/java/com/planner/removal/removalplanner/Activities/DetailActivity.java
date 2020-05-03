@@ -11,6 +11,7 @@ import android.view.View;
 
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Persistance;
+import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
 
 import static com.planner.removal.removalplanner.Activities.MainActivity.isAppOnForeground;
@@ -123,17 +124,18 @@ public class DetailActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.back:
-                if(MainActivity.mTwoPane) {
-                    exit();
-                } else {
-                    this.finish();
-                }
+                exit();
                 break;
             default:
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        exit();
     }
 
 
@@ -148,7 +150,6 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item)
     {
         super.onOptionsItemSelected(item);
-        // this.finish();
         exit();
         return true;
     }

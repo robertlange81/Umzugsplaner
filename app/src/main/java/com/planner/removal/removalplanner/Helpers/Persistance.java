@@ -87,7 +87,7 @@ public class Persistance {
                     }
                 }
 
-                for (Task t : Task.TASK_LIST) {
+                for (Task t : Task.getTaskList()) {
                     // TODO validate
                     try {
                         Task old = dao.get(t.id.toString());
@@ -158,7 +158,7 @@ public class Persistance {
             @Override
             protected Void doInBackground(Void... voids) {
 
-                for (Task t : Task.TASK_LIST) {
+                for (Task t : Task.getTaskList()) {
                     // TODO validate
                     try {
                         TaskDatabaseClient.getInstance(activity).getAppDatabase()
@@ -203,7 +203,7 @@ public class Persistance {
             protected void onPostExecute(List<Task> tasks) {
                 super.onPostExecute(tasks);
                 Task.TASK_MAP.clear();
-                Task.TASK_LIST.clear();
+                Task.getTaskList().clear();
                 for (Task t : tasks) {
                     Task.addTask(t);
                 }

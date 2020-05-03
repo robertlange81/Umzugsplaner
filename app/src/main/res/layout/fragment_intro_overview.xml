@@ -110,7 +110,7 @@
                                             android:layout_marginTop="6sp"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:textSize="@dimen/detail_text_size"
-                                            android:text="Tage" />
+                                            android:text="@string/days" />
                                     </LinearLayout>
 
                                     <LinearLayout
@@ -140,7 +140,7 @@
                                             android:layout_marginTop="6sp"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:textSize="@dimen/detail_text_size"
-                                            android:text="Stunden" />
+                                            android:text="@string/hours" />
                                     </LinearLayout>
 
                                     <LinearLayout
@@ -170,7 +170,7 @@
                                             android:layout_marginTop="6sp"
                                             android:textAppearance="?android:attr/textAppearanceMedium"
                                             android:textSize="@dimen/detail_text_size"
-                                            android:text="Minuten" />
+                                            android:text="@string/minits" />
                                     </LinearLayout>
                                 </TableRow>
 
@@ -182,7 +182,7 @@
                                     android:fontFamily="serif-monospace"
                                     android:gravity="center|center_vertical"
                                     android:maxLines="1"
-                                    android:text="BIS ZUM UMZUG"
+                                    android:text="@string/untilRemoval"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:textColor="@color/colorGrey"
                                     android:textStyle="bold"
@@ -204,15 +204,16 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif-monospace"
                                 android:gravity="center|center_vertical"
-                                android:text="Ihre nächsten Aufgaben:"
+                                android:text="@string/introNextTasks"
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="#ff33ee33"
                                 android:textStyle="bold"
                                 android:textSize="@dimen/detail_text_size" />
 
                             <TextView
-                                android:id="@+id/intro_overview_next_1"
+                                android:id="@+id/intro_overview_next_0"
                                 android:layout_marginTop="@dimen/introTopTextMargin"
+                                android:paddingTop="5dp"
                                 android:layout_marginEnd="@dimen/introTextMarginLR"
                                 android:layout_marginRight="@dimen/introTextMarginLR"
                                 android:layout_marginStart="@dimen/introTextMarginLR"
@@ -221,7 +222,24 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif-monospace"
                                 android:gravity="start"
-                                android:text=" • "
+                                android:text=""
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/detail_text_size" />
+
+                            <TextView
+                                android:id="@+id/intro_overview_next_1"
+                                android:layout_marginEnd="@dimen/introTextMarginLR"
+                                android:layout_marginRight="@dimen/introTextMarginLR"
+                                android:layout_marginStart="@dimen/introTextMarginLR"
+                                android:layout_marginLeft="@dimen/introTextMarginLR"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif-monospace"
+                                android:gravity="start"
+                                android:paddingTop="5dp"
+                                android:text=""
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorWhite"
                                 android:textStyle="bold"
@@ -236,24 +254,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="serif-monospace"
+                                android:paddingTop="5dp"
                                 android:gravity="start"
-                                android:text=" • "
-                                android:textAppearance="?android:attr/textAppearanceMedium"
-                                android:textColor="@color/colorWhite"
-                                android:textStyle="bold"
-                                android:textSize="@dimen/detail_text_size" />
-
-                            <TextView
-                                android:id="@+id/intro_overview_next_3"
-                                android:layout_marginEnd="@dimen/introTextMarginLR"
-                                android:layout_marginRight="@dimen/introTextMarginLR"
-                                android:layout_marginStart="@dimen/introTextMarginLR"
-                                android:layout_marginLeft="@dimen/introTextMarginLR"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="serif-monospace"
-                                android:gravity="start"
-                                android:text=" • "
+                                android:text=""
                                 android:textAppearance="?android:attr/textAppearanceMedium"
                                 android:textColor="@color/colorWhite"
                                 android:textStyle="bold"

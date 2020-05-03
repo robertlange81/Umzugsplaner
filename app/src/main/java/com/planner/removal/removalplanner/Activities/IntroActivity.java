@@ -13,6 +13,7 @@ import com.planner.removal.removalplanner.Fragments.IntroFragmentOverview;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentHello;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentInput;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentLegend;
+import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Task;
@@ -32,7 +33,7 @@ public class IntroActivity extends AppIntro {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Task.TASK_LIST.size() == 0) {
+        if (Task.getTaskList().size() == 0) {
             fragmentHello = new IntroFragmentHello();
             fragmentInput = new IntroFragmentInput();
             fragmentLegend = new IntroFragmentLegend();
@@ -76,24 +77,33 @@ public class IntroActivity extends AppIntro {
     public void onDonePressed(Fragment currentFragment) {
         super.onDonePressed(currentFragment);
 
-        if((this.removalDate != null || this.removalLocation != null) && Task.TASK_LIST.size() == 0) {
-            TaskInitializer.InitTasks(this.removalDate, this.removalLocation, this);
-        }
-
         // Do something when users tap on Done button.
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         this.startActivity(intent);
-        if(Task.TASK_LIST.size() > 0)
-            finish();
+        finish();
     }
 
     @Override
     public void onSlideChanged(@Nullable Fragment oldFragment, @Nullable Fragment newFragment) {
         super.onSlideChanged(oldFragment, newFragment);
-        if(oldFragment instanceof IntroFragmentInput && newFragment instanceof IntroFragmentLegend && Task.TASK_LIST.size() == 0) {
+        if(oldFragment instanceof IntroFragmentInput && newFragment instanceof IntroFragmentLegend) {
+
+            if(this.removalDate == null && fragmentInput.getRemovalDate() != null
+                    || this.removalLocation == null && fragmentInput.getRemovalLocation() != null
+                    || this.removalDate != null && !this.removalDate.equals(fragmentInput.getRemovalDate())
+                    || (this.removalLocation != null && !this.removalLocation.equals(fragmentInput.getRemovalLocation()))) {
+                // User comes back
+                Persistance.PruneAllTasks(this, false,null, null);
+            }
+
             this.removalDate = fragmentInput.getRemovalDate();
             this.removalLocation = fragmentInput.getRemovalLocation();
+
+            // preload new task for performance reasons
+            if((this.removalDate != null || this.removalLocation != null) && Task.getTaskList().size() == 0) {
+                TaskInitializer.InitTasks(this.removalDate, this.removalLocation, this);
+            }
         }
     }
 }

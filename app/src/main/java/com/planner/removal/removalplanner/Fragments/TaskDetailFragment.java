@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -707,11 +706,15 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         return;
       }
 
+      Date exportDate = new Date(_task.date.getTime());
+      if (exportDate.getHours() == 0) {
+        exportDate.setHours(8);
+      }
       Intent intent = new Intent(Intent.ACTION_EDIT);
       intent.setType("vnd.android.cursor.item/event");
       intent.putExtra("beginTime", _task.date.getTime());
       intent.putExtra(CalendarContract.Events.ALL_DAY, false);
-      intent.putExtra("endTime", _task.date.getTime() + 60 * 60 * 1000);
+      intent.putExtra("endTime", exportDate);
       intent.putExtra(CalendarContract.Events.DESCRIPTION, _task.description);
       intent.putExtra(CalendarContract.Events.DISPLAY_COLOR, Color.MAGENTA);
       intent.putExtra(CalendarContract.Events.TITLE, _task.name);

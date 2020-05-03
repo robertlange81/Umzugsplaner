@@ -13,11 +13,11 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Persistance.LoadTasks(SplashActivity.this);
         if(getBaseContext().getResources().getInteger(R.integer.orientation) == 0) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
         setContentView(R.layout.splash);
+        Persistance.LoadTasks(SplashActivity.this);
         startHeavyProcessing();
     }
 
@@ -35,16 +35,12 @@ public class SplashActivity extends Activity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-            intent.putExtra(MainActivity.START_FROM_PAUSED_ACTIVITY_FLAG, true);
-            startActivity(intent);
             return "done";
         }
 
         @Override
         protected void onPostExecute(String result) {
             Intent i = new Intent(SplashActivity.this, IntroActivity.class);
-            // i.putExtra("data", result);
             startActivity(i);
             finish();
         }
