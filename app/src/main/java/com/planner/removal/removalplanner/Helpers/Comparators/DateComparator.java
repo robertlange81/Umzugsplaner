@@ -20,12 +20,15 @@ public class DateComparator implements ComparatorSortable {
             cmpr = o1.priority.compareTo(o2.priority) * -1;
         }
 
+        if(cmpr != 0)
+            return cmpr;
+
         if(o1.date == null && o2.date != null)
             return -1;
         if(o1.date != null && o2.date == null)
             return 1;
 
-        if(cmpr == 0 && o1.date != null)
+        if(o1.date != null)
             cmpr = o1.date.compareTo(o2.date);
 
         // then by name

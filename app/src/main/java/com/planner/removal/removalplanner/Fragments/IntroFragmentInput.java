@@ -26,12 +26,9 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
     Button btnDatePicker;
     Button btnTimePicker;
     // Button btnLocationPicker;
-    CheckBox checkBoxDeleteOld;
     EditText txtDeadline, txtPostal, txtStreet, txtPlace, txtHouseNumber;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
-    Location tempLocation;
-    private DialogFragmentInit.InitDialogListener mListener;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

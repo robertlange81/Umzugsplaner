@@ -19,13 +19,16 @@ public class TypeComparator implements ComparatorSortable {
         if(cmpr == 0)
             cmpr = new Integer(o1.type.getValue()).compareTo(o2.type.getValue());
 
+        if(cmpr != 0)
+            return cmpr;
+
         // then by date
         if(o1.date == null && o2.date != null)
             return -1;
         if(o1.date != null && o2.date == null)
             return 1;
 
-        if(cmpr == 0 && o1.date != null)
+        if(o1.date != null)
             cmpr = o1.date.compareTo(o2.date);
 
         // then by name

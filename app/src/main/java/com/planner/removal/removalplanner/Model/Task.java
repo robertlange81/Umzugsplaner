@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.TreeMap;
 
 import android.arch.persistence.room.ColumnInfo;
@@ -33,18 +32,18 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - Countdown oder kurzes Tutorial am Anfang
+    - Orte -> Routenplaner !!! Parkplatz, Umzugstag usw.
+    - Countdown wenn Liste vorhanden
+    - Import / Export !!!
+    - Icon / Bild zu jedem Task (im Hintergrund)
     - Ziel-date im Hintergrund
-    - Suche
-    - Orte hinzufügen -> Routenplaner !!!
+    - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
-    - Import / Export (zuletzt) !!!
     - Ausdrucken / PDF erstellen / per Mail senden
     - Coronaliste
     - Hochzeitsliste
     - Babyliste
     - Synchronisieren
-    - Hintergrundbild (Grundriss / Baby)
     - Content Provider ???
     - Bild statt Link
      */
@@ -86,12 +85,38 @@ public class Task implements Serializable {
     @TypeConverters({LinkMapConverter.class})
     public TreeMap<String,String> links; // 128
 
-    public Task(String _name, String _description, Date _date, Priority _priority, long _costs, TaskType _type) {
+    @ColumnInfo(name = "locationZip")
+    public String locationZip; // 256
+
+    @ColumnInfo(name = "locationPlace")
+    public String locationPlace; // 512
+
+    @ColumnInfo(name = "locationStreet")
+    public String locationStreet; // 1024
+
+    @ColumnInfo(name = "locationStreetNumber")
+    public String locationStreetNumber; // 2048
+
+    public Task(String _name,
+                String _description,
+                Date _date,
+                Priority _priority,
+                long _costs,
+                TaskType _type,
+                Location location
+    ) {
         this(_name, _description);
         this.date = _date;
         this.priority = _priority;
         this.costs = _costs;
         this.type = _type;
+
+        if(location != null) {
+            this.locationZip = location.getPostal();
+            this.locationPlace = location.getPlace();
+            this.locationStreet = location.getStreet();
+            this.locationStreetNumber = location.getStreetNumber();
+        }
     }
 
     public Task(String name, String description) {

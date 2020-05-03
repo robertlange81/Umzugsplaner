@@ -622,13 +622,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/input_margin"
                     android:textSize="@dimen/detail_text_size"
-                    android:text="@string/placeholder_date" />
+                    android:text="@string/placeholder_date_long" />
 
                 <EditText
                     android:layout_weight="1"
                     android:clickable="false"
                     android:focusable="false"
-                    android:tag="@string/placeholder_date"
+                    android:tag="@string/placeholder_date_long"
                     android:gravity="start|center_vertical"
                     android:hint="@string/placeholder_date_input"
                     android:layout_height="match_parent"

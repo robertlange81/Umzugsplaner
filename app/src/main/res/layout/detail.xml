@@ -649,7 +649,7 @@
                     android:layout_weight="1"
                     android:clickable="false"
                     android:focusable="false"
-                    android:tag="@string/placeholder_date"
+                    android:tag="@string/placeholder_date_long"
                     android:gravity="end"
                     android:hint="@string/placeholder_date_input"
                     android:layout_height="match_parent"

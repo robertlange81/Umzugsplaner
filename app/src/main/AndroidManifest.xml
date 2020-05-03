@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Activities.SplashScreen"
+        <activity android:name=".Activities.SplashActivity"
             android:screenOrientation="locked"
             android:configChanges="keyboardHidden|orientation"
             tools:ignore="ManifestResource"

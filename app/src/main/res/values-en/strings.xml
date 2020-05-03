@@ -17,7 +17,8 @@
     <string name="placeholder_costs">costs</string>
     <string name="placeholder_costs_significant_detail">Dollar</string>
     <string name="placeholder_costs_decimal_detail">Cent</string>
-    <string name="placeholder_date">deadline</string>
+    <string name="placeholder_date_long">deadline</string>
+    <string name="placeholder_date">target</string>
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_date_export"></string>
     <string name="placeholder_date_input">date (time)</string>
@@ -67,8 +68,8 @@
     <string name="Remind_me_later">Remind me later</string>
     <string name="No_thanks">No, thanks</string>
     <string name="back">back</string>
-    <string name="placeholder_hide_done">hide done</string>
-    <string name="placeholder_hide_low_prio">hide low prio</string>
+    <string name="placeholder_hide_done">Hide Done</string>
+    <string name="placeholder_hide_low_prio">Hide Low Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&i=electronics&linkCode=ur2&tag=robroyrich-21&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
@@ -210,7 +211,7 @@
     <string name="place">place</string>
     <string name="street">street</string>
     <string name="houseNumber">number</string>
-    <string name="deleteAll">delete all tasks</string>
+    <string name="deleteAll">Delete All Tasks</string>
     <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
     <string name="partyEbay">Party items on Ebay</string>
     <string name="legendExportLong">Export to Google Calendar</string>
@@ -225,4 +226,9 @@
     <string name="legendDone">set task done</string>
     <string name="legendPrio">set priority</string>
     <string name="legendExport">calendar export</string>
+    <string name="deleteAllTasks">Delete all tasks?</string>
+    <string name="delete_all">Yes, All</string>
+    <string name="find_by_name">Find task by name</string>
+    <string name="name_of_task">task title</string>
+    <string name="filter">search</string>
 </resources>

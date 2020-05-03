@@ -30,7 +30,7 @@
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
-        android:id="@+id/search"
+        android:id="@+id/searchMenuItem"
         android:icon="@drawable/ic_search_black_24dp"
         android:orderInCategory="4"
         android:text="@string/currency"

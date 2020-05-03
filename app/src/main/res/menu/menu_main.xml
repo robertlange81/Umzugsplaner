@@ -18,7 +18,8 @@
         android:textSize="200sp"
         app:showAsAction="always" />
     <item
-        android:id="@+id/search"
+        android:id="@+id/searchMenuItem"
+        android:checkable="true"
         android:icon="@drawable/ic_search_black_24dp"
         android:orderInCategory="90"
         android:text="@string/currency"
@@ -30,14 +31,6 @@
         android:icon="@drawable/ic_fiber_new_black_24dp"
         android:text="@string/start"
         android:title="@string/start"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/delete_all"
-        android:orderInCategory="98"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:text="@string/deleteAll"
-        android:title="@string/deleteAll"
         app:showAsAction="never" />
 
     <item
@@ -78,7 +71,14 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/sortByType"
-        android:orderInCategory="105"
+        android:orderInCategory="106"
         android:title="@string/sortbyType"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/delete_all"
+        android:orderInCategory="107"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:text="@string/deleteAll"
+        android:title="@string/deleteAll"
         app:showAsAction="never" />
 </menu>

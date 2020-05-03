@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,11 +37,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.planner.removal.removalplanner.BuildConfig;
 import com.planner.removal.removalplanner.Fragments.DialogFragmentCosts;
 import com.planner.removal.removalplanner.Fragments.DialogFragmentInit;
 import com.planner.removal.removalplanner.Fragments.DialogFragmentInit.InitDialogListener;
@@ -59,7 +61,6 @@ import com.planner.removal.removalplanner.R;
 import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem;
+    MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem;
     TextView showOverview;
     DialogFragment dialog;
     Menu topMenu;
@@ -177,6 +178,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
+        if(Task.TASK_LIST.size() > 0) {
+            Intent intent = new Intent(this, IntroActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            this.startActivity(intent);
+        }
     }
 
     @Override
@@ -232,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         } else {
             s.setSpan(new ForegroundColorSpan(Color.rgb(0,255,60)), 0, s.length(), 0);
         }
+
         showOverview = findViewById(R.id.menuText);
         if(showOverview != null) {
             instance.showOverview.setText(done + "/" + taskCount);
@@ -241,8 +248,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 instance.showOverview.setTextColor(Color.rgb(0,255,60));
             }
         }
-        initDialogMenuItem = topMenu.findItem(R.id.start_new);
 
+        searchByTitleFilterMenuItem = topMenu.findItem(R.id.searchMenuItem);
+
+        initDialogMenuItem = topMenu.findItem(R.id.start_new);
         if(initDialogMenuItem != null) {
             s = new SpannableString(initDialogMenuItem.getTitle());
             s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorYellow)), 0, s.length(), 0);
@@ -250,15 +259,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         initDialogMenuItem.setTitle(s);
 
         deleteAllMenuItem = topMenu.findItem(R.id.delete_all);
-        if (BuildConfig.DEBUG) {
-            if(deleteAllMenuItem != null) {
-                s = new SpannableString(deleteAllMenuItem.getTitle());
-                s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
-            }
-            deleteAllMenuItem.setTitle(s);
-        } else {
-            deleteAllMenuItem.setVisible(false);
+        if(deleteAllMenuItem != null) {
+            s = new SpannableString(deleteAllMenuItem.getTitle());
+            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
         }
+        deleteAllMenuItem.setTitle(s);
 
         hideDoneTasksMenuItem = topMenu.findItem(R.id.show_open_only);
         hideDoneTasksMenuItem.setChecked(getHideDoneTasksChecked());
@@ -337,6 +342,30 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
+        if(item == deleteAllMenuItem) {
+            MainActivity.showDeleteAllTasksDialog(this, instance);
+            return true;
+        }
+
+        if(item == searchByTitleFilterMenuItem) {
+            item.setChecked(!item.isChecked());
+            if(item.isChecked()) {
+                MainActivity.showFilterTitleDialog(this, instance, item);
+                return true;
+            }
+
+            Drawable drawable = item.getIcon();
+            if(drawable != null) {
+                drawable.mutate();
+                drawable.setColorFilter(getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+            }
+
+            // unset filter
+            instance.adapter.setTitleFilter(null);
+            instance.adapter.notifyDataSetChanged();
+            return true;
+        }
+
         if(item == initDialogMenuItem) {
             String[] init = new String[0];
             showDetailDialog(DialogFragmentInit.class, init);
@@ -388,10 +417,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             item.setTitle(s);
 
             return true;
-        }
-
-        if(item == deleteAllMenuItem) {
-            Persistance.PruneAllTasks(MainActivity.this, false,null, null);
         }
 
         // assume sorting select
@@ -634,6 +659,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
     };
         private boolean hideDoneTasks, hideNormalPrio;
+        private String titleFilter;
         private int activeRowPos;
 
         public void setFragmentTwoPane (Task t) {
@@ -686,7 +712,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             final Task task = mValues.get(position);
 
-            if(task.is_Done && this.hideDoneTasks || task.priority == Priority.Normal && this.hideNormalPrio) {
+            if(task.is_Done && this.hideDoneTasks
+                    || task.priority == Priority.Normal && this.hideNormalPrio
+                    || this.titleFilter != null && !this.titleFilter.isEmpty() && !task.name.toLowerCase().contains(this.titleFilter)) {
                 holder.itemView.setVisibility(View.GONE);
                 holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
                 holder.row.setBackgroundColor(Color.TRANSPARENT);
@@ -858,6 +886,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             this.hideNormalPrio = hideNormalPrio;
         }
 
+        public void setTitleFilter(String titleFilter) {
+            this.titleFilter = titleFilter != null ? titleFilter.toLowerCase() : titleFilter;
+        }
+
         class ViewHolder extends RecyclerView.ViewHolder {
             // rows content of main list
             final RelativeLayout row;
@@ -935,5 +967,92 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
         return ret;
+    }
+
+    public static void showFilterTitleDialog(Context context, final MainActivity instance, final MenuItem menuItem)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+
+        alert.setTitle(context.getString(R.string.find_by_name));
+
+        LinearLayout container = new LinearLayout(instance);
+        container.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        lp.setMargins(30, 0, 30, 0);
+        final EditText input = new EditText(context);
+        input.setLayoutParams(lp);
+        input.setGravity(android.view.Gravity.TOP|android.view.Gravity.LEFT);
+        input.setLines(1);
+        input.setMaxLines(1);
+        input.setHint(context.getString(R.string.name_of_task));
+        container.addView(input);
+
+        // Set an EditText view to get user input
+        alert.setView(container);
+
+        alert.setPositiveButton(context.getString(R.string.filter), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                String value = input.getText().toString();
+                Drawable drawable = menuItem.getIcon();
+                drawable.mutate();
+                if(value.isEmpty()) {
+                    menuItem.setChecked(false);
+                    drawable.setColorFilter(instance.getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+                } else {
+                    menuItem.setChecked(true);
+                    drawable.setColorFilter(instance.getResources().getColor(R.color.colorGreen), PorterDuff.Mode.SRC_ATOP);
+                }
+                instance.adapter.setTitleFilter(value);
+                instance.adapter.notifyDataSetChanged();
+            }
+        });
+
+        alert.setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                Drawable drawable = menuItem.getIcon();
+                if(drawable != null) {
+                    drawable.mutate();
+                    drawable.setColorFilter(instance.getResources().getColor(R.color.colorWhite), PorterDuff.Mode.SRC_ATOP);
+                }
+                menuItem.setChecked(false);
+                instance.adapter.setTitleFilter(null);
+                instance.adapter.notifyDataSetChanged();
+            }
+        });
+
+        alert.show();
+    }
+
+    public static void showDeleteAllTasksDialog(Context context, final MainActivity instance)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+
+        alert.setTitle(context.getString(R.string.deleteAllTasks));
+
+        alert.setPositiveButton(context.getString(R.string.delete_all), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                Persistance.PruneAllTasks(instance, false,null, null);
+                instance.adapter.notifyDataSetChanged();
+                Intent intent = new Intent(instance, IntroActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                instance.startActivity(intent);
+            }
+        });
+
+        alert.setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                // Canceled.
+            }
+        });
+
+        alert.show();
     }
 }

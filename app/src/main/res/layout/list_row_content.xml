@@ -146,7 +146,7 @@
                         android:gravity="end"
                         android:maxLines="1"
                         android:forceHasOverlappingRendering="true"
-                        android:text="@string/placeholder_date"
+                        android:text="@string/placeholder_date_long"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="#ff33ee33" />
                 </RelativeLayout>

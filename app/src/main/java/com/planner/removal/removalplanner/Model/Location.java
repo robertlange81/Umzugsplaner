@@ -37,7 +37,7 @@ public class Location {
         this.street = street;
     }
 
-    public String getHouseNumber() {
+    public String getStreetNumber() {
         return houseNumber;
     }
 

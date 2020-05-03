@@ -19,7 +19,7 @@ public class AppRater {
     private final static int LAUNCHES_UNTIL_PROMPT = 3;//Min number of launches
 
     public static void app_launched(Context mContext, String APP_PNAME, String APP_TITLE) {
-        SharedPreferences prefs = mContext.getSharedPreferences("apprater", 0);
+        SharedPreferences prefs = mContext.getSharedPreferences("removal", 0);
         if (prefs.getBoolean("dontshowagain", false)) { return ; }
 
         SharedPreferences.Editor editor = prefs.edit();

@@ -17,6 +17,7 @@
     <string name="placeholder_costs">Kosten</string>
     <string name="placeholder_costs_significant_detail">Euro</string>
     <string name="placeholder_costs_decimal_detail">Cent</string>
+    <string name="placeholder_date_long">Termin</string>
     <string name="placeholder_date">Termin</string>
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
@@ -233,4 +234,9 @@
     <string name="legendDone">Aufgabe erledigt</string>
     <string name="legendPrio">Priorität setzen</string>
     <string name="legendExport">Kalenderexport</string>
+    <string name="deleteAllTasks">Wirklich alle Aufgaben löschen?</string>
+    <string name="delete_all">Ja, alle</string>
+    <string name="find_by_name">Suche nach Aufgabe</string>
+    <string name="name_of_task">Name der Aufgabe</string>
+    <string name="filter">Suche</string>
 </resources>

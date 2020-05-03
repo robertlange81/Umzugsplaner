@@ -258,7 +258,7 @@
                         android:background="@drawable/edit_line_left"
                         android:clickable="false"
                         android:focusable="false"
-                        android:tag="@string/placeholder_date"
+                        android:tag="@string/placeholder_date_long"
                         android:gravity="bottom|center_vertical"
                         android:layout_height="match_parent"
                         android:id="@+id/init_deadline"
