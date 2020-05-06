@@ -162,6 +162,14 @@ public class Task implements Serializable {
         return TASK_LIST;
     }
 
+    public static synchronized List<Task> getTaskListClone() {
+        List<Task> clone = new ArrayList<Task>();
+        for(Task task: TASK_LIST) {
+            clone.add(new Task(task));
+        }
+        return clone;
+    }
+
     public void ImportTask(Task clone) {
         this.name = clone.name;
         this.description = clone.description;

@@ -15,6 +15,7 @@ import com.planner.removal.removalplanner.R;
 
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.List;
 import java.util.TimeZone;
 
 public class IntroFragmentOverview extends Fragment {
@@ -56,10 +57,12 @@ public class IntroFragmentOverview extends Fragment {
         }
 
         Task.lock.lock();
-        Collections.sort(Task.getTaskList(), new DateComparator(true));
+        List<Task> t = Task.getTaskListClone();
+        Task.lock.unlock();
+        Collections.sort(t, new DateComparator(true));
         int showNextTasksNumber = 0;
-        String nextTaskName[] = new String[3];
-        for(Task task: Task.getTaskList()) {
+        String[] nextTaskName = new String[3];
+        for(Task task: t) {
             if(!task.is_Done && task.date != null) {
                 nextTaskName[showNextTasksNumber] = task.name;
 
@@ -84,7 +87,6 @@ public class IntroFragmentOverview extends Fragment {
                     break;
             }
         }
-        Task.lock.unlock();
 
         if(taskTextView == null) {
             taskTextView = rootView.findViewById(R.id.intro_overview_next_0);
