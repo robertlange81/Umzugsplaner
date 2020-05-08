@@ -10,7 +10,7 @@
     tools:context=".Fragments.TaskDetailFragment"
     android:id="@+id/detail">
 
-<RelativeLayout
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <android.support.v7.widget.CardView
@@ -505,7 +505,7 @@
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="start|bottom"
+                    android:gravity="start|center_vertical"
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"

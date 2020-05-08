@@ -14,6 +14,8 @@
         android:background="?attr/colorPrimary"
         android:elevation="4dp" />
 
+    <include layout="@layout/include_progress_overlay"/>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -40,6 +42,7 @@
             tools:listitem="@layout/list_row_content" />
 
     </LinearLayout>
+
 
     <include
         layout="@layout/bottombar"

@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -49,6 +50,7 @@ import com.planner.removal.removalplanner.Fragments.DialogFragmentInit.InitDialo
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
+import com.planner.removal.removalplanner.Helpers.LoadingTask;
 import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
@@ -107,15 +109,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     protected void onCreate(Bundle savedInstanceState) {
         if (isStartedFromBackgroundActivity())
             moveTaskToBack(true);
-
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.list);
 
+        new LoadingTask((FrameLayout) findViewById(R.id.progress_overlay)).execute();
         instance = this;
+
         if(TaskFormater.currentLocal == null) {
             TaskFormater.setCurrentLocale(this);
         }
-
-        setContentView(R.layout.list);
 
         bottomAppBar = (BottomAppBar) findViewById(R.id.bottom_app_bar);
         if(bottomAppBar != null) {

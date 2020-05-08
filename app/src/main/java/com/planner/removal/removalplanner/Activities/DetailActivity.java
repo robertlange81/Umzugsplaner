@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
+import com.planner.removal.removalplanner.Helpers.LoadingTask;
 import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
@@ -34,6 +36,7 @@ public class DetailActivity extends AppCompatActivity {
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_detail);
+        new LoadingTask((FrameLayout) findViewById(R.id.progress_overlay)).execute();
 
         // Show the Up button in the action bar.
         /*ActionBar actionBar = getSupportActionBar();

@@ -32,7 +32,7 @@
             android:elevation="4dp" />
     </android.support.v7.widget.Toolbar>
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="wrap_content">
@@ -340,14 +340,14 @@
             <TableRow
                 android:id="@+id/detail_third_line_x1"
                 android:layout_below="@id/detail_third_line_links0"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="5dp"
-                android:weightSum="3"
-                android:visibility="gone">
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy"
@@ -365,7 +365,7 @@
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="start|bottom"
+                    android:gravity="start|center_vertical"
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
@@ -376,7 +376,8 @@
                     android:minLines="1"
                     android:maxLines="3"
                     android:selectAllOnFocus="true"
-                    android:linksClickable="false" />
+                    android:linksClickable="false"
+                    android:paddingStart="5dp" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x1"
@@ -391,15 +392,15 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_x2"
+                android:visibility="gone"
                 android:layout_below="@id/detail_third_line_x1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="5dp"
-                android:weightSum="3"
-                android:visibility="gone">
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/detail_links_label_dummy_x2"
@@ -417,7 +418,7 @@
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="start|bottom"
+                    android:gravity="start|center_vertical"
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:singleLine="false"
                     android:minLines="1"
@@ -428,7 +429,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:selectAllOnFocus="true"
-                    android:linksClickable="false" />
+                    android:linksClickable="false"
+                    android:paddingStart="5dp" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x2"
@@ -448,7 +450,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="5dp"
                 android:weightSum="3"
                 android:visibility="gone" >
@@ -469,7 +471,7 @@
                     android:textColorLink="@color/colorGreen"
                     android:tag="@string/placeholder_link"
                     android:paddingLeft="5dp"
-                    android:gravity="start|bottom"
+                    android:gravity="start|center_vertical"
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
@@ -501,7 +503,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="-10dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginBottom="5dp"
                 android:weightSum="3"
                 android:visibility="gone" >
@@ -524,7 +526,7 @@
                     android:paddingLeft="5dp"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
-                    android:gravity="start|bottom"
+                    android:gravity="start|center_vertical"
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -532,7 +534,8 @@
                     android:minLines="1"
                     android:maxLines="3"
                     android:selectAllOnFocus="true"
-                    android:linksClickable="false" />
+                    android:linksClickable="false"
+                    android:paddingStart="5dp" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/detail_delete_links_icon_x4"
