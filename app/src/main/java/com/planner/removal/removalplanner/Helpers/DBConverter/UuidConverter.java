@@ -2,8 +2,6 @@ package com.planner.removal.removalplanner.Helpers.DBConverter;
 
 import android.arch.persistence.room.TypeConverter;
 
-import com.planner.removal.removalplanner.Model.TaskType;
-
 import java.util.UUID;
 
 

@@ -2,11 +2,9 @@ package com.planner.removal.removalplanner.Helpers.DBConverter;
 
 import android.arch.persistence.room.TypeConverter;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;

@@ -10,11 +10,10 @@ import android.support.v4.app.Fragment;
 import android.widget.Button;
 
 import com.github.paolorotolo.appintro.AppIntro;
-import com.planner.removal.removalplanner.Fragments.IntroFragmentOverview;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentHello;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentInput;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentLegend;
-import com.planner.removal.removalplanner.Helpers.Command;
+import com.planner.removal.removalplanner.Fragments.IntroFragmentOverview;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Model.Location;

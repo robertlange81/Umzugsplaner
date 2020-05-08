@@ -1,5 +1,21 @@
 package com.planner.removal.removalplanner.Model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
+import android.support.annotation.NonNull;
+import android.util.Log;
+
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
+import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.TaskTypeConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.TimestampConverter;
+import com.planner.removal.removalplanner.Helpers.DBConverter.UuidConverter;
+
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,26 +24,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
-import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.util.Log;
-
-import com.planner.removal.removalplanner.Activities.MainActivity;
-import com.planner.removal.removalplanner.Fragments.DialogFragmentInit;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
-import com.planner.removal.removalplanner.Helpers.DBConverter.UuidConverter;
-import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
-import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
-import com.planner.removal.removalplanner.Helpers.DBConverter.TaskTypeConverter;
-import com.planner.removal.removalplanner.Helpers.DBConverter.TimestampConverter;
-
-import java.io.Serializable;
 import java.util.UUID;
 import java.util.concurrent.locks.ReentrantLock;
 

@@ -2,9 +2,6 @@ package com.planner.removal.removalplanner.Helpers;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-
-import com.planner.removal.removalplanner.Activities.MainActivity;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
 import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
