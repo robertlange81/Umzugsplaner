@@ -2,6 +2,7 @@ package com.planner.removal.removalplanner.Model;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +19,8 @@ import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Fragments.DialogFragmentInit;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
+import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
 import com.planner.removal.removalplanner.Helpers.DBConverter.UuidConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.LinkMapConverter;
 import com.planner.removal.removalplanner.Helpers.DBConverter.PriorityConverter;
@@ -37,13 +40,14 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
+    - Beim ersten Starten noch keine Sortierung?
+    - Loader
     - beim ersten Release Links verstecken
     - MyHammer Alternative
+    - Orientierung Tablet
     - DetailFragment wirklich immer zerstören vs Bug CurrencyWatcher?
     - negative Beträge
-    - Hinweis, wenn keine neue Liste erzeugt wurde
     - Ortsangabe auch bei Neustart auf Liste / Dialog
-    - Orte -> Routenplaner !!! Parkplatz, Umzugstag usw.
     - Import / Export !!!
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Hintergrundbild (Grundriss / Baby)
@@ -106,6 +110,8 @@ public class Task implements Serializable {
 
     @ColumnInfo(name = "locationStreetNumber")
     public String locationStreetNumber; // 2048
+
+    private static ComparatorConfig comparatorConfig;
 
     public Task(String _name,
                 String _description,
@@ -273,5 +279,27 @@ public class Task implements Serializable {
 
         // TODO: hashCode for links necessary (currently final)?
         return hash;
+    }
+
+
+    public static boolean SortBy(ComparatorConfig.SortType sortType) {
+
+        if(comparatorConfig == null)
+            comparatorConfig = new ComparatorConfig();
+
+        if(comparatorConfig.sortableMap != null) {
+            ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
+            if(comparatorSortable != null) {
+                Task.lock.lock();
+                Collections.sort(Task.getTaskList(), comparatorSortable);
+                Task.lock.unlock();
+                // JAVA 8
+                //.thenComparing(new PriorityComparator())
+                //.thenComparing(new NameComparator()));
+                return true;
+            }
+        }
+
+        return false;
     }
 }

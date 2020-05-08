@@ -49,7 +49,6 @@ import com.planner.removal.removalplanner.Fragments.DialogFragmentInit.InitDialo
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.Command;
 import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorConfig;
-import com.planner.removal.removalplanner.Helpers.Comparators.ComparatorSortable;
 import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
@@ -60,10 +59,7 @@ import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -73,7 +69,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public static MainActivity instance;
     public static boolean mTwoPane;
     private SimpleItemRecyclerViewAdapter adapter;
-    private static ComparatorConfig comparatorConfig;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
     MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem;
@@ -161,16 +156,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             */
         }
 
-        comparatorConfig = new ComparatorConfig();
+        /*
+        int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+        if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+            Task.lock.lock();
+            Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
+            Task.lock.unlock();
+        }*/
 
         recyclerView = (RecyclerView) findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
-
-        moveTaskToBack(true);
-        Intent intent = new Intent(MainActivity.this, SplashActivity.class);
-        intent.putExtra(MainActivity.START_FROM_PAUSED_ACTIVITY_FLAG, true);
-        startActivity(intent);
     }
 
     private boolean isStartedFromBackgroundActivity() {
@@ -190,6 +186,18 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     {
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
+
+        /*
+        if(newList) {
+            newList = false;
+            int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
+            if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
+                Task.lock.lock();
+                Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
+                Task.lock.unlock();
+            }
+        }
+        */
 
         try {
             AppRater.app_launched(
@@ -288,7 +296,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
         if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-            SortBy(ComparatorConfig.SortType.values()[sortId]);
 
             MenuItem item = null;
             if (sortId == ComparatorConfig.SortType.COSTS.getValue()) {
@@ -301,11 +308,18 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 item = topMenu.findItem(R.id.sortByName);
             } else if (sortId == ComparatorConfig.SortType.PRIORITY.getValue()) {
                 item = topMenu.findItem(R.id.sortByPriority);
+            } else if (sortId == ComparatorConfig.SortType.TYPE.getValue()) {
+                item = topMenu.findItem(R.id.sortByType);
+            }
+
+            int itemColor = Color.rgb(255, 255, 255);
+            if(Task.getTaskList().size() > 0 && Task.SortBy(ComparatorConfig.SortType.values()[sortId])) {
+                itemColor = Color.rgb(0, 255, 60);
             }
 
             if (item != null) {
                 s = new SpannableString(item.getTitle());
-                s.setSpan(new ForegroundColorSpan(Color.rgb(0, 255, 60)), 0, s.length(), 0);
+                s.setSpan(new ForegroundColorSpan(itemColor), 0, s.length(), 0);
                 item.setTitle(s);
                 lastMenuItem = item;
             }
@@ -381,7 +395,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId]);
+                Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
             return true;
@@ -395,7 +409,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId]);
+                Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
             if(!item.isChecked()) {
@@ -455,7 +469,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(sortType != null && !sortType.equals(ComparatorConfig.SortType.NONE)) {
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
-            SortBy(sortType);
+            Task.SortBy(sortType);
             adapter.notifyDataSetChanged();
 
             return true;
@@ -495,22 +509,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         showDetailDialog(DialogFragmentCosts.class, costs);
 
         return true;
-    }
-
-    public static boolean SortBy(ComparatorConfig.SortType sortType) {
-
-        if(comparatorConfig.sortableMap != null) {
-            ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
-            if(comparatorSortable != null) {
-                Collections.sort(Task.getTaskList(), comparatorSortable);
-                // JAVA 8
-                //.thenComparing(new PriorityComparator())
-                //.thenComparing(new NameComparator()));
-                return true;
-            }
-        }
-
-        return false;
     }
 
     public void showDetailDialog(Class<?> clazz, String[] msg) {
@@ -562,13 +560,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         int taskCount = 0, done = 0;
 
-        if(a != null) {
+        if(a != null && MainActivity.instance != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort,
                     (a instanceof DetailActivity ? MainActivity.instance : a)
             );
 
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
-                SortBy(ComparatorConfig.SortType.values()[sortId]);
+                Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
             for(Task task: Task.getTaskList()) {

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.planner.removal.removalplanner.Activities.MainActivity;
@@ -87,6 +88,7 @@ public class Persistance {
                     }
                 }
 
+                Task.lock.lock();
                 for (Task t : Task.getTaskList()) {
                     // TODO validate
                     try {
@@ -100,6 +102,7 @@ public class Persistance {
                         Log.e("Save Task to sqlite", e.getMessage());
                     }
                 }
+                Task.lock.unlock();
 
                 return null;
             }
@@ -158,6 +161,7 @@ public class Persistance {
             @Override
             protected Void doInBackground(Void... voids) {
 
+                Task.lock.lock();
                 for (Task t : Task.getTaskList()) {
                     // TODO validate
                     try {
@@ -168,6 +172,7 @@ public class Persistance {
                         Log.e("Save Task to sqlite", e.getMessage());
                     }
                 }
+                Task.lock.unlock();
                 return null;
             }
 
@@ -294,10 +299,10 @@ public class Persistance {
     public static boolean SaveSetting(SettingType settingType, int value, Activity activity) {
 
         try {
-            SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt(settingType.toString(), value);
-            editor.apply();
+            editor.commit();
             return true;
         } catch (Throwable t) {
             Log.e("Save setting", t.getMessage());
@@ -307,7 +312,7 @@ public class Persistance {
     }
 
     public static int LoadSetting(SettingType settingType, Activity activity) {
-        SharedPreferences sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
         return sharedPref.getInt(settingType.toString(), 0);
     }
 }

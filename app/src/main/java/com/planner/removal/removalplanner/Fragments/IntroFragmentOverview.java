@@ -57,12 +57,12 @@ public class IntroFragmentOverview extends Fragment {
         }
 
         Task.lock.lock();
-        List<Task> t = Task.getTaskListClone();
+        List<Task> taskListClone = Task.getTaskListClone();
         Task.lock.unlock();
-        Collections.sort(t, new DateComparator(true));
+        Collections.sort(taskListClone, new DateComparator(true));
         int showNextTasksNumber = 0;
         String[] nextTaskName = new String[3];
-        for(Task task: t) {
+        for(Task task: taskListClone) {
             if(!task.is_Done && task.date != null) {
                 nextTaskName[showNextTasksNumber] = task.name;
 

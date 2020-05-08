@@ -15,6 +15,7 @@ import com.planner.removal.removalplanner.Fragments.IntroFragmentHello;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentInput;
 import com.planner.removal.removalplanner.Fragments.IntroFragmentLegend;
 import com.planner.removal.removalplanner.Helpers.Command;
+import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Task;
@@ -35,6 +36,10 @@ public class IntroActivity extends AppIntro {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(TaskFormater.currentLocal == null) {
+            TaskFormater.setCurrentLocale(this);
+        }
+
         if (Task.getTaskList().size() == 0) {
             fragmentHello = new IntroFragmentHello();
             fragmentLegend = new IntroFragmentLegend();
