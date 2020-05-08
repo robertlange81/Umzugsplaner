@@ -15,6 +15,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -53,13 +54,16 @@ import com.planner.removal.removalplanner.Helpers.Persistance;
 import com.planner.removal.removalplanner.Helpers.TaskFormater;
 import com.planner.removal.removalplanner.Helpers.TaskInitializer;
 import com.planner.removal.removalplanner.Model.AppRater;
+import com.planner.removal.removalplanner.Model.Location;
 import com.planner.removal.removalplanner.Model.Priority;
 import com.planner.removal.removalplanner.Model.Task;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -176,11 +180,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-        if(Task.getTaskList().size() > 0) {
-            Intent intent = new Intent(this, IntroActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-            this.startActivity(intent);
-        }
+        Intent intent = new Intent(this, IntroActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        this.startActivity(intent);
     }
 
     @Override
@@ -188,15 +190,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     {
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
-
-        SharedPreferences prefs = MainActivity.this.getSharedPreferences("removal", 0);
-        if (!prefs.getBoolean("did_init", false)) {
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("did_init", true);
-            editor.apply();
-            showDetailDialog(DialogFragmentInit.class, new String[0]);
-            return;
-        }
 
         try {
             AppRater.app_launched(
@@ -453,6 +446,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             case R.id.showCostsMenuItem:
                 showCosts();
                 break;
+            case R.id.goToLocation:
+                goToLocation();
+                break;
             default:
                 sortType = ComparatorConfig.SortType.IS_DONE;
         }
@@ -466,6 +462,24 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToLocation() {
+        SharedPreferences prefs = MainActivity.instance.getSharedPreferences("removal", 0);
+
+        String url = "http://maps.google.com/maps?q=";
+        if(prefs != null) {
+            url += prefs.getString(Location.STREET, "") +
+                    "+" + prefs.getString(Location.STREETNUMBER, "") +
+                    ",+" + prefs.getString(Location.POSTAL, "") +
+                    "+" + prefs.getString(Location.PLACE, "");
+        }
+
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+            Uri.parse(url)
+        );
+
+        startActivity(intent);
     }
 
     private boolean showCosts() {

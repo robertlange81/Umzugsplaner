@@ -32,7 +32,7 @@ public class IntroFragmentOverview extends Fragment {
         View rootView   = inflater.inflate(R.layout.fragment_intro_overview, container, false);
 
         SharedPreferences prefs = this.getContext().getSharedPreferences("removal", 0);
-        long removalTimestamp = prefs.getLong("removal_timestamp", 0L);
+        long removalTimestamp = prefs.getLong("target_timestamp", 0L);
 
         long now = Calendar.getInstance(TimeZone.getDefault()).getTimeInMillis();
         if(removalTimestamp != 0) {

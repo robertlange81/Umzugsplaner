@@ -18,6 +18,14 @@
         android:textSize="200sp"
         app:showAsAction="always" />
     <item
+        android:id="@+id/goToLocation"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:orderInCategory="85"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        android:textSize="200sp"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/searchMenuItem"
         android:checkable="true"
         android:icon="@drawable/ic_search_black_24dp"

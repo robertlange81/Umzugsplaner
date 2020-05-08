@@ -219,7 +219,7 @@
     <string name="postal">Plz</string>
     <string name="place">Ort</string>
     <string name="street">Straße</string>
-    <string name="houseNumber">HausNr</string>
+    <string name="streetNumber">HausNr</string>
     <string name="deleteAll">alle löschen</string>
     <string name="partyEbay">Partyartikel bei Ebay</string>
     <string name="legendExportLong">in Google Kalender exportieren</string>
@@ -246,4 +246,6 @@
     <string name="minits">Minuten</string>
     <string name="untilRemoval">BIS ZUM UMZUG</string>
     <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
+    <string name="routeMap">Routenplan</string>
+    <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ziel angeben.</string>
 </resources>

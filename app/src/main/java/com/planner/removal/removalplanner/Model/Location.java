@@ -1,20 +1,25 @@
 package com.planner.removal.removalplanner.Model;
 
-import android.util.Log;
-
-import java.lang.reflect.Field;
-
 public class Location {
     private String postal;
     private String place;
     private String street;
-    private String houseNumber;
+    private String streetNumber;
 
-    public Location(String postal, String place, String street, String houseNumber) {
+    public static final String POSTAL = "target_location_postal";
+    public static final String PLACE = "target_location_place";
+    public static final String STREET = "target_location_street";
+    public static final String STREETNUMBER = "target_location_street_number";
+
+    public Location() {
+
+    }
+
+    public Location(String postal, String place, String street, String streetNumber) {
         this.postal = postal;
         this.place = place;
         this.street = street;
-        this.houseNumber = houseNumber;
+        this.streetNumber = streetNumber;
     }
 
     public String getPostal() {
@@ -42,11 +47,11 @@ public class Location {
     }
 
     public String getStreetNumber() {
-        return houseNumber;
+        return streetNumber;
     }
 
-    public void setHouseNumber(String houseNumber) {
-        this.houseNumber = houseNumber;
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
     public boolean equals(Object obj) {
@@ -68,7 +73,7 @@ public class Location {
         hash = 3 * hash + (this.postal == null ? 1 : this.postal.hashCode());
         hash = 3 * hash + (this.place == null ? 1 : this.place.hashCode());
         hash = 3 * hash + (this.street == null ? 1 : this.street.hashCode());
-        hash = 3 * hash + (this.houseNumber == null ? 1 : this.houseNumber.hashCode());
+        hash = 3 * hash + (this.streetNumber == null ? 1 : this.streetNumber.hashCode());
 
         return hash;
     }
