@@ -775,6 +775,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     String msg = SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources()
                             .getString(holder.ckBoxTaskDone.isChecked() ? R.string.done : R.string.todo);
                     task.is_Done = holder.ckBoxTaskDone.isChecked();
+                    View parent = (View) view.getParent();
+                    while(parent.getTag() == null) {
+                        parent = (View) parent.getParent();
+                    }
+                    Task item = (Task) parent.getTag();
+                    if(item != null)
+                        activeRowItemId = item.id;
                     OnTaskChecked(task, holder.date, holder.costs);
                     TaskDetailFragment.notifyTaskChanged();
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
