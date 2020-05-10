@@ -206,14 +206,14 @@
     <string name="removalDateDesc"><![CDATA[Denken Sie daran, die Möbel zuerst zu verladen. Wenn noch nicht geschehen, sollten Sie Ihr Umzugsgut beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten.]]></string>
     <string name="compareLiabilityInsurance">Haftpflichtversicherungen vergleichen</string>
     <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=50&cpid=1&prid=124&subid=&target=Privathaftpflichtversicherung_2019-09]]></string>
-    <string name="liabilityInsurance">Haftplfichtversicherung</string>
+    <string name="liabilityInsurance">Haftpflichtversicherung</string>
     <string name="liabilityInsuranceDesc">Um die eigene Wohnung vor Schäden abzusichern, gibt es eine Vielzahl unterschiedlicher Versicherungen. Ein absolutes Muss ist die private Haftpflichtversicherung. Damit sind sie gegen Ansprüche aus Sach-, Personen- oder Vermögensschäden versichert, wenn ein Dritter geschädigt wurde. Im Gegensatz zu anderen Versicherungen ist die private Haftpflicht außerdem relativ günstig. Im Jahr muss man hier rund 70 Euro einplanen.</string>
     <string name="go">LOS!</string>
     <string name="introExampleRelation">0/25</string>
     <string name="party">Einweihungsfeier</string>
     <string name="partyDesc">Geben Sie eine Einweihungsfeier für Freunde und Helfer in Ihrer neuen Wohnung.</string>
-    <string name="introDesc">Planen Sie Ihren Umzug mit dieser App. Alle wichtigen Aufgaben werden automatisch angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
-    <string name="introDesc2">Kategorisieren und priorisieren Sie Ihre Checkliste mit allen wichtigen Aufgaben für jede Umzugsphase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
+    <string name="introDesc">Planen Sie Ihren Umzug! Alle wichtigen Aufgaben werden für Sie angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
+    <string name="introDesc2">Kategorisieren und priorisieren Sie die Checkliste für jede Phase des Umzugs. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
     <string name="introLegend">Legende</string>
     <string name="placeholder_place_removal">Wohin wollen Sie umziehen?</string>
     <string name="postal">Plz</string>

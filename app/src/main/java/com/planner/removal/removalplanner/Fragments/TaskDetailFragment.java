@@ -178,6 +178,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
+      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
       if(_task != null && _task.id.toString().equals(taskId)) {
         isNotifyEnabled = true;
         return;
@@ -189,8 +190,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if (_task == null) {
         createNewTask(taskId);
       }
-
-      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
     }
 
     if (TaskFormater.currentLocal == null) {
@@ -335,9 +334,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
-    if(currencyWatcher == null || MainActivity.mTwoPane) {
-      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
-    }
+    currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
 
     txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
@@ -424,11 +421,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       setLinks(linkMap);
 
     txtCostsSig.removeTextChangedListener(currencyWatcher);
-    txtCostsSig.setText(_task.costs > 0 ? TaskFormater.intSigToString(_task.costs) : "");
+    txtCostsSig.setText(_task.costs != 0 ? TaskFormater.intSigToString(_task.costs) : "");
     txtCostsSig.addTextChangedListener(currencyWatcher);
 
     txtCostsFractions.removeTextChangedListener(currencyWatcher);
-    txtCostsFractions.setText(_task.costs > 0 ? TaskFormater.intFractionsToString(_task.costs) : "");
+    txtCostsFractions.setText(_task.costs != 0 ? TaskFormater.intFractionsToString(_task.costs) : "");
     txtCostsFractions.addTextChangedListener(currencyWatcher);
 
     if (_task.date != null) {

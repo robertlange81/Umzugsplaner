@@ -33,6 +33,7 @@ public class TaskFormater {
             for (Locale loc : Locale.getAvailableLocales()) {
                 if (loc.getISO3Language().equals("deu") && loc.getCountry().equalsIgnoreCase("DE")) {
                     Locale.setDefault(loc);
+                    currentLocal = loc;
                     break;
                 }
             }

@@ -36,15 +36,12 @@ public class Task implements Serializable {
 
     /*
     TODO / FIXME / Ideen:
-    - Beim ersten Starten noch keine Sortierung?
-    - Loader
-    - beim ersten Release Links verstecken
+    - in Liste bei markierter Aufgabe fixieren
+    - Import / Export
+    - Ortsangabe auch bei Neustart auf Liste / Dialog
     - MyHammer Alternative
     - Orientierung Tablet
-    - DetailFragment wirklich immer zerstören vs Bug CurrencyWatcher?
     - negative Beträge
-    - Ortsangabe auch bei Neustart auf Liste / Dialog
-    - Import / Export !!!
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
