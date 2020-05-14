@@ -19,25 +19,28 @@ public class TaskFormater {
 
     public static void setCurrentLocale(Context context){
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            currentLocal = context.getResources().getConfiguration().getLocales().get(0);
-        } else{
-            currentLocal = context.getResources().getConfiguration().locale;
+        if (BuildConfig.DEBUG) {
+            for (Locale loc : Locale.getAvailableLocales()) {
+                if (loc.getISO3Language().equals("eng")) {
+                    if(loc.getCountry().startsWith("GB")) {
+                        Locale.setDefault(loc);
+                        currentLocal = loc;
+                        break;
+                    }
+                }
+            }
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                currentLocal = context.getResources().getConfiguration().getLocales().get(0);
+            } else{
+                currentLocal = context.getResources().getConfiguration().locale;
+            }
+
+            currentLocal = Locale.getDefault();
         }
 
         numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
         numberFormat.setMinimumFractionDigits(2);
-
-        currentLocal = Locale.getDefault();
-        if (BuildConfig.DEBUG) {
-            for (Locale loc : Locale.getAvailableLocales()) {
-                if (loc.getISO3Language().equals("deu") && loc.getCountry().equalsIgnoreCase("DE")) {
-                    Locale.setDefault(loc);
-                    currentLocal = loc;
-                    break;
-                }
-            }
-        }
     }
 
     public static String formatDateToSring(Date date) {

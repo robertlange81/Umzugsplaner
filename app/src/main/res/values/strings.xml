@@ -80,9 +80,9 @@
     <string name="placeholder_hide_low_prio">nur hohe Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&i=electronics&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=]]></string>
-    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.com/s?i=kitchen&linkCode=ur2&tag=robroyrich-21&camp=1638&k=]]></string>
     <string name="taskRentalContractOld3Months">3-Monats-Frist?</string>
+    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=20e4ed59bd6b5e2e0512cb3514c816b1&keywords=]]></string>
     <string name="taskRentalContractOld">Alten Mietvertrag kündigen</string>
     <string name="taskRentalContractOldDesc">Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.</string>
     <string name="taskRentalContractOld3MonthsLINK">https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html</string>
@@ -97,7 +97,7 @@
     <string name="informOldAndNewNeighbours">Alte und neue Nachbarn informieren</string>
     <string name="informOldAndNewNeighboursDesc">Informieren Sie Ihre alten und neuen Nachbarn per Aushang über Ihren Umzug. Beachten Sie auch die Ruhezeiten. Üblicherweise von 13 Uhr bis 15 Uhr und 20 Uhr bis 7 Uhr. Nutzen Sie zudem die Gelegenheit, um Ihre Türschilder anzubringen, damit die Post und Speditionen Sie erreichen.</string>
     <string name="informOldAndNewNeighboursDoorSigns">Türschilder aussuchen</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.de/s?k=hausschilder+mit+namen&adgrpid=69976276766&gclid=Cj0KCQjwr-_tBRCMARIsAN413WTWhp80ZVdRs4LlF2dEewnOedLgufrRhydV9qZpyuDeoZXtbCbRPpYaAnsZEALw_wcB&hvadid=391551507346&hvdev=c&hvlocphy=9042976&hvnetw=g&hvpos=1t1&hvqmt=b&hvrand=1850260414947884646&hvtargid=kwd-299359190093&hydadcr=27958_1978105&tag=googhydr08-21&ref=pd_sl_35u1b84rff_b&tag=robroyrich-21]]></string>
+    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Hausschilder mit Namen&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=1552aa891750f3f9acc7bcbbf24afacd]]></string>
     <string name="informAuthorities">Ummeldung Behörden etc.</string>
     <string name="informAuthoritiesDesc">Nach Ihrem Umzug (aber nicht davor!) müssen Sie sich in Ihrem Einwohnermeldeamt ummelden. Geben Sie auch Ihre neue Adresse an Ihre Vertragspartner weiter und verlassen Sie sich nicht auf den Nachsendeauftrag.</string>
     <string name="informAuthoritiesResidence">Wohnsitz ummelden</string>
@@ -128,7 +128,7 @@
     <string name="fireAndBurglaryProtectionSmokeDetector">Feuermelder vergleichen</string>
     <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031&tag=robroyrich-21]]></string>
     <string name="fireAndBurglaryProtectionBurglary">Einbruchsschutz prüfen</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/Einbruchschutz-Sicherheitstechnik-Baumarkt/s?k=Einbruchschutz&rh=n%3A2077623031&tag=robroyrich-21]]></string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Rauchmelder Brandmelder&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
     <string name="requestSpecialLeave">(Sonder-)Urlaub beantragen</string>
     <string name="requestSpecialLeaveDesc">Vergessen Sie nicht Urlaub zu beantragen. In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>
@@ -179,7 +179,7 @@
     <string name="organizeHelperhandTruck">Sackkarren bei Ebay</string>
     <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DSackkarre%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DSackkarre]]></string>
     <string name="organizeHelperWorkGloves">Arbeitshandschuhe bei Amazon</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/product/B0798RGXS1/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=B0798RGXS1&linkCode=as2&tag=robroyrich-21&linkId=d6687bc4bd9f826e6b127ac172413183]]></string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Arbeitshandschuhe umzug&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=c2580c139f5c7166059cbce86a6e1e4c]]></string>
     <string name="previousDay">Vorbereitungen am Vortag</string>
     <string name="previousDayDesc">Laden Sie Ihre Telefon auf, besorgen Sie Verpflegung, legen Sie Trinkgelder bereit, halten Sie wichtige Unterlagen griffbereit und prüfen Sie Ihre Hausapotheke. Sinnvoll ist es auch, Ihr Umzugsgut zu beschriften => Inhalt, Zielort (Raum). Markieren Sie Umzugskisten, die leicht zerbrechlichen Inhalt enthalten. Zuguterletzt: denken Sie daran früh ins Bett zu gehen.</string>
     <string name="oldRentDepositHowItWorks">Wie funktioniert die Rückzahlung der Mietkaution?</string>
@@ -195,9 +195,9 @@
     <string name="packingMaterialMovingBoxes">Umzugskartons</string>
     <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XUmzugskartons.TRS0%26_nkw%3DUmzugskartons%26_sacat%3D0]]></string>
     <string name="packingMaterialTrashBags">Müllsäcke</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=03a4f280e143d7a90051095b239b3f5b&camp=1638&creative=6742&index=diy&keywords=Müllsäcke]]></string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Müllsäcke&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=8f63d96814a9b2c1f03608c41ad6a8a6]]></string>
     <string name="packingMaterialAirCushionFoil">Luftpolsterfolie</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=robroyrich-21&linkCode=ur2&linkId=6d626e9ffe207d54e23610e9afdbd14a&camp=1638&creative=6742&index=diy&keywords=Luftpolsterfolie]]></string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Luftpolsterfolie&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=1bae9161d893323b534b27aa564424fd]]></string>
     <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>

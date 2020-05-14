@@ -53,7 +53,5 @@ public class DialogFragmentCosts extends DialogFragment {
             txtPaidSum.setText(msg[2]);
 
         return alert;
-        // FIXME
-        // https://www.amazon.de/dp/B079Z3DVC2/ref=cm_sw_em_r_mt_dp_U_jlntCbVXDEPCV
     }
 }

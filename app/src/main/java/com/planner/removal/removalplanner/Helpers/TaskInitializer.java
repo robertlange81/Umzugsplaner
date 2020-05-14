@@ -70,8 +70,8 @@ public class TaskInitializer {
         // Vertrag neu
         Task rentalContractNew = new Task(context.getString(R.string.rentalContractNew), context.getString(R.string.rentalContractNewDesc), targetDate != null ? today : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts.getValue()), targetLocation);
-        rentalContractNew.addLink(context.getString(R.string.rentalContractNewTraps), context.getString(R.string.rentalContractNewTrapsLink));
         rentalContractNew.addLink(context.getString(R.string.rentalContractNewTips), context.getString(R.string.rentalContractNewTipsLINK));
+        rentalContractNew.addLink(context.getString(R.string.rentalContractNewTraps), context.getString(R.string.rentalContractNewTrapsLink));
         Task.addTask(rentalContractNew);
 
         // Vertragspartner
@@ -82,43 +82,43 @@ public class TaskInitializer {
         // Strom / Gas
         Task energyContract = new Task(context.getString(R.string.energyContract), context.getString(R.string.energyContractDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -7), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts), targetLocation);
-//        energyContract.addLink(context.getString(R.string.compareEnergyContractVerivox), context.getString(R.string.energyContractVerivoxLINK));
-//        energyContract.addLink(context.getString(R.string.compareEnergyContractCheck24), context.getString(R.string.energyContractCheck24LINK));
-//        energyContract.addLink(context.getString(R.string.compareGasContractVerivox), context.getString(R.string.gasContractVerivoxLINK));
-//        energyContract.addLink(context.getString(R.string.compareGasContractCheck24), context.getString(R.string.gasContractCheck24LINK));
+        energyContract.addLink(context.getString(R.string.compareEnergyContractVerivox), context.getString(R.string.energyContractVerivoxLINK));
+        energyContract.addLink(context.getString(R.string.compareEnergyContractCheck24), context.getString(R.string.energyContractCheck24LINK));
+        energyContract.addLink(context.getString(R.string.compareGasContractVerivox), context.getString(R.string.gasContractVerivoxLINK));
+        energyContract.addLink(context.getString(R.string.compareGasContractCheck24), context.getString(R.string.gasContractCheck24LINK));
         Task.addTask(energyContract);
 
         // Internet / DSL
         Task internetContract = new Task(context.getString(R.string.internetContract), context.getString(R.string.internetContractDesc)  + ' ' + context.getString(R.string.contractCancel), addMonthDaysToJavaUtilDate(targetDate, 0, -7), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts), targetLocation);
         internetContract.addLink(context.getString(R.string.internetContractAvailability), context.getString(R.string.internetContractAvailabilityLINK));
-//        internetContract.addLink(context.getString(R.string.compareContractCheck24), context.getString(R.string.internetContractCheck24LINK));
-//        internetContract.addLink(context.getString(R.string.compareContractVerivox), context.getString(R.string.internetContractVerivoxLINK));
+        internetContract.addLink(context.getString(R.string.compareContractCheck24), context.getString(R.string.internetContractCheck24LINK));
+        internetContract.addLink(context.getString(R.string.compareContractVerivox), context.getString(R.string.internetContractVerivoxLINK));
         Task.addTask(internetContract);
 
         // Haftplficht
         Task liabilityInsurance = new Task(context.getString(R.string.liabilityInsurance), context.getString(R.string.liabilityInsuranceDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -20) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts), targetLocation);
-//        liabilityInsurance.addLink(context.getString(R.string.compareLiabilityInsurance), context.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
+        liabilityInsurance.addLink(context.getString(R.string.compareLiabilityInsurance), context.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
         Task.addTask(liabilityInsurance);
 
         // Hausrat
         Task householdInsurance = new Task(context.getString(R.string.householdInsurance), context.getString(R.string.householdInsuranceDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -10) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts), targetLocation);
-//        householdInsurance.addLink(context.getString(R.string.compareContracts), context.getString(R.string.compareContractVerivoxLINK));
+        householdInsurance.addLink(context.getString(R.string.compareContracts), context.getString(R.string.compareContractVerivoxLINK));
         Task.addTask(householdInsurance);
 
         // Brandschutz
         Task fireAndBurglaryProtection = new Task(context.getString(R.string.fireAndBurglaryProtection), context.getString(R.string.fireAndBurglaryProtectionDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -6) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.NewFlat), targetLocation);
-//        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionSmokeDetector), context.getString(R.string.fireAndBurglaryProtectionSmokeDetectorLINK));
-//        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionBurglary), context.getString(R.string.fireAndBurglaryProtectionBurglaryLINKI));
+        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionSmokeDetector), context.getString(R.string.fireAndBurglaryProtectionSmokeDetectorLINK));
+        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionBurglary), context.getString(R.string.fireAndBurglaryProtectionBurglaryLINKI));
         Task.addTask(fireAndBurglaryProtection);
 
         // Urlaub
         Task requestSpecialLeave = new Task(context.getString(R.string.requestSpecialLeave), context.getString(R.string.requestSpecialLeaveDesc), tomorrow, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Movement), targetLocation);
-//        requestSpecialLeave.addLink(context.getString(R.string.requestSpecialLeave), context.getString(R.string.requestSpecialLeaveLINK));
+        requestSpecialLeave.addLink(context.getString(R.string.requestSpecialLeave), context.getString(R.string.requestSpecialLeaveLINK));
         Task.addTask(requestSpecialLeave);
 
         // Kautionskonto
@@ -130,23 +130,23 @@ public class TaskInitializer {
         // Umzugskartons / Müllsäcke
         Task packingMaterial = new Task(context.getString(R.string.packingMaterial), context.getString(R.string.packingMaterialDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -20) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Movement), targetLocation);
-//        packingMaterial.addLink(context.getString(R.string.packingMaterialMovingBoxes), context.getString(R.string.packingMaterialMovingBoxesEbayLINK));
-//        packingMaterial.addLink(context.getString(R.string.packingMaterialTrashBags), context.getString(R.string.packingMaterialTrashBagsAmazonLINK));
-//        packingMaterial.addLink(context.getString(R.string.packingMaterialAirCushionFoil), context.getString(R.string.packingMaterialAirCushionFoilAmazonLINK));
+        packingMaterial.addLink(context.getString(R.string.packingMaterialTrashBags), context.getString(R.string.packingMaterialTrashBagsAmazonLINK));
+        packingMaterial.addLink(context.getString(R.string.packingMaterialAirCushionFoil), context.getString(R.string.packingMaterialAirCushionFoilAmazonLINK));
+        packingMaterial.addLink(context.getString(R.string.packingMaterialMovingBoxes), context.getString(R.string.packingMaterialMovingBoxesEbayLINK));
         Task.addTask(packingMaterial);
 
         // Umzugshelfer
         Task organizeHelper = new Task(context.getString(R.string.organizeHelper), context.getString(R.string.organizeHelperDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -14), Priority.High, 0L,
                 new TaskType(TaskTypeMain.Movement), targetLocation);
-//        organizeHelper.addLink(context.getString(R.string.organizeHelperCarryingStraps), context.getString(R.string.organizeHelperCarryingStrapsEbayLINK));
-//        organizeHelper.addLink(context.getString(R.string.organizeHelperhandTruck), context.getString(R.string.organizeHelperHandTrucksEbayLINK));
-//        organizeHelper.addLink(context.getString(R.string.organizeHelperWorkGloves), context.getString(R.string.organizeHelperWorkGlovesAmazonLink));
+        organizeHelper.addLink(context.getString(R.string.organizeHelperWorkGloves), context.getString(R.string.organizeHelperWorkGlovesAmazonLink));
+        organizeHelper.addLink(context.getString(R.string.organizeHelperCarryingStraps), context.getString(R.string.organizeHelperCarryingStrapsEbayLINK));
+        organizeHelper.addLink(context.getString(R.string.organizeHelperhandTruck), context.getString(R.string.organizeHelperHandTrucksEbayLINK));
         Task.addTask(organizeHelper);
 
         // Umzugswagen
         Task movingVan = new Task(context.getString(R.string.movingVan), context.getString(R.string.movingVanDesc), tomorrow, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Movement), targetLocation);
-//        movingVan.addLink(context.getString(R.string.movingVanCompare), context.getString(R.string.movingVanCheck24LINK));
+        movingVan.addLink(context.getString(R.string.movingVanCompare), context.getString(R.string.movingVanCheck24LINK));
         Task.addTask(movingVan);
 
         // Schlüsselübergabe
@@ -190,7 +190,7 @@ public class TaskInitializer {
         Task informOldAndNewNeighbours = new Task(context.getString(R.string.informOldAndNewNeighbours), context.getString(R.string.informOldAndNewNeighboursDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -7) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.Movement), targetLocation);
         // TODO partner-link
-//        informOldAndNewNeighbours.addLink(context.getString(R.string.informOldAndNewNeighboursDoorSigns), context.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
+        informOldAndNewNeighbours.addLink(context.getString(R.string.informOldAndNewNeighboursDoorSigns), context.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
         Task.addTask(informOldAndNewNeighbours);
 
         // Ummeldung
@@ -226,7 +226,7 @@ public class TaskInitializer {
         // Einweihungsfeier
         Task party = new Task(context.getString(R.string.party), context.getString(R.string.partyDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, 30) : null, Priority.Normal, 0L,
                 new TaskType(TaskTypeMain.NewFlat), targetLocation);
-//        party.addLink(context.getString(R.string.partyEbay), context.getString(R.string.partyEbayLINK));
+        party.addLink(context.getString(R.string.partyEbay), context.getString(R.string.partyEbayLINK));
         Task.addTask(party);
 
         Persistance.SaveTasks(context);
