@@ -178,9 +178,11 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
       if(_task != null && _task.id.toString().equals(taskId)) {
         isNotifyEnabled = true;
+        currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
+        txtCostsSig.addTextChangedListener(currencyWatcher);
+        txtCostsFractions.addTextChangedListener(currencyWatcher);
         return;
       }
 
@@ -190,6 +192,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       if (_task == null) {
         createNewTask(taskId);
       }
+      currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
     }
 
     if (TaskFormater.currentLocal == null) {
@@ -333,8 +336,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
       }
     });
-
-    currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
 
     txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
