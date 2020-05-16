@@ -2,13 +2,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Fragments.TaskDetailFragment"
-    android:id="@+id/detail">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:paddingTop="@dimen/introTopMargin"
@@ -46,209 +43,12 @@
                             android:textSize="@dimen/detail_header_row_height" />
 
                     </LinearLayout>
-                    <TableRow
-                        android:id="@+id/table"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dip"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingBottom="100sp"
-                        android:gravity="top"
-                        android:weightSum="10">
-
-                        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
-                            android:orientation="horizontal"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="end">
-
-                            <TextView
-                                android:id="@+id/intro_relation"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="@string/introExampleRelation"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <ImageView
-                                android:id="@+id/intro_currency"
-                                android:layout_below="@id/intro_relation"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:background="@android:color/transparent"
-                                app:srcCompat="@drawable/ic_currency" />
-
-                            <ImageView
-                                android:id="@+id/intro_search"
-                                android:layout_below="@id/intro_currency"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:background="@android:color/transparent"
-                                app:srcCompat="@drawable/ic_search_black_24dp" />
-
-                            <LinearLayout
-                                android:id="@+id/intro_checkbox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_below="@id/intro_search"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:layout_weight="1">
-                                <CheckBox
-                                    android:textAppearance="?android:attr/textAppearanceMedium"
-                                    app:buttonTint="@drawable/checkbox_state_list"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/introLineHeight"
-                                    android:gravity="center"
-                                    android:scaleX="1"
-                                    android:scaleY="1"
-                                    android:checked="true"
-                                    android:state_checked="true"
-                                    android:layout_gravity="start"
-                                    android:textColor="#ffffaa" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/intro_fav"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_below="@id/intro_checkbox"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:layout_weight="1">
-                                <android.support.v7.widget.AppCompatImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/introLineHeight"
-                                    android:layout_marginLeft="0sp"
-                                    android:layout_marginRight="0sp"
-                                    android:adjustViewBounds="false"
-                                    app:srcCompat="@android:drawable/btn_star_big_on" />
-                            </LinearLayout>
-                            <LinearLayout
-                                android:id="@+id/intro_export_cal"
-                                android:layout_below="@id/intro_fav"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:layout_weight="1">
-                                <Button
-                                    android:id="@+id/detail_btn_date_export"
-                                    android:layout_height="@dimen/introLineHeight"
-                                    android:layout_width="wrap_content"
-                                    android:layout_marginLeft="5sp"
-                                    android:layout_marginRight="5sp"
-                                    android:text="@string/placeholder_date_export"
-                                    android:drawableLeft="@android:drawable/ic_menu_add"
-                                    android:drawableRight="@android:drawable/ic_menu_my_calendar"
-                                    android:backgroundTint="@color/colorPrimaryDark"
-                                    android:layout_alignParentTop="true"
-                                    android:layout_alignParentLeft="true"
-                                    android:layout_alignParentStart="true"/>
-                            </LinearLayout>
-                        </RelativeLayout>
-
-                        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:layout_width="fill_parent"
-                            android:layout_marginTop="-2sp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:paddingLeft="5sp"
-                            android:layout_weight="3"
-                            android:descendantFocusability="blocksDescendants"
-                            android:gravity="top">
-
-                            <TextView
-                                android:id="@+id/intro_relation_label"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:layout_marginTop="0dip"
-                                android:layout_marginRight="0dip"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legendDoneLong"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <TextView
-                                android:id="@+id/intro_currency_label"
-                                android:layout_below="@id/intro_relation_label"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:layout_marginRight="0dip"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legentCosts"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <TextView
-                                android:id="@+id/intro_search_label"
-                                android:layout_below="@id/intro_currency_label"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:layout_marginRight="0dip"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legendFilter"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <TextView
-                                android:id="@+id/intro_checkbox_label"
-                                android:layout_below="@id/intro_search_label"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:layout_marginRight="0dip"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legendDone"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <TextView
-                                android:id="@+id/intro_fav_label"
-                                android:layout_below="@id/intro_checkbox_label"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:layout_marginRight="0dip"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legendPrio"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-
-                            <TextView
-                                android:id="@+id/intro_date_label"
-                                android:layout_below="@id/intro_fav_label"
-                                android:layout_marginTop="@dimen/dialog_row_margin_top"
-                                android:fontFamily="serif-monospace"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/introLineHeight"
-                                android:gravity="start|center_vertical"
-                                android:text="@string/legendExport"
-                                android:maxLines="1"
-                                android:textAppearance="?android:attr/textAppearanceLarge"
-                                android:textColor="#ffffffff" />
-                        </RelativeLayout>
-
-                    </TableRow>
+                    <LinearLayout
+                        android:paddingTop="@dimen/introTopMargin"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+                        <include layout="@layout/fragment_intro_legend_content"/>
+                    </LinearLayout>
                 </LinearLayout>
 
             </ScrollView>

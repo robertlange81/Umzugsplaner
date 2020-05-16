@@ -71,7 +71,7 @@
     <dimen name="dialog_row_margin_top">25dip</dimen>
     <dimen name="init_row_edit_padding_bottom">10sp</dimen>
     <dimen name="introLineHeight">30dp</dimen>
-    <dimen name="introTopMargin">25dp</dimen>
+    <dimen name="introTopMargin">10dp</dimen>
     <dimen name="introOverviewMarginLR">0dp</dimen>
     <dimen name="introTopTextMargin">15sp</dimen>
     <dimen name="introTextMarginLR">10sp</dimen>

@@ -222,15 +222,15 @@
     <string name="streetNumber">HausNr</string>
     <string name="deleteAll">alle löschen</string>
     <string name="partyEbay">Partyartikel bei Ebay</string>
-    <string name="legendExportLong">in Google Kalender exportieren</string>
+    <string name="legendExportLong">in Kalender exportieren</string>
     <string name="legendPrioLong">normale oder hohe Priorität setzen</string>
     <string name="legendSetDoneLong">Aufgabe auf erledigt oder offen setzen</string>
     <string name="legendFilterLong">Aufgaben nach Title filtern</string>
-    <string name="legendCostsLong">Übersicht aller Kosten</string>
-    <string name="legendOverviewLong">Übersicht erledigte Aufgabe / offene Aufgaben</string>
+    <string name="legendCostsLong">Kostenübersicht</string>
+    <string name="legendOverview">erledigt / alle</string>
     <string name="legendDoneLong">erledigt / alle Aufgaben</string>
     <string name="legentCosts">Kostenübersicht</string>
-    <string name="legendFilter">nach Titel filtern</string>
+    <string name="legendFilter">Suche Titel</string>
     <string name="legendDone">Aufgabe erledigt</string>
     <string name="legendPrio">Priorität setzen</string>
     <string name="legendExport">Kalenderexport</string>
@@ -248,4 +248,5 @@
     <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ziel angeben.</string>
+    <string name="show_location">Zeige auf Karte</string>
 </resources>

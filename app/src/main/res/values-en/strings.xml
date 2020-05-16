@@ -218,9 +218,9 @@
     <string name="legendPrioLong">Set normal or high priority</string>
     <string name="legendSetDoneLong">Set task done or undone</string>
     <string name="legendFilterLong">Filter tasks by title</string>
-    <string name="legendCostsLong">Overview of all costs</string>
-    <string name="legendOverviewLong">Overview of completed tasks / open tasks</string>
-    <string name="legendDoneLong">done/all tasks</string>
+    <string name="legendCostsLong">costs summary</string>
+    <string name="legendOverview">done/all tasks</string>
+    <string name="legendDoneLong">done / all tasks</string>
     <string name="legentCosts">costs overview</string>
     <string name="legendFilter">filter by name</string>
     <string name="legendDone">set task done</string>
@@ -240,4 +240,5 @@
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a destination.</string>
+    <string name="show_location">Show on map</string>
 </resources>
