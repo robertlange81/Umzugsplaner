@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Fragments.TaskDetailFragment"
+    android:id="@+id/detail">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:paddingTop="@dimen/introTopMargin"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:paddingTop="25sp"
+                android:paddingBottom="0dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/introOverviewMarginLR"
+                        android:layout_marginRight="@dimen/introOverviewMarginLR"
+                        android:layout_marginStart="@dimen/introOverviewMarginLR"
+                        android:layout_marginLeft="@dimen/introOverviewMarginLR"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/intro_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="serif-monospace"
+                            android:gravity="center|center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/app_name"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="#ff33ee33"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/detail_header_row_height" />
+
+                        <android.support.v7.widget.CardView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/detail_header"
+                            android:orientation="vertical"
+                            android:background="@drawable/moving_box"
+                            app:cardBackgroundColor="@color/colorWhite"
+                            android:padding="10dp"
+                            android:layout_marginTop="20sp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardUseCompatPadding="true"
+                            app:cardElevation="5dp"
+                            app:cardCornerRadius="3dp" >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
+                                android:orientation="vertical">
+
+                                <TableRow
+                                    android:id="@+id/intro_overview_counter"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="top"
+                                    android:paddingBottom="15dp"
+                                    android:paddingTop="15dp"
+                                    android:layout_marginTop="0dp"
+                                    android:layout_marginBottom="0dp"
+                                    android:weightSum="3">
+
+                                    <LinearLayout
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_weight="1">
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_days"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textStyle="bold"
+                                            android:textColor="@color/colorGrey"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceLarge"
+                                            android:textSize="40sp"
+                                            android:text="@string/zero" />
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_days_label"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textColor="@color/colorAccent"
+                                            android:textStyle="bold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/detail_text_size"
+                                            android:text="@string/days" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_weight="1">
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_hours"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textColor="@color/colorGrey"
+                                            android:textStyle="bold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceLarge"
+                                            android:textSize="40sp"
+                                            android:text="@string/zero" />
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_hours_label"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textColor="@color/colorAccent"
+                                            android:textStyle="bold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/detail_text_size"
+                                            android:text="@string/hours" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:layout_weight="1">
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_minutes"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textColor="@color/colorGrey"
+                                            android:textStyle="bold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceLarge"
+                                            android:textSize="40sp"
+                                            android:text="@string/zero" />
+                                        <TextView
+                                            android:id="@+id/intro_overview_counter_minutes_label"
+                                            android:fontFamily="serif-monospace"
+                                            android:gravity="center"
+                                            android:textColor="@color/colorAccent"
+                                            android:textStyle="bold"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="6sp"
+                                            android:textAppearance="?android:attr/textAppearanceMedium"
+                                            android:textSize="@dimen/detail_text_size"
+                                            android:text="@string/minits" />
+                                    </LinearLayout>
+                                </TableRow>
+
+                                <TextView
+                                    android:id="@+id/intro_counter_title"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingBottom="10dp"
+                                    android:fontFamily="serif-monospace"
+                                    android:gravity="center|center_vertical"
+                                    android:maxLines="1"
+                                    android:text="@string/untilRemoval"
+                                    android:textAppearance="?android:attr/textAppearanceLarge"
+                                    android:textColor="@color/colorGrey"
+                                    android:textStyle="bold"
+                                    android:textSize="@dimen/action_button_text_size" />
+                            </LinearLayout>
+
+
+                        </android.support.v7.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/intro_overview_next"
+                                android:layout_marginTop="35sp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif-monospace"
+                                android:gravity="center|center_vertical"
+                                android:text="@string/introNextTasks"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="#ff33ee33"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/detail_text_size" />
+
+                            <TextView
+                                android:id="@+id/intro_overview_next_0"
+                                android:layout_marginTop="@dimen/introTopTextMargin"
+                                android:paddingTop="5dp"
+                                android:layout_marginEnd="@dimen/introTextMarginLR"
+                                android:layout_marginRight="@dimen/introTextMarginLR"
+                                android:layout_marginStart="@dimen/introTextMarginLR"
+                                android:layout_marginLeft="@dimen/introTextMarginLR"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif-monospace"
+                                android:gravity="start"
+                                android:text=""
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/detail_text_size" />
+
+                            <TextView
+                                android:id="@+id/intro_overview_next_1"
+                                android:layout_marginEnd="@dimen/introTextMarginLR"
+                                android:layout_marginRight="@dimen/introTextMarginLR"
+                                android:layout_marginStart="@dimen/introTextMarginLR"
+                                android:layout_marginLeft="@dimen/introTextMarginLR"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif-monospace"
+                                android:gravity="start"
+                                android:paddingTop="5dp"
+                                android:text=""
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/detail_text_size" />
+
+                            <TextView
+                                android:id="@+id/intro_overview_next_2"
+                                android:layout_marginEnd="@dimen/introTextMarginLR"
+                                android:layout_marginRight="@dimen/introTextMarginLR"
+                                android:layout_marginStart="@dimen/introTextMarginLR"
+                                android:layout_marginLeft="@dimen/introTextMarginLR"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="serif-monospace"
+                                android:paddingTop="5dp"
+                                android:gravity="start"
+                                android:text=""
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textColor="@color/colorWhite"
+                                android:textStyle="bold"
+                                android:textSize="@dimen/detail_text_size" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </ScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
