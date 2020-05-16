@@ -4,10 +4,11 @@
     tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
         android:id="@+id/overview"
-        android:orderInCategory="0"
+        android:orderInCategory="70"
         app:actionLayout="@layout/menu_item_overview"
         android:text=""
         android:title=""
+        android:textSize="200sp"
         app:showAsAction="always" />
     <item
         android:id="@+id/showCostsMenuItem"
