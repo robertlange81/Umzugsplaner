@@ -44,6 +44,7 @@
 
         <TextView
             android:id="@+id/name"
+            android:textStyle="bold"
             android:fontFamily="serif-monospace"
             android:layout_height="match_parent"
             android:layout_marginLeft="1sp"
@@ -55,7 +56,7 @@
             android:maxLines="3"
             android:text="@string/placeholder_name"
             android:textColor="#ffffff"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/meta"
@@ -71,6 +72,7 @@
 
             <TextView
                 android:id="@+id/type"
+                android:textStyle="bold"
                 android:fontFamily="serif-monospace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,6 +87,7 @@
 
             <TextView
                 android:id="@+id/costs_detail"
+                android:textStyle="bold"
                 android:fontFamily="serif-monospace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,6 +104,7 @@
 
             <TextView
                 android:id="@+id/date_detail"
+                android:textStyle="bold"
                 android:fontFamily="serif-monospace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

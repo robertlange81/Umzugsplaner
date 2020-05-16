@@ -19,7 +19,7 @@ public class TaskFormater {
 
     public static void setCurrentLocale(Context context){
 
-        if (BuildConfig.DEBUG) {
+        /* if (BuildConfig.DEBUG) {
             for (Locale loc : Locale.getAvailableLocales()) {
                 if (loc.getISO3Language().equals("eng")) {
                     if(loc.getCountry().startsWith("GB")) {
@@ -29,7 +29,7 @@ public class TaskFormater {
                     }
                 }
             }
-        } else {
+        } else { */
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
                 currentLocal = context.getResources().getConfiguration().getLocales().get(0);
             } else{
@@ -37,7 +37,7 @@ public class TaskFormater {
             }
 
             currentLocal = Locale.getDefault();
-        }
+        //}
 
         numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
         numberFormat.setMinimumFractionDigits(2);
@@ -84,7 +84,7 @@ public class TaskFormater {
         numberFormat.setMaximumFractionDigits(2);
         numberFormat.setRoundingMode(RoundingMode.HALF_UP);
         double d = (cent.doubleValue()) / 100;
-        return getNumberFormat().format(d);
+        return getNumberFormat().format(d).replace("\u00A0","");
     }
 
     public static String intSigToString(Long cent) {
