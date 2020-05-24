@@ -86,6 +86,16 @@ public class DetailActivity extends AppCompatActivity {
 
         Bundle arguments = new Bundle();
         arguments.putString(TaskDetailFragment.TASK_ID, currentTaskId);
+
+        if (fragment == null) {
+            // Create the detail fragment and add it to the activity
+            // using a fragment transaction.
+            fragment = new TaskDetailFragment();
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.task_detail_container, fragment)
+                    .commit();
+        }
+
         fragment.setArguments(arguments);
 
         if(!MainActivity.mTwoPane) {

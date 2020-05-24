@@ -135,10 +135,10 @@
     <string name="compareContractCheck24">Compare tariffs on cable.co.uk</string>
     <string name="compareEnergyContractVerivox">switch energy supplier without penalty?</string>
     <string name="energyContractVerivoxLINK"><![CDATA[https://www.telegraph.co.uk/financial-services/gas-electricity/switching-supplier-without-penalties/]]></string>
-    <string name="compareEnergyContractCheck24">https://switch.which.co.uk/</string>
+    <string name="compareEnergyContractCheck24">switch.which.co.uk</string>
     <string name="energyContractCheck24LINK"><![CDATA[https://switch.which.co.uk/]]></string>
-    <string name="compareGasContractVerivox">https://www.symbioenergy.co.uk/</string>
-    <string name="compareGasContractCheck24">https://www.ukpower.co.uk/</string>
+    <string name="compareGasContractVerivox">symbioenergy</string>
+    <string name="compareGasContractCheck24">ukpower</string>
     <string name="gasContractVerivoxLINK"><![CDATA[https://www.symbioenergy.co.uk/]]></string>
     <string name="gasContractCheck24LINK"><![CDATA[https://www.ukpower.co.uk/]]></string>
     <string name="internetContractCheck24LINK"><![CDATA[https://www.cable.co.uk/broadband/cheap-broadband-deals/]]></string>
@@ -203,7 +203,7 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Official opening</string>
     <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
-    <string name="introDesc">Plan your move professionally!. All important tasks are created automatically - including tips and links to further information.</string>
+    <string name="introDesc">Plan your move professionally! All important tasks are created automatically - including tips and links to further information.</string>
     <string name="introDesc2">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
     <string name="introLegend">Legend</string>
     <string name="placeholder_place_removal">Where Are You Moving?</string>

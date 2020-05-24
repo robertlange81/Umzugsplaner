@@ -19,7 +19,7 @@ public class TaskFormater {
 
     public static void setCurrentLocale(Context context){
 
-        /* if (BuildConfig.DEBUG) {
+        if (false && BuildConfig.DEBUG) {
             for (Locale loc : Locale.getAvailableLocales()) {
                 if (loc.getISO3Language().equals("eng")) {
                     if(loc.getCountry().startsWith("GB")) {
@@ -29,7 +29,7 @@ public class TaskFormater {
                     }
                 }
             }
-        } else { */
+        } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
                 currentLocal = context.getResources().getConfiguration().getLocales().get(0);
             } else{
@@ -37,7 +37,7 @@ public class TaskFormater {
             }
 
             currentLocal = Locale.getDefault();
-        //}
+        }
 
         numberFormat = NumberFormat.getCurrencyInstance(currentLocal);
         numberFormat.setMinimumFractionDigits(2);
