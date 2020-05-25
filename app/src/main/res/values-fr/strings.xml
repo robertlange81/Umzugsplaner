@@ -1,244 +1,244 @@
 <resources>
-    <string name="app_name">MovePlanner</string>
-    <string name="category">type</string>
-    <string name="deleted">deleted</string>
-    <string name="date_changed">date changed</string>
-    <string name="detail_description_input">description</string>
-    <string name="detail_save_task">Back to List</string>
-    <string name="done">done</string>
-    <string name="highPrioText">high priority for task</string>
-    <string name="highPrioText_short">high priority</string>
-    <string name="normalPrioText">normal priority for task</string>
-    <string name="normalPrioText_short">normal priority</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    <string name="placeholder_amount">sum</string>
-    <string name="placeholder_cancel">Cancel</string>
-    <string name="placeholder_costs">costs</string>
-    <string name="placeholder_costs_significant_detail">Dollar</string>
+    <string name="app_name">changement de résidence</string>
+    <string name="category">Type</string>
+    <string name="date_changed">Date changée</string>
+    <string name="deleted">supprimé</string>
+    <string name="detail_description_input">la description</string>
+    <string name="detail_save_task">à l\'aperçu</string>
+    <string name="done">fait</string>
+    <string name="highPrioText">haute priorité pour la tâche</string>
+    <string name="highPrioText_short">haute priorité</string>
+    <string name="normalPrioText">priorité normale pour la tâche</string>
+    <string name="normalPrioText_short">priorité normale</string>
+    <string name="ok">Bien</string>
+    <string name="cancel">Avorter</string>
+    <string name="placeholder_amount">total</string>
+    <string name="placeholder_cancel">Avorter</string>
+    <string name="placeholder_costs">Frais</string>
+    <string name="placeholder_costs_significant_detail">Euro</string>
     <string name="placeholder_costs_decimal_detail">Cent</string>
-    <string name="placeholder_date_long">deadline</string>
-    <string name="placeholder_date">target</string>
-    <string name="placeholder_date_detail">date</string>
+    <string name="placeholder_date_long">Date de déménagement</string>
+    <string name="placeholder_date">Date</string>
+    <string name="placeholder_date_detail">Date</string>
+    <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export"></string>
-    <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_date_removal">When do you want to move?</string>
-    <string name="placeholder_description">notes</string>
-    <string name="placeholder_detail_amount">amount</string>
-    <string name="placeholder_edit_task">Edit Task</string>
-    <string name="placeholder_export_no_date">Please choose a date first before export.</string>
-    <string name="placeholder_init">Set up a NEW removal</string>
-    <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
-    <string name="placeholder_init_no_date">No date specified - Standard tasks are created without date.</string>
-    <string name="placeholder_link">link</string>
-    <string name="placeholder_link_input">url or ressource</string>
-    <string name="placeholder_links">links</string>
-    <string name="placeholder_name">Task Name</string>
-    <string name="placeholder_overview">overview</string>
-    <string name="placeholder_save">Save</string>
-    <string name="placeholder_settings">Settings</string>
-    <string name="placeholder_time_detail">time</string>
-    <string name="placeholder_type">category</string>
-    <string name="removed">removed</string>
-    <string name="sortbyCosts">Sort By Costs</string>
-    <string name="sortbydate">Sort By Date</string>
-    <string name="sortbyIsDone">Sort By Done</string>
-    <string name="sortbyName">Sort By Name</string>
-    <string name="sortbyPriority">Sort By Priority</string>
-    <string name="sortbyType">Sort By Type</string>
-    <string name="time_changed">time changed</string>
-    <string name="todo">todo</string>
-    <string name="undo">undo</string>
-    <string name="paid_done">paid</string>
-    <string name="currency">$</string>
+    <string name="placeholder_date_removal">Quand veux-tu partir?</string>
+    <string name="placeholder_description">Remarques</string>
+    <string name="placeholder_detail_amount">Montant</string>
+    <string name="placeholder_edit_task">Modifier la tâche</string>
+    <string name="placeholder_init">Nouveau mouvement!</string>
+    <string name="placeholder_init_delete_old_tasks">supprimer toutes les tâches précédentes</string>
+    <string name="placeholder_init_no_date">Aucune date spécifiée - les tâches standard sont créées sans date</string>
+    <string name="placeholder_export_no_date">Pour exporter vers le calendrier, veuillez d\'abord choisir une date.</string>
+    <string name="placeholder_links">Références</string>
+    <string name="placeholder_link">Référence</string>
+    <string name="placeholder_link_input">URL ou ressource</string>
+    <string name="placeholder_name">Nom de la tâche</string>
+    <string name="placeholder_overview">Aperçu</string>
+    <string name="placeholder_save">sauver</string>
+    <string name="placeholder_settings">Réglages</string>
+    <string name="placeholder_time_detail">Temps</string>
+    <string name="placeholder_type">Catégorie</string>
+    <string name="removed">supprimé</string>
+    <string name="sortbydate">Trier par date</string>
+    <string name="sortbyCosts">Trier par coût</string>
+    <string name="sortbyPriority">Trier par priorité</string>
+    <string name="sortbyType">Trier par type</string>
+    <string name="sortbyName">Trier par nom</string>
+    <string name="sortbyIsDone">Trier par terminé</string>
+    <string name="time_changed">Le temps a changé</string>
+    <string name="todo">faire</string>
+    <string name="undo">défait</string>
+    <string name="paid_done">payé</string>
+    <string name="currency">€</string>
     <string-array name="base_task_types">
-        <item>OLD FLAT</item>
-        <item>NEW FLAT</item>
-        <item>CONTRACTS</item>
-        <item>MOVEMENT</item>
-        <item>ELECTRONICS</item>
-        <item>FURNITURE</item>
-        <item>KITCHEN</item>
+        <item>VIEUX APP.</item>
+        <item>NOUVEL APP.</item>
+        <item>CONTRATS</item>
+        <item>BOUGE TOI</item>
+        <item>ÉLECTRONIQUE</item>
+        <item>MEUBLES</item>
+        <item>CUISINE</item>
     </string-array>
-    <string name="contractCancel">If you want to cancel your old contract, your move often offers a special right of termination if you cannot be supplied by your previous provider at your new place of residence. Take Care! Send evidences by registered mail if possible. You could otherwise take disadvantage of some providers.</string>
+    <string name="contractCancel">Si vous souhaitez résilier votre ancien contrat, votre déménagement offre souvent un droit de résiliation spécial si vous ne pouvez pas être fourni par votre ancien fournisseur à votre nouveau lieu de résidence.  Attention!  Si possible, envoyez des preuves par courrier recommandé.  Sinon, vous pourriez profiter de certains fournisseurs comme PYUR.</string>
     <string name="partner_verivox_Id">2812</string>
     <string name="partner_check24_Id">133701</string>
-    <string name="Rate_App">Rate App</string>
-    <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
-    <string name="Remind_me_later">Remind me later</string>
+    <string name="Rate_App">Évaluer l\'application</string>
+    <string name="textRate">Une application non notée ne sera pas achetée. \ NA Aucune application non achetée ne sera maintenue et interrompue. \ N \ nVeuillez prendre 10 secondes pour évaluer.  Merci beaucoup!</string>
+    <string name="Remind_me_later">Rappelez-vous plus tard</string>
     <string name="No_thanks">No, thanks</string>
-    <string name="back">back</string>
-    <string name="placeholder_hide_done">Hide Done</string>
-    <string name="placeholder_hide_low_prio">Hide Low Prio</string>
+    <string name="back">retour</string>
+    <string name="placeholder_hide_done">seulement en attente</string>
+    <string name="placeholder_hide_low_prio">seulement haute priorité</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
-    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=28b8e86dd57df6299066d4bb991e9374&keywords=]]></string>
-    <string name="taskRentalContractOld3Months">Ending your tenancy?</string>
-    <string name="taskRentalContractOld">Cancel old lease</string>
-    <string name="taskRentalContractOldDesc">Cancel your old tenancy on time. You may be able to shorten the notice period with a new tenant.</string>
-    <string name="taskRentalContractOld3MonthsLINK">https://www.citizensadvice.org.uk/housing/renting-privately/ending-your-tenancy/ending-your-tenancy/</string>
-    <string name="rentalContractOldSpecialRightOfTermination">Break clauses</string>
-    <string name="rentalContractOldSpecialRightOfTerminationLINK">https://england.shelter.org.uk/legal/security_of_tenure/notices/break_clauses</string>
-    <string name="rentalContractNew">New lease</string>
-    <string name="rentalContractNewDesc">Check your rental contract for legal compliance and binding clauses (minimum rental period, reasonable advance payment for operating costs, excessive season rent, report visible defects, minor repair clause, flat share rent, brokerage commission, comparison of rent index / rental cover)</string>
-    <string name="rentalContractNewTraps">Common traps</string>
-    <string name="rentalContractNewTrapsLink">https://www.lindermyers.co.uk/wp-content/uploads/2014/06/COMM-PROP-GUIDE_FINAL.pdf</string>
-    <string name="rentalContractNewTips">Tips for the rental contract</string>
-    <string name="rentalContractNewTipsLINK">https://www.moneysavingexpert.com/mortgages/rent-a-property/</string>
-    <string name="informOldAndNewNeighbours">Inform neighbors (old and new)</string>
-    <string name="informOldAndNewNeighboursDesc">Let your old and new neighbors know about your move on the notice board.  Also note the rest times.  Usually from 1 p.m. to 3 p.m. and 8 p.m. to 7 a.m.  Also take the opportunity to attach your door signs so that the post and shipping companies can reach you.</string>
-    <string name="informOldAndNewNeighboursDoorSigns">Choose door signs</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=House signs with names&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=6dc128bb3c84075b37e568177a8c611d]]></string>
-    <string name="informAuthorities">Authorities</string>
-    <string name="informAuthoritiesDesc">Update your address with the DVLA for both your licence and vehicle registration - but not before you move, as you may need your licence for identification and van hire. Depending on your circumstances, you may also need to contact HMRC or the Department for Work and Pensions. You\'ll need to ask your local authority for a final statement of your council tax - and may even get a refund. And don\'t forget to update your details on the electoral roll.</string>
-    <string name="informAuthoritiesResidence">Department for Work and Pensions</string>
-    <string name="informAuthoritiesResidenceLINK">https://www.gov.uk/contact-pension-service</string>
-    <string name="informAuthoritiesCar">Driver and Vehicle Licensing Authority (DVLA)</string>
-    <string name="informAuthoritiesCarLINK">https://www.gov.uk/contact-the-dvla</string>
-    <string name="postalAftermath">Forwarding order</string>
-    <string name="postalAftermathDesc">If you\'re moving home or moving your business, redirect your mail at the Post Office.</string>
-    <string name="postalAftermathSetup">Mail Redirection</string>
-    <string name="informContractors">Inform contractual partners</string>
-    <string name="informContractorsDesc">Inform banks, insurance companies, mobile operators, employers and other contractual partners about your new address. Don\'t just rely on Your forwarding order</string>
-    <string name="energyContract">Supplier of gas and power</string>
-    <string name="energyContractDesc">Check whether you keep your old gas or electricity contract (but inform about a change of address) or if you are allowed to.</string>
-    <string name="internetContract">Internet contract</string>
-    <string name="internetContractDesc">Check whether you have to / may change your provider. Otherwise this must at least be informed.</string>
-    <string name="internetContractAvailability">Providers at your new place of residence?</string>
-    <string name="internetContractAvailabilityLINK"><![CDATA[https://www.uswitch.com/broadband/postcode_checker/]]></string>
-    <string name="phoneContract">Landline phone</string>
-    <string name="phoneContractDesc">Check whether you have to / may change your provider and whether you can take your old number with you.</string>
-    <string name="phoneContractCompare">Compare telephone providers</string>
+    <string name="taskRentalContractOld3Months">Période de 3 mois?</string>
+    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=20e4ed59bd6b5e2e0512cb3514c816b1&keywords=]]></string>
+    <string name="taskRentalContractOld">Annuler l\'ancien bail</string>
+    <string name="taskRentalContractOldDesc">Annulez votre ancienne location à temps. Vous pourrez peut-être raccourcir la période de préavis avec un nouveau locataire.</string>
+    <string name="taskRentalContractOld3MonthsLINK">https://location-immobilier.ooreka.fr/fiche/voir/192779/location-immo-peut-on-annuler-son-preavis-de-depart</string>
+    <string name="rentalContractOldSpecialRightOfTermination">Droit de résiliation spécial</string>
+    <string name="rentalContractOldSpecialRightOfTerminationLINK">https://immobilier.lefigaro.fr/annonces/edito/louer/je-resilie/resilier-son-bail-les-5-erreurs-a-ne-pas-commettre</string>
+    <string name="rentalContractNew">Nouveau bail</string>
+    <string name="rentalContractNewDesc">Vérifiez votre contrat de location pour la conformité légale et les clauses contraignantes (période de location minimale, avance raisonnable pour les coûts d\'exploitation, loyer de saison excessive, signalez les défauts visibles, petite clause de réparation, loyer en colocation, commission de courtage, comparaison de l\'indice des loyers / couverture de location)</string>
+    <string name="rentalContractNewTraps">Contrat de location: attention à la chute</string>
+    <string name="rentalContractNewTrapsLink">https://blog.locservice.fr/locataires-10-conseils-a-suivre-avant-de-signer-un-bail-de-location-341.html</string>
+    <string name="rentalContractNewTips">les droits du locataire</string>
+    <string name="rentalContractNewTipsLINK">https://www.dossierfamilial.com/immobilier-logement/locataire/bail-les-droits-du-locataire-344059</string>
+    <string name="informOldAndNewNeighbours">Informer les anciens et les nouveaux voisins</string>
+    <string name="informOldAndNewNeighboursDesc">Informez vos anciens et nouveaux voisins de votre déménagement sur le tableau d\'affichage.  Notez également les temps de repos.  Habituellement de 13 h à 15 h et de 20 h à 7 h.  Profitez-en également pour fixer vos panneaux de porte afin que les sociétés de poste et d\'expédition puissent vous joindre.</string>
+    <string name="informOldAndNewNeighboursDoorSigns">Choisissez des panneaux de porte</string>
+    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.fr/gp/product/B085VW4RGP/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B085VW4RGP&linkCode=as2&tag=w1fxeor906-21&linkId=5c68e09ac603dfc993c6ded4ea6f00d2]]></string>
+    <string name="informAuthorities">Autorités d\'enregistrement</string>
+    <string name="informAuthoritiesDesc">Après votre déménagement (mais pas avant!) Vous devez vous inscrire à votre bureau d\'enregistrement local. Transmettez également votre nouvelle adresse à vos partenaires contractuels et ne vous fiez pas à l\'ordre d\'expédition.</string>
+    <string name="informAuthoritiesResidence">Enregistrer la résidence</string>
+    <string name="informAuthoritiesResidenceLINK">https://my.ambafrance.org/Certificat-de-residence-et-changement-de-residence</string>
+    <string name="informAuthoritiesCar">Inscrire la voiture</string>
+    <string name="informAuthoritiesCarLINK">https://www.eplaque.fr/guide/departement-pour-l-immatriculation-d-un-vehicule.html</string>
+    <string name="postalAftermath">Ordre d\'expédition</string>
+    <string name="postalAftermathDesc">Configurez un ordre de transfert. Attention, il y a des moutons noirs ici sur Internet! Utilisez uniquement le site https://www.laposte.fr/.</string>
+    <string name="postalAftermathSetup">Configurer maintenant l\'ordre de transfert</string>
+    <string name="informContractors">Informer les partenaires contractuels</string>
+    <string name="informContractorsDesc">Informez les banques, les compagnies d\'assurance, les opérateurs mobiles, les employeurs, GEZ et les autres partenaires contractuels de votre nouvelle adresse. Ne vous fiez pas seulement à l\'ordre de transfert</string>
+    <string name="energyContract">Fournisseur d\'énergie</string>
+    <string name="energyContractDesc">Vérifiez si vous conservez votre ancien contrat d\'électricité et de gaz (mais informez d\'un changement d\'adresse) ou si vous devez / êtes autorisé à changer.</string>
+    <string name="internetContract">Connexion Internet et TV</string>
+    <string name="internetContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur.  Sinon, cela doit au moins être informé.</string>
+    <string name="internetContractAvailability">Prestataire à votre nouveau domicile?</string>
+    <string name="internetContractAvailabilityLINK"><![CDATA[https://www.officiel-demenagement.com/changement-d-adresse/internet-et-television]]></string>
+    <string name="phoneContract">Téléphone fixe</string>
+    <string name="phoneContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur et si vous pouvez emporter votre ancien numéro avec vous.</string>
+    <string name="phoneContractCompare">Comparer les opérateurs téléphoniques</string>
     <string name="phoneContractCompareLINK">https://www.verivox.de</string>
-    <string name="tvContract">television contract</string>
-    <string name="tvContractDesc">Check whether you have to / may change your provider. Otherwise this must at least be informed.</string>
-    <string name="tvContractCompare">Compare TV providers</string>
-    <string name="tvContractCompareLINK">https://www.verivox.de</string>
-    <string name="fireAndBurglaryProtection">Fire protection and burglary protection</string>
-    <string name="fireAndBurglaryProtectionDesc">Smoke detectors are compulsory in some federal states and can save lives. Don\'t forget the burglary protection.</string>
-    <string name="fireAndBurglaryProtectionSmokeDetector">View smoke detector</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=fire detector&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=6df846089c2d19d7984a9f764facfcbf]]></string>
-    <string name="fireAndBurglaryProtectionBurglary">Burglary protection systems</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=security technology house&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=a1885bd3cf763fd662899c98416d5d12]]></string>
-    <string name="requestSpecialLeave">Apply for special leave</string>
-    <string name="requestSpecialLeaveDesc">Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
-    <string name="requestSpecialLeaveLINK"><![CDATA[https://www.peoplemanagement.co.uk/experts/legal/what-rights-employees-have-when-move-house]]></string>
-    <string name="rentalDepositAccount">Security deposit</string>
-    <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
-    <string name="rentalDepositAccountExplanation">Tenancy deposit protection</string>
-    <string name="rentalDepositAccountExplanationLINK">https://www.gov.uk/tenancy-deposit-protection</string>
-    <string name="start">New Removal</string>
-    <string name="postalAftermathLINK">https://www.postoffice.co.uk/mail/redirection</string>
-    <string name="compareContracts">Compare tariffs</string>
-    <string name="compareContractVerivox">Compare tariffs on broadbandchoices.co.uk</string>
-    <string name="compareContractCheck24">Compare tariffs on cable.co.uk</string>
-    <string name="compareEnergyContractVerivox">switch energy supplier without penalty?</string>
-    <string name="energyContractVerivoxLINK"><![CDATA[https://www.telegraph.co.uk/financial-services/gas-electricity/switching-supplier-without-penalties/]]></string>
-    <string name="compareEnergyContractCheck24">switch.which.co.uk</string>
-    <string name="energyContractCheck24LINK"><![CDATA[https://switch.which.co.uk/]]></string>
-    <string name="compareGasContractVerivox">symbioenergy</string>
-    <string name="compareGasContractCheck24">ukpower</string>
-    <string name="gasContractVerivoxLINK"><![CDATA[https://www.symbioenergy.co.uk/]]></string>
-    <string name="gasContractCheck24LINK"><![CDATA[https://www.ukpower.co.uk/]]></string>
-    <string name="internetContractCheck24LINK"><![CDATA[https://www.cable.co.uk/broadband/cheap-broadband-deals/]]></string>
-    <string name="internetContractVerivoxLINK"><![CDATA[https://www.broadbandchoices.co.uk/broadband/adsl-broadband-deals]]></string>
-    <string name="householdInsurance">Household insurance</string>
-    <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch. You are optimally protected against damage caused by burglary, theft, fire or the weather on your household items.</string>
-    <string name="compareContractVerivoxLINK"><![CDATA[https://home-questions.comparethemarket.com/questions?#/policy/db4a39e7-a027-40dc-b409-9339a7c773b9]]></string>
-    <string name="movingVan">Find moving van</string>
-    <string name="movingVanDesc">Organize one or more vehicles for transportation.  This can even make sense if a freight forwarder is commissioned.</string>
-    <string name="movingVanCompare">Find a rental car</string>
-    <string name="movingVanCheck24LINK"><![CDATA[https://www.enterprise.co.uk/en/van-hire.html]]></string>
-    <string name="organizeHelper">Organize moving helpers</string>
-    <string name="organizeHelperDesc">Ask your friends, use a doodle survey, hire a moving company or hire helpers. If you plan to move without a freight forwarder, you should get a hand truck and / or carrying straps.</string>
-    <string name="handoverOldFlat">Handover of old apartment</string>
-    <string name="handoverOldFlatDesc">Make an appointment to hand over the old apartment.Read if necessary. Meter readings beforehand and report this to the supplier.</string>
-    <string name="handoverNewFlat">Handover of new apartment</string>
-    <string name="handoverNewFlatDesc">Make an appointment to collect the keys for the new apartment. Note damage carefully by photos. You can use the confirmation of the transfer to change your place of residence.</string>
-    <string name="renovateOldFlat">Apartment renovation</string>
-    <string name="renovateOldFlatDesc">Check to what extent you are contractually obliged to paint the old apartment. If necessary, hire a cheap company from MyHammer etc. or carry out the work yourself professionally.</string>
-    <string name="renovationObligation">Renovation obligation</string>
+    <string name="tvContract">Connexion TV</string>
+    <string name="tvContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur.  Sinon, cela doit au moins être informé.</string>
+    <string name="tvContractCompare">Comparez les fournisseurs de télévision</string>
+    <string name="tvContractCompareLINK">https://www.quechoisir.org/comparateur-fai-n21205/</string>
+    <string name="fireAndBurglaryProtection">Protection contre les incendies et cambriolage</string>
+    <string name="fireAndBurglaryProtectionDesc">Les détecteurs de fumée sont obligatoires dans certains États fédéraux et peuvent sauver des vies. N\'oubliez pas la protection contre le cambriolage.</string>
+    <string name="fireAndBurglaryProtectionSmokeDetector">Comparez les alarmes incendie</string>
+    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.fr/gp/product/B07C8DB4QX/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B07C8DB4QX&linkCode=as2&tag=w1fxeor906-21&linkId=efc3d1237b44054057490762930719f3]]></string>
+    <string name="fireAndBurglaryProtectionBurglary">protection contre le cambriolage</string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=protection contre le cambriolage&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
+    <string name="requestSpecialLeave">Demander des vacances (spéciales)</string>
+    <string name="requestSpecialLeaveDesc">N\'oubliez pas de postuler pour des vacances.  En règle générale, votre employeur vous accordera un congé spécial pour le déménagement. Les questions ne coûtent rien!</string>
+    <string name="requestSpecialLeaveLINK"><![CDATA[https://travail-emploi.gouv.fr/actualites/l-actualite-du-ministere/article/5-questions-reponses-les-conges-payes]]></string>
+    <string name="rentalDepositAccount">Dépôt de transfert</string>
+    <string name="rentalDepositAccountDesc">Vous pouvez déposer le dépôt directement sur un livre d\'épargne de dépôt de loyer au lieu de le transférer directement au propriétaire. L\'avantage est une protection contre la faillite, etc. du propriétaire.</string>
+    <string name="rentalDepositAccountExplanation"></string>
+    <string name="rentalDepositAccountExplanationLINK"></string>
+    <string name="start">créer un nouveau mouvement</string>
+    <string name="postalAftermathLINK">https://www.laposte.fr/changement-adresse-demenagement-reexpedition</string>
+    <string name="compareContracts">Comparez les tarifs maintenant</string>
+    <string name="compareContractVerivox"></string>
+    <string name="compareContractCheck24">Comparez les tarifs</string>
+    <string name="compareEnergyContractCheck24">Tarifs d\'électricité</string>
+    <string name="compareEnergyContractVerivox"></string>
+    <string name="energyContractCheck24LINK"><![CDATA[https://prix-elec.com/tarifs]]></string>
+    <string name="energyContractVerivoxLINK"></string>
+    <string name="compareGasContractVerivox"></string>
+    <string name="compareGasContractCheck24">Tarifs du gaz</string>
+    <string name="gasContractVerivoxLINK"></string>
+    <string name="gasContractCheck24LINK"><![CDATA[https://www.jechange.fr/energie/gaz/guides/prix-gaz-france-2446]]></string>
+    <string name="internetContractCheck24LINK"><![CDATA[https://www.echosdunet.net/offres]]></string>
+    <string name="internetContractVerivoxLINK"></string>
+    <string name="householdInsurance">Assurance ménage</string>
+    <string name="householdInsuranceDesc">Ajustez votre ancienne assurance habitation et informez votre assureur de votre nouvelle adresse.  Si vous n\'avez pas encore d\'assurance ménage (bon marché), c\'est le bon moment pour souscrire ou changer.  Cela vous protège contre les dommages causés par le cambriolage, le vol, le feu ou les intempéries sur vos articles ménagers.</string>
+    <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
+    <string name="movingVan">Organiser la chariot de meubles</string>
+    <string name="movingVanDesc">Organisez un ou plusieurs véhicules pour le transport. Cela peut avoir du sens même si vous avez mandaté un transitaire.</string>
+    <string name="movingVanCompare">Trouver une voiture de location</string>
+    <string name="movingVanCheck24LINK"><![CDATA[https://fretbay.com/fr/transport-meuble/]]></string>
+    <string name="organizeHelper">Organiser des aides au déménagement</string>
+    <string name="organizeHelperDesc">Demandez à vos amis, utilisez une enquête doodle, embauchez une entreprise de déménagement ou embauchez des aides. Si vous prévoyez de vous déplacer sans transitaire, vous devriez vous procurer un diable avec des sangles, des gants et de vieilles couvertures. Votre dos vous remerciera ;-)</string>
+    <string name="handoverOldFlat">Acceptation de l\'ancien appartement</string>
+    <string name="handoverOldFlatDesc">Prenez rendez-vous pour remettre l\'ancien appartement. Lisez si nécessaire. Relevé des mesures au préalable et signalez-le au fournisseur. Videz à nouveau votre boîte aux lettres.</string>
+    <string name="handoverNewFlat">Reprise d\'un nouvel appartement</string>
+    <string name="handoverNewFlatDesc">Prenez rendez-vous pour récupérer les clés du nouvel appartement. Notez soigneusement les dommages avec des photos. Vous pouvez utiliser la confirmation du transfert pour changer de lieu de résidence.</string>
+    <string name="renovateOldFlat">Rénovation d\'appartement</string>
+    <string name="renovateOldFlatDesc">Vérifiez dans quelle mesure vous êtes contractuellement obligé de peindre l\'ancien appartement. Si nécessaire, louez une entreprise bon marché chez MyHammer, etc. ou effectuez le travail vous-même de manière professionnelle.</string>
+    <string name="renovationObligation">Obligation de rénovation</string>
     <string name="renovationObligationLINK">https://www.immobilienscout24.de/umzug/ratgeber/wohnungsuebergabe/renovierungspflicht.html</string>
-    <string name="preserveArtisanBills">Preserve artisan bills</string>
-    <string name="preserveArtisanBillsDesc">Keep artisan bills for tax returns. You can save up to 1,200 euros in taxes each year.</string>
-    <string name="preserveArtisanBillsTip">Tax tip</string>
-    <string name="preserveArtisanBillsLINK">https://www.gov.uk/expenses-and-benefits-relocation/whats-exempt</string>
-    <string name="bulkyWaste">Bulky waste</string>
-    <string name="bulkyWasteDesc">Anything you don\'t want to take with you or give away comes with bulky waste. You can register this with the city.</string>
-    <string name="organizeHelperCarryingStraps">carrying straps on ebay</string>
-    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xcarrying+strap+furniture.TRS0%26_nkw%3Dcarrying+strap+furniture%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dcarrying+strap+furniture]]></string>
-    <string name="organizeHelperhandTruck">hand trucks on Ebay</string>
-    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3Dsack+barrow%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3Dsack+barrow]]></string>
-    <string name="organizeHelperWorkGloves">Work Gloves on Amazon</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=Work gloves move&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=6d850fcbe489717a72a985d739342dca]]></string>
-    <string name="previousDay">Previous day</string>
-    <string name="previousDayDesc">Charge your phone, get food, get tips, keep important documents at hand and check your medicine chest. Last but not least, remember to go to bed early.</string>
-    <string name="oldRentDepositHowItWorks">How does the repayment of the rental deposit work?</string>
-    <string name="oldRentDeposit">Old tenancy deposit</string>
-    <string name="oldRentDepositDesc">You\'ll need to contact your landlord at the end of your tenancy and ask them for your deposit. If your home is managed by a letting agency, you\'ll need to contact them instead.</string>
-    <string name="oldRentDepositHowItWorksLINK">https://www.citizensadvice.org.uk/housing/renting-privately/ending-your-tenancy/getting-your-tenancy-deposit-back/</string>
-    <string name="cordonOffParkingLot">Cordon off parking lot</string>
-    <string name="cordonOffParkingLotDesc">Block off the parking spaces in front of the old and new domicile in good time before the move.</string>
-    <string name="cordonOffParkingLotHowTo">Reserve a parking space?</string>
-    <string name="cordonOffParkingLotHowToLINK">https://www.mirror.co.uk/news/uk-news/can-you-legally-use-traffic-10516707</string>
-    <string name="packingMaterial">Packing material</string>
-    <string name="packingMaterialDesc">Get enough moving boxes, garbage bags, parcel tape, bubble wrap or old newspapers in good time.</string>
-    <string name="packingMaterialMovingBoxes">Moving boxes</string>
-    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk/%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XMoving+boxes.TRS0%26_nkw%3DMoving+boxes%26_sacat%3D0]]></string>
-    <string name="packingMaterialTrashBags">Trash bags</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=trash bags&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=b588628c596ce8f6c89ad9e1d6725eae]]></string>
-    <string name="packingMaterialAirCushionFoil">Air cushion foil</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&keywords=bubble wrap&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=56c1cf4f34ae348835c037518d182899]]></string>
-    <string name="lookFor">find</string>
-    <string name="on">on</string>
-    <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
-    <string name="removalDate">MOVING DATE</string>
-    <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
-    <string name="compareLiabilityInsurance">compare liability insurances</string>
-    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://home-questions.comparethemarket.com/questions?#/policy/6e5efe59-9b06-47e5-93a2-e2d3d718ae84]]></string>
-    <string name="liabilityInsurance">Liability insurance</string>
-    <string name="liabilityInsuranceDesc">There are a number of different types of insurance available to protect your own home from damage. Private liability insurance is an absolute must.  With liability insurance, you are insured against all claims for property damage, personal injury or financial loss if a third party has been damaged. In contrast to other insurance companies, private liability is also relatively cheap.  You have to budget around 70 euros a year.</string>
-    <string name="go">GO ON!</string>
+    <string name="preserveArtisanBills">Reçus pour les déclarations de revenus</string>
+    <string name="preserveArtisanBillsDesc">Gardez les factures des artisans pour les déclarations de revenus. Vous pouvez économiser jusqu\'à 1 200 euros de taxes chaque année. Si vous déménagez à cause de votre employeur, vous obtiendrez encore plus de remboursement.</string>
+    <string name="preserveArtisanBillsTip">Conseil fiscal</string>
+    <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
+    <string name="bulkyWaste">Déchets volumineux</string>
+    <string name="bulkyWasteDesc">Tout ce que vous ne voulez pas emporter ou donner est livré avec des déchets encombrants. Vous pouvez l\'enregistrer auprès de la ville.</string>
+    <string name="organizeHelperCarryingStraps">Sangle de levage sur Ebay</string>
+    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xtragegurt.TRS0%26_nkw%3Dsangle+de+levage%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dsangle de levage]]></string>
+    <string name="organizeHelperhandTruck">Charrette à bras sur Ebay</string>
+    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP]]></string>
+    <string name="organizeHelperWorkGloves">Gants de travail</string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=Gants de travail&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=c2580c139f5c7166059cbce86a6e1e4c]]></string>
+    <string name="previousDay">Préparatifs la veille</string>
+    <string name="previousDayDesc">Rechargez votre téléphone, obtenez de la nourriture, obtenez des conseils, gardez des documents importants à portée de main et vérifiez votre coffre à médicaments. Il est également judicieux d\'étiqueter vos produits de déménagement => contenu, destination (chambre). Marquez les boîtes mobiles qui contiennent des contenus fragiles. Dernier point mais non le moindre: n\'oubliez pas de vous coucher tôt.</string>
+    <string name="oldRentDepositHowItWorks">Comment fonctionne le remboursement de la caution locative?</string>
+    <string name="oldRentDeposit">Ancien dépôt</string>
+    <string name="oldRentDepositDesc">N\'oubliez pas le dépôt de garantie de votre ancien propriétaire. Attention! Veuillez rester actif: Dans votre propre intérêt, vous ne devez pas simplement attendre que le propriétaire remplisse ses fonctions un beau jour, car il y a un délai de prescription de 3 ans pour votre demande de remboursement de l\'acompte. Si le délai est écoulé sans que vous ne puissiez faire quoi que ce soit à ce sujet, votre argent a disparu, même si vous n\'êtes pas en faute. Vous avez également droit à un règlement des frais de service. Vous pouvez déduire cela proportionnellement de votre déclaration de revenus et recevoir souvent un remboursement si vous déménagez au cours de l\'année.</string>
+    <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
+    <string name="cordonOffParkingLot">Verrouiller le parking</string>
+    <string name="cordonOffParkingLotDesc">Bloquez les places de stationnement devant l\'ancien et le nouveau domicile en temps utile avant de déménager.</string>
+    <string name="cordonOffParkingLotHowTo">Comment éteindre correctement?</string>
+    <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
+    <string name="packingMaterial">Matériau d\'emballage</string>
+    <string name="packingMaterialDesc">Obtenez suffisamment de boîtes de déménagement, de sacs à ordures, de ruban adhésif, de papier bulle ou de vieux journaux en temps utile.</string>
+    <string name="packingMaterialMovingBoxes">Boîtes de déménagement</string>
+    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XBoîtes+de+déménagement.TRS0%26_nkw%3DBoîtes+de+déménagement%26_sacat%3D0]]></string>
+    <string name="packingMaterialTrashBags">sac poubelle</string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=sac poubelle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=8f63d96814a9b2c1f03608c41ad6a8a6]]></string>
+    <string name="packingMaterialAirCushionFoil">Papier bulle</string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=Papier bulle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=1bae9161d893323b534b27aa564424fd]]></string>
+    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3Darticles+de+fête%26_sacat%3D0]]></string>
+    <string name="lookFor">Chercher</string>
+    <string name="on">à</string>
+    <string name="ebay_generic_link"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
+    <string name="removalDate">DATE DE DÉPLACEMENT</string>
+    <string name="removalDateDesc">N\'oubliez pas de charger les meubles en premier. Si vous ne l\'avez pas déjà fait, vous devez étiqueter vos produits de déménagement => contenu, destination (chambre).  Marquez les boîtes mobiles qui contiennent des contenus fragiles.></string>
+    <string name="compareLiabilityInsurance">Comparez l\'assurance responsabilité</string>
+    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://www.lecomparateurassurance.com/98-autres-guides/86464-responsabilite-civile-qu-est-que-est]]></string>
+    <string name="liabilityInsurance">Assurance responsabilité civile</string>
+    <string name="liabilityInsuranceDesc">Il existe différents types d\'assurance pour protéger votre maison contre les dommages. Une assurance responsabilité civile privée est un must absolu. Cela vous assure contre les réclamations pour dommages matériels, blessures corporelles ou pertes financières si un tiers a été blessé. Contrairement à d\'autres compagnies d\'assurance, la responsabilité privée est également relativement bon marché. Vous devez prévoir environ 70 euros par an ici.</string>
+    <string name="go">ALLONS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="party">Official opening</string>
-    <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
-    <string name="introDesc">Plan your move professionally! All important tasks are created automatically - including tips and links to further information.</string>
-    <string name="introDesc2">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
-    <string name="introLegend">Legend</string>
-    <string name="placeholder_place_removal">Where Are You Moving?</string>
-    <string name="postal">zip code</string>
-    <string name="place">place</string>
-    <string name="street">street</string>
-    <string name="streetNumber">number</string>
-    <string name="deleteAll">Delete All Tasks</string>
-    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
-    <string name="partyEbay">Party items on Ebay</string>
-    <string name="legendExportLong">Export to Google Calendar</string>
-    <string name="legendPrioLong">Set normal or high priority</string>
-    <string name="legendSetDoneLong">Set task done or undone</string>
-    <string name="legendFilterLong">Filter tasks by title</string>
-    <string name="legendCostsLong">costs overview</string>
-    <string name="legendOverview">Overview of completed tasks / open tasks</string>
-    <string name="legendDoneLong">done/all tasks</string>
-    <string name="legentCosts">costs overview</string>
-    <string name="legendFilter">filter by name</string>
-    <string name="legendDone">set task done</string>
-    <string name="legendPrio">set priority</string>
-    <string name="legendExport">calendar export</string>
-    <string name="deleteAllTasks">Delete all tasks?</string>
-    <string name="delete_all">Yes, All</string>
-    <string name="find_by_name">Find task by name</string>
-    <string name="name_of_task">task title</string>
-    <string name="filter">search</string>
+    <string name="party">Cérémonie d\'inauguration</string>
+    <string name="partyDesc">Offrez une cérémonie d\'inauguration pour les amis et les aides dans votre nouvel appartement.</string>
+    <string name="introDesc">Planifiez votre déménagement!  Toutes les tâches importantes sont créées pour vous - y compris un aperçu des coûts, des conseils et des liens vers de plus amples informations.</string>
+    <string name="introDesc2">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
+    <string name="introLegend">Légende</string>
+    <string name="placeholder_place_removal">Où voulez-vous déménager?</string>
+    <string name="postal">Code postal</string>
+    <string name="place">lieu de résidence</string>
+    <string name="street">Rue</string>
+    <string name="streetNumber">Numéro de maison</string>
+    <string name="deleteAll">Tout effacer</string>
+    <string name="partyEbay">Articles de fête sur Ebay</string>
+    <string name="legendExportLong">exporter vers le calendrier</string>
+    <string name="legendPrioLong">définir une priorité normale ou élevée</string>
+    <string name="legendSetDoneLong">Définir la tâche sur terminée ou ouverte</string>
+    <string name="legendFilterLong">Filtrer les tâches par titre</string>
+    <string name="legendCostsLong">Aperçu des coûts</string>
+    <string name="legendOverview">terminées / toutes</string>
+    <string name="legendDoneLong">tâches terminées / toutes les tâches</string>
+    <string name="legentCosts">Aperçu des coûts</string>
+    <string name="legendFilter">Titre de recherche</string>
+    <string name="legendDone">Tâche accomplie</string>
+    <string name="legendPrio">Définir la priorité</string>
+    <string name="legendExport">Exportation du calendrier</string>
+    <string name="deleteAllTasks">Vraiment supprimer toutes les tâches?</string>
+    <string name="delete_all">Oui tout</string>
+    <string name="find_by_name">Rechercher une tâche</string>
+    <string name="name_of_task">Nom de la tâche</string>
+    <string name="filter">Chercher</string>
     <string name="zero">0</string>
-    <string name="introDateNecessary">Set up a (new) move. If possible, enter a date.</string>
-    <string name="days">Days</string>
-    <string name="hours">Hours</string>
-    <string name="minits">Minutes</string>
-    <string name="untilRemoval">UNTIL MOVING DATE</string>
-    <string name="introNextTasks">Your next tasks:</string>
-    <string name="routeMap">route map</string>
-    <string name="DateOrPlaceNeeded">Please enter either a date or a destination.</string>
-    <string name="show_location">Zeige auf Karte</string>
+    <string name="introDateNecessary">Mettre en place un (nouveau) mouvement. Si possible, entrez une date.</string>
+    <string name="days">jours</string>
+    <string name="hours">heures</string>
+    <string name="minits">minutes</string>
+    <string name="untilRemoval">JUSQU\'AU DÉPLACEMENT</string>
+    <string name="introNextTasks">Vos prochaines tâches:</string>
+    <string name="routeMap">L\'itinéraire</string>
+    <string name="DateOrPlaceNeeded">Veuillez saisir une date ou une destination.</string>
+    <string name="show_location">Afficher sur la carte</string>
 </resources>

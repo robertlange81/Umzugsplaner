@@ -40,7 +40,6 @@
     <string name="placeholder_time_detail">Zeit</string>
     <string name="placeholder_type">Kategorie</string>
     <string name="removed">entfernt</string>
-    <string name="sortMode" translatable="false">sortMode</string>
     <string name="sortbydate">Sortiere nach Datum</string>
     <string name="sortbyCosts">Sortiere nach Kosten</string>
     <string name="sortbyPriority">Sortiere nach Priorität</string>
@@ -52,13 +51,6 @@
     <string name="undo">rückgängig</string>
     <string name="paid_done">bezahlt</string>
     <string name="currency">€</string>
-    <string-array name="roman_numbers">
-        <item>I</item>
-        <item>II</item>
-        <item>III</item>
-        <item>IV</item>
-        <item>V</item>
-    </string-array>
     <string-array name="base_task_types">
         <item>ALTE WOHNUNG</item>
         <item>NEUE WOHNUNG</item>
@@ -74,7 +66,7 @@
     <string name="Rate_App">App bewerten</string>
     <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht gewartet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung. Vielen Dank!</string>
     <string name="Remind_me_later">Später erinnern</string>
-    <string name="No_thanks">No, thanks</string>
+    <string name="No_thanks">Nein, danke</string>
     <string name="back">zurück</string>
     <string name="placeholder_hide_done">nur offene</string>
     <string name="placeholder_hide_low_prio">nur hohe Prio</string>
@@ -126,9 +118,9 @@
     <string name="fireAndBurglaryProtection">Brandschutz und Einbruchsschutz</string>
     <string name="fireAndBurglaryProtectionDesc">Rauchmelder sind in einigen Bundesländern Pflicht und können Leben retten. Vergessen Sie zudem nicht den Einbruchsschutz.</string>
     <string name="fireAndBurglaryProtectionSmokeDetector">Feuermelder vergleichen</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.de/Rauchmelder-Brandmelder/b?ie=UTF8&node=2077635031&tag=robroyrich-21]]></string>
+    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=w1fxeor9-21&linkCode=ur2&linkId=44c6d87521684d0c77318b172ee50c71&camp=1638&creative=6742&index=drugstore&keywords=Rauchmelder]]></string>
     <string name="fireAndBurglaryProtectionBurglary">Einbruchsschutz prüfen</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Rauchmelder Brandmelder&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&keywords=Einbruchsschutz&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
     <string name="requestSpecialLeave">(Sonder-)Urlaub beantragen</string>
     <string name="requestSpecialLeaveDesc">Vergessen Sie nicht Urlaub zu beantragen. In der Regel genehmigt Ihnen Ihr Arbeitgeber für den Umzug Sonderurlaub. Fragen kostet nichts!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.movinga.de/hub/beratung/sonderurlaub-bei-umzug//b?ie=UTF8&node=2077635031]]></string>

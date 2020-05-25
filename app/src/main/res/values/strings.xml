@@ -40,6 +40,7 @@
     <string name="placeholder_time_detail">time</string>
     <string name="placeholder_type">category</string>
     <string name="removed">removed</string>
+    <string name="sortMode" translatable="false">sortMode</string>
     <string name="sortbyCosts">Sort By Costs</string>
     <string name="sortbydate">Sort By Date</string>
     <string name="sortbyIsDone">Sort By Done</string>
@@ -241,4 +242,11 @@
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a destination.</string>
     <string name="show_location">Show on map</string>
+    <string-array name="roman_numbers">
+        <item>I</item>
+        <item>II</item>
+        <item>III</item>
+        <item>IV</item>
+        <item>V</item>
+    </string-array>
 </resources>
