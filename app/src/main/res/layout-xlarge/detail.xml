@@ -252,7 +252,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
                     android:gravity="top"
-                    android:inputType="textMultiLine|textCapSentences"
+                    android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                     android:textSize="@dimen/detail_text_size"
                     android:scrollHorizontally="false" />
 
@@ -306,6 +306,7 @@
                     android:paddingLeft="5dp"
                     android:textColorLink="@color/colorGreen"
                     android:textSize="@dimen/detail_text_size"
+                    android:textStyle="bold"
                     android:linksClickable="false" />
 
                 <android.support.v7.widget.AppCompatImageView
@@ -353,6 +354,7 @@
                     android:inputType="textMultiLine|textWebEditText|textNoSuggestions"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="false"
@@ -406,6 +408,7 @@
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:selectAllOnFocus="true"
@@ -456,6 +459,7 @@
                     android:hint="@string/placeholder_link_input"
                     android:layout_weight="1"
                     android:textSize="@dimen/detail_text_size"
+                    android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="false"
