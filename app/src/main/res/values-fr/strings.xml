@@ -211,7 +211,7 @@
     <string name="postal">Code postal</string>
     <string name="place">lieu de résidence</string>
     <string name="street">Rue</string>
-    <string name="streetNumber">Numéro de maison</string>
+    <string name="streetNumber">Numéro</string>
     <string name="deleteAll">Tout effacer</string>
     <string name="partyEbay">Articles de fête sur Ebay</string>
     <string name="legendExportLong">exporter vers le calendrier</string>
