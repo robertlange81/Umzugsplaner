@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.planner.virus.corona.Activities.MainActivity">
+    tools:context="com.planner.generic.checklist.Activities.MainActivity">
     <item
         android:id="@+id/overview"
         android:orderInCategory="70"

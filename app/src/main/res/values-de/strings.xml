@@ -204,8 +204,8 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Einweihungsfeier</string>
     <string name="partyDesc">Geben Sie eine Einweihungsfeier für Freunde und Helfer in Ihrer neuen Wohnung.</string>
-    <string name="introDesc">Planen Sie Ihren Umzug! Alle wichtigen Aufgaben werden für Sie angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
-    <string name="introDesc2">Kategorisieren und priorisieren Sie die Checkliste für jede Phase des Umzugs. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
+    <string name="introDescRemoval">Planen Sie Ihren Umzug! Alle wichtigen Aufgaben werden für Sie angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
+    <string name="introDescRemoval2">Kategorisieren und priorisieren Sie die Checkliste für jede Phase des Umzugs. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
     <string name="introLegend">Legende</string>
     <string name="placeholder_place_removal">Wohin wollen Sie umziehen?</string>
     <string name="postal">Plz</string>
