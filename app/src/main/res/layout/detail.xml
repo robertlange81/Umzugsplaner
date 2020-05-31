@@ -270,6 +270,7 @@
                     android:minLines="2"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
+                    android:lineHeight="@dimen/headline_text_line_height"
                     android:gravity="center_vertical"
                     android:inputType="textMultiLine|textCapSentences|textNoSuggestions"
                     android:textSize="@dimen/detail_text_size"
