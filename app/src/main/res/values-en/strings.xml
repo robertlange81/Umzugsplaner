@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovePlanner</string>
+    <string name="app_name">Lockdown Check</string>
     <string name="category">type</string>
     <string name="deleted">deleted</string>
     <string name="date_changed">date changed</string>
@@ -23,11 +23,13 @@
     <string name="placeholder_date_export"></string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
+    <string name="placeholder_date_lockdown">When do you expect the lockdown to begin?</string>
+    <string name="placeholder_place_lockdown">Where do You live?</string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
     <string name="placeholder_export_no_date">Please choose a date first before export.</string>
-    <string name="placeholder_init">Set up a NEW removal</string>
+    <string name="placeholder_init">Set up a NEW check list</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
     <string name="placeholder_init_no_date">No date specified - Standard tasks are created without date.</string>
     <string name="placeholder_link">link</string>
@@ -52,13 +54,18 @@
     <string name="paid_done">paid</string>
     <string name="currency">£</string>
     <string-array name="base_task_types">
-        <item>OLD FLAT</item>
+        <!--item>OLD FLAT</item>
         <item>NEW FLAT</item>
         <item>CONTRACTS</item>
         <item>MOVEMENT</item>
         <item>ELECTRONICS</item>
         <item>FURNITURE</item>
-        <item>KITCHEN</item>
+        <item>KITCHEN</item-->
+        <item>FOODS</item>
+        <item>MEDICINE</item>
+        <item>HOUSEHOLD</item>
+        <item>ELECTRONICS</item>
+        <item>OTHER</item>
     </string-array>
     <string name="contractCancel">If you want to cancel your old contract, your move often offers a special right of termination if you cannot be supplied by your previous provider at your new place of residence. Take Care! Send evidences by registered mail if possible. You could otherwise take disadvantage of some providers.</string>
     <string name="partner_verivox_Id">2812</string>
@@ -204,7 +211,8 @@
     <string name="party">Official opening</string>
     <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
     <string name="introDescRemoval">Plan your move professionally! All important tasks are created automatically - including tips and links to further information.</string>
-    <string name="introDescRemoval2">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
+    <string name="introDescLockdown">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
+    <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
     <string name="introLegend">Legend</string>
     <string name="placeholder_place_removal">Where Are You Moving?</string>
     <string name="postal">zip code</string>
@@ -239,6 +247,6 @@
     <string name="untilRemoval">UNTIL MOVING DATE</string>
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
-    <string name="DateOrPlaceNeeded">Please enter either a date or a destination.</string>
+    <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
     <string name="show_location">Show on map</string>
 </resources>

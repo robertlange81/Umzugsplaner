@@ -51,7 +51,7 @@
                     android:gravity="start|center_vertical"
                     android:paddingLeft="20sp"
                     android:textSize="@dimen/headline_text_size"
-                    android:text="@string/placeholder_place_removal" />
+                    android:text="@string/placeholder_place_lockdown" />
 
             </TableRow>
             <!-- input postal / place -->
@@ -162,8 +162,9 @@
                     android:layout_height="match_parent"
                     android:gravity="start|center_vertical"
                     android:paddingLeft="20sp"
+                    android:lineHeight="20dp"
                     android:textSize="@dimen/headline_text_size"
-                    android:text="@string/placeholder_date_removal" />
+                    android:text="@string/placeholder_date_lockdown" />
 
             </TableRow>
             <!-- input date / time -->

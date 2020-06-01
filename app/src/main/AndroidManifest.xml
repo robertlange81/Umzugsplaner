@@ -45,7 +45,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="www.robert-lange.eu" android:pathPrefix="/coronaList" />
+                <data android:scheme="http" android:host="www.robert-lange.eu" android:pathPrefix="/lockdown" />
             </intent-filter>
         </activity>
         <activity

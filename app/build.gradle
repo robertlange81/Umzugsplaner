@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.planner.generic.corona"
+        applicationId "com.planner.generic.virus"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 10
-        versionName "10.0"
+        versionCode 12
+        versionName "12.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

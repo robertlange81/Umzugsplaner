@@ -14,13 +14,13 @@ import java.util.TimeZone;
 
 public class TaskInitializer {
 
-    public static ListType CURRENT_LIST_TYPE = ListType.REMOVAL;
+    public static ListType CURRENT_LIST_TYPE = ListType.LOCKDOWN;
 
     public enum ListType {
 
         NONE(0),
         REMOVAL(1),
-        CORONA(2);
+        LOCKDOWN(2);
 
         private int value;
 
@@ -34,6 +34,10 @@ public class TaskInitializer {
     }
 
     public static void InitTasks(Date targetDate, Location targetLocation, Activity context) {
+
+        if(CURRENT_LIST_TYPE.toString() == "LOCKDOWN") {
+            targetDate = addMonthDaysToJavaUtilDate(targetDate, 0, -21);
+        }
 
         Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
         today.setHours(0);
@@ -61,20 +65,115 @@ public class TaskInitializer {
 
         switch (CURRENT_LIST_TYPE.toString()) {
             case "REMOVAL":
-                AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);
+                //AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);
                 break;
-            case "CORONA":
-                AddCoronaTasks(targetDate, targetLocation, context, today, tomorrow);
+            case "LOCKDOWN":
+                AddLockdownTasks(targetDate, targetLocation, context, today, tomorrow);
                 break;
         }
 
         Persistance.SaveTasks(context);
     }
 
-    private static void AddCoronaTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
-        
+    private static void AddLockdownTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+        // Verbandskasten
+        Task medicalKit
+                = new Task("Verbandskasten", "Verbandskasten nach DIN-Norm, achten Sie darauf, dass dieser nicht abgelaufen ist!", addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(medicalKit);
+
+        // Vom Arzt verschriebene Medikamente
+        Task medication = new Task("Medikamente", "Vom Arzt verschriebene Medikamente", addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(medication);
+
+        // Schmerzmittel
+        Task painReliever = new Task("Schmerzmittel", "Schmerzmittel: Ibuprofen und Paracetamol.", addMonthDaysToJavaUtilDate(targetDate, 0, 2), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(painReliever);
+
+        // Desinfektionsmittel
+        Task disinfectant = new Task("Desinfektionsmittel", "Desinfektionsmittel: für die Haut UND für Wunden.", addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(disinfectant);
+
+        // Erkältungsmittel
+        Task coldRemedies = new Task("Erkältungsmittel", "Erkältungsmittel zur Linderung von Husten, Schnupfen und Fieber.", addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(coldRemedies);
+
+        // Fieberthermometer
+        Task clinicalThermometer = new Task("Fieberthermometer", "Fieberthermometer, am besten Infrarot-Thermometer, zum Messen an der Stirn.", addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(clinicalThermometer);
+
+        // Mittel gegen Durchfall
+        Task DiarrheaRemedy = new Task("Mittel gegen Durchfall", "Mittel gegen Durchfall", addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.MEDICIN), targetLocation);
+        Task.addTask(DiarrheaRemedy);
+
+        // Schlafsack
+        Task sleepingBag = new Task("Schlafsack", "Durch das Bundesamt für Katastrophenschutz werden Schlafsäcke empfohlen.", addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.MISCELLANEOUS), targetLocation);
+        Task.addTask(sleepingBag);
+
+        // wasserfeste Kleidung
+        Task waterproofClothing = new Task("wasserfeste Kleidung", "Durch das Bundesamt für Katastrophenschutz wird wasserfeste Kleidung empfohlen.", addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.MISCELLANEOUS), targetLocation);
+        Task.addTask(waterproofClothing);
+
+        // Taschenlampe
+        Task pocketLamp = new Task("Taschenlampe", "Eine wiederaufladbare Kurbel-Taschenlampe kann bei Stromausfall sehr nützlich sein.", addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
+                new TaskType(TaskTypeMain.MISCELLANEOUS), targetLocation);
+        Task.addTask(pocketLamp);
+
+        // Treibstoff
+        Task fuel = new Task("Benzin", "Benzin oder Diesel in einem 20-Liter-Kanister zur Notbetankung Ihres KFZ oder eines (Diesel-)Generators.", addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.MISCELLANEOUS), targetLocation);
+        Task.addTask(fuel);
+
+        // Wasser
+        Task water = new Task("20 Liter Wasser", "fünf Liter davon sind für die Zubereitung von Nudeln, Kartoffeln und Reis eingeplant", addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(water);
+
+        // Wasser
+        Task potatoes = new Task("Kartoffeln", "3,5 Kilogramm Kartoffeln, Reis und Getreide", addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(potatoes);
+
+        // Gemüse
+        Task vegetables = new Task("Gemüse", "4 Kilogramm Hülsenfrüchte und Gemüse - vornehmlich in Dosen oder Gläsern", addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(vegetables);
+
+        // Obst
+        Task fruit = new Task("Obst", "2,5 Kilogramm Obst - vornehmlich in Dosen und Gläsern", addMonthDaysToJavaUtilDate(targetDate, 0, 21), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(fruit);
+
+        // Milch
+        Task milk = new Task("Milch", "2,6 Liter beziehungsweise Kilogramm Milch und Milchprodukte - vornehmlich Produkte, die nicht gekühlt werden müssen", addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(milk);
+
+        // Fett und Öl
+        Task fatOil = new Task("Fett und Öl", "0,357 Kilogramm Fett und Öl", addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(fatOil);
+
+        // Gewürze
+        Task spices = new Task("Gewürze", "Gewürze, Zucker und Süßstoff", addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.Normal, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(spices);
+
+        // Fertiggerichte
+        Task ReadyMeals = new Task("Fertiggerichte", "Fertiggerichte wie beispielsweise Dosenravioli. Menge beliebig.", addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
+                new TaskType(TaskTypeMain.FOOD), targetLocation);
+        Task.addTask(ReadyMeals);
     }
 
+    /*
     private static void AddRemovalTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
         // Umzugstermin selbst
         if(targetDate != null) {
@@ -132,7 +231,7 @@ public class TaskInitializer {
         internetContract.addLink(context.getString(R.string.compareContractVerivox), context.getString(R.string.internetContractVerivoxLINK));
         Task.addTask(internetContract);
 
-        // Haftplficht
+        // Haftpflicht
         Task liabilityInsurance = new Task(context.getString(R.string.liabilityInsurance), context.getString(R.string.liabilityInsuranceDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -20) : null, Priority.High, 0L,
                 new TaskType(TaskTypeMain.Contracts), targetLocation);
         liabilityInsurance.addLink(context.getString(R.string.compareLiabilityInsurance), context.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
@@ -265,7 +364,7 @@ public class TaskInitializer {
         party.addLink(context.getString(R.string.partyEbay), context.getString(R.string.partyEbayLINK));
         Task.addTask(party);
     }
-
+*/
     public static Date addMonthDaysToJavaUtilDate(Date date, int months, int days) {
 
         if(date == null)

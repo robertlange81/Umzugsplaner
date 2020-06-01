@@ -47,7 +47,7 @@ public class Task implements Serializable {
     - Bilder speichern
     - Ausdrucken / PDF erstellen / per Mail senden
 
-    - Coronaliste
+    - Lockdownliste
     - Hochzeitsliste
     - Babyliste
     - Synchronisieren
@@ -139,7 +139,7 @@ public class Task implements Serializable {
         date = null;
         priority = com.planner.generic.checklist.Model.Priority.Normal;
         costs = 0L;
-        type = new TaskType(TaskTypeMain.Movement);
+        type = new TaskType(TaskTypeMain.MEDICIN);
         links = new TreeMap<>();
         createdAt = new Date();
     }

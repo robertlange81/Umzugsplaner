@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">changement de résidence</string>
+    <string name="app_name">Lockdown Checklist</string>
     <string name="category">Type</string>
     <string name="date_changed">Date changée</string>
     <string name="deleted">supprimé</string>
@@ -23,6 +23,7 @@
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export"></string>
     <string name="placeholder_date_removal">Quand veux-tu partir?</string>
+    <string name="placeholder_date_lockdown">Quand pensez-vous que le verrouillage commencera?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
@@ -52,13 +53,17 @@
     <string name="paid_done">payé</string>
     <string name="currency">€</string>
     <string-array name="base_task_types">
-        <item>VIEUX APP.</item>
+        <!--item>VIEUX APP.</item>
         <item>NOUVEL APP.</item>
         <item>CONTRATS</item>
         <item>BOUGE TOI</item>
-        <item>ÉLECTRONIQUE</item>
         <item>MEUBLES</item>
-        <item>CUISINE</item>
+        <item>CUISINE</item-->
+        <item>ALIMENTATION</item>
+        <item>MÉDECINE</item>
+        <item>MENAGE</item>
+        <item>ÉLECTRONIQUE</item>
+        <item>AUTRE</item>
     </string-array>
     <string name="contractCancel">Si vous souhaitez résilier votre ancien contrat, votre déménagement offre souvent un droit de résiliation spécial si vous ne pouvez pas être fourni par votre ancien fournisseur à votre nouveau lieu de résidence.  Attention!  Si possible, envoyez des preuves par courrier recommandé.  Sinon, vous pourriez profiter de certains fournisseurs comme PYUR.</string>
     <string name="partner_verivox_Id">2812</string>
@@ -205,7 +210,8 @@
     <string name="party">Cérémonie d\'inauguration</string>
     <string name="partyDesc">Offrez une cérémonie d\'inauguration pour les amis et les aides dans votre nouvel appartement.</string>
     <string name="introDescRemoval">Planifiez votre déménagement!  Toutes les tâches importantes sont créées pour vous - y compris un aperçu des coûts, des conseils et des liens vers de plus amples informations.</string>
-    <string name="introDescRemoval2">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
+    <string name="introDescLockdown">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
+    <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
     <string name="placeholder_place_removal">Où voulez-vous déménager?</string>
     <string name="postal">Code postal</string>
@@ -239,6 +245,6 @@
     <string name="untilRemoval">JUSQU\'AU DÉPLACEMENT</string>
     <string name="introNextTasks">Vos prochaines tâches:</string>
     <string name="routeMap">L\'itinéraire</string>
-    <string name="DateOrPlaceNeeded">Veuillez saisir une date ou une destination.</string>
+    <string name="DateOrPlaceNeeded">Veuillez saisir une date ou spécifier un emplacement.</string>
     <string name="show_location">Afficher sur la carte</string>
 </resources>
