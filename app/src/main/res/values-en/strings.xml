@@ -241,4 +241,5 @@
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a destination.</string>
     <string name="show_location">Show on map</string>
+    <string name="export">Export list</string>
 </resources>

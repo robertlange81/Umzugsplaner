@@ -241,4 +241,5 @@
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ziel angeben.</string>
     <string name="show_location">Zeige auf Karte</string>
+    <string name="export">Liste exportieren</string>
 </resources>

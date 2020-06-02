@@ -477,6 +477,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
+        if(item == hideNormalPrioMenuItem) {
+
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
