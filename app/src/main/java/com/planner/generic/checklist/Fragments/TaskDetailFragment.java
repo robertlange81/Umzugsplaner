@@ -736,7 +736,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     final Handler handler = new Handler();
     Runnable updater = new Runnable() {
       public void run() {
-        while (!updaterThread.isInterrupted()) {
+        while (updaterThread != null && !updaterThread.isInterrupted()) {
             if (needsUpdate) {
               needsUpdate = false;
 
@@ -771,8 +771,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   }
 
   private void stopTimerThread() {
-    if (updaterThread != null)
+    if (updaterThread != null) {
       updaterThread.interrupt();
+      updaterThread = null;
+    }
   }
 
   @Override
