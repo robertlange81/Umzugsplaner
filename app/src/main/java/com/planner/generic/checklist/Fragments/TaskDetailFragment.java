@@ -37,6 +37,7 @@ import com.planner.generic.checklist.Activities.MainActivity;
 import com.planner.generic.checklist.Helpers.Command;
 import com.planner.generic.checklist.Helpers.CurrencyWatcher;
 import com.planner.generic.checklist.Helpers.TaskFormater;
+import com.planner.generic.checklist.Helpers.TaskInitializer;
 import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.Model.TaskType;
@@ -280,7 +281,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
-            generateMarketLinks(null);
             MainActivity.NotifyTaskChanged(_task, getActivity());
           }
         }
@@ -373,6 +373,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
       }
     });
+    generateMarketLinks(null);
     Log.d("DEBUG", "_initListeners END");
   }
 
@@ -593,7 +594,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       searchFor = _task.name;
     }
 
-    if(_task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty()) { // user type
+    if((_task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty())
+      || TaskInitializer.CURRENT_LIST_TYPE == TaskInitializer.ListType.LOCKDOWN) {
 
       TreeMap<String,String> newLinks = new TreeMap<>();
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {
@@ -605,7 +607,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       _task.links = newLinks;
       _task.addLink(
         getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
-        getResources().getString(_task.type.equals(TaskTypeMain.Electronics) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
+        getResources().getString(_task.type.equals(TaskTypeMain.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
       );
 
       _task.addLink(
