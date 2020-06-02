@@ -247,4 +247,5 @@
     <string name="routeMap">L\'itinéraire</string>
     <string name="DateOrPlaceNeeded">Veuillez saisir une date ou spécifier un emplacement.</string>
     <string name="show_location">Afficher sur la carte</string>
+    <string name="export">Exporter la liste</string>
 </resources>

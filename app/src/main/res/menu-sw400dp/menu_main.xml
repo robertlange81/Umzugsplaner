@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.planner.generic.checklist.Activities.MainActivity">
+    tools:context="com.planner.removal.removalplanner.Activities.MainActivity">
     <item
         android:id="@+id/overview"
         android:orderInCategory="10"
@@ -17,7 +17,7 @@
         android:textSize="150sp"
         android:text="@string/export"
         android:title="@string/export"
-        app:showAsAction="ifRoom" /-->
+        app:showAsAction="always" /-->
     <item
         android:id="@+id/showCostsMenuItem"
         android:icon="@drawable/ic_currency"
