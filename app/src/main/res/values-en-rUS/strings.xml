@@ -52,7 +52,7 @@
     <string name="todo">todo</string>
     <string name="undo">undo</string>
     <string name="paid_done">paid</string>
-    <string name="currency">£</string>
+    <string name="currency">$</string>
     <string-array name="base_task_types">
         <!--item>OLD FLAT</item>
         <item>NEW FLAT</item>
@@ -250,4 +250,45 @@
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
+    <string name="disinfectant">disinfectant</string>
+    <string name="disinfectant_desc">Disinfectant: for the skin AND for wounds.</string>
+    <string name="Respirators">Respirators</string>
+    <string name="Respirators_desc">Respirators with the highest protection class FFP3</string>
+    <string name="medicalkit">Medical kit</string>
+    <string name="firstAidKitDesc">First-aid kit according to standard, make sure that it has not expired!</string>
+    <string name="medication">Medications</string>
+    <string name="medicationDesc">Medications prescribed by the doctor</string>
+    <string name="painReliever">pain reliever</string>
+    <string name="painRelieverDesc">Pain relievers: ibuprofen and paracetamol.</string>
+    <string name="DiarrheaRemedy">Diarrhea remedy</string>
+    <string name="water">5 gallons of water</string>
+    <string name="waterDesc">1 gallon of it is planned for the preparation of pasta, potatoes and rice.</string>
+    <string name="readyMeals">Ready meals</string>
+    <string name="readyMealsDesc">Ready meals such as canned ravioli. Any quantity.</string>
+    <string name="pocketLamp">Pocket lamp</string>
+    <string name="pocketLampDesc">A rechargeable crank flashlight can be very useful in the event of a power failure.</string>
+    <string name="batteries">Batteries</string>
+    <string name="batteriesDesc">Batteries in different sizes.</string>
+    <string name="potatoes">Potatoes</string>
+    <string name="potatoesDesc">8 pounds of potatoes, rice and cereals</string>
+    <string name="fuel">Gasoline / gas can</string>
+    <string name="fuelDesc">Petrol or diesel in a 10 gallons can for emergency refueling of your car or a (diesel) generator.</string>
+    <string name="sleepingBag">Sleeping Bag</string>
+    <string name="sleepingBagDesc">The Office for Disaster Protection recommends sleeping bags.</string>
+    <string name="waterproofClothing">Waterproof Clothing</string>
+    <string name="waterproofClothingDesc">Waterproof clothing is recommended by the Civil Protection Agency.</string>
+    <string name="vegetables">Canned Vegetables</string>
+    <string name="vegetablesDesc">8 pounds of legumes and vegetables - mainly in cans or glasses</string>
+    <string name="fruit">Canned Fruit</string>
+    <string name="fruitDesc">6 pounds of fruit - mainly in cans and glasses</string>
+    <string name="milk">Milk</string>
+    <string name="milkDesc">1 gallons or 6 pounds of milk and milk products - primarily products that do not need to be refrigerated</string>
+    <string name="fatOil">Fat and Oil</string>
+    <string name="fatOilDesc">2 pounds of fat and oil</string>
+    <string name="spices">Spices</string>
+    <string name="spicesDesc">Spices, sugar and sweeteners</string>
+    <string name="coldRemedies">Cold Remedies</string>
+    <string name="coldRemediesDesc">Cold remedies to relieve cough, runny nose and fever.</string>
+    <string name="clinicalThermometer">Clinical Thermometer</string>
+    <string name="clinicalThermometerDesc">Medical thermometer, preferably infrared thermometer, for measuring on the forehead.</string>
 </resources>

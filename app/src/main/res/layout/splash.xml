@@ -11,7 +11,7 @@
         android:layout_height="250dp"
         android:background="@android:color/transparent"
         android:scaleType="centerInside"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/ic_launcher" />
 
     <ProgressBar
         android:id="@+id/progressBar"
