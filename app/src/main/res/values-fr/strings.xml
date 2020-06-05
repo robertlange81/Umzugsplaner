@@ -255,7 +255,7 @@
     <string name="Respirators_desc">Respirateurs avec la plus haute classe de protection FFP3</string>
     <string name="medicalkit">Trousse de premiers secours</string>
     <string name="firstAidKitDesc">Trousse de premiers soins selon la norme, assurez-vous qu\'elle n\'est pas périmée!</string>
-    <string name="medication">Medikamente</string>
+    <string name="medication">Médicaments</string>
     <string name="medicationDesc">Médicaments prescrits par le médecin</string>
     <string name="painReliever">Anti douleur</string>
     <string name="painRelieverDesc">Antalgiques: ibuprofène et paracétamol.</string>

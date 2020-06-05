@@ -6,8 +6,8 @@ android {
         applicationId "com.planner.generic.virus"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 15
-        versionName "15.0"
+        versionCode 16
+        versionName "16.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
