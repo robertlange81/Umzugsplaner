@@ -56,9 +56,7 @@ public class IntroFragmentOverview extends Fragment {
             minits.setText(String.valueOf(minitsNumber));
         }
 
-        Task.lock.lock();
         List<Task> taskListClone = Task.getTaskListClone();
-        Task.lock.unlock();
         Collections.sort(taskListClone, new DateComparator(true));
         int showNextTasksNumber = 0;
         String[] nextTaskName = new String[3];

@@ -29,14 +29,14 @@
         android:text="@string/currency"
         android:title="@string/currency"
         app:showAsAction="always" />
-    <!--item
+    <item
         android:id="@+id/export"
         android:orderInCategory="35"
         android:icon="@drawable/ic_baseline_cloud_download_24"
         android:textSize="150sp"
         android:text="@string/export"
         android:title="@string/export"
-        app:showAsAction="always" /-->
+        app:showAsAction="always" />
     <item
         android:id="@+id/goToLocation"
         android:icon="@drawable/ic_home_black_24dp"

@@ -6,6 +6,7 @@
     <string name="detail_description_input">Beschreibung</string>
     <string name="detail_save_task">zur Übersicht</string>
     <string name="done">erledigt</string>
+    <string name="Prio">Priorität</string>
     <string name="highPrioText">hohe Priorität für Aufgabe</string>
     <string name="highPrioText_short">hohe Priorität</string>
     <string name="normalPrioText">normale Priorität für Aufgabe</string>
@@ -38,7 +39,7 @@
     <string name="placeholder_overview">Übersicht</string>
     <string name="placeholder_save">Speichern</string>
     <string name="placeholder_settings">Einstellungen</string>
-    <string name="placeholder_time_detail">Zeit</string>
+    <string name="placeholder_time_detail">Uhrzeit</string>
     <string name="placeholder_type">Kategorie</string>
     <string name="removed">entfernt</string>
     <string name="sortbydate">Sortiere nach Datum</string>
@@ -52,6 +53,7 @@
     <string name="undo">rückgängig</string>
     <string name="paid_done">bezahlt</string>
     <string name="currency">€</string>
+    <string name="currency_long">Euro</string>
     <string-array name="base_task_types">
         <!--item>ALTE WOHNUNG</item>
         <item>NEUE WOHNUNG</item>
@@ -249,7 +251,7 @@
     <string name="show_location">Zeige auf Karte</string>
     <string name="export">Liste exportieren</string>
     <string name="disinfectant">Desinfektionsmittel</string>
-    <string name="disinfectant_desc">Desinfektionsmittel: für die Haut UND für Wunden.</string>
+    <string name="disinfectant_desc">Desinfektionsmittel für die Haut UND für Wunden.</string>
     <string name="Respirators">Atemschutzmasken</string>
     <string name="Respirators_desc">Atemschutzmasken mit höchster Schutzklasse FFP3</string>
     <string name="medicalkit">Verbandskasten</string>
@@ -259,7 +261,7 @@
     <string name="painReliever">Schmerzmittel</string>
     <string name="painRelieverDesc">Schmerzmittel: Ibuprofen und Paracetamol.</string>
     <string name="DiarrheaRemedy">Mittel gegen Durchfall</string>
-    <string name="water">20 Liter Wasser</string>
+    <string name="water">Trinkwasser - 20 Liter</string>
     <string name="waterDesc">fünf Liter davon sind für die Zubereitung von Nudeln, Kartoffeln und Reis eingeplant</string>
     <string name="readyMeals">Fertiggerichte</string>
     <string name="readyMealsDesc">Fertiggerichte wie beispielsweise Dosenravioli. Menge beliebig.</string>
@@ -289,4 +291,14 @@
     <string name="coldRemediesDesc">Erkältungsmittel zur Linderung von Husten, Schnupfen und Fieber.</string>
     <string name="clinicalThermometer">Fieberthermometer</string>
     <string name="clinicalThermometerDesc">Fieberthermometer, am besten Infrarot-Thermometer, zum Messen an der Stirn.</string>
+    <string name="ExportNotificationTitle">PDF Export</string>
+    <string name="DialogMessageExport">Aufgaben exportiert</string>
+    <string name="ExportNotificationMessage">Aufgaben exportiert</string>
+    <string name="ExportNotificationChannel">PDF Export</string>
+    <string name="ExportNotificationChannelDescription">Aufgaben exportiert</string>
+    <string name="ExportNotificationFinishedMessage">Export abgeschlossen</string>
+    <string name="Yes">Ja</string>
+    <string name="No">Nein</string>
+    <string name="errorExport">Fehler beim Export</string>
+    <string name="openPDF">PDF Öffnen</string>
 </resources>

@@ -6,6 +6,7 @@
     <string name="detail_description_input">description</string>
     <string name="detail_save_task">Back to List</string>
     <string name="done">done</string>
+    <string name="Prio">priority</string>
     <string name="highPrioText">high priority for task</string>
     <string name="highPrioText_short">high priority</string>
     <string name="normalPrioText">normal priority for task</string>
@@ -52,7 +53,8 @@
     <string name="todo">todo</string>
     <string name="undo">undo</string>
     <string name="paid_done">paid</string>
-    <string name="currency">£</string>
+    <string name="currency">€</string>
+    <string name="currency_long">Euro</string>
     <string-array name="base_task_types">
         <!--item>OLD FLAT</item>
         <item>NEW FLAT</item>
@@ -251,7 +253,7 @@
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
     <string name="disinfectant">disinfectant</string>
-    <string name="disinfectant_desc">Disinfectant: for the skin AND for wounds.</string>
+    <string name="disinfectant_desc">Disinfectant for the skin AND for wounds.</string>
     <string name="Respirators">Respirators</string>
     <string name="Respirators_desc">Respirators with the highest protection class FFP3</string>
     <string name="medicalkit">Medical kit</string>
@@ -298,4 +300,14 @@
         <item>IV</item>
         <item>V</item>
     </string-array>
+    <string name="ExportNotificationTitle">PDF Export</string>
+    <string name="DialogMessageExport">Time data entries are exported as csv file</string>
+    <string name="ExportNotificationMessage">Time data entries are exported as csv file</string>
+    <string name="ExportNotificationChannel">PDF Export</string>
+    <string name="ExportNotificationChannelDescription">Export of time data as csv file</string>
+    <string name="ExportNotificationFinishedMessage">Export finished</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="errorExport">Error in Downloading</string>
+    <string name="openPDF">Open PDF</string>
 </resources>

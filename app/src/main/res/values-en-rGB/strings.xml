@@ -6,6 +6,7 @@
     <string name="detail_description_input">description</string>
     <string name="detail_save_task">Back to List</string>
     <string name="done">done</string>
+    <string name="Prio">priority</string>
     <string name="highPrioText">high priority for task</string>
     <string name="highPrioText_short">high priority</string>
     <string name="normalPrioText">normal priority for task</string>
@@ -53,6 +54,7 @@
     <string name="undo">undo</string>
     <string name="paid_done">paid</string>
     <string name="currency">£</string>
+    <string name="currency_long">£</string>
     <string-array name="base_task_types">
         <!--item>OLD FLAT</item>
         <item>NEW FLAT</item>
@@ -251,7 +253,7 @@
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
     <string name="disinfectant">disinfectant</string>
-    <string name="disinfectant_desc">Disinfectant: for the skin AND for wounds.</string>
+    <string name="disinfectant_desc">Disinfectant for the skin AND for wounds.</string>
     <string name="Respirators">Respirators</string>
     <string name="Respirators_desc">Respirators with the highest protection class FFP3</string>
     <string name="medicalkit">Medical kit</string>
@@ -261,8 +263,8 @@
     <string name="painReliever">pain reliever</string>
     <string name="painRelieverDesc">Pain relievers: ibuprofen and paracetamol.</string>
     <string name="DiarrheaRemedy">Diarrhea remedy</string>
-    <string name="water">20 liters of water</string>
-    <string name="waterDesc">Five liters of it are planned for the preparation of pasta, potatoes and rice.</string>
+    <string name="water">Drinking Water</string>
+    <string name="waterDesc">20 liters - 5 liters of it are planned for the preparation of pasta, potatoes and rice.</string>
     <string name="readyMeals">Ready meals</string>
     <string name="readyMealsDesc">Ready meals such as canned ravioli. Any quantity.</string>
     <string name="pocketLamp">Pocket lamp</string>
@@ -291,4 +293,14 @@
     <string name="coldRemediesDesc">Cold remedies to relieve cough, runny nose and fever.</string>
     <string name="clinicalThermometer">Clinical Thermometer</string>
     <string name="clinicalThermometerDesc">Medical thermometer, preferably infrared thermometer, for measuring on the forehead.</string>
+    <string name="ExportNotificationTitle">Export</string>
+    <string name="DialogMessageExport">tasks exported</string>
+    <string name="ExportNotificationMessage">Export tasks</string>
+    <string name="ExportNotificationChannel">PDF Export</string>
+    <string name="ExportNotificationChannelDescription">Export tasks</string>
+    <string name="ExportNotificationFinishedMessage">Export finished</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="errorExport">Error in Downloading</string>
+    <string name="openPDF">Open PDF</string>
 </resources>

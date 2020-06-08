@@ -8,6 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:actionButtonStyle">@style/ActionButton</item>
+    </style>
+
+    <style name="ActionButton" parent="@android:style/Widget.ActionButton">
+        <item name="android:drawablePadding">0dp</item>
+        <!--item name="android:background">#FF0000</item-->
+        <item name="android:minWidth">0dip</item>
+        <item name="android:textSize">18dip</item>
+        <!--item name="android:maxWidth">3dip</item-->
+        <!--item name="android:layout_marginLeft">0dip</item>
+        <item name="android:layout_marginRight">0dip</item>
+        <item name="android:paddingStart">0dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingEnd">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="listPreferredItemPaddingLeft">0dp</item-->
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -50,6 +66,17 @@
     <style name="AlertDialogStyle" parent="Theme.MaterialComponents.Dialog.Alert">
         <item name="android:textColor">#ff0000</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="ActionButtonStyle" parent="android:Widget.ActionButton">
+        <item name="android:minWidth">0dip</item>
+        <item name="android:maxWidth">10dip</item>
+        <item name="android:paddingStart">0dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingEnd">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="listPreferredItemPaddingLeft">5dp</item>
+        <item name="android:drawablePadding">0dp</item>
     </style>
 
 </resources>

@@ -84,7 +84,7 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
                             tempDate.setYear(year - 1900);
                             tempDate.setMonth(monthOfYear);
                             tempDate.setDate(dayOfMonth);
-                            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
+                            txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
@@ -111,7 +111,7 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
                             tempDate.setHours(hourOfDay);
                             tempDate.setMinutes(minute);
 
-                            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
+                            txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
                         }
                     }, mHour, mMinute, true);
             timePickerDialog.show();

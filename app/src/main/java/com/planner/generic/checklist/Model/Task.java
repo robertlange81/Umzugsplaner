@@ -35,23 +35,25 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    TODO / FIXME / Ideen:
+    - letzte Suche merken
+    - Orientierung Tablet
+    - Content Provider ???
+    - Ortsangabe Task
+
     - in Liste bei markierter Aufgabe fixieren
-    - Import / Export
+    - Import
     - Ortsangabe auch bei Neustart auf Liste / Dialog
     - MyHammer Alternative
-    - Orientierung Tablet
     - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
-    - Ausdrucken / PDF erstellen / per Mail senden
+    - Darcula wechseln
 
-    - Lockdownliste
-    - Hochzeitsliste
     - Babyliste
+    - Geburstagsliste
+    - Hochzeitsliste
     - Synchronisieren
-    - Content Provider ???
     - Bild statt Link
      */
 
@@ -155,6 +157,10 @@ public class Task implements Serializable {
         costs = clone.costs;
         links = (TreeMap) clone.links.clone();
         createdAt = clone.createdAt;
+        locationPlace = clone.locationPlace;
+        locationStreet = clone.locationStreet;
+        locationStreetNumber = clone.locationStreetNumber;
+        locationZip = clone.locationZip;
     }
 
     public static synchronized List<Task> getTaskList() {
@@ -162,10 +168,12 @@ public class Task implements Serializable {
     }
 
     public static synchronized List<Task> getTaskListClone() {
+        lock.lock();
         List<Task> clone = new ArrayList<Task>();
         for(Task task: TASK_LIST) {
             clone.add(new Task(task));
         }
+        lock.unlock();
         return clone;
     }
 
@@ -294,5 +302,13 @@ public class Task implements Serializable {
         }
 
         return false;
+    }
+
+    public void destroy() {
+        try {
+            this.finalize();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 }

@@ -43,8 +43,8 @@ public class TaskFormater {
         numberFormat.setMinimumFractionDigits(2);
     }
 
-    public static String formatDateToSring(Date date) {
-        if(date.getTime() == Long.MAX_VALUE)
+    public static String formatDateToString(Date date) {
+        if(date == null || date.getTime() == Long.MAX_VALUE)
             return "";
 
         DateFormat dfTime;

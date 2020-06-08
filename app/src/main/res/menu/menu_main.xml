@@ -4,27 +4,44 @@
     tools:context="com.planner.generic.checklist.Activities.MainActivity">
     <item
         android:id="@+id/overview"
-        android:orderInCategory="10"
+        android:orderInCategory="0"
         app:actionLayout="@layout/menu_item_overview"
         android:text=""
         android:title=""
         android:textSize="150sp"
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
         app:showAsAction="always" />
-    <!--item
+    <item
+        android:id="@+id/searchMenuItem"
+        android:checkable="true"
+        android:icon="@drawable/ic_search_black_24dp"
+        android:orderInCategory="5"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/showCostsMenuItem"
+        android:icon="@drawable/ic_currency"
+        android:layout_width="200sp"
+        android:textSize="150sp"
+        android:layout_alignParentLeft="true"
+        android:orderInCategory="10"
+        android:text="@string/currency"
+        android:title="@string/currency"
+        app:showAsAction="always" />
+    <item
         android:id="@+id/export"
         android:orderInCategory="20"
         android:icon="@drawable/ic_baseline_cloud_download_24"
         android:textSize="150sp"
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
         android:text="@string/export"
         android:title="@string/export"
-        app:showAsAction="ifRoom" /-->
-    <item
-        android:id="@+id/showCostsMenuItem"
-        android:icon="@drawable/ic_currency"
-        android:orderInCategory="30"
-        android:text="@string/currency"
-        android:title="@string/currency"
-        android:textSize="150sp"
         app:showAsAction="always" />
     <item
         android:id="@+id/goToLocation"
@@ -33,16 +50,9 @@
         android:text="@string/show_location"
         android:title="@string/show_location"
         android:textSize="150sp"
-        app:showAsAction="always" />
-    <item
-        android:id="@+id/searchMenuItem"
-        android:checkable="true"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:orderInCategory="50"
-        android:textSize="150sp"
-        android:text="@string/currency"
-        android:title="@string/currency"
-        app:showAsAction="always" />
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/start_new"
         android:orderInCategory="120"

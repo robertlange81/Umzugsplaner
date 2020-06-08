@@ -207,10 +207,12 @@ public class Persistance {
             protected void onPostExecute(List<Task> tasks) {
                 super.onPostExecute(tasks);
                 Task.TASK_MAP.clear();
+                Task.lock.lock();
                 Task.getTaskList().clear();
                 for (Task t : tasks) {
                     Task.addTask(t);
                 }
+                Task.lock.unlock();
                 MainActivity.NotifyTaskChanged(null, activity);
             }
         }

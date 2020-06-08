@@ -56,5 +56,8 @@
             android:launchMode="singleInstance"
             android:alwaysRetainTaskState="true">
         </activity>
+
+        <!-- Services -->
+        <service android:name=".Helpers.ExportService" />
     </application>
 </manifest>

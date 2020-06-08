@@ -15,8 +15,8 @@
         android:layout_height="wrap_content">
         <LinearLayout
         android:layout_width="match_parent"
-        android:layout_marginLeft="@dimen/introTextMarginLR"
-        android:layout_marginRight="@dimen/introTextMarginLR"
+        android:layout_marginLeft="15sp"
+        android:layout_marginRight="15sp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
@@ -64,12 +64,12 @@
                 android:gravity="top">
 
                 <EditText
-                    android:id="@+id/init_house_number"
-                    android:layout_weight="2"
-                    android:paddingBottom="@dimen/init_row_edit_padding_bottom"
-                    android:inputType="numberSigned"
-                    android:tag="@string/streetNumber"
-                    android:hint="@string/streetNumber"
+                    android:id="@+id/init_street"
+                    android:paddingBottom="10sp"
+                    android:layout_weight="1"
+                    android:inputType="textPostalAddress"
+                    android:tag="@string/street"
+                    android:hint="@string/street"
                     android:gravity="bottom|center_horizontal"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/detail_text_size"
@@ -78,12 +78,12 @@
                     android:layout_alignParentStart="true" />
 
                 <EditText
-                    android:id="@+id/init_street"
-                    android:paddingBottom="10sp"
-                    android:layout_weight="1"
-                    android:inputType="textPostalAddress"
-                    android:tag="@string/street"
-                    android:hint="@string/street"
+                    android:id="@+id/init_house_number"
+                    android:layout_weight="2"
+                    android:paddingBottom="@dimen/init_row_edit_padding_bottom"
+                    android:inputType="numberSigned"
+                    android:tag="@string/streetNumber"
+                    android:hint="@string/streetNumber"
                     android:gravity="bottom|center_horizontal"
                     android:layout_height="match_parent"
                     android:textSize="@dimen/detail_text_size"
@@ -104,20 +104,6 @@
                 android:gravity="top">
 
                 <EditText
-                    android:layout_weight="1"
-                    android:inputType="textPostalAddress"
-                    android:paddingBottom="10sp"
-                    android:tag="@string/place"
-                    android:hint="@string/place"
-                    android:gravity="bottom|center_horizontal"
-                    android:layout_height="match_parent"
-                    android:id="@+id/init_place"
-                    android:textSize="@dimen/detail_text_size"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-                <EditText
                     android:id="@+id/init_postal"
                     android:layout_weight="2"
                     android:paddingBottom="10sp"
@@ -131,6 +117,21 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
+
+                <EditText
+                    android:layout_weight="1"
+                    android:inputType="textPostalAddress"
+                    android:paddingBottom="10sp"
+                    android:tag="@string/place"
+                    android:hint="@string/place"
+                    android:gravity="bottom|center_horizontal"
+                    android:layout_height="match_parent"
+                    android:id="@+id/init_place"
+                    android:textSize="@dimen/detail_text_size"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true" />
+
             </TableRow>
 
             <!-- label date / time -->
@@ -172,7 +173,6 @@
                 android:id="@+id/init_date_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_row_height"
-                android:layout_marginRight="@dimen/introTextMarginLR"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
                 android:layout_marginTop="@dimen/detail_row_margin_top"
@@ -192,7 +192,6 @@
                         android:text="@string/placeholder_date_detail"
                         android:id="@+id/init_btn_date"
                         android:layout_weight="1"
-                        android:width="50dp"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"/>
@@ -201,8 +200,6 @@
                         android:layout_height="match_parent"
                         android:text="@string/placeholder_time_detail"
                         android:layout_weight="1"
-                        android:maxWidth="50dp"
-                        android:layout_marginRight="@dimen/introTextMarginLR"
                         android:id="@+id/init_btn_time"
                         android:layout_toRightOf="@+id/detail_btn_date" />
 

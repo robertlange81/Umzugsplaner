@@ -291,7 +291,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       @Override
       public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+        if(s.toString() != _task.name) { // user type
+          generateMarketLinks(s.toString());
+        }
       }
 
       @Override
@@ -301,9 +303,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       @Override
       public void afterTextChanged(Editable s) {
-        if(s.toString() != _task.name && _task.type.getValue() >= 4) { // user type
-          generateMarketLinks(s.toString());
-        }
+
       }
     });
 
@@ -432,7 +432,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     if (_task.date != null) {
       tempDate = new Date(_task.date.getTime());
-      txtDeadline.setText(TaskFormater.formatDateToSring(_task.date));
+      txtDeadline.setText(TaskFormater.formatDateToString(_task.date));
     } else {
       txtDeadline.setText("");
     }
@@ -651,7 +651,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           tempDate.setYear(year - 1900);
           tempDate.setMonth(monthOfYear);
           tempDate.setDate(dayOfMonth);
-          txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
+          txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
           _task.date = tempDate;
 
           if (isNotifyEnabled)
@@ -689,7 +689,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             tempDate.setHours(hourOfDay);
             tempDate.setMinutes(minute);
 
-            txtDeadline.setText(TaskFormater.formatDateToSring(tempDate));
+            txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
             _task.date = tempDate;
 
             if (isNotifyEnabled)
