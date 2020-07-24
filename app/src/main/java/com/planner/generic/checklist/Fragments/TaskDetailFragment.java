@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.CalendarContract;
@@ -40,11 +44,13 @@ import com.planner.generic.checklist.Helpers.TaskFormater;
 import com.planner.generic.checklist.Helpers.TaskInitializer;
 import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
+import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.Model.TaskType;
 import com.planner.generic.checklist.Model.TaskTypeMain;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Field;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -179,6 +185,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
+      testProvider();
+
       if(_task != null && _task.id.toString().equals(taskId)) {
         isNotifyEnabled = true;
         currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
@@ -228,6 +236,33 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     isNotifyEnabled = true;
     Log.d("isNotifyEnabled", "onResume true");
     Log.d("DEBUG", "onResume of TaskDetailFragment END");
+  }
+
+  private void testProvider() {
+    // URI für ein Datensatz
+
+
+    try {
+      long idForOnlyOneItem = 100;
+      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, idForOnlyOneItem);
+
+      ContentResolver c = getContext().getContentResolver();
+      Cursor data = c.query(dataUri,
+              null, // Alle Spalten
+              null, //Filter
+              null, // Filter Argumente
+              null); // Sortierung
+      // Prüfen, ob ein Datensatz da ist
+      if (!data.moveToFirst()) {
+        return;
+      }
+
+      // Startzeit
+      int columnIndex = data.getColumnIndex(TaskContract.TaskData.Columns._name);
+      String name = data.getString(columnIndex);
+    } catch (Exception e) {
+      String x = e.getMessage();
+    }
   }
 
   private void _initListeners(final View rootView) {

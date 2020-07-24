@@ -9,17 +9,17 @@ public class TaskDatabaseClient {
     private static TaskDatabaseClient mInstance;
 
     //our app database object
-    private AppDatabase appDatabase;
+    private TaskDatabase taskDatabase;
 
     private TaskDatabaseClient(Context mCtx) {
         this.mCtx = mCtx;
 
         // creating the app database with Room database builder
-        // RemovalPlanner is the name of the database
-        appDatabase = Room.databaseBuilder(mCtx, AppDatabase.class, "RemovalPlanner")
+        // Planner is the name of the database
+        taskDatabase = Room.databaseBuilder(mCtx, TaskDatabase.class, "Planner")
                 //.fallbackToDestructiveMigration()
-                .addMigrations(AppDatabase.MIGRATION_1_2)
-                .addMigrations(AppDatabase.MIGRATION_2_3)
+                .addMigrations(TaskDatabase.MIGRATION_1_2)
+                .addMigrations(TaskDatabase.MIGRATION_2_3)
                 .build();
     }
 
@@ -30,8 +30,7 @@ public class TaskDatabaseClient {
         return mInstance;
     }
 
-    public AppDatabase getAppDatabase() {
-
-        return appDatabase;
+    public TaskDatabase getTaskDatabase() {
+        return taskDatabase;
     }
 }

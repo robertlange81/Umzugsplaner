@@ -30,15 +30,20 @@ import java.util.concurrent.locks.ReentrantLock;
 @Entity
 public class Task implements Serializable {
 
+    public static final String TABLE_NAME = "Task";
+
     private static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<UUID, Task> TASK_MAP = new HashMap<UUID, Task>();
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Recycler View direkt am ContentProvider registrieren
+    - Bright vs Dark Theme
     - letzte Suche merken
     - Orientierung Tablet
     - Content Provider ???
     - Ortsangabe Task
+    - neues Icon: Schloss mit Virus
 
     - in Liste bei markierter Aufgabe fixieren
     - Import
@@ -105,6 +110,16 @@ public class Task implements Serializable {
 
     @ColumnInfo(name = "locationStreetNumber")
     public String locationStreetNumber; // 2048
+
+    /**
+     * ID für eine Auflistung
+     */
+    public static final int ITEM_LIST_ID = 100;
+
+    /**
+     * ID für einen Datensatz
+     */
+    public static final int ITEM_ID = 101;
 
     private static ComparatorConfig comparatorConfig;
 

@@ -74,8 +74,8 @@ public class Persistance {
             protected Void doInBackground(Void... voids) {
 
                 TaskDao dao = TaskDatabaseClient.getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao();
+                        .getTaskDatabase()
+                        .getTaskDao();
 
                 List<Task> oldTasks = dao.getAll();
 
@@ -134,8 +134,8 @@ public class Persistance {
                 }
 
                 TaskDatabaseClient.getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao()
+                        .getTaskDatabase()
+                        .getTaskDao()
                         .truncate();
                 return null;
             }
@@ -164,8 +164,8 @@ public class Persistance {
                 for (Task t : Task.getTaskList()) {
                     // TODO validate
                     try {
-                        TaskDatabaseClient.getInstance(activity).getAppDatabase()
-                                .taskDao()
+                        TaskDatabaseClient.getInstance(activity).getTaskDatabase()
+                                .getTaskDao()
                                 .insert(t);
                     } catch (Exception e) {
                         Log.e("Save Task to sqlite", e.getMessage());
@@ -196,8 +196,8 @@ public class Persistance {
             protected List<Task> doInBackground(Void... voids) {
                 List<Task> taskList = TaskDatabaseClient
                         .getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao()
+                        .getTaskDatabase()
+                        .getTaskDao()
                         .getAll();
 
                 return taskList;
@@ -230,8 +230,8 @@ public class Persistance {
             protected Void doInBackground(Void... voids) {
 
                 TaskDao dao = TaskDatabaseClient.getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao();
+                        .getTaskDatabase()
+                        .getTaskDao();
 
                 Task old = dao.get(task.id.toString());
 
@@ -262,8 +262,8 @@ public class Persistance {
             protected Void doInBackground(Void... voids) {
 
                 TaskDao dao = TaskDatabaseClient.getInstance(activity)
-                        .getAppDatabase()
-                        .taskDao();
+                        .getTaskDatabase()
+                        .getTaskDao();
 
                 Task old = dao.get(task.id.toString());
 

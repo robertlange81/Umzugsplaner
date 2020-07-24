@@ -57,6 +57,10 @@
             android:alwaysRetainTaskState="true">
         </activity>
 
+        <provider
+            android:name=".Model.TaskProvider"
+            android:authorities="com.planner.generic.checklist.providerx" />
+
         <!-- Services -->
         <service android:name=".Helpers.ExportService" />
     </application>

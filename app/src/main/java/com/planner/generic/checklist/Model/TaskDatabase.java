@@ -6,8 +6,8 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 
 @Database(entities = {Task.class}, version = 3, exportSchema = false)
-public abstract class AppDatabase extends RoomDatabase {
-    public abstract TaskDao taskDao();
+public abstract class TaskDatabase extends RoomDatabase {
+    public abstract TaskDao getTaskDao();
 
     static final Migration MIGRATION_1_2 = new Migration(1, 2) {
 
