@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     public static MainActivity instance;
     public static boolean mTwoPane;
-    private SimpleItemRecyclerViewAdapter adapter;
+    private static SimpleItemRecyclerViewAdapter adapter;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
     MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem;
@@ -598,7 +598,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         adapter = new SimpleItemRecyclerViewAdapter(this, Task.getTaskList(), mTwoPane);
         adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
-        adapter.startTimerThread();
 
         getContentResolver().
                 registerContentObserver(
@@ -607,23 +606,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                         new TasksObserver(new Handler()));
     }
 
+
+    public static void Refresh() {
+        adapter.notifyDataSetChanged();
+    }
+
     /**
      *
      * @param t null to update all tasts
      * @param a null to only update recycler view
      */
     public static void NotifyTaskChanged(Task t, Activity a) {
-        NotifyTaskChanged(t, a, true);
-
-        a.getContentResolver().notifyChange(
-                ContentUris.withAppendedId(
-                        TaskContract.TaskData.CONTENT_URI,
-                        idForOnlyOneItem),
-                null
-        );
-    }
-
-    public static void NotifyTaskChanged(Task t, Activity a, boolean doUpdate) {
         if(t != null && a != null) {
             Persistance.SaveOrUpdateTask(t, a);
         }
@@ -669,14 +662,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
 
-        SimpleItemRecyclerViewAdapter.needsUpdate = doUpdate;
+        a.getContentResolver().notifyChange(
+                ContentUris.withAppendedId(
+                        TaskContract.TaskData.CONTENT_URI,
+                        idForOnlyOneItem),
+                null
+        );
     }
 
     public void onDestroy() {
         Persistance.CheckQueue();
         Persistance.SaveTasks(this);
-        if(adapter != null)
-            adapter.stopTimerThread();
         super.onDestroy();
     }
 
@@ -855,7 +851,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
-                    NotifyTaskChanged(task, mParentActivity, false);
+                    NotifyTaskChanged(task, mParentActivity);
 
                     if(task.is_Done && hideDoneTasks)
                         notifyDataSetChanged();
@@ -1003,37 +999,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 imgPrio = rowView.findViewById(R.id.icon_fav_haupt);
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }
-        }
-
-        public static boolean needsUpdate = false;
-        public static Thread updaterThread;
-        private void startTimerThread() {
-            stopTimerThread();
-            final Handler handler = new Handler();
-            final Runnable updater = new Runnable() {
-                public void run() {
-                    while (!updaterThread.isInterrupted()) {
-                        synchronized (this) {
-                            if(needsUpdate) {
-                                handler.postDelayed(new Runnable(){
-                                    public void run() {
-                                        Log.d("needsUpdate", "true");
-                                        SimpleItemRecyclerViewAdapter.this.notifyDataSetChanged();
-                                    }
-                                }, 300);
-                                needsUpdate = false;
-                            }
-                        }
-                    }
-                }
-            };
-            updaterThread = new Thread(updater);
-            updaterThread.start();
-        }
-
-        private void stopTimerThread() {
-            if(updaterThread != null && updaterThread.isAlive())
-                updaterThread.interrupt();
         }
     }
 

@@ -16,7 +16,6 @@ public class TasksObserver extends ContentObserver {
 
     @Override
     public void onChange(boolean selfChange) {
-        int x = 1;
         Log.d("DEBUG", "TasksObserver");
         this.onChange(selfChange, null);
     }
@@ -27,7 +26,6 @@ public class TasksObserver extends ContentObserver {
         // depending on the handler you might be on the UI
         // thread, so be cautious!
         Log.d("DEBUG", "TasksObserver");
-        // MainActivity.SimpleItemRecyclerViewAdapter.notifyDataSetChanged();
-        int x = 1;
+        MainActivity.Refresh();
     }
 }
