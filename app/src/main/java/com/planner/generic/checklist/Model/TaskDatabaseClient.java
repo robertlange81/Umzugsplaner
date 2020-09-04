@@ -17,9 +17,11 @@ public class TaskDatabaseClient {
         // creating the app database with Room database builder
         // Planner is the name of the database
         taskDatabase = Room.databaseBuilder(mCtx, TaskDatabase.class, "Planner")
-                //.fallbackToDestructiveMigration()
+                //.fallbackToDestructiveMigration() // CREATES NEW TABLES ON ERROR!!!
                 .addMigrations(TaskDatabase.MIGRATION_1_2)
                 .addMigrations(TaskDatabase.MIGRATION_2_3)
+                .addMigrations(TaskDatabase.MIGRATION_3_4)
+                .addMigrations(TaskDatabase.MIGRATION_4_3)
                 .build();
     }
 

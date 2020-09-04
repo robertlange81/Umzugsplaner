@@ -185,7 +185,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      testProvider();
+      testProvider(taskId);
 
       if(_task != null && _task.id.toString().equals(taskId)) {
         isNotifyEnabled = true;
@@ -238,19 +238,16 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Log.d("DEBUG", "onResume of TaskDetailFragment END");
   }
 
-  private void testProvider() {
-    // URI für ein Datensatz
-
+  private void testProvider(String taskId) {
 
     try {
-      long idForOnlyOneItem = 100;
-      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, idForOnlyOneItem);
+      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, TaskContract.TaskData.idForOnlyOneItem);
 
       ContentResolver c = getContext().getContentResolver();
       Cursor data = c.query(dataUri,
               null, // Alle Spalten
-              null, //Filter
-              null, // Filter Argumente
+              TaskContract.TaskData.Columns._id + "=?", //Filter
+              new String[]{String.valueOf(taskId)}, // Filter Argumente
               null); // Sortierung
       // Prüfen, ob ein Datensatz da ist
       if (!data.moveToFirst()) {
@@ -262,6 +259,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       String name = data.getString(columnIndex);
     } catch (Exception e) {
       String x = e.getMessage();
+
+      // do loading with room
     }
   }
 

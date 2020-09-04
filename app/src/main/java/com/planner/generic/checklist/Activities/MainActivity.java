@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -60,9 +61,11 @@ import com.planner.generic.checklist.Helpers.OpenFileListener;
 import com.planner.generic.checklist.Helpers.Persistance;
 import com.planner.generic.checklist.Helpers.TaskFormater;
 import com.planner.generic.checklist.Helpers.TaskInitializer;
+import com.planner.generic.checklist.Helpers.TasksObserver;
 import com.planner.generic.checklist.Model.Location;
 import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
+import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Array;
@@ -70,6 +73,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.idForOnlyOneItem;
 
 public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver {
 
@@ -595,6 +599,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
         adapter.startTimerThread();
+
+        getContentResolver().
+                registerContentObserver(
+                        ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, idForOnlyOneItem),
+                        true,
+                        new TasksObserver(new Handler()));
     }
 
     /**
@@ -604,6 +614,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
      */
     public static void NotifyTaskChanged(Task t, Activity a) {
         NotifyTaskChanged(t, a, true);
+
+        a.getContentResolver().notifyChange(
+                ContentUris.withAppendedId(
+                        TaskContract.TaskData.CONTENT_URI,
+                        idForOnlyOneItem),
+                null
+        );
     }
 
     public static void NotifyTaskChanged(Task t, Activity a, boolean doUpdate) {

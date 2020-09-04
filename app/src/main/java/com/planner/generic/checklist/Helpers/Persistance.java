@@ -161,15 +161,17 @@ public class Persistance {
             protected Void doInBackground(Void... voids) {
 
                 Task.lock.lock();
-                for (Task t : Task.getTaskList()) {
-                    // TODO validate
-                    try {
-                        TaskDatabaseClient.getInstance(activity).getTaskDatabase()
-                                .getTaskDao()
-                                .insert(t);
-                    } catch (Exception e) {
-                        Log.e("Save Task to sqlite", e.getMessage());
+                // TODO validate
+                try {
+                    TaskDao dao = TaskDatabaseClient
+                            .getInstance(activity)
+                            .getTaskDatabase()
+                            .getTaskDao();
+                    for (Task t : Task.getTaskList()) {
+                            dao.insert(t);
                     }
+                } catch (Exception e) {
+                    Log.e("Error Saving to sqlite", e.getMessage());
                 }
                 Task.lock.unlock();
                 return null;
@@ -194,13 +196,18 @@ public class Persistance {
 
             @Override
             protected List<Task> doInBackground(Void... voids) {
-                List<Task> taskList = TaskDatabaseClient
-                        .getInstance(activity)
-                        .getTaskDatabase()
-                        .getTaskDao()
-                        .getAll();
+                try {
+                    List<Task> taskList = TaskDatabaseClient
+                            .getInstance(activity)
+                            .getTaskDatabase()
+                            .getTaskDao()
+                            .getAll();
 
-                return taskList;
+                    return taskList;
+                } catch (Exception x) {
+                    Throwable t = x.getCause();
+                }
+                return null;
             }
 
             @Override

@@ -33,17 +33,14 @@ public class TaskProvider extends ContentProvider {
                 Task.ITEM_ID); // Eindeutige ID
     }
 
-    private static final String _NAME_WHERE = TaskContract.TaskData.Columns._name + "=?";
-
-    private TaskDao taskDao;
+    // private TaskDao taskDao;
 
     public static final String TAG = TaskProvider.class.getName();
     private DbHelper _dbHelper = null;
 
     @Override
     public boolean onCreate() {
-        taskDao = TaskDatabaseClient.getInstance(getContext())
-                .getTaskDatabase().getTaskDao();
+        //taskDao = TaskDatabaseClient.getInstance(getContext()).getTaskDatabase().getTaskDao();
 
         _dbHelper = new DbHelper(getContext());
         return true;
@@ -61,8 +58,7 @@ public class TaskProvider extends ContentProvider {
                 break;
 
             case Task.ITEM_ID:
-                final long id = ContentUris.parseId(uri);
-                data = db.query(Task.TABLE_NAME, projection, _NAME_WHERE, idAsArray("Verbandskasten"), null, null, null);
+                data = db.query(Task.TABLE_NAME, projection, selection, selectionArgs, null, null, null);
                 break;
 
             default:

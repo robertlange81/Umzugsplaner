@@ -38,6 +38,7 @@ public class Task implements Serializable {
 
     /*
     - Recycler View direkt am ContentProvider registrieren
+    - UpdaterThread loswerden
     - Bright vs Dark Theme
     - letzte Suche merken
     - Orientierung Tablet

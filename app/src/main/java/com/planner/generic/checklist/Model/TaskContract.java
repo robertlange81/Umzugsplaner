@@ -49,11 +49,26 @@ public final class TaskContract {
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
                 + "/" + CONTENT_DIRECTORY;
 
+        public static long idForOnlyOneItem = 100;
+
         /**
          * Verfügbare Splaten
          */
         public interface Columns {
-            String _name = "name";
+            String _id      = "id";
+            String _costs      = "id";
+            String _createdAt      = "id";
+            String _date      = "id";
+            String _description      = "id";
+            String _is_Done      = "id";
+            String _links      = "id";
+            String _locationPlace      = "id";
+            String _locationStreet      = "id";
+            String _locationStreetNumber      = "id";
+            String _locationZip      = "id";
+            String _name    = "name";
+            String _priority    = "name";
+            String _type    = "name";
         }
     }
 }
