@@ -1,17 +1,21 @@
 package com.planner.generic.checklist.Helpers;
 
+import android.app.Activity;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 
-import com.planner.generic.checklist.Activities.MainActivity;
+import com.planner.generic.checklist.Activities.Refreshable;
 
 public class TasksObserver extends ContentObserver {
 
+    private final Refreshable refreshable;
+
     // dont call Handler over UI!
-    public TasksObserver(Handler handler) {
+    public TasksObserver(Handler handler, Refreshable refreshable) {
         super(handler);
+        this.refreshable = refreshable;
     }
 
     @Override
@@ -26,6 +30,6 @@ public class TasksObserver extends ContentObserver {
         // depending on the handler you might be on the UI
         // thread, so be cautious!
         Log.d("DEBUG", "TasksObserver");
-        MainActivity.Refresh();
+        this.refreshable.Refresh();
     }
 }

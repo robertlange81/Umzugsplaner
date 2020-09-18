@@ -180,7 +180,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                MainActivity.NotifyTaskChanged(null, activity);
+                MainActivity.NotifyTaskChanged(null, activity, true);
                 // finish();
                 // startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 // Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
@@ -220,7 +220,7 @@ public class Persistance {
                     Task.addTask(t);
                 }
                 Task.lock.unlock();
-                MainActivity.NotifyTaskChanged(null, activity);
+                MainActivity.NotifyTaskChanged(null, activity, true);
             }
         }
 

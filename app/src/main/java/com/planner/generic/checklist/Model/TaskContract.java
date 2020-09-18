@@ -49,7 +49,8 @@ public final class TaskContract {
         public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
                 + "/" + CONTENT_DIRECTORY;
 
-        public static long idForOnlyOneItem = 100;
+        public static long item = 100;
+        public static long list = 200;
 
         /**
          * Verfügbare Splaten

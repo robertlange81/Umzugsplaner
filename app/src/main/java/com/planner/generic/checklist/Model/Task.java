@@ -37,30 +37,30 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Recycler View direkt am ContentProvider registrieren
-    - UpdaterThread loswerden
+    - Brauchen wir die TaskList und Map Zwischenspeicher?
+    - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
     - letzte Suche merken
     - Orientierung Tablet
     - Content Provider ???
     - Ortsangabe Task
-    - neues Icon: Schloss mit Virus
 
-    - in Liste bei markierter Aufgabe fixieren
     - Import
     - Ortsangabe auch bei Neustart auf Liste / Dialog
-    - MyHammer Alternative
     - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
+    - Bild statt Link
     - Darcula wechseln
+    - MyHammer Alternative
 
+    - Weihnachtsliste
     - Babyliste
     - Geburstagsliste
     - Hochzeitsliste
     - Synchronisieren
-    - Bild statt Link
+    - Publish To: Huawei AppGallery, Samsung App Store, Amazon Appstore
      */
 
     @PrimaryKey(autoGenerate = false)

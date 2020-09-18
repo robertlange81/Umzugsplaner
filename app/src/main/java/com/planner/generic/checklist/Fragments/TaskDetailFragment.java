@@ -1,6 +1,5 @@
 package com.planner.generic.checklist.Fragments;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -38,10 +37,12 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.planner.generic.checklist.Activities.MainActivity;
+import com.planner.generic.checklist.Activities.Refreshable;
 import com.planner.generic.checklist.Helpers.Command;
 import com.planner.generic.checklist.Helpers.CurrencyWatcher;
 import com.planner.generic.checklist.Helpers.TaskFormater;
 import com.planner.generic.checklist.Helpers.TaskInitializer;
+import com.planner.generic.checklist.Helpers.TasksObserver;
 import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.Model.TaskContract;
@@ -50,7 +51,6 @@ import com.planner.generic.checklist.Model.TaskTypeMain;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Field;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -60,13 +60,15 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
+
 /**
  * A fragment representing a single Item detail screen.
  * This fragment is either contained in a
  * {@link MainActivity} in two-pane mode (on tablets)
  * or a {@link com.planner.generic.checklist.Activities.DetailActivity} on handsets.
  */
-public class TaskDetailFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
+public class TaskDetailFragment extends Fragment implements CompoundButton.OnCheckedChangeListener, View.OnClickListener, Refreshable {
   /**
    * The fragment argument representing the item ID that this fragment
    * represents.
@@ -185,8 +187,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       // to load content from a content provider.
       String taskId = getArguments().getString(TASK_ID);
 
-      testProvider(taskId);
-
       if(_task != null && _task.id.toString().equals(taskId)) {
         isNotifyEnabled = true;
         currencyWatcher = new CurrencyWatcher(txtCostsSig, txtCostsFractions, _task, "#,###");
@@ -223,9 +223,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     _initDeleteIcons(rootView);
 
-    if (updaterThread == null)
-      startTimerThread(rootView);
-
     if (_task.name == null || _task.name.isEmpty()) {
       txtName.requestFocus();
     } else {
@@ -235,13 +232,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     isNotifyEnabled = true;
     Log.d("isNotifyEnabled", "onResume true");
+
+    getActivity().getContentResolver().registerContentObserver(
+                    ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, list),
+                    true,
+                    new TasksObserver(new Handler(), instance));
     Log.d("DEBUG", "onResume of TaskDetailFragment END");
   }
 
-  private void testProvider(String taskId) {
+  private void testGetDataFromProviderNoORM(String taskId) {
 
     try {
-      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, TaskContract.TaskData.idForOnlyOneItem);
+      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, TaskContract.TaskData.item);
 
       ContentResolver c = getContext().getContentResolver();
       Cursor data = c.query(dataUri,
@@ -254,7 +256,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         return;
       }
 
-      // Startzeit
       int columnIndex = data.getColumnIndex(TaskContract.TaskData.Columns._name);
       String name = data.getString(columnIndex);
     } catch (Exception e) {
@@ -277,7 +278,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
         _task.is_Done = checkIsDone.isChecked();
         lblIsDone.setText(msg);
-        MainActivity.NotifyTaskChanged(_task, getActivity());
+        MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         Snackbar.make(view, _task.name + " " + msg, Snackbar.LENGTH_LONG)
           .setAction("Action", null).show();
       }
@@ -297,7 +298,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           lblPrio.setText(R.string.highPrioText_short);
         }
 
-        MainActivity.NotifyTaskChanged(_task, getActivity());
+        MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         String msg = rootView.getContext().getResources()
           .getString(_task.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText)
           + " " + _task.name;
@@ -315,7 +316,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
-            MainActivity.NotifyTaskChanged(_task, getActivity());
+            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
           }
         }
       }
@@ -350,7 +351,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           generateMarketLinks(null);
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity());
+            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         }
       }
 
@@ -375,7 +376,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
         if (!hasFocus && isNotifyEnabled) {
-          MainActivity.NotifyTaskChanged(_task, getActivity());
+          MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         }
       }
     });
@@ -386,9 +387,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         Log.d("costs", "focus out");
         if (!hasFocus && txtCostsSig.getText() != null) {
           String input = txtCostsSig.getText().toString();
-
+// check for change
           if (!hasFocus && isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity());
+            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         }
       }
     });
@@ -402,7 +403,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           if (input.equals("")) {
             _task.date = null;
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity());
+              MainActivity.NotifyTaskChanged(_task, getActivity(), false);
           }
         }
       }
@@ -533,7 +534,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             if (t == txtDeadline) {
               _task.date = null;
               if (isNotifyEnabled)
-                MainActivity.NotifyTaskChanged(_task, getActivity());
+                MainActivity.NotifyTaskChanged(_task, getActivity(), false);
             } else {
               t.requestFocus();
               t.clearFocus();
@@ -689,7 +690,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           _task.date = tempDate;
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity());
+            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         }
       };
 
@@ -727,7 +728,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             _task.date = tempDate;
 
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity());
+              MainActivity.NotifyTaskChanged(_task, getActivity(), false);
           }
         }, mHour, mMinute, true);
       timePickerDialog.show();
@@ -760,59 +761,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
   }
 
-  public static void notifyTaskChanged() {
-    if (instance != null)
-      instance.needsUpdate = true;
-  }
-  private boolean needsUpdate = false;
-  private Thread updaterThread;
-
-  private Thread startTimerThread(final View rootView) {
-    stopTimerThread();
-    final Handler handler = new Handler();
-    Runnable updater = new Runnable() {
-      public void run() {
-        while (updaterThread != null && !updaterThread.isInterrupted()) {
-            if (needsUpdate) {
-              needsUpdate = false;
-
-              handler.postDelayed(new Runnable() {
-                public void run() {
-                  ((Activity) rootView.getContext()).runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                      final HashMap<TextView, String> linkMap = _initLinks();
-
-                      if (_task == null) {
-                        String taskId = getArguments().getString(TASK_ID);
-                        _task = Task.TASK_MAP.get(taskId);
-                      }
-
-                      if (_task != null) {
-                        setDetails(linkMap, rootView);
-                      }
-                    }
-                  });
-                }
-              }, 250);
-            }
-        }
-      }
-    };
-
-    updaterThread = new Thread(updater);
-    updaterThread.start();
-
-    return updaterThread;
-  }
-
-  private void stopTimerThread() {
-    if (updaterThread != null) {
-      updaterThread.interrupt();
-      updaterThread = null;
-    }
-  }
-
   @Override
   public void onPause() {
     Log.d("DEBUG", "TaskDetailFragment onPause");
@@ -827,7 +775,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     txtCostsFractions.removeTextChangedListener(currencyWatcher);
     currencyWatcher.destroy();
     super.onPause();
-    stopTimerThread();
   }
 
   public void onDestroy() {
@@ -840,9 +787,35 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     txtCostsSig.removeTextChangedListener(currencyWatcher);
     txtCostsFractions.removeTextChangedListener(currencyWatcher);
     currencyWatcher.destroy();
-    stopTimerThread();
     super.onDestroy();
     instance = null;
+  }
+
+  @Override
+  public void Refresh() {
+    final Handler handler = new Handler();
+    handler.postDelayed(new Runnable() {
+      public void run() {
+        if(instance == null || instance.getActivity() == null)
+          return;
+
+        instance.getActivity().runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            final HashMap<TextView, String> linkMap = _initLinks();
+
+            if (_task == null) {
+              String taskId = getArguments().getString(TASK_ID);
+              _task = Task.TASK_MAP.get(taskId);
+            }
+
+            if (_task != null) {
+              setDetails(linkMap, rootView);
+            }
+          }
+        });
+      }
+    }, 250);
   }
 
   class TextInputFocusChangeListener implements View.OnFocusChangeListener {
@@ -870,7 +843,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         if (input != null && !input.equals(oldValue)) {
           field.set(_task, input);
-          MainActivity.NotifyTaskChanged(_task, getActivity());
+          MainActivity.NotifyTaskChanged(_task, getActivity(), false);
         }
 
       } catch (NoSuchFieldException e) {

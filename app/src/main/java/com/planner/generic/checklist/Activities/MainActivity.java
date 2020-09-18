@@ -73,9 +73,10 @@ import java.util.List;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
-import static com.planner.generic.checklist.Model.TaskContract.TaskData.idForOnlyOneItem;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
 
-public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver {
+public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver, Refreshable {
 
     public static MainActivity instance;
     public static boolean mTwoPane;
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 if(mTwoPane) {
                     Task _task = new Task("", "");
                     Task.addTask(_task);
-                    NotifyTaskChanged(null, null);
+                    NotifyTaskChanged(null, null, true);
                     adapter.setFragmentTwoPane(_task);
                     adapter.activeRowItemId = _task.id;
                 } else {
@@ -599,15 +600,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
 
-        getContentResolver().
+        instance.getContentResolver().
                 registerContentObserver(
-                        ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, idForOnlyOneItem),
+                        ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, item),
                         true,
-                        new TasksObserver(new Handler()));
+                        new TasksObserver(new Handler(), instance));
     }
 
 
-    public static void Refresh() {
+    public void Refresh() {
         adapter.notifyDataSetChanged();
     }
 
@@ -616,7 +617,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
      * @param t null to update all tasts
      * @param a null to only update recycler view
      */
-    public static void NotifyTaskChanged(Task t, Activity a) {
+    public static void NotifyTaskChanged(Task t, Activity a, boolean refreshDetail) {
         if(t != null && a != null) {
             Persistance.SaveOrUpdateTask(t, a);
         }
@@ -662,10 +663,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
         }
 
-        a.getContentResolver().notifyChange(
+        if (instance == null)
+            return;
+
+        instance.getContentResolver().notifyChange(
                 ContentUris.withAppendedId(
                         TaskContract.TaskData.CONTENT_URI,
-                        idForOnlyOneItem),
+                        t == null || refreshDetail ? list : item),
                 null
         );
     }
@@ -847,11 +851,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     if(item != null)
                         activeRowItemId = item.id;
                     OnTaskChecked(task, holder.date, holder.costs);
-                    TaskDetailFragment.notifyTaskChanged();
+                    // FIXME only One
+                    notifyDataSetChanged();
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
-                    NotifyTaskChanged(task, mParentActivity);
+                    NotifyTaskChanged(task, mParentActivity, true);
 
                     if(task.is_Done && hideDoneTasks)
                         notifyDataSetChanged();
@@ -871,10 +876,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                         act.priority = Priority.High;
                     }
 
-                    if(act.priority == Priority.Normal && hideNormalPrio)
-                        notifyDataSetChanged();
-
-                    TaskDetailFragment.notifyTaskChanged();
+                    // FIXME only One
+                    // if(act.priority == Priority.Normal && hideNormalPrio)
+                    // notifyDataSetChanged();
+                    NotifyTaskChanged(task, mParentActivity, true);
                     Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.name, Snackbar.LENGTH_LONG);
                     snack.show();
                 }
@@ -1087,7 +1092,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 Persistance.PruneAllTasks(instance, false,null, null);
-                NotifyTaskChanged(null, null);
+                NotifyTaskChanged(null, null, true);
                 Intent intent = new Intent(instance, IntroActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 instance.startActivity(intent);
