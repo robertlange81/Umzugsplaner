@@ -56,9 +56,11 @@ public class Command implements View.OnClickListener{
         switch (_commandTyp.getValue()) {
             case 0: //CommandTyp.Add
                 _adapter.add(_task);
+                MainActivity.NotifyTaskChanged(_task, _activity, false); // main
                 break;
             case 1: //CommandTyp.Remove
                 _adapter.remove(_task);
+                MainActivity.NotifyTaskChanged(_task, _activity, true);  // detail
                 break;
             case 2: //CommandTyp.Undo
                 Log.d("command", "command");
@@ -66,8 +68,8 @@ public class Command implements View.OnClickListener{
 
                 if(oldTask != null)
                     oldTask.ImportTask(_task);
-        }
 
-        MainActivity.NotifyTaskChanged(_task, _activity, true);
+                MainActivity.NotifyTaskChanged(_task, _activity, true);  // detail
+        }
     }
 }

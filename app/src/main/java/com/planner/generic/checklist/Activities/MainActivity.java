@@ -614,8 +614,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     /**
      *
-     * @param t null to update all tasts
-     * @param a null to only update recycler view
+     * @param t null to update all tasts TODO
+     * @param a null to only update recycler view TODO
      */
     public static void NotifyTaskChanged(Task t, Activity a, boolean refreshDetail) {
         if(t != null && a != null) {
