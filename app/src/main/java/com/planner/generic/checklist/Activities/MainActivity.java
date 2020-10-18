@@ -56,6 +56,8 @@ import com.planner.generic.checklist.Fragments.TaskDetailFragment;
 import com.planner.generic.checklist.Helpers.Command;
 import com.planner.generic.checklist.Helpers.Comparators.ComparatorConfig;
 import com.planner.generic.checklist.Helpers.ExportService;
+import com.planner.generic.checklist.Helpers.ExportPdfService;
+import com.planner.generic.checklist.Helpers.ImportService;
 import com.planner.generic.checklist.Helpers.LoadingTask;
 import com.planner.generic.checklist.Helpers.OpenFileListener;
 import com.planner.generic.checklist.Helpers.Persistance;
@@ -88,9 +90,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     DialogFragment dialog;
     Menu topMenu;
     private static final String _START_FROM_PAUSED_ACTIVITY_FLAG = "START_FROM_PAUSED_ACTIVITY_FLAG";
-    private final static int _SAF_CREATE_EXPORT_FILE_ID = 200;
+    private final static int _SAF_EXPORT_BIN = 200;
+    private final static int _SAF_IMPORT_BIN = 250;
+    private final static int _SAF_EXPORT_PDF = 300;
 
-    ExportReceiver receiver;
+    ImportExportReceiver receiver;
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onEnterForeground() {
@@ -369,6 +373,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         SpannableString s;
 
+        if (item == null)
+            return false;
+
         if(item == showOverview) {
             // TODO Overlay to show progress / date
             return true;
@@ -490,14 +497,20 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             case R.id.goToLocation:
                 goToLocation();
                 return true;
-            case R.id.export:
-                selectFileForExport();
+            case R.id.exportToPdf:
+                selectFileForExport("application/pdf", "pdf");
+                return true;
+            case R.id.save:
+                selectFileForExport("file/*", "checklist");
+                return true;
+            case R.id.load:
+                selectFileForImport("file/*");
                 return true;
             default:
                 sortType = ComparatorConfig.SortType.IS_DONE;
         }
 
-        if(sortType != null && !sortType.equals(ComparatorConfig.SortType.NONE)) {
+        if(!sortType.equals(ComparatorConfig.SortType.NONE)) {
             Persistance.SaveSetting(Persistance.SettingType.Sort, sortType.getValue(), this);
             Task.SortBy(sortType);
             adapter.notifyDataSetChanged();
@@ -508,32 +521,57 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         return super.onOptionsItemSelected(item);
     }
 
-    private void selectFileForExport() {
+    private void selectFileForExport(String type, String fileEnding) {
         Intent fileIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         fileIntent.addCategory(Intent.CATEGORY_OPENABLE);
-        fileIntent.setType("application/pdf");
-        fileIntent.putExtra(Intent.EXTRA_TITLE, "lockdown.pdf");
-        startActivityForResult(fileIntent, _SAF_CREATE_EXPORT_FILE_ID);
+        fileIntent.setType(type);
+        fileIntent.putExtra(Intent.EXTRA_TITLE, "lockdown." + fileEnding);
+        startActivityForResult(fileIntent, type.equals("application/pdf") ? _SAF_EXPORT_PDF : _SAF_EXPORT_BIN);
+    }
+
+    private void selectFileForImport(String type) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType(type);
+        startActivityForResult(intent, _SAF_IMPORT_BIN);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if (resultCode == RESULT_OK && requestCode == _SAF_CREATE_EXPORT_FILE_ID) {
-            // Pfad zur Datei (als Content Provider URI)
-            Uri fileUri = data.getData();
-            exportData(fileUri);
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intend) {
+
+        if (resultCode == RESULT_OK && intend != null) {
+            if (requestCode == _SAF_EXPORT_PDF || requestCode == _SAF_EXPORT_BIN) {
+                exportData(intend.getData(), requestCode == _SAF_EXPORT_PDF);
+            }
+            if (requestCode == _SAF_IMPORT_BIN) {
+                importData(intend.getData());
+            }
+            return;
         }
+        super.onActivityResult(requestCode, resultCode, intend);
     }
 
-    private void exportData(Uri fileUri) {
+    private void exportData(Uri fileUri, boolean isPDFExport) {
         Log.d("DEBUG", "exportData");
-        receiver = new ExportReceiver(this, new Handler());
-        Intent exportService = new Intent(this, ExportService.class);
+        receiver = new ImportExportReceiver(this, new Handler());
+        Intent exportService = new Intent(
+          this,
+          isPDFExport ? ExportPdfService.class : ExportService.class
+        );
         exportService.setData(fileUri);
         exportService.putExtra("receiver", receiver);
         startService(exportService);
+    }
+
+    private void importData(Uri fileUri) {
+        Log.d("DEBUG", "importData");
+        receiver = new ImportExportReceiver(this, new Handler());
+        Intent importService = new Intent(
+          this, ImportService.class
+        );
+        importService.setData(fileUri);
+        importService.putExtra("receiver", receiver);
+        startService(importService);
     }
 
     private void goToLocation() {
@@ -1110,27 +1148,34 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         alert.show();
     }
 
-    private class ExportReceiver extends ResultReceiver {
+    private class ImportExportReceiver extends ResultReceiver {
 
         Activity activity;
 
-        public ExportReceiver(Activity mainActivity, Handler handler) {
+        ImportExportReceiver(Activity mainActivity, Handler handler) {
             super(handler);
             activity = mainActivity;
         }
 
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
+            View parentLayout;
+            Snackbar snack;
             switch (resultCode) {
                 case ExportService.EXPORT_ERROR:
-                    Toast.makeText(getApplicationContext(), R.string.errorExport,
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.errorSaving,
+                      Toast.LENGTH_SHORT).show();
                     break;
 
-                case  ExportService.EXPORT_SUCCESS:
+                case ExportPdfService.EXPORT_PDF_ERROR:
+                    Toast.makeText(getApplicationContext(), R.string.errorExportPDF,
+                      Toast.LENGTH_SHORT).show();
+                    break;
 
-                    View parentLayout = findViewById(android.R.id.content);
-                    Snackbar snack = Snackbar.make(
+                case ExportPdfService.EXPORT_PDF_SUCCESS:
+
+                    parentLayout = findViewById(android.R.id.content);
+                    snack = Snackbar.make(
                             parentLayout,
                             R.string.ExportNotificationFinishedMessage,
                             Snackbar.LENGTH_LONG);
@@ -1139,6 +1184,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                             R.string.openPDF,
                             new OpenFileListener(activity, resultData.getString("URI"))
                     );
+                    snack.show();
+                    break;
+
+                case ExportService.EXPORT_SUCCESS:
+
+                    parentLayout = findViewById(android.R.id.content);
+                    snack = Snackbar.make(
+                      parentLayout,
+                      R.string.SaveNotificationFinishedMessage,
+                      Snackbar.LENGTH_LONG);
+
                     snack.show();
                     break;
             }

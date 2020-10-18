@@ -30,22 +30,26 @@ import java.util.concurrent.locks.ReentrantLock;
 @Entity
 public class Task implements Serializable {
 
-    public static final String TABLE_NAME = "Task";
+    static final String TABLE_NAME = "Task";
 
     private static final List<Task> TASK_LIST = new ArrayList<Task>();
     public static final Map<UUID, Task> TASK_MAP = new HashMap<UUID, Task>();
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Import / Export
+    - Amazon-Webseite statt APP (kommt Partner-ID mit?)
+    - Sortierung in eigenem Menü
+    - Zeige auf Karte nur wenn Ort vorhanden
+    - !!!Umlaute bei Suche / Amazon
+    - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
     - letzte Suche merken
     - Orientierung Tablet
-    - Content Provider ???
-    - Ortsangabe Task
+    - Ortsangabe in Task
 
-    - Import
     - Ortsangabe auch bei Neustart auf Liste / Dialog
     - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)
@@ -115,12 +119,12 @@ public class Task implements Serializable {
     /**
      * ID für eine Auflistung
      */
-    public static final int ITEM_LIST_ID = 100;
+    static final int ITEM_LIST_ID = 100;
 
     /**
      * ID für einen Datensatz
      */
-    public static final int ITEM_ID = 101;
+    static final int ITEM_ID = 101;
 
     private static ComparatorConfig comparatorConfig;
 
@@ -304,8 +308,8 @@ public class Task implements Serializable {
         if(comparatorConfig == null)
             comparatorConfig = new ComparatorConfig();
 
-        if(comparatorConfig.sortableMap != null) {
-            ComparatorSortable comparatorSortable = comparatorConfig.sortableMap.get(sortType);
+        if(ComparatorConfig.sortableMap != null) {
+            ComparatorSortable comparatorSortable = ComparatorConfig.sortableMap.get(sortType);
             if(comparatorSortable != null) {
                 Task.lock.lock();
                 Collections.sort(Task.getTaskList(), comparatorSortable);

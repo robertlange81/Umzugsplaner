@@ -34,9 +34,9 @@
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
-        android:id="@+id/export"
+        android:id="@+id/exportToPdf"
         android:orderInCategory="20"
-        android:icon="@drawable/ic_baseline_cloud_download_24"
+        android:icon="@drawable/ic_picture_as_pdf_black_24dp"
         android:textSize="150sp"
         android:layout_width="200sp"
         android:layout_alignParentLeft="true"
@@ -64,14 +64,30 @@
     <item
         android:id="@+id/show_open_only"
         android:checkable="true"
-        android:orderInCategory="99"
+        android:orderInCategory="97"
         android:title="@string/placeholder_hide_done"
         />
     <item
         android:id="@+id/show_high_prio_only"
         android:checkable="true"
-        android:orderInCategory="100"
+        android:orderInCategory="98"
         android:title="@string/placeholder_hide_low_prio" />
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:orderInCategory="99"
+        android:title="@string/save"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/load"
+        android:icon="@drawable/ic_restore_page_black_24dp"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:orderInCategory="100"
+        android:title="@string/load"
+        app:showAsAction="never" />
     <item
         android:id="@+id/sortByIsDone"
         android:orderInCategory="101"

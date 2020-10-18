@@ -63,5 +63,7 @@
 
         <!-- Services -->
         <service android:name=".Helpers.ExportService" />
+        <service android:name=".Helpers.ImportService" />
+        <service android:name=".Helpers.ExportPdfService" />
     </application>
 </manifest>

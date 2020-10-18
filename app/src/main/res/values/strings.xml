@@ -301,13 +301,23 @@
         <item>V</item>
     </string-array>
     <string name="ExportNotificationTitle">PDF Export</string>
-    <string name="DialogMessageExport">Time data entries are exported as csv file</string>
-    <string name="ExportNotificationMessage">Time data entries are exported as csv file</string>
+    <string name="DialogMessageExport">tasks exported</string>
+    <string name="ExportNotificationMessage">Export tasks</string>
     <string name="ExportNotificationChannel">PDF Export</string>
-    <string name="ExportNotificationChannelDescription">Export of time data as csv file</string>
+    <string name="ExportNotificationChannelDescription">Export tasks</string>
     <string name="ExportNotificationFinishedMessage">Export finished</string>
+    <string name="SaveNotificationTitle">Save task list</string>
+    <string name="DialogMessageSave">tasks saved</string>
+    <string name="SaveNotificationMessage">Save tasks</string>
+    <string name="SaveNotificationChannel">Save tasks</string>
+    <string name="SaveNotificationChannelDescription">Save tasks</string>
+    <string name="SaveNotificationFinishedMessage">Saved to File</string>
+    <string name="ImportNotificationFinishedMessage">Import finished</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
-    <string name="errorExport">Error in Downloading</string>
+    <string name="errorSaving">Error Saving to File.</string>
     <string name="openPDF">Open PDF</string>
+    <string name="save">Save to File</string>
+    <string name="load">Load from File</string>
+    <string name="errorExportPDF">Error Exporting to PDF</string>
 </resources>

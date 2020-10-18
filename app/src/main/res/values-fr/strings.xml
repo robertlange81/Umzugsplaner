@@ -294,12 +294,22 @@
     <string name="clinicalThermometerDesc">Thermomètre médical, de préférence un thermomètre infrarouge, pour mesurer sur le front.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Exportation de tâches</string>
-    <string name="ExportNotificationMessage">TExportation de tâches</string>
+    <string name="ExportNotificationMessage">Exportation de tâches</string>
     <string name="ExportNotificationChannel">PDF Exportation</string>
     <string name="ExportNotificationChannelDescription">Exportation de tâches</string>
     <string name="ExportNotificationFinishedMessage">Exportation terminée</string>
+    <string name="SaveNotificationTitle">Enregistrer les tâches</string>
+    <string name="DialogMessageSave">Enregistrer les tâches</string>
+    <string name="SaveNotificationMessage">Enregistrer les tâches</string>
+    <string name="SaveNotificationChannel">Enregistrer les tâches</string>
+    <string name="SaveNotificationChannelDescription">Enregistrer les tâches</string>
+    <string name="SaveNotificationFinishedMessage">Tâches enregistrées</string>
+    <string name="ImportNotificationFinishedMessage">Importation terminée</string>
     <string name="Yes">Oui</string>
     <string name="No">Non</string>
-    <string name="errorExport">Error in Downloading</string>
+    <string name="errorSaving">Erreur Sauvegarder</string>
     <string name="openPDF">Ouvrir le PDF</string>
+    <string name="save">Sauvegarder</string>
+    <string name="load">Charger</string>
+    <string name="errorExportPDF">Erreur lors de l\'exportation au format PDF</string>
 </resources>

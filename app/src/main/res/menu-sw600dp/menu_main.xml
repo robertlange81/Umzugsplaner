@@ -30,7 +30,7 @@
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
-        android:id="@+id/export"
+        android:id="@+id/exportToPdf"
         android:orderInCategory="35"
         android:icon="@drawable/ic_baseline_cloud_download_24"
         android:textSize="150sp"

@@ -292,13 +292,23 @@
     <string name="clinicalThermometer">Fieberthermometer</string>
     <string name="clinicalThermometerDesc">Fieberthermometer, am besten Infrarot-Thermometer, zum Messen an der Stirn.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
-    <string name="DialogMessageExport">Aufgaben exportiert</string>
-    <string name="ExportNotificationMessage">Aufgaben exportiert</string>
+    <string name="DialogMessageExport">Aufgaben in PDF exportiert</string>
+    <string name="ExportNotificationMessage">Aufgaben in PDF exportiert</string>
     <string name="ExportNotificationChannel">PDF Export</string>
-    <string name="ExportNotificationChannelDescription">Aufgaben exportiert</string>
+    <string name="ExportNotificationChannelDescription">Aufgaben in PDF exportiert</string>
     <string name="ExportNotificationFinishedMessage">Export abgeschlossen</string>
+    <string name="SaveNotificationTitle">Speichern</string>
+    <string name="DialogMessageSave">Aufgaben gespeichert</string>
+    <string name="SaveNotificationMessage">Aufgaben gespeichert</string>
+    <string name="SaveNotificationChannel">Speichern</string>
+    <string name="SaveNotificationChannelDescription">Aufgaben speichern</string>
+    <string name="SaveNotificationFinishedMessage">Datei Erfolgreich gespeichert</string>
+    <string name="ImportNotificationFinishedMessage">Datei Erfolgreich geladen</string>
     <string name="Yes">Ja</string>
     <string name="No">Nein</string>
-    <string name="errorExport">Fehler beim Export</string>
+    <string name="errorSaving">Fehler beim Speichern</string>
     <string name="openPDF">PDF Öffnen</string>
+    <string name="save">Datei Speichern</string>
+    <string name="load">Datei Laden</string>
+    <string name="errorExportPDF">Fehler beim Erstellen des PDF</string>
 </resources>

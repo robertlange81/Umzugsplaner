@@ -1,6 +1,8 @@
 package com.planner.generic.checklist.Model;
 
-public class TaskType implements Comparable<Object>{
+import java.io.Serializable;
+
+public class TaskType implements Comparable<Object>, Serializable {
 
     private int value;
 
