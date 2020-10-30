@@ -11,6 +11,7 @@ import com.planner.generic.checklist.R;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 public class TaskInitializer {
@@ -34,7 +35,7 @@ public class TaskInitializer {
         }
     }
 
-    public static void InitTasks(Date targetDate, Location targetLocation, Activity context) {
+    public static void InitTasks(Date targetDate, Location targetLocation, Activity context, List<Task> newTasks) {
 
         if(CURRENT_LIST_TYPE.toString() == "LOCKDOWN") {
             targetDate = addMonthDaysToJavaUtilDate(targetDate, 0, -22);
@@ -64,13 +65,19 @@ public class TaskInitializer {
             }
         }
 
-        switch (CURRENT_LIST_TYPE.toString()) {
-            case "REMOVAL":
-                //AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);
-                break;
-            case "LOCKDOWN":
-                AddLockdownTasks(targetDate, targetLocation, context, today, tomorrow);
-                break;
+        if (newTasks !=  null) {
+            for (Task t : newTasks) {
+                Task.addTask(t);
+            }
+        } else {
+            switch (CURRENT_LIST_TYPE.toString()) {
+                case "REMOVAL":
+                    //AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+                case "LOCKDOWN":
+                    AddLockdownTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+            }
         }
 
         Persistance.SaveTasks(context);

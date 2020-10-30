@@ -118,9 +118,10 @@ public class Persistance {
 
     public static void PruneAllTasks(
             final Activity activity,
-            final boolean createNewTaskList,
+            final boolean createNewTask,
             final Date callbackNewInitDate,
-            final Location location) {
+            final Location location,
+            final List<Task> createNewTaskList) {
 
         class PruneAllTasks extends AsyncTask<Void, Void, Void> {
 
@@ -144,8 +145,8 @@ public class Persistance {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
-                if(createNewTaskList)
-                    TaskInitializer.InitTasks(callbackNewInitDate, location, activity);
+                if(createNewTask)
+                    TaskInitializer.InitTasks(callbackNewInitDate, location, activity, createNewTaskList);
             }
         }
 
@@ -180,7 +181,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                MainActivity.NotifyTaskChanged(null, activity, true);
+                MainActivity.NotifyTaskChanged(null, activity, false);
                 // finish();
                 // startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 // Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();

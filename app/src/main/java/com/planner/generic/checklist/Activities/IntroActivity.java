@@ -99,7 +99,7 @@ public class IntroActivity extends AppIntro {
             }
 
             if(Task.getTaskList().size() == 0) {
-                TaskInitializer.InitTasks(this.removalDate, this.removalLocation, this);
+                TaskInitializer.InitTasks(this.removalDate, this.removalLocation, this, null);
             }
         }
 

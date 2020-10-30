@@ -115,9 +115,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             }
 
             if(initdialog.getDeleteOld()) {
-                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), null);
+                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), null, null);
             } else {
-                TaskInitializer.InitTasks(initdialog.getRemovalDate(), null, this);
+                TaskInitializer.InitTasks(initdialog.getRemovalDate(), null, this, null);
             }
         }
     }
@@ -1129,7 +1129,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
-                Persistance.PruneAllTasks(instance, false,null, null);
+                Persistance.PruneAllTasks(instance, false,null, null, null);
                 NotifyTaskChanged(null, null, true);
                 Intent intent = new Intent(instance, IntroActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);

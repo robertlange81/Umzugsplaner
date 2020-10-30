@@ -18,6 +18,7 @@ import android.util.Log;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -118,16 +119,13 @@ public class ExportService extends IntentService {
                 os = getContentResolver().openOutputStream(file);
                 ObjectOutputStream out = new ObjectOutputStream(os);
                 out.writeObject(tasks);
-                out.close();
                 notifyManager.notify(_NOTIFICATION_ID, builder.build());
             } catch (IOException e) {
                 e.printStackTrace();
                 receiver.send(EXPORT_ERROR, bundle);
             } finally {
                 try {
-
                     receiver.send(EXPORT_SUCCESS, bundle);
-
                     os.flush();
                     os.close();
                 } catch (IOException e) {

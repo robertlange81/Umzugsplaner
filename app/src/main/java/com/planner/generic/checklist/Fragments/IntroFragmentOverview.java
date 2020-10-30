@@ -32,13 +32,13 @@ public class IntroFragmentOverview extends Fragment {
         View rootView   = inflater.inflate(R.layout.fragment_intro_overview, container, false);
 
         SharedPreferences prefs = this.getContext().getSharedPreferences("checklist", 0);
-        long removalTimestamp = prefs.getLong("target_timestamp", 0L);
+        long targetTimestamp = prefs.getLong("target_timestamp", 0L);
 
         long now = Calendar.getInstance(TimeZone.getDefault()).getTimeInMillis();
-        if(removalTimestamp != 0) {
+        if(targetTimestamp != 0) {
 
             // print days
-            long diff = removalTimestamp - now;
+            long diff = targetTimestamp - now;
             days   = rootView.findViewById(R.id.intro_overview_counter_days);
             long daysNumber = diff / (86400000); // 1000 * 60 * 60 * 24 = 86400000 = 1 day in ms
             days.setText(String.valueOf(daysNumber));

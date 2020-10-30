@@ -1,6 +1,5 @@
 package com.planner.generic.checklist.Helpers;
 
-import android.app.Activity;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Handler;

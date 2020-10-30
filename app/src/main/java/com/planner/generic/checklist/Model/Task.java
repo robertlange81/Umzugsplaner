@@ -37,6 +37,7 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Datum nachträglich ändern
     - Import / Export
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - Sortierung in eigenem Menü

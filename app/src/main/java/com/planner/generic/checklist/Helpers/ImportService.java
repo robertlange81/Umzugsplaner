@@ -1,6 +1,7 @@
 package com.planner.generic.checklist.Helpers;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.ResultReceiver;
@@ -8,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
+import com.planner.generic.checklist.Activities.MainActivity;
+import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
 import java.io.DataInputStream;
@@ -15,6 +18,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImportService extends ExportService {
 
@@ -64,15 +70,17 @@ public class ImportService extends ExportService {
 
             selectedFileInputStream = getContentResolver().openInputStream(fileUri);
             if (selectedFileInputStream != null) {
-                DataInputStream dis = new DataInputStream(selectedFileInputStream);
-                long fileSize = new File(fileUri.getPath()).length();
-                byte[] allBytes = new byte[(int) fileSize];
-                dis.readFully(allBytes);
-                dis.close();
+                ObjectInputStream ois = new ObjectInputStream(selectedFileInputStream);
+                List<Task> tasks = (ArrayList) ois.readObject();
+                Persistance.PruneAllTasks(MainActivity.instance, true,null, null, tasks);
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
+            ex.printStackTrace();
+            receiver.send(IMPORT_ERROR, bundle);
+        }
+        catch (ClassNotFoundException ex) {
             ex.printStackTrace();
             receiver.send(IMPORT_ERROR, bundle);
         } finally {
