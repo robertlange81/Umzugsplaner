@@ -5,8 +5,11 @@ import android.util.Log;
 import android.view.View;
 
 import com.planner.generic.checklist.Activities.MainActivity;
-import com.planner.generic.checklist.Fragments.TaskDetailFragment;
 import com.planner.generic.checklist.Model.Task;
+
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
 public class Command implements View.OnClickListener{
 
@@ -56,11 +59,11 @@ public class Command implements View.OnClickListener{
         switch (_commandTyp.getValue()) {
             case 0: //CommandTyp.Add
                 _adapter.add(_task);
-                MainActivity.NotifyTaskChanged(_task, _activity, false); // main
+                MainActivity.NotifyTaskChanged(_task, _activity, new Long[] {list_self});
                 break;
             case 1: //CommandTyp.Remove
                 _adapter.remove(_task);
-                MainActivity.NotifyTaskChanged(_task, _activity, true);  // detail
+                MainActivity.NotifyTaskChanged(_task, _activity, new Long[] {list_self});
                 break;
             case 2: //CommandTyp.Undo
                 Log.d("command", "command");
@@ -69,7 +72,7 @@ public class Command implements View.OnClickListener{
                 if(oldTask != null)
                     oldTask.ImportTask(_task);
 
-                MainActivity.NotifyTaskChanged(_task, _activity, true);  // detail
+                MainActivity.NotifyTaskChanged(_task, _activity, new Long[] {list});
         }
     }
 }

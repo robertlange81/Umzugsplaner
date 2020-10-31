@@ -37,39 +37,40 @@ public class TaskInitializer {
 
     public static void InitTasks(Date targetDate, Location targetLocation, Activity context, List<Task> newTasks) {
 
-        if(CURRENT_LIST_TYPE.toString() == "LOCKDOWN") {
-            targetDate = addMonthDaysToJavaUtilDate(targetDate, 0, -22);
-        }
-
-        Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
-        today.setHours(0);
-        today.setMinutes(0);
-        Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 1);
-
-        SharedPreferences prefs = context.getSharedPreferences("checklist", 0);
-
-        if(prefs != null) {
-            SharedPreferences.Editor editor = prefs.edit();
-
-            if(targetDate != null) {
-                editor.putLong("target_timestamp", targetDate.getTime());
-                editor.apply();
-            }
-
-            if(targetLocation != null) {
-                editor.putString(Location.PLACE, targetLocation.getPlace());
-                editor.putString(Location.POSTAL, targetLocation.getPostal());
-                editor.putString(Location.STREET, targetLocation.getStreet());
-                editor.putString(Location.STREETNUMBER, targetLocation.getStreetNumber());
-                editor.apply();
-            }
-        }
-
         if (newTasks !=  null) {
+            // just import tasks
             for (Task t : newTasks) {
                 Task.addTask(t);
             }
         } else {
+            if(CURRENT_LIST_TYPE.toString() == "LOCKDOWN") {
+                targetDate = addMonthDaysToJavaUtilDate(targetDate, 0, -22);
+            }
+
+            Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
+            today.setHours(0);
+            today.setMinutes(0);
+            Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 1);
+
+            SharedPreferences prefs = context.getSharedPreferences("checklist", 0);
+
+            if(prefs != null) {
+                SharedPreferences.Editor editor = prefs.edit();
+
+                if(targetDate != null) {
+                    editor.putLong("target_timestamp", targetDate.getTime());
+                    editor.apply();
+                }
+
+                if(targetLocation != null) {
+                    editor.putString(Location.PLACE, targetLocation.getPlace());
+                    editor.putString(Location.POSTAL, targetLocation.getPostal());
+                    editor.putString(Location.STREET, targetLocation.getStreet());
+                    editor.putString(Location.STREETNUMBER, targetLocation.getStreetNumber());
+                    editor.apply();
+                }
+            }
+
             switch (CURRENT_LIST_TYPE.toString()) {
                 case "REMOVAL":
                     //AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);

@@ -60,6 +60,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
 
 /**
@@ -243,7 +244,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   private void testGetDataFromProviderNoORM(String taskId) {
 
     try {
-      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, TaskContract.TaskData.item);
+      Uri dataUri = ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, item);
 
       ContentResolver c = getContext().getContentResolver();
       Cursor data = c.query(dataUri,
@@ -278,7 +279,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
         _task.is_Done = checkIsDone.isChecked();
         lblIsDone.setText(msg);
-        MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         Snackbar.make(view, _task.name + " " + msg, Snackbar.LENGTH_LONG)
           .setAction("Action", null).show();
       }
@@ -298,7 +299,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           lblPrio.setText(R.string.highPrioText_short);
         }
 
-        MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         String msg = rootView.getContext().getResources()
           .getString(_task.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText)
           + " " + _task.name;
@@ -316,7 +317,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
-            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
           }
         }
       }
@@ -351,7 +352,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           generateMarketLinks(null);
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         }
       }
 
@@ -376,7 +377,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
         if (!hasFocus && isNotifyEnabled) {
-          MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         }
       }
     });
@@ -389,7 +390,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           String input = txtCostsSig.getText().toString();
 // check for change
           if (!hasFocus && isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         }
       }
     });
@@ -403,7 +404,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           if (input.equals("")) {
             _task.date = null;
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
           }
         }
       }
@@ -534,7 +535,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             if (t == txtDeadline) {
               _task.date = null;
               if (isNotifyEnabled)
-                MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+                MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
             } else {
               t.requestFocus();
               t.clearFocus();
@@ -673,7 +674,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       mDay = tempDate != null ? tempDate.getDate() : c.get(Calendar.DAY_OF_MONTH);
 
       DatePickerDialog datePickerDialog;
-      DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
+      final DatePickerDialog.OnDateSetListener listener = new DatePickerDialog.OnDateSetListener() {
 
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -690,7 +691,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           _task.date = tempDate;
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         }
       };
 
@@ -728,7 +729,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             _task.date = tempDate;
 
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
           }
         }, mHour, mMinute, true);
       timePickerDialog.show();
@@ -843,7 +844,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         if (input != null && !input.equals(oldValue)) {
           field.set(_task, input);
-          MainActivity.NotifyTaskChanged(_task, getActivity(), false);
+          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
         }
 
       } catch (NoSuchFieldException e) {

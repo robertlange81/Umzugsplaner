@@ -1,8 +1,11 @@
 package com.planner.generic.checklist.Helpers;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.support.annotation.Nullable;
@@ -13,8 +16,6 @@ import com.planner.generic.checklist.Activities.MainActivity;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
-import java.io.DataInputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,15 +25,15 @@ import java.util.List;
 
 public class ImportService extends ExportService {
 
-    public static final int IMPORT_SUCCESS = 1;
-    public static final int IMPORT_ERROR = -1;
+    public static final int IMPORT_SUCCESS = 3;
+    public static final int IMPORT_ERROR = -3;
 
     protected String getName() {
-        return getString(R.string.ExportNotificationMessage);
+        return getString(R.string.ImportNotificationMessage);
     }
 
     protected String getDescription() {
-        return getString(R.string.ExportNotificationChannelDescription);
+        return getString(R.string.ImportNotificationMessage);
     }
 
     protected int getIcon() {
@@ -41,6 +42,19 @@ public class ImportService extends ExportService {
 
     protected static String getNotificationChannel() {
         return "Import";
+    }
+
+    protected void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel channel = new NotificationChannel(
+              getNotificationChannel(), // unique name
+              getName(), // name of the group
+              NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(getDescription());
+            channel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PRIVATE);
+            manager.createNotificationChannel(channel);
+        }
     }
 
     @Override

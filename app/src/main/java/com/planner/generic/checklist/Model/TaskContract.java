@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public final class TaskContract {
+public final class  TaskContract {
     /**
      * Eindeutiger Name des Providers innerhalb des Betriebssystems
      */
@@ -51,6 +51,7 @@ public final class TaskContract {
 
         public static long item = 100;
         public static long list = 200;
+        public static long list_self = 300;
 
         /**
          * Verfügbare Splaten

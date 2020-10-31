@@ -77,6 +77,7 @@ import java.util.UUID;
 import static android.widget.LinearLayout.VERTICAL;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
 public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver, Refreshable {
 
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 if(mTwoPane) {
                     Task _task = new Task("", "");
                     Task.addTask(_task);
-                    NotifyTaskChanged(null, null, true);
+                    NotifyTaskChanged(null, null, new Long[] {item});
                     adapter.setFragmentTwoPane(_task);
                     adapter.activeRowItemId = _task.id;
                 } else {
@@ -638,11 +639,19 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         adapter.setHideDone(getHideDoneTasksChecked());
         recyclerView.setAdapter(adapter);
 
+        // Register for Item Changes
         instance.getContentResolver().
                 registerContentObserver(
                         ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, item),
                         true,
                         new TasksObserver(new Handler(), instance));
+
+        // Register for List Changes
+        instance.getContentResolver().
+          registerContentObserver(
+            ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, list_self),
+            true,
+            new TasksObserver(new Handler(), instance));
     }
 
 
@@ -652,40 +661,41 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     /**
      *
-     * @param t null to update all tasts TODO
-     * @param a null to only update recycler view TODO
+     * @param task task to update
+     * @param activity Activity
+     * @param refreshIds what should be updated
      */
-    public static void NotifyTaskChanged(Task t, Activity a, boolean refreshDetail) {
-        if(t != null && a != null) {
-            Persistance.SaveOrUpdateTask(t, a);
+    public static void NotifyTaskChanged(Task task, Activity activity, Long[] refreshIds) {
+        if(task != null && activity != null) {
+            Persistance.SaveOrUpdateTask(task, activity);
         }
 
         int taskCount = 0, done = 0;
 
-        if(a != null && MainActivity.instance != null) {
+        if(activity != null && MainActivity.instance != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort,
-                    (a instanceof DetailActivity ? MainActivity.instance : a)
+                    (activity instanceof DetailActivity ? MainActivity.instance : activity)
             );
 
             if(sortId > 0 && ComparatorConfig.SortType.values().length > sortId) {
                 Task.SortBy(ComparatorConfig.SortType.values()[sortId]);
             }
 
-            for(Task task: Task.getTaskListClone()) {
+            for(Task taskItem: Task.getTaskListClone()) {
                 // TODO use t.id
-                if(task.id.equals(SimpleItemRecyclerViewAdapter.activeRowItemId)) {
+                if(taskItem.id.equals(SimpleItemRecyclerViewAdapter.activeRowItemId)) {
                     if(recyclerView != null)
                         recyclerView.smoothScrollToPosition(taskCount);
                 }
-                if(task.is_Done) {
+                if(taskItem.is_Done) {
                     done++;
                 }
 
                 taskCount++;
             }
         } else {
-            for(Task task: Task.getTaskListClone()) {
-                if(task.is_Done) {
+            for(Task t: Task.getTaskListClone()) {
+                if(t.is_Done) {
                     done++;
                 }
                 taskCount++;
@@ -704,12 +714,14 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         if (instance == null)
             return;
 
-        instance.getContentResolver().notifyChange(
-                ContentUris.withAppendedId(
-                        TaskContract.TaskData.CONTENT_URI,
-                        t == null || refreshDetail ? list : item),
-                null
-        );
+        for (long refreshId:refreshIds) {
+            instance.getContentResolver().notifyChange(
+              ContentUris.withAppendedId(
+                TaskContract.TaskData.CONTENT_URI,
+                refreshId),
+              null
+            );
+        }
     }
 
     public void onDestroy() {
@@ -894,7 +906,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
-                    NotifyTaskChanged(task, mParentActivity, true);
+                    NotifyTaskChanged(
+                      task,
+                      mParentActivity,
+                      new Long[] {100L}
+                    );
 
                     if(task.is_Done && hideDoneTasks)
                         notifyDataSetChanged();
@@ -917,7 +933,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     // FIXME only One
                     // if(act.priority == Priority.Normal && hideNormalPrio)
                     // notifyDataSetChanged();
-                    NotifyTaskChanged(task, mParentActivity, true);
+                    NotifyTaskChanged(task, mParentActivity, new Long[] {item});
                     Snackbar snack = Snackbar.make(view, SimpleItemRecyclerViewAdapter.this.mParentActivity.getResources().getString(act.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText) + " " + act.name, Snackbar.LENGTH_LONG);
                     snack.show();
                 }
@@ -1130,7 +1146,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 Persistance.PruneAllTasks(instance, false,null, null, null);
-                NotifyTaskChanged(null, null, true);
+                NotifyTaskChanged(null, null, new Long[] {list});
                 Intent intent = new Intent(instance, IntroActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 instance.startActivity(intent);
@@ -1172,6 +1188,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                       Toast.LENGTH_SHORT).show();
                     break;
 
+                case ImportService.IMPORT_ERROR:
+                    Toast.makeText(getApplicationContext(), R.string.errorLoading,
+                      Toast.LENGTH_SHORT).show();
+                    break;
+
                 case ExportPdfService.EXPORT_PDF_SUCCESS:
 
                     parentLayout = findViewById(android.R.id.content);
@@ -1193,6 +1214,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     snack = Snackbar.make(
                       parentLayout,
                       R.string.SaveNotificationFinishedMessage,
+                      Snackbar.LENGTH_LONG);
+
+                    snack.show();
+                    break;
+
+                case ImportService.IMPORT_SUCCESS:
+
+                    parentLayout = findViewById(android.R.id.content);
+                    snack = Snackbar.make(
+                      parentLayout,
+                      R.string.ImportNotificationFinishedMessage,
                       Snackbar.LENGTH_LONG);
 
                     snack.show();

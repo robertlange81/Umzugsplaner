@@ -313,4 +313,6 @@
     <string name="load">Load from File</string>
     <string name="errorExportPDF">Error Exporting to PDF</string>
     <string name="ImportNotificationFinishedMessage">Import finished</string>
+    <string name="ImportNotificationMessage">Load tasks from File</string>
+    <string name="errorLoading">Error Loading File</string>
 </resources>

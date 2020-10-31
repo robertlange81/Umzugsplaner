@@ -9,6 +9,7 @@ import android.util.Log;
 import com.planner.generic.checklist.Activities.MainActivity;
 import com.planner.generic.checklist.Model.Location;
 import com.planner.generic.checklist.Model.Task;
+import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.Model.TaskDao;
 import com.planner.generic.checklist.Model.TaskDatabaseClient;
 
@@ -18,6 +19,9 @@ import java.util.List;
 import java.util.Queue;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
 public class Persistance {
 
@@ -181,10 +185,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                MainActivity.NotifyTaskChanged(null, activity, false);
-                // finish();
-                // startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                // Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_LONG).show();
+                MainActivity.NotifyTaskChanged(null, activity, new Long[] {list_self});
             }
         }
 
@@ -221,7 +222,7 @@ public class Persistance {
                     Task.addTask(t);
                 }
                 Task.lock.unlock();
-                MainActivity.NotifyTaskChanged(null, activity, true);
+                MainActivity.NotifyTaskChanged(null, activity, new Long[] {list});
             }
         }
 

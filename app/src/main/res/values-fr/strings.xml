@@ -312,4 +312,6 @@
     <string name="save">Sauvegarder</string>
     <string name="load">Charger</string>
     <string name="errorExportPDF">Erreur lors de l\'exportation au format PDF</string>
+    <string name="ImportNotificationMessage">Charger des tâches</string>
+    <string name="errorLoading">Erreur lors du chargement du fichier</string>
 </resources>

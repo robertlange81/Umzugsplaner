@@ -18,7 +18,6 @@ import android.util.Log;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;

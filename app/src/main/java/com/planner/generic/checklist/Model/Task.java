@@ -37,12 +37,13 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Datum nachträglich ändern
-    - Import / Export
-    - Amazon-Webseite statt APP (kommt Partner-ID mit?)
+    - rückgängig auf Detailseite geht nicht mehr?
+    - Laden / Speichern eigenes Menu + Rückfrage beim Laden
     - Sortierung in eigenem Menü
-    - Zeige auf Karte nur wenn Ort vorhanden
+    - Datum nachträglich ändern
+    - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
+    - Zeige auf Karte nur wenn Ort vorhanden
     - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
@@ -57,9 +58,8 @@ public class Task implements Serializable {
     - Hintergrundbild (Grundriss / Baby)
     - Bilder speichern
     - Bild statt Link
-    - Darcula wechseln
-    - MyHammer Alternative
 
+    - MyHammer Alternative
     - Weihnachtsliste
     - Babyliste
     - Geburstagsliste

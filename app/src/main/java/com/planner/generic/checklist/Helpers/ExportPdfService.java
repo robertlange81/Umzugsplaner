@@ -1,10 +1,14 @@
 package com.planner.generic.checklist.Helpers;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.ResultReceiver;
 import android.support.annotation.Nullable;
@@ -48,6 +52,19 @@ public class ExportPdfService extends ExportService {
 
     protected static String getNotificationChannel() {
         return "Export";
+    }
+
+    protected void createChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel channel = new NotificationChannel(
+              getNotificationChannel(), // unique name
+              getName(), // name of the group
+              NotificationManager.IMPORTANCE_DEFAULT);
+            channel.setDescription(getDescription());
+            channel.setLockscreenVisibility(NotificationCompat.VISIBILITY_PRIVATE);
+            manager.createNotificationChannel(channel);
+        }
     }
 
     @Override
