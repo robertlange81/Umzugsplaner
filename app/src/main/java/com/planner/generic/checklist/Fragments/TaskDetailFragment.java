@@ -47,7 +47,7 @@ import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.Model.TaskType;
-import com.planner.generic.checklist.Model.TaskTypeMain;
+import com.planner.generic.checklist.Model.TaskTypeLockdown;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Field;
@@ -423,14 +423,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     if (_task.type != null) {
       int counter = -1;
-      for (TaskTypeMain taskTypeMain : TaskTypeMain.values()) {
+      for (TaskTypeLockdown taskTypeLockdown : TaskTypeLockdown.values()) {
         counter++;
 
         // extra case for zero
         if (counter == 0 && _task.type.getValue() != 0)
           continue;
 
-        if ((taskTypeMain.getValue() & _task.type.getValue()) == taskTypeMain.getValue()) {
+        if ((taskTypeLockdown.getValue() & _task.type.getValue()) == taskTypeLockdown.getValue()) {
           spinnerDetailType.setSelection(counter);
           break;
         }
@@ -643,7 +643,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       _task.links = newLinks;
       _task.addLink(
         getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
-        getResources().getString(_task.type.equals(TaskTypeMain.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
+        getResources().getString(_task.type.equals(TaskTypeLockdown.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
       );
 
       _task.addLink(

@@ -37,14 +37,16 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - rückgängig auf Detailseite geht nicht mehr?
-    - Laden / Speichern eigenes Menu + Rückfrage beim Laden
     - Sortierung in eigenem Menü
+    - Laden / Speichern eigenes Menu + Rückfrage beim Laden
+    - Legende anpassen
     - Datum nachträglich ändern
+    - Ortsangabe auch bei Neustart auf Liste / Dialog
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
     - Zeige auf Karte nur wenn Ort vorhanden
     - Lock entfernen?
+    - Schriftgröße PDF verkleinern
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
@@ -52,7 +54,6 @@ public class Task implements Serializable {
     - Orientierung Tablet
     - Ortsangabe in Task
 
-    - Ortsangabe auch bei Neustart auf Liste / Dialog
     - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Hintergrundbild (Grundriss / Baby)
@@ -162,7 +163,7 @@ public class Task implements Serializable {
         date = null;
         priority = com.planner.generic.checklist.Model.Priority.Normal;
         costs = 0L;
-        type = new TaskType(TaskTypeMain.MEDICIN);
+        type = new TaskType(TaskTypeLockdown.MEDICIN);
         links = new TreeMap<>();
         createdAt = new Date();
     }

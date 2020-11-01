@@ -44,6 +44,7 @@
         android:text="@string/currency"
         android:title="@string/currency"
         android:textSize="200sp"
+        android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/searchMenuItem"

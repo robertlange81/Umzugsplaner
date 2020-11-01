@@ -133,7 +133,7 @@
                     android:layout_alignParentStart="true" />
             </TableRow>
 
-            <!-- label date / time -->
+            <!-- label date / targetTimeStamp -->
             <TableRow
                 android:id="@+id/intro_init_date_label"
                 android:layout_width="match_parent"
@@ -167,7 +167,7 @@
                     android:text="@string/placeholder_date_lockdown" />
 
             </TableRow>
-            <!-- input date / time -->
+            <!-- input date / targetTimeStamp -->
             <TableRow
                 android:id="@+id/init_date_input"
                 android:layout_width="match_parent"
@@ -214,7 +214,7 @@
                         android:layout_toRightOf="@+id/init_btn_time" /-->
                 </TableRow>
             </TableRow>
-            <!-- text display date / time -->
+            <!-- text display date / targetTimeStamp -->
             <TableRow
                 android:id="@+id/init_date_display"
                 android:layout_below="@id/init_second_line"

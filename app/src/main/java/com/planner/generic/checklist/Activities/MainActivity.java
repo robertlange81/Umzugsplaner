@@ -250,6 +250,21 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
         SpannableString s;
 
+        SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
+
+        MenuItem goTo = topMenu.findItem(R.id.goToLocation);
+        if(prefs != null &&
+          (prefs.getString(Location.PLACE, null) != null
+            || prefs.getString(Location.PLACE, null) != null
+            || prefs.getString(Location.STREET, null) != null
+          )) {
+            if(goTo != null) {
+                goTo.setVisible(true);
+            }
+        } else {
+            goTo.setVisible(false);
+        }
+
         int taskCount = 0, done = 0;
         for(Task task: Task.getTaskListClone()) {
             if(task.is_Done) {
@@ -502,7 +517,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 selectFileForExport("application/pdf", "pdf");
                 return true;
             case R.id.save:
-                selectFileForExport("file/*", "checklist");
+                selectFileForExport("file/*", "list");
                 return true;
             case R.id.load:
                 selectFileForImport("file/*");

@@ -13,6 +13,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.planner.generic.checklist.Activities.MainActivity;
+import com.planner.generic.checklist.Helpers.DBConverter.TimestampConverter;
+import com.planner.generic.checklist.Model.CheckListSerialized;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
@@ -21,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ImportService extends ExportService {
@@ -85,8 +88,13 @@ public class ImportService extends ExportService {
             selectedFileInputStream = getContentResolver().openInputStream(fileUri);
             if (selectedFileInputStream != null) {
                 ObjectInputStream ois = new ObjectInputStream(selectedFileInputStream);
-                List<Task> tasks = (ArrayList) ois.readObject();
-                Persistance.PruneAllTasks(MainActivity.instance, true,null, null, tasks);
+                CheckListSerialized saving = (CheckListSerialized) ois.readObject();
+                Persistance.PruneAllTasks(
+                  MainActivity.instance,
+                  true,
+                  new Date(saving.targetTimeStamp),
+                  saving.location,
+                  saving.tasks);
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();

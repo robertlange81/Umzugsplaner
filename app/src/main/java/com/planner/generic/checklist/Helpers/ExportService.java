@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,13 +16,14 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
+import com.planner.generic.checklist.Model.CheckListSerialized;
+import com.planner.generic.checklist.Model.Location;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.util.List;
 
 public class ExportService extends IntentService {
 
@@ -103,23 +105,43 @@ public class ExportService extends IntentService {
         createChannel();
         NotificationCompat.Builder builder = createNotification(file);
 
-        List<Task> tasks = Task.getTaskListClone();
+        CheckListSerialized saving = new CheckListSerialized();
+        saving.tasks = Task.getTaskListClone();
+
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("checklist", 0);
+
+        if(prefs != null) {
+            long targetTimestamp = prefs.getLong("target_timestamp", 0L);
+            if (targetTimestamp != 0) {
+                saving.targetTimeStamp = targetTimestamp;
+            }
+
+            saving.location = new Location(
+                prefs.getString(Location.PLACE, null),
+                prefs.getString(Location.POSTAL, null),
+                prefs.getString(Location.STREET, null),
+                prefs.getString(Location.STREETNUMBER, null)
+            );
+        }
+
+        boolean isError = false;
 
         try {
-            if (tasks.size() == 0) {
+            if (saving.tasks.size() == 0) {
                 return;
             }
 
-            builder.setProgress(tasks.size(), 0, false);
+            builder.setProgress(saving.tasks.size(), 0, false);
             notifyManager.notify(_NOTIFICATION_ID, builder.build());
 
             OutputStream os = null;
             try {
                 os = getContentResolver().openOutputStream(file);
                 ObjectOutputStream out = new ObjectOutputStream(os);
-                out.writeObject(tasks);
+                out.writeObject(saving);
                 notifyManager.notify(_NOTIFICATION_ID, builder.build());
             } catch (IOException e) {
+                isError = true;
                 e.printStackTrace();
                 receiver.send(EXPORT_ERROR, bundle);
             } finally {
@@ -128,15 +150,21 @@ public class ExportService extends IntentService {
                     os.flush();
                     os.close();
                 } catch (IOException e) {
+                    isError = true;
                     e.printStackTrace();
                     receiver.send(EXPORT_ERROR, bundle);
                 }
             }
 
         } finally {
-            builder.setProgress(1, 1, false)
-                    .setContentText(getString(R.string.SaveNotificationFinishedMessage));
-            notifyManager.notify(_NOTIFICATION_ID, builder.build());
+            if (isError) {
+                builder.setProgress(1, 1, false)
+                  .setContentText(getString(R.string.errorSaving));
+            } else {
+                builder.setProgress(1, 1, false)
+                  .setContentText(getString(R.string.SaveNotificationFinishedMessage));
+                notifyManager.notify(_NOTIFICATION_ID, builder.build());
+            }
         }
     }
 }

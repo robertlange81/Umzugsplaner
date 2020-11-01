@@ -1,6 +1,8 @@
 package com.planner.generic.checklist.Model;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
     private String postal;
     private String place;
     private String street;
@@ -10,10 +12,6 @@ public class Location {
     public static final String PLACE = "target_location_place";
     public static final String STREET = "target_location_street";
     public static final String STREETNUMBER = "target_location_street_number";
-
-    public Location() {
-
-    }
 
     public Location(String postal, String place, String street, String streetNumber) {
         this.postal = postal;

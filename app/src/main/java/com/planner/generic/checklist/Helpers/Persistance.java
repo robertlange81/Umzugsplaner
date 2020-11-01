@@ -9,7 +9,6 @@ import android.util.Log;
 import com.planner.generic.checklist.Activities.MainActivity;
 import com.planner.generic.checklist.Model.Location;
 import com.planner.generic.checklist.Model.Task;
-import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.Model.TaskDao;
 import com.planner.generic.checklist.Model.TaskDatabaseClient;
 
@@ -149,8 +148,11 @@ public class Persistance {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
 
-                if(createNewTask)
+                if(createNewTask) {
                     TaskInitializer.InitTasks(callbackNewInitDate, location, activity, createNewTaskList);
+                } else {
+
+                }
             }
         }
 

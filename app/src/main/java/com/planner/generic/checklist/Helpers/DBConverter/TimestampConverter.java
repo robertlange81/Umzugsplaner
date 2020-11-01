@@ -28,7 +28,6 @@ public class TimestampConverter {
         }
     }
 
-
     @TypeConverter
     public static String dateToTimestamp(Date value) {
         TimeZone timeZone = TimeZone.getTimeZone("IST");

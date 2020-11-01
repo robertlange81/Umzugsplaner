@@ -45,6 +45,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/goToLocation"
+        android:visible="false"
         android:icon="@drawable/ic_home_black_24dp"
         android:orderInCategory="40"
         android:text="@string/show_location"

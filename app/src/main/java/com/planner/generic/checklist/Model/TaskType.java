@@ -10,7 +10,11 @@ public class TaskType implements Comparable<Object>, Serializable {
         this.value = value;
     }
 
-    public TaskType(TaskTypeMain base) {
+    public TaskType(TaskTypeLockdown base) {
+        this.value = base.getValue();
+    }
+
+    public TaskType(TaskTypeRelocation base) {
         this.value = base.getValue();
     }
 
@@ -38,8 +42,8 @@ public class TaskType implements Comparable<Object>, Serializable {
         if(o.getClass() == TaskType.class)
             other = ((TaskType) o).getValue();
 
-        if(o instanceof TaskTypeMain)
-            other = ((TaskTypeMain) o).getValue();
+        if(o instanceof TaskTypeLockdown)
+            other = ((TaskTypeLockdown) o).getValue();
 
         if(o.getClass() == int.class)
             other = (int) o;
