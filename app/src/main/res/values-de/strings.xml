@@ -308,9 +308,12 @@
     <string name="No">Nein</string>
     <string name="errorSaving">Fehler beim Speichern</string>
     <string name="openPDF">PDF Öffnen</string>
-    <string name="save">Datei Speichern</string>
-    <string name="load">Datei Laden</string>
+    <string name="save">Projekt Speichern</string>
+    <string name="load">Projekt Öffnen</string>
     <string name="errorExportPDF">Fehler beim Erstellen des PDF</string>
     <string name="ImportNotificationMessage">Aufgaben laden</string>
     <string name="errorLoading">Fehler beim Laden</string>
+    <string name="importHint">Achtung: Durch das Öffnen eines anderen Projektes werden Ihre aktuellen Aufgaben komplett überschrieben.</string>
+    <string name="loadShort">ÖFFNEN</string>
+    <string name="Sort">Sortieren</string>
 </resources>

@@ -11,6 +11,7 @@
         android:textSize="150sp"
         android:layout_width="200sp"
         android:layout_alignParentLeft="true"
+        android:visible="false"
         app:showAsAction="always" />
     <item
         android:id="@+id/searchMenuItem"
@@ -43,6 +44,15 @@
         android:text="@string/export"
         android:title="@string/export"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/sortMenu"
+        android:title="@string/Sort"
+        android:titleCondensed="@string/Sort"
+        android:icon="@drawable/ic_baseline_sort_24"
+        android:enabled="true">
+        <!-- A empty SubMenu -->
+        <menu></menu>
+    </item>
     <item
         android:id="@+id/goToLocation"
         android:visible="false"
@@ -83,41 +93,11 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/load"
-        android:icon="@drawable/ic_restore_page_black_24dp"
+        android:icon="@drawable/ic_folder_open_black_24dp"
         android:textSize="150sp"
         android:layout_width="200sp"
         android:orderInCategory="100"
         android:title="@string/load"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByIsDone"
-        android:orderInCategory="101"
-        android:title="@string/sortbyIsDone"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByName"
-        android:orderInCategory="102"
-        android:title="@string/sortbyName"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByDate"
-        android:orderInCategory="103"
-        android:title="@string/sortbydate"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByCosts"
-        android:orderInCategory="104"
-        android:title="@string/sortbyCosts"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByPriority"
-        android:orderInCategory="105"
-        android:title="@string/sortbyPriority"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByType"
-        android:orderInCategory="106"
-        android:title="@string/sortbyType"
         app:showAsAction="never" />
     <item
         android:id="@+id/delete_all"

@@ -1,0 +1,26 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/sortByIsDone"
+        android:orderInCategory="101"
+        android:title="@string/sortbyIsDone" />
+    <item
+        android:id="@+id/sortByName"
+        android:orderInCategory="102"
+        android:title="@string/sortbyName" />
+    <item
+        android:id="@+id/sortByDate"
+        android:orderInCategory="103"
+        android:title="@string/sortbydate" />
+    <item
+        android:id="@+id/sortByCosts"
+        android:orderInCategory="104"
+        android:title="@string/sortbyCosts" />
+    <item
+        android:id="@+id/sortByPriority"
+        android:orderInCategory="105"
+        android:title="@string/sortbyPriority" />
+    <item
+        android:id="@+id/sortByType"
+        android:orderInCategory="106"
+        android:title="@string/sortbyType" />
+</menu>

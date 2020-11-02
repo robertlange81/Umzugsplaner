@@ -38,6 +38,10 @@ public class TaskInitializer {
 
     public static void InitTasks(Date targetDate, Location targetLocation, Activity context, List<Task> newTasks) {
 
+        if (targetDate == null) {
+            targetDate = Calendar.getInstance(TimeZone.getDefault()).getTime();
+        }
+
         if (newTasks !=  null) {
             // just import tasks
             for (Task t : newTasks) {

@@ -92,7 +92,7 @@ public class ImportService extends ExportService {
                 Persistance.PruneAllTasks(
                   MainActivity.instance,
                   true,
-                  new Date(saving.targetTimeStamp),
+                  saving.targetTimeStamp == null ? null : new Date(saving.targetTimeStamp),
                   saving.location,
                   saving.tasks);
             }

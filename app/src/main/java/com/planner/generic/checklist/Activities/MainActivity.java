@@ -71,7 +71,9 @@ import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Array;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.UUID;
 
 import static android.widget.LinearLayout.VERTICAL;
@@ -248,8 +250,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         topMenu = topBar.getMenu();
         getMenuInflater().inflate(R.menu.menu_main, topMenu);
-        SpannableString s;
+        MenuItem sortMenu = topMenu.findItem(R.id.sortMenu);
+        getMenuInflater().inflate(R.menu.menu_sort, sortMenu.getSubMenu());
 
+        SpannableString s;
         SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
 
         MenuItem goTo = topMenu.findItem(R.id.goToLocation);
@@ -282,7 +286,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         showOverview = findViewById(R.id.menuText);
         if(showOverview != null) {
             showOverview.setMaxWidth(width / 5);
-            showOverview.setPadding(8,0,0,0);
+            showOverview.setPadding(15,0,0,0);
             instance.showOverview.setText(done + "|" + taskCount);
             if (Build.VERSION.SDK_INT < 23) {
                 instance.showOverview.setTextAppearance(getApplicationContext(), R.style.ActionButton);
@@ -301,14 +305,14 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         initDialogMenuItem = topMenu.findItem(R.id.start_new);
         if(initDialogMenuItem != null) {
             s = new SpannableString(initDialogMenuItem.getTitle());
-            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorYellow)), 0, s.length(), 0);
+            // s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorYellow)), 0, s.length(), 0);
             initDialogMenuItem.setTitle(s);
         }
 
         deleteAllMenuItem = topMenu.findItem(R.id.delete_all);
         if(deleteAllMenuItem != null) {
             s = new SpannableString(deleteAllMenuItem.getTitle());
-            s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
+            // s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
             deleteAllMenuItem.setTitle(s);
         }
 
@@ -381,6 +385,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             });
         }
 
+        for (int i = 0; i < sortMenu.getSubMenu().size(); i++) {
+            sortMenu.getSubMenu().getItem(i).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    return onOptionsItemSelected(item);
+                }
+            });
+        }
+
         return true;
     }
 
@@ -394,6 +407,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
         if(item == showOverview) {
             // TODO Overlay to show progress / date
+            return true;
+        }
+
+        if(item.getItemId() == R.id.sortMenu) {
+            // Button for expanding sort options
             return true;
         }
 
@@ -517,10 +535,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 selectFileForExport("application/pdf", "pdf");
                 return true;
             case R.id.save:
-                selectFileForExport("file/*", "list");
+                selectFileForExport("file/*", "todo");
                 return true;
             case R.id.load:
-                selectFileForImport("file/*");
+                MainActivity.showOpenDialog(this, instance);
                 return true;
             default:
                 sortType = ComparatorConfig.SortType.IS_DONE;
@@ -541,7 +559,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         Intent fileIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         fileIntent.addCategory(Intent.CATEGORY_OPENABLE);
         fileIntent.setType(type);
-        fileIntent.putExtra(Intent.EXTRA_TITLE, "lockdown." + fileEnding);
+        String today = TaskFormater.formatDateToString(Calendar.getInstance(TimeZone.getDefault()).getTime());
+        today.replaceAll(".", "-");
+        fileIntent.putExtra(Intent.EXTRA_TITLE, today + "." + fileEnding);
         startActivityForResult(fileIntent, type.equals("application/pdf") ? _SAF_EXPORT_PDF : _SAF_EXPORT_BIN);
     }
 
@@ -685,7 +705,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             Persistance.SaveOrUpdateTask(task, activity);
         }
 
-        int taskCount = 0, done = 0;
+        int taskCount = 0;
 
         if(activity != null && MainActivity.instance != null) {
             int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort,
@@ -702,28 +722,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     if(recyclerView != null)
                         recyclerView.smoothScrollToPosition(taskCount);
                 }
-                if(taskItem.is_Done) {
-                    done++;
-                }
-
                 taskCount++;
             }
-        } else {
-            for(Task t: Task.getTaskListClone()) {
-                if(t.is_Done) {
-                    done++;
-                }
-                taskCount++;
-            }
-        }
 
-        if(instance != null && instance.showOverview != null) {
-            instance.showOverview.setText(done + "|" + taskCount);
-            if(done < taskCount) {
-                instance.showOverview.setTextColor(Color.WHITE);
-            } else {
-                instance.showOverview.setTextColor(Color.rgb(0,255,60));
-            }
+            updateOverview();
         }
 
         if (instance == null)
@@ -918,7 +920,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     OnTaskChecked(task, holder.date, holder.costs);
                     // FIXME only One
                     notifyDataSetChanged();
-                    Snackbar.make(view, task.name + " " + msg, Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, task.name + " " + msg + " (" + updateOverview() + ")", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
                     NotifyTaskChanged(
@@ -970,13 +972,14 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                 if(mTwoPane) {
                                     removeFragments();
                                 }
-                                ((View) view.getParent().getParent()).setAlpha(1);
+
+                                    ((View) view.getParent().getParent()).setAlpha(1);
                                     try {
                                         if(view != null) {
                                             Snackbar snack = Snackbar.make(
                                                     view,
                                                     task.name + " " + SimpleItemRecyclerViewAdapter.this.mParentActivity
-                                                            .getResources().getString(R.string.deleted),
+                                                            .getResources().getString(R.string.deleted) + " (" + updateOverview() + ")",
                                                     Snackbar.LENGTH_LONG);
 
                                             snack.setAction(
@@ -987,23 +990,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                                         }
                                     } catch (Exception e) {
                                         Log.e("Main Snack", e.getMessage());
-                                    }
-
-                                    int done = 0, taskCount = 0;
-                                    for(Task task: Task.getTaskList()) {
-                                        if(task.is_Done) {
-                                            done++;
-                                        }
-                                        taskCount++;
-                                    }
-
-                                    if(instance.showOverview != null) {
-                                        instance.showOverview.setText(done + "/" + taskCount);
-                                        if(done < taskCount) {
-                                            instance.showOverview.setTextColor(Color.WHITE);
-                                        } else {
-                                            instance.showOverview.setTextColor(Color.rgb(0,255,60));
-                                        }
                                     }
                                 }
                             });
@@ -1074,6 +1060,26 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 imgDelete = rowView.findViewById(R.id.delete_task_icon);
             }
         }
+    }
+
+    private static String updateOverview() {
+        int done = 0, taskCount = 0;
+        for(Task task: Task.getTaskList()) {
+            if(task.is_Done) {
+                done++;
+            }
+            taskCount++;
+        }
+        String text = done + "/" + taskCount;
+        if (instance.showOverview != null && instance.showOverview.getVisibility() == View.VISIBLE) {
+            instance.showOverview.setText(text);
+            if(done < taskCount) {
+                instance.showOverview.setTextColor(Color.WHITE);
+            } else {
+                instance.showOverview.setTextColor(Color.rgb(0,255,60));
+            }
+        }
+        return text;
     }
 
     public static boolean isAppOnForeground(Context context) {
@@ -1161,10 +1167,34 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 Persistance.PruneAllTasks(instance, false,null, null, null);
-                NotifyTaskChanged(null, null, new Long[] {list});
                 Intent intent = new Intent(instance, IntroActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                 instance.startActivity(intent);
+                NotifyTaskChanged(null, null, new Long[] {list});
+            }
+        });
+
+        alert.setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                // Canceled.
+            }
+        });
+
+        alert.show();
+    }
+
+    public static void showOpenDialog(Context context, final MainActivity instance)
+    {
+        AlertDialog.Builder alert = new AlertDialog.Builder(context);
+        alert.setMessage(R.string.importHint);
+
+        alert.setPositiveButton(R.string.loadShort, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                instance.selectFileForImport("file/*");
             }
         });
 

@@ -235,7 +235,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Log.d("isNotifyEnabled", "onResume true");
 
     getActivity().getContentResolver().registerContentObserver(
-                    ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, list),
+                    ContentUris.withAppendedId(TaskContract.TaskData.CONTENT_URI, item),
                     true,
                     new TasksObserver(new Handler(), instance));
     Log.d("DEBUG", "onResume of TaskDetailFragment END");

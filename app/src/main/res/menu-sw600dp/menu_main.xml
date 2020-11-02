@@ -20,23 +20,41 @@
         android:id="@+id/show_high_prio_only"
         app:showAsAction="always"
         android:checkable="true"
-        android:orderInCategory="20"
+        android:orderInCategory="12"
         android:title="@string/placeholder_hide_low_prio" />
     <item
         android:id="@+id/showCostsMenuItem"
         android:icon="@drawable/ic_currency"
-        android:orderInCategory="30"
+        android:orderInCategory="15"
         android:text="@string/currency"
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
         android:id="@+id/exportToPdf"
-        android:orderInCategory="35"
-        android:icon="@drawable/ic_baseline_cloud_download_24"
+        android:orderInCategory="20"
+        android:icon="@drawable/ic_picture_as_pdf_black_24dp"
         android:textSize="150sp"
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
         android:text="@string/export"
         android:title="@string/export"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/save"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:orderInCategory="99"
+        android:title="@string/save"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/load"
+        android:icon="@drawable/ic_folder_open_black_24dp"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:orderInCategory="100"
+        android:title="@string/load"
+        app:showAsAction="never" />
     <item
         android:id="@+id/goToLocation"
         android:icon="@drawable/ic_home_black_24dp"
@@ -73,28 +91,13 @@
         android:title="@string/sortbyIsDone"
         app:showAsAction="never" />
     <item
-        android:id="@+id/sortByName"
-        android:orderInCategory="90"
-        android:title="@string/sortbyName"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByDate"
-        android:orderInCategory="100"
-        android:title="@string/sortbydate"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByCosts"
-        android:orderInCategory="110"
-        android:title="@string/sortbyCosts"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByPriority"
-        android:orderInCategory="120"
-        android:title="@string/sortbyPriority"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/sortByType"
-        android:orderInCategory="130"
-        android:title="@string/sortbyType"
-        app:showAsAction="never" />
+        android:id="@+id/sortMenu"
+        android:title="@string/Sort"
+        android:titleCondensed="@string/Sort"
+        android:icon="@drawable/ic_baseline_sort_24"
+        android:enabled="true"
+        app:showAsAction="always">
+        <!-- A empty SubMenu -->
+        <menu></menu>
+    </item>
 </menu>

@@ -34,7 +34,7 @@ public class ExportPdfService extends ExportService {
     public static final int EXPORT_PDF_SUCCESS = 1;
     public static final int EXPORT_PDF_ERROR = -1;
 
-    private static final int _LINE_HEIGHT_ADD = 8;
+    private static final int _LINE_HEIGHT_ADD = 7;
     private static final int _LEFT_BORDER = 10;
     private static final int _LEFT_BORDER_TITLE_STAR = 30;
 
@@ -139,17 +139,17 @@ public class ExportPdfService extends ExportService {
                         line.append(i).append(". ");
 
                         line.append(t.name);
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 20, line, true, t.priority == Priority.High);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, true, t.priority == Priority.High);
 
                         line.append(t.description);
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, false, false);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 12, line, false, false);
                         fromBottom -= _LINE_HEIGHT_ADD;
 
                         line.append(ressources.getString(R.string.placeholder_date)).append(delimiter).append(TaskFormater.formatDateToString(t.date));
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, false, false);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 12, line, false, false);
 
                         line.append(ressources.getString(R.string.done)).append(delimiter).append(t.is_Done ? getString(R.string.Yes) : "");
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, false, false);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 12, line, false, false);
 
                         String costs = TaskFormater.intDecimalsToString(t.costs);
                         if(costs != null && !costs.isEmpty()) {
@@ -160,11 +160,11 @@ public class ExportPdfService extends ExportService {
                         line.append(ressources.getString(R.string.placeholder_costs))
                                 .append(delimiter).append(" ").append(costs);
 
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, false, false);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 12, line, false, false);
 
                         formatAddress(ressources, line, delimiter, t);
 
-                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 15, line, false, false);
+                        fromBottom = flushText(pageHeight, pageWidth, mPDFWriter, fromBottom, 12, line, false, false);
 
                         fromBottom -= 10;
                         mPDFWriter.addLine(10, fromBottom - 10, pageWidth - 10, fromBottom - 10);

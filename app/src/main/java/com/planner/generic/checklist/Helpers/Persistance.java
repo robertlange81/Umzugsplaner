@@ -150,8 +150,6 @@ public class Persistance {
 
                 if(createNewTask) {
                     TaskInitializer.InitTasks(callbackNewInitDate, location, activity, createNewTaskList);
-                } else {
-
                 }
             }
         }
