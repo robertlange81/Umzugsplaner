@@ -232,6 +232,7 @@
     <string name="legendDoneLong">tâches terminées / toutes les tâches</string>
     <string name="legentCosts">Aperçu des coûts</string>
     <string name="legendFilter">Titre de recherche</string>
+    <string name="legendDelete">Clair</string>
     <string name="legendDone">Tâche accomplie</string>
     <string name="legendPrio">Définir la priorité</string>
     <string name="legendExport">Export. du cal.</string>
@@ -317,4 +318,5 @@
     <string name="importHint">Attention: En ouvrant un autre projet, vos tâches actuelles seront complètement écrasées.</string>
     <string name="loadShort">OUVRIR</string>
     <string name="Sort">Triage</string>
+    <string name="export_as_pdf">Export. en pdf</string>
 </resources>

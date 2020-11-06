@@ -325,4 +325,6 @@
     <string name="importHint">Attention: By opening another project, your current tasks will be completely overwritten.</string>
     <string name="loadShort">open</string>
     <string name="Sort">Sort</string>
+    <string name="legendDelete">Delete</string>
+    <string name="export_as_pdf">export as PDF</string>
 </resources>

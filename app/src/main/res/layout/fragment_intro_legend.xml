@@ -12,7 +12,7 @@
             android:layout_height="fill_parent">
             <ScrollView
                 android:layout_width="fill_parent"
-                android:paddingTop="15sp"
+                android:paddingTop="35sp"
                 android:paddingBottom="0dp"
                 android:layout_height="wrap_content">
                 <LinearLayout
@@ -43,7 +43,6 @@
 
                     </LinearLayout>
                     <LinearLayout
-                        android:paddingTop="@dimen/introTopMargin"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
                         <include layout="@layout/fragment_intro_legend_content"/>

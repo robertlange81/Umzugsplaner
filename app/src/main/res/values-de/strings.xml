@@ -316,4 +316,6 @@
     <string name="importHint">Achtung: Durch das Öffnen eines anderen Projektes werden Ihre aktuellen Aufgaben komplett überschrieben.</string>
     <string name="loadShort">ÖFFNEN</string>
     <string name="Sort">Sortieren</string>
+    <string name="legendDelete">Löschen</string>
+    <string name="export_as_pdf">PDF-Export</string>
 </resources>

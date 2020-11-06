@@ -37,8 +37,6 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Sortierung in eigenem Menü
-    - Laden / Speichern eigenes Menu + Rückfrage beim Laden
     - Legende anpassen
     - Datum nachträglich ändern
     - Ortsangabe auch bei Neustart auf Liste / Dialog
@@ -46,7 +44,6 @@ public class Task implements Serializable {
     - !!!Umlaute bei Suche / Amazon
     - Zeige auf Karte nur wenn Ort vorhanden
     - Lock entfernen?
-    - Schriftgröße PDF verkleinern
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
