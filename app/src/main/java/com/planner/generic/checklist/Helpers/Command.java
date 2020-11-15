@@ -72,7 +72,7 @@ public class Command implements View.OnClickListener{
                 if(oldTask != null)
                     oldTask.ImportTask(_task);
 
-                MainActivity.NotifyTaskChanged(_task, _activity, new Long[] {list});
+                MainActivity.NotifyTaskChanged(_task, _activity, new Long[] {list, item});
         }
     }
 }
