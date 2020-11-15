@@ -37,8 +37,10 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Legende anpassen
+    - Fehler Kosten
+    - Legende anpassen tablet
     - Datum nachträglich ändern
+    - Ortsangabe in Task
     - Ortsangabe auch bei Neustart auf Liste / Dialog
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
@@ -48,8 +50,6 @@ public class Task implements Serializable {
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
     - letzte Suche merken
-    - Orientierung Tablet
-    - Ortsangabe in Task
 
     - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)

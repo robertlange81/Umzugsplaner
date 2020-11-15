@@ -2,6 +2,7 @@ package com.planner.generic.checklist.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,6 +36,7 @@ public class IntroActivity extends AppIntro {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(TaskFormater.currentLocal == null) {
             TaskFormater.setCurrentLocale(this);
         }
@@ -44,7 +46,7 @@ public class IntroActivity extends AppIntro {
             fragmentLegend = new IntroFragmentLegend();
             fragmentInput = new IntroFragmentInput();
 
-            if (getBaseContext().getResources().getInteger(R.integer.orientation) == 1) {
+            if (getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
                 // xs/sm only
                 addSlide(fragmentHello);
             }

@@ -13,9 +13,11 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getBaseContext().getResources().getInteger(R.integer.orientation) == 0) {
+        /*
+        if(getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
+        */
         setContentView(R.layout.splash);
         Persistance.LoadTasks(SplashActivity.this);
         startHeavyProcessing();

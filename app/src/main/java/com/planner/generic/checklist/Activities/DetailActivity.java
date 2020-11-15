@@ -1,6 +1,7 @@
 package com.planner.generic.checklist.Activities;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
@@ -29,6 +30,10 @@ public class DetailActivity extends AppCompatActivity {
     {
         Log.d("DEBUG", "onCreate DetailActivity");
         super.onCreate(savedInstanceState);
+
+/*        if (getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }*/
 
        // requestWindowFeature(Window.FEATURE_NO_TITLE);
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

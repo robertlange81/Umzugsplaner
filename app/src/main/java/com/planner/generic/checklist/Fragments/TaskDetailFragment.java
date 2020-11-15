@@ -61,7 +61,6 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
-import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -695,7 +694,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
       };
 
-      if(rootView.getContext().getResources().getInteger(R.integer.orientation) == 0) { // tablet
+      if(rootView.getContext().getResources().getInteger(R.integer.tablet) == 0) { // tablet
         datePickerDialog = new DatePickerDialog(this.getContext(), listener, mYear, mMonth, mDay);
       } else { // small device
         datePickerDialog = new DatePickerDialog(this.getContext(), AlertDialog.THEME_TRADITIONAL, listener, mYear, mMonth, mDay);

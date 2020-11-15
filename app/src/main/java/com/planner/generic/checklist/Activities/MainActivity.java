@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -127,8 +128,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (isStartedFromBackgroundActivity())
-            moveTaskToBack(true);
+
+        if (getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
+            mTwoPane = true;
+            // setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
@@ -168,16 +172,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 }
             }
         });
-
-        if (getBaseContext().getResources().getInteger(R.integer.orientation) == 0) {
-            mTwoPane = true;
-            /*
-            if(this.getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-                return;
-            }
-            */
-        }
 
         /*
         int sortId = Persistance.LoadSetting(Persistance.SettingType.Sort, this);
