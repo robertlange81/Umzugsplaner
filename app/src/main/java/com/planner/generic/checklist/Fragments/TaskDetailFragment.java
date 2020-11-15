@@ -61,6 +61,8 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
+import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -278,7 +280,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           .getString(checkIsDone.isChecked() ? R.string.done : R.string.todo);
         _task.is_Done = checkIsDone.isChecked();
         lblIsDone.setText(msg);
-        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         Snackbar.make(view, _task.name + " " + msg, Snackbar.LENGTH_LONG)
           .setAction("Action", null).show();
       }
@@ -298,7 +300,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           lblPrio.setText(R.string.highPrioText_short);
         }
 
-        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+        MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         String msg = rootView.getContext().getResources()
           .getString(_task.priority == Priority.Normal ? R.string.normalPrioText : R.string.highPrioText)
           + " " + _task.name;
@@ -316,7 +318,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
           if (!input.equals(_task.name)) {
             _task.name = input;
-            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
           }
         }
       }
@@ -351,7 +353,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           generateMarketLinks(null);
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         }
       }
 
@@ -376,7 +378,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
         if (!hasFocus && isNotifyEnabled) {
-          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         }
       }
     });
@@ -389,7 +391,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           String input = txtCostsSig.getText().toString();
 // check for change
           if (!hasFocus && isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         }
       }
     });
@@ -403,7 +405,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           if (input.equals("")) {
             _task.date = null;
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
           }
         }
       }
@@ -534,7 +536,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             if (t == txtDeadline) {
               _task.date = null;
               if (isNotifyEnabled)
-                MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+                MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
             } else {
               t.requestFocus();
               t.clearFocus();
@@ -690,7 +692,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           _task.date = tempDate;
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         }
       };
 
@@ -728,7 +730,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
             _task.date = tempDate;
 
             if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
           }
         }, mHour, mMinute, true);
       timePickerDialog.show();
@@ -843,7 +845,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
         if (input != null && !input.equals(oldValue)) {
           field.set(_task, input);
-          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {item});
+          MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
         }
 
       } catch (NoSuchFieldException e) {

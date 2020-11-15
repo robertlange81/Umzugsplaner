@@ -37,11 +37,10 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Fehler Kosten
-    - Legende anpassen tablet
-    - Datum nachträglich ändern
+    - Legende und Menü anpassen für Tablet
     - Ortsangabe in Task
     - Ortsangabe auch bei Neustart auf Liste / Dialog
+    - Datum nachträglich ändern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
     - Zeige auf Karte nur wenn Ort vorhanden
