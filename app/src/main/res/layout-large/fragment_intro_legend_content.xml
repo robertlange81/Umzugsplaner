@@ -7,7 +7,7 @@ android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:layout_marginEnd="10dp"
 android:layout_marginRight="10dp"
-android:paddingTop="@dimen/introTopTextMargin"
+android:paddingTop="10dp"
 android:paddingBottom="100sp"
 android:gravity="top"
 android:weightSum="10">
@@ -33,17 +33,17 @@ android:weightSum="10">
         android:textColor="#ffffffff" />
 
     <ImageView
-        android:id="@+id/intro_currency"
+        android:id="@+id/intro_sort"
         android:layout_below="@id/intro_relation"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/introLineHeight"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_currency" />
+        app:srcCompat="@drawable/ic_baseline_sort_24" />
 
     <ImageView
         android:id="@+id/intro_search"
-        android:layout_below="@id/intro_currency"
+        android:layout_below="@id/intro_sort"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/introLineHeight"
@@ -51,8 +51,17 @@ android:weightSum="10">
         app:srcCompat="@drawable/ic_search_black_24dp" />
 
     <ImageView
-        android:id="@+id/intro_location"
+        android:id="@+id/intro_currency"
         android:layout_below="@id/intro_search"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/introLineHeight"
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/ic_currency" />
+
+    <ImageView
+        android:id="@+id/intro_location"
+        android:layout_below="@id/intro_currency"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/introLineHeight"
@@ -60,11 +69,28 @@ android:weightSum="10">
         app:srcCompat="@drawable/ic_home_black_24dp" />
 
     <LinearLayout
-        android:id="@+id/intro_checkbox"
+        android:id="@+id/intro_pdf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_below="@id/intro_location"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:layout_weight="1">
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/introLineHeight"
+            android:layout_marginLeft="0sp"
+            android:layout_marginRight="0sp"
+            android:adjustViewBounds="false"
+            app:srcCompat="@drawable/ic_picture_as_pdf_black_24dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/intro_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_below="@id/intro_pdf"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:layout_weight="1">
         <CheckBox
@@ -97,24 +123,8 @@ android:weightSum="10">
             app:srcCompat="@android:drawable/btn_star_big_on" />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/intro_pdf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_below="@id/intro_fav"
-        android:layout_marginTop="@dimen/dialog_row_margin_top"
-        android:layout_weight="1">
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/introLineHeight"
-            android:layout_marginLeft="0sp"
-            android:layout_marginRight="0sp"
-            android:adjustViewBounds="false"
-            app:srcCompat="@drawable/ic_picture_as_pdf_black_24dp" />
-    </LinearLayout>
-    <LinearLayout
         android:id="@+id/intro_export_cal"
-        android:layout_below="@id/intro_pdf"
+        android:layout_below="@id/intro_fav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -160,7 +170,7 @@ android:weightSum="10">
         android:textColor="#ffffffff" />
 
     <TextView
-        android:id="@+id/intro_currency_label"
+        android:id="@+id/intro_sort_label"
         android:layout_below="@id/intro_relation_label"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:fontFamily="serif-monospace"
@@ -168,14 +178,14 @@ android:weightSum="10">
         android:layout_height="@dimen/introLineHeight"
         android:layout_marginRight="0dip"
         android:gravity="start|center_vertical"
-        android:text="@string/legendCostsLong"
+        android:text="@string/Sort"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffffff" />
 
     <TextView
         android:id="@+id/intro_search_label"
-        android:layout_below="@id/intro_currency_label"
+        android:layout_below="@id/intro_sort_label"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:fontFamily="serif-monospace"
         android:layout_width="match_parent"
@@ -188,8 +198,22 @@ android:weightSum="10">
         android:textColor="#ffffffff" />
 
     <TextView
-        android:id="@+id/intro_location_label"
+        android:id="@+id/intro_currency_label"
         android:layout_below="@id/intro_search_label"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:fontFamily="serif-monospace"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/introLineHeight"
+        android:layout_marginRight="0dip"
+        android:gravity="start|center_vertical"
+        android:text="@string/legendCostsLong"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/intro_location_label"
+        android:layout_below="@id/intro_currency_label"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:fontFamily="serif-monospace"
         android:layout_width="match_parent"
@@ -202,8 +226,22 @@ android:weightSum="10">
         android:textColor="#ffffffff" />
 
     <TextView
-        android:id="@+id/intro_checkbox_label"
+        android:id="@+id/intro_pdf_label"
         android:layout_below="@id/intro_location_label"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:fontFamily="serif-monospace"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/introLineHeight"
+        android:layout_marginRight="0dip"
+        android:gravity="start|center_vertical"
+        android:text="export as PDF"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/intro_checkbox_label"
+        android:layout_below="@id/intro_pdf_label"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:fontFamily="serif-monospace"
         android:layout_width="match_parent"
@@ -230,22 +268,8 @@ android:weightSum="10">
         android:textColor="#ffffffff" />
 
     <TextView
-        android:id="@+id/intro_pdf_label"
-        android:layout_below="@id/intro_fav_label"
-        android:layout_marginTop="@dimen/dialog_row_margin_top"
-        android:fontFamily="serif-monospace"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/introLineHeight"
-        android:layout_marginRight="0dip"
-        android:gravity="start|center_vertical"
-        android:text="export as PDF"
-        android:maxLines="1"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffffff" />
-
-    <TextView
         android:id="@+id/intro_date_label"
-        android:layout_below="@id/intro_pdf_label"
+        android:layout_below="@id/intro_fav_label"
         android:layout_marginTop="@dimen/dialog_row_margin_top"
         android:fontFamily="serif-monospace"
         android:layout_width="match_parent"

@@ -49,6 +49,7 @@
         android:title="@string/Sort"
         android:titleCondensed="@string/Sort"
         android:icon="@drawable/ic_baseline_sort_24"
+        app:showAsAction="always"
         android:enabled="true">
         <!-- A empty SubMenu -->
         <menu></menu>

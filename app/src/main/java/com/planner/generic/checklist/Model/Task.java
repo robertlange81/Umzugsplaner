@@ -37,13 +37,12 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Legende und Menü anpassen für Tablet
+    - Möglichlkeit zum Laden gleich auf Startseite
     - Ortsangabe in Task
     - Ortsangabe auch bei Neustart auf Liste / Dialog
     - Datum nachträglich ändern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
-    - Zeige auf Karte nur wenn Ort vorhanden
     - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
