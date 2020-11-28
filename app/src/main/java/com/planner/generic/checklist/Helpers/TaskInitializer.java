@@ -204,6 +204,11 @@ public class TaskInitializer {
         Task spices = new Task(context.getString(R.string.spices), context.getString(R.string.spicesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 21), Priority.Normal, 0L,
                 new TaskType(TaskTypeLockdown.FOOD), targetLocation);
         Task.addTask(spices);
+
+        // Gaspistole
+        Task pistol = new Task(context.getString(R.string.gasPisol), context.getString(R.string.gasPistolDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 10), Priority.High, 0L,
+                new TaskType(TaskTypeLockdown.MISCELLANEOUS), targetLocation);
+        Task.addTask(pistol);
     }
 
     private static void AddRemovalTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {

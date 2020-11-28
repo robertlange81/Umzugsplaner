@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".Activities.IntroActivity"
+        android:id="@+id/detail_location"
+        tools:ignore="MissingDefaultResource">
+    <TableRow
+        android:id="@+id/init_street_input_row"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20sp"
+        android:layout_height="@dimen/init_row_height"
+        android:weightSum="3"
+        android:gravity="top">
+
+        <EditText
+            android:id="@+id/init_street"
+            android:paddingBottom="10sp"
+            android:layout_weight="1"
+            android:inputType="textPostalAddress"
+            android:tag="@string/street"
+            android:hint="@string/street"
+            android:gravity="bottom|center_horizontal"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/detail_text_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/init_delete_location_icon_street"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <EditText
+            android:id="@+id/init_house_number"
+            android:layout_weight="2"
+            android:paddingBottom="@dimen/init_row_edit_padding_bottom"
+            android:inputType="numberSigned"
+            android:tag="@string/streetNumber"
+            android:hint="@string/streetNumber"
+            android:gravity="bottom|center_horizontal"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/detail_text_size"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/init_delete_location_icon_street_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    </TableRow>
+
+        <!-- input postal / place -->
+    <TableRow
+    android:id="@+id/init_place_input_row"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/init_row_height"
+    android:weightSum="3"
+    android:layout_marginTop="10sp"
+    android:minHeight="@dimen/detail_row_height"
+    android:gravity="top">
+
+    <EditText
+        android:id="@+id/init_postal"
+        android:layout_weight="2"
+        android:paddingBottom="10sp"
+        android:inputType="numberSigned"
+        android:digits="0123456789"
+        android:tag="@string/postal"
+        android:hint="@string/postal"
+        android:gravity="bottom|center_horizontal"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/detail_text_size"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/init_delete_location_icon_postal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <EditText
+        android:layout_weight="1"
+        android:inputType="textPostalAddress"
+        android:paddingBottom="10sp"
+        android:tag="@string/place"
+        android:hint="@string/place"
+        android:gravity="bottom|center_horizontal"
+        android:layout_height="match_parent"
+        android:id="@+id/init_place"
+        android:textSize="@dimen/detail_text_size"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/init_delete_location_icon_PostalAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dip"
+            android:layout_marginTop="2dip"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    </TableRow>
+</LinearLayout>

@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     Menu topMenu;
     private static final String _START_FROM_PAUSED_ACTIVITY_FLAG = "START_FROM_PAUSED_ACTIVITY_FLAG";
     private final static int _SAF_EXPORT_BIN = 200;
-    private final static int _SAF_IMPORT_BIN = 250;
+    public final static int _SAF_IMPORT_BIN = 250;
     private final static int _SAF_EXPORT_PDF = 300;
 
     ImportExportReceiver receiver;
@@ -1203,7 +1202,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         alert.show();
     }
 
-    private class ImportExportReceiver extends ResultReceiver {
+    public class ImportExportReceiver extends ResultReceiver {
 
         Activity activity;
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Fragments.TaskDetailFragment"
+    tools:context=".Activities.IntroActivity"
     android:id="@+id/detail">
 
     <ScrollView
@@ -40,7 +40,7 @@
                         android:foregroundGravity="center"
                         android:contentDescription="@string/app_name"
                         android:scaleType="fitStart"
-                        app:srcCompat="@drawable/ic_location_city_black_24dp" />
+                        app:srcCompat="@drawable/ic_home_black_24dp" />
                 </LinearLayout>
 
                 <TextView
@@ -54,85 +54,8 @@
                     android:text="@string/placeholder_place_lockdown" />
 
             </TableRow>
-            <!-- input street / house number-->
-            <TableRow
-                android:id="@+id/init_street_input_row"
-                android:layout_width="match_parent"
-                android:layout_marginTop="20sp"
-                android:layout_height="@dimen/init_row_height"
-                android:weightSum="3"
-                android:gravity="top">
 
-                <EditText
-                    android:id="@+id/init_house_number"
-                    android:layout_weight="2"
-                    android:paddingBottom="@dimen/init_row_edit_padding_bottom"
-                    android:inputType="numberSigned"
-                    android:tag="@string/streetNumber"
-                    android:hint="@string/streetNumber"
-                    android:gravity="bottom|center_horizontal"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/detail_text_size"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-                <EditText
-                    android:id="@+id/init_street"
-                    android:paddingBottom="10sp"
-                    android:layout_weight="1"
-                    android:inputType="textPostalAddress"
-                    android:tag="@string/street"
-                    android:hint="@string/street"
-                    android:gravity="bottom|center_horizontal"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/detail_text_size"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-            </TableRow>
-
-            <!-- input postal / place -->
-            <TableRow
-                android:id="@+id/init_place_input_row"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/init_row_height"
-                android:weightSum="3"
-                android:layout_marginTop="10sp"
-                android:minHeight="@dimen/detail_row_height"
-                android:gravity="top">
-
-                <EditText
-                    android:layout_weight="1"
-                    android:inputType="textPostalAddress"
-                    android:paddingBottom="10sp"
-                    android:tag="@string/place"
-                    android:hint="@string/place"
-                    android:gravity="bottom|center_horizontal"
-                    android:layout_height="match_parent"
-                    android:id="@+id/init_place"
-                    android:textSize="@dimen/detail_text_size"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-
-                <EditText
-                    android:id="@+id/init_postal"
-                    android:layout_weight="2"
-                    android:paddingBottom="10sp"
-                    android:inputType="numberSigned"
-                    android:digits="0123456789"
-                    android:tag="@string/postal"
-                    android:hint="@string/postal"
-                    android:gravity="bottom|center_horizontal"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/detail_text_size"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true" />
-            </TableRow>
-
+            <include layout="@layout/fragment_intro_input_location"/>
             <!-- label date / targetTimeStamp -->
             <TableRow
                 android:id="@+id/intro_init_date_label"

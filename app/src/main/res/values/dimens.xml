@@ -46,7 +46,7 @@
     <dimen name="detail_text_size_large">28sp</dimen>
     <dimen name="detail_spinner_text_size">22sp</dimen>
     <dimen name="detail_row_height">50sp</dimen>
-    <dimen name="init_row_height">40sp</dimen>
+    <dimen name="init_row_height">45sp</dimen>
     <dimen name="detail_row_margin_top">10dp</dimen>
     <dimen name="headline_text_size">20sp</dimen>
     <dimen name="headline_text_line_height">25sp</dimen>
@@ -71,7 +71,7 @@
     <dimen name="md_bottom_sheet_separator_top_margin">7dp</dimen>
     <dimen name="dialog_row_margin_top">25dip</dimen>
     <dimen name="init_row_edit_padding_bottom">10sp</dimen>
-    <dimen name="introLineHeight">30dp</dimen>
+    <dimen name="introLineHeight">35dp</dimen>
     <dimen name="introTopMargin">10dp</dimen>
     <dimen name="introOverviewMarginLR">0dp</dimen>
     <dimen name="introTopTextMargin">15sp</dimen>

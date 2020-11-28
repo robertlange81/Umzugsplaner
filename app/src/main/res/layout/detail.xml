@@ -683,7 +683,7 @@
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
                 android:layout_marginTop="0dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="15dp"
                 android:weightSum="3">
 
                 <TableRow
@@ -698,7 +698,6 @@
                     <Button
                         android:id="@+id/detail_btn_date_export"
                         android:layout_height="match_parent"
-                        android:text="@string/placeholder_date_export"
                         android:drawableLeft="@android:drawable/ic_menu_add"
                         android:drawableRight="@android:drawable/ic_menu_my_calendar"
                         android:layout_weight="1"
@@ -737,6 +736,62 @@
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/loeschen_dummy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="2dip"
+                    android:layout_marginTop="2dip"
+                    android:layout_toRightOf="@id/detail_btn_time"
+                    android:adjustViewBounds="false"
+                    android:visibility="invisible"
+                    app:srcCompat="@android:drawable/ic_delete" />
+
+            </TableRow>
+            <include layout="@layout/fragment_intro_input_location"/>
+            <TableRow
+                android:id="@+id/detail_seventh_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="150dp"
+                android:weightSum="3">
+
+                <TableRow
+                    android:id="@+id/detail_show_on_map"
+                    android:layout_weight="2"
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp">
+
+                    <Button
+                        android:id="@+id/detail_btn_show_on_map"
+                        android:layout_height="match_parent"
+                        android:drawableLeft="@android:drawable/ic_menu_info_details"
+                        android:drawableRight="@drawable/ic_baseline_navigation_24"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"/>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/detail_show_on_map_dummy"
+                    android:layout_weight="1"
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:weightSum="2">
+
+                </TableRow>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/loeschen_dummy_2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="2dip"

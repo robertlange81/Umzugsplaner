@@ -320,4 +320,8 @@
     <string name="Sort">Sort</string>
     <string name="legendDelete">Delete</string>
     <string name="export_as_pdf">export as PDF</string>
+    <string name="gasPisol">Gas pistol</string>
+    <string name="gasPistolDesc">Protect your family</string>
+    <string name="show_on_map">show on map</string>
+    <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
 </resources>

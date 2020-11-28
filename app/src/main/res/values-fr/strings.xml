@@ -22,7 +22,7 @@
     <string name="placeholder_date">Date</string>
     <string name="placeholder_date_detail">Date</string>
     <string name="placeholder_date_input">Date (heure)</string>
-    <string name="placeholder_date_export"></string>
+    <string name="placeholder_date_export">calendrier</string>
     <string name="placeholder_date_removal">Quand veux-tu partir?</string>
     <string name="placeholder_date_lockdown">Quand pensez-vous que le verrouillage commencera?</string>
     <string name="placeholder_place_lockdown">Où habite-tu?</string>
@@ -218,7 +218,7 @@
     <string name="introLegend">Légende</string>
     <string name="placeholder_place_removal">Où voulez-vous déménager?</string>
     <string name="postal">Code postal</string>
-    <string name="place">Lieu de résidence</string>
+    <string name="place">endroit</string>
     <string name="street">Rue</string>
     <string name="streetNumber">Numéro</string>
     <string name="deleteAll">Tout effacer</string>
@@ -319,4 +319,8 @@
     <string name="loadShort">OUVRIR</string>
     <string name="Sort">Triage</string>
     <string name="export_as_pdf">Export. en pdf</string>
+    <string name="gasPisol">Pistolet à gaz</string>
+    <string name="gasPistolDesc">Protégez votre famille!</string>
+    <string name="show_on_map">sur la carte</string>
+    <string name="placeholder_goto_no_location">Veuillez compléter les informations sur l\'emplacement.</string>
 </resources>

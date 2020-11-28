@@ -61,7 +61,6 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
-import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
 /**
@@ -95,10 +94,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   Button btnDatePicker;
   Button btnTimePicker;
   Button btnExportPicker;
+  Button btnGoToLocation;
   EditText txtDeadline;
   TextView[] txtInputs;
   ImageView[] imgDeleteLinks;
   TableRow firstLinkRow;
+  EditText txtPlace, txtZip, txtStreetNumber, txtStreet;
 
   private int mYear, mMonth, mDay, mHour, mMinute;
   Date tempDate;
@@ -151,16 +152,26 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     btnDatePicker = (Button) rootView.findViewById(R.id.detail_btn_date);
     btnTimePicker = (Button) rootView.findViewById(R.id.detail_btn_time);
     btnExportPicker = (Button) rootView.findViewById(R.id.detail_btn_date_export);
+    btnGoToLocation = (Button) rootView.findViewById(R.id.detail_btn_show_on_map);
 
     txtDeadline = (EditText) rootView.findViewById(R.id.detail_deadline);
     txtDeadline.setOnClickListener(this);
 
-    txtInputs = new TextView[9];
-    imgDeleteLinks = new ImageView[9];
+    txtStreet = rootView.findViewById(R.id.init_street);
+    txtStreetNumber = rootView.findViewById(R.id.init_house_number);
+    txtZip = rootView.findViewById(R.id.init_postal);
+    txtPlace = rootView.findViewById(R.id.init_place);
+
+    txtInputs = new TextView[13];
+    imgDeleteLinks = new ImageView[13];
     txtInputs[5] = txtDescription;
     txtInputs[6] = txtCostsSig;
     txtInputs[7] = txtCostsFractions;
     txtInputs[8] = txtDeadline;
+    txtInputs[9] = txtStreet;
+    txtInputs[10] = txtStreetNumber;
+    txtInputs[11] = txtZip;
+    txtInputs[12] = txtPlace;
 
     imgDeleteLinks[0] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x0);
     imgDeleteLinks[1] = (ImageView) rootView.findViewById(R.id.detail_delete_links_icon_x1);
@@ -171,6 +182,10 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     imgDeleteLinks[6] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
     imgDeleteLinks[7] = (ImageView) rootView.findViewById(R.id.detail_delete_costs_icon);
     imgDeleteLinks[8] = (ImageView) rootView.findViewById(R.id.detail_delete_deadline_icon);
+    imgDeleteLinks[9] = (ImageView) rootView.findViewById(R.id.init_delete_location_icon_street);
+    imgDeleteLinks[10] = (ImageView) rootView.findViewById(R.id.init_delete_location_icon_street_number);
+    imgDeleteLinks[11] = (ImageView) rootView.findViewById(R.id.init_delete_location_icon_postal);
+    imgDeleteLinks[12] = (ImageView) rootView.findViewById(R.id.init_delete_location_icon_PostalAddress);
 
     return rootView;
   }
@@ -272,6 +287,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     btnDatePicker.setOnClickListener(this);
     btnTimePicker.setOnClickListener(this);
     btnExportPicker.setOnClickListener(this);
+    btnGoToLocation.setOnClickListener(this);
 
     checkIsDone.setOnClickListener(new View.OnClickListener() {
       @Override
@@ -362,18 +378,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       }
     });
 
-    txtDescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-      @Override
-      public void onFocusChange(View v, boolean hasFocus) {
-        Log.d("DEBUG", "txt changed");
-        if (!hasFocus && txtDescription.getText() != null) {
-          String input = txtDescription.getText().toString();
-          if (!_task.description.equals(input))
-            _task.description = input;
-        }
-      }
-    });
-
     txtCostsFractions.setOnFocusChangeListener(new View.OnFocusChangeListener() {
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
@@ -410,6 +414,17 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         }
       }
     });
+
+    txtDescription.setOnFocusChangeListener(new TextInputFocusChangeListener("description"));
+
+    txtStreet.setOnFocusChangeListener(new TextInputFocusChangeListener("locationStreet"));
+
+    txtStreetNumber.setOnFocusChangeListener(new TextInputFocusChangeListener("locationStreetNumber"));
+
+    txtZip.setOnFocusChangeListener(new TextInputFocusChangeListener("locationZip"));
+
+    txtPlace.setOnFocusChangeListener(new TextInputFocusChangeListener("locationPlace"));
+
     generateMarketLinks(null);
     Log.d("DEBUG", "_initListeners END");
   }
@@ -473,6 +488,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     } else {
       txtDeadline.setText("");
     }
+
+    if (!txtStreet.getText().toString().equals(_task.locationStreet))
+      txtStreet.setText(_task.locationStreet);
+
+    if (!txtStreetNumber.getText().toString().equals(_task.locationStreetNumber))
+      txtStreetNumber.setText(_task.locationStreetNumber);
+
+    if (!txtZip.getText().toString().equals(_task.locationZip))
+      txtZip.setText(_task.locationZip);
+
+    if (!txtPlace.getText().toString().equals(_task.locationPlace))
+      txtPlace.setText(_task.locationPlace);
+
     Log.d("DEBUG", "setDetails - END");
     isNotifyEnabled = true;
     Log.d("isNotifyEnabled", "setDetails true");
@@ -757,6 +785,17 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       intent.putExtra(CalendarContract.Events.TITLE, _task.name);
       startActivity(intent);
     }
+
+    if (v == btnGoToLocation
+          && (_task.locationStreet != null || _task.locationStreetNumber != null)
+          && (_task.locationZip != null || _task.locationPlace != null)
+    ) {
+      this.goToLocation(_task.locationStreet, _task.locationStreetNumber, _task.locationZip, _task.locationPlace);
+    } else {
+      Snackbar.make(rootView, R.string.placeholder_goto_no_location, Snackbar.LENGTH_LONG)
+              .setAction("Action", null).show();
+      return;
+    }
   }
 
   @Override
@@ -818,6 +857,23 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
         });
       }
     }, 250);
+  }
+
+
+  public void goToLocation(String street, String streetNumber, String postal, String place) {
+    street = street == null ? "" : street;
+    streetNumber = streetNumber == null ? "" : streetNumber;
+    postal = postal == null ? "" : postal;
+    place = place == null ? "" : place;
+
+    String url = "http://maps.google.com/maps?q=";
+    url += street + "+" + streetNumber + ",+" + postal + "+" + place;
+
+    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+            Uri.parse(url)
+    );
+
+    startActivity(intent);
   }
 
   class TextInputFocusChangeListener implements View.OnFocusChangeListener {

@@ -35,6 +35,19 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
         // Inflate and set the layout for the dialog
         View view = inflater.inflate(R.layout.fragment_intro_input, null);
 
+        View delete = view.findViewById(R.id.init_delete_location_icon_street);
+        if(delete != null)
+            delete.setVisibility(View.GONE);
+        delete = view.findViewById(R.id.init_delete_location_icon_street_number);
+        if(delete != null)
+            delete.setVisibility(View.GONE);
+        delete = view.findViewById(R.id.init_delete_location_icon_postal);
+        if(delete != null)
+            delete.setVisibility(View.GONE);
+        delete = view.findViewById(R.id.init_delete_location_icon_PostalAddress);
+        if(delete != null)
+            delete.setVisibility(View.GONE);
+
         btnDatePicker =(Button) view.findViewById(R.id.init_btn_date);
         btnTimePicker =(Button) view.findViewById(R.id.init_btn_time);
         txtDeadline = (EditText) view.findViewById(R.id.init_deadline);

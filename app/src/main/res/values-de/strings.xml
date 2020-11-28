@@ -22,7 +22,7 @@
     <string name="placeholder_date">Termin</string>
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
-    <string name="placeholder_date_export"></string>
+    <string name="placeholder_date_export">Kalender</string>
     <string name="placeholder_date_removal">Wann wollen Sie umziehen</string>
     <string name="placeholder_date_lockdown">Wann rechnen Sie mit dem Beginn des Lockdowns?</string>
     <string name="placeholder_description">Notizen</string>
@@ -318,4 +318,8 @@
     <string name="Sort">Sortieren</string>
     <string name="legendDelete">Löschen</string>
     <string name="export_as_pdf">PDF-Export</string>
+    <string name="gasPisol">Gaspistole</string>
+    <string name="gasPistolDesc">Schützen Sie Ihre Familie!</string>
+    <string name="show_on_map">Zeige Karte</string>
+    <string name="placeholder_goto_no_location">Bitte vervollständigen Sie zuerst die Angaben zum Ort.</string>
 </resources>

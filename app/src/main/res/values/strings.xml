@@ -21,7 +21,7 @@
     <string name="placeholder_date_long">deadline</string>
     <string name="placeholder_date">target</string>
     <string name="placeholder_date_detail">date</string>
-    <string name="placeholder_date_export"></string>
+    <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
     <string name="placeholder_date_lockdown">When do you expect the lockdown to begin?</string>
@@ -327,4 +327,8 @@
     <string name="Sort">Sort</string>
     <string name="legendDelete">Delete</string>
     <string name="export_as_pdf">export as PDF</string>
+    <string name="gasPisol">Gas pistol</string>
+    <string name="gasPistolDesc">Protect your family</string>
+    <string name="show_on_map">show on map</string>
+    <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
 </resources>

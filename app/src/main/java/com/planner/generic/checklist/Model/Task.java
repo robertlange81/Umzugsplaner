@@ -37,9 +37,12 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Möglichlkeit zum Laden gleich auf Startseite
+    - Panel für Ort / Datum = Akkordeon
+    - Hochscrollen bei Reload Detail
+    - Am Anfang gleich sortieren
     - Ortsangabe in Task
     - Ortsangabe auch bei Neustart auf Liste / Dialog
+    - zu Ort navigieren
     - Datum nachträglich ändern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - !!!Umlaute bei Suche / Amazon
@@ -203,6 +206,10 @@ public class Task implements Serializable {
         type = clone.type;
         costs = clone.costs;
         links = clone.links;
+        locationZip = clone.locationZip;
+        locationPlace = clone.locationPlace;
+        locationStreetNumber = clone.locationStreetNumber;
+        locationStreet = clone.locationStreet;
     }
 
     public void addLink(String key, String value, boolean force) {

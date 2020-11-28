@@ -31,13 +31,6 @@ public class DetailActivity extends AppCompatActivity {
         Log.d("DEBUG", "onCreate DetailActivity");
         super.onCreate(savedInstanceState);
 
-/*        if (getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        }*/
-
-       // requestWindowFeature(Window.FEATURE_NO_TITLE);
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_detail);
         new LoadingTask((FrameLayout) findViewById(R.id.progress_overlay)).execute();
 
@@ -46,7 +39,7 @@ public class DetailActivity extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
-*/
+        */
         if (savedInstanceState == null) {
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
