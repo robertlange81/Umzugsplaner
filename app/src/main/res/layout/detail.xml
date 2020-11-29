@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -43,7 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
-        app:cardElevation="5dp"
+        app:cardElevation="0dp"
         app:cardCornerRadius="3dp" >
 
         <LinearLayout
@@ -81,7 +82,6 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_below="@+id/detail_header_top"
             android:layout_height="@dimen/detail_row_height"
             android:minHeight="@dimen/detail_header_row_height"
             android:gravity="center_vertical"
@@ -175,6 +175,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android">
 
         <ScrollView
+            android:id="@+id/detail_scroll"
             android:layout_width="fill_parent"
             android:paddingBottom="10dp"
             android:layout_height="wrap_content">
@@ -251,7 +252,6 @@
 
             <TableRow
                 android:id="@+id/detail_second_line"
-                android:layout_below="@id/detail_first_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
@@ -288,7 +288,6 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_links0"
-                android:layout_below="@id/detail_second_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
@@ -341,7 +340,6 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_x1"
-                android:layout_below="@id/detail_third_line_links0"
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -396,7 +394,6 @@
             <TableRow
                 android:id="@+id/detail_third_line_x2"
                 android:visibility="gone"
-                android:layout_below="@id/detail_third_line_x1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
@@ -449,7 +446,6 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_x3"
-                android:layout_below="@id/detail_third_line_x2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
@@ -502,7 +498,6 @@
 
             <TableRow
                 android:id="@+id/detail_third_line_x4"
-                android:layout_below="@id/detail_third_line_x3"
                 android:hint="@string/placeholder_link_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -556,7 +551,6 @@
 
             <TableRow
                 android:id="@+id/detail_fourth_line"
-                android:layout_below="@id/detail_third_line_x4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_row_height"
                 android:minHeight="@dimen/detail_row_height"
@@ -630,13 +624,31 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/detail_label_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="bottom"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/detail_date_headline"
+                    android:gravity="bottom"
+                    android:fontFamily="serif-monospace"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/headline_text_line_height"
+                    android:text="@string/When" />
+            </TableRow>
+            <TableRow
                 android:id="@+id/detail_fifth_line"
-                android:layout_below="@id/detail_fourth_line"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_row_height"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="@dimen/detail_row_margin_top"
                 android:layout_marginBottom="0dp"
                 android:weightSum="3">
 
@@ -677,7 +689,6 @@
 
             <TableRow
                 android:id="@+id/detail_sixth_line"
-                android:layout_below="@id/detail_fifth_line"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_row_height"
                 android:minHeight="@dimen/detail_row_height"
@@ -746,7 +757,37 @@
                     app:srcCompat="@android:drawable/ic_delete" />
 
             </TableRow>
-            <include layout="@layout/fragment_intro_input_location"/>
+
+            <TableRow
+                android:id="@+id/location_label_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="bottom"
+                android:layout_marginTop="@dimen/detail_row_margin_top"
+                android:layout_marginBottom="0dp"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/detail_location_headline"
+                    android:gravity="bottom"
+                    android:fontFamily="serif-monospace"
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/input_margin"
+                    android:textSize="@dimen/headline_text_line_height"
+                    android:text="@string/Where" />
+            </TableRow>
+            <TableRow
+                android:id="@+id/location_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="0dp"
+                android:weightSum="1">
+                <include layout="@layout/fragment_intro_input_location"/>
+            </TableRow>
             <TableRow
                 android:id="@+id/detail_seventh_line"
                 android:layout_width="match_parent"
@@ -754,7 +795,7 @@
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="150dp"
+                android:layout_marginBottom="50dp"
                 android:weightSum="3">
 
                 <TableRow
@@ -769,6 +810,8 @@
                     <Button
                         android:id="@+id/detail_btn_show_on_map"
                         android:layout_height="match_parent"
+                        android:paddingEnd="15sp"
+                        android:paddingRight="15sp"
                         android:drawableLeft="@android:drawable/ic_menu_info_details"
                         android:drawableRight="@drawable/ic_baseline_navigation_24"
                         android:layout_weight="1"

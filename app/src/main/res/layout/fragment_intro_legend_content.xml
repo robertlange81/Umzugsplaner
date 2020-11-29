@@ -129,13 +129,36 @@ android:weightSum="10">
             android:layout_width="wrap_content"
             android:layout_marginLeft="5sp"
             android:layout_marginRight="5sp"
-            android:text="@string/placeholder_date_export"
             android:drawableLeft="@android:drawable/ic_menu_add"
             android:drawableRight="@android:drawable/ic_menu_my_calendar"
             android:backgroundTint="@color/colorPrimaryDark"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/intro_goto_map"
+        android:layout_below="@id/intro_export_cal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/detail_btn_goto"
+            android:layout_height="@dimen/introLineHeight"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:paddingEnd="15sp"
+            android:paddingRight="15sp"
+            android:drawableLeft="@android:drawable/ic_menu_info_details"
+            android:drawableRight="@drawable/ic_baseline_navigation_24"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+             />
     </LinearLayout>
 </RelativeLayout>
 
@@ -254,6 +277,19 @@ android:weightSum="10">
         android:layout_height="@dimen/introLineHeight"
         android:gravity="start|center_vertical"
         android:text="@string/legendExport"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:id="@+id/intro_goto_label"
+        android:layout_below="@id/intro_date_label"
+        android:layout_marginTop="@dimen/dialog_row_margin_top"
+        android:fontFamily="serif-monospace"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/introLineHeight"
+        android:gravity="start|center_vertical"
+        android:text="@string/show_on_map"
         android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffffff" />

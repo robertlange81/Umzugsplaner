@@ -228,14 +228,14 @@
     <string name="legendPrioLong">Set normal or high priority</string>
     <string name="legendSetDoneLong">Set task done or undone</string>
     <string name="legendFilterLong">Filter tasks by title</string>
-    <string name="legendCostsLong">costs summary</string>
+    <string name="legendCostsLong">Costs summary</string>
     <string name="legendOverview">done/all tasks</string>
     <string name="legendDoneLong">done / all tasks</string>
-    <string name="legentCosts">costs overview</string>
-    <string name="legendFilter">filter by name</string>
-    <string name="legendDone">set task done</string>
-    <string name="legendPrio">set priority</string>
-    <string name="legendExport">calendar export</string>
+    <string name="legentCosts">Costs overview</string>
+    <string name="legendFilter">Filter by name</string>
+    <string name="legendDone">Set task done</string>
+    <string name="legendPrio">Set priority</string>
+    <string name="legendExport">Calendar export</string>
     <string name="deleteAllTasks">Delete all tasks?</string>
     <string name="delete_all">Yes, All</string>
     <string name="find_by_name">Find task by name</string>
@@ -323,12 +323,14 @@
     <string name="ImportNotificationMessage">Load tasks from File</string>
     <string name="errorLoading">Error Loading File.</string>
     <string name="importHint">Attention: By opening another project, your current tasks will be completely overwritten.</string>
-    <string name="loadShort">open</string>
+    <string name="loadShort">Open</string>
     <string name="Sort">Sort</string>
     <string name="legendDelete">Delete</string>
-    <string name="export_as_pdf">export as PDF</string>
+    <string name="export_as_pdf">Export as PDF</string>
     <string name="gasPisol">Gas pistol</string>
     <string name="gasPistolDesc">Protect your family</string>
     <string name="show_on_map">show on map</string>
     <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
+    <string name="When">WHEN?</string>
+    <string name="Where">WHERE?</string>
 </resources>

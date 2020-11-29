@@ -8,6 +8,7 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".Activities.IntroActivity"
+        android:background="@drawable/background"
         android:id="@+id/detail_location"
         tools:ignore="MissingDefaultResource">
     <!-- input street / house number-->

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -30,12 +31,15 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.planner.generic.checklist.Activities.DetailActivity;
 import com.planner.generic.checklist.Activities.MainActivity;
 import com.planner.generic.checklist.Activities.Refreshable;
 import com.planner.generic.checklist.Helpers.Command;
@@ -51,6 +55,7 @@ import com.planner.generic.checklist.Model.TaskTypeLockdown;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Field;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -100,6 +105,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   ImageView[] imgDeleteLinks;
   TableRow firstLinkRow;
   EditText txtPlace, txtZip, txtStreetNumber, txtStreet;
+  ScrollView scrollView;
 
   private int mYear, mMonth, mDay, mHour, mMinute;
   Date tempDate;
@@ -138,6 +144,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     Log.d("DEBUG", "onCreateView TaskDetailFragment 1");
     Log.d("DEBUG", "onCreateView TaskDetailFragment END");
 
+    scrollView = rootView.findViewById(R.id.detail_scroll);
     txtName = rootView.findViewById(R.id.detail_name);
     checkIsDone = rootView.findViewById(R.id.detail_isDone);
     lblIsDone = rootView.findViewById(R.id.detail_isDone_label);
@@ -197,6 +204,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     isNotifyEnabled = false;
     Log.d("isNotifyEnabled", "onResume false");
     super.onResume();
+    if (scrollView != null) {
+      scrollView.smoothScrollTo(0,0);
+    }
 
     if (getArguments().containsKey(TASK_ID)) {
       // Load the dummy content specified by the fragment
@@ -225,19 +235,6 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       TaskFormater.setCurrentLocale(rootView.getContext());
     }
 
-    _initListeners(rootView);
-    final HashMap<TextView, String> linkMap = _initLinks();
-
-    if (_task != null) {
-      ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
-        rootView.getContext(),
-        R.layout.simple_spinner_dropdown,
-        rootView.getContext().getResources().getStringArray(R.array.base_task_types)
-      );
-      spinnerDetailType.setAdapter(_categoryAdapter);
-      setDetails(linkMap, rootView);
-    }
-
     _initDeleteIcons(rootView);
 
     if (_task.name == null || _task.name.isEmpty()) {
@@ -245,6 +242,19 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     } else {
       txtName.clearFocus();
       txtName.setSelected(false);
+    }
+
+    _initListeners(rootView);
+    final HashMap<TextView, String> linkMap = _initLinks();
+
+    if (_task != null) {
+      ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
+              rootView.getContext(),
+              R.layout.simple_spinner_dropdown,
+              rootView.getContext().getResources().getStringArray(R.array.base_task_types)
+      );
+      spinnerDetailType.setAdapter(_categoryAdapter);
+      setDetails(linkMap, rootView);
     }
 
     isNotifyEnabled = true;
@@ -344,7 +354,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       @Override
       public void onTextChanged(CharSequence s, int start, int before, int count) {
-        if(s.toString() != _task.name) { // user type
+        if(!s.toString().equals(_task.name)) { // user type
           generateMarketLinks(s.toString());
         }
       }
@@ -551,6 +561,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
             Task clone = new Task(_task);
 
+            if (t == txtDescription && clone.description.isEmpty()) {
+              clone.description = t.getText().toString();
+            } else if (t == txtStreet && !clone.locationStreet.equals(txtStreet.getText().toString())) {
+              clone.locationStreet = t.getText().toString();
+            } else if (t == txtStreetNumber && !clone.locationStreetNumber.equals(txtStreetNumber.getText().toString())) {
+              clone.locationStreetNumber = t.getText().toString();
+            } else if (t == txtZip && !clone.locationZip.equals(txtZip.getText().toString())) {
+              clone.locationZip = t.getText().toString();
+            } else if (t == txtPlace && !clone.locationPlace.equals(txtPlace.getText().toString())) {
+              clone.locationPlace = t.getText().toString();
+            }
+
             if (t.getTag() != null && Task.TASK_MAP.get(_task.id) != null) {
               snack.setAction(
                 R.string.undo,
@@ -672,16 +694,38 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       _task.links = newLinks;
       _task.addLink(
         getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
-        getResources().getString(_task.type.equals(TaskTypeLockdown.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen) + searchFor
+        getResources().getString(_task.type.equals(TaskTypeLockdown.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen)
+                + URLEncoder.encode(searchFor)
       );
 
       _task.addLink(
               getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Ebay),
-              getResources().getString(R.string.ebay_generic_link) + searchFor
+              getResources().getString(R.string.ebay_generic_link) + replaceUmlaut(searchFor)
       );
 
       setLinks(_initLinks());
     }
+  }
+
+  private static String replaceUmlaut(String input) {
+
+    //replace all lower Umlauts
+    String output = input.replace("ü", "ue")
+            .replace("ö", "oe")
+            .replace("ä", "ae")
+            .replace("ß", "ss");
+
+    //first replace all capital umlaute in a non-capitalized context (e.g. Übung)
+    output = output.replaceAll("Ü(?=[a-zäöüß ])", "Ue")
+            .replaceAll("Ö(?=[a-zäöüß ])", "Oe")
+            .replaceAll("Ä(?=[a-zäöüß ])", "Ae");
+
+    //now replace all the other capital umlaute
+    output = output.replace("Ü", "UE")
+            .replace("Ö", "OE")
+            .replace("Ä", "AE");
+
+    return output;
   }
 
   private void _formatLink(TextView linkInput, String href, String displayLink) {
@@ -720,17 +764,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
           _task.date = tempDate;
 
           if (isNotifyEnabled)
-            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
+            MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[]{list_self});
         }
       };
 
-      if(rootView.getContext().getResources().getInteger(R.integer.tablet) == 0) { // tablet
+      if (rootView.getContext().getResources().getInteger(R.integer.tablet) == 0) { // tablet
         datePickerDialog = new DatePickerDialog(this.getContext(), listener, mYear, mMonth, mDay);
       } else { // small device
         datePickerDialog = new DatePickerDialog(this.getContext(), AlertDialog.THEME_TRADITIONAL, listener, mYear, mMonth, mDay);
       }
 
       datePickerDialog.show();
+      return;
     }
 
     if (v == btnTimePicker) {
@@ -742,32 +787,33 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       // Launch Time Picker Dialog
       TimePickerDialog timePickerDialog = new TimePickerDialog(this.getContext(),
-        new TimePickerDialog.OnTimeSetListener() {
+              new TimePickerDialog.OnTimeSetListener() {
 
-          @Override
-          public void onTimeSet(TimePicker view, int hourOfDay,
-                                int minute) {
-            if (tempDate == null) {
-              tempDate = Calendar.getInstance().getTime(); // stattdessen Zieltermin?
-            }
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay,
+                                      int minute) {
+                  if (tempDate == null) {
+                    tempDate = Calendar.getInstance().getTime(); // stattdessen Zieltermin?
+                  }
 
-            tempDate.setHours(hourOfDay);
-            tempDate.setMinutes(minute);
+                  tempDate.setHours(hourOfDay);
+                  tempDate.setMinutes(minute);
 
-            txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
-            _task.date = tempDate;
+                  txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
+                  _task.date = tempDate;
 
-            if (isNotifyEnabled)
-              MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[] {list_self});
-          }
-        }, mHour, mMinute, true);
+                  if (isNotifyEnabled)
+                    MainActivity.NotifyTaskChanged(_task, getActivity(), new Long[]{list_self});
+                }
+              }, mHour, mMinute, true);
       timePickerDialog.show();
+      return;
     }
 
     if (v == btnExportPicker) {
       if (_task.date == null) {
         Snackbar.make(rootView, getResources().getString(R.string.placeholder_export_no_date), Snackbar.LENGTH_LONG)
-          .setAction("Action", null).show();
+                .setAction("Action", null).show();
         return;
       }
 
@@ -784,17 +830,30 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       intent.putExtra(CalendarContract.Events.DISPLAY_COLOR, Color.MAGENTA);
       intent.putExtra(CalendarContract.Events.TITLE, _task.name);
       startActivity(intent);
+      return;
     }
 
-    if (v == btnGoToLocation
-          && (_task.locationStreet != null || _task.locationStreetNumber != null)
-          && (_task.locationZip != null || _task.locationPlace != null)
-    ) {
-      this.goToLocation(_task.locationStreet, _task.locationStreetNumber, _task.locationZip, _task.locationPlace);
-    } else {
-      Snackbar.make(rootView, R.string.placeholder_goto_no_location, Snackbar.LENGTH_LONG)
-              .setAction("Action", null).show();
-      return;
+    if (v == btnGoToLocation) {
+      // sync inputs with model (in case user typed right before clicking in GoTo-Button)
+      if (_task.locationStreet == null || !_task.locationStreet.equals(txtStreet.getText().toString())) {
+        _task.locationStreet = txtStreet.getText().toString();
+      }
+      if (_task.locationStreetNumber == null || !_task.locationStreetNumber.equals(txtStreetNumber.getText().toString())) {
+        _task.locationStreetNumber = txtStreetNumber.getText().toString();
+      }
+      if (_task.locationZip == null || !_task.locationZip.equals(txtZip.getText().toString())) {
+        _task.locationZip = txtZip.getText().toString();
+      }
+      if (_task.locationPlace == null || !_task.locationPlace.equals(txtPlace.getText().toString())) {
+        _task.locationPlace = txtPlace.getText().toString();
+      }
+      // sync inputs END
+
+      if ((!_task.locationStreet.isEmpty() || !_task.locationStreetNumber.isEmpty()) && (!_task.locationZip.isEmpty() || !_task.locationPlace.isEmpty())) {
+        this.goToLocation(_task.locationStreet, _task.locationStreetNumber, _task.locationZip, _task.locationPlace);
+      } else {
+        Snackbar.make(rootView, R.string.placeholder_goto_no_location, Snackbar.LENGTH_LONG).setAction("Action", null).show();
+      }
     }
   }
 
@@ -805,6 +864,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
   @Override
   public void onPause() {
     Log.d("DEBUG", "TaskDetailFragment onPause");
+    DetailActivity.progress_overlay();
 
     if (isNotifyEnabled && instance != null && instance.getView() != null) {
       View f = instance.getView().findFocus();

@@ -322,4 +322,6 @@
     <string name="gasPistolDesc">Schützen Sie Ihre Familie!</string>
     <string name="show_on_map">Zeige Karte</string>
     <string name="placeholder_goto_no_location">Bitte vervollständigen Sie zuerst die Angaben zum Ort.</string>
+    <string name="When">WANN?</string>
+    <string name="Where">WO?</string>
 </resources>

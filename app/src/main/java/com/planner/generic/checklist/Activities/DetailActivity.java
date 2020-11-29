@@ -31,8 +31,9 @@ public class DetailActivity extends AppCompatActivity {
         Log.d("DEBUG", "onCreate DetailActivity");
         super.onCreate(savedInstanceState);
 
+        instance = this;
         setContentView(R.layout.activity_detail);
-        new LoadingTask((FrameLayout) findViewById(R.id.progress_overlay)).execute();
+        progress_overlay();
 
         // Show the Up button in the action bar.
         /*ActionBar actionBar = getSupportActionBar();
@@ -50,8 +51,12 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         currentTaskId = getIntent().getStringExtra(TaskDetailFragment.TASK_ID);
-        instance = this;
         Log.d("DEBUG", "onCreate DetailActivity End");
+    }
+
+    public static void progress_overlay() {
+        if(instance != null)
+            new LoadingTask((FrameLayout) instance.findViewById(R.id.progress_overlay)).execute();
     }
 
     @Override

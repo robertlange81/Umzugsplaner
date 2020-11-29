@@ -217,8 +217,8 @@
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
     <string name="placeholder_place_removal">Où voulez-vous déménager?</string>
-    <string name="postal">Code postal</string>
-    <string name="place">endroit</string>
+    <string name="postal">CP</string>
+    <string name="place">Endroit</string>
     <string name="street">Rue</string>
     <string name="streetNumber">Numéro</string>
     <string name="deleteAll">Tout effacer</string>
@@ -323,4 +323,6 @@
     <string name="gasPistolDesc">Protégez votre famille!</string>
     <string name="show_on_map">sur la carte</string>
     <string name="placeholder_goto_no_location">Veuillez compléter les informations sur l\'emplacement.</string>
+    <string name="When">QUAND?</string>
+    <string name="Where">OÙ?</string>
 </resources>

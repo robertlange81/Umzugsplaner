@@ -25,7 +25,7 @@
     <item
         android:id="@+id/searchMenuItem"
         android:icon="@drawable/ic_search_black_24dp"
-        android:orderInCategory="20"
+        android:orderInCategory="15"
         android:text="@string/currency"
         android:title="@string/currency"
         app:showAsAction="always" />
@@ -33,7 +33,7 @@
         android:id="@+id/show_open_only"
         app:showAsAction="always"
         android:checkable="true"
-        android:orderInCategory="10"
+        android:orderInCategory="20"
         android:title="@string/placeholder_hide_done"
         />
     <item

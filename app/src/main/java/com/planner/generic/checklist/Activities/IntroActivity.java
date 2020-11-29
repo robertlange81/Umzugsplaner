@@ -122,7 +122,6 @@ public class IntroActivity extends AppIntro {
     public void onBackPressed() {
         if(currentFragment != null
                 && (currentFragment instanceof IntroFragmentHello || currentFragment instanceof IntroFragmentOverview)) {
-            finish();
             System.exit(0);
         }
         super.onBackPressed();

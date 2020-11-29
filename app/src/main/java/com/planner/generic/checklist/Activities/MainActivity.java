@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void onEnterForeground() {
         Log.d("AppController", "Foreground");
     }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onEnterBackground() {
         Log.d("AppController", "Background");
@@ -359,6 +360,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             int itemColor = Color.rgb(255, 255, 255);
             if(Task.getTaskList().size() > 0 && Task.SortBy(ComparatorConfig.SortType.values()[sortId])) {
                 itemColor = Color.rgb(0, 255, 60);
+                if(mTwoPane) {
+                    Refresh();
+                }
             }
 
             if (item != null) {

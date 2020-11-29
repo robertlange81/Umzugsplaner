@@ -38,24 +38,17 @@ public class Task implements Serializable {
 
     /*
     - Panel für Ort / Datum = Akkordeon
-    - Hochscrollen bei Reload Detail
-    - Am Anfang gleich sortieren
-    - Ortsangabe in Task
+    - Refresh und link initialisierung optimieren
     - Ortsangabe auch bei Neustart auf Liste / Dialog
-    - zu Ort navigieren
     - Datum nachträglich ändern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
-    - !!!Umlaute bei Suche / Amazon
     - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
     - letzte Suche merken
 
-    - negative Beträge
     - Icon / Bild zu jedem Task (im Hintergrund)
-    - Hintergrundbild (Grundriss / Baby)
-    - Bilder speichern
     - Bild statt Link
 
     - MyHammer Alternative
@@ -63,7 +56,7 @@ public class Task implements Serializable {
     - Babyliste
     - Geburstagsliste
     - Hochzeitsliste
-    - Synchronisieren
+    - Synchronisieren Cloud
     - Publish To: Huawei AppGallery, Samsung App Store, Amazon Appstore
      */
 
