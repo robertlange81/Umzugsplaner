@@ -38,6 +38,7 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/list"
+            android:background="#90000000"
             android:name="TaskDetailFragment"
             android:layout_width="450dp"
             android:layout_height="match_parent"
@@ -53,6 +54,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginEnd="-1dp"
@@ -60,12 +62,12 @@
             android:layout_toEndOf="@+id/list"
             android:layout_toRightOf="@+id/list"
             android:layout_weight="1"
-            android:background="#000000"
             android:orientation="horizontal"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <FrameLayout
                 android:id="@+id/task_detail_container"
+                android:background="#90000000"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/list" />

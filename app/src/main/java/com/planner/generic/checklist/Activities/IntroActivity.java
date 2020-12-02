@@ -122,7 +122,12 @@ public class IntroActivity extends AppIntro {
     public void onBackPressed() {
         if(currentFragment != null
                 && (currentFragment instanceof IntroFragmentHello || currentFragment instanceof IntroFragmentOverview)) {
-            System.exit(0);
+            // moveTaskToBack(true);
+
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
         super.onBackPressed();
     }
