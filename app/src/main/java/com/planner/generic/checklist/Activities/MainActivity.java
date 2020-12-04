@@ -203,6 +203,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     {
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
+        this.Refresh();
 
         /*
         if(newList) {
@@ -688,7 +689,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
 
     public void Refresh() {
-        adapter.notifyDataSetChanged();
+        if(adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     /**
