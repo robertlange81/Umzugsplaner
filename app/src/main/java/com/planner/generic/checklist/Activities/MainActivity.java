@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     private static SimpleItemRecyclerViewAdapter adapter;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem initDialogMenuItem, hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem;
+    MenuItem hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem, initDialogMenuItem, changeDateMenuItem;
     TextView showOverview;
     DialogFragment dialog;
     Menu topMenu;
@@ -113,15 +113,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void onClick(DialogInterface dialogInterface, int which) {
         if(dialog != null && dialog instanceof DialogFragmentInit) {
             DialogFragmentInit initdialog = (DialogFragmentInit) dialog;
+
             if(initdialog.getRemovalDate() == null) {
                 Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
 
             if(initdialog.getDeleteOld()) {
-                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), null, null);
+                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), initdialog.getLocation(), null);
             } else {
-                TaskInitializer.InitTasks(initdialog.getRemovalDate(), null, this, null);
+                TaskInitializer.InitTasks(initdialog.getRemovalDate(), initdialog.getLocation(), this, null);
             }
         }
     }
@@ -311,6 +312,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             deleteAllMenuItem.setTitle(s);
         }
 
+        changeDateMenuItem = topMenu.findItem(R.id.change_date);
+        if(changeDateMenuItem != null) {
+            s = new SpannableString(changeDateMenuItem.getTitle());
+            // s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
+            changeDateMenuItem.setTitle(s);
+        }
+
         hideDoneTasksMenuItem = topMenu.findItem(R.id.show_open_only);
         hideDoneTasksMenuItem.setChecked(getHideDoneTasksChecked());
 
@@ -438,6 +446,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         if(item == initDialogMenuItem) {
+            String[] init = new String[0];
+            showDetailDialog(DialogFragmentInit.class, init);
+
+            return true;
+        }
+
+        if(item == changeDateMenuItem) {
             String[] init = new String[0];
             showDetailDialog(DialogFragmentInit.class, init);
 
@@ -691,6 +706,22 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void Refresh() {
         if(adapter != null)
             adapter.notifyDataSetChanged();
+
+        if (topMenu != null) {
+            SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
+            MenuItem goTo = topMenu.findItem(R.id.goToLocation);
+            if(goTo != null) {
+                if (prefs != null &&
+                        (prefs.getString(Location.PLACE, null) != null
+                                || prefs.getString(Location.PLACE, null) != null
+                                || prefs.getString(Location.STREET, null) != null
+                        )) {
+                    goTo.setVisible(true);
+                } else {
+                    goTo.setVisible(false);
+                }
+            }
+        }
     }
 
     /**

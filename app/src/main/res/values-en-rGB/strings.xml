@@ -21,7 +21,7 @@
     <string name="placeholder_date_long">deadline</string>
     <string name="placeholder_date">target</string>
     <string name="placeholder_date_detail">date</string>
-    <string name="placeholder_date_export"></string>
+    <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
     <string name="placeholder_date_lockdown">When do you expect the lockdown to begin?</string>
@@ -137,7 +137,7 @@
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
     <string name="rentalDepositAccountExplanation">Tenancy deposit protection</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.gov.uk/tenancy-deposit-protection</string>
-    <string name="start">New Removal</string>
+    <string name="start_new_todo">New Lockdown</string>
     <string name="postalAftermathLINK">https://www.postoffice.co.uk/mail/redirection</string>
     <string name="compareContracts">Compare tariffs</string>
     <string name="compareContractVerivox">Compare tariffs on broadbandchoices.co.uk</string>
@@ -250,6 +250,7 @@
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
+    <string name="show_home">Show home on map</string>
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
     <string name="disinfectant">disinfectant</string>

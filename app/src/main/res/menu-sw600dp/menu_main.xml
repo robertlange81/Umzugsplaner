@@ -50,15 +50,6 @@
         android:title="@string/currency"
         app:showAsAction="always" />
     <item
-        android:id="@+id/goToLocation"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:orderInCategory="50"
-        android:text="@string/currency"
-        android:title="@string/currency"
-        android:textSize="200sp"
-        android:visible="false"
-        app:showAsAction="always" />
-    <item
         android:id="@+id/exportToPdf"
         android:orderInCategory="60"
         android:icon="@drawable/ic_picture_as_pdf_black_24dp"
@@ -67,6 +58,17 @@
         android:layout_alignParentLeft="true"
         android:text="@string/export"
         android:title="@string/export"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/goToLocation"
+        android:visible="true"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:orderInCategory="70"
+        android:text="@string/show_home"
+        android:title="@string/show_home"
+        android:textSize="150sp"
+        android:layout_width="200sp"
+        android:layout_alignParentLeft="true"
         app:showAsAction="always" />
     <item
         android:id="@+id/save"
@@ -88,8 +90,8 @@
         android:id="@+id/start_new"
         android:orderInCategory="110"
         android:icon="@drawable/ic_fiber_new_black_24dp"
-        android:text="@string/start"
-        android:title="@string/start"
+        android:text="@string/start_new_todo"
+        android:title="@string/start_new_todo"
         app:showAsAction="never" />
     <item
         android:id="@+id/delete_all"

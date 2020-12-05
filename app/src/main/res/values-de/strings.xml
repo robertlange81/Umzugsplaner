@@ -24,7 +24,7 @@
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_export">Kalender</string>
     <string name="placeholder_date_removal">Wann wollen Sie umziehen</string>
-    <string name="placeholder_date_lockdown">Wann rechnen Sie mit dem Beginn des Lockdowns?</string>
+    <string name="placeholder_date_lockdown">Wann beginnt der Lockdown?</string>
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
@@ -134,7 +134,7 @@
     <string name="rentalDepositAccountDesc">Die Kaution können Sie statt dem Vermieter direkt zu überweisen alternativ auf einem sog. Mietkautionssparbuch hinterlegen. Vorteil ist eine Absicherung vor Insolvenz etc. des Vermieters.</string>
     <string name="rentalDepositAccountExplanation">Was ist ein Kautionssparbuch?</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.sparkonto.org/mietkautionssparbuch-wie-funktioniert-das/</string>
-    <string name="start">neue Checkliste anlegen</string>
+    <string name="start_new_todo">neue Checkliste anlegen</string>
     <string name="postalAftermathLINK">https://shop.deutschepost.de/nachsendeservice-beauftragen</string>
     <string name="compareContracts">Jetzt Tarife vergleichen</string>
     <string name="compareContractVerivox">Tarife bei Verivox</string>
@@ -248,6 +248,7 @@
     <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ort angeben.</string>
+    <string name="show_home">Zeige Wohnung auf Karte</string>
     <string name="show_location">Zeige auf Karte</string>
     <string name="export">Liste exportieren</string>
     <string name="disinfectant">Desinfektionsmittel</string>
@@ -320,8 +321,8 @@
     <string name="export_as_pdf">PDF-Export</string>
     <string name="gasPisol">Gaspistole</string>
     <string name="gasPistolDesc">Schützen Sie Ihre Familie!</string>
-    <string name="show_on_map">Zeige Karte</string>
     <string name="placeholder_goto_no_location">Bitte vervollständigen Sie zuerst die Angaben zum Ort.</string>
+    <string name="show_on_map">Zeige auf Karte</string>
     <string name="When">WANN?</string>
     <string name="Where">WO?</string>
 </resources>

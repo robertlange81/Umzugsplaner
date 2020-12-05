@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import com.planner.generic.checklist.Helpers.TaskFormater;
+import com.planner.generic.checklist.Model.Location;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.R;
 
@@ -36,14 +37,44 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
     EditText txtDeadline;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
+    EditText txtLocationStreet;
+    EditText txtStreetNumber;
+    EditText txtLocationPlace;
+    EditText txtLocationZip;
+
+    private String getTxtLocationStreet() {
+        return txtLocationStreet.getText().toString();
+    }
+
+    private String getTxtStreetNumber() {
+        return txtStreetNumber.getText().toString();
+    }
+
+    private String getTxtLocationPlace() {
+        return txtLocationPlace.getText().toString();
+    }
+
+    private String getTxtLocationZip() {
+        return txtLocationZip.getText().toString();
+    }
+
+    public Location getLocation() {
+        if(getTxtLocationZip().isEmpty() && getTxtLocationPlace().isEmpty() && getTxtLocationStreet().isEmpty() && getTxtStreetNumber().isEmpty())
+            return null;
+
+        return new Location(
+                getTxtLocationZip(),
+                getTxtLocationPlace(),
+                getTxtLocationStreet(),
+                getTxtStreetNumber()
+        );
+    }
 
     // Use this instance of the interface to deliver action events
     private InitDialogListener mListener;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-
-        final String[] msg  = getArguments().getStringArray("message");
 
         AlertDialog.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -57,11 +88,31 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
         // Inflate and set the layout for the dialog
         View view = inflater.inflate(R.layout.dialog_init, null);
 
-        btnDatePicker =(Button) view.findViewById(R.id.init_btn_date);
-        btnTimePicker =(Button) view.findViewById(R.id.init_btn_time);
-        //btnLocationPicker =(Button) view.findViewById(R.id.init_btn_location);
+        btnDatePicker = (Button) view.findViewById(R.id.init_btn_date);
+        btnTimePicker = (Button) view.findViewById(R.id.init_btn_time);
         txtDeadline = (EditText) view.findViewById(R.id.detail_deadline);
         checkBoxDeleteOld = (CheckBox) view.findViewById(R.id.init_checkBox_delete_old);
+
+        txtLocationStreet = (EditText) view.findViewById(R.id.init_street);
+        txtStreetNumber = (EditText) view.findViewById(R.id.init_house_number);
+        txtLocationPlace = (EditText) view.findViewById(R.id.init_place);
+        txtLocationZip = (EditText) view.findViewById(R.id.init_postal);
+
+        View v = view.findViewById(R.id.init_delete_location_icon_street);
+        if (v != null)
+            v.setVisibility(View.GONE);
+
+        v = view.findViewById(R.id.init_delete_location_icon_street_number);
+        if (v != null)
+            v.setVisibility(View.GONE);
+
+        v = view.findViewById(R.id.init_delete_location_icon_postal);
+        if (v != null)
+            v.setVisibility(View.GONE);
+
+        v = view.findViewById(R.id.init_delete_location_icon_PostalAddress);
+        if (v != null)
+            v.setVisibility(View.GONE);
 
         if(Task.getTaskList() != null && Task.getTaskList().size() == 0) {
             checkBoxDeleteOld.setVisibility(View.GONE);

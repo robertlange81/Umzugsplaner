@@ -144,11 +144,12 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
 
     public Location getRemovalLocation() {
 
-        // at lease place or postal must be set
-        if(this.txtPlace == null || this.txtPostal == null)
+        if(this.txtPlace == null || this.txtPostal == null || this.txtStreet == null || this.txtHouseNumber == null)
             return null;
 
-        if(this.txtPlace.getText().toString().isEmpty() && this.txtPostal.getText().toString().isEmpty()) {
+        // at one field must be set ; TODO: change location later
+        if(this.txtPlace.getText().toString().isEmpty() && this.txtPostal.getText().toString().isEmpty()
+            && this.txtStreet.getText().toString().isEmpty() && this.txtHouseNumber.getText().toString().isEmpty()) {
             return null;
         }
 

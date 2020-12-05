@@ -37,6 +37,7 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Nach Änderung des Datums Karte wieder zeigen
     - Panel für Ort / Datum = Akkordeon
     - Refresh und link initialisierung optimieren
     - Ortsangabe auch bei Neustart auf Liste / Dialog

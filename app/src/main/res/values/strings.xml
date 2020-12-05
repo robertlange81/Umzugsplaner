@@ -136,7 +136,7 @@
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
     <string name="rentalDepositAccountExplanation">Tenancy deposit protection</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.apartments.com/blog/everything-you-need-to-know-about-your-security-deposit</string>
-    <string name="start">New Removal</string>
+    <string name="start_new_todo">New Removal</string>
     <string name="postalAftermathLINK"><![CDATA[https://moversguide.usps.com/mgo/disclaimer?execution=e5s1&_flowId=icoa-main-flow&referral=MG81]]></string>
     <string name="compareContracts">Compare tariffs</string>
     <string name="compareContractVerivox">Compare tariffs</string>
@@ -250,6 +250,7 @@
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
+    <string name="show_home">Show home on map</string>
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
     <string name="disinfectant">disinfectant</string>
@@ -329,8 +330,8 @@
     <string name="export_as_pdf">Export as PDF</string>
     <string name="gasPisol">Gas pistol</string>
     <string name="gasPistolDesc">Protect your family</string>
-    <string name="show_on_map">show on map</string>
     <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
+    <string name="show_on_map">show on map</string>
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
 </resources>

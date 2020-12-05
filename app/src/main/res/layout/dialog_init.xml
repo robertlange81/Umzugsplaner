@@ -68,12 +68,6 @@
                 android:id="@+id/init_btn_time"
                 android:layout_toRightOf="@+id/detail_btn_date" />
 
-            <!-- Button
-                android:layout_height="match_parent"
-                android:text="Ort"
-                android:layout_weight="1"
-                android:id="@+id/init_btn_location"
-                android:layout_toRightOf="@+id/init_btn_time" /-->
         </TableRow>
     </TableRow>
     <TableRow
@@ -89,7 +83,8 @@
             android:clickable="false"
             android:focusable="false"
             android:tag="@string/placeholder_date_long"
-            android:gravity="bottom|center_vertical"
+            android:hint="@string/placeholder_date_long"
+            android:gravity="center|center_vertical"
             android:layout_height="match_parent"
             android:id="@+id/detail_deadline"
             android:textSize="@dimen/detail_text_size"
@@ -100,8 +95,19 @@
 
     </TableRow>
     <TableRow
-        android:id="@+id/init_fourth_line"
+        android:id="@+id/location_line"
         android:layout_below="@id/init_third_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="0dp"
+        android:weightSum="1">
+        <include layout="@layout/fragment_intro_input_location"/>
+    </TableRow>
+    <TableRow
+        android:id="@+id/init_fourth_line"
+        android:layout_below="@id/location_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_row_height"
         android:minHeight="@dimen/detail_row_height"
