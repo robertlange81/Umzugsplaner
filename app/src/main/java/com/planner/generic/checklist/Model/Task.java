@@ -37,12 +37,14 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Nach Änderung des Datums Karte wieder zeigen
+    - Klick auf Link funzt nicht
+    - Icon Tablet vergrößern
+    - Amazon Partner ID erneuern
+    - Amazon-Webseite statt APP (kommt Partner-ID mit?)
+    - nach Änderung Datum alle Tasks aktualisieren
     - Panel für Ort / Datum = Akkordeon
     - Refresh und link initialisierung optimieren
     - Ortsangabe auch bei Neustart auf Liste / Dialog
-    - Datum nachträglich ändern
-    - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?

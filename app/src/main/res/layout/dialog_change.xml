@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TableRow
+        android:id="@+id/init_first_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/detail_row_margin_top"
+        android:weightSum="3">
+
+        <ImageView
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="30dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitStart"
+            android:src="@drawable/moving_box" />
+
+        <TextView
+            android:layout_weight="1"
+            android:fontFamily="serif-monospace"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/input_margin"
+            android:textSize="@dimen/detail_text_size"
+            android:text="@string/placeholder_date_lockdown" />
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/init_second_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top"
+        android:layout_marginTop="@dimen/detail_row_margin_top"
+        android:weightSum="3">
+
+        <TableRow
+            android:layout_weight="1"
+            android:layout_height="@dimen/detail_row_height"
+            android:minHeight="@dimen/detail_row_height"
+            android:gravity="top"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="5dp"
+            android:weightSum="2">
+
+            <Button
+                android:layout_height="match_parent"
+                android:text="@string/placeholder_date_detail"
+                android:id="@+id/init_btn_date"
+                android:layout_weight="1"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"/>
+
+            <Button
+                android:layout_height="match_parent"
+                android:text="@string/placeholder_time_detail"
+                android:layout_weight="1"
+                android:id="@+id/init_btn_time"
+                android:layout_toRightOf="@+id/detail_btn_date" />
+
+        </TableRow>
+    </TableRow>
+    <TableRow
+        android:id="@+id/init_third_line"
+        android:layout_below="@id/init_second_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top">
+
+        <EditText
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:tag="@string/placeholder_date_long"
+            android:hint="@string/placeholder_date_long"
+            android:gravity="center|center_vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/detail_deadline"
+            android:textSize="@dimen/detail_text_size"
+            android:inputType="text|time"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/location_line"
+        android:layout_below="@id/init_third_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:layout_marginTop="-10dp"
+        android:layout_marginBottom="0dp"
+        android:weightSum="1">
+        <include layout="@layout/fragment_intro_input_location"/>
+    </TableRow>
+</LinearLayout>

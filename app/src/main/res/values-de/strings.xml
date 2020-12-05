@@ -325,4 +325,5 @@
     <string name="show_on_map">Zeige auf Karte</string>
     <string name="When">WANN?</string>
     <string name="Where">WO?</string>
+    <string name="change_date_or_location">Termin / Ort ändern</string>
 </resources>

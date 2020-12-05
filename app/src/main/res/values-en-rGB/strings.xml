@@ -327,4 +327,5 @@
     <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
+    <string name="change_date_or_location">Change Date or Location</string>
 </resources>

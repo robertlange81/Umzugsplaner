@@ -87,6 +87,13 @@
         android:title="@string/load"
         app:showAsAction="never" />
     <item
+        android:id="@+id/change_date_or_location"
+        android:orderInCategory="105"
+        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:text="@string/change_date_or_location"
+        android:title="@string/change_date_or_location"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/start_new"
         android:orderInCategory="110"
         android:icon="@drawable/ic_fiber_new_black_24dp"

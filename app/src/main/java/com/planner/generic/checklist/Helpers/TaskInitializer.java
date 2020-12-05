@@ -70,6 +70,12 @@ public class TaskInitializer {
             }
         }
 
+        setTargetDateAndLocationToShardPrefs(targetDate, targetLocation, context);
+
+        Persistance.SaveTasks(context);
+    }
+
+    public static void setTargetDateAndLocationToShardPrefs(Date targetDate, Location targetLocation, Activity context) {
         SharedPreferences prefs = context.getSharedPreferences("checklist", 0);
 
         if(prefs != null) {
@@ -94,8 +100,6 @@ public class TaskInitializer {
             }
             editor.apply();
         }
-
-        Persistance.SaveTasks(context);
     }
 
     private static void AddLockdownTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {

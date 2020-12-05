@@ -49,6 +49,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.planner.generic.checklist.Fragments.DialogFragmentChange;
 import com.planner.generic.checklist.Fragments.DialogFragmentCosts;
 import com.planner.generic.checklist.Fragments.DialogFragmentInit;
 import com.planner.generic.checklist.Fragments.DialogFragmentInit.InitDialogListener;
@@ -76,19 +77,21 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
 
+import static android.content.DialogInterface.BUTTON_NEGATIVE;
+import static android.content.DialogInterface.BUTTON_NEUTRAL;
 import static android.widget.LinearLayout.VERTICAL;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.list;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.item;
 import static com.planner.generic.checklist.Model.TaskContract.TaskData.list_self;
 
-public class MainActivity extends AppCompatActivity implements InitDialogListener, LifecycleObserver, Refreshable {
+public class MainActivity extends AppCompatActivity implements InitDialogListener, DialogFragmentChange.ChangeDialogListener, LifecycleObserver, Refreshable {
 
     public static MainActivity instance;
     public static boolean mTwoPane;
     private static SimpleItemRecyclerViewAdapter adapter;
     private static RecyclerView recyclerView;
     BottomAppBar bottomAppBar;
-    MenuItem hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem, initDialogMenuItem, changeDateMenuItem;
+    MenuItem hideDoneTasksMenuItem, hideNormalPrioMenuItem, lastMenuItem, deleteAllMenuItem, searchByTitleFilterMenuItem, initDialogMenuItem, changeDateOrLocationMenuItem;
     TextView showOverview;
     DialogFragment dialog;
     Menu topMenu;
@@ -111,18 +114,43 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     @Override
     public void onClick(DialogInterface dialogInterface, int which) {
-        if(dialog != null && dialog instanceof DialogFragmentInit) {
-            DialogFragmentInit initdialog = (DialogFragmentInit) dialog;
 
-            if(initdialog.getRemovalDate() == null) {
-                Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
+        switch (which) {
+            case BUTTON_NEGATIVE:
+            case BUTTON_NEUTRAL:
+                return;
+        }
 
-            if(initdialog.getDeleteOld()) {
-                Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), initdialog.getLocation(), null);
-            } else {
-                TaskInitializer.InitTasks(initdialog.getRemovalDate(), initdialog.getLocation(), this, null);
+        if(dialog != null) {
+            if (dialog instanceof DialogFragmentInit) {
+                DialogFragmentInit initdialog = (DialogFragmentInit) dialog;
+
+                if(initdialog.getRemovalDate() == null) {
+                    Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+
+                if(initdialog.getDeleteOld()) {
+                    Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), initdialog.getLocation(), null);
+                } else {
+                    TaskInitializer.InitTasks(initdialog.getRemovalDate(), initdialog.getLocation(), this, null);
+                }
+            } else if (dialog instanceof DialogFragmentChange) {
+                DialogFragmentChange changeDialog = (DialogFragmentChange) dialog;
+                Location location = changeDialog.getLocation();
+                TaskInitializer.setTargetDateAndLocationToShardPrefs(changeDialog.getTargetDate(), location, this);
+
+                if (topMenu != null) {
+                    MenuItem goTo = topMenu.findItem(R.id.goToLocation);
+                    if(goTo != null) {
+                        if (location != null
+                                && (!location.getPlace().isEmpty() || !location.getPostal().isEmpty() || !location.getStreet().isEmpty() || !location.getStreetNumber().isEmpty())) {
+                            goTo.setVisible(true);
+                        } else {
+                            goTo.setVisible(false);
+                        }
+                    }
+                }
             }
         }
     }
@@ -312,11 +340,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             deleteAllMenuItem.setTitle(s);
         }
 
-        changeDateMenuItem = topMenu.findItem(R.id.change_date);
-        if(changeDateMenuItem != null) {
-            s = new SpannableString(changeDateMenuItem.getTitle());
+        changeDateOrLocationMenuItem = topMenu.findItem(R.id.change_date_or_location);
+        if(changeDateOrLocationMenuItem != null) {
+            s = new SpannableString(changeDateOrLocationMenuItem.getTitle());
             // s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorRed)), 0, s.length(), 0);
-            changeDateMenuItem.setTitle(s);
+            changeDateOrLocationMenuItem.setTitle(s);
         }
 
         hideDoneTasksMenuItem = topMenu.findItem(R.id.show_open_only);
@@ -452,9 +480,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             return true;
         }
 
-        if(item == changeDateMenuItem) {
-            String[] init = new String[0];
-            showDetailDialog(DialogFragmentInit.class, init);
+        if(item == changeDateOrLocationMenuItem) {
+
+            String[] change = new String[0];
+            showDetailDialog(DialogFragmentChange.class, change);
 
             return true;
         }
@@ -659,9 +688,25 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void showDetailDialog(Class<?> clazz, String[] msg) {
         FragmentManager fm = getFragmentManager();
         dialog = null;
+        Bundle args = new Bundle();
 
         if (clazz == DialogFragmentCosts.class) {
             dialog = new DialogFragmentCosts();
+        } else if (clazz == DialogFragmentChange.class) {
+            dialog = new DialogFragmentChange();
+
+            if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M)
+                ((DialogFragmentChange) dialog).setmListener(this);
+
+            String[] location = new String[5];
+            SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
+            if (prefs != null) {
+                args.putString("STREET", prefs.getString(Location.STREET, ""));
+                args.putString("STREETNUMBER", prefs.getString(Location.STREETNUMBER, ""));
+                args.putString("POSTAL", prefs.getString(Location.POSTAL, ""));
+                args.putString("PLACE", prefs.getString(Location.PLACE, ""));
+                args.putLong("timestamp", prefs.getLong("target_timestamp", 0L));
+            }
         } else if (clazz == DialogFragmentInit.class) {
             dialog = new DialogFragmentInit();
 
@@ -670,8 +715,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
 
         if (dialog != null) {
-            Bundle args = new Bundle();
             args.putStringArray("message", msg);
+
             dialog.setArguments(args);
             // dialog.setRetainInstance(true);
             dialog.show(fm, "Kosten");

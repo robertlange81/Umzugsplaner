@@ -334,4 +334,5 @@
     <string name="show_on_map">show on map</string>
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
+    <string name="change_date_or_location">Change Date or Location</string>
 </resources>

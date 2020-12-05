@@ -94,24 +94,24 @@
         android:title="@string/load"
         app:showAsAction="never" />
     <item
-        android:id="@+id/change_date"
+        android:id="@+id/change_date_or_location"
         android:orderInCategory="105"
         android:icon="@android:drawable/ic_menu_my_calendar"
-        android:text="change_date"
-        android:title="change_date"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/start_new"
-        android:orderInCategory="110"
-        android:icon="@drawable/ic_fiber_new_black_24dp"
-        android:text="@string/start_new_todo"
-        android:title="@string/start_new_todo"
+        android:text="@string/change_date_or_location"
+        android:title="@string/change_date_or_location"
         app:showAsAction="never" />
     <item
         android:id="@+id/delete_all"
-        android:orderInCategory="115"
+        android:orderInCategory="110"
         android:icon="@android:drawable/ic_menu_delete"
         android:text="@string/deleteAll"
         android:title="@string/deleteAll"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/start_new"
+        android:orderInCategory="115"
+        android:icon="@drawable/ic_fiber_new_black_24dp"
+        android:text="@string/start_new_todo"
+        android:title="@string/start_new_todo"
         app:showAsAction="never" />
 </menu>
