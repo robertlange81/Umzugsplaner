@@ -623,8 +623,12 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     for (final TextView txtLink : txtInputs) {
 
-      if (txtLink.getTag() == null || !txtLink.getTag().toString().equalsIgnoreCase("Link"))
+      if (txtLink.getTag() == null
+              || (!txtLink.getTag().toString().equalsIgnoreCase("Link")
+                  && (!txtLink.getTag().toString().equalsIgnoreCase("Référence"))) // TODO - simplify, one string LINK as tag for all languages
+      ) {
         continue;
+      }
 
       txtLink.setMovementMethod(LinkMovementMethod.getInstance());
       if (txtLink != txtInputs[0])
