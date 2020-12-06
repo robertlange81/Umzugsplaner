@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lockdown Check</string>
+    <string name="app_name">Lockdown Liste</string>
     <string name="category">Typ</string>
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>
@@ -215,7 +215,7 @@
     <string name="introDescGeneral">Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
     <string name="introLegend">Legende</string>
     <string name="placeholder_place_removal">Wohin wollen Sie umziehen?</string>
-    <string name="placeholder_place_lockdown">Wo wohnen Sie?</string>
+    <string name="placeholder_place_lockdown">Wo wohnen Sie (optional)?</string>
     <string name="postal">Plz</string>
     <string name="place">Ort</string>
     <string name="street">Straße</string>

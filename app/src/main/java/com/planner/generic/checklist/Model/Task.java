@@ -37,10 +37,9 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Icon Tablet vergrößern
     - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
-    - nach Änderung Datum alle Tasks aktualisieren
+    - nach Änderung Datum alle Tasks ak:tualisieren
     - Panel für Ort / Datum = Akkordeon
     - Refresh und link initialisierung optimieren
     - Ortsangabe auch bei Neustart auf Liste / Dialog

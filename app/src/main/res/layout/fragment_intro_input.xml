@@ -15,6 +15,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
         android:layout_width="match_parent"
+        android:paddingBottom="@dimen/detail_row_height"
         android:layout_marginLeft="@dimen/introTextMarginLR"
         android:layout_marginRight="@dimen/introTextMarginLR"
         android:orientation="vertical"
@@ -28,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="30dp">
 
                 <LinearLayout
                     android:layout_height="wrap_content"
@@ -90,60 +91,12 @@
                     android:text="@string/placeholder_date_lockdown" />
 
             </TableRow>
-            <!-- input date / targetTimeStamp -->
-            <TableRow
-                android:id="@+id/init_date_input"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/detail_row_height"
-                android:layout_marginRight="@dimen/introTextMarginLR"
-                android:minHeight="@dimen/detail_row_height"
-                android:gravity="top"
-                android:layout_marginTop="@dimen/detail_row_margin_top"
-                android:weightSum="3">
 
-                <TableRow
-                    android:layout_weight="1"
-                    android:layout_height="@dimen/detail_row_height"
-                    android:minHeight="@dimen/detail_row_height"
-                    android:gravity="top"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="5dp"
-                    android:weightSum="2">
-
-                    <Button
-                        android:layout_height="match_parent"
-                        android:text="@string/placeholder_date_detail"
-                        android:id="@+id/init_btn_date"
-                        android:layout_weight="1"
-                        android:width="50dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"/>
-
-                    <Button
-                        android:layout_height="match_parent"
-                        android:text="@string/placeholder_time_detail"
-                        android:layout_weight="1"
-                        android:maxWidth="50dp"
-                        android:layout_marginRight="@dimen/introTextMarginLR"
-                        android:id="@+id/init_btn_time"
-                        android:layout_toRightOf="@+id/detail_btn_date" />
-
-                    <!-- Button
-                        android:layout_height="match_parent"
-                        android:text="Ort"
-                        android:layout_weight="1"
-                        android:id="@+id/init_btn_location"
-                        android:layout_toRightOf="@+id/init_btn_time" /-->
-                </TableRow>
-            </TableRow>
             <!-- text display date / targetTimeStamp -->
             <TableRow
                 android:id="@+id/init_date_display"
-                android:layout_below="@id/init_second_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/detail_row_height"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top">
 
@@ -161,6 +114,51 @@
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true" />
 
+            </TableRow>
+            <!-- input date / targetTimeStamp -->
+            <TableRow
+                android:id="@+id/init_date_input"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/detail_row_height"
+                android:minHeight="@dimen/detail_row_height"
+                android:gravity="top"
+                android:weightSum="3">
+
+                <TableRow
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/detail_row_height"
+                    android:minHeight="@dimen/detail_row_height"
+                    android:gravity="top"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:weightSum="2">
+
+                    <Button
+                        android:id="@+id/init_btn_date"
+                        android:layout_height="match_parent"
+                        android:text="@string/placeholder_date_detail"
+                        android:layout_weight="1"
+                        android:width="50dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"/>
+
+                    <Button
+                        android:id="@+id/init_btn_time"
+                        android:layout_height="match_parent"
+                        android:text="@string/placeholder_time_detail"
+                        android:layout_weight="1"
+                        android:layout_marginRight="@dimen/introTextMarginLR"
+                        android:layout_toRightOf="@+id/detail_btn_date" />
+
+                    <!-- Button
+                        android:layout_height="match_parent"
+                        android:text="Ort"
+                        android:layout_weight="1"
+                        android:id="@+id/init_btn_location"
+                        android:layout_toRightOf="@+id/init_btn_time" /-->
+                </TableRow>
             </TableRow>
     </LinearLayout>
     </ScrollView>

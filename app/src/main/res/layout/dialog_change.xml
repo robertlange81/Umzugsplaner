@@ -35,6 +35,30 @@
     </TableRow>
 
     <TableRow
+        android:id="@+id/init_third_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/detail_row_height"
+        android:minHeight="@dimen/detail_row_height"
+        android:gravity="top">
+
+        <EditText
+            android:layout_weight="1"
+            android:clickable="false"
+            android:focusable="false"
+            android:tag="@string/placeholder_date_long"
+            android:hint="@string/placeholder_date_long"
+            android:gravity="center|center_vertical"
+            android:layout_height="match_parent"
+            android:id="@+id/detail_deadline"
+            android:textSize="@dimen/detail_text_size"
+            android:inputType="text|time"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </TableRow>
+
+    <TableRow
         android:id="@+id/init_second_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_row_height"
@@ -69,30 +93,6 @@
                 android:layout_toRightOf="@+id/detail_btn_date" />
 
         </TableRow>
-    </TableRow>
-    <TableRow
-        android:id="@+id/init_third_line"
-        android:layout_below="@id/init_second_line"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/detail_row_height"
-        android:minHeight="@dimen/detail_row_height"
-        android:gravity="top">
-
-        <EditText
-            android:layout_weight="1"
-            android:clickable="false"
-            android:focusable="false"
-            android:tag="@string/placeholder_date_long"
-            android:hint="@string/placeholder_date_long"
-            android:gravity="center|center_vertical"
-            android:layout_height="match_parent"
-            android:id="@+id/detail_deadline"
-            android:textSize="@dimen/detail_text_size"
-            android:inputType="text|time"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
     </TableRow>
     <TableRow
         android:id="@+id/location_line"

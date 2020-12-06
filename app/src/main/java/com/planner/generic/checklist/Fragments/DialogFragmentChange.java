@@ -108,11 +108,7 @@ public class DialogFragmentChange extends DialogFragment implements DatePickerDi
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
         // Inflate and set the layout for the dialog
-        View view = inflater.inflate(R.layout.dialog_init, null);
-
-        View checkBoxDeleteOld = view.findViewById(R.id.init_checkBox_delete_old);
-        if(checkBoxDeleteOld != null)
-            checkBoxDeleteOld.setVisibility(View.GONE);
+        View view = inflater.inflate(R.layout.dialog_change, null);
 
         btnDatePicker = (Button) view.findViewById(R.id.init_btn_date);
         btnTimePicker = (Button) view.findViewById(R.id.init_btn_time);

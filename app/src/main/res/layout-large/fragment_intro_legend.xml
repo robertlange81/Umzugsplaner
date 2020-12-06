@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
-            android:paddingTop="@dimen/introTopMargin"
+            android:paddingTop="30sp"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
             <ScrollView

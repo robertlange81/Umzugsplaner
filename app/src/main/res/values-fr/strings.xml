@@ -25,7 +25,7 @@
     <string name="placeholder_date_export">calendrier</string>
     <string name="placeholder_date_removal">Quand veux-tu partir?</string>
     <string name="placeholder_date_lockdown">Quand pensez-vous que le verrouillage commencera?</string>
-    <string name="placeholder_place_lockdown">Où habite-tu?</string>
+    <string name="placeholder_place_lockdown">Où habite-tu (optionnel)?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
