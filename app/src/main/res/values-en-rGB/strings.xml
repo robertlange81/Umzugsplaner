@@ -24,8 +24,8 @@
     <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
-    <string name="placeholder_date_lockdown">When do you expect the lockdown to begin?</string>
-    <string name="placeholder_place_lockdown">Where do You live (optional)?</string>
+    <string name="placeholder_date_checklist">When do you expect the lockdown to begin?</string>
+    <string name="placeholder_place_headline_specific">Where do You live (optional)?</string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
@@ -81,8 +81,7 @@
     <string name="placeholder_hide_low_prio">Hide Low Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
-    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=28b8e86dd57df6299066d4bb991e9374&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
     <string name="taskRentalContractOld3Months">Ending your tenancy?</string>
     <string name="taskRentalContractOld">Cancel old lease</string>
     <string name="taskRentalContractOldDesc">Cancel your old tenancy on time. You may be able to shorten the notice period with a new tenant.</string>
@@ -212,11 +211,9 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Official opening</string>
     <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
-    <string name="introDescRemoval">Plan your move professionally! All important tasks are created automatically - including tips and links to further information.</string>
     <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
-    <string name="introDescLockdown">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
+    <string name="introDescSpecific">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
     <string name="introLegend">Legend</string>
-    <string name="placeholder_place_removal">Where Are You Moving?</string>
     <string name="postal">zip code</string>
     <string name="place">place</string>
     <string name="street">street</string>
@@ -246,7 +243,7 @@
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minits">Minutes</string>
-    <string name="untilRemoval">UNTIL MOVING DATE</string>
+    <string name="untilTargetDate">UNTIL LOCKDOWN DATE</string>
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>

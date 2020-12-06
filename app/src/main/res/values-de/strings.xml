@@ -24,7 +24,7 @@
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_export">Kalender</string>
     <string name="placeholder_date_removal">Wann wollen Sie umziehen</string>
-    <string name="placeholder_date_lockdown">Wann beginnt der Lockdown?</string>
+    <string name="placeholder_date_checklist">Wann beginnt der Lockdown?</string>
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
@@ -79,8 +79,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="taskRentalContractOld3Months">3-Monats-Frist?</string>
-    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
-    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=20e4ed59bd6b5e2e0512cb3514c816b1&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="taskRentalContractOld">Alten Mietvertrag kündigen</string>
     <string name="taskRentalContractOldDesc">Kündigen Sie Ihr altes Mietverhältnis fristgerecht. Möglicherweise können Sie die Kündigungsfrist durch einen Nachmieter verkürzen.</string>
     <string name="taskRentalContractOld3MonthsLINK">https://ratgeber.immowelt.de/a/wohnung-kuendigen-problemlos-raus-aus-dem-mietvertrag.html</string>
@@ -210,12 +209,10 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Einweihungsfeier</string>
     <string name="partyDesc">Geben Sie eine Einweihungsfeier für Freunde und Helfer in Ihrer neuen Wohnung.</string>
-    <string name="introDescRemoval">Planen Sie Ihren Umzug! Alle wichtigen Aufgaben werden für Sie angelegt - inklusive Kostenübersicht, Tipps und Links zu weiteren Informationen.</string>
-    <string name="introDescLockdown">Bereiten Sie sich und Ihre Familie frühzeitig auf eine Pandemie vor. Diese Anwendung ist ein Leitfaden als Checkliste und wird demnächst um neue Funktionen ergänzt: Symptomprüfer, aktuelle Fallzahlen in Ihrer Region, Best Practices und Nachrichten.</string>
+    <string name="introDescSpecific">Bereiten Sie sich und Ihre Familie frühzeitig auf eine Pandemie vor. Diese Anwendung ist ein Leitfaden als Checkliste und wird demnächst um neue Funktionen ergänzt: Symptomprüfer, aktuelle Fallzahlen in Ihrer Region, Best Practices und Nachrichten.</string>
     <string name="introDescGeneral">Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
     <string name="introLegend">Legende</string>
-    <string name="placeholder_place_removal">Wohin wollen Sie umziehen?</string>
-    <string name="placeholder_place_lockdown">Wo wohnen Sie (optional)?</string>
+    <string name="placeholder_place_headline_specific">Wo wohnen Sie (optional)?</string>
     <string name="postal">Plz</string>
     <string name="place">Ort</string>
     <string name="street">Straße</string>
@@ -244,7 +241,7 @@
     <string name="days">Tage</string>
     <string name="hours">Stunden</string>
     <string name="minits">Minuten</string>
-    <string name="untilRemoval">BIS ZUM LOCKDOWN</string>
+    <string name="untilTargetDate">BIS ZUM LOCKDOWN</string>
     <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ort angeben.</string>

@@ -24,8 +24,8 @@
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export">calendrier</string>
     <string name="placeholder_date_removal">Quand veux-tu partir?</string>
-    <string name="placeholder_date_lockdown">Quand pensez-vous que le verrouillage commencera?</string>
-    <string name="placeholder_place_lockdown">Où habite-tu (optionnel)?</string>
+    <string name="placeholder_date_checklist">Quand pensez-vous que le verrouillage commencera?</string>
+    <string name="placeholder_place_headline_specific">Où habite-tu (optionnel)?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
@@ -81,8 +81,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="taskRentalContractOld3Months">Période de 3 mois?</string>
-    <string name="amazon_generic_link_electronics"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
-    <string name="amazon_generic_link_kitchen"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=20e4ed59bd6b5e2e0512cb3514c816b1&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="taskRentalContractOld">Annuler l\'ancien bail</string>
     <string name="taskRentalContractOldDesc">Annulez votre ancienne location à temps. Vous pourrez peut-être raccourcir la période de préavis avec un nouveau locataire.</string>
     <string name="taskRentalContractOld3MonthsLINK">https://location-immobilier.ooreka.fr/fiche/voir/192779/location-immo-peut-on-annuler-son-preavis-de-depart</string>
@@ -212,11 +211,9 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Cérémonie d\'inauguration</string>
     <string name="partyDesc">Offrez une cérémonie d\'inauguration pour les amis et les aides dans votre nouvel appartement.</string>
-    <string name="introDescRemoval">Planifiez votre déménagement!  Toutes les tâches importantes sont créées pour vous - y compris un aperçu des coûts, des conseils et des liens vers de plus amples informations.</string>
-    <string name="introDescLockdown">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
+    <string name="introDescSpecific">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
-    <string name="placeholder_place_removal">Où voulez-vous déménager?</string>
     <string name="postal">CP</string>
     <string name="place">Endroit</string>
     <string name="street">Rue</string>
@@ -246,7 +243,7 @@
     <string name="days">jours</string>
     <string name="hours">heures</string>
     <string name="minits">minutes</string>
-    <string name="untilRemoval">JUSQU\'AU DÉPLACEMENT</string>
+    <string name="untilTargetDate">JUSQU\'AU VERROUILLAGE</string>
     <string name="introNextTasks">Vos prochaines tâches:</string>
     <string name="routeMap">L\'itinéraire</string>
     <string name="DateOrPlaceNeeded">Veuillez saisir une date ou spécifier un emplacement.</string>

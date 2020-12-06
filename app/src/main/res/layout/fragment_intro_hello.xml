@@ -55,7 +55,7 @@
                         android:inputType="textMultiLine|textNoSuggestions"
                         android:fontFamily="serif-monospace"
                         android:layout_marginTop="20dp"
-                        android:text="@string/introDescLockdown"
+                        android:text="@string/introDescSpecific"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="top|center_horizontal"

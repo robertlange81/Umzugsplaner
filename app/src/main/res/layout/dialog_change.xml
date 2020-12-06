@@ -30,7 +30,7 @@
             android:gravity="center"
             android:layout_marginLeft="@dimen/input_margin"
             android:textSize="@dimen/detail_text_size"
-            android:text="@string/placeholder_date_lockdown" />
+            android:text="@string/placeholder_date_checklist" />
 
     </TableRow>
 

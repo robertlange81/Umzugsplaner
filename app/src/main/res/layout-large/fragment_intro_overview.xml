@@ -183,7 +183,7 @@
                                     android:fontFamily="serif-monospace"
                                     android:gravity="center|center_vertical"
                                     android:maxLines="1"
-                                    android:text="@string/untilRemoval"
+                                    android:text="@string/untilTargetDate"
                                     android:textAppearance="?android:attr/textAppearanceLarge"
                                     android:textColor="@color/colorGrey"
                                     android:textStyle="bold"

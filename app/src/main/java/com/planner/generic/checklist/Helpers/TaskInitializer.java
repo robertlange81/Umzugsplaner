@@ -21,9 +21,13 @@ public class TaskInitializer {
 
     public enum ListType {
 
-        NONE(0),
-        REMOVAL(1),
-        LOCKDOWN(2);
+        BASE(0),
+        RELOCATION(1),
+        LOCKDOWN(2),
+        BABY(3),
+        BIRTHDAY(4),
+        CHRISTMAS(5),
+        WEDDING(6);
 
         private int value;
 
@@ -54,8 +58,8 @@ public class TaskInitializer {
             today.setMinutes(0);
             Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 1);
 
-            switch (CURRENT_LIST_TYPE.toString()) {
-                case "REMOVAL":
+            switch (CURRENT_LIST_TYPE.toString().toUpperCase()) {
+                case "RELOCATION":
                     AddRemovalTasks(targetDate, targetLocation, context, today, tomorrow);
                     break;
                 case "LOCKDOWN":
@@ -67,12 +71,39 @@ public class TaskInitializer {
                       tomorrow
                     );
                     break;
+                case "BABY":
+                    AddBabyTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+                case "BIRTHDAY":
+                    AddBirthdayTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+                case "CHRISTMAS":
+                    AddChristmasTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+                case "WEDDING":
+                    AddWeddingTasks(targetDate, targetLocation, context, today, tomorrow);
+                    break;
+                case "BASE":
+                default:
+                    // Do Nothing
             }
         }
 
         setTargetDateAndLocationToShardPrefs(targetDate, targetLocation, context);
 
         Persistance.SaveTasks(context);
+    }
+
+    private static void AddBabyTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+    }
+
+    private static void AddBirthdayTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+    }
+
+    private static void AddChristmasTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+    }
+
+    private static void AddWeddingTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
     }
 
     public static void setTargetDateAndLocationToShardPrefs(Date targetDate, Location targetLocation, Activity context) {

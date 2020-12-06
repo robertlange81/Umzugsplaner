@@ -37,6 +37,7 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Admob
     - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - nach Änderung Datum alle Tasks ak:tualisieren
@@ -155,7 +156,7 @@ public class Task implements Serializable {
         date = null;
         priority = com.planner.generic.checklist.Model.Priority.Normal;
         costs = 0L;
-        type = new TaskType(TaskTypeLockdown.MEDICIN);
+        type = new TaskType(0);
         links = new TreeMap<>();
         createdAt = new Date();
     }

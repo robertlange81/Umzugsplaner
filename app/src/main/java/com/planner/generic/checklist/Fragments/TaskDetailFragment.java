@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -31,7 +30,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -51,11 +49,19 @@ import com.planner.generic.checklist.Model.Priority;
 import com.planner.generic.checklist.Model.Task;
 import com.planner.generic.checklist.Model.TaskContract;
 import com.planner.generic.checklist.Model.TaskType;
+import com.planner.generic.checklist.Model.TaskTypeBaby;
+import com.planner.generic.checklist.Model.TaskTypeBase;
+import com.planner.generic.checklist.Model.TaskTypeBirthday;
+import com.planner.generic.checklist.Model.TaskTypeChristmas;
+import com.planner.generic.checklist.Model.TaskTypeEnumHelper;
 import com.planner.generic.checklist.Model.TaskTypeLockdown;
+import com.planner.generic.checklist.Model.TaskTypeRelocation;
+import com.planner.generic.checklist.Model.TaskTypeWedding;
 import com.planner.generic.checklist.R;
 
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -448,15 +454,39 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       txtName.setText(_task.name);
 
     if (_task.type != null) {
+      TaskTypeEnumHelper[] types;
+      switch (TaskInitializer.CURRENT_LIST_TYPE.toString().toUpperCase()) {
+        case "BABY":
+          types = TaskTypeBaby.values();
+          break;
+        case "BIRTHDAY":
+          types = TaskTypeBirthday.values();
+          break;
+        case "CHRISTMAS":
+          types = TaskTypeChristmas.values();
+          break;
+        case "LOCKDOWN":
+          types = TaskTypeLockdown.values();
+          break;
+        case "RELOCATION":
+          types = TaskTypeRelocation.values();
+          break;
+        case "WEDDING":
+          types = TaskTypeWedding.values();
+          break;
+        default:
+          types = TaskTypeBase.values();
+      }
+
       int counter = -1;
-      for (TaskTypeLockdown taskTypeLockdown : TaskTypeLockdown.values()) {
+      for (TaskTypeEnumHelper taskType : types) {
         counter++;
 
         // extra case for zero
         if (counter == 0 && _task.type.getValue() != 0)
           continue;
 
-        if ((taskTypeLockdown.getValue() & _task.type.getValue()) == taskTypeLockdown.getValue()) {
+        if ((taskType.getValue() & _task.type.getValue()) == taskType.getValue()) {
           spinnerDetailType.setSelection(counter);
           break;
         }
@@ -685,8 +715,8 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       searchFor = _task.name;
     }
 
-    if((_task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty())
-      || TaskInitializer.CURRENT_LIST_TYPE == TaskInitializer.ListType.LOCKDOWN) {
+    if((TaskInitializer.CURRENT_LIST_TYPE != TaskInitializer.ListType.RELOCATION
+            || _task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty())) { // already set up specific links for Removal
 
       TreeMap<String,String> newLinks = new TreeMap<>();
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {
@@ -698,8 +728,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       _task.links = newLinks;
       _task.addLink(
         getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
-        getResources().getString(_task.type.equals(TaskTypeLockdown.ELECTRONICS) ? R.string.amazon_generic_link_electronics : R.string.amazon_generic_link_kitchen)
-                + URLEncoder.encode(searchFor)
+        getResources().getString(R.string.amazon_generic_link) + URLEncoder.encode(searchFor)
       );
 
       _task.addLink(
@@ -728,6 +757,9 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     output = output.replace("Ü", "UE")
             .replace("Ö", "OE")
             .replace("Ä", "AE");
+
+    output = Normalizer.normalize(output, Normalizer.Form.NFD);
+    output = output.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
 
     return output;
   }

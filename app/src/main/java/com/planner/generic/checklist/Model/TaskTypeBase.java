@@ -1,11 +1,11 @@
 package com.planner.generic.checklist.Model;
 
-public enum TaskTypeLockdown implements TaskTypeEnumHelper {
-    FOOD(0), MEDICIN(1), HOUSEHOLD(2), ELECTRONICS(3), MISCELLANEOUS(4);
+public enum TaskTypeBase implements TaskTypeEnumHelper {
+    Simple(0), Medium(1), Difficult(2);
 
     private int value;
 
-    TaskTypeLockdown(int value) {
+    TaskTypeBase(int value) {
         this.value = value;
     }
 
@@ -15,7 +15,7 @@ public enum TaskTypeLockdown implements TaskTypeEnumHelper {
 
     @Override
     public String getNameByCode(int code) {
-        for(TaskTypeLockdown e : TaskTypeLockdown.values()){
+        for(TaskTypeBase e : TaskTypeBase.values()){
             if(code == e.value) return e.name();
         }
         return null;
