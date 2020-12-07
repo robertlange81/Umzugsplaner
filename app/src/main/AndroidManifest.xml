@@ -61,7 +61,7 @@
 
         <provider
             android:name=".Model.TaskProvider"
-            android:authorities="com.planner.removal.removalplanner.providerx" />
+            android:authorities="com.planner.removal.removalplanner.provider" />
 
         <!-- Services -->
         <service android:name=".Helpers.ExportService" />

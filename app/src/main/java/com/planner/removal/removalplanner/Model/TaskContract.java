@@ -14,7 +14,7 @@ public final class  TaskContract {
     /**
      * Eindeutiger Name des Providers innerhalb des Betriebssystems
      */
-    public static final String AUTHORITY = "com.planner.removal.removalplanner.providerx";
+    public static final String AUTHORITY = "com.planner.removal.removalplanner.provider";
 
     /**
      * Basis URI zum Content Provider
