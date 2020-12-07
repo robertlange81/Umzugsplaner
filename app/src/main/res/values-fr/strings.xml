@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Couvre-feu</string>
+    <string name="app_name">changement de résidence</string>
     <string name="category">Type</string>
     <string name="date_changed">Date changée</string>
     <string name="deleted">supprimé</string>
@@ -23,9 +23,8 @@
     <string name="placeholder_date_detail">Date</string>
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export">calendrier</string>
-    <string name="placeholder_date_removal">Quand veux-tu partir?</string>
-    <string name="placeholder_date_checklist">Quand pensez-vous que le verrouillage commencera?</string>
-    <string name="placeholder_place_headline_specific">Où habite-tu (optionnel)?</string>
+    <string name="placeholder_date_checklist">Quand veux-tu partir?</string>
+    <string name="placeholder_place_headline_specific">Où voulez-vous déménager?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
@@ -56,11 +55,13 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>ALIMENTATION</item>
-        <item>MÉDECINE</item>
-        <item>MENAGE</item>
+        <item>VIEUX APP.</item>
+        <item>NOUVEL APP.</item>
+        <item>CONTRATS</item>
+        <item>BOUGE TOI</item>
         <item>ÉLECTRONIQUE</item>
-        <item>AUTRE</item>
+        <item>MEUBLES</item>
+        <item>CUISINE</item>
     </string-array>
     <string name="contractCancel">Si vous souhaitez résilier votre ancien contrat, votre déménagement offre souvent un droit de résiliation spécial si vous ne pouvez pas être fourni par votre ancien fournisseur à votre nouveau lieu de résidence.  Attention!  Si possible, envoyez des preuves par courrier recommandé.  Sinon, vous pourriez profiter de certains fournisseurs comme PYUR.</string>
     <string name="partner_verivox_Id">2812</string>
@@ -244,47 +245,6 @@
     <string name="show_home">Afficher l\'appartement sur la carte</string>
     <string name="show_location">Afficher sur la carte</string>
     <string name="export">Exporter la liste</string>
-    <string name="disinfectant">Désinfectant</string>
-    <string name="disinfectant_desc">Désinfectant pour la peau ET pour les plaies.</string>
-    <string name="Respirators">Respirateurs</string>
-    <string name="Respirators_desc">Respirateurs avec la plus haute classe de protection FFP3</string>
-    <string name="medicalkit">Trousse de premiers secours</string>
-    <string name="firstAidKitDesc">Trousse de premiers soins selon la norme, assurez-vous qu\'elle n\'est pas périmée!</string>
-    <string name="medication">Médicaments</string>
-    <string name="medicationDesc">Médicaments prescrits par le médecin</string>
-    <string name="painReliever">Anti douleur</string>
-    <string name="painRelieverDesc">Antalgiques: ibuprofène et paracétamol.</string>
-    <string name="DiarrheaRemedy">Remède contre la diarrhée</string>
-    <string name="water">Boire de l\'eau</string>
-    <string name="waterDesc">20 litre - 5 litres sont prévus pour la préparation de pâtes, pommes de terre et riz.</string>
-    <string name="readyMeals">Plats cuisinés</string>
-    <string name="readyMealsDesc">Des plats cuisinés tels que des raviolis en conserve. N\'importe quelle quantité.</string>
-    <string name="pocketLamp">Lampe de poche</string>
-    <string name="pocketLampDesc">Une lampe de poche à manivelle rechargeable peut être très utile en cas de panne de courant.</string>
-    <string name="batteries">Piles</string>
-    <string name="batteriesDesc">Batteries de différentes tailles.</string>
-    <string name="potatoes">Pommes de terre</string>
-    <string name="potatoesDesc">4 kg de pommes de terre, riz et céréales</string>
-    <string name="fuel">Essence / Bidon</string>
-    <string name="fuelDesc">Essence ou diesel dans un bidon de 20 litres pour faire le plein d\'urgence de votre voiture ou d\'un générateur (diesel).</string>
-    <string name="sleepingBag">Sac de couchage</string>
-    <string name="sleepingBagDesc">L\'Office de protection contre les catastrophes recommande des sacs de couchage.</string>
-    <string name="waterproofClothing">Vêtements Imperméables</string>
-    <string name="waterproofClothingDesc">Des vêtements imperméables sont recommandés par l\'Agence de protection civile.</string>
-    <string name="vegetables">Légumes en conserve</string>
-    <string name="vegetablesDesc">4 kilogrammes de légumineuses et légumes - principalement dans des boîtes ou des verres</string>
-    <string name="fruit">Fruits en conserve</string>
-    <string name="fruitDesc">3 kilogrammes de fruits - principalement dans des boîtes et des verres</string>
-    <string name="milk">Lait</string>
-    <string name="milkDesc">3 litres ou kilogrammes de lait et de produits laitiers - principalement des produits qui n\'ont pas besoin d\'être réfrigérés</string>
-    <string name="fatOil">Gras et huile</string>
-    <string name="fatOilDesc">1 kg de graisse et d\'huile</string>
-    <string name="spices">Épices</string>
-    <string name="spicesDesc">Épices, sucre et édulcorants</string>
-    <string name="coldRemedies">Remèdes contre le rhume</string>
-    <string name="coldRemediesDesc">Remèdes contre le rhume pour soulager la toux, le nez qui coule et la fièvre.</string>
-    <string name="clinicalThermometer">Thermomètre médical</string>
-    <string name="clinicalThermometerDesc">Thermomètre médical, de préférence un thermomètre infrarouge, pour mesurer sur le front.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Exportation de tâches</string>
     <string name="ExportNotificationMessage">Exportation de tâches</string>
@@ -311,8 +271,6 @@
     <string name="loadShort">OUVRIR</string>
     <string name="Sort">Triage</string>
     <string name="export_as_pdf">Export. en pdf</string>
-    <string name="gasPisol">Pistolet à gaz</string>
-    <string name="gasPistolDesc">Protégez votre famille!</string>
     <string name="show_on_map">sur la carte</string>
     <string name="placeholder_goto_no_location">Veuillez compléter les informations sur l\'emplacement.</string>
     <string name="When">QUAND?</string>

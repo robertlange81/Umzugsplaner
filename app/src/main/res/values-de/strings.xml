@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lockdown Liste</string>
+    <string name="app_name">Umzugplaner</string>
     <string name="category">Typ</string>
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>
@@ -23,8 +23,7 @@
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_export">Kalender</string>
-    <string name="placeholder_date_removal">Wann wollen Sie umziehen</string>
-    <string name="placeholder_date_checklist">Wann beginnt der Lockdown?</string>
+    <string name="placeholder_date_checklist">Wann wollen Sie umziehen</string>
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
@@ -55,11 +54,13 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>LEBENSMITTEL</item>
-        <item>MEDIZIN</item>
-        <item>HAUSHALT</item>
+        <item>ALTE WOHNUNG</item>
+        <item>NEUE WOHNUNG</item>
+        <item>VERTRÄGE</item>
+        <item>UMZUG</item>
         <item>ELEKTRONIK</item>
-        <item>SONSTIGES</item>
+        <item>MÖBEL</item>
+        <item>KÜCHE</item>
     </string-array>
     <string name="contractCancel">Falls Sie Ihren alten Vertrag kündigen wollen bietet sich durch Ihren Umzug oft ein Sonderkündigungsrecht, wenn Sie durch Ihren bisherigen Anbieter am neuen Wohnort nicht beliefert werden können. Vorsicht! Senden Sie Nachweise möglichst per Einschreiben. Einige Anbieter wie PYUR könnten Sie sonst übervorteilen.</string>
     <string name="partner_verivox_Id">2812</string>
@@ -207,7 +208,7 @@
     <string name="introDescSpecific">Bereiten Sie sich und Ihre Familie frühzeitig auf eine Pandemie vor. Diese Anwendung ist ein Leitfaden als Checkliste und wird demnächst um neue Funktionen ergänzt: Symptomprüfer, aktuelle Fallzahlen in Ihrer Region, Best Practices und Nachrichten.</string>
     <string name="introDescGeneral">Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender.</string>
     <string name="introLegend">Legende</string>
-    <string name="placeholder_place_headline_specific">Wo wohnen Sie (optional)?</string>
+    <string name="placeholder_place_headline_specific">Wohin wollen Sie umziehen?</string>
     <string name="postal">Plz</string>
     <string name="place">Ort</string>
     <string name="street">Straße</string>
@@ -243,47 +244,6 @@
     <string name="show_home">Zeige Wohnung auf Karte</string>
     <string name="show_location">Zeige auf Karte</string>
     <string name="export">Liste exportieren</string>
-    <string name="disinfectant">Desinfektionsmittel</string>
-    <string name="disinfectant_desc">Desinfektionsmittel für die Haut UND für Wunden.</string>
-    <string name="Respirators">Atemschutzmasken</string>
-    <string name="Respirators_desc">Atemschutzmasken mit höchster Schutzklasse FFP3</string>
-    <string name="medicalkit">Verbandskasten</string>
-    <string name="firstAidKitDesc">Verbandskasten nach DIN-Norm, achten Sie darauf, dass dieser nicht abgelaufen ist!</string>
-    <string name="medication">Medikamente</string>
-    <string name="medicationDesc">Vom Arzt verschriebene Medikamente</string>
-    <string name="painReliever">Schmerzmittel</string>
-    <string name="painRelieverDesc">Schmerzmittel: Ibuprofen und Paracetamol.</string>
-    <string name="DiarrheaRemedy">Mittel gegen Durchfall</string>
-    <string name="water">Trinkwasser - 20 Liter</string>
-    <string name="waterDesc">fünf Liter davon sind für die Zubereitung von Nudeln, Kartoffeln und Reis eingeplant</string>
-    <string name="readyMeals">Fertiggerichte</string>
-    <string name="readyMealsDesc">Fertiggerichte wie beispielsweise Dosenravioli. Menge beliebig.</string>
-    <string name="pocketLamp">Taschenlampe</string>
-    <string name="pocketLampDesc">Eine wiederaufladbare Kurbel-Taschenlampe kann bei Stromausfall sehr nützlich sein.</string>
-    <string name="batteries">Batterien</string>
-    <string name="batteriesDesc">Batterien in verschiedenen Größen.</string>
-    <string name="potatoes">Kartoffeln</string>
-    <string name="potatoesDesc">4 Kilogramm Kartoffeln, Reis und Getreide</string>
-    <string name="fuel">Benzin / Kanister</string>
-    <string name="fuelDesc">Benzin oder Diesel in einem 20-Liter-Kanister zur Notbetankung Ihres KFZ oder eines (Diesel-)Generators.</string>
-    <string name="sleepingBag">Schlafsack</string>
-    <string name="sleepingBagDesc">Durch das Bundesamt für Katastrophenschutz werden Schlafsäcke empfohlen.</string>
-    <string name="waterproofClothing">wasserfeste Kleidung</string>
-    <string name="waterproofClothingDesc">Durch das Bundesamt für Katastrophenschutz wird wasserfeste Kleidung empfohlen.</string>
-    <string name="vegetables">Dosengemüse</string>
-    <string name="vegetablesDesc">4 Kilogramm Hülsenfrüchte und Gemüse - vornehmlich in Dosen oder Gläsern</string>
-    <string name="fruit">Dosenobst</string>
-    <string name="fruitDesc">3 Kilogramm Obst - vornehmlich in Dosen und Gläsern</string>
-    <string name="milk">Milch</string>
-    <string name="milkDesc">3 Liter beziehungsweise Kilogramm Milch und Milchprodukte - vornehmlich Produkte, die nicht gekühlt werden müssen</string>
-    <string name="fatOil">Fett und Öl</string>
-    <string name="fatOilDesc">1 Kilogramm Fett und Öl</string>
-    <string name="spices">Gewürze</string>
-    <string name="spicesDesc">Gewürze, Zucker und Süßstoff</string>
-    <string name="coldRemedies">Erkältungsmittel</string>
-    <string name="coldRemediesDesc">Erkältungsmittel zur Linderung von Husten, Schnupfen und Fieber.</string>
-    <string name="clinicalThermometer">Fieberthermometer</string>
-    <string name="clinicalThermometerDesc">Fieberthermometer, am besten Infrarot-Thermometer, zum Messen an der Stirn.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Aufgaben in PDF exportiert</string>
     <string name="ExportNotificationMessage">Aufgaben in PDF exportiert</string>
@@ -311,8 +271,6 @@
     <string name="Sort">Sortieren</string>
     <string name="legendDelete">Löschen</string>
     <string name="export_as_pdf">PDF-Export</string>
-    <string name="gasPisol">Gaspistole</string>
-    <string name="gasPistolDesc">Schützen Sie Ihre Familie!</string>
     <string name="placeholder_goto_no_location">Bitte vervollständigen Sie zuerst die Angaben zum Ort.</string>
     <string name="show_on_map">Zeige auf Karte</string>
     <string name="When">WANN?</string>

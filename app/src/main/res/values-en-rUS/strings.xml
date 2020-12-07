@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lockdown Check</string>
+    <string name="app_name">Relocation Planner</string>
     <string name="category">type</string>
     <string name="deleted">deleted</string>
     <string name="date_changed">date changed</string>
@@ -23,9 +23,8 @@
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_date_removal">When do you want to move?</string>
-    <string name="placeholder_date_checklist">When do you expect the lockdown to begin?</string>
-    <string name="placeholder_place_headline_specific">Where do You live (optional)?</string>
+    <string name="placeholder_date_checklist">When do you want to move?</string>
+    <string name="placeholder_place_headline_specific">Where Are You Moving?</string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
@@ -56,11 +55,13 @@
     <string name="currency">$</string>
     <string name="currency_long">Dollar</string>
     <string-array name="task_types">
-        <item>FOODS</item>
-        <item>MEDICINE</item>
-        <item>HOUSEHOLD</item>
+        <item>OLD FLAT</item>
+        <item>NEW FLAT</item>
+        <item>CONTRACTS</item>
+        <item>MOVEMENT</item>
         <item>ELECTRONICS</item>
-        <item>OTHER</item>
+        <item>FURNITURE</item>
+        <item>KITCHEN</item>
     </string-array>
     <string name="contractCancel">If you want to cancel your old contract, your move often offers a special right of termination if you cannot be supplied by your previous provider at your new place of residence. Take Care! Send evidences by registered mail if possible. You could otherwise take disadvantage of some providers.</string>
     <string name="partner_verivox_Id">2812</string>
@@ -243,47 +244,6 @@
     <string name="show_home">Show home on map</string>
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
-    <string name="disinfectant">disinfectant</string>
-    <string name="disinfectant_desc">Disinfectant for the skin AND for wounds.</string>
-    <string name="Respirators">Respirators</string>
-    <string name="Respirators_desc">Respirators with the highest protection class FFP3</string>
-    <string name="medicalkit">Medical kit</string>
-    <string name="firstAidKitDesc">First-aid kit according to standard, make sure that it has not expired!</string>
-    <string name="medication">Medications</string>
-    <string name="medicationDesc">Medications prescribed by the doctor</string>
-    <string name="painReliever">pain reliever</string>
-    <string name="painRelieverDesc">Pain relievers: ibuprofen and paracetamol.</string>
-    <string name="DiarrheaRemedy">Diarrhea remedy</string>
-    <string name="water">5 gallons of water</string>
-    <string name="waterDesc">1 gallon of it is planned for the preparation of pasta, potatoes and rice.</string>
-    <string name="readyMeals">Ready meals</string>
-    <string name="readyMealsDesc">Ready meals such as canned ravioli. Any quantity.</string>
-    <string name="pocketLamp">Pocket lamp</string>
-    <string name="pocketLampDesc">A rechargeable crank flashlight can be very useful in the event of a power failure.</string>
-    <string name="batteries">Batteries</string>
-    <string name="batteriesDesc">Batteries in different sizes.</string>
-    <string name="potatoes">Potatoes</string>
-    <string name="potatoesDesc">8 pounds of potatoes, rice and cereals</string>
-    <string name="fuel">Gasoline / gas can</string>
-    <string name="fuelDesc">Petrol or diesel in a 10 gallons can for emergency refueling of your car or a (diesel) generator.</string>
-    <string name="sleepingBag">Sleeping Bag</string>
-    <string name="sleepingBagDesc">The Office for Disaster Protection recommends sleeping bags.</string>
-    <string name="waterproofClothing">Waterproof Clothing</string>
-    <string name="waterproofClothingDesc">Waterproof clothing is recommended by the Civil Protection Agency.</string>
-    <string name="vegetables">Canned Vegetables</string>
-    <string name="vegetablesDesc">8 pounds of legumes and vegetables - mainly in cans or glasses</string>
-    <string name="fruit">Canned Fruit</string>
-    <string name="fruitDesc">6 pounds of fruit - mainly in cans and glasses</string>
-    <string name="milk">Milk</string>
-    <string name="milkDesc">1 gallons or 6 pounds of milk and milk products - primarily products that do not need to be refrigerated</string>
-    <string name="fatOil">Fat and Oil</string>
-    <string name="fatOilDesc">2 pounds of fat and oil</string>
-    <string name="spices">Spices</string>
-    <string name="spicesDesc">Spices, sugar and sweeteners</string>
-    <string name="coldRemedies">Cold Remedies</string>
-    <string name="coldRemediesDesc">Cold remedies to relieve cough, runny nose and fever.</string>
-    <string name="clinicalThermometer">Clinical Thermometer</string>
-    <string name="clinicalThermometerDesc">Medical thermometer, preferably infrared thermometer, for measuring on the forehead.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Export tasks</string>
     <string name="ExportNotificationMessage">Export tasks</string>
@@ -311,8 +271,6 @@
     <string name="Sort">Sort</string>
     <string name="legendDelete">Delete</string>
     <string name="export_as_pdf">export as PDF</string>
-    <string name="gasPisol">Gas pistol</string>
-    <string name="gasPistolDesc">Protect your family</string>
     <string name="placeholder_goto_no_location">Please complete the information about the location.</string>
     <string name="show_on_map">show on map</string>
     <string name="When">WHEN?</string>

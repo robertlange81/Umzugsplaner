@@ -17,7 +17,7 @@ import java.util.TimeZone;
 
 public class TaskInitializer {
 
-    public static ListType CURRENT_LIST_TYPE = ListType.LOCKDOWN;
+    public static ListType CURRENT_LIST_TYPE = ListType.RELOCATION;
 
     public enum ListType {
 
@@ -133,120 +133,178 @@ public class TaskInitializer {
         }
     }
 
-    private static void AddLockdownTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+    private static void AddLockdownTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {}
 
-        // Desinfektionsmittel
-        Task disinfectant = new Task(context.getString(R.string.disinfectant), context.getString(R.string.disinfectant_desc), addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(disinfectant);
+    private static void AddRemovalTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
+        // Vertrag alt
+        Task rentalContractOld = new Task(context.getString(R.string.taskRentalContractOld), (context.getString(R.string.taskRentalContractOldDesc) + ' ' + context.getString(R.string.contractCancel)), targetDate != null ? tomorrow : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts.getValue()), targetLocation);
+        rentalContractOld.addLink(context.getString(R.string.taskRentalContractOld3Months), context.getString(R.string.taskRentalContractOld3MonthsLINK));
+        rentalContractOld.addLink(context.getString(R.string.rentalContractOldSpecialRightOfTermination), context.getString(R.string.rentalContractOldSpecialRightOfTerminationLINK));
+        Task.addTask(rentalContractOld);
 
-        // FFP3-Masken
-        Task respiratoryProtection = new Task(context.getString(R.string.Respirators), context.getString(R.string.Respirators_desc), addMonthDaysToJavaUtilDate(targetDate, 0, 1), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(respiratoryProtection);
+        // Vertrag neu
+        Task rentalContractNew = new Task(context.getString(R.string.rentalContractNew), context.getString(R.string.rentalContractNewDesc), targetDate != null ? today : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts.getValue()), targetLocation);
+        rentalContractNew.addLink(context.getString(R.string.rentalContractNewTips), context.getString(R.string.rentalContractNewTipsLINK));
+        rentalContractNew.addLink(context.getString(R.string.rentalContractNewTraps), context.getString(R.string.rentalContractNewTrapsLink));
+        Task.addTask(rentalContractNew);
 
-        // Verbandskasten
-        Task medicalKit = new Task(context.getString(R.string.medicalkit), context.getString(R.string.firstAidKitDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 3), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(medicalKit);
+        // Vertragspartner
+        Task informContractors = new Task(context.getString(R.string.informContractors), context.getString(R.string.informContractorsDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -14), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        Task.addTask(informContractors);
 
-        // Vom Arzt verschriebene Medikamente
-        Task medication = new Task(context.getString(R.string.medication), context.getString(R.string.medicationDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 3), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(medication);
+        // Strom / Gas
+        Task energyContract = new Task(context.getString(R.string.energyContract), context.getString(R.string.energyContractDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -7), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        energyContract.addLink(context.getString(R.string.compareEnergyContractVerivox), context.getString(R.string.energyContractVerivoxLINK));
+        energyContract.addLink(context.getString(R.string.compareEnergyContractCheck24), context.getString(R.string.energyContractCheck24LINK));
+        energyContract.addLink(context.getString(R.string.compareGasContractVerivox), context.getString(R.string.gasContractVerivoxLINK));
+        energyContract.addLink(context.getString(R.string.compareGasContractCheck24), context.getString(R.string.gasContractCheck24LINK));
+        Task.addTask(energyContract);
 
-        // Schmerzmittel
-        Task painReliever = new Task(context.getString(R.string.painReliever), context.getString(R.string.painRelieverDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 3), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(painReliever);
+        // Internet / DSL
+        Task internetContract = new Task(context.getString(R.string.internetContract), context.getString(R.string.internetContractDesc)  + ' ' + context.getString(R.string.contractCancel), addMonthDaysToJavaUtilDate(targetDate, 0, -7), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        internetContract.addLink(context.getString(R.string.internetContractAvailability), context.getString(R.string.internetContractAvailabilityLINK));
+        internetContract.addLink(context.getString(R.string.compareContractCheck24), context.getString(R.string.internetContractCheck24LINK));
+        internetContract.addLink(context.getString(R.string.compareContractVerivox), context.getString(R.string.internetContractVerivoxLINK));
+        Task.addTask(internetContract);
 
-        // Mittel gegen Durchfall
-        Task DiarrheaRemedy = new Task(context.getString(R.string.DiarrheaRemedy), context.getString(R.string.DiarrheaRemedy), addMonthDaysToJavaUtilDate(targetDate, 0, 3), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(DiarrheaRemedy);
+        // Haftpflicht
+        Task liabilityInsurance = new Task(context.getString(R.string.liabilityInsurance), context.getString(R.string.liabilityInsuranceDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -20) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        liabilityInsurance.addLink(context.getString(R.string.compareLiabilityInsurance), context.getString(R.string.compareLiabilityInsuranceVerivoxLINK));
+        Task.addTask(liabilityInsurance);
 
-        // Erkältungsmittel
-        Task coldRemedies = new Task(context.getString(R.string.coldRemedies), context.getString(R.string.coldRemediesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 4), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(coldRemedies);
+        // Hausrat
+        Task householdInsurance = new Task(context.getString(R.string.householdInsurance), context.getString(R.string.householdInsuranceDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -10) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        householdInsurance.addLink(context.getString(R.string.compareContracts), context.getString(R.string.compareContractVerivoxLINK));
+        Task.addTask(householdInsurance);
 
-        // Fieberthermometer
-        Task clinicalThermometer = new Task(context.getString(R.string.clinicalThermometer), context.getString(R.string.clinicalThermometerDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MEDICIN), targetLocation);
-        Task.addTask(clinicalThermometer);
+        // Brandschutz
+        Task fireAndBurglaryProtection = new Task(context.getString(R.string.fireAndBurglaryProtection), context.getString(R.string.fireAndBurglaryProtectionDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -6) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.NewFlat), targetLocation);
+        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionSmokeDetector), context.getString(R.string.fireAndBurglaryProtectionSmokeDetectorLINK));
+        fireAndBurglaryProtection.addLink(context.getString(R.string.fireAndBurglaryProtectionBurglary), context.getString(R.string.fireAndBurglaryProtectionBurglaryLINKI));
+        Task.addTask(fireAndBurglaryProtection);
 
-        // Wasser
-        Task water = new Task(context.getString(R.string.water), context.getString(R.string.waterDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.HOUSEHOLD), targetLocation);
-        Task.addTask(water);
+        // Urlaub
+        Task requestSpecialLeave = new Task(context.getString(R.string.requestSpecialLeave), context.getString(R.string.requestSpecialLeaveDesc), tomorrow, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        requestSpecialLeave.addLink(context.getString(R.string.requestSpecialLeave), context.getString(R.string.requestSpecialLeaveLINK));
+        Task.addTask(requestSpecialLeave);
 
-        // Fertiggerichte
-        Task readyMeals = new Task(context.getString(R.string.readyMeals), context.getString(R.string.readyMealsDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(readyMeals);
+        // Kautionskonto
+        Task rentalDepositAccount = new Task(context.getString(R.string.rentalDepositAccount), context.getString(R.string.rentalDepositAccountDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -30) : null , Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.Contracts), targetLocation);
+        rentalDepositAccount.addLink(context.getString(R.string.rentalDepositAccountExplanation), context.getString(R.string.rentalDepositAccountExplanationLINK));
+        Task.addTask(rentalDepositAccount);
 
-        // Taschenlampe
-        Task pocketLamp = new Task(context.getString(R.string.pocketLamp), context.getString(R.string.pocketLampDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.ELECTRONICS), targetLocation);
-        Task.addTask(pocketLamp);
+        // Umzugskartons / Müllsäcke
+        Task packingMaterial = new Task(context.getString(R.string.packingMaterial), context.getString(R.string.packingMaterialDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -20) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        packingMaterial.addLink(context.getString(R.string.packingMaterialTrashBags), context.getString(R.string.packingMaterialTrashBagsAmazonLINK));
+        packingMaterial.addLink(context.getString(R.string.packingMaterialAirCushionFoil), context.getString(R.string.packingMaterialAirCushionFoilAmazonLINK));
+        packingMaterial.addLink(context.getString(R.string.packingMaterialMovingBoxes), context.getString(R.string.packingMaterialMovingBoxesEbayLINK));
+        Task.addTask(packingMaterial);
 
-        // Batterien
-        Task batteries = new Task(context.getString(R.string.batteries), context.getString(R.string.batteriesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 5), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.ELECTRONICS), targetLocation);
-        Task.addTask(batteries);
+        // Umzugshelfer
+        Task organizeHelper = new Task(context.getString(R.string.organizeHelper), context.getString(R.string.organizeHelperDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -14), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        organizeHelper.addLink(context.getString(R.string.organizeHelperWorkGloves), context.getString(R.string.organizeHelperWorkGlovesAmazonLink));
+        organizeHelper.addLink(context.getString(R.string.organizeHelperCarryingStraps), context.getString(R.string.organizeHelperCarryingStrapsEbayLINK));
+        organizeHelper.addLink(context.getString(R.string.organizeHelperhandTruck), context.getString(R.string.organizeHelperHandTrucksEbayLINK));
+        Task.addTask(organizeHelper);
 
-        // Kartoffeln
-        Task potatoes = new Task(context.getString(R.string.potatoes), context.getString(R.string.potatoesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(potatoes);
+        // Umzugswagen
+        Task movingVan = new Task(context.getString(R.string.movingVan), context.getString(R.string.movingVanDesc), tomorrow, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        movingVan.addLink(context.getString(R.string.movingVanCompare), context.getString(R.string.movingVanCheck24LINK));
+        Task.addTask(movingVan);
 
-        // Treibstoff
-        Task fuel = new Task(context.getString(R.string.fuel), context.getString(R.string.fuelDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.MISCELLANEOUS), targetLocation);
-        Task.addTask(fuel);
+        // Schlüsselübergabe
+        Task handoverNewFlat = new Task(context.getString(R.string.handoverNewFlat), context.getString(R.string.handoverNewFlatDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -3) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.NewFlat), targetLocation);
+        if(targetLocation != null) {
+            handoverNewFlat.addLink(
+                    context.getString(R.string.routeMap),
+                    "https://www.google.co.in/maps/place/"
+                            + targetLocation.getStreet()
+                            + "+" + targetLocation.getStreetNumber()
+                            + ",+" + targetLocation.getPostal()
+                            + "+" + targetLocation.getPlace()
+            );
+        }
+        Task.addTask(handoverNewFlat);
 
-        // Schlafsack
-        Task sleepingBag = new Task(context.getString(R.string.sleepingBag), context.getString(R.string.sleepingBagDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.MISCELLANEOUS), targetLocation);
-        Task.addTask(sleepingBag);
+        // Parkplatz absperren
+        Task cordonOffParkingLot = new Task(context.getString(R.string.cordonOffParkingLot), context.getString(R.string.cordonOffParkingLotDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -3) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        cordonOffParkingLot.addLink(context.getString(R.string.cordonOffParkingLotHowTo), context.getString(R.string.cordonOffParkingLotHowToLINK));
+        Task.addTask(cordonOffParkingLot);
 
-        // wasserfeste Kleidung
-        Task waterproofClothing = new Task(context.getString(R.string.waterproofClothing), context.getString(R.string.waterproofClothingDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.MISCELLANEOUS), targetLocation);
-        Task.addTask(waterproofClothing);
+        // Vortag
+        Task prevDay = new Task(context.getString(R.string.previousDay), context.getString(R.string.previousDayDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -1) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        Task.addTask(prevDay);
 
-        // Gemüse
-        Task vegetables = new Task(context.getString(R.string.vegetables), context.getString(R.string.vegetablesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(vegetables);
+        // Malern - Schönheitsreparaturen
+        Task renovateOldFlat = new Task(context.getString(R.string.renovateOldFlat), context.getString(R.string.renovateOldFlatDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, 3) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.OldFlat), targetLocation);
+        renovateOldFlat.addLink(context.getString(R.string.renovationObligation), context.getString(R.string.renovationObligationLINK));
+        Task.addTask(renovateOldFlat);
 
-        // Obst
-        Task fruit = new Task(context.getString(R.string.fruit), context.getString(R.string.fruitDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(fruit);
+        // Wohnungsabnahme
+        Task handoverOldFlat = new Task(context.getString(R.string.handoverOldFlat), context.getString(R.string.handoverOldFlatDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -7) : null, Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.OldFlat), targetLocation);
+        Task.addTask(handoverOldFlat);
 
-        // Milch
-        Task milk = new Task(context.getString(R.string.milk), context.getString(R.string.milkDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 14), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(milk);
+        // Nachbarn
+        Task informOldAndNewNeighbours = new Task(context.getString(R.string.informOldAndNewNeighbours), context.getString(R.string.informOldAndNewNeighboursDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, -7) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        // TODO partner-link
+        informOldAndNewNeighbours.addLink(context.getString(R.string.informOldAndNewNeighboursDoorSigns), context.getString(R.string.informOldAndNewNeighboursDoorSignsLINK));
+        Task.addTask(informOldAndNewNeighbours);
 
-        // Fett und Öl
-        Task fatOil = new Task(context.getString(R.string.fatOil), context.getString(R.string.fatOilDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 21), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(fatOil);
+        // Ummeldung
+        Task informAuthorities = new Task(context.getString(R.string.informAuthorities), context.getString(R.string.informAuthoritiesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 13), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.Movement.getValue()), targetLocation);
+        informAuthorities.addLink(context.getString(R.string.informAuthoritiesResidence), context.getString(R.string.informAuthoritiesResidenceLINK));
+        informAuthorities.addLink(context.getString(R.string.informAuthoritiesCar), context.getString(R.string.informAuthoritiesCarLINK));
+        Task.addTask(informAuthorities);
 
-        // Gewürze
-        Task spices = new Task(context.getString(R.string.spices), context.getString(R.string.spicesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 21), Priority.Normal, 0L,
-                new TaskType(TaskTypeLockdown.FOOD), targetLocation);
-        Task.addTask(spices);
+        // Nachsendeauftrag
+        Task postalAftermath = new Task(context.getString(R.string.postalAftermath), context.getString(R.string.postalAftermathDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 0), Priority.High, 0L,
+                new TaskType(TaskTypeRelocation.OldFlat.getValue()), targetLocation);
+        postalAftermath.addLink(context.getString(R.string.postalAftermathSetup), context.getString(R.string.postalAftermathLINK));
+        Task.addTask(postalAftermath);
 
-        // Gaspistole
-        Task pistol = new Task(context.getString(R.string.gasPisol), context.getString(R.string.gasPistolDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 10), Priority.High, 0L,
-                new TaskType(TaskTypeLockdown.MISCELLANEOUS), targetLocation);
-        Task.addTask(pistol);
+        // Steuer
+        Task preserveArtisanBills = new Task(context.getString(R.string.preserveArtisanBills), context.getString(R.string.preserveArtisanBillsDesc), getLastDayInYearOf(today), Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.Movement), targetLocation);
+        preserveArtisanBills.addLink(context.getString(R.string.preserveArtisanBillsTip), context.getString(R.string.preserveArtisanBillsLINK));
+        Task.addTask(preserveArtisanBills);
+
+        // Sperrmüll
+        Task bulkyWaste = new Task(context.getString(R.string.bulkyWaste), context.getString(R.string.bulkyWasteDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, 1) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.OldFlat), targetLocation);
+        Task.addTask(bulkyWaste);
+
+        // alte Kaution / Nebenkostenabrechnung
+        Task oldRentDeposit = new Task(context.getString(R.string.oldRentDeposit), context.getString(R.string.oldRentDepositDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, 60) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.OldFlat), targetLocation);
+        oldRentDeposit.addLink(context.getString(R.string.oldRentDepositHowItWorks), context.getString(R.string.oldRentDepositHowItWorksLINK));
+        Task.addTask(oldRentDeposit);
+
+        // Einweihungsfeier
+        Task party = new Task(context.getString(R.string.party), context.getString(R.string.partyDesc), targetDate != null ? addMonthDaysToJavaUtilDate(targetDate, 0, 30) : null, Priority.Normal, 0L,
+                new TaskType(TaskTypeRelocation.NewFlat), targetLocation);
+        party.addLink(context.getString(R.string.partyEbay), context.getString(R.string.partyEbayLINK));
+        Task.addTask(party);
     }
-
-    private static void AddRemovalTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {}
 
     public static Date addMonthDaysToJavaUtilDate(Date date, int months, int days) {
 
