@@ -62,9 +62,6 @@
         <item>ELECTRONICS</item>
         <item>OTHER</item>
     </string-array>
-    <string name="contractCancel">If you want to cancel your old contract, your move often offers a special right of termination if you cannot be supplied by your previous provider at your new place of residence. Take Care! Send evidences by registered mail if possible. You could otherwise take disadvantage of some providers.</string>
-    <string name="partner_verivox_Id">2812</string>
-    <string name="partner_check24_Id">133701</string>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
     <string name="Remind_me_later">Remind me later</string>
@@ -75,135 +72,12 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
-    <string name="taskRentalContractOld3Months">Ending your tenancy?</string>
-    <string name="taskRentalContractOld">Cancel old lease</string>
-    <string name="taskRentalContractOldDesc">Cancel your old tenancy on time. You may be able to shorten the notice period with a new tenant.</string>
-    <string name="taskRentalContractOld3MonthsLINK">https://www.apartmentlist.com/renter-life/break-a-lease-without-a-penalty</string>
-    <string name="rentalContractOldSpecialRightOfTermination">Break clauses</string>
-    <string name="rentalContractOldSpecialRightOfTerminationLINK">https://www.ludlowthompson.com/property_advice/What_is_a_break_clause-25</string>
-    <string name="rentalContractNew">New lease</string>
-    <string name="rentalContractNewDesc">Check your rental contract for legal compliance and binding clauses (minimum rental period, reasonable advance payment for operating costs, excessive season rent, report visible defects, minor repair clause, flat share rent, brokerage commission, comparison of rent index / rental cover)</string>
-    <string name="rentalContractNewTraps">Common traps</string>
-    <string name="rentalContractNewTrapsLink">https://www.zillow.com/blog/5-common-moving-mistakes-183186/</string>
-    <string name="rentalContractNewTips">Tips for the rental contract</string>
-    <string name="rentalContractNewTipsLINK">https://www.kiplinger.com/article/real-estate/T050-C006-S001-seven-sins-of-first-time-renters.html</string>
-    <string name="informOldAndNewNeighbours">Inform neighbors (old and new)</string>
-    <string name="informOldAndNewNeighboursDesc">Let your old and new neighbors know about your move on the notice board.  Also note the rest times.  Usually from 1 p.m. to 3 p.m. and 8 p.m. to 7 a.m.  Also take the opportunity to attach your door signs so that the post and shipping companies can reach you.</string>
-    <string name="informOldAndNewNeighboursDoorSigns">Choose door signs</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=House signs with names&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6dc128bb3c84075b37e568177a8c611d]]></string>
-    <string name="informAuthorities">Authorities</string>
-    <string name="informAuthoritiesDesc">When you move out of state, you’ll have to transfer your driver’s license and update your vehicle’s registration and insurance within quite a short time frame (10 to 30 days, depending on your new state). A number of government agencies should be notified when you’re moving to another state. Be sure to update your address with the local office of the Social Security Administration, the electoral register, and other relevant institutions. The Internal Revenue Service will need your actual home address to mail your tax return, fiscal notes, and other documents. All you need to do is print out and mail in the IRS’ Change of Address form soon after your relocation.</string>
-    <string name="informAuthoritiesResidence">IRS</string>
-    <string name="informAuthoritiesResidenceLINK">https://www.irs.gov/faqs/irs-procedures/address-changes</string>
-    <string name="informAuthoritiesCar">Driver License or ID Card (Texas)</string>
-    <string name="informAuthoritiesCarLINK">https://www.dps.texas.gov/driverlicense/changes.htm</string>
-    <string name="postalAftermath">Forwarding order</string>
-    <string name="postalAftermathDesc">If you\'re moving home or moving your business, redirect your mail at the Post Office.</string>
-    <string name="postalAftermathSetup">Mail Redirection</string>
-    <string name="informContractors">Inform contractual partners</string>
-    <string name="informContractorsDesc">Inform banks, insurance companies, mobile operators, employers and other contractual partners about your new address. Don\'t just rely on Your forwarding order</string>
-    <string name="energyContract">Supplier of gas and power</string>
-    <string name="energyContractDesc">Check whether you keep your old gas or electricity contract (but inform about a change of address) or if you are allowed to.</string>
-    <string name="internetContract">Internet contract</string>
-    <string name="internetContractDesc">Check whether you have to / may change your provider. Otherwise this must at least be informed.</string>
-    <string name="internetContractAvailability">Providers at your new place of residence?</string>
-    <string name="internetContractAvailabilityLINK"><![CDATA[https://broadbandnow.com/All-Providers]]></string>
-    <string name="phoneContract">Landline phone</string>
-    <string name="phoneContractDesc">Check whether you have to / may change your provider and whether you can take your old number with you.</string>
-    <string name="phoneContractCompare">Compare telephone providers</string>
-    <string name="phoneContractCompareLINK">https://www.verivox.de</string>
-    <string name="tvContract">television contract</string>
-    <string name="tvContractDesc">Check whether you have to / may change your provider. Otherwise this must at least be informed.</string>
-    <string name="tvContractCompare">Compare TV providers</string>
-    <string name="tvContractCompareLINK">https://www.verivox.de</string>
-    <string name="fireAndBurglaryProtection">Fire protection and burglary protection</string>
-    <string name="fireAndBurglaryProtectionDesc">Smoke detectors are compulsory in some federal states and can save lives. Don\'t forget the burglary protection.</string>
-    <string name="fireAndBurglaryProtectionSmokeDetector">View smoke detector</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=fire detector&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6df846089c2d19d7984a9f764facfcbf]]></string>
-    <string name="fireAndBurglaryProtectionBurglary">Burglary protection systems</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=security technology house&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=a1885bd3cf763fd662899c98416d5d12]]></string>
-    <string name="requestSpecialLeave">Apply for special leave</string>
-    <string name="requestSpecialLeaveDesc">Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
-    <string name="requestSpecialLeaveLINK"><![CDATA[https://www.whatdotheyknow.com/request/205439/response/509436/attach/3/special%20leave%20policy%20and%20guidance.pdf]]></string>
-    <string name="rentalDepositAccount">Security deposit</string>
-    <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
-    <string name="rentalDepositAccountExplanation">Tenancy deposit protection</string>
-    <string name="rentalDepositAccountExplanationLINK">https://www.apartments.com/blog/everything-you-need-to-know-about-your-security-deposit</string>
     <string name="start_new_todo">New Lockdown</string>
-    <string name="postalAftermathLINK"><![CDATA[https://moversguide.usps.com/mgo/disclaimer?execution=e5s1&_flowId=icoa-main-flow&referral=MG81]]></string>
-    <string name="compareContracts">Compare tariffs</string>
-    <string name="compareContractVerivox">Compare tariffs</string>
-    <string name="compareContractCheck24">Compare tariffs</string>
-    <string name="compareEnergyContractVerivox">switch energy supplier without penalty?</string>
-    <string name="energyContractVerivoxLINK"><![CDATA[https://www.weflip.com/articles/switching-energy-suppliers-when/]]></string>
-    <string name="compareEnergyContractCheck24">https://www.uswitch.com/gas-electricity/</string>
-    <string name="energyContractCheck24LINK"><![CDATA[https://www.uswitch.com/gas-electricity/]]></string>
-    <string name="compareGasContractVerivox">https://www.comparethemarket.com/energy/gas/</string>
-    <string name="compareGasContractCheck24">https://www.uswitch.com/gas-electricity/</string>
-    <string name="gasContractVerivoxLINK"><![CDATA[https://www.comparethemarket.com/energy/gas/]]></string>
-    <string name="gasContractCheck24LINK"><![CDATA[https://www.uswitch.com/gas-electricity/]]></string>
-    <string name="internetContractCheck24LINK"><![CDATA[https://www.reviews.org/internet-service/best-internet-service-providers/]]></string>
-    <string name="internetContractVerivoxLINK"><![CDATA[https://www.practicalecommerce.com/20-Top-Internet-Service-Providers]]></string>
-    <string name="householdInsurance">Household insurance</string>
-    <string name="householdInsuranceDesc">Adjust your old household insurance and inform your insurer about your new address. If you do not yet have a (cheap) household insurance, now is a good time to get one or switch. You are optimally protected against damage caused by burglary, theft, fire or the weather on your household items.</string>
-    <string name="compareContractVerivoxLINK"><![CDATA[https://home-questions.comparethemarket.com/questions?#/policy/db4a39e7-a027-40dc-b409-9339a7c773b9]]></string>
-    <string name="movingVan">Find moving van</string>
-    <string name="movingVanDesc">Organize one or more vehicles for transportation.  This can even make sense if a freight forwarder is commissioned.</string>
-    <string name="movingVanCompare">Find a rental car</string>
-    <string name="movingVanCheck24LINK"><![CDATA[https://www.budgettruck.com/]]></string>
-    <string name="organizeHelper">Organize moving helpers</string>
-    <string name="organizeHelperDesc">Ask your friends, use a doodle survey, hire a moving company or hire helpers. If you plan to move without a freight forwarder, you should get a hand truck and / or carrying straps.</string>
-    <string name="handoverOldFlat">Handover of old apartment</string>
-    <string name="handoverOldFlatDesc">Make an appointment to hand over the old apartment.Read if necessary. Meter readings beforehand and report this to the supplier.</string>
-    <string name="handoverNewFlat">Handover of new apartment</string>
-    <string name="handoverNewFlatDesc">Make an appointment to collect the keys for the new apartment. Note damage carefully by photos. You can use the confirmation of the transfer to change your place of residence.</string>
-    <string name="renovateOldFlat">Apartment renovation</string>
-    <string name="renovateOldFlatDesc">Check to what extent you are contractually obliged to paint the old apartment. If necessary, hire a cheap company from MyHammer etc. or carry out the work yourself professionally.</string>
-    <string name="renovationObligation">Renovation obligation</string>
-    <string name="renovationObligationLINK">https://www.landlordology.com/tenant-responsible-for-repairs/</string>
-    <string name="preserveArtisanBills">Preserve artisan bills</string>
-    <string name="preserveArtisanBillsDesc">Keep artisan bills for tax returns. You can save up to 5000 dollars in taxes each year.</string>
-    <string name="preserveArtisanBillsTip">Tax tip</string>
-    <string name="preserveArtisanBillsLINK">https://turbotax.intuit.com/tax-tips/jobs-and-career/guide-to-irs-form-3903-moving-expenses/L6CwmGm3K</string>
-    <string name="bulkyWaste">Bulky waste</string>
-    <string name="bulkyWasteDesc">Anything you don\'t want to take with you or give away comes with bulky waste. You can register this with the city.</string>
-    <string name="organizeHelperCarryingStraps">carrying straps on ebay</string>
-    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xcarrying+strap+furniture.TRS0%26_nkw%3Dcarrying+strap+furniture%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dcarrying+strap+furniture]]></string>
-    <string name="organizeHelperhandTruck">hand trucks on Ebay</string>
-    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3Dsack+barrow%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3Dsack+barrow]]></string>
-    <string name="organizeHelperWorkGloves">Work Gloves on Amazon</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=Work gloves move&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6d850fcbe489717a72a985d739342dca]]></string>
-    <string name="previousDay">Previous day</string>
-    <string name="previousDayDesc">Charge your phone, get food, get tips, keep important documents at hand and check your medicine chest. Last but not least, remember to go to bed early.</string>
-    <string name="oldRentDepositHowItWorks">How does the repayment of the rental deposit work?</string>
-    <string name="oldRentDeposit">Old tenancy deposit</string>
-    <string name="oldRentDepositDesc">You\'ll need to contact your landlord at the end of your tenancy and ask them for your deposit. If your home is managed by a letting agency, you\'ll need to contact them instead.</string>
-    <string name="oldRentDepositHowItWorksLINK">https://www.thebalancesmb.com/rental-security-deposit-questions-2125007</string>
-    <string name="cordonOffParkingLot">Cordon off parking lot</string>
-    <string name="cordonOffParkingLotDesc">Block off the parking spaces in front of the old and new domicile in good time before the move.</string>
-    <string name="cordonOffParkingLotHowTo">Reserve a parking space?</string>
-    <string name="cordonOffParkingLotHowToLINK">http://philapark.org/2014/12/temporarily-prohibit-parking-while-moving/</string>
-    <string name="packingMaterial">Packing material</string>
-    <string name="packingMaterialDesc">Get enough moving boxes, garbage bags, parcel tape, bubble wrap or old newspapers in good time.</string>
-    <string name="packingMaterialMovingBoxes">Moving boxes</string>
-    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com/%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XMoving+boxes.TRS0%26_nkw%3DMoving+boxes%26_sacat%3D0]]></string>
-    <string name="packingMaterialTrashBags">Trash bags</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=trash bags&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=b588628c596ce8f6c89ad9e1d6725eae]]></string>
-    <string name="packingMaterialAirCushionFoil">Air cushion foil</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=bubble wrap&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=56c1cf4f34ae348835c037518d182899]]></string>
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
-    <string name="removalDate">MOVING DATE</string>
-    <string name="removalDateDesc"><![CDATA[Remember to load the furniture first. If you have not already done so, you should label your removal goods => content, destination (room). Mark moving boxes that contain fragile contents.]]></string>
-    <string name="compareLiabilityInsurance">compare liability insurances</string>
-    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://coverhound.com/business-insurance/general-liability-insurance]]></string>
-    <string name="liabilityInsurance">Liability insurance</string>
-    <string name="liabilityInsuranceDesc">There are a number of different types of insurance available to protect your own home from damage. Private liability insurance is an absolute must.  With liability insurance, you are insured against all claims for property damage, personal injury or financial loss if a third party has been damaged. In contrast to other insurance companies, private liability is also relatively cheap.  You have to budget around 70 euros a year.</string>
-    <string name="go">GO ON!</string>
+     <string name="go">GO ON!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="party">Official opening</string>
-    <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
     <string name="introDescSpecific">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
     <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
     <string name="introLegend">Legend</string>

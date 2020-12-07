@@ -62,9 +62,6 @@
         <item>ÉLECTRONIQUE</item>
         <item>AUTRE</item>
     </string-array>
-    <string name="contractCancel">Si vous souhaitez résilier votre ancien contrat, votre déménagement offre souvent un droit de résiliation spécial si vous ne pouvez pas être fourni par votre ancien fournisseur à votre nouveau lieu de résidence.  Attention!  Si possible, envoyez des preuves par courrier recommandé.  Sinon, vous pourriez profiter de certains fournisseurs comme PYUR.</string>
-    <string name="partner_verivox_Id">2812</string>
-    <string name="partner_check24_Id">133701</string>
     <string name="Rate_App">Évaluer l\'application</string>
     <string name="textRate">Une application non notée ne sera pas achetée. \ NA Aucune application non achetée ne sera maintenue et interrompue. \ N \ nVeuillez prendre 10 secondes pour évaluer.  Merci beaucoup!</string>
     <string name="Remind_me_later">Rappelez-vous plus tard</string>
@@ -74,137 +71,14 @@
     <string name="placeholder_hide_low_prio">seulement haute priorité</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="taskRentalContractOld3Months">Période de 3 mois?</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
-    <string name="taskRentalContractOld">Annuler l\'ancien bail</string>
-    <string name="taskRentalContractOldDesc">Annulez votre ancienne location à temps. Vous pourrez peut-être raccourcir la période de préavis avec un nouveau locataire.</string>
-    <string name="taskRentalContractOld3MonthsLINK">https://location-immobilier.ooreka.fr/fiche/voir/192779/location-immo-peut-on-annuler-son-preavis-de-depart</string>
-    <string name="rentalContractOldSpecialRightOfTermination">Droit de résiliation spécial</string>
-    <string name="rentalContractOldSpecialRightOfTerminationLINK">https://immobilier.lefigaro.fr/annonces/edito/louer/je-resilie/resilier-son-bail-les-5-erreurs-a-ne-pas-commettre</string>
-    <string name="rentalContractNew">Nouveau bail</string>
-    <string name="rentalContractNewDesc">Vérifiez votre contrat de location pour la conformité légale et les clauses contraignantes (période de location minimale, avance raisonnable pour les coûts d\'exploitation, loyer de saison excessive, signalez les défauts visibles, petite clause de réparation, loyer en colocation, commission de courtage, comparaison de l\'indice des loyers / couverture de location)</string>
-    <string name="rentalContractNewTraps">Contrat de location: attention à la chute</string>
-    <string name="rentalContractNewTrapsLink">https://blog.locservice.fr/locataires-10-conseils-a-suivre-avant-de-signer-un-bail-de-location-341.html</string>
-    <string name="rentalContractNewTips">les droits du locataire</string>
-    <string name="rentalContractNewTipsLINK">https://www.dossierfamilial.com/immobilier-logement/locataire/bail-les-droits-du-locataire-344059</string>
-    <string name="informOldAndNewNeighbours">Informer les anciens et les nouveaux voisins</string>
-    <string name="informOldAndNewNeighboursDesc">Informez vos anciens et nouveaux voisins de votre déménagement sur le tableau d\'affichage.  Notez également les temps de repos.  Habituellement de 13 h à 15 h et de 20 h à 7 h.  Profitez-en également pour fixer vos panneaux de porte afin que les sociétés de poste et d\'expédition puissent vous joindre.</string>
-    <string name="informOldAndNewNeighboursDoorSigns">Choisissez des panneaux de porte</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.fr/gp/product/B085VW4RGP/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B085VW4RGP&linkCode=as2&tag=w1fxeor906-21&linkId=5c68e09ac603dfc993c6ded4ea6f00d2]]></string>
-    <string name="informAuthorities">Autorités d\'enregistrement</string>
-    <string name="informAuthoritiesDesc">Après votre déménagement (mais pas avant!) Vous devez vous inscrire à votre bureau d\'enregistrement local. Transmettez également votre nouvelle adresse à vos partenaires contractuels et ne vous fiez pas à l\'ordre d\'expédition.</string>
-    <string name="informAuthoritiesResidence">Enregistrer la résidence</string>
-    <string name="informAuthoritiesResidenceLINK">https://my.ambafrance.org/Certificat-de-residence-et-changement-de-residence</string>
-    <string name="informAuthoritiesCar">Inscrire la voiture</string>
-    <string name="informAuthoritiesCarLINK">https://www.eplaque.fr/guide/departement-pour-l-immatriculation-d-un-vehicule.html</string>
-    <string name="postalAftermath">Ordre d\'expédition</string>
-    <string name="postalAftermathDesc">Configurez un ordre de transfert. Attention, il y a des moutons noirs ici sur Internet! Utilisez uniquement le site https://www.laposte.fr/.</string>
-    <string name="postalAftermathSetup">Configurer maintenant l\'ordre de transfert</string>
-    <string name="informContractors">Informer les partenaires contractuels</string>
-    <string name="informContractorsDesc">Informez les banques, les compagnies d\'assurance, les opérateurs mobiles, les employeurs, GEZ et les autres partenaires contractuels de votre nouvelle adresse. Ne vous fiez pas seulement à l\'ordre de transfert</string>
-    <string name="energyContract">Fournisseur d\'énergie</string>
-    <string name="energyContractDesc">Vérifiez si vous conservez votre ancien contrat d\'électricité et de gaz (mais informez d\'un changement d\'adresse) ou si vous devez / êtes autorisé à changer.</string>
-    <string name="internetContract">Connexion Internet et TV</string>
-    <string name="internetContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur.  Sinon, cela doit au moins être informé.</string>
-    <string name="internetContractAvailability">Prestataire à votre nouveau domicile?</string>
-    <string name="internetContractAvailabilityLINK"><![CDATA[https://www.officiel-demenagement.com/changement-d-adresse/internet-et-television]]></string>
-    <string name="phoneContract">Téléphone fixe</string>
-    <string name="phoneContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur et si vous pouvez emporter votre ancien numéro avec vous.</string>
-    <string name="phoneContractCompare">Comparer les opérateurs téléphoniques</string>
-    <string name="phoneContractCompareLINK">https://www.verivox.de</string>
-    <string name="tvContract">Connexion TV</string>
-    <string name="tvContractDesc">Vérifiez si vous devez / pouvez changer de fournisseur.  Sinon, cela doit au moins être informé.</string>
-    <string name="tvContractCompare">Comparez les fournisseurs de télévision</string>
-    <string name="tvContractCompareLINK">https://www.quechoisir.org/comparateur-fai-n21205/</string>
-    <string name="fireAndBurglaryProtection">Protection contre les incendies et cambriolage</string>
-    <string name="fireAndBurglaryProtectionDesc">Les détecteurs de fumée sont obligatoires dans certains États fédéraux et peuvent sauver des vies. N\'oubliez pas la protection contre le cambriolage.</string>
-    <string name="fireAndBurglaryProtectionSmokeDetector">Comparez les alarmes incendie</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.fr/gp/product/B07C8DB4QX/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B07C8DB4QX&linkCode=as2&tag=w1fxeor906-21&linkId=efc3d1237b44054057490762930719f3]]></string>
-    <string name="fireAndBurglaryProtectionBurglary">protection contre le cambriolage</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=protection contre le cambriolage&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
-    <string name="requestSpecialLeave">Demander des vacances (spéciales)</string>
-    <string name="requestSpecialLeaveDesc">N\'oubliez pas de postuler pour des vacances.  En règle générale, votre employeur vous accordera un congé spécial pour le déménagement. Les questions ne coûtent rien!</string>
-    <string name="requestSpecialLeaveLINK"><![CDATA[https://travail-emploi.gouv.fr/actualites/l-actualite-du-ministere/article/5-questions-reponses-les-conges-payes]]></string>
-    <string name="rentalDepositAccount">Dépôt de transfert</string>
-    <string name="rentalDepositAccountDesc">Vous pouvez déposer le dépôt directement sur un livre d\'épargne de dépôt de loyer au lieu de le transférer directement au propriétaire. L\'avantage est une protection contre la faillite, etc. du propriétaire.</string>
-    <string name="rentalDepositAccountExplanation"></string>
-    <string name="rentalDepositAccountExplanationLINK"></string>
     <string name="start_new_todo">créer un nouveau confinement</string>
-    <string name="postalAftermathLINK">https://www.laposte.fr/changement-adresse-demenagement-reexpedition</string>
-    <string name="compareContracts">Comparez les tarifs maintenant</string>
-    <string name="compareContractVerivox"></string>
-    <string name="compareContractCheck24">Comparez les tarifs</string>
-    <string name="compareEnergyContractCheck24">Tarifs d\'électricité</string>
-    <string name="compareEnergyContractVerivox"></string>
-    <string name="energyContractCheck24LINK"><![CDATA[https://prix-elec.com/tarifs]]></string>
-    <string name="energyContractVerivoxLINK"></string>
-    <string name="compareGasContractVerivox"></string>
-    <string name="compareGasContractCheck24">Tarifs du gaz</string>
-    <string name="gasContractVerivoxLINK"></string>
-    <string name="gasContractCheck24LINK"><![CDATA[https://www.jechange.fr/energie/gaz/guides/prix-gaz-france-2446]]></string>
-    <string name="internetContractCheck24LINK"><![CDATA[https://www.echosdunet.net/offres]]></string>
-    <string name="internetContractVerivoxLINK"></string>
-    <string name="householdInsurance">Assurance ménage</string>
-    <string name="householdInsuranceDesc">Ajustez votre ancienne assurance habitation et informez votre assureur de votre nouvelle adresse.  Si vous n\'avez pas encore d\'assurance ménage (bon marché), c\'est le bon moment pour souscrire ou changer.  Cela vous protège contre les dommages causés par le cambriolage, le vol, le feu ou les intempéries sur vos articles ménagers.</string>
-    <string name="compareContractVerivoxLINK"><![CDATA[https://partner.verivox.de/go.cgi?pid=2812&wmid=52&cpid=1&prid=125&subid=&target=Hausratversicherung_2019-09]]></string>
-    <string name="movingVan">Organiser la chariot de meubles</string>
-    <string name="movingVanDesc">Organisez un ou plusieurs véhicules pour le transport. Cela peut avoir du sens même si vous avez mandaté un transitaire.</string>
-    <string name="movingVanCompare">Trouver une voiture de location</string>
-    <string name="movingVanCheck24LINK"><![CDATA[https://fretbay.com/fr/transport-meuble/]]></string>
-    <string name="organizeHelper">Organiser des aides au déménagement</string>
-    <string name="organizeHelperDesc">Demandez à vos amis, utilisez une enquête doodle, embauchez une entreprise de déménagement ou embauchez des aides. Si vous prévoyez de vous déplacer sans transitaire, vous devriez vous procurer un diable avec des sangles, des gants et de vieilles couvertures. Votre dos vous remerciera ;-)</string>
-    <string name="handoverOldFlat">Acceptation de l\'ancien appartement</string>
-    <string name="handoverOldFlatDesc">Prenez rendez-vous pour remettre l\'ancien appartement. Lisez si nécessaire. Relevé des mesures au préalable et signalez-le au fournisseur. Videz à nouveau votre boîte aux lettres.</string>
-    <string name="handoverNewFlat">Reprise d\'un nouvel appartement</string>
-    <string name="handoverNewFlatDesc">Prenez rendez-vous pour récupérer les clés du nouvel appartement. Notez soigneusement les dommages avec des photos. Vous pouvez utiliser la confirmation du transfert pour changer de lieu de résidence.</string>
-    <string name="renovateOldFlat">Rénovation d\'appartement</string>
-    <string name="renovateOldFlatDesc">Vérifiez dans quelle mesure vous êtes contractuellement obligé de peindre l\'ancien appartement. Si nécessaire, louez une entreprise bon marché chez MyHammer, etc. ou effectuez le travail vous-même de manière professionnelle.</string>
-    <string name="renovationObligation">Obligation de rénovation</string>
-    <string name="renovationObligationLINK">https://www.immobilienscout24.de/umzug/ratgeber/wohnungsuebergabe/renovierungspflicht.html</string>
-    <string name="preserveArtisanBills">Reçus pour les déclarations de revenus</string>
-    <string name="preserveArtisanBillsDesc">Gardez les factures des artisans pour les déclarations de revenus. Vous pouvez économiser jusqu\'à 1 200 euros de taxes chaque année. Si vous déménagez à cause de votre employeur, vous obtiendrez encore plus de remboursement.</string>
-    <string name="preserveArtisanBillsTip">Conseil fiscal</string>
-    <string name="preserveArtisanBillsLINK">https://www.hurra-wir-bauen.de/ratgeber/baufinanzierung/steuertipp.html</string>
-    <string name="bulkyWaste">Déchets volumineux</string>
-    <string name="bulkyWasteDesc">Tout ce que vous ne voulez pas emporter ou donner est livré avec des déchets encombrants. Vous pouvez l\'enregistrer auprès de la ville.</string>
-    <string name="organizeHelperCarryingStraps">Sangle de levage sur Ebay</string>
-    <string name="organizeHelperCarryingStrapsEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313.TR12.TRC2.A0.H0.Xtragegurt.TRS0%26_nkw%3Dsangle+de+levage%26_sacat%3D3187%26LH_TitleDesc%3D0%26_osacat%3D3187%26_odkw%3Dsangle de levage]]></string>
-    <string name="organizeHelperhandTruck">Charrette à bras sur Ebay</string>
-    <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP]]></string>
-    <string name="organizeHelperWorkGloves">Gants de travail</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=Gants de travail&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=c2580c139f5c7166059cbce86a6e1e4c]]></string>
-    <string name="previousDay">Préparatifs la veille</string>
-    <string name="previousDayDesc">Rechargez votre téléphone, obtenez de la nourriture, obtenez des conseils, gardez des documents importants à portée de main et vérifiez votre coffre à médicaments. Il est également judicieux d\'étiqueter vos produits de déménagement => contenu, destination (chambre). Marquez les boîtes mobiles qui contiennent des contenus fragiles. Dernier point mais non le moindre: n\'oubliez pas de vous coucher tôt.</string>
-    <string name="oldRentDepositHowItWorks">Comment fonctionne le remboursement de la caution locative?</string>
-    <string name="oldRentDeposit">Ancien dépôt</string>
-    <string name="oldRentDepositDesc">N\'oubliez pas le dépôt de garantie de votre ancien propriétaire. Attention! Veuillez rester actif: Dans votre propre intérêt, vous ne devez pas simplement attendre que le propriétaire remplisse ses fonctions un beau jour, car il y a un délai de prescription de 3 ans pour votre demande de remboursement de l\'acompte. Si le délai est écoulé sans que vous ne puissiez faire quoi que ce soit à ce sujet, votre argent a disparu, même si vous n\'êtes pas en faute. Vous avez également droit à un règlement des frais de service. Vous pouvez déduire cela proportionnellement de votre déclaration de revenus et recevoir souvent un remboursement si vous déménagez au cours de l\'année.</string>
-    <string name="oldRentDepositHowItWorksLINK">https://kautionsfrei.de/mietkaution-rueckzahlung</string>
-    <string name="cordonOffParkingLot">Verrouiller le parking</string>
-    <string name="cordonOffParkingLotDesc">Bloquez les places de stationnement devant l\'ancien et le nouveau domicile en temps utile avant de déménager.</string>
-    <string name="cordonOffParkingLotHowTo">Comment éteindre correctement?</string>
-    <string name="cordonOffParkingLotHowToLINK">https://www.umzug.de/tipps/umziehen/halteverbotsschilder.html</string>
-    <string name="packingMaterial">Matériau d\'emballage</string>
-    <string name="packingMaterialDesc">Obtenez suffisamment de boîtes de déménagement, de sacs à ordures, de ruban adhésif, de papier bulle ou de vieux journaux en temps utile.</string>
-    <string name="packingMaterialMovingBoxes">Boîtes de déménagement</string>
-    <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XBoîtes+de+déménagement.TRS0%26_nkw%3DBoîtes+de+déménagement%26_sacat%3D0]]></string>
-    <string name="packingMaterialTrashBags">sac poubelle</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=sac poubelle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=8f63d96814a9b2c1f03608c41ad6a8a6]]></string>
-    <string name="packingMaterialAirCushionFoil">Papier bulle</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&keywords=Papier bulle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=1bae9161d893323b534b27aa564424fd]]></string>
     <string name="partyEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3Darticles+de+fête%26_sacat%3D0]]></string>
     <string name="lookFor">Chercher</string>
     <string name="on">à</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
-    <string name="removalDate">DATE DE DÉPLACEMENT</string>
-    <string name="removalDateDesc">N\'oubliez pas de charger les meubles en premier. Si vous ne l\'avez pas déjà fait, vous devez étiqueter vos produits de déménagement => contenu, destination (chambre).  Marquez les boîtes mobiles qui contiennent des contenus fragiles.></string>
-    <string name="compareLiabilityInsurance">Comparez l\'assurance responsabilité</string>
-    <string name="compareLiabilityInsuranceVerivoxLINK"><![CDATA[https://www.lecomparateurassurance.com/98-autres-guides/86464-responsabilite-civile-qu-est-que-est]]></string>
-    <string name="liabilityInsurance">Assurance responsabilité civile</string>
-    <string name="liabilityInsuranceDesc">Il existe différents types d\'assurance pour protéger votre maison contre les dommages. Une assurance responsabilité civile privée est un must absolu. Cela vous assure contre les réclamations pour dommages matériels, blessures corporelles ou pertes financières si un tiers a été blessé. Contrairement à d\'autres compagnies d\'assurance, la responsabilité privée est également relativement bon marché. Vous devez prévoir environ 70 euros par an ici.</string>
     <string name="go">ALLONS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="party">Cérémonie d\'inauguration</string>
-    <string name="partyDesc">Offrez une cérémonie d\'inauguration pour les amis et les aides dans votre nouvel appartement.</string>
     <string name="introDescSpecific">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
