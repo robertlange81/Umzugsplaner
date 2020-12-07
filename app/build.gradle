@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
-        applicationId "com.planner.generic.checklist"
+        applicationId "com.planner.generic.virus"
         minSdkVersion 14
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 17
         versionName "17.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

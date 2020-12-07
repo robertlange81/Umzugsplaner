@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.planner.generic.checklist.Activities.IntroActivity">
+    tools:context="com.planner.generic.virus.Activities.IntroActivity">
     <item
         android:id="@+id/intro_load"
         android:icon="@drawable/ic_folder_open_black_24dp"
