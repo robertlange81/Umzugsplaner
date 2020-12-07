@@ -54,12 +54,7 @@
     <string name="paid_done">bezahlt</string>
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
-    <string-array name="base_task_types">
-        <!--item>ALTE WOHNUNG</item>
-        <item>NEUE WOHNUNG</item>
-        <item>VERTRÄGE</item>
-        <item>UMZUG</item>
-        <item>MÖBEL</item-->
+    <string-array name="task_types">
         <item>LEBENSMITTEL</item>
         <item>MEDIZIN</item>
         <item>HAUSHALT</item>

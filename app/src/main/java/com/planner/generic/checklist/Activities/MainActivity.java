@@ -964,7 +964,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 holder.date.setText("");
             }
 
-            String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.base_task_types);
+            String[] str_task_types = mParentActivity.getBaseContext().getResources().getStringArray(R.array.task_types);
             if(task.type != null && task.type.getValue() < str_task_types.length) {
                 holder.type.setText((String) Array.get(str_task_types, task.type.getValue()));
             }

@@ -257,7 +257,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       ArrayAdapter _categoryAdapter = new ArrayAdapter<String>(
               rootView.getContext(),
               R.layout.simple_spinner_dropdown,
-              rootView.getContext().getResources().getStringArray(R.array.base_task_types)
+              rootView.getContext().getResources().getStringArray(R.array.task_types)
       );
       spinnerDetailType.setAdapter(_categoryAdapter);
       setDetails(linkMap, rootView);

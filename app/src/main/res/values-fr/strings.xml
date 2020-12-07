@@ -55,13 +55,7 @@
     <string name="paid_done">payé</string>
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
-    <string-array name="base_task_types">
-        <!--item>VIEUX APP.</item>
-        <item>NOUVEL APP.</item>
-        <item>CONTRATS</item>
-        <item>BOUGE TOI</item>
-        <item>MEUBLES</item>
-        <item>CUISINE</item-->
+    <string-array name="task_types">
         <item>ALIMENTATION</item>
         <item>MÉDECINE</item>
         <item>MENAGE</item>

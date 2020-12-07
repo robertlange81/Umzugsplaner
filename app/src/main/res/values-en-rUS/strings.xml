@@ -55,14 +55,7 @@
     <string name="paid_done">paid</string>
     <string name="currency">$</string>
     <string name="currency_long">Dollar</string>
-    <string-array name="base_task_types">
-        <!--item>OLD FLAT</item>
-        <item>NEW FLAT</item>
-        <item>CONTRACTS</item>
-        <item>MOVEMENT</item>
-        <item>ELECTRONICS</item>
-        <item>FURNITURE</item>
-        <item>KITCHEN</item-->
+    <string-array name="task_types">
         <item>FOODS</item>
         <item>MEDICINE</item>
         <item>HOUSEHOLD</item>
