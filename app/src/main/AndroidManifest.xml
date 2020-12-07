@@ -61,7 +61,7 @@
 
         <provider
             android:name=".Model.TaskProvider"
-            android:authorities="com.planner.generic.virus.providerx" />
+            android:authorities="com.planner.generic.virus.provider" />
 
         <!-- Services -->
         <service android:name=".Helpers.ExportService" />
