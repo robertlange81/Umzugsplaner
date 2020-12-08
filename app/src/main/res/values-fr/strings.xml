@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Couvre-feu</string>
+    <string name="app_name">Liste de contrôle</string>
     <string name="category">Type</string>
     <string name="date_changed">Date changée</string>
     <string name="deleted">supprimé</string>
@@ -24,7 +24,7 @@
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export">calendrier</string>
     <string name="placeholder_date_removal">Quand veux-tu partir?</string>
-    <string name="placeholder_date_checklist">Quand pensez-vous que le verrouillage commencera?</string>
+    <string name="placeholder_date_checklist">À quel moment toutes les tâches devraient-elles être terminées?</string>
     <string name="placeholder_place_headline_specific">Où habite-tu (optionnel)?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
@@ -56,11 +56,8 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>ALIMENTATION</item>
-        <item>MÉDECINE</item>
-        <item>MENAGE</item>
-        <item>ÉLECTRONIQUE</item>
-        <item>AUTRE</item>
+        <item>SIMPLE</item>
+        <item>DIFFICILE</item>
     </string-array>
     <string name="Rate_App">Évaluer l\'application</string>
     <string name="textRate">Une application non notée ne sera pas achetée. \ NA Aucune application non achetée ne sera maintenue et interrompue. \ N \ nVeuillez prendre 10 secondes pour évaluer.  Merci beaucoup!</string>
@@ -73,13 +70,12 @@
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="start_new_todo">créer un nouveau confinement</string>
-    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3Darticles+de+fête%26_sacat%3D0]]></string>
     <string name="lookFor">Chercher</string>
     <string name="on">à</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">ALLONS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
+    <string name="introDescSpecific"></string>
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
     <string name="postal">CP</string>
@@ -87,15 +83,9 @@
     <string name="street">Rue</string>
     <string name="streetNumber">Numéro</string>
     <string name="deleteAll">Tout effacer</string>
-    <string name="partyEbay">Articles de fête sur Ebay</string>
-    <string name="legendExportLong">exporter vers le calendrier</string>
-    <string name="legendPrioLong">définir une priorité normale ou élevée</string>
-    <string name="legendSetDoneLong">Définir la tâche sur terminée ou ouverte</string>
-    <string name="legendFilterLong">Filtrer les tâches par titre</string>
     <string name="legendCostsLong">Aperçu des coûts</string>
     <string name="legendOverview">terminées / toutes</string>
     <string name="legendDoneLong">tâches terminées / toutes les tâches</string>
-    <string name="legentCosts">Aperçu des coûts</string>
     <string name="legendFilter">Titre de recherche</string>
     <string name="legendDelete">Clair</string>
     <string name="legendDone">Tâche accomplie</string>
@@ -111,54 +101,13 @@
     <string name="days">jours</string>
     <string name="hours">heures</string>
     <string name="minits">minutes</string>
-    <string name="untilTargetDate">JUSQU\'AU VERROUILLAGE</string>
+    <string name="untilTargetDate">Jusqu\'\à la rencontre</string>
     <string name="introNextTasks">Vos prochaines tâches:</string>
     <string name="routeMap">L\'itinéraire</string>
     <string name="DateOrPlaceNeeded">Veuillez saisir une date ou spécifier un emplacement.</string>
     <string name="show_home">Afficher l\'appartement sur la carte</string>
     <string name="show_location">Afficher sur la carte</string>
     <string name="export">Exporter la liste</string>
-    <string name="disinfectant">Désinfectant</string>
-    <string name="disinfectant_desc">Désinfectant pour la peau ET pour les plaies.</string>
-    <string name="Respirators">Respirateurs</string>
-    <string name="Respirators_desc">Respirateurs avec la plus haute classe de protection FFP3</string>
-    <string name="medicalkit">Trousse de premiers secours</string>
-    <string name="firstAidKitDesc">Trousse de premiers soins selon la norme, assurez-vous qu\'elle n\'est pas périmée!</string>
-    <string name="medication">Médicaments</string>
-    <string name="medicationDesc">Médicaments prescrits par le médecin</string>
-    <string name="painReliever">Anti douleur</string>
-    <string name="painRelieverDesc">Antalgiques: ibuprofène et paracétamol.</string>
-    <string name="DiarrheaRemedy">Remède contre la diarrhée</string>
-    <string name="water">Boire de l\'eau</string>
-    <string name="waterDesc">20 litre - 5 litres sont prévus pour la préparation de pâtes, pommes de terre et riz.</string>
-    <string name="readyMeals">Plats cuisinés</string>
-    <string name="readyMealsDesc">Des plats cuisinés tels que des raviolis en conserve. N\'importe quelle quantité.</string>
-    <string name="pocketLamp">Lampe de poche</string>
-    <string name="pocketLampDesc">Une lampe de poche à manivelle rechargeable peut être très utile en cas de panne de courant.</string>
-    <string name="batteries">Piles</string>
-    <string name="batteriesDesc">Batteries de différentes tailles.</string>
-    <string name="potatoes">Pommes de terre</string>
-    <string name="potatoesDesc">4 kg de pommes de terre, riz et céréales</string>
-    <string name="fuel">Essence / Bidon</string>
-    <string name="fuelDesc">Essence ou diesel dans un bidon de 20 litres pour faire le plein d\'urgence de votre voiture ou d\'un générateur (diesel).</string>
-    <string name="sleepingBag">Sac de couchage</string>
-    <string name="sleepingBagDesc">L\'Office de protection contre les catastrophes recommande des sacs de couchage.</string>
-    <string name="waterproofClothing">Vêtements Imperméables</string>
-    <string name="waterproofClothingDesc">Des vêtements imperméables sont recommandés par l\'Agence de protection civile.</string>
-    <string name="vegetables">Légumes en conserve</string>
-    <string name="vegetablesDesc">4 kilogrammes de légumineuses et légumes - principalement dans des boîtes ou des verres</string>
-    <string name="fruit">Fruits en conserve</string>
-    <string name="fruitDesc">3 kilogrammes de fruits - principalement dans des boîtes et des verres</string>
-    <string name="milk">Lait</string>
-    <string name="milkDesc">3 litres ou kilogrammes de lait et de produits laitiers - principalement des produits qui n\'ont pas besoin d\'être réfrigérés</string>
-    <string name="fatOil">Gras et huile</string>
-    <string name="fatOilDesc">1 kg de graisse et d\'huile</string>
-    <string name="spices">Épices</string>
-    <string name="spicesDesc">Épices, sucre et édulcorants</string>
-    <string name="coldRemedies">Remèdes contre le rhume</string>
-    <string name="coldRemediesDesc">Remèdes contre le rhume pour soulager la toux, le nez qui coule et la fièvre.</string>
-    <string name="clinicalThermometer">Thermomètre médical</string>
-    <string name="clinicalThermometerDesc">Thermomètre médical, de préférence un thermomètre infrarouge, pour mesurer sur le front.</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Exportation de tâches</string>
     <string name="ExportNotificationMessage">Exportation de tâches</string>

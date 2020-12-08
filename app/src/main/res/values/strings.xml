@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lockdown Check</string>
+    <string name="app_name">Checklist</string>
     <string name="category">type</string>
     <string name="deleted">deleted</string>
     <string name="date_changed">date changed</string>
@@ -24,7 +24,7 @@
     <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
     <string name="placeholder_date_removal">When do you want to move?</string>
-    <string name="placeholder_date_checklist">When do you expect the lockdown to begin?</string>
+    <string name="placeholder_date_checklist">By when should all tasks be completed?</string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
@@ -56,11 +56,8 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>FOODS</item>
-        <item>MEDICINE</item>
-        <item>HOUSEHOLD</item>
-        <item>ELECTRONICS</item>
-        <item>OTHER</item>
+        <item>SIMPLE</item>
+        <item>DIFFICULT</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
@@ -78,7 +75,7 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">GO ON!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
+    <string name="introDescSpecific"></string>
     <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
     <string name="introLegend">Legend</string>
     <string name="placeholder_place_headline_specific">Where do You live (optional)?</string>
@@ -87,16 +84,9 @@
     <string name="street">street</string>
     <string name="streetNumber">number</string>
     <string name="deleteAll">Delete All Tasks</string>
-    <string name="partyEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3DParty%26_sacat%3D0]]></string>
-    <string name="partyEbay">Party items on Ebay</string>
-    <string name="legendExportLong">Export to Google Calendar</string>
-    <string name="legendPrioLong">Set normal or high priority</string>
-    <string name="legendSetDoneLong">Set task done or undone</string>
-    <string name="legendFilterLong">Filter tasks by title</string>
     <string name="legendCostsLong">Costs summary</string>
     <string name="legendOverview">done/all tasks</string>
     <string name="legendDoneLong">done / all tasks</string>
-    <string name="legentCosts">Costs overview</string>
     <string name="legendFilter">Filter by name</string>
     <string name="legendDone">Set task done</string>
     <string name="legendPrio">Set priority</string>
@@ -111,54 +101,13 @@
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minits">Minutes</string>
-    <string name="untilTargetDate">UNTIL LOCKDOWN DATE</string>
+    <string name="untilTargetDate">UNTIL DEADLINE</string>
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
     <string name="show_home">Show home on map</string>
     <string name="show_location">Show on map</string>
     <string name="export">Export list</string>
-    <string name="disinfectant">disinfectant</string>
-    <string name="disinfectant_desc">Disinfectant for the skin AND for wounds.</string>
-    <string name="Respirators">Respirators</string>
-    <string name="Respirators_desc">Respirators with the highest protection class FFP3</string>
-    <string name="medicalkit">Medical kit</string>
-    <string name="firstAidKitDesc">First-aid kit according to standard, make sure that it has not expired!</string>
-    <string name="medication">Medications</string>
-    <string name="medicationDesc">Medications prescribed by the doctor</string>
-    <string name="painReliever">pain reliever</string>
-    <string name="painRelieverDesc">Pain relievers: ibuprofen and paracetamol.</string>
-    <string name="DiarrheaRemedy">Diarrhea remedy</string>
-    <string name="water">20 liters of water</string>
-    <string name="waterDesc">Five liters of it are planned for the preparation of pasta, potatoes and rice.</string>
-    <string name="readyMeals">Ready meals</string>
-    <string name="readyMealsDesc">Ready meals such as canned ravioli. Any quantity.</string>
-    <string name="pocketLamp">Pocket lamp</string>
-    <string name="pocketLampDesc">A rechargeable crank flashlight can be very useful in the event of a power failure.</string>
-    <string name="batteries">Batteries</string>
-    <string name="batteriesDesc">Batteries in different sizes.</string>
-    <string name="potatoes">Potatoes</string>
-    <string name="potatoesDesc">4 kg of potatoes, rice and cereals</string>
-    <string name="fuel">Gasoline / Canister</string>
-    <string name="fuelDesc">Petrol or diesel in a 20 liter canister for emergency refueling of your car or a (diesel) generator.</string>
-    <string name="sleepingBag">Sleeping Bag</string>
-    <string name="sleepingBagDesc">The Office for Disaster Protection recommends sleeping bags.</string>
-    <string name="waterproofClothing">Waterproof Clothing</string>
-    <string name="waterproofClothingDesc">Waterproof clothing is recommended by the Civil Protection Agency.</string>
-    <string name="vegetables">Canned Vegetables</string>
-    <string name="vegetablesDesc">4 kilograms of legumes and vegetables - mainly in cans or glasses</string>
-    <string name="fruit">Canned Fruit</string>
-    <string name="fruitDesc">3 kilograms of fruit - mainly in cans and glasses</string>
-    <string name="milk">Milk</string>
-    <string name="milkDesc">3 liters or kilograms of milk and milk products - primarily products that do not need to be refrigerated</string>
-    <string name="fatOil">Fat and Oil</string>
-    <string name="fatOilDesc">1 kg of fat and oil</string>
-    <string name="spices">Spices</string>
-    <string name="spicesDesc">Spices, Sugar and Sweeteners</string>
-    <string name="coldRemedies">Cold Remedies</string>
-    <string name="coldRemediesDesc">Cold remedies to relieve cough, runny nose and fever.</string>
-    <string name="clinicalThermometer">Clinical Thermometer</string>
-    <string name="clinicalThermometerDesc">Medical thermometer, preferably infrared thermometer, for measuring on the forehead.</string>
     <string-array name="roman_numbers">
         <item>I</item>
         <item>II</item>
