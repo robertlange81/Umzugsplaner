@@ -71,7 +71,7 @@
     <string name="placeholder_hide_low_prio">Hide Low Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
     <string name="start_new_todo">New Lockdown</string>
     <string name="lookFor">find</string>
     <string name="on">on</string>

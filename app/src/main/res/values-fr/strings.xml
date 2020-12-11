@@ -71,7 +71,7 @@
     <string name="placeholder_hide_low_prio">seulement haute priorité</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor906-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="start_new_todo">créer un nouveau confinement</string>
     <string name="partyEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3Darticles+de+fête%26_sacat%3D0]]></string>
     <string name="lookFor">Chercher</string>

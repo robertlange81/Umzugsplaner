@@ -71,7 +71,7 @@
     <string name="placeholder_hide_low_prio">Hide Low Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor907-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.co.uk/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor904-21&index=aps&camp=1634&creative=6738&linkCode=ur2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.co.uk%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
