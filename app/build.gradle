@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.planner.generic.base"
         minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 17
-        versionName "17.0"
+        targetSdkVersion 29
+        versionCode 18
+        versionName "18.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
