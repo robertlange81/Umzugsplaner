@@ -67,7 +67,7 @@
     <string name="placeholder_hide_low_prio">nur hohe Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor90b6-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="start_new_todo">neue Checkliste anlegen</string>
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>
