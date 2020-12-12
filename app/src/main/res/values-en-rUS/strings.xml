@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Checklist</string>
+    <string name="app_name">Xmas List</string>
     <string name="category">type</string>
     <string name="deleted">deleted</string>
     <string name="date_changed">date changed</string>
@@ -141,4 +141,8 @@
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
     <string name="change_date_or_location">Change Date or Location</string>
+    <string name="tree"></string>
+    <string name="treeDesc"></string>
+    <string name="cards">Christmas cards</string>
+    <string name="cardsDesc">Determine how many cards you need, and make sure you have updated addresses. Shop for cards and wrapping paper. And if you’re ordering cards online, you’ll want to have plenty of time for them to arrive.</string>
 </resources>

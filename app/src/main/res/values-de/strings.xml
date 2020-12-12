@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TODO Liste</string>
+    <string name="app_name">Weihnachtsliste</string>
     <string name="category">Typ</string>
     <string name="date_changed">Datum geändert</string>
     <string name="deleted">gelöscht</string>
@@ -141,4 +141,8 @@
     <string name="When">WANN?</string>
     <string name="Where">WO?</string>
     <string name="change_date_or_location">Termin / Ort ändern</string>
+    <string name="tree"></string>
+    <string name="treeDesc"></string>
+    <string name="cards">Weihnachtskarten</string>
+    <string name="cardsDesc">Bestimmen Sie, wie viele Karten Sie benötigen, und stellen Sie sicher, dass die Adressen aktuell. Kaufen Sie Karten und Geschenkpapier. Und wenn Sie Karten online bestellen, sollten Sie genügend Vorlauf haben bis sie eintreffen.</string>
 </resources>
