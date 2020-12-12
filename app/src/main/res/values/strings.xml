@@ -75,7 +75,7 @@
     <string name="placeholder_hide_low_prio">Hide Low Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
     <string name="taskRentalContractOld3Months">Ending your tenancy?</string>
     <string name="taskRentalContractOld">Cancel old lease</string>
     <string name="taskRentalContractOldDesc">Cancel your old tenancy on time. You may be able to shorten the notice period with a new tenant.</string>
@@ -91,7 +91,7 @@
     <string name="informOldAndNewNeighbours">Inform neighbors (old and new)</string>
     <string name="informOldAndNewNeighboursDesc">Let your old and new neighbors know about your move on the notice board.  Also note the rest times.  Usually from 1 p.m. to 3 p.m. and 8 p.m. to 7 a.m.  Also take the opportunity to attach your door signs so that the post and shipping companies can reach you.</string>
     <string name="informOldAndNewNeighboursDoorSigns">Choose door signs</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=House signs with names&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6dc128bb3c84075b37e568177a8c611d]]></string>
+    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=House signs with names&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6dc128bb3c84075b37e568177a8c611d]]></string>
     <string name="informAuthorities">Authorities</string>
     <string name="informAuthoritiesDesc">When you move out of state, you’ll have to transfer your driver’s license and update your vehicle’s registration and insurance within quite a short time frame (10 to 30 days, depending on your new state). A number of government agencies should be notified when you’re moving to another state. Be sure to update your address with the local office of the Social Security Administration, the electoral register, and other relevant institutions. The Internal Revenue Service will need your actual home address to mail your tax return, fiscal notes, and other documents. All you need to do is print out and mail in the IRS’ Change of Address form soon after your relocation.</string>
     <string name="informAuthoritiesResidence">IRS</string>
@@ -120,9 +120,9 @@
     <string name="fireAndBurglaryProtection">Fire protection and burglary protection</string>
     <string name="fireAndBurglaryProtectionDesc">Smoke detectors are compulsory in some federal states and can save lives. Don\'t forget the burglary protection.</string>
     <string name="fireAndBurglaryProtectionSmokeDetector">View smoke detector</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=fire detector&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6df846089c2d19d7984a9f764facfcbf]]></string>
+    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=fire detector&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6df846089c2d19d7984a9f764facfcbf]]></string>
     <string name="fireAndBurglaryProtectionBurglary">Burglary protection systems</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=security technology house&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=a1885bd3cf763fd662899c98416d5d12]]></string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=security technology house&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=a1885bd3cf763fd662899c98416d5d12]]></string>
     <string name="requestSpecialLeave">Apply for special leave</string>
     <string name="requestSpecialLeaveDesc">Possibly your employer will grant you special leave for the move. Questions don\'t cost anything!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://www.whatdotheyknow.com/request/205439/response/509436/attach/3/special%20leave%20policy%20and%20guidance.pdf]]></string>
@@ -173,7 +173,7 @@
     <string name="organizeHelperhandTruck">hand trucks on Ebay</string>
     <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3Dsack+barrow%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3Dsack+barrow]]></string>
     <string name="organizeHelperWorkGloves">Work Gloves on Amazon</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=Work gloves move&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6d850fcbe489717a72a985d739342dca]]></string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=Work gloves move&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=6d850fcbe489717a72a985d739342dca]]></string>
     <string name="previousDay">Previous day</string>
     <string name="previousDayDesc">Charge your phone, get food, get tips, keep important documents at hand and check your medicine chest. Last but not least, remember to go to bed early.</string>
     <string name="oldRentDepositHowItWorks">How does the repayment of the rental deposit work?</string>
@@ -189,9 +189,9 @@
     <string name="packingMaterialMovingBoxes">Moving boxes</string>
     <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com/%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XMoving+boxes.TRS0%26_nkw%3DMoving+boxes%26_sacat%3D0]]></string>
     <string name="packingMaterialTrashBags">Trash bags</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=trash bags&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=b588628c596ce8f6c89ad9e1d6725eae]]></string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=trash bags&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=b588628c596ce8f6c89ad9e1d6725eae]]></string>
     <string name="packingMaterialAirCushionFoil">Air cushion foil</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us-20&keywords=bubble wrap&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=56c1cf4f34ae348835c037518d182899]]></string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&keywords=bubble wrap&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=56c1cf4f34ae348835c037518d182899]]></string>
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
