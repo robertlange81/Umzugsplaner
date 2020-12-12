@@ -130,7 +130,7 @@
     <string name="rentalDepositAccountDesc">You can deposit the deposit directly on a so-called rent deposit savings book instead of transferring it directly to the landlord. The advantage is a protection against bankruptcy etc. of the landlord.</string>
     <string name="rentalDepositAccountExplanation">Tenancy deposit protection</string>
     <string name="rentalDepositAccountExplanationLINK">https://www.gov.uk/tenancy-deposit-protection</string>
-    <string name="start_new_todo">New Lockdown</string>
+    <string name="start_new_todo">New Removal</string>
     <string name="postalAftermathLINK">https://www.postoffice.co.uk/mail/redirection</string>
     <string name="compareContracts">Compare tariffs</string>
     <string name="compareContractVerivox">Compare tariffs on broadbandchoices.co.uk</string>
@@ -205,8 +205,8 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Official opening</string>
     <string name="partyDesc">Give an inauguration ceremony for friends and helpers in your new apartment.</string>
-    <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
-    <string name="introDescSpecific">Prepare yourself and your family for a pandemic at an early stage. This application is a guide as a checklist and will soon be supplemented with new functions: symptom checker, current number of cases in your region, best practices and news.</string>
+    <string name="introDescGeneral">Plan your move professionally! All important tasks are created automatically - including tips and links to further information.</string>
+    <string name="introDescSpecific">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
     <string name="introLegend">Legend</string>
     <string name="postal">zip code</string>
     <string name="place">place</string>
@@ -237,7 +237,7 @@
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minits">Minutes</string>
-    <string name="untilTargetDate">UNTIL LOCKDOWN DATE</string>
+    <string name="untilTargetDate">UNTIL MOVING DATE</string>
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>

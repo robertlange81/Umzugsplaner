@@ -130,7 +130,7 @@
     <string name="rentalDepositAccountDesc">Vous pouvez déposer le dépôt directement sur un livre d\'épargne de dépôt de loyer au lieu de le transférer directement au propriétaire. L\'avantage est une protection contre la faillite, etc. du propriétaire.</string>
     <string name="rentalDepositAccountExplanation"></string>
     <string name="rentalDepositAccountExplanationLINK"></string>
-    <string name="start_new_todo">créer un nouveau confinement</string>
+    <string name="start_new_todo">Commencer un nouveau déménagement</string>
     <string name="postalAftermathLINK">https://www.laposte.fr/changement-adresse-demenagement-reexpedition</string>
     <string name="compareContracts">Comparez les tarifs maintenant</string>
     <string name="compareContractVerivox"></string>
@@ -206,7 +206,7 @@
     <string name="introExampleRelation">0/25</string>
     <string name="party">Cérémonie d\'inauguration</string>
     <string name="partyDesc">Offrez une cérémonie d\'inauguration pour les amis et les aides dans votre nouvel appartement.</string>
-    <string name="introDescSpecific">Préparez-vous et votre famille à une pandémie à un stade précoce. Cette application est un guide sous forme de liste de contrôle et sera bientôt complétée par de nouvelles fonctions: vérificateur de symptômes, nombre actuel de cas dans votre région, bonnes pratiques et actualités.</string>
+    <string name="introDescSpecific">Planifiez votre déménagement!  Toutes les tâches importantes sont créées pour vous - y compris un aperçu des coûts, des conseils et des liens vers de plus amples informations.</string>
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
     <string name="postal">CP</string>
