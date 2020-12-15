@@ -23,7 +23,6 @@
     <string name="placeholder_date_detail">Date</string>
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export">calendrier</string>
-    <string name="placeholder_date_removal">Quand veux-tu partir?</string>
     <string name="placeholder_date_checklist">À quel moment toutes les tâches devraient-elles être terminées?</string>
     <string name="placeholder_place_headline_specific">Où habite-tu (optionnel)?</string>
     <string name="placeholder_description">Remarques</string>
@@ -56,8 +55,12 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>SIMPLE</item>
-        <item>DIFFICILE</item>
+        <item>Organisation</item>
+        <item>Cadeaux</item>
+        <item>Restauration</item>
+        <item>Amis et Famille</item>
+        <item>Décoration</item>
+        <item>Autres</item>
     </string-array>
     <string name="Rate_App">Évaluer l\'application</string>
     <string name="textRate">Une application non notée ne sera pas achetée. \ NA Aucune application non achetée ne sera maintenue et interrompue. \ N \ nVeuillez prendre 10 secondes pour évaluer.  Merci beaucoup!</string>
@@ -141,8 +144,18 @@
     <string name="When">QUAND?</string>
     <string name="Where">OÙ?</string>
     <string name="change_date_or_location">Changer la date ou le lieu</string>
-    <string name="tree"></string>
-    <string name="treeDesc"></string>
+    <string name="tree">Sapin de Noël</string>
+    <string name="treeDesc">Faites attention à la bonne largeur et hauteur pour l\'endroit où l\'arbre doit être placé. Avec de vrais arbres, vous devez aiguiser l\'arbre en bas et vous habituer lentement à la chaleur.</string>
     <string name="cards">Carte de Noël</string>
     <string name="cardsDesc">Déterminez le nombre de cartes dont vous avez besoin et assurez-vous que les adresses sont mises à jour.  Achetez des cartes et du papier d\'emballage.  Et si vous commandez des cartes en ligne, vous voudrez avoir suffisamment de temps pour qu’elles arrivent.</string>
+    <string name="adventWreath">Couronne de l\'Avent</string>
+    <string name="adventWreathDesc">Obtenez ou achetez une couronne de Noël.</string>
+    <string name="candles">Bougies</string>
+    <string name="candlesDesc">Les bougies créent une ambiance contemplative et chaleureuse. Cela économise également de l\'électricité.</string>
+    <string name="leave">leave</string>
+    <string name="leaveDesc">N\'oubliez pas de prendre des vacances pour Noël et le Nouvel An.</string>
+    <string name="giftList">Liste de Cadeaux</string>
+    <string name="giftListDesc">Une liste de cadeaux est une liste très utile et utile pour garder une trace des cadeaux.  Qu\'est-ce que j\'ai reçu de qui à Noël dernier? Qu\'est-ce que je veux donner à qui? Qu\'est-ce que je veux comme cadeau?</string>
+    <string name="wrappingPaper">Papier Cadeau</string>
+    <string name="wrappingPaperDesc">Emballez les cadeaux au fur et à mesure que vous les achetez. Non seulement cela empêchera les petits yeux de découvrir ce que le Père Noël apporte, mais cela vous fera gagner du temps la veille de Noël.</string>
 </resources>

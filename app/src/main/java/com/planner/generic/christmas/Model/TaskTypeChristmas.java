@@ -1,7 +1,7 @@
 package com.planner.generic.christmas.Model;
 
 public enum TaskTypeChristmas implements TaskTypeEnumHelper {
-    Bureaucracy(0), Presents(1), Food(2), Drinks(3), Friends(4), Decoration(5), Miscellaneous(6);
+    Bureaucracy(0), Presents(1), Food(2), Friends(3), Decoration(4), Miscellaneous(5);
 
     private int value;
 

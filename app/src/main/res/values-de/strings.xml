@@ -23,7 +23,6 @@
     <string name="placeholder_date_detail">Datum</string>
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_export">Kalender</string>
-    <string name="placeholder_date_removal">Wann wollen Sie umziehen</string>
     <string name="placeholder_date_checklist">Bis wann sollen alle Aufgaben erledigt sein?</string>
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
@@ -55,8 +54,12 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>LEICHT</item>
-        <item>SCHWER</item>
+        <item>Organisation</item>
+        <item>Geschenke</item>
+        <item>Verpflegung</item>
+        <item>Freunde</item>
+        <item>Dekoration</item>
+        <item>Sonstiges</item>
     </string-array>
     <string name="Rate_App">App bewerten</string>
     <string name="textRate">Eine App die nicht bewertet wird, wird nicht gekauft.\nEine App nicht gekauft wird, wird nicht gewartet und eingestellt.\n\nBitte nehmen Sie sich 10 Sekunden Zeit zur Bewertung. Vielen Dank!</string>
@@ -105,7 +108,7 @@
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ort angeben.</string>
     <string name="show_home">Zeige Wohnung auf Karte</string>
-    <string name="show_location">Zeige auf Karte</string>
+    <string name="show_location">Zeige Karte</string>
     <string name="export">Liste exportieren</string>
     <string name="ExportNotificationTitle">PDF Export</string>
     <string name="DialogMessageExport">Aufgaben in PDF exportiert</string>
@@ -137,12 +140,22 @@
     <string name="gasPisol">Gaspistole</string>
     <string name="gasPistolDesc">Schützen Sie Ihre Familie!</string>
     <string name="placeholder_goto_no_location">Bitte vervollständigen Sie zuerst die Angaben zum Ort.</string>
-    <string name="show_on_map">Zeige auf Karte</string>
+    <string name="show_on_map">Zeige Karte</string>
     <string name="When">WANN?</string>
     <string name="Where">WO?</string>
     <string name="change_date_or_location">Termin / Ort ändern</string>
-    <string name="tree"></string>
-    <string name="treeDesc"></string>
+    <string name="tree">Weihnachtsbaum</string>
+    <string name="treeDesc">Achten die auf die passende Breite und Höhe für die Stelle, an der der Baum aufgestellt werden soll. Bei echten Bäumen sollten Sie den Baum unten anspitzen und langsam an Wärme gewöhnen.</string>
     <string name="cards">Weihnachtskarten</string>
     <string name="cardsDesc">Bestimmen Sie, wie viele Karten Sie benötigen, und stellen Sie sicher, dass die Adressen aktuell. Kaufen Sie Karten und Geschenkpapier. Und wenn Sie Karten online bestellen, sollten Sie genügend Vorlauf haben bis sie eintreffen.</string>
+    <string name="adventWreath">Adventskranz</string>
+    <string name="adventWreathDesc">Weihnachtskranz besorgen oder kaufen.</string>
+    <string name="candles">Kerzen</string>
+    <string name="candlesDesc">Kerzen erzeugen eine besinnliche Stimmung und Wärme. Außerdem spart Strom.</string>
+    <string name="leave">Urlaub nehmen</string>
+    <string name="leaveDesc">Vergessen Sie nicht Urlaub für Weihnachten und Silvester nehmen.</string>
+    <string name="giftList">Geschenkeliste</string>
+    <string name="giftListDesc">Eine Geschenkeliste ist eine überaus hilfreiche und nützliche Liste um den Überblick über die Geschenke zu behalten. Was habe ich von wem letztes Weihnachten erhalten? Was möchte ich wem schenken? Was wünsche ich mir als Geschenk?</string>
+    <string name="wrappingPaper">Geschenkpapier</string>
+    <string name="wrappingPaperDesc">Verpacken Sie Geschenke gleich nach dem Kaufen. Dies hält nicht nur kleine Augen davon ab, herauszufinden, was der Weihnachtsmann bringt, sondern spart Ihnen auch an Heiligabend Zeit.</string>
 </resources>

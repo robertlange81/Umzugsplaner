@@ -23,7 +23,6 @@
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_date_removal">When do you want to move?</string>
     <string name="placeholder_date_checklist">By when should all tasks be completed?</string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
@@ -56,8 +55,12 @@
     <string name="currency">€</string>
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
-        <item>SIMPLE</item>
-        <item>DIFFICULT</item>
+        <item>Bureaucracy</item>
+        <item>Gifts</item>
+        <item>Food</item>
+        <item>Friends</item>
+        <item>Decoration</item>
+        <item>Miscellaneous</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
@@ -149,8 +152,18 @@
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
     <string name="change_date_or_location">Change Date or Location</string>
-    <string name="tree"></string>
-    <string name="treeDesc"></string>
+    <string name="tree">Christmas tree</string>
+    <string name="treeDesc">Pay attention to the appropriate width and height for the place where the tree is to be set up. With real trees, you should sharpen the tree at the bottom and slowly get used to the heat.</string>
     <string name="cards">Christmas Cards</string>
     <string name="cardsDesc">Determine how many cards you need, and make sure you have updated addresses. Shop for cards and wrapping paper. And if you’re ordering cards online, you’ll want to have plenty of time for them to arrive.</string>
+    <string name="adventWreath">Advent Wreath</string>
+    <string name="adventWreathDesc">Get or buy Your Christmas wreath.</string>
+    <string name="candles">candles</string>
+    <string name="candlesDesc">Candles create a contemplative mood and warmth. It also saves electricity.</string>
+    <string name="leave">leave</string>
+    <string name="leaveDesc">Take holidays for Christmas and New Years Eve.</string>
+    <string name="giftList">Gift List</string>
+    <string name="giftListDesc">A gift list is a very helpful and useful list for keeping track of the gifts. What did I get from whom last Christmas? What do I want to give to whom?  What do I want as a present?</string>
+    <string name="wrappingPaper">Wrapping Paper</string>
+    <string name="wrappingPaperDesc">Wrap gifts as you buy them. Not only will this keep little eyes from finding out what Santa is bringing, it will save you time on Christmas Eve.</string>
 </resources>

@@ -102,15 +102,41 @@ public class TaskInitializer {
 
     private static void AddChristmasTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
 
+        // Urlaub beantragen
+        Task leave = new Task(context.getString(R.string.leave), context.getString(R.string.leaveDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -30), Priority.High, 0L,
+                new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
+        Task.addTask(leave);
+
         // Weihnachtskarten
-        Task cards = new Task(context.getString(R.string.cards), context.getString(R.string.cardsDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.Normal, 0L,
+        Task cards = new Task(context.getString(R.string.cards), context.getString(R.string.cardsDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 30), Priority.Normal, 0L,
                 new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
         Task.addTask(cards);
+
+        // Geschenke
+        Task giftList = new Task(context.getString(R.string.giftList), context.getString(R.string.giftListDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 30), Priority.Normal, 0L,
+                new TaskType(TaskTypeChristmas.Presents), targetLocation);
+        Task.addTask(giftList);
+
+        // Geschenkpapier
+        Task wrappingPaper = new Task(context.getString(R.string.wrappingPaper), context.getString(R.string.wrappingPaperDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 30), Priority.Normal, 0L,
+                new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
+        Task.addTask(wrappingPaper);
+
+        // Adventskranz
+        Task adventWreath = new Task(context.getString(R.string.adventWreath), context.getString(R.string.adventWreathDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -35), Priority.High, 0L,
+                new TaskType(TaskTypeChristmas.Decoration), targetLocation);
+        Task.addTask(adventWreath);
 
         // Weihnachtsbaum
         Task tree = new Task(context.getString(R.string.tree), context.getString(R.string.treeDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -14), Priority.High, 0L,
                 new TaskType(TaskTypeChristmas.Decoration), targetLocation);
         Task.addTask(tree);
+
+        // Kerzen
+        Task candles = new Task(context.getString(R.string.candles), context.getString(R.string.candlesDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -14), Priority.High, 0L,
+                new TaskType(TaskTypeChristmas.Decoration), targetLocation);
+        Task.addTask(candles);
+
     }
 
     private static void AddWeddingTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
