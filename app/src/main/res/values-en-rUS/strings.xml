@@ -58,7 +58,7 @@
         <item>Bureaucracy</item>
         <item>Gifts</item>
         <item>Food</item>
-        <item>Friends</item>
+        <item>Entertainment</item>
         <item>Decoration</item>
         <item>Miscellaneous</item>
     </string-array>
@@ -158,4 +158,34 @@
     <string name="giftListDesc">A gift list is a very helpful and useful list for keeping track of the gifts. What did I get from whom last Christmas? What do I want to give to whom?  What do I want as a present?</string>
     <string name="wrappingPaper">Wrapping Paper</string>
     <string name="wrappingPaperDesc">Wrap gifts as you buy them. Not only will this keep little eyes from finding out what Santa is bringing, it will save you time on Christmas Eve.</string>
+    <string name="batteries">Batteries</string>
+    <string name="batteriesDesc">If you haven’t stocked up while Christmas shopping, make sure you have all the accoutrements necessary for children toys et cetera.</string>
+    <string name="beverage">Beverage</string>
+    <string name="beverageDesc">Buy alcohol and soft drinks (Shop for nonperishable items).</string>
+    <string name="freshIngredients">vegetables and fruit</string>
+    <string name="freshIngredientsDesc">Hit the store for the last-minute vegetables or fruit you need for meals.</string>
+    <string name="houseCleaning">House Cleaning</string>
+    <string name="cleanDesc">You’ll enjoy those decorations even more if the floors are clean and the kitchen is organized. One important task: Clear out your refrigerator. Toss old leftovers to make room for big dishes and ingredients that’ll be piling up closer to the holiday.</string>
+    <string name="roast">Order a turkey or ham</string>
+    <string name="roastDesc">… or whatever else is the centrepiece of your holiday meal—you don’t want to get caught short.</string>
+    <string name="Decorate">Decorate!</string>
+    <string name="decorationDesc">Get imaginative decorations and decorate your home.</string>
+    <string name="treeStand">Christmas Tree Stand</string>
+    <string name="treeStandDesc">Obtain and check a suitable tree stand.</string>
+    <string name="precook">Precook</string>
+    <string name="precookDesc">Pre-cook what is possible in order to have less to do on Christmas Eve.</string>
+    <string name="fairyLights">Fairy Lights</string>
+    <string name="fairyLightsDesc">Cover Your home in fairy lights.</string>
+    <string name="adventCalendar">advent calendar</string>
+    <string name="adventCalendarDesc">Buy or make your own advent calendar.</string>
+    <string name="christmasPlaylist">Christmas Playlist</string>
+    <string name="christmasPlaylistDesc">Compile your own Christmas playlist.</string>
+    <string name="grinch">Grinch Movie</string>
+    <string name="grinchDesc">Watch the Grinch or Bad Santa.</string>
+    <string name="lastMinute">Last minute offer</string>
+    <string name="lastMinuteDesc">Check for last minute presents and safe money.</string>
+    <string name="donate">Donate</string>
+    <string name="donateDesc">Donate to your chosen charity. You can deduct your donation from tax.</string>
+    <string name="nutcracker">Nutcracker</string>
+    <string name="nutcrackerDesc">Watch the Nutcracker ballet.</string>
 </resources>

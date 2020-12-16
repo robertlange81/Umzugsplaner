@@ -58,7 +58,7 @@
         <item>Organisation</item>
         <item>Cadeaux</item>
         <item>Restauration</item>
-        <item>Amis et Famille</item>
+        <item>Divertissement</item>
         <item>Décoration</item>
         <item>Autres</item>
     </string-array>
@@ -158,4 +158,34 @@
     <string name="giftListDesc">Une liste de cadeaux est une liste très utile et utile pour garder une trace des cadeaux.  Qu\'est-ce que j\'ai reçu de qui à Noël dernier? Qu\'est-ce que je veux donner à qui? Qu\'est-ce que je veux comme cadeau?</string>
     <string name="wrappingPaper">Papier Cadeau</string>
     <string name="wrappingPaperDesc">Emballez les cadeaux au fur et à mesure que vous les achetez. Non seulement cela empêchera les petits yeux de découvrir ce que le Père Noël apporte, mais cela vous fera gagner du temps la veille de Noël.</string>
+    <string name="batteries">Piles</string>
+    <string name="batteriesDesc">Assurez-vous d\'avoir suffisamment de piles pour les jouets pour enfants et autres appareils électriques.</string>
+    <string name="beverage">Boisson</string>
+    <string name="beverageDesc">Achetez de l\'alcool et des boissons gazeuses (achetez des articles non périssables).</string>
+    <string name="freshIngredients">légumes et fruits</string>
+    <string name="freshIngredientsDesc">Allez au magasin pour les légumes ou les fruits de dernière minute dont vous avez besoin pour vos repas.</string>
+    <string name="houseCleaning">House Cleaning</string>
+    <string name="cleanDesc">Vous profiterez encore plus de Noël lorsque les sols seront propres et la cuisine organisée. Une tâche importante: ranger votre réfrigérateur. Jetez les vieux restes pour faire de la place pour les grands plats et les ingrédients.</string>
+    <string name="roast">Précommande canard / oie</string>
+    <string name="roastDesc">… ou tout ce qui est au cœur de votre fête - préparez-vous.</string>
+    <string name="Decorate">Décoration de Noël</string>
+    <string name="decorationDesc">Obtenez des décorations imaginatives et décorez votre maison.</string>
+    <string name="treeStand">Support d\'arbre de Noël</string>
+    <string name="treeStandDesc">Procurez-vous un support d\'arbre approprié ou vérifiez-le après l\'avoir sorti du sous-sol.</string>
+    <string name="precook">Pré-cuisson</string>
+    <string name="precookDesc">Préparez ce que vous pouvez pour avoir moins à faire pendant les vacances.</string>
+    <string name="fairyLights">Lumières Féériques</string>
+    <string name="fairyLightsDesc">Décorez votre maison avec des guirlandes lumineuses.</string>
+    <string name="adventCalendar">Calendrier de l\'Avent</string>
+    <string name="adventCalendarDesc">Achetez ou créez votre propre calendrier de l\'Avent.</string>
+    <string name="christmasPlaylist">Playlist de Noël</string>
+    <string name="christmasPlaylistDesc">Affichez votre propre liste de lecture de Noël parmi vos chansons préférées.</string>
+    <string name="grinch">Le grinch</string>
+    <string name="grinchDesc">Découvrez le Grinch, Bad Santa ou Buddy l\'elfe de Noël pour entrer dans l\'esprit de Noël.</string>
+    <string name="lastMinute">Offres de dernière minute</string>
+    <string name="lastMinuteDesc">Recherchez des cadeaux de dernière minute et économisez de l\'argent.</string>
+    <string name="donate">Faire un Don</string>
+    <string name="donateDesc">Faites un don aux organismes de bienfaisance de votre choix. Vous pouvez déduire votre don de l\'impôt.</string>
+    <string name="nutcracker">Casse-Noisette Ballet</string>
+    <string name="nutcrackerDesc">Découvrez le ballet de Tchaïkovski "Casse-Noisette".</string>
 </resources>
