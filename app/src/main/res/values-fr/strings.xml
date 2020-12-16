@@ -18,7 +18,7 @@
     <string name="placeholder_costs">Frais</string>
     <string name="placeholder_costs_significant_detail">Euro</string>
     <string name="placeholder_costs_decimal_detail">Cent</string>
-    <string name="placeholder_date_long">Date de déménagement</string>
+    <string name="placeholder_date_long">Date limite</string>
     <string name="placeholder_date">Date</string>
     <string name="placeholder_date_detail">Date</string>
     <string name="placeholder_date_input">Date (heure)</string>
@@ -28,7 +28,7 @@
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
-    <string name="placeholder_init">Nouveau mouvement!</string>
+    <string name="placeholder_init">Nouvelle liste</string>
     <string name="placeholder_init_delete_old_tasks">supprimer toutes les tâches précédentes</string>
     <string name="placeholder_init_no_date">Aucune date spécifiée - les tâches standard sont créées sans date</string>
     <string name="placeholder_export_no_date">Pour exporter vers le calendrier, veuillez d\'abord choisir une date.</string>
@@ -78,7 +78,7 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">ALLONS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific"></string>
+    <string name="introDescSpecific">Cette application vous donne une liste prédéfinie de conseils utiles et d\'idées créatives que vous pouvez développer. Gardez un oeil sur vos coûts et votre temps.</string>
     <string name="introDescGeneral">Classez et hiérarchisez la liste de contrôle pour chaque phase du déménagement. Créez de nouvelles tâches, commentez-les et exportez-les vers votre calendrier.</string>
     <string name="introLegend">Légende</string>
     <string name="postal">CP</string>
@@ -164,7 +164,7 @@
     <string name="beverageDesc">Achetez de l\'alcool et des boissons gazeuses (achetez des articles non périssables).</string>
     <string name="freshIngredients">légumes et fruits</string>
     <string name="freshIngredientsDesc">Allez au magasin pour les légumes ou les fruits de dernière minute dont vous avez besoin pour vos repas.</string>
-    <string name="houseCleaning">House Cleaning</string>
+    <string name="houseCleaning">Nettoyage de la maison</string>
     <string name="cleanDesc">Vous profiterez encore plus de Noël lorsque les sols seront propres et la cuisine organisée. Une tâche importante: ranger votre réfrigérateur. Jetez les vieux restes pour faire de la place pour les grands plats et les ingrédients.</string>
     <string name="roast">Précommande canard / oie</string>
     <string name="roastDesc">… ou tout ce qui est au cœur de votre fête - préparez-vous.</string>

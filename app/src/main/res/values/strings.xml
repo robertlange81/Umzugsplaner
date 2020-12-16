@@ -78,8 +78,8 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">GO ON!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific"></string>
-    <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every move phase. Create new tasks, comment on and export them to Your calendar.</string>
+    <string name="introDescSpecific">This app gives you a predefined list of useful tips and creative ideas that you can expand. Keep an eye on your costs and time.</string>
+    <string name="introDescGeneral">Individualize, categorize and prioritize your checklist for every phase. Create new tasks, comment on and export them to your calendar or as pdf.</string>
     <string name="introLegend">Legend</string>
     <string name="placeholder_place_headline_specific">Where do You live (optional)?</string>
     <string name="postal">zip code</string>
