@@ -11,17 +11,8 @@
     android:background="@drawable/background_detail"
     android:id="@+id/detail">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#90000000"
-        android:id="@+id/detail_wrapper">
-
     <ScrollView
+        android:background="#90000000"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
@@ -131,7 +122,6 @@
                 android:id="@+id/init_date_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/detail_row_height"
-                android:layout_marginBottom="25dp"
                 android:minHeight="@dimen/detail_row_height"
                 android:gravity="top"
                 android:weightSum="3">
@@ -162,9 +152,15 @@
                         android:text="@string/placeholder_time_detail"
                         android:layout_weight="1"
                         android:layout_toRightOf="@+id/detail_btn_date" />
+
+                    <!-- Button
+                        android:layout_height="match_parent"
+                        android:text="Ort"
+                        android:layout_weight="1"
+                        android:id="@+id/init_btn_location"
+                        android:layout_toRightOf="@+id/init_btn_time" /-->
                 </TableRow>
             </TableRow>
     </LinearLayout>
     </ScrollView>
-    </LinearLayout>
 </LinearLayout>
