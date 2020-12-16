@@ -153,7 +153,7 @@
     <string name="candles">Kerzen</string>
     <string name="candlesDesc">Kerzen erzeugen eine besinnliche Stimmung und Wärme. Außerdem sparen Sie Strom.</string>
     <string name="leave">Urlaub nehmen</string>
-    <string name="leaveDesc">Vergessen Sie nicht Urlaub für Weihnachten und Silvester nehmen.</string>
+    <string name="leaveDesc">Vergessen Sie nicht Urlaub für Weihnachten und Silvester zu nehmen.</string>
     <string name="giftList">Geschenkeliste</string>
     <string name="giftListDesc">Eine Geschenkeliste ist eine überaus hilfreiche und nützliche Liste um den Überblick über die Geschenke zu behalten. Was habe ich von wem letztes Weihnachten erhalten? Was möchte ich wem schenken? Was wünsche ich mir als Geschenk?</string>
     <string name="wrappingPaper">Geschenkpapier</string>
@@ -169,13 +169,13 @@
     <string name="roast">Ente / Gans vorbestellen</string>
     <string name="roastDesc">… oder was auch immer das Herzstück Ihres Festessens ist - bereiten Sie sich vor.</string>
     <string name="Decorate">Weihnachts-Dekoration</string>
-    <string name="decorationDesc"> einfallsreiche Deko und schmücken Sie Ihr Heim.</string>
+    <string name="decorationDesc">Finden Sie einfallsreiche Deko und schmücken Sie Ihr Heim.</string>
     <string name="treeStand">Weihnachtsbaumständer</string>
     <string name="treeStandDesc">Besorgen Sie einen passenden Baumständer bzw. prüfen Sie diesen nachdem Sie ihn aus dem Keller geholt haben.</string>
     <string name="precook">Vorkochen</string>
     <string name="precookDesc">Kochen Sie vor, was möglich ist, um am Festtag weniger zu tun zu haben.</string>
     <string name="fairyLights">Lichterketten</string>
-    <string name="fairyLightsDesc">Dokorieren Sie Ihr zu Hause mit Lichterketten.</string>
+    <string name="fairyLightsDesc">Dekorieren Sie Ihr zu Hause mit Lichterketten.</string>
     <string name="adventCalendar">Adventskalender</string>
     <string name="adventCalendarDesc">Kaufen oder erstellen Sie Ihren eigenen Adventskalender.</string>
     <string name="christmasPlaylist">Weihnachts-Playlist</string>
@@ -183,9 +183,9 @@
     <string name="grinch">Grinch der Film</string>
     <string name="grinchDesc">Schauen Sie sich den Grinch, Bad Santa oder Buddy, den Weihnachtself an, um in Weihnachtsstimmung zu kommen.</string>
     <string name="lastMinute">Last-Minute-Angebote</string>
-    <string name="lastMinuteDesc">Suchen Sie nach Last-Minute-Geschenken und sparen Geld.</string>
+    <string name="lastMinuteDesc">Suchen Sie nach Last-Minute-Geschenken und sparen dabei Geld.</string>
     <string name="donate">Spenden</string>
-    <string name="donateDesc">Spenden Sie für die Wohltätigkeitsorganisation(en) Ihrer Wahl. Sie können Ihre Spende auch von der Steuer absetzen.</string>
+    <string name="donateDesc">Spenden Sie an die Wohltätigkeitsorganisation(en) Ihrer Wahl. Sie können Ihre Spende auch von der Steuer absetzen.</string>
     <string name="nutcracker">Nussknacker-Ballett</string>
     <string name="nutcrackerDesc">Gönnen Sie sich und Ihrer Familie etwas Kultur und schauen Sie sich das Ballett "Der Nussknacker" von Tschaikowski an.</string>
 </resources>

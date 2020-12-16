@@ -104,7 +104,7 @@ public class TaskInitializer {
         // https://www.elizabethdhokia.com/100-things-to-do-this-christmas/#:~:text=%20100%20Things%20To%20Do%20This%20Christmas%20,Log%2010%20Wear%20a%20Santa%20hat%20More%20
 
         // Urlaub beantragen
-        Task leave = new Task(context.getString(R.string.leave), context.getString(R.string.leaveDesc), addMonthDaysToJavaUtilDate(targetDate, 2, 0), Priority.High, 0L,
+        Task leave = new Task(context.getString(R.string.leave), context.getString(R.string.leaveDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
                 new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
         Task.addTask(leave);
 

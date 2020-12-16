@@ -24,7 +24,6 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
 
     Button btnDatePicker;
     Button btnTimePicker;
-    // Button btnLocationPicker;
     EditText txtDeadline, txtPostal, txtStreet, txtPlace, txtHouseNumber;
     private int mYear, mMonth, mDay, mHour, mMinute;
     Date tempDate;
@@ -55,11 +54,14 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
         txtPlace = (EditText) view.findViewById(R.id.init_place);
         txtStreet = (EditText) view.findViewById(R.id.init_street);
         txtHouseNumber = (EditText) view.findViewById(R.id.init_house_number);
-        //btnLocationPicker =(Button) view.findViewById(R.id.init_btn_location);
 
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
         txtDeadline.setOnClickListener(this);
+
+        /* for christmas only */
+        tempDate = new Date(Calendar.getInstance().get(Calendar.YEAR), 11, 24);
+        txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
 
         return view;
     }
