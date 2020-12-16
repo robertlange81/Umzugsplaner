@@ -482,11 +482,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       for (TaskTypeEnumHelper taskType : types) {
         counter++;
 
-        // extra case for zero
-        if (counter == 0 && _task.type.getValue() != 0)
-          continue;
-
-        if ((taskType.getValue() & _task.type.getValue()) == taskType.getValue()) {
+        if (taskType.getValue() == _task.type.getValue()) {
           spinnerDetailType.setSelection(counter);
           break;
         }
