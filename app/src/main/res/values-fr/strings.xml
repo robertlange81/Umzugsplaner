@@ -29,7 +29,7 @@
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
-    <string name="placeholder_init">Nouveau mouvement!</string>
+    <string name="placeholder_init">Créez une nouvelle liste.</string>
     <string name="placeholder_init_delete_old_tasks">supprimer toutes les tâches précédentes</string>
     <string name="placeholder_init_no_date">Aucune date spécifiée - les tâches standard sont créées sans date</string>
     <string name="placeholder_export_no_date">Pour exporter vers le calendrier, veuillez d\'abord choisir une date.</string>
@@ -97,7 +97,7 @@
     <string name="name_of_task">Nom de la tâche</string>
     <string name="filter">Chercher</string>
     <string name="zero">0</string>
-    <string name="introDateNecessary">Mettre en place un (nouveau) mouvement. Si possible, entrez une date.</string>
+    <string name="introDateNecessary">Créez une (nouvelle) liste. Si possible, entrez une date.</string>
     <string name="days">jours</string>
     <string name="hours">heures</string>
     <string name="minits">minutes</string>
