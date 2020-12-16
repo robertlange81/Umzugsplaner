@@ -1242,10 +1242,12 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 Persistance.PruneAllTasks(instance, false,null, null, null);
-                Intent intent = new Intent(instance, IntroActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                instance.startActivity(intent);
-                NotifyTaskChanged(null, null, new Long[] {list});
+                if (mTwoPane) {
+                    Intent intent = new Intent(instance, IntroActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    instance.startActivity(intent);
+                }
+                NotifyTaskChanged(null, null, new Long[] {list_self});
             }
         });
 
