@@ -72,7 +72,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor9us09-20&index=aps&camp=1789&creative=9325&linkCode=as2&linkId=9f8d7c6b199d576a997b5082a92c3329&keywords=]]></string>
-    <string name="start_new_todo">New Lockdown</string>
+    <string name="start_new_todo">New Checklist</string>
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
@@ -168,7 +168,7 @@
     <string name="cleanDesc">You’ll enjoy those decorations even more if the floors are clean and the kitchen is organized. One important task: Clear out your refrigerator. Toss old leftovers to make room for big dishes and ingredients that’ll be piling up closer to the holiday.</string>
     <string name="roast">Order a turkey or ham</string>
     <string name="roastDesc">… or whatever else is the centrepiece of your holiday meal—you don’t want to get caught short.</string>
-    <string name="Decorate">Decorate!</string>
+    <string name="Decorate">Christmas Decoration</string>
     <string name="decorationDesc">Get imaginative decorations and decorate your home.</string>
     <string name="treeStand">Christmas Tree Stand</string>
     <string name="treeStandDesc">Obtain and check a suitable tree stand.</string>

@@ -64,6 +64,8 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
         tempDate = Calendar.getInstance().getTime();
         tempDate.setMonth(11);
         tempDate.setDate(24);
+        tempDate.setHours(0);
+        tempDate.setMinutes(0);
         txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
 
         return view;

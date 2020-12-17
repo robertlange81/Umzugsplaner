@@ -14,7 +14,7 @@ public final class  TaskContract {
     /**
      * Eindeutiger Name des Providers innerhalb des Betriebssystems
      */
-    public static final String AUTHORITY = "com.planner.generic.christmas.provider";
+    public static final String AUTHORITY = "com.planner.generic.christmas.providerx";
 
     /**
      * Basis URI zum Content Provider

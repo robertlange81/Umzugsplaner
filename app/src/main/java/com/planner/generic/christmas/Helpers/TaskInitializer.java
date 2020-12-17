@@ -110,12 +110,12 @@ public class TaskInitializer {
 
         // Adventskalender
         Task adventCalendar = new Task(context.getString(R.string.adventCalendar), context.getString(R.string.adventCalendarDesc), addMonthDaysToJavaUtilDate(targetDate, -1, -7), Priority.High, 0L,
-                new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
+                new TaskType(TaskTypeChristmas.Presents), targetLocation);
         Task.addTask(adventCalendar);
 
         // Weihnachtskarten
         Task cards = new Task(context.getString(R.string.cards), context.getString(R.string.cardsDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.Normal, 0L,
-                new TaskType(TaskTypeChristmas.Bureaucracy), targetLocation);
+                new TaskType(TaskTypeChristmas.Miscellaneous), targetLocation);
         Task.addTask(cards);
 
         // Geschenke

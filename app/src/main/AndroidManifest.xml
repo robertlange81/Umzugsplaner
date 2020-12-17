@@ -61,7 +61,7 @@
 
         <provider
             android:name=".Model.TaskProvider"
-            android:authorities="com.planner.generic.christmas.provider" />
+            android:authorities="com.planner.generic.christmas.providerx" />
 
         <!-- Services -->
         <service android:name=".Helpers.ExportService" />

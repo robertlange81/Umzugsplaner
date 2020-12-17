@@ -134,6 +134,8 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
         tempDate = Calendar.getInstance().getTime();
         tempDate.setMonth(11);
         tempDate.setDate(24);
+        tempDate.setHours(0);
+        tempDate.setMinutes(0);
         txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
 
         alert = builder.create();
