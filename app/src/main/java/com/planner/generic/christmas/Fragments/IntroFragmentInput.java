@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +61,9 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
         txtDeadline.setOnClickListener(this);
 
         /* for christmas only */
-        tempDate = new Date(Calendar.getInstance().get(Calendar.YEAR), 11, 24);
+        tempDate = Calendar.getInstance().getTime();
+        tempDate.setMonth(11);
+        tempDate.setDate(24);
         txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
 
         return view;

@@ -130,6 +130,12 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
                 .setNegativeButton(R.string.cancel, null)
                 .setPositiveButton(R.string.ok, (DialogInterface.OnClickListener) mListener);
 
+        /* for christmas only */
+        tempDate = Calendar.getInstance().getTime();
+        tempDate.setMonth(11);
+        tempDate.setDate(24);
+        txtDeadline.setText(TaskFormater.formatDateToString(tempDate));
+
         alert = builder.create();
 
         alert.show();
