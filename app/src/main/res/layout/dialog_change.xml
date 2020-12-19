@@ -90,6 +90,7 @@
 
             <Button
                 android:layout_height="match_parent"
+                android:visibility="invisible"
                 android:text="@string/placeholder_time_detail"
                 android:layout_weight="1"
                 android:id="@+id/init_btn_time"

@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.planner.generic.christmas.Activities.MainActivity">
+    tools:context="com.planner.generic.baby.Activities.MainActivity">
     <item
         android:id="@+id/overview"
         android:orderInCategory="0"
@@ -57,14 +57,14 @@
     <item
         android:id="@+id/goToLocation"
         android:visible="true"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_baseline_local_hospital_24"
         android:orderInCategory="40"
         android:text="@string/show_home"
         android:title="@string/show_home"
         android:textSize="150sp"
         android:layout_width="200sp"
         android:layout_alignParentLeft="true"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/show_open_only"

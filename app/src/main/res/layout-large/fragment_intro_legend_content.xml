@@ -67,7 +67,7 @@ android:weightSum="10">
         android:layout_width="match_parent"
         android:layout_height="@dimen/introLineHeight"
         android:background="@android:color/transparent"
-        app:srcCompat="@drawable/ic_home_black_24dp" />
+        app:srcCompat="@drawable/ic_baseline_local_hospital_24" />
 
     <LinearLayout
         android:id="@+id/intro_pdf"
