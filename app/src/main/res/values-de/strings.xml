@@ -24,6 +24,7 @@
     <string name="placeholder_date_input">Datum (Uhrzeit)</string>
     <string name="placeholder_date_export">Kalender</string>
     <string name="placeholder_date_checklist">Wann ist der voraussichtliche Entbindungstermin?</string>
+    <string name="placeholder_date_checklist_baby_calc">&lt;a href="https://www.eltern.de/schwangerschaft/5-15-woche/geburtstermin-rechner.html">Wann ist der voraussichtliche Entbindungstermin?&lt;/a></string>
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
@@ -77,8 +78,8 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">LOS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific">Diese App bietet Ihnen eine vordefinierte Liste mit nützlichen Tipps und kreativen Ideen, die sie erweitern können. Behalten Sie Ihre Kosten und die Zeit im Blick.</string>
-    <string name="introDescGeneral">Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender, PDF oder synchronisieren sie sich mit anderen.</string>
+    <string name="introDescSpecific">xxx</string>
+    <string name="introDescGeneral">Diese App bietet Ihnen eine vordefinierte Liste mit nützlichen Tipps und kreativen Ideen, die sie erweitern können. Behalten Sie Ihre Kosten und die Zeit im Blick. Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender, PDF oder synchronisieren sie sich mit anderen.</string>
     <string name="introLegend">Legende</string>
     <string name="placeholder_place_headline_specific">Wo beabsichtigen Sie zu entbinden?</string>
     <string name="postal">Plz</string>

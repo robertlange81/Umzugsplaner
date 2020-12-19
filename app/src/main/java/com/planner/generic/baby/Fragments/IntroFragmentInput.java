@@ -4,6 +4,9 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.planner.generic.baby.Helpers.TaskFormater;
@@ -58,6 +62,16 @@ public class IntroFragmentInput extends Fragment  implements DatePickerDialog.On
         btnDatePicker.setOnClickListener(this);
         btnTimePicker.setOnClickListener(this);
         txtDeadline.setOnClickListener(this);
+
+        /* baby only */
+        TextView label = (TextView) view.findViewById(R.id.intro_init_date_label_link);
+        if(label != null) {
+            label.setMovementMethod(LinkMovementMethod.getInstance());
+            label.setText(Html.fromHtml(getResources().getString(R.string.placeholder_date_checklist_baby_calc)));
+        }
+
+        //Linkify.addLinks(label, Linkify.ALL);
+        /* baby only - END */
 
         /* for christmas only
         tempDate = Calendar.getInstance().getTime();

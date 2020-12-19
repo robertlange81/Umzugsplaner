@@ -23,7 +23,8 @@
     <string name="placeholder_date_detail">date</string>
     <string name="placeholder_date_export">add to calendar</string>
     <string name="placeholder_date_input">date (time)</string>
-    <string name="placeholder_date_checklist">When is the expected delivery date?</string>
+    <string name="placeholder_date_checklist">When is the expected due date?</string>
+    <string name="placeholder_date_checklist_baby_calc">&lt;a href="https://www.babycenter.com/pregnancy-due-date-calculator">When is the expected due date?&lt;/a></string>
     <string name="placeholder_description">notes</string>
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activities.IntroActivity"
-    android:background="@drawable/background_intro"
+    android:background="@drawable/background_detail"
     android:id="@+id/detail">
 
     <LinearLayout
@@ -91,11 +91,15 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/intro_init_date_label_link"
                     android:layout_weight="1"
+                    android:inputType="textMultiLine|textWebEditText|textNoSuggestions|textNoSuggestions"
                     android:fontFamily="serif-monospace"
                     android:layout_width="match_parent"
+                    android:textColorLink="@color/colorGreen"
                     android:layout_height="wrap_content"
                     android:gravity="start|center_vertical"
+                    android:linksClickable="true"
                     android:paddingLeft="20sp"
                     android:lineHeight="20dp"
                     android:textSize="@dimen/headline_text_size"

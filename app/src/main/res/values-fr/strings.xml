@@ -24,7 +24,8 @@
     <string name="placeholder_date_input">Date (heure)</string>
     <string name="placeholder_date_export">calendrier</string>
     <string name="placeholder_date_checklist">Quelle est la date de livraison prévue?</string>
-    <string name="placeholder_place_headline_specific">Où voulez-vous donner naissance à votre (vos) enfant (s)??</string>
+    <string name="placeholder_date_checklist_baby_calc">&lt;a href="https://www.etrepaye.fr/outils/calcul-date-echeance.php">Quelle est la date de livraison prévue?&lt;/a></string>
+    <string name="placeholder_place_headline_specific">Où voulez-vous donner naissance à votre (vos) enfant (s)?</string>
     <string name="placeholder_description">Remarques</string>
     <string name="placeholder_detail_amount">Montant</string>
     <string name="placeholder_edit_task">Modifier la tâche</string>
