@@ -7,6 +7,7 @@ import com.planner.generic.baby.Model.Priority;
 import com.planner.generic.baby.Model.Task;
 import com.planner.generic.baby.Model.TaskType;
 import com.planner.generic.baby.Model.TaskTypeBaby;
+import com.planner.generic.baby.R;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -94,15 +95,42 @@ public class TaskInitializer {
 
     private static void AddBabyTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {
 
+        // Vorlage
+        Task xxx = new Task("", "", addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Literature), null);
+        xxx.addLink("", "");
+        Task.addTask(xxx);
+
+
+        // Wärmelampe
+        Task heatLamp = new Task(context.getString(R.string.heatLamp), context.getString(R.string.heatLampDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Furnishings), null);
+        heatLamp.addLink(context.getString(R.string.heatLampLinkName), context.getString(R.string.heatLampLinkHref));
+        Task.addTask(heatLamp);
+        
         // Geburtsurkunde
+
+
         // Krippenplatz
+        Task dayNursery = new Task(context.getString(R.string.dayNursery), context.getString(R.string.dayNurseryDesc), tomorrow, Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        dayNursery.addLink(context.getString(R.string.dayNurseryApplyLinkName), context.getString(R.string.dayNurseryApplyLinkHref));
+        dayNursery.addLink(context.getString(R.string.dayNurseryOverviewLinkName), context.getString(R.string.dayNurseryOverviewLinkHref));
+        Task.addTask(dayNursery);
+
+        // Strampler
+        // dont cry over spoiled milk, but change the strampler
+
         // Die Hebammensprechstunde
+        Task midwife = new Task(context.getString(R.string.midwife), context.getString(R.string.midwifeDesc), tomorrow, Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Literature), null);
+        midwife.addLink(context.getString(R.string.midwifeLinkName), context.getString(R.string.midwifeLinkHref));
+        Task.addTask(midwife);
+
+
         // Namen finden
 
         // Elternzeit
-        Task leave = new Task("", "", addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
-                new TaskType(TaskTypeBaby.Bureaucracy), targetLocation);
-        Task.addTask(leave);
     }
 
     private static void AddBirthdayTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {

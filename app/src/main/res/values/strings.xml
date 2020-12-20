@@ -57,11 +57,13 @@
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
         <item>Bureaucracy</item>
-        <item>Gifts</item>
+        <item>Clothing</item>
         <item>Food</item>
-        <item>Entertainment</item>
-        <item>Decoration</item>
-        <item>Miscellaneous</item>
+        <item>Furnishing</item>
+        <item>Literature</item>
+        <item>Medicine</item>
+        <item>Toys</item>
+        <item>Other</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
     <string name="textRate">An app that is not rated will not be purchased.\nAn app not purchased will not be supported and discontinued.\n\nPlease take 10 seconds to review. Thanks a lot!</string>
@@ -105,7 +107,7 @@
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minits">Minutes</string>
-    <string name="untilTargetDate">UNTIL DEADLINE</string>
+    <string name="untilTargetDate">UNTIL DUE DATE</string>
     <string name="introNextTasks">Your next tasks:</string>
     <string name="routeMap">route map</string>
     <string name="DateOrPlaceNeeded">Please enter either a date or a location.</string>
@@ -153,4 +155,18 @@
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
     <string name="change_date_or_location">Change Date or Location</string>
+    <string name="midwifeLinkHref"><![CDATA[https://www.amazon.com/gp/product/3943793001/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=3943793001&linkCode=as2&tag=w1fxeor9us09-20&linkId=965e18e35812cd6cf4d7cc8da4defaa0]]></string>
+    <string name="midwifeLinkName">Link to the book</string>
+    <string name="midwife">Read tips from a midwife</string>
+    <string name="midwifeDesc">Ingeborg Stadelmann is Germany’s most popular Midwife and mother of three children. She wrote her book for expectant parents and fellow midwives. Consultation with a Midwife takes readers from the beginning of pregnancy to childbirth, then going on to discuss breast-feeding and the postnatal phase. It provides advice and tips on herbal medicine, homoeopathy and aroma therapy. This book is a veritable treasure trove for anyone seeking information on natural pregnancy, childbirth and childbed.</string>
+    <string name="heatLamp">Changing Table Heater</string>
+    <string name="heatLampDesc">- protects your baby from getting a chill when being changed or after a bath\n- equipped with a safety heating element with shatter protection \n- safety heating element can be replaced  easily\n- infrared rays and temperature distribution  meet medi</string>
+    <string name="heatLampLinkName">Compare prices on ebay</string>
+    <string name="heatLampLinkHref"><![CDATA[https://rover.ebay.com/rover/1/711-53200-19255-0/1?mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DChanging%2BTable%2Bheater%2Bbaby%26_sacat%3D0%26LH_TitleDesc%3D0%26_sop%3D15&campid=5338680996&toolid=10001&customid=baby]]></string>
+    <string name="dayNursery">day nursery</string>
+    <string name="dayNurseryDesc">Day nurseries cater for parents with full-time or part-time jobs, so are usually open from about 7am until 7pm. Make sure you apply in good time.</string>
+    <string name="dayNurseryOverviewLinkName">What do I need to know?</string>
+    <string name="dayNurseryOverviewLinkHref">https://www.babycentre.co.uk/a537554/day-nurseries</string>
+    <string name="dayNurseryApplyLinkName">Applying for Nursery</string>
+    <string name="dayNurseryApplyLinkHref">https://www.familiesonline.co.uk/blog/how-and-when-should-i-apply-for-nursery</string>
 </resources>

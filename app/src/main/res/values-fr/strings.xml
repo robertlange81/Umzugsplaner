@@ -18,7 +18,7 @@
     <string name="placeholder_costs">Frais</string>
     <string name="placeholder_costs_significant_detail">Euro</string>
     <string name="placeholder_costs_decimal_detail">Cent</string>
-    <string name="placeholder_date_long">Date limite</string>
+    <string name="placeholder_date_long">Date</string>
     <string name="placeholder_date">Date</string>
     <string name="placeholder_date_detail">Date</string>
     <string name="placeholder_date_input">Date (heure)</string>
@@ -57,10 +57,12 @@
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
         <item>Organisation</item>
-        <item>Cadeaux</item>
-        <item>Restauration</item>
-        <item>Divertissement</item>
-        <item>Décoration</item>
+        <item>Vêtements</item>
+        <item>Nourriture</item>
+        <item>Meubles</item>
+        <item>Littérature</item>
+        <item>Médicament</item>
+        <item>Jouet</item>
         <item>Autres</item>
     </string-array>
     <string name="Rate_App">Évaluer l\'application</string>
@@ -73,7 +75,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
-    <string name="start_new_todo">créer un nouveau confinement</string>
+    <string name="start_new_todo">Créer une nouvelle liste</string>
     <string name="lookFor">Chercher</string>
     <string name="on">à</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
@@ -105,7 +107,7 @@
     <string name="days">jours</string>
     <string name="hours">heures</string>
     <string name="minits">minutes</string>
-    <string name="untilTargetDate">Jusqu\'\à la rencontre</string>
+    <string name="untilTargetDate">Jusqu\'à la Réunion</string>
     <string name="introNextTasks">Vos prochaines tâches:</string>
     <string name="routeMap">L\'itinéraire</string>
     <string name="DateOrPlaceNeeded">Veuillez saisir une date ou spécifier un emplacement.</string>
@@ -145,4 +147,18 @@
     <string name="When">QUAND?</string>
     <string name="Where">OÙ?</string>
     <string name="change_date_or_location">Changer la date ou le lieu</string>
+    <string name="midwifeLinkHref"><![CDATA[https://amzn.to/3rh3Czy]]></string>
+    <string name="midwifeLinkName">Lien vers le livre</string>
+    <string name="midwife">Lisez les conseils d\'une sage-femme</string>
+    <string name="midwifeDesc">Ce livre est une véritable mine pour tous ceux qui cherchent des informations sur le déroulement naturel de lagrossesse, de la naissance et du post-partum. Le livre vous mènera du début de la grossesse au post-partum, en passant par la naissance et l’allaitement.</string>
+    <string name="heatLamp">Radiateur pour Table à Langer</string>
+    <string name="heatLampDesc">- protège votre bébé des frissons lorsqu\'il est changé ou après un bain\n- équipé d\'un élément chauffant de sécurité avec protection anti-éclats\n- l\'élément chauffant de sécurité peut être remplacé facilement\n- plusieurs niveaux de chauffage</string>
+    <string name="heatLampLinkName">Lien vers le modèle recommandé</string>
+    <string name="heatLampLinkHref"><![CDATA[https://amzn.to/3h6G7Ex]]></string>
+    <string name="dayNursery">Crèche</string>
+    <string name="dayNurseryDesc">Pour être admis en crèche, votre enfant doit répondre aux 2 conditions suivantes:\n- Avoir entre 2 mois et 3 ans\n- Être en règle au regard des vaccinations obligatoires (sauf contre-indication attestée par la présentation d\'un certificat médical).</string>
+    <string name="dayNurseryOverviewLinkName">Garde d\'enfants en bas âge</string>
+    <string name="dayNurseryOverviewLinkHref"><![CDATA[https://www.service-public.fr/particuliers/vosdroits/N137]]></string>
+    <string name="dayNurseryApplyLinkName">Accueil en crèche</string>
+    <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.service-public.fr/particuliers/vosdroits/F607]]></string>
 </resources>

@@ -56,10 +56,12 @@
     <string name="currency_long">Euro</string>
     <string-array name="task_types">
         <item>Organisation</item>
-        <item>Geschenke</item>
-        <item>Verpflegung</item>
-        <item>Unterhaltung</item>
-        <item>Dekoration</item>
+        <item>Kleidung</item>
+        <item>Ernährung</item>
+        <item>Einrichtung</item>
+        <item>Literatur</item>
+        <item>Medizin</item>
+        <item>Spielzeug</item>
         <item>Sonstiges</item>
     </string-array>
     <string name="Rate_App">App bewerten</string>
@@ -104,7 +106,7 @@
     <string name="days">Tage</string>
     <string name="hours">Stunden</string>
     <string name="minits">Minuten</string>
-    <string name="untilTargetDate">BIS ZUR DEADLINE</string>
+    <string name="untilTargetDate">BIS ZUM TERMIN</string>
     <string name="introNextTasks">Ihre nächsten Aufgaben:</string>
     <string name="routeMap">Routenplan</string>
     <string name="DateOrPlaceNeeded">Bitte entweder ein Datum oder Ort angeben.</string>
@@ -145,4 +147,18 @@
     <string name="When">WANN?</string>
     <string name="Where">WO?</string>
     <string name="change_date_or_location">Termin / Ort ändern</string>
+    <string name="midwifeLinkHref"><![CDATA[https://www.amazon.de/gp/product/3943793885/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=3943793885&linkCode=as2&tag=w1fxeor90b6-21&linkId=f76b2106c32b843331c014d3fb8177ff]]></string>
+    <string name="midwifeLinkName">Link zum Buch</string>
+    <string name="midwife">Lies die Hinweise einer Hebamme</string>
+    <string name="midwifeDesc">Seit es Die Hebammen-Sprechstunde gibt, hat sich im selbstbewussten Umgang der werdenden Eltern mit Schwangerschaft, Geburt, Wochenbett und Stillzeit spürbar etwas verändert. Ingeborg Stadelmann ermutigt die zukünftigen Mütter und Väter, selbstverantwortlich ihren Weg zu gehen und dabei auf ihre eigene Stärke zu vertrauen.</string>
+    <string name="heatLamp">Wärmelampe</string>
+    <string name="heatLampDesc">Ein Heizstrahler über dem Wickeltisch spendet wohltuende Wärme schützt vor dem Auskühlen sowie Folgeerkrankungen.</string>
+    <string name="heatLampLinkName">Link zum empfohlenen Modell</string>
+    <string name="heatLampLinkHref"><![CDATA[https://amzn.to/34x3Usi]]></string>
+    <string name="dayNursery">Krippenplatz</string>
+    <string name="dayNurseryDesc">Um einen Platz im Kindergarten oder notfalls bei einer Tagesmutter sollte man sich so früh wie möglich bemühen. Sie können für jedes Kind bis zu 6.000 Euro Betreuungskosten als Sonderausgaben in Ihrer Steuererklärung geltend machen.</string>
+    <string name="dayNurseryOverviewLinkName">Wie finde ich einen Kitaplatz?</string>
+    <string name="dayNurseryOverviewLinkHref"><![CDATA[https://mummy-mag.de/wie-finde-und-erhalte-ich-einen-kitaplatz/]]></string>
+    <string name="dayNurseryApplyLinkName">Kitaverzeichnis</string>
+    <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.kitanetz.de/]]></string>
 </resources>

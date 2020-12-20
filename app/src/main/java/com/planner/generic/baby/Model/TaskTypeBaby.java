@@ -1,7 +1,7 @@
 package com.planner.generic.baby.Model;
 
 public enum TaskTypeBaby implements TaskTypeEnumHelper {
-    Bureaucracy(0), Medicin(1), Food(2), Toys(3), Furniture(4), Clothes(5), Miscellaneous(6);
+    Bureaucracy(0), Clothes(1), Food(2), Furnishings(3), Literature(4), Medicine(5), Toys(6), Other(7);
 
     private int value;
 
