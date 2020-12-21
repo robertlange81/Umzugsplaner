@@ -124,15 +124,15 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             if (dialog instanceof DialogFragmentInit) {
                 DialogFragmentInit initdialog = (DialogFragmentInit) dialog;
 
-                if(initdialog.getRemovalDate() == null) {
+                if(initdialog.getDate() == null) {
                     Snackbar.make(findViewById(android.R.id.content), getResources().getString(R.string.placeholder_init_no_date), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
 
                 if(initdialog.getDeleteOld()) {
-                    Persistance.PruneAllTasks(this, true, initdialog.getRemovalDate(), initdialog.getLocation(), null);
+                    Persistance.PruneAllTasks(this, true, initdialog.getDate(), initdialog.getLocation(), null);
                 } else {
-                    TaskInitializer.InitTasks(initdialog.getRemovalDate(), initdialog.getLocation(), this, null);
+                    TaskInitializer.InitTasks(initdialog.getDate(), initdialog.getLocation(), this, null);
                 }
             } else if (dialog instanceof DialogFragmentChange) {
                 DialogFragmentChange changeDialog = (DialogFragmentChange) dialog;

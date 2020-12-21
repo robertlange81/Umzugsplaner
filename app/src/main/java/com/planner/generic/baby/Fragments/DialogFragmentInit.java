@@ -241,7 +241,7 @@ public class DialogFragmentInit extends DialogFragment implements DatePickerDial
         */
     }
 
-    public Date getRemovalDate() {
+    public Date getDate() {
         return tempDate;
     }
 

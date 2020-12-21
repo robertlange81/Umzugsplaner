@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:fontFamily="serif-monospace"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_marginLeft="@dimen/input_margin"
             android:textSize="@dimen/detail_text_size"

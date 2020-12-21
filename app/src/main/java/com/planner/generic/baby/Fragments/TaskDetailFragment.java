@@ -711,8 +711,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       searchFor = _task.name;
     }
 
-    if((TaskInitializer.CURRENT_LIST_TYPE != TaskInitializer.ListType.RELOCATION && TaskInitializer.CURRENT_LIST_TYPE != TaskInitializer.ListType.BABY
-            || _task.type.getValue() >= 4 && searchFor != null && !searchFor.isEmpty())) { // already set up specific links for Removal
+    if((_task.links.isEmpty() && searchFor != null && !searchFor.isEmpty())) { // already set up specific links for Removal
 
       TreeMap<String,String> newLinks = new TreeMap<>();
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {

@@ -43,6 +43,9 @@ public class TaskInitializer {
 
         if (targetDate == null) {
             targetDate = Calendar.getInstance(TimeZone.getDefault()).getTime();
+            targetDate.setHours(0);
+            targetDate.setMinutes(0);
+            targetDate.setSeconds(0);
         }
 
         if (newTasks !=  null) {
@@ -55,6 +58,7 @@ public class TaskInitializer {
             Date today = Calendar.getInstance(TimeZone.getDefault()).getTime();
             today.setHours(0);
             today.setMinutes(0);
+            today.setSeconds(0);
             Date tomorrow = addMonthDaysToJavaUtilDate(today, 0, 1);
 
             switch (CURRENT_LIST_TYPE.toString().toUpperCase()) {
