@@ -161,4 +161,10 @@
     <string name="dayNurseryOverviewLinkHref"><![CDATA[https://www.service-public.fr/particuliers/vosdroits/N137]]></string>
     <string name="dayNurseryApplyLinkName">Accueil en crèche</string>
     <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.service-public.fr/particuliers/vosdroits/F607]]></string>
+    <string name="Onesies">dors-bien</string>
+    <string name="OnesiesDesc">Don\'t cry over spoiled milk, but change the onesie.</string>
+    <string name="OnesiesLinkNameLong">Comparer sur Amazon</string>
+    <string name="OnesiesLinkNameLongHref"><![CDATA[https://amzn.to/3h6dRCb]]></string>
+    <string name="OnesiesLinkNameShort">Comparer sur ebay</string>
+    <string name="OnesiesLinkNameShortHref">http://ebay.us/Kw1TEI</string>
 </resources>

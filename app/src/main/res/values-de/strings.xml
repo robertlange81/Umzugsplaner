@@ -161,4 +161,10 @@
     <string name="dayNurseryOverviewLinkHref"><![CDATA[https://mummy-mag.de/wie-finde-und-erhalte-ich-einen-kitaplatz/]]></string>
     <string name="dayNurseryApplyLinkName">Kitaverzeichnis</string>
     <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.kitanetz.de/]]></string>
+    <string name="Onesies">Strampler</string>
+    <string name="OnesiesDesc">Sie werden schnell merken - die Ausgehuniform eines Neugeborenen wird oft schmutzig.</string>
+    <string name="OnesiesLinkNameLong">Langärmlig Unisex</string>
+    <string name="OnesiesLinkNameLongHref">http://ebay.us/Nt7vCA</string>
+    <string name="OnesiesLinkNameShort">Kurzärmlig Unisex</string>
+    <string name="OnesiesLinkNameShortHref">https://amzn.to/38shq1l</string>
 </resources>

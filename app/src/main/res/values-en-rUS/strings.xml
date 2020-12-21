@@ -161,4 +161,9 @@
     <string name="dayNurseryOverviewLinkHref"><![CDATA[https://www.testingmom.com/blog/nursery-school-admissions/]]></string>
     <string name="dayNurseryApplyLinkName">Applying for Nursery</string>
     <string name="dayNurseryApplyLinkHref">https://www.newyorkfamily.com/tips-for-the-nursery-school-search/</string>
+    <string name="Onesies">Onesies</string>
+    <string name="OnesiesDesc">Don\'t cry over spoiled milk, but change the onesie.</string>
+    <string name="OnesiesLinkNameLong">Long-Sleeved</string>
+    <string name="OnesiesLinkNameLongHref">https://amzn.to/34xMfAT</string>
+    <string name="OnesiesLinkNameShortHref">https://amzn.to/3pdw2Zw</string>
 </resources>

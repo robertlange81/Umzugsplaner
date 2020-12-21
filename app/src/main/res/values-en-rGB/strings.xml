@@ -159,5 +159,11 @@
     <string name="dayNurseryOverviewLinkName">What do I need to know?</string>
     <string name="dayNurseryOverviewLinkHref">https://www.babycentre.co.uk/a537554/day-nurseries</string>
     <string name="dayNurseryApplyLinkName">Applying for Nursery</string>
-    <string name="dayNurseryApplyLinkHref">https://www.familiesonline.co.uk/blog/how-and-when-should-i-apply-for-nursery</string>
+    <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.familiesonline.co.uk/blog/how-and-when-should-i-apply-for-nursery]]></string>
+    <string name="Onesies">Babygro</string>
+    <string name="OnesiesDesc">Don\'t cry over spoiled milk, but change the onesie.</string>
+    <string name="OnesiesLinkNameLong">Long-Sleeved</string>
+    <string name="OnesiesLinkNameLongHref"><![CDATA[https://amzn.to/2Wxn3WN]]></string>
+    <string name="OnesiesLinkNameShort">Short-Sleeved</string>
+    <string name="OnesiesLinkNameShortHref"><![CDATA[http://ebay.us/8oZsLP]]></string>
 </resources>
