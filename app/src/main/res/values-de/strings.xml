@@ -167,4 +167,18 @@
     <string name="OnesiesLinkNameLongHref">http://ebay.us/Nt7vCA</string>
     <string name="OnesiesLinkNameShort">Kurzärmlig Unisex</string>
     <string name="OnesiesLinkNameShortHref">https://amzn.to/38shq1l</string>
+    <string name="Stroller">Kinderwagen</string>
+    <string name="StrollerDesc">Auch wenn Sie Ihr Kind in einer Babytrage tragen möchten, benötigen Sie einen Kinderwagen.</string>
+    <string name="StrollerLinkNewbornName">Kinderwagen auf Amazon</string>
+    <string name="StrollerLinkNewbornNameHref"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=w1fxeor90b6-21&linkCode=ur2&linkId=3c51eaef8a51b39efd5d4348ad5261cb&camp=1638&creative=6742&index=baby&keywords=Kinderwagen]]></string>
+    <string name="StrollerLinkTwinsName">Kinderwagen für Zwillinge</string>
+    <string name="StrollerLinkTwinsHref"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=w1fxeor90b6-21&linkCode=ur2&linkId=031ef058b2595aec78368a885f1fc15d&camp=1638&creative=6742&index=baby&keywords=Kinderwagen+für+Zwillinge]]></string>
+    <string name="StrollerLinkEbayName">Kinderwagen auf Ebay</string>
+    <string name="StrollerLinkEbayHref">http://ebay.us/fNYWjH</string>
+    <string name="Bedding">Literie</string>
+    <string name="BeddingDesc">Dans un premier temps, enveloppez étroitement votre bébé dans une couverture pour le garder au chaud et en sécurité. Cela peut même aider à calmer votre bébé. Les sacs de couchage pour bébé constituent une alternative ou un niveau supérieur de couvertures à langer.</string>
+    <string name="SwaddleBlanketLinkName">Afficher les couvertures enveloppantes</string>
+    <string name="SwaddleBlanketLinkHref">http://ebay.us/JzmiQl</string>
+    <string name="SleepingBagLinkName">Afficher les sacs de couchage</string>
+    <string name="SleepingBagLinkHref">http://ebay.us/53g8u9</string>
 </resources>

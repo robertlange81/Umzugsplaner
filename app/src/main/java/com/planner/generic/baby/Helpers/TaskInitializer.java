@@ -131,11 +131,24 @@ public class TaskInitializer {
         onesie.addLink(context.getString(R.string.OnesiesLinkNameShort), context.getString(R.string.OnesiesLinkNameShortHref));
         Task.addTask(onesie);
 
-        // Schlafsack
+        // Wickeldecke und Schlafsack
+        Task swaddle = new Task(context.getString(R.string.Bedding), context.getString(R.string.BeddingDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Clothing), null);
+        swaddle.addLink(context.getString(R.string.SwaddleBlanketLinkName), context.getString(R.string.SwaddleBlanketLinkHref));
+        swaddle.addLink(context.getString(R.string.SleepingBagLinkName), context.getString(R.string.SleepingBagLinkHref));
+        Task.addTask(swaddle);
 
         // Kinderwagen
+        Task stroller = new Task(context.getString(R.string.Stroller), context.getString(R.string.StrollerDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Furnishings), null);
+        stroller.addLink(context.getString(R.string.StrollerLinkNewbornName), context.getString(R.string.StrollerLinkNewbornNameHref));
+        stroller.addLink(context.getString(R.string.StrollerLinkTwinsName), context.getString(R.string.StrollerLinkTwinsHref));
+        stroller.addLink(context.getString(R.string.StrollerLinkEbayName), context.getString(R.string.StrollerLinkEbayHref));
+        Task.addTask(stroller);
 
-        // Manduka
+        // Maxi Cosi
+
+        // Manduka / Baby Carrier
 
         // Windeln
 

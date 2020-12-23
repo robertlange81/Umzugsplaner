@@ -166,4 +166,18 @@
     <string name="OnesiesLinkNameLongHref"><![CDATA[https://amzn.to/2Wxn3WN]]></string>
     <string name="OnesiesLinkNameShort">Short-Sleeved</string>
     <string name="OnesiesLinkNameShortHref"><![CDATA[http://ebay.us/8oZsLP]]></string>
+    <string name="Stroller">Baby Pram</string>
+    <string name="StrollerDesc">Even if you intend to carry your child in a baby carrier, you will need a stroller as well.</string>
+    <string name="StrollerLinkNewbornName">Show Strollers on Amazon</string>
+    <string name="StrollerLinkNewbornNameHref"><![CDATA[https://www.amazon.co.uk/gp/search?ie=UTF8&tag=w1fxeor904-21&linkCode=ur2&linkId=3d169757b12b0ee6393d6f86e870459a&camp=1634&creative=6738&index=baby&keywords=Baby+Pram]]></string>
+    <string name="StrollerLinkTwinsName">Show Stroller for Twins</string>
+    <string name="StrollerLinkTwinsHref"><![CDATA[https://www.amazon.co.uk/gp/search?ie=UTF8&tag=w1fxeor904-21&linkCode=ur2&linkId=1e014fd583f5d0bcd731278784800386&camp=1634&creative=6738&index=baby&keywords=Stroller+for+Twins]]></string>
+    <string name="StrollerLinkEbayName">Strollers on Ebay</string>
+    <string name="StrollerLinkEbayHref">http://ebay.us/FfzGF6</string>
+    <string name="Bedding">Bedding</string>
+    <string name="BeddingDesc">Swaddling is the art of snugly wrapping a baby in a blanket for warmth and security. It may even help to calm your baby. An alternative, or next stage up from swaddle blankets, are baby sleeping bags.</string>
+    <string name="SwaddleBlanketLinkName">Swaddle Blanket</string>
+    <string name="SwaddleBlanketLinkHref">http://ebay.us/xz8ZRb</string>
+    <string name="SleepingBagLinkName">Sleeping Bag</string>
+    <string name="SleepingBagLinkHref">http://ebay.us/GuqXqc</string>
 </resources>
