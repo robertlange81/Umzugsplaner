@@ -711,7 +711,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
       searchFor = _task.name;
     }
 
-    if((_task.links.isEmpty() && searchFor != null && !searchFor.isEmpty())) { // already set up specific links for Removal
+    if((searchFor != null && !searchFor.isEmpty())) {
 
       TreeMap<String,String> newLinks = new TreeMap<>();
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {
@@ -728,7 +728,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
       _task.addLink(
               getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Ebay),
-              getResources().getString(R.string.ebay_generic_link) + replaceUmlaut(searchFor)
+              getResources().getString(R.string.ebay_generic_link) + replaceUmlaut(searchFor).replaceAll(" ", "%2B")
       );
 
       setLinks(_initLinks());
