@@ -150,22 +150,43 @@ public class TaskInitializer {
 
         // Manduka / Baby Carrier
 
-        // Windeln
+        // Kosmetik
 
         // Stillzubehör
-        
-        // Geburtsurkunde
-
-
-
-
-
-
-
-
-        // Namen finden
 
         // Elternzeit
+
+
+
+
+        // Windeln, Feuchttücher, Wickelunterlagen
+        Task diapers = new Task(context.getString(R.string.diapers), context.getString(R.string.diapersDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Drugs), null);
+        diapers.addLink(context.getString(R.string.diapersLink1Name), context.getString(R.string.diapersLink1Href));
+        diapers.addLink(context.getString(R.string.diapersLink2Name), context.getString(R.string.diapersLink2Href));
+        diapers.addLink(context.getString(R.string.diapersLink3Name), context.getString(R.string.diapersLink3Href));
+        Task.addTask(diapers);
+
+        // Spielzeug
+
+        // Vitamin Öl
+        Task d3 = new Task(context.getString(R.string.VitaminD3), context.getString(R.string.VitaminD3Desc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Drugs), null);
+        Task.addTask(d3);
+
+        // Namen finden
+        Task naming = new Task(context.getString(R.string.findName), context.getString(R.string.findNameDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        naming.addLink(context.getString(R.string.findGirlsNameLinkName), context.getString(R.string.findGirlsNameLinkHref));
+        naming.addLink(context.getString(R.string.findBoysNameLinkName), context.getString(R.string.findBoysNameLinkHref));
+        naming.addLink(context.getString(R.string.NameGeneratorLinkName), context.getString(R.string.NameGeneratorLinkHref));
+        Task.addTask(naming);
+
+        // Geburtsurkunde
+        Task birthCert = new Task(context.getString(R.string.BirthCertificate), context.getString(R.string.BirthCertificateDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        birthCert.addLink(context.getString(R.string.BirthCertificateLinkName), context.getString(R.string.BirthCertificateLinkHref));
+        Task.addTask(birthCert);
     }
 
     private static void AddBirthdayTasks(Date targetDate, Location targetLocation, Activity context, Date today, Date tomorrow) {

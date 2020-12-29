@@ -60,7 +60,7 @@
         <item>Ernährung</item>
         <item>Einrichtung</item>
         <item>Literatur</item>
-        <item>Medizin</item>
+        <item>Drogeriewaren</item>
         <item>Spielzeug</item>
         <item>Sonstiges</item>
     </string-array>
@@ -175,10 +175,32 @@
     <string name="StrollerLinkTwinsHref"><![CDATA[https://www.amazon.de/gp/search?ie=UTF8&tag=w1fxeor90b6-21&linkCode=ur2&linkId=031ef058b2595aec78368a885f1fc15d&camp=1638&creative=6742&index=baby&keywords=Kinderwagen+für+Zwillinge]]></string>
     <string name="StrollerLinkEbayName">Kinderwagen auf Ebay</string>
     <string name="StrollerLinkEbayHref">http://ebay.us/fNYWjH</string>
-    <string name="Bedding">Literie</string>
-    <string name="BeddingDesc">Dans un premier temps, enveloppez étroitement votre bébé dans une couverture pour le garder au chaud et en sécurité. Cela peut même aider à calmer votre bébé. Les sacs de couchage pour bébé constituent une alternative ou un niveau supérieur de couvertures à langer.</string>
-    <string name="SwaddleBlanketLinkName">Afficher les couvertures enveloppantes</string>
-    <string name="SwaddleBlanketLinkHref">http://ebay.us/JzmiQl</string>
-    <string name="SleepingBagLinkName">Afficher les sacs de couchage</string>
-    <string name="SleepingBagLinkHref">http://ebay.us/53g8u9</string>
+    <string name="Bedding">Bettzeug</string>
+    <string name="BeddingDesc">Wickeln Sie Ihr Baby zuerst fest in eine Decke, um es warm und sicher zu halten. Es kann sogar helfen, Ihr Baby zu beruhigen. Babyschlafsäcke sind auch eine Alternative.</string>
+    <string name="SwaddleBlanketLinkName">Wickeldecken</string>
+    <string name="SwaddleBlanketLinkHref">http://ebay.us/jSEBrb</string>
+    <string name="SleepingBagLinkName">Schlafsäcke</string>
+    <string name="SleepingBagLinkHref">https://amzn.to/34QZn4g</string>
+    <string name="findName">Namen finden</string>
+    <string name="findNameDesc">Einen Namen zu finden, mit dem beide Elternteile zufrieden sind, ist oft ein schwieriger Kompromiss.</string>
+    <string name="findGirlsNameLinkName">♀ Beliebte Mädchennamen</string>
+    <string name="findGirlsNameLinkHref">https://vornamen.blog/maedchennamen</string>
+    <string name="findBoysNameLinkName">♂ Beliebte Jungsnamen</string>
+    <string name="findBoysNameLinkHref">https://vornamen.blog/jungennamen</string>
+    <string name="NameGeneratorLinkName">Babynamen-Generator</string>
+    <string name="NameGeneratorLinkHref">https://www.vorname.com/babynamen_generator.html</string>
+    <string name="VitaminD3">Vitamin D3 Öl</string>
+    <string name="VitaminD3Desc">Die Sonne reicht von Oktober bis März als Vitamin D-Quelle nicht aus. Vitamin D-Tropfen sind die beste Form für Babys. Die richtige Dosierung ist 400IE Vitamin D3. Nebenwirkungen sind nicht zu befürchten. Eine Überdosierung ist nur bei sehr hohen Dosen möglich.</string>
+    <string name="BirthCertificate">Geburtsurkunde</string>
+    <string name="BirthCertificateDesc">Sie müssen die Geburtsurkunde beim Standesamt beantragen, d.h. im Speziellen beim Standesamt im Geburtsort des Kindes, anzeigen. In vielen Fällen können Sie Ihr Kind bereits in der Entbindungsklinik oder im Geburtshaus anmelden und müssen dann die Geburtsurkunde nur noch beim Standesamt abholen.</string>
+    <string name="BirthCertificateLinkName">Geburtsurkunde beim Standesamt beantragen</string>
+    <string name="BirthCertificateLinkHref">https://deinelterngeld.de/geburtsurkunde/</string>
+    <string name="diapers">Windeln</string>
+    <string name="diapersDesc">In den ersten Jahren sind Windeln ein wichtiger Bestandteil des Tagesablaufs. Am Anfang (0–3 Monate) wird Ihr Neugeborenes wahrscheinlich 8–12 Windeln pro Tag verbrauchen.</string>
+    <string name="diapersLink1Name">Muumi Ökowindeln</string>
+    <string name="diapersLink1Href">https://amzn.to/2JtAvb7</string>
+    <string name="diapersLink2Name">Huggies Newborn</string>
+    <string name="diapersLink2Href">https://amzn.to/2Js55lp</string>
+    <string name="diapersLink3Name">Wickelauflage</string>
+    <string name="diapersLink3Href">http://ebay.us/6O8vD9</string>
 </resources>

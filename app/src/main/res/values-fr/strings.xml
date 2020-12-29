@@ -168,17 +168,39 @@
     <string name="OnesiesLinkNameShort">Comparer sur ebay</string>
     <string name="OnesiesLinkNameShortHref">http://ebay.us/Kw1TEI</string>
     <string name="Stroller">Poussette</string>
-    <string name="StrollerDesc">Même si vous avez l\'intention de transporter votre enfant dans un porte-bébé, vous aurez également besoin d'une poussette.</string>
+    <string name="StrollerDesc">Même si vous avez l\'intention de transporter votre enfant dans un porte-bébé, vous aurez également besoin d\'une poussette.</string>
     <string name="StrollerLinkNewbornName">Afficher les poussettes sur Amazon</string>
     <string name="StrollerLinkNewbornNameHref"><![CDATA[https://www.amazon.fr/gp/search?ie=UTF8&tag=w1fxeor905-21&linkCode=ur2&linkId=4cb7c22cac20329a7155b11b0fc875e8&camp=1642&creative=6746&index=baby&keywords=Poussette]]></string>
     <string name="StrollerLinkTwinsName">Poussette pour jumeaux</string>
     <string name="StrollerLinkTwinsHref"><![CDATA[https://www.amazon.fr/gp/search?ie=UTF8&tag=w1fxeor905-21&linkCode=ur2&linkId=234c90c32ef8f9dc083b3e494b60675b&camp=1642&creative=6746&index=baby&keywords=Poussette+pour+jumeaux]]></string>
     <string name="StrollerLinkEbayName">Afficher sur ebay</string>
     <string name="StrollerLinkEbayHref">http://ebay.us/gWsZ6s</string>
-    <string name="Bedding">Bedding</string>
-    <string name="BeddingDesc">Swaddling is the art of snugly wrapping a baby in a blanket for warmth and security. It may even help to calm your baby. An alternative, or next stage up from swaddle blankets, are baby sleeping bags.</string>
-    <string name="SwaddleBlanketLinkName">Swaddle Blanket</string>
-    <string name="SwaddleBlanketLinkHref">http://ebay.us/7Sw0Ix</string>
-    <string name="SleepingBagLinkName">Sleeping Bag</string>
-    <string name="SleepingBagLinkHref">http://ebay.us/CedS5a</string>
+    <string name="Bedding">Literie</string>
+    <string name="BeddingDesc">Dans un premier temps, enveloppez étroitement votre bébé dans une couverture pour le garder au chaud et en sécurité. Cela peut même aider à calmer votre bébé. Les sacs de couchage pour bébé constituent une alternative ou un niveau supérieur de couvertures à langer.</string>
+    <string name="SwaddleBlanketLinkName">Afficher les couvertures enveloppantes</string>
+    <string name="SwaddleBlanketLinkHref">http://ebay.us/JzmiQl</string>
+    <string name="SleepingBagLinkName">Afficher les sacs de couchage</string>
+    <string name="SleepingBagLinkHref">http://ebay.us/53g8u9</string>
+    <string name="findName">Trouver un nom</string>
+    <string name="findNameDesc">Trouver un nom qui satisfait les deux parents est souvent un compromis difficile.</string>
+    <string name="findGirlsNameLinkName">♀ Noms de fille les plus populaires</string>
+    <string name="findGirlsNameLinkHref">https://www.naissance.fr/prenoms/top50/fille/2020</string>
+    <string name="findBoysNameLinkName">♂ Noms de garçon les plus populaires</string>
+    <string name="findBoysNameLinkHref">https://www.parents.fr/prenoms/top-100-des-prenoms-de-garcons-100988</string>
+    <string name="NameGeneratorLinkName">Générateur de prénoms de bébé</string>
+    <string name="NameGeneratorLinkHref">https://www.pampers.fr/grossesse/prenoms-de-bebes/trouvez-le-prenom-de-votre-bebe</string>
+    <string name="VitaminD3">Vitamin D3 Liquide</string>
+    <string name="VitaminD3Desc">Le soleil est insuffisant comme source de vitamine D d\'octobre à mars. Les gouttes de vitamine D sont la meilleure forme pour les bébés. Le dosage correct est la vitamine D3 400IE. Les effets secondaires ne sont pas à craindre. Le surdosage n\'est possible qu\'avec des doses très élevées.</string>
+    <string name="BirthCertificate">Déclaration de Naissance</string>
+    <string name="BirthCertificateDesc">Déclaration à la mairie, auprès de votre employeur, de la Caf ou de la sécurité sociale… Jusqu\'à quand peut-on déclarer la naissance d\'un enfant? On fait le point sur les démarches à effectuer, pour ne rien oublier.</string>
+    <string name="BirthCertificateLinkName">Astuces</string>
+    <string name="BirthCertificateLinkHref">https://www.journaldesfemmes.fr/maman/guide-allocations-et-droits/1715577-declaration-naissance-bebe/</string>
+    <string name="diapers">Couches</string>
+    <string name="diapersDesc">Au cours des premières années, les couches sont une partie importante de la routine quotidienne. Au début (0 à 3 mois), votre nouveau-né utilisera probablement 8 à 12 couches par jour.</string>
+    <string name="diapersLink1Name">Huggies Newborn</string>
+    <string name="diapersLink1Href">https://amzn.to/37YdZRm</string>
+    <string name="diapersLink2Name">Couches écologiques</string>
+    <string name="diapersLink2Href"><![CDATA[https://www.amazon.fr/gp/search?ie=UTF8&tag=w1fxeor905-21&linkCode=ur2&linkId=74684eabb931256313c64904b17e9992&camp=1642&creative=6746&index=baby&keywords=couches+écologiques]]></string>
+    <string name="diapersLink3Name">Matelas à langer</string>
+    <string name="diapersLink3Href">http://ebay.us/TVo9aq</string>
 </resources>

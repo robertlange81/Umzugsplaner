@@ -61,7 +61,7 @@
         <item>Food</item>
         <item>Furnishing</item>
         <item>Literature</item>
-        <item>Medicine</item>
+        <item>Drugs</item>
         <item>Toys</item>
         <item>Other</item>
     </string-array>
@@ -180,4 +180,25 @@
     <string name="SwaddleBlanketLinkHref">http://ebay.us/7Sw0Ix</string>
     <string name="SleepingBagLinkName">Sleeping Bag</string>
     <string name="SleepingBagLinkHref">http://ebay.us/CedS5a</string>
+    <string name="findName">Find a Name</string>
+    <string name="findNameDesc">Finding a name that both parents are happy with is often a difficult compromise.</string>
+    <string name="findGirlsNameLinkName">♀ Most Popular Girl Names</string>
+    <string name="findGirlsNameLinkHref">https://www.goodhousekeeping.com/life/parenting/a34453739/popular-baby-girl-names-2021/</string>
+    <string name="findBoysNameLinkName">♂ Most Popular Boy Names</string>
+    <string name="findBoysNameLinkHref">https://www.whattoexpect.com/baby-names/list/top-baby-names-for-boys/</string>
+    <string name="NameGeneratorLinkName">Baby Name Generator</string>
+    <string name="VitaminD3">Vitamin D3 Oil</string>
+    <string name="VitaminD3Desc">The sun is insufficient as a source of vitamin D from October to March. Vitamin D drops are the best form for babies. The correct dosage is 400IE vitamin D3. Side effects are not to be feared. Overdosing is only possible with very high doses.</string>
+    <string name="BirthCertificate">Birth Certificate</string>
+    <string name="BirthCertificateDesc">When it comes time to bring your new little one into the world, details like how to get baby’s birth certificate or what steps you’ll need to take when registering a birth might be overlooked.</string>
+    <string name="BirthCertificateLinkName">How To Get Baby’s Birth Certificate</string>
+    <string name="BirthCertificateLinkHref">https://blog.vitalchek.com/vital-records/facts-get-babys-birth-certificate/</string>
+    <string name="diapers">Diapers for Newborn</string>
+    <string name="diapersDesc">For any baby and parents, the short (and not sweet) diaper life cycle is a big part of the daily routine for the first 1–3+ years. In the beginning (0–3 months), your newborn is probably going to go through about 8–12 diapers a day.</string>
+    <string name="diapersLink1Name">1) Pampers Swaddlers</string>
+    <string name="diapersLink1Href">https://amzn.to/3hpWTi6</string>
+    <string name="diapersLink2Name">2) BumGenius Pocket Diaper</string>
+    <string name="diapersLink2Href">https://amzn.to/3aStA6A</string>
+    <string name="diapersLink3Name">3) Huggies Newborn Diapers</string>
+    <string name="diapersLink3Href">https://amzn.to/34VFOrl</string>
 </resources>
