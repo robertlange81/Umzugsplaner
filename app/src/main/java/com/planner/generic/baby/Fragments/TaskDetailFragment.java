@@ -713,14 +713,14 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
 
     if((searchFor != null && !searchFor.isEmpty())) {
 
-      TreeMap<String,String> newLinks = new TreeMap<>();
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {
-        if(!entry.getValue().contains("amazon") && !entry.getValue().contains("ebay")) {
-          newLinks.put(entry.getKey(), entry.getValue());
+        if(!entry.getValue().contains(getString(R.string.lookFor) + " ")) {
+          // don't change predefined links
+          return;
         }
       }
 
-      _task.links = newLinks;
+      _task.links = new TreeMap<>();
       _task.addLink(
         getString(R.string.lookFor) + " " + searchFor + " " + getString(R.string.on) + " " + getResources().getString(R.string.Amazon),
         getResources().getString(R.string.amazon_generic_link) + URLEncoder.encode(searchFor)
