@@ -59,7 +59,7 @@
         <item>Organisation</item>
         <item>Vêtements</item>
         <item>Nourriture</item>
-        <item>Meubles</item>
+        <item>Équipement</item>
         <item>Littérature</item>
         <item>Médicament</item>
         <item>Jouet</item>
@@ -181,7 +181,7 @@
     <string name="SwaddleBlanketLinkHref">http://ebay.us/JzmiQl</string>
     <string name="SleepingBagLinkName">Afficher les sacs de couchage</string>
     <string name="SleepingBagLinkHref">http://ebay.us/53g8u9</string>
-    <string name="findName">Trouver un nom</string>
+    <string name="findName">Trouver un prénom</string>
     <string name="findNameDesc">Trouver un nom qui satisfait les deux parents est souvent un compromis difficile.</string>
     <string name="findGirlsNameLinkName">♀ Noms de fille les plus populaires</string>
     <string name="findGirlsNameLinkHref">https://www.naissance.fr/prenoms/top50/fille/2020</string>
@@ -203,4 +203,54 @@
     <string name="diapersLink2Href"><![CDATA[https://www.amazon.fr/gp/search?ie=UTF8&tag=w1fxeor905-21&linkCode=ur2&linkId=74684eabb931256313c64904b17e9992&camp=1642&creative=6746&index=baby&keywords=couches+écologiques]]></string>
     <string name="diapersLink3Name">Matelas à langer</string>
     <string name="diapersLink3Href">http://ebay.us/TVo9aq</string>
+    <string name="godparent">parrain-marraine</string>
+    <string name="godparentDesc">Le statut de parrain ou de marraine a avant tout une portée morale et symbolique. Le droit ne leur reconnait aucun régime juridique particulier vis-à-vis de l\'enfant parrainé, que le parrainage soit religieux mais aussi civil. Ainsi, le baptême civil ne fait l\'objet d\'aucune inscription sur les registres d\'état civil, fusse t-il célébré par un maire.</string>
+    <string name="godparentLinkName">Le rôle de parrain et marraine</string>
+    <string name="godparentLinkHref">http://www.famidoo.be/fr/conseils/famille/article/le-role-de-parrain-et-marraine</string>
+    <string name="babyCrib">Lit bébé</string>
+    <string name="babyCribDesc">Si vous n’avez pas encore de lit pour votre futur bébé, un lit de 60 x 120 cm avec un sommier réglable en hauteur est le plus indiqué. Un berceau, même pour un nouveau-né, n’est pas indispensable. Si vous voulez tout de même commencer par cela, vous devrez en changer environ 3 mois plus tard (dès que l’enfant sera mobile) pour un petit lit. Si l’enfant ne peut se tourner dans le berceau, il risque de dormir le nez et la bouche contre les parois latérales et donc de ne pas respirer correctement. Lors de l’achat, vérifiez la présence de la mention EN716 qui indique que le lit est conforme aux normes de sécurité européennes. Les distances et les dimensions sont prévues pour éviter au maximum les risques de pincement des doigts, des orteils et des membres. En outre, le coincement de la tête et du cou sont évités ainsi que le risque d’asphyxie et d’étranglement.</string>
+    <string name="babyCribLinkOverallName">Chicco Next2Me Dream</string>
+    <string name="babyCribLinkOverallHref">https://amzn.to/3n1QR8P</string>
+    <string name="babyCribLinkTravelName">Compact Lit de Voyage</string>
+    <string name="babyCribLinkTravelHref">https://amzn.to/3mYsubT</string>
+    <string name="CarSeat">Bébé Siège Auto</string>
+    <string name="CarSeatDesc">Plusieurs types de sièges auto bébé sont présents sur le marché. Attention, car selon l’âge, le poids et la taille de votre bébé, vous devez choisir un modèle autorisé par la législation :\n\nLit nacelle pour les enfants des groupes 0 et 0+ (véhicule avec système Isofix) : il doit être fixé parallèlement au dossier du siège arrière et posséder un filet anti-éjection. Le bébé est allongé.\nCoque dos à la route ou siège dos à la route pour les enfants des groupes 0 et 0+ : fixé à l’avant ou à l’arrière du véhicule, mais toujours dos à la route. Le bébé est semi-allongé. Vous avez également le siège pivotant qui permet les deux positions.\nSiège à harnais ou avec bouclier pour les enfants du groupe I : à l’arrière du véhicule et face à la route. L’enfant est assis.\nRehausseur pour les enfants des groupes II et III (sans Isofix) : à l’arrière du véhicule et face à la route. L’enfant est assis.\nAttention, quand le siège auto est installé sur le siège passager avant, veillez à désactiver l’airbag frontal.</string>
+    <string name="toys">Jouet</string>
+    <string name="toysDesc">Un hochet est généralement le premier jouet qu\'un bébé peut vraiment utiliser et qui l\'accompagne pendant longtemps.</string>
+    <string name="toysRattleLinkName">Hochet</string>
+    <string name="toysRattleLinkHref">https://amzn.to/3n9spC9</string>
+    <string name="toysBookLinkName">Livre en Tissu</string>
+    <string name="toysBookLinkHref">https://amzn.to/3pSipzl</string>
+    <string name="toysSootherLinkName">Peluche musicale mouton</string>
+    <string name="toysSootherLinkHref">https://amzn.to/3hwQBxp</string>
+    <string name="motoricToys">Jouets Motorisés</string>
+    <string name="motoricToysDesc">Un Oball ou Skywish fascine chaque enfant et met en pratique sa motricité.</string>
+    <string name="mororicToysObalLinkName">Oball</string>
+    <string name="mororicToysObalLinkHref">https://amzn.to/3n38bu4</string>
+    <string name="mororicToysSkwishLinkName">Skwish</string>
+    <string name="mororicToysSkwishLinkHref">https://amzn.to/38PxPgE</string>
+    <string name="ultrasoundExam">Examen Échographique</string>
+    <string name="ultrasoundExamDesc">Une échographie est réalisée autour de la 12e semaine de grossesse. Le dépistage périnatal non invasif (NIPT) vise précisément à détecter la trisomie 21 (le syndrome de Down), la trisomie 13 et la 18. Autour de la 20e semaine de grossesse, le médecin contrôlera les différents organes du fœtus. Il observe la tête, la colonne vertébrale et la moelle épinière, la cavité du thorax avec le cœur, le ventre, les organes génitaux et les membres. Autour des 30–32 semaines, il regarde surtout la croissance, la position et le développement du bébé.</string>
+    <string name="ultrasoundExamLinkName">Échographie 3D pendant la grossesse</string>
+    <string name="ultrasoundExamLinkHref">https://fr2.htgetrid.com/beremennost/uzi/3d/</string>
+    <string name="babyCarrier">Porte Bébé</string>
+    <string name="babyCarrierDesc">L’écharpe de portage: un mode de vie\nLe porte-bébé classique: c’est pratique</string>
+    <string name="babyCarrierLinkWrapName">Echarpe de portage ou porte-bébé?</string>
+    <string name="babyCarrierLinkWrapHref">https://www.parents.fr/etre-parent/maman/le-portage/echarpe-de-portage-ou-porte-bebe-cest-vous-qui-decidez-79860</string>
+    <string name="babyCarrierLinkStructuredName">Echarpe de Portage</string>
+    <string name="babyCarrierLinkStructuredHref">https://amzn.to/2X7dNsu</string>
+    <string name="babyCarrierLinkInsertName">porte-bébé</string>
+    <string name="babyCarrierLinkInsertHref">https://amzn.to/354mR5V</string>
+    <string name="feeding">Allaitement</string>
+    <string name="feedingDesc">Vous aurez besoin de torchons et de bavoirs pour l\'allaitement. Même si vous allaitez, vous aurez besoin de biberons pour contenir le lait que vous exprimez avec un tire-lait. Un Stérilisateur pour biberons peut être très utile pour le nettoyage.</string>
+    <string name="feedingBibsLinkName">Bavoir</string>
+    <string name="feedingBibsLinkHref">https://amzn.to/3pP2n9n</string>
+    <string name="feedingBottlesLinkName">Biberons</string>
+    <string name="feedingBottlesLinkHref">https://amzn.to/38TIVBj</string>
+    <string name="feedingSterilizerLinkName">Stérilisateur pour bouteilles</string>
+    <string name="feedingSterilizerLinkHref">https://amzn.to/385n8Yf</string>
+    <string name="feedingBottleWarmerLinkName">Flaschenwärmer</string>
+    <string name="feedingBottleWarmerLinkHref">https://amzn.to/3rKtR1w</string>
+    <string name="feedingBreastPumpLinkName">Tire-Lait</string>
+    <string name="feedingBreastPumpLinkHref">https://amzn.to/2KNeLYF</string>
 </resources>
