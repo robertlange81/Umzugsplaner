@@ -63,6 +63,7 @@
         <item>Literature</item>
         <item>Drugs</item>
         <item>Toys</item>
+        <item>Mobility</item>
         <item>Other</item>
     </string-array>
     <string name="Rate_App">Rate App</string>
@@ -146,7 +147,7 @@
     <string name="show_on_map">show on map</string>
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
-    <string name="change_date_or_location">Change Date or Location</string>
+    <string name="change_date_or_location">Change Date or Clinic</string>
     <string name="midwifeLinkHref"><![CDATA[https://www.amazon.com/gp/product/3943793001/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=3943793001&linkCode=as2&tag=w1fxeor9us09-20&linkId=965e18e35812cd6cf4d7cc8da4defaa0]]></string>
     <string name="midwifeLinkName">Link to the book</string>
     <string name="midwife">Read tips from a midwife</string>

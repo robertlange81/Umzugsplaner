@@ -101,6 +101,7 @@ public class TaskInitializer {
 
         /* Vorlage
         https://www.missmum.at/10-dinge-die-dein-baby-am-anfang-wirklich-braucht/?cn-reloaded=1
+        https://www.gofeminin.de/shopping/babyausstattung-s1850868.html
         Task xxx = new Task("", "", addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
                 new TaskType(TaskTypeBaby.Literature), null);
         xxx.addLink("", "");
@@ -150,7 +151,7 @@ public class TaskInitializer {
 
         // Kinderwagen
         Task stroller = new Task(context.getString(R.string.Stroller), context.getString(R.string.StrollerDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
-                new TaskType(TaskTypeBaby.Furnishings), null);
+                new TaskType(TaskTypeBaby.Transport), null);
         stroller.addLink(context.getString(R.string.StrollerLinkNewbornName), context.getString(R.string.StrollerLinkNewbornNameHref));
         stroller.addLink(context.getString(R.string.StrollerLinkTwinsName), context.getString(R.string.StrollerLinkTwinsHref));
         stroller.addLink(context.getString(R.string.StrollerLinkEbayName), context.getString(R.string.StrollerLinkEbayHref));
@@ -158,12 +159,12 @@ public class TaskInitializer {
 
         // Babyschale
         Task carSeat = new Task(context.getString(R.string.CarSeat), context.getString(R.string.CarSeatDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
-                new TaskType(TaskTypeBaby.Furnishings), null);
+                new TaskType(TaskTypeBaby.Transport), null);
         Task.addTask(carSeat);
 
         // Manduka / Baby Carrier
         Task babyCarrier = new Task(context.getString(R.string.babyCarrier), context.getString(R.string.babyCarrierDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.Normal, 0L,
-                new TaskType(TaskTypeBaby.Furnishings), null);
+                new TaskType(TaskTypeBaby.Transport), null);
         babyCarrier.addLink(context.getString(R.string.babyCarrierLinkWrapName), context.getString(R.string.babyCarrierLinkWrapHref));
         babyCarrier.addLink(context.getString(R.string.babyCarrierLinkStructuredName), context.getString(R.string.babyCarrierLinkStructuredHref));
         babyCarrier.addLink(context.getString(R.string.babyCarrierLinkInsertName), context.getString(R.string.babyCarrierLinkInsertHref));
@@ -250,7 +251,6 @@ public class TaskInitializer {
         diapers.addLink(context.getString(R.string.diapersLink2Name), context.getString(R.string.diapersLink2Href));
         diapers.addLink(context.getString(R.string.diapersLink3Name), context.getString(R.string.diapersLink3Href));
         Task.addTask(diapers);
-
 
         // Vitamin Öl
         Task d3 = new Task(context.getString(R.string.VitaminD3), context.getString(R.string.VitaminD3Desc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,

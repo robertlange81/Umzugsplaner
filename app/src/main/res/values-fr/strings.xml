@@ -63,6 +63,7 @@
         <item>Littérature</item>
         <item>Médicament</item>
         <item>Jouet</item>
+        <item>Mobilité</item>
         <item>Autres</item>
     </string-array>
     <string name="Rate_App">Évaluer l\'application</string>

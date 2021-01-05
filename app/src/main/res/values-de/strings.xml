@@ -62,6 +62,7 @@
         <item>Literatur</item>
         <item>Drogeriewaren</item>
         <item>Spielzeug</item>
+        <item>Mobilität</item>
         <item>Sonstiges</item>
     </string-array>
     <string name="Rate_App">App bewerten</string>
