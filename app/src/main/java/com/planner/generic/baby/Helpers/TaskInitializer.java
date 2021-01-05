@@ -128,18 +128,11 @@ public class TaskInitializer {
         dayNursery.addLink(context.getString(R.string.dayNurseryOverviewLinkName), context.getString(R.string.dayNurseryOverviewLinkHref));
         Task.addTask(dayNursery);
 
-        // Wärmelampe
-        Task heatLamp = new Task(context.getString(R.string.heatLamp), context.getString(R.string.heatLampDesc), addMonthDaysToJavaUtilDate(targetDate, -4, 0), Priority.Normal, 0L,
-                new TaskType(TaskTypeBaby.Furnishings), null);
-        heatLamp.addLink(context.getString(R.string.heatLampLinkName), context.getString(R.string.heatLampLinkHref));
-        Task.addTask(heatLamp);
-
-        // Strampler
-        Task onesie = new Task(context.getString(R.string.Onesies), context.getString(R.string.OnesiesDesc), addMonthDaysToJavaUtilDate(targetDate, -3, 0), Priority.Normal, 0L,
-                new TaskType(TaskTypeBaby.Clothing), null);
-        onesie.addLink(context.getString(R.string.OnesiesLinkNameLong), context.getString(R.string.OnesiesLinkNameLongHref));
-        onesie.addLink(context.getString(R.string.OnesiesLinkNameShort), context.getString(R.string.OnesiesLinkNameShortHref));
-        Task.addTask(onesie);
+        // Elternzeit
+        Task parentalLeave = new Task(context.getString(R.string.parentalLeave), context.getString(R.string.parentalLeaveDesc), tomorrow, Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        parentalLeave.addLink(context.getString(R.string.parentalLeaveLinkName), context.getString(R.string.parentalLeaveLinkHref));
+        Task.addTask(parentalLeave);
 
         // Wickeldecke und Schlafsack
         Task swaddle = new Task(context.getString(R.string.Bedding), context.getString(R.string.BeddingDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
@@ -149,7 +142,7 @@ public class TaskInitializer {
         Task.addTask(swaddle);
 
         // Kinderbett
-        Task babyCrib = new Task(context.getString(R.string.babyCrib), context.getString(R.string.babyCribDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 15), Priority.High, 0L,
+        Task babyCrib = new Task(context.getString(R.string.babyCrib), context.getString(R.string.babyCribDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 15), Priority.High, 0L,
                 new TaskType(TaskTypeBaby.Furnishings), null);
         babyCrib.addLink(context.getString(R.string.babyCribLinkOverallName), context.getString(R.string.babyCribLinkOverallHref));
         babyCrib.addLink(context.getString(R.string.babyCribLinkTravelName), context.getString(R.string.babyCribLinkTravelHref));
@@ -177,9 +170,46 @@ public class TaskInitializer {
         Task.addTask(babyCarrier);
 
         // Pflegeprodukte
+        Task careProducts = new Task(context.getString(R.string.careProducts), context.getString(R.string.careProductsDesc), addMonthDaysToJavaUtilDate(targetDate, -4, 0), Priority.Normal, 0L,
+                new TaskType(TaskTypeBaby.Drugs), null);
+        careProducts.addLink(context.getString(R.string.careProductsPowderLinkName), context.getString(R.string.careProductsPowderLinkHref));
+        careProducts.addLink(context.getString(R.string.careProductsDiaperBalmLinkName), context.getString(R.string.careProductsDiaperBalmLinkHref));
+        careProducts.addLink(context.getString(R.string.careProductsBodyCreamLinkName), context.getString(R.string.careProductsBodyCreamLinkHref));
+        careProducts.addLink(context.getString(R.string.careProductsShampooLinkName), context.getString(R.string.careProductsShampooLinkHref));
+        careProducts.addLink(context.getString(R.string.careProductsSuncreamLinkName), context.getString(R.string.careProductsSuncreamLinkHref));
+        careProducts.addLink(context.getString(R.string.careProductsWipesLinkName), context.getString(R.string.careProductsWipesLinkHref));
+        Task.addTask(careProducts);
+
+        // Mutterschutz
+        Task maternityLeave = new Task(context.getString(R.string.maternityLeave), context.getString(R.string.maternityLeaveDesc), addMonthDaysToJavaUtilDate(targetDate, 0, -42), Priority.Normal, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        maternityLeave.addLink(context.getString(R.string.maternityLeaveLinkName), context.getString(R.string.maternityLeaveLinkHref));
+        Task.addTask(maternityLeave);
+
+        // Wärmelampe
+        Task heatLamp = new Task(context.getString(R.string.heatLamp), context.getString(R.string.heatLampDesc), addMonthDaysToJavaUtilDate(targetDate, -4, 0), Priority.Normal, 0L,
+                new TaskType(TaskTypeBaby.Furnishings), null);
+        heatLamp.addLink(context.getString(R.string.heatLampLinkName), context.getString(R.string.heatLampLinkHref));
+        Task.addTask(heatLamp);
+
+        // Strampler
+        Task onesie = new Task(context.getString(R.string.Onesies), context.getString(R.string.OnesiesDesc), addMonthDaysToJavaUtilDate(targetDate, -3, 0), Priority.Normal, 0L,
+                new TaskType(TaskTypeBaby.Clothing), null);
+        onesie.addLink(context.getString(R.string.OnesiesLinkNameLong), context.getString(R.string.OnesiesLinkNameLongHref));
+        onesie.addLink(context.getString(R.string.OnesiesLinkNameShort), context.getString(R.string.OnesiesLinkNameShortHref));
+        Task.addTask(onesie);
+
+        // Nuckel
+        Task pacifiers = new Task(context.getString(R.string.pacifiers), context.getString(R.string.pacifiersDesc), addMonthDaysToJavaUtilDate(targetDate, -3, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Toys), null);
+        Task.addTask(pacifiers);
 
         // Thermometer
-
+        Task thermometer = new Task(context.getString(R.string.thermometer), context.getString(R.string.thermometerDesc), addMonthDaysToJavaUtilDate(targetDate, -3, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Drugs), null);
+        thermometer.addLink(context.getString(R.string.thermometerRectalLinkName), context.getString(R.string.thermometerRectalLinkHref));
+        thermometer.addLink(context.getString(R.string.thermometerTouchlessLinkName), context.getString(R.string.thermometerTouchlessLinkHref));
+        Task.addTask(thermometer);
 
         // Stillzubehör
         Task feedingSupplies = new Task(context.getString(R.string.feeding), context.getString(R.string.feedingDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
@@ -192,8 +222,11 @@ public class TaskInitializer {
         Task.addTask(feedingSupplies);
 
         // Milchpulver
-
-        // Elternzeit
+        Task formula = new Task(context.getString(R.string.formula), context.getString(R.string.formulaDesc), addMonthDaysToJavaUtilDate(targetDate, -2, 0), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Food), null);
+        formula.addLink(context.getString(R.string.formulaBestLinkName), context.getString(R.string.formulaBestLinkHref));
+        formula.addLink(context.getString(R.string.formulaAllergicLinkName), context.getString(R.string.formulaAllergicLinkHref));
+        Task.addTask(formula);
 
         // Spielzeug
         Task basicToys = new Task(context.getString(R.string.toys), context.getString(R.string.toysDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.Normal, 0L,

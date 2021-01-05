@@ -73,7 +73,7 @@
     <string name="placeholder_hide_low_prio">nur hohe Prio</string>
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor90b6-21&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor90b6-21&s=review-rank&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
     <string name="start_new_todo">neue Checkliste anlegen</string>
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>
@@ -215,7 +215,7 @@
     <string name="babyCribLinkTravelHref">https://amzn.to/3aS9IAE</string>
     <string name="CarSeat">Auto-Babyschale</string>
     <string name="CarSeatDesc">Rückwärts ist die sicherste Fahrtrichtung für Ihr Baby. Besonders wichtig ist das bei Neugeborenen, deren Körperbau es noch nicht zulässt, selbständig vernünftig zu sitzen. Sie müssen daher in der Schale mehr oder weniger liegend transportiert werden. Weil so eine Liegeposition nicht für den Vorwärtstransport geeignet ist, werden die Schalen immer rückwärts eingebaut.</string>
-    <string name="toys">Spielzeug</string>
+    <string name="toys">Erstes Spielzeug</string>
     <string name="toysDesc">Eine Rassel ist meist das erste Spielzeug, mit dem ein Baby wirklich etwas anfangen kann und das es recht lange begleitet. Eine Kette am Kinderwagen und ein Schmusetier zum Kuscheln sorgen auch immer für Freude.</string>
     <string name="toysRattleLinkName">Empfohlene Rassel</string>
     <string name="toysRattleLinkHref">https://amzn.to/3pGUi6w</string>
@@ -223,7 +223,7 @@
     <string name="toysBookLinkHref">https://amzn.to/3pGrriB</string>
     <string name="toysSootherLinkName">Spieluhr-Kuscheltier</string>
     <string name="toysSootherLinkHref">https://amzn.to/3n17oK9</string>
-    <string name="motoricToys">Motorik</string>
+    <string name="motoricToys">Krabbelspielzeug</string>
     <string name="motoricToysDesc">Ein Oball oder Skywish faszinieren jedes Kind und üben die Motorik. Später regen sie zum Robben oder Krabbeln an</string>
     <string name="mororicToysObalLinkName">Oball</string>
     <string name="mororicToysObalLinkHref">https://amzn.to/2JDpOmw</string>
@@ -253,4 +253,40 @@
     <string name="feedingBottleWarmerLinkHref">https://amzn.to/3532PJ3</string>
     <string name="feedingBreastPumpLinkName">Milchpumpe</string>
     <string name="feedingBreastPumpLinkHref">https://amzn.to/3naoeGg</string>
+    <string name="formula">Milchpulver</string>
+    <string name="formulaDesc">Muttermilch ist zweifellos die beste Wahl, wenn es darum geht, Ihr Baby zu versorgen. In der Regel funktioniert dies leider nicht oder eine Allergie zwingt Sie teilweise bzw. komplett dazu auf Pulver umzustellen.\n\nWir empfehlen Aptamil Pronatura-Advance sowie die Humana HA-Pre für Babies mit erhöhtem Allergie-Risiko.</string>
+    <string name="formulaBestLinkName">Aptamil Pronatura-Advance</string>
+    <string name="formulaBestLinkHref">https://amzn.to/3nf5Bkt</string>
+    <string name="formulaAllergicLinkName">Humana HA-Pre</string>
+    <string name="formulaAllergicLinkHref">https://amzn.to/3njcD8d</string>
+    <string name="careProducts">Pflegeprodukte</string>
+    <string name="careProductsDesc">Natürliche und schadstofffreie Babypflegeprodukte sind eine einfache Möglichkeit, Ihr Kind zu schützen. Es gibt viele sichere Produkte, die Sie auf der Haut Ihres Kindes verwenden können. Trotzdem sollten Sie bei den ersten Untersuchungen mit dem Kinderarzt Ihres Babys über eine Hautpflege sprechen.</string>
+    <string name="careProductsWipesLinkName">Einmalwaschlappen</string>
+    <string name="careProductsWipesLinkHref">http://ebay.us/AOJWBS</string>
+    <string name="careProductsPowderLinkName">Babypuder</string>
+    <string name="careProductsPowderLinkHref">https://amzn.to/3bbdsgA</string>
+    <string name="careProductsDiaperBalmLinkName">Windelbalsam</string>
+    <string name="careProductsDiaperBalmLinkHref">https://amzn.to/38fYCDN</string>
+    <string name="careProductsBodyCreamLinkName">Body Cream</string>
+    <string name="careProductsBodyCreamLinkHref">https://amzn.to/2KTwvBF</string>
+    <string name="careProductsShampooLinkName">Shampoo</string>
+    <string name="careProductsShampooLinkHref">https://amzn.to/3noSFcd</string>
+    <string name="careProductsSuncreamLinkName">Sonnencreme</string>
+    <string name="careProductsSuncreamLinkHref">https://amzn.to/3ocq7Ui</string>
+    <string name="pacifiers">Nuckel für Neugeborene</string>
+    <string name="pacifiersDesc">Nuckeln ist gut für die Gehirnentwicklung des Kindes. Der Schnuller beruhigt es zudem, da er die Brust simuliert. Erst wenn die Schneidezähne wachsen, sollte man langsam den Nuckel abgewöhnen.</string>
+    <string name="thermometer">Fieberthermometer</string>
+    <string name="thermometerDesc">* Vermeiden Sie Thermometer mit Quecksilber\n* Verwenden Sie orale Thermometer nur für ältere Kinder\n* Halten Sie Ihr Thermometer sauber \n* rektales Messen ist am genauesten</string>
+    <string name="thermometerRectalLinkName">Rektal</string>
+    <string name="thermometerRectalLinkHref">https://amzn.to/3pKHfAS</string>
+    <string name="thermometerTouchlessLinkName">Infrarot</string>
+    <string name="thermometerTouchlessLinkHref">https://amzn.to/393deph</string>
+    <string name="maternityLeave">Mutterschutz</string>
+    <string name="maternityLeaveDesc">Damit der Mutterschutz in Kraft tritt, muss die Schwangere ihren Arbeitgeber über die Schwangerschaft informieren. 6 Wochen vor dem voraussichtlichen Entbindungstermin und 8 (bei Frühchen 12) Wochen nach der Geburt greift das Beschäftigungsverbotes. Arbeitnehmerinnen, Auszubildende und geringfügig Beschäftigte erhalten maximal 13 Euro Mutterschaftsgeld pro Kalendertag von der Krankenkasse. Die Differenz zum Nettolohn zahlt Ihr Arbeitgeber. Selbstständige erhalten von der Krankenkasse Mutterschaftsgeld in Höhe des Krankengeldes (ca. 70% des beitragspflichtigen Arbeitseinkommens).</string>
+    <string name="maternityLeaveLinkName">Mutterschutz</string>
+    <string name="maternityLeaveLinkHref">https://familienportal.de/familienportal/familienleistungen/mutterschutz</string>
+    <string name="parentalLeave">Elternzeit</string>
+    <string name="parentalLeaveDesc">Jeder Elternteil hat Anspruch auf Elternzeit zur Betreuung und Erziehung seines Kindes bis dieses sein drittes Lebensjahr vollendet hat. Die Elternzeit ist ein Anspruch des Arbeitnehmers oder der Arbeitnehmerin gegenüber dem Arbeitgeber. Während der Elternzeit ruhen die Hauptpflichten des Arbeitsverhältnisses. Das Arbeitsverhältnis bleibt aber bestehen und nach Ablauf der Elternzeit besteht ein Anspruch auf Rückkehr zur früheren Arbeitszeit.</string>
+    <string name="parentalLeaveLinkName">Elternzeit</string>
+    <string name="parentalLeaveLinkHref">https://www.bmfsfj.de/bmfsfj/themen/familie/familienleistungen/elternzeit/elternzeit/73832</string>
 </resources>
