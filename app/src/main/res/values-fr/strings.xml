@@ -290,4 +290,6 @@
     <string name="parentalLeaveDesc">À l\'occasion de la naissance ou de l\'arrivée au foyer d\'un enfant, le salarié peut arrêter de travailler pour s\'occuper de l\'enfant. Dans ce cas, il bénéficie d\'un congé parental d\'éducation, sous conditions d\'ancienneté. La durée du congé varie en fonction du nombre d’enfants nés ou adoptés simultanément.</string>
     <string name="parentalLeaveLinkName">Astuces</string>
     <string name="parentalLeaveLinkHref">https://www.service-public.fr/particuliers/vosdroits/F2280</string>
+    <string name="bathtub">Bain pour bébé</string>
+    <string name="bathtubDesc">Avoir une baignoire pour votre bébé \'empêchera de glisser ou de se noyer. La baignoire vous évite les douleurs musculaires dues à la flexion et à l\'accroupissement lors du bain de votre bébé. Cela vous empêche également d\'utiliser trop d\'eau.</string>
 </resources>

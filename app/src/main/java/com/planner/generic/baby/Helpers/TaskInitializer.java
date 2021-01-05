@@ -170,6 +170,11 @@ public class TaskInitializer {
         babyCarrier.addLink(context.getString(R.string.babyCarrierLinkInsertName), context.getString(R.string.babyCarrierLinkInsertHref));
         Task.addTask(babyCarrier);
 
+        // Badewanne
+        Task bathtub = new Task(context.getString(R.string.bathtub), context.getString(R.string.bathtubDesc), addMonthDaysToJavaUtilDate(targetDate, -1, 0), Priority.Normal, 0L,
+                new TaskType(TaskTypeBaby.Furnishings), null);
+        Task.addTask(bathtub);
+
         // Pflegeprodukte
         Task careProducts = new Task(context.getString(R.string.careProducts), context.getString(R.string.careProductsDesc), addMonthDaysToJavaUtilDate(targetDate, -4, 0), Priority.Normal, 0L,
                 new TaskType(TaskTypeBaby.Drugs), null);

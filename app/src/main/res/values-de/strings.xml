@@ -182,7 +182,7 @@
     <string name="SwaddleBlanketLinkHref">http://ebay.us/jSEBrb</string>
     <string name="SleepingBagLinkName">Schlafsäcke</string>
     <string name="SleepingBagLinkHref">https://amzn.to/34QZn4g</string>
-    <string name="findName">Namen finden</string>
+    <string name="findName">Name des Kindes</string>
     <string name="findNameDesc">Einen Namen zu finden, mit dem beide Elternteile zufrieden sind, ist oft ein schwieriger Kompromiss.</string>
     <string name="findGirlsNameLinkName">♀ Beliebte Mädchennamen</string>
     <string name="findGirlsNameLinkHref">https://vornamen.blog/maedchennamen</string>
@@ -290,4 +290,6 @@
     <string name="parentalLeaveDesc">Jeder Elternteil hat Anspruch auf Elternzeit zur Betreuung und Erziehung seines Kindes bis dieses sein drittes Lebensjahr vollendet hat. Die Elternzeit ist ein Anspruch des Arbeitnehmers oder der Arbeitnehmerin gegenüber dem Arbeitgeber. Während der Elternzeit ruhen die Hauptpflichten des Arbeitsverhältnisses. Das Arbeitsverhältnis bleibt aber bestehen und nach Ablauf der Elternzeit besteht ein Anspruch auf Rückkehr zur früheren Arbeitszeit.</string>
     <string name="parentalLeaveLinkName">Elternzeit</string>
     <string name="parentalLeaveLinkHref">https://www.bmfsfj.de/bmfsfj/themen/familie/familienleistungen/elternzeit/elternzeit/73832</string>
+    <string name="bathtub">Baby-Badewanne</string>
+    <string name="bathtubDesc">Mit einer Badewanne für Ihr Baby verhindern sie, dass es ausrutscht oder untergehen kann. Die Badewanne erspart Ihnen Muskelschmerzen durch Biegen und Hocken beim Baden Ihres Babys. Außerdem wird verhindert, dass Sie zu viel Wasser verbrauchen.</string>
 </resources>

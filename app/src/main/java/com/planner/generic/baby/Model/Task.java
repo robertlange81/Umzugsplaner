@@ -37,6 +37,8 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Hintergrund weiß
+    - niedliche Icons
     - Admob
     - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
