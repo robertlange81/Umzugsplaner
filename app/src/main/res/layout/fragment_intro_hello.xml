@@ -65,21 +65,24 @@
                         android:textSize="@dimen/headline_text_size"
                         android:textColor="#ffffffff"
                         android:selectAllOnFocus="true" />
+
                         <TextView
                             android:id="@+id/intro_description2"
-                            android:paddingTop="10sp"
-                            android:inputType="textMultiLine|textNoSuggestions"
-                            android:fontFamily="serif-monospace"
-                            android:layout_marginTop="20dp"
-                            android:text="@string/introDescGeneral"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="top|center_horizontal"
+                            android:layout_marginTop="20dp"
+                            android:paddingLeft="20dp"
+                            android:paddingStart="20dp"
+                            android:fontFamily="serif-monospace"
+                            android:gravity="start|center_horizontal|top|left"
+                            android:inputType="textMultiLine|textNoSuggestions"
                             android:lineHeight="@dimen/headline_text_line_height"
+                            android:paddingTop="10sp"
+                            android:selectAllOnFocus="true"
                             android:singleLine="false"
-                            android:textSize="@dimen/headline_text_size"
+                            android:text="@string/introDescGeneral"
                             android:textColor="#ffffffff"
-                            android:selectAllOnFocus="true" />
+                            android:textSize="@dimen/headline_text_size" />
                     </LinearLayout>
                 </LinearLayout>
 

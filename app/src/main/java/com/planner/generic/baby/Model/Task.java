@@ -37,8 +37,10 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - Service als Erinnerung: https://fabcirablog.weebly.com/blog/creating-a-never-ending-background-service-in-android
+    - schönere Schriftart
     - Hintergrund weiß
-    - niedliche Icons
+    - niedliche Icons klauen: https://play.google.com/store/apps/details?id=com.beantownloner.babyshoppingchecklist&hl=en_US&gl=US
     - Admob
     - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
@@ -57,7 +59,6 @@ public class Task implements Serializable {
 
     - MyHammer Alternative
     - Weihnachtsliste
-    - Babyliste
     - Geburstagsliste
     - Hochzeitsliste
     - Synchronisieren Cloud

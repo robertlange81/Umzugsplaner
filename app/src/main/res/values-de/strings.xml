@@ -60,7 +60,7 @@
         <item>Ernährung</item>
         <item>Einrichtung</item>
         <item>Literatur</item>
-        <item>Drogeriewaren</item>
+        <item>Gesundheit</item>
         <item>Spielzeug</item>
         <item>Mobilität</item>
         <item>Sonstiges</item>
@@ -81,8 +81,8 @@
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
     <string name="go">LOS!</string>
     <string name="introExampleRelation">0/25</string>
-    <string name="introDescSpecific">xxx</string>
-    <string name="introDescGeneral">Diese App bietet Ihnen eine vordefinierte Liste mit nützlichen Tipps und kreativen Ideen, die sie erweitern können. Behalten Sie Ihre Kosten und die Zeit im Blick. Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender, PDF oder synchronisieren sie sich mit anderen.</string>
+    <string name="introDescSpecific">Diese App bietet Ihnen eine vordefinierte Liste mit nützlichen Tipps und kreativen Ideen, die sie erweitern können. Behalten Sie Ihre Kosten und die Zeit im Blick. Kategorisieren und priorisieren Sie die Checkliste für jede Phase. Legen Sie neue Aufgaben an, kommentieren und exportieren Sie diese in Ihren Kalender, PDF oder synchronisieren sie sich mit anderen.</string>
+    <string name="introDescGeneral">1) Erwarteten Geburtstermin eingeben\n2) Priorisierte Liste von Aufgaben automatisch erzeugen\n3) Hinzufügen, Ändern und Löschen von Aufgaben nach Bedarf.\n4) Hinzufügen von Aufgaben bzw. Notizen und / oder ein Bilder\n5) Kontrollieren der Anzahl von erledigten und verbleibenden Aufgaben\n6) Kosten und Termine im Auge behalten</string>
     <string name="introLegend">Legende</string>
     <string name="placeholder_place_headline_specific">Wo beabsichtigen Sie zu entbinden?</string>
     <string name="postal">Plz</string>
@@ -150,7 +150,7 @@
     <string name="change_date_or_location">Termin / Ort ändern</string>
     <string name="midwifeLinkHref"><![CDATA[https://www.amazon.de/gp/product/3943793885/ref=as_li_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=3943793885&linkCode=as2&tag=w1fxeor90b6-21&linkId=f76b2106c32b843331c014d3fb8177ff]]></string>
     <string name="midwifeLinkName">Link zum Buch</string>
-    <string name="midwife">Lies die Hinweise einer Hebamme</string>
+    <string name="midwife">Buch: Hebammensprechstunde</string>
     <string name="midwifeDesc">Seit es Die Hebammen-Sprechstunde gibt, hat sich im selbstbewussten Umgang der werdenden Eltern mit Schwangerschaft, Geburt, Wochenbett und Stillzeit spürbar etwas verändert. Ingeborg Stadelmann ermutigt die zukünftigen Mütter und Väter, selbstverantwortlich ihren Weg zu gehen und dabei auf ihre eigene Stärke zu vertrauen.</string>
     <string name="heatLamp">Wärmelampe</string>
     <string name="heatLampDesc">Ein Heizstrahler über dem Wickeltisch spendet wohltuende Wärme schützt vor dem Auskühlen sowie Folgeerkrankungen.</string>
