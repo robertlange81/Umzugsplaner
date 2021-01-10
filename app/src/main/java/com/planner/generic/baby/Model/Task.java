@@ -37,7 +37,11 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Service als Erinnerung: https://fabcirablog.weebly.com/blog/creating-a-never-ending-background-service-in-android
+    - Tasks als String in Shared + stündlich auslesen
+    - Lösche alle Reminder nach Anlegen einer neuen Liste
+    - Tasks besser chronologisch verteilen
+    - Fehler Uhrzeit AM / PM Frankreich / GB
+    - Legende nicht immer einblenden
     - schönere Schriftart
     - Hintergrund weiß
     - niedliche Icons klauen: https://play.google.com/store/apps/details?id=com.beantownloner.babyshoppingchecklist&hl=en_US&gl=US
@@ -58,9 +62,8 @@ public class Task implements Serializable {
     - Bild statt Link
 
     - MyHammer Alternative
-    - Weihnachtsliste
-    - Geburstagsliste
     - Hochzeitsliste
+    - Geburstagsliste
     - Synchronisieren Cloud
     - Publish To: Huawei AppGallery, Samsung App Store, Amazon Appstore
      */

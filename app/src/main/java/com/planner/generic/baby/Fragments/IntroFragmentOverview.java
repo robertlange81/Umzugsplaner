@@ -59,9 +59,10 @@ public class IntroFragmentOverview extends Fragment {
         List<Task> taskListClone = Task.getTaskListClone();
         Collections.sort(taskListClone, new DateComparator(true));
         int showNextTasksNumber = 0;
+        long current = System.currentTimeMillis() - 1000 * 60 * 60 * 24;
         String[] nextTaskName = new String[3];
         for(Task task: taskListClone) {
-            if(!task.is_Done && task.date != null) {
+            if(!task.is_Done && task.date != null && task.date.getTime() > current) {
                 nextTaskName[showNextTasksNumber] = task.name;
 
                 if(showNextTasksNumber == 0) {

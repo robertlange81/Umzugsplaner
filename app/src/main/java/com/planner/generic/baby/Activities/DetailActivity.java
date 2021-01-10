@@ -2,6 +2,7 @@ package com.planner.generic.baby.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
 import android.util.Log;
@@ -11,16 +12,19 @@ import android.widget.FrameLayout;
 
 import com.planner.generic.baby.Fragments.TaskDetailFragment;
 import com.planner.generic.baby.Helpers.LoadingTask;
+import com.planner.generic.baby.Helpers.NotificationService;
 import com.planner.generic.baby.Helpers.Persistance;
 import com.planner.generic.baby.R;
 
 import static com.planner.generic.baby.Activities.MainActivity.isAppOnForeground;
+import static com.planner.generic.baby.Activities.MainActivity.reminderService;
 
 public class DetailActivity extends AppCompatActivity {
 
     public static DetailActivity instance;
     TaskDetailFragment fragment;
     public static final String ARG_TASK_ID = "task_id";
+    public static final String ARG_INTENT_SOURCE = "intent_source";
     String currentTaskId;
     boolean didAddTopBar;
 
@@ -61,6 +65,7 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         Log.d("DEBUG", "DetailActivity onPause");
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", false).apply();
         super.onPause();
     }
 
@@ -74,16 +79,23 @@ public class DetailActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        Log.d("DEBUG", "DetailActivity onNewIntent");
-        currentTaskId = intent.getStringExtra(TaskDetailFragment.TASK_ID);
-        Log.d("DEBUG", "DetailActivity currentTaskId: " + currentTaskId);
+        setIntent(intent);
+        Log.i("DEBUG", "DetailActivity onNewIntent");
+        currentTaskId = intent.getStringExtra(ARG_TASK_ID);
+        String source = intent.getStringExtra(ARG_INTENT_SOURCE);
+        if (source != null && source == "reminder") {
+            Log.i("Reminder", "Source is Reminder");
+        }
+
+        Log.i("DEBUG", "DetailActivity currentTaskId: " + currentTaskId);
         Log.d("DEBUG", "DetailActivity onNewIntent End");
     }
 
     @Override
     protected void onResume()
     {
-        Log.d("DEBUG", "onResume DetailActivity");
+        Log.i("DEBUG", "onResume DetailActivity");
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", true).apply();
         super.onResume();
 
         Bundle arguments = new Bundle();
@@ -157,6 +169,19 @@ public class DetailActivity extends AppCompatActivity {
         exit();
         return true;
     }
+
+    public void onDestroy() {
+        // background reminder service
+        if(MainActivity.instance != null && MainActivity.reminderServiceIntent != null) {
+            stopService(MainActivity.reminderServiceIntent);
+            MainActivity.instance.setNextTasks();
+        }
+        // background reminder service - END
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", false).apply();
+        Log.i("DetailActivity", "ondestroy!");
+        super.onDestroy();
+    }
+
 
     private void exit() {
         Intent intent = new Intent(this, MainActivity.class);

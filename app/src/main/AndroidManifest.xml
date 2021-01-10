@@ -67,5 +67,13 @@
         <service android:name="com.planner.generic.baby.Helpers.ExportService" />
         <service android:name="com.planner.generic.baby.Helpers.ImportService" />
         <service android:name="com.planner.generic.baby.Helpers.ExportPdfService" />
+        <service android:name="com.planner.generic.baby.Helpers.NotificationService" />
+
+        <receiver
+            android:name="com.planner.generic.baby.Helpers.NotificationRestarterBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:label="RestartServiceWhenStopped">
+        </receiver>
     </application>
 </manifest>

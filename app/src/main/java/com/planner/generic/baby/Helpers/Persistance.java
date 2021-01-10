@@ -109,6 +109,7 @@ public class Persistance {
                     }
                 }
                 Task.lock.unlock();
+                MainActivity.instance.setNextTasks();
 
                 return null;
             }
@@ -154,6 +155,9 @@ public class Persistance {
 
                 if(createNewTask) {
                     TaskInitializer.InitTasks(callbackNewInitDate, location, activity, createNewTaskList);
+                    MainActivity.instance.setNextTasks();
+                } else {
+                    MainActivity.instance.eraseReminder();
                 }
             }
         }
@@ -190,6 +194,7 @@ public class Persistance {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 MainActivity.NotifyTaskChanged(null, activity, new Long[] {list_self});
+                MainActivity.instance.setNextTasks();
             }
         }
 
@@ -260,6 +265,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+                MainActivity.instance.setNextTasks();
             }
         }
 
@@ -289,6 +295,7 @@ public class Persistance {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
+                MainActivity.instance.setNextTasks();
             }
         }
 
@@ -316,10 +323,10 @@ public class Persistance {
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(activity);
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putInt(settingType.toString(), value);
-            editor.commit();
+            editor.apply();
             return true;
         } catch (Throwable t) {
-            Log.e("Save setting", t.getMessage());
+            Log.e("Save setting", t.getMessage() != null ? t.getMessage() : "");
         }
 
         return false;

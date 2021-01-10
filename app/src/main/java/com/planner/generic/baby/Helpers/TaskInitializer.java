@@ -182,7 +182,6 @@ public class TaskInitializer {
         careProducts.addLink(context.getString(R.string.careProductsDiaperBalmLinkName), context.getString(R.string.careProductsDiaperBalmLinkHref));
         careProducts.addLink(context.getString(R.string.careProductsBodyCreamLinkName), context.getString(R.string.careProductsBodyCreamLinkHref));
         careProducts.addLink(context.getString(R.string.careProductsShampooLinkName), context.getString(R.string.careProductsShampooLinkHref));
-        careProducts.addLink(context.getString(R.string.careProductsSuncreamLinkName), context.getString(R.string.careProductsSuncreamLinkHref));
         careProducts.addLink(context.getString(R.string.careProductsWipesLinkName), context.getString(R.string.careProductsWipesLinkHref));
         Task.addTask(careProducts);
 

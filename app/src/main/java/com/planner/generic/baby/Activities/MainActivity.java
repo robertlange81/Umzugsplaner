@@ -21,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.bottomappbar.BottomAppBar;
@@ -56,12 +57,14 @@ import com.planner.generic.baby.Fragments.DialogFragmentInit.InitDialogListener;
 import com.planner.generic.baby.Fragments.TaskDetailFragment;
 import com.planner.generic.baby.Helpers.Command;
 import com.planner.generic.baby.Helpers.Comparators.ComparatorConfig;
+import com.planner.generic.baby.Helpers.Comparators.DateComparator;
 import com.planner.generic.baby.Helpers.ExportService;
 import com.planner.generic.baby.Helpers.ExportPdfService;
 import com.planner.generic.baby.Helpers.ImportService;
 import com.planner.generic.baby.Helpers.LoadingTask;
 import com.planner.generic.baby.Helpers.OpenFileListener;
 import com.planner.generic.baby.Helpers.Persistance;
+import com.planner.generic.baby.Helpers.NotificationService;
 import com.planner.generic.baby.Helpers.TaskFormater;
 import com.planner.generic.baby.Helpers.TaskInitializer;
 import com.planner.generic.baby.Helpers.TasksObserver;
@@ -73,6 +76,7 @@ import com.planner.generic.baby.R;
 
 import java.lang.reflect.Array;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.UUID;
@@ -101,6 +105,16 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     ImportExportReceiver receiver;
 
+    // background reminder service
+    public static Intent reminderServiceIntent;
+    public static NotificationService reminderService;
+    public static int maxreminders = 10;
+    Context ctx;
+    public Context getCtx() {
+        return ctx;
+    }
+    // background reminder service -END
+
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     public void onEnterForeground() {
         Log.d("AppController", "Foreground");
@@ -109,6 +123,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     public void onEnterBackground() {
         Log.d("AppController", "Background");
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("DEBUG", "MainActivity onPause");
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", false).apply();
+        super.onPause();
     }
 
     @Override
@@ -212,7 +233,67 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         recyclerView = (RecyclerView) findViewById(R.id.list);
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
+
+        setReminder();
     }
+
+    public void setNextTasks() {
+        Log.i("setNextTasks", "setNextTasks");
+        List<Task> taskListClone = Task.getTaskListClone();
+        Collections.sort(taskListClone, new DateComparator(true));
+        int showNextTasksNumber = 0;
+        long current = System.currentTimeMillis();
+        long twoHourInMillis = 1000 * 60 * 60 * 2;
+
+        // first erase all tasks - bad practice, I know
+        SharedPreferences.Editor editor = eraseReminder();
+
+        // then save new "list" - bad practice, I know
+        for(Task task : taskListClone) {
+            if(!task.is_Done && task.priority == Priority.High && task.date != null
+                    && task.date.getTime() - current > twoHourInMillis) {
+
+                Log.i("found task", task.name + " : " + task.id.toString());
+
+                editor.putString("nextTaskId" + showNextTasksNumber, task.id.toString());
+                editor.putString("nextTaskName" + showNextTasksNumber, task.name);
+                editor.putString("nextTaskDesc" + showNextTasksNumber, task.description);
+                editor.putLong("nextTaskTime" + showNextTasksNumber, task.date.getTime());
+                editor.apply();
+
+                if(++showNextTasksNumber >= maxreminders)
+                    break;
+            }
+        }
+    }
+
+    public SharedPreferences.Editor eraseReminder() {
+        Log.i("eraseReminder", "");
+        SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
+        SharedPreferences.Editor editor = prefs.edit();
+        for(int i = 0; i < maxreminders; i++)  {
+            editor.putString("nextTaskId" + i, "");
+            editor.putString("nextTaskName" + i, "");
+            editor.putString("nextTaskDesc" + i, "");
+            editor.putLong("nextTaskTime" + i, 0);
+            editor.apply();
+        }
+        return editor;
+    }
+
+    // background reminder service
+    public boolean isReminderRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i ("isReminderRunning?", true+"");
+                return true;
+            }
+        }
+        Log.i ("isReminderRunning?", false+"");
+        return false;
+    }
+    // background reminder service - END
 
     private boolean isStartedFromBackgroundActivity() {
         return getIntent().getBooleanExtra(_START_FROM_PAUSED_ACTIVITY_FLAG, false);
@@ -232,6 +313,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         super.onResume();
         findViewById(R.id.fab).setAlpha(0.75f);
         this.Refresh();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", true).apply();
 
         /*
         if(newList) {
@@ -697,7 +779,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.M)
                 ((DialogFragmentChange) dialog).setmListener(this);
 
-            String[] location = new String[5];
             SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
             if (prefs != null) {
                 args.putString("STREET", prefs.getString(Location.STREET, ""));
@@ -768,6 +849,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         }
     }
 
+    private void setReminder() {
+        // background reminder service
+        ctx = this;
+        reminderService = new NotificationService(getCtx());
+        reminderServiceIntent = new Intent(getCtx(), reminderService.getClass());
+        if (!isReminderRunning(reminderService.getClass())) {
+            startService(reminderServiceIntent);
+        }
+        // background reminder service - END
+    }
+
     /**
      *
      * @param task task to update
@@ -775,9 +867,6 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
      * @param refreshIds what should be updated
      */
     public static void NotifyTaskChanged(Task task, Activity activity, Long[] refreshIds) {
-        if(task != null && activity != null) {
-            Persistance.SaveOrUpdateTask(task, activity);
-        }
 
         int taskCount = 0;
 
@@ -818,8 +907,30 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     public void onDestroy() {
         Persistance.CheckQueue();
         Persistance.SaveTasks(this);
+
+        // background reminder service
+        stopService(reminderServiceIntent);
+        // background reminder service - END
+        Log.i("MainActivity", "ondestroy!");
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", false).apply();
+        setNextTasks();
         super.onDestroy();
     }
+
+    /*
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        Log.i("MainActivity", "onNewIntent");
+        //String currentTaskId = intent.getStringExtra(ARG_TASK_ID);
+        String source = intent.getStringExtra(ARG_INTENT_SOURCE);
+
+        if ("reminder".equals(source)) {
+            Log.i("Reminder", "Source is Reminder");
+        }
+    }
+    */
 
     public boolean getHideDoneTasksChecked() {
         int hideDone = Persistance.LoadSetting(Persistance.SettingType.HideDone, this);
@@ -1246,6 +1357,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                     intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
                     instance.startActivity(intent);
                 }
+                SharedPreferences prefs = MainActivity.instance.getSharedPreferences("checklist", 0);
+                SharedPreferences.Editor editor = prefs.edit();
                 NotifyTaskChanged(null, null, new Long[] {list_self});
             }
         });
