@@ -104,7 +104,7 @@
     <string name="name_of_task">Nom de la tâche</string>
     <string name="filter">Chercher</string>
     <string name="zero">0</string>
-    <string name="introDateNecessary">Mettre en place un (nouveau) mouvement. Si possible, entrez une date.</string>
+    <string name="introDateNecessary">Mettre en place un (nouveau) liste. Si possible, entrez une date.</string>
     <string name="days">jours</string>
     <string name="hours">heures</string>
     <string name="minits">minutes</string>
@@ -163,7 +163,7 @@
     <string name="dayNurseryApplyLinkName">Accueil en crèche</string>
     <string name="dayNurseryApplyLinkHref"><![CDATA[https://www.service-public.fr/particuliers/vosdroits/F607]]></string>
     <string name="Onesies">dors-bien</string>
-    <string name="OnesiesDesc">Don\'t cry over spoiled milk, but change the onesie.</string>
+    <string name="OnesiesDesc">Ne pleurez pas sur le lait avarié, mais changez la grenouillère.</string>
     <string name="OnesiesLinkNameLong">Comparer sur Amazon</string>
     <string name="OnesiesLinkNameLongHref"><![CDATA[https://amzn.to/3h6dRCb]]></string>
     <string name="OnesiesLinkNameShort">Comparer sur ebay</string>
@@ -272,8 +272,6 @@
     <string name="careProductsBodyCreamLinkHref">https://amzn.to/3hL3rIk</string>
     <string name="careProductsShampooLinkName">Shampooing</string>
     <string name="careProductsShampooLinkHref">https://amzn.to/3hLusLQ</string>
-    <string name="careProductsSuncreamLinkName">Crème solaire</string>
-    <string name="careProductsSuncreamLinkHref">https://amzn.to/38ijfzn</string>
     <string name="pacifiers">Sucettes 0–6 moins</string>
     <string name="pacifiersDesc">La succion est bonne pour le développement cérébral de l\'enfant. La sucette le calme également car elle simule le sein. Ce n\'est que lorsque les incisives se développent que vous devez sevrer lentement la tétine.</string>
     <string name="thermometer">Thermomètre</string>

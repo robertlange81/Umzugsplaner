@@ -37,29 +37,25 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
-    - Tasks als String in Shared + stündlich auslesen
-    - Lösche alle Reminder nach Anlegen einer neuen Liste
-    - Tasks besser chronologisch verteilen
     - Fehler Uhrzeit AM / PM Frankreich / GB
-    - Legende nicht immer einblenden
     - schönere Schriftart
     - Hintergrund weiß
     - niedliche Icons klauen: https://play.google.com/store/apps/details?id=com.beantownloner.babyshoppingchecklist&hl=en_US&gl=US
+    - Icon / Bild zu jedem Task (im Hintergrund)
+    - Bild statt Link
     - Admob
     - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
-    - nach Änderung Datum alle Tasks ak:tualisieren
+    - nach Änderung Datum alle Tasks aktualisieren
     - Panel für Ort / Datum = Akkordeon
     - Refresh und link initialisierung optimieren
     - Ortsangabe auch bei Neustart auf Liste / Dialog
+    - Laden von Projekten gleich am Anfang
     - Lock entfernen?
     - Brauchen wir die TaskList und Map Zwischenspeicher?
     - Recycler View direkt am ContentProvider registrieren - wollen wir das?
     - Bright vs Dark Theme
     - letzte Suche merken
-
-    - Icon / Bild zu jedem Task (im Hintergrund)
-    - Bild statt Link
 
     - MyHammer Alternative
     - Hochzeitsliste

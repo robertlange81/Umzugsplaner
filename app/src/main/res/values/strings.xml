@@ -29,7 +29,7 @@
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
     <string name="placeholder_export_no_date">Please choose a date first before export.</string>
-    <string name="placeholder_init">Set up a NEW check list</string>
+    <string name="placeholder_init">Set up a NEW baby list</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
     <string name="placeholder_init_no_date">No date specified - Standard tasks are created without date.</string>
     <string name="placeholder_link">link</string>
@@ -76,7 +76,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.com/gp/search?ie=UTF8&tag=w1fxeor9us09-20&linkCode=ur2&linkId=fcbfdb21a6524048a5f45851f67d0ac0&camp=1789&creative=9325&index=baby-products&keywords=]]></string>
-    <string name="start_new_todo">New Checklist</string>
+    <string name="start_new_todo">New Baby List</string>
     <string name="lookFor">find</string>
     <string name="on">on</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
@@ -104,7 +104,7 @@
     <string name="name_of_task">task title</string>
     <string name="filter">search</string>
     <string name="zero">0</string>
-    <string name="introDateNecessary">Set up a (new) move. If possible, enter a date.</string>
+    <string name="introDateNecessary">Set up a (new) list. If possible, enter a date.</string>
     <string name="days">Days</string>
     <string name="hours">Hours</string>
     <string name="minits">Minutes</string>
@@ -280,8 +280,6 @@
     <string name="careProductsBodyCreamLinkHref">https://amzn.to/3rXIhLE</string>
     <string name="careProductsShampooLinkName">Shampoo</string>
     <string name="careProductsShampooLinkHref">https://amzn.to/2JLSxWl</string>
-    <string name="careProductsSuncreamLinkName">Sunscreen Cream</string>
-    <string name="careProductsSuncreamLinkHref">https://amzn.to/3og3nTz</string>
     <string name="pacifiers">Pacifiers</string>
     <string name="pacifiersDesc">Babies will take their suck out on the pacifier instead of nursing or comfort nursing at the breast which is good for the infant\'s brain development and the mother\'s supply. Evidence in premature infants or infants that are not healthy is lacking but shows that it can have benefits.</string>
     <string name="thermometer">Thermometer</string>

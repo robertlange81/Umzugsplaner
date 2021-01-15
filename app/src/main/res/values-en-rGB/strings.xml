@@ -30,7 +30,7 @@
     <string name="placeholder_detail_amount">amount</string>
     <string name="placeholder_edit_task">Edit Task</string>
     <string name="placeholder_export_no_date">Please choose a date first before export.</string>
-    <string name="placeholder_init">Set up a NEW check list</string>
+    <string name="placeholder_init">Set up a NEW baby list</string>
     <string name="placeholder_init_delete_old_tasks">delete all existing tasks!</string>
     <string name="placeholder_init_no_date">No date specified - Standard tasks are created without date.</string>
     <string name="placeholder_link">link</string>
@@ -271,8 +271,6 @@
     <string name="careProductsBodyCreamLinkHref">https://amzn.to/3ohmg8A</string>
     <string name="careProductsShampooLinkName">Shampoo</string>
     <string name="careProductsShampooLinkHref">https://amzn.to/3hROQLq</string>
-    <string name="careProductsSuncreamLinkName">Ointment</string>
-    <string name="careProductsSuncreamLinkHref">https://amzn.to/3badwxp</string>
     <string name="pacifiers">Soothers (0–6 Months)</string>
     <string name="pacifiersDesc">Babies will take their suck out on the pacifier instead of nursing or comfort nursing at the breast which is good for the infant\'s brain development and the mother\'s supply. Evidence in premature infants or infants that are not healthy is lacking but shows that it can have benefits.</string>
     <string name="thermometer">Thermometer</string>

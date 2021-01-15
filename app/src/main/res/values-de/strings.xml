@@ -28,7 +28,7 @@
     <string name="placeholder_description">Notizen</string>
     <string name="placeholder_detail_amount">Betrag</string>
     <string name="placeholder_edit_task">Aufgabe bearbeiten</string>
-    <string name="placeholder_init">NEUE Checkliste einrichten!</string>
+    <string name="placeholder_init">NEUE Babyliste einrichten!</string>
     <string name="placeholder_init_delete_old_tasks">alle bisherigen Aufgaben löschen!</string>
     <string name="placeholder_init_no_date">Kein Datum angegeben - Standard-Aufgaben werden ohne Datum angelegt.</string>
     <string name="placeholder_export_no_date">Für Export in Kalender bitte zuerst ein Datum wählen.</string>
@@ -75,7 +75,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="amazon_generic_link"><![CDATA[https://www.amazon.de/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor90b6-21&s=review-rank&index=aps&camp=1638&creative=6742&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
-    <string name="start_new_todo">neue Checkliste anlegen</string>
+    <string name="start_new_todo">neue Babyliste anlegen</string>
     <string name="lookFor">Suche</string>
     <string name="on">bei</string>
     <string name="ebay_generic_link"><![CDATA[http://rover.ebay.com/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.de%2Fsch%2Fi.html%3F_from%3DR40%26LH_TitleDesc%3D0%26_oac%3D1%26_nkw%3D]]></string>
@@ -272,8 +272,6 @@
     <string name="careProductsBodyCreamLinkHref">https://amzn.to/2KTwvBF</string>
     <string name="careProductsShampooLinkName">Shampoo</string>
     <string name="careProductsShampooLinkHref">https://amzn.to/3noSFcd</string>
-    <string name="careProductsSuncreamLinkName">Sonnencreme</string>
-    <string name="careProductsSuncreamLinkHref">https://amzn.to/3ocq7Ui</string>
     <string name="pacifiers">Nuckel für Neugeborene</string>
     <string name="pacifiersDesc">Nuckeln ist gut für die Gehirnentwicklung des Kindes. Der Schnuller beruhigt es zudem, da er die Brust simuliert. Erst wenn die Schneidezähne wachsen, sollte man langsam den Nuckel abgewöhnen.</string>
     <string name="thermometer">Fieberthermometer</string>
