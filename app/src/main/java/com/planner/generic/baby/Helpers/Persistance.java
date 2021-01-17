@@ -194,7 +194,8 @@ public class Persistance {
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
                 MainActivity.NotifyTaskChanged(null, activity, new Long[] {list_self});
-                MainActivity.instance.setNextTasks();
+                if (MainActivity.instance != null)
+                    MainActivity.instance.setNextTasks();
             }
         }
 

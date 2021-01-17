@@ -12,7 +12,11 @@ public class NotificationRestarterBroadcastReceiver extends BroadcastReceiver {
         Log.i(NotificationRestarterBroadcastReceiver.class.getSimpleName(), "Generic Planner Service Stops! Oooooooooooooppppssssss!!!!");
         NotificationService reminderService = new NotificationService(context);
         if (!isReminderRunning(reminderService.getClass(), context)) {
-            context.startService(new Intent(context, NotificationService.class));
+            try {
+                context.startService(new Intent(context, NotificationService.class));
+            } catch (Exception ex) {
+                Log.e ("NotificationRestarter", ex.getMessage() == null ? "cant startService" : ex.getMessage());
+            }
         }
     }
 

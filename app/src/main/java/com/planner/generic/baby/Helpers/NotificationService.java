@@ -150,6 +150,8 @@ public class NotificationService extends Service {
         //intentForActivity.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         //intentForActivity.setAction(Intent.ACTION_MAIN);
         //intentForActivity.addCategory(Intent.CATEGORY_LAUNCHER);
+        intentForActivity.setAction("reminderAction");
+        intentForActivity.addCategory("babyList");
         //intentForActivity.putExtra(DetailActivity.ARG_TASK_ID, task.id.toString());
         //Log.i("set task id to intent", task.id.toString());
         PendingIntent pIntent = PendingIntent.getActivity(getApplicationContext(), 0, intentForActivity, PendingIntent.FLAG_UPDATE_CURRENT);
