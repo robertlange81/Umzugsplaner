@@ -82,6 +82,7 @@ public class DetailActivity extends AppCompatActivity {
         setIntent(intent);
         Log.i("DEBUG", "DetailActivity onNewIntent");
         currentTaskId = intent.getStringExtra(ARG_TASK_ID);
+        /*
         String source = intent.getStringExtra(ARG_INTENT_SOURCE);
         if (source != null && source == "reminder") {
             Log.i("Reminder", "Source is Reminder");
@@ -89,6 +90,8 @@ public class DetailActivity extends AppCompatActivity {
 
         Log.i("DEBUG", "DetailActivity currentTaskId: " + currentTaskId);
         Log.d("DEBUG", "DetailActivity onNewIntent End");
+        *
+         */
     }
 
     @Override

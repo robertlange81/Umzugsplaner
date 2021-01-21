@@ -67,18 +67,13 @@
         <service android:name="com.planner.generic.baby.Helpers.ExportService" />
         <service android:name="com.planner.generic.baby.Helpers.ImportService" />
         <service android:name="com.planner.generic.baby.Helpers.ExportPdfService" />
-        <service android:name="com.planner.generic.baby.Helpers.NotificationService" />
+        <service android:name="com.planner.generic.baby.Helpers.NotificationService" android:enabled="true" />
 
         <receiver
             android:name="com.planner.generic.baby.Helpers.NotificationRestarterBroadcastReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND"
             android:enabled="true"
             android:exported="true"
             android:label="RestartServiceWhenStopped">
-            <intent-filter>
-                <action android:name="reminderAction"/>
-                <category android:name="babyList" />
-            </intent-filter>
         </receiver>
     </application>
 </manifest>

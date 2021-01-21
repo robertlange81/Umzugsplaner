@@ -181,6 +181,9 @@ public class Persistance {
                             .getTaskDatabase()
                             .getTaskDao();
                     for (Task t : Task.getTaskList()) {
+                            if (!t.id.toString().isEmpty()) {
+                                Log.e("Dont Insert task: ", t.id.toString() + ": " + t.name);
+                            }
                             dao.insert(t);
                     }
                 } catch (Exception e) {

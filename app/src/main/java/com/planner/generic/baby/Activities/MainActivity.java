@@ -234,7 +234,8 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         assert recyclerView != null;
         setupRecyclerView(recyclerView);
 
-        setReminder();
+        // Shit Doesn't work properly
+        // setReminder();
     }
 
     public void setNextTasks() {
@@ -851,11 +852,17 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
 
     private void setReminder() {
         // background reminder service
+        Log.i("MainActivity", "setReminder");
         ctx = this;
         reminderService = new NotificationService(getCtx());
         reminderServiceIntent = new Intent(getCtx(), reminderService.getClass());
+
         if (!isReminderRunning(reminderService.getClass())) {
-            startService(reminderServiceIntent);
+            Log.i("MainActivity", "start Reminder");
+
+            //startService(reminderServiceIntent);
+        } else {
+            Log.i("MainActivity", "setReminder: Reminder already running");
         }
         // background reminder service - END
     }
@@ -867,6 +874,10 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
      * @param refreshIds what should be updated
      */
     public static void NotifyTaskChanged(Task task, Activity activity, Long[] refreshIds) {
+
+        if(task != null && activity != null) {
+            Persistance.SaveOrUpdateTask(task, activity);
+        }
 
         int taskCount = 0;
 
@@ -909,11 +920,11 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         Persistance.SaveTasks(this);
 
         // background reminder service
-        stopService(reminderServiceIntent);
         // background reminder service - END
         Log.i("MainActivity", "ondestroy!");
         PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean("isActive", false).apply();
         setNextTasks();
+        stopService(reminderServiceIntent);
         super.onDestroy();
     }
 

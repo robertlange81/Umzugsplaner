@@ -714,7 +714,7 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     if((searchFor != null && !searchFor.isEmpty())) {
 
       for(Map.Entry<String,String> entry : _task.links.entrySet()) {
-        if(!entry.getValue().contains(getString(R.string.lookFor) + " ")) {
+        if(!entry.getKey().contains(getString(R.string.lookFor) + " ")) {
           // don't change predefined links
           return;
         }

@@ -37,6 +37,7 @@ public class Task implements Serializable {
     public static ReentrantLock lock = new ReentrantLock();
 
     /*
+    - introDescGeneral auch für US und GB
     - Fehler Uhrzeit AM / PM Frankreich / GB
     - schönere Schriftart
     - Hintergrund weiß
@@ -44,7 +45,6 @@ public class Task implements Serializable {
     - Icon / Bild zu jedem Task (im Hintergrund)
     - Bild statt Link
     - Admob
-    - Amazon Partner ID erneuern
     - Amazon-Webseite statt APP (kommt Partner-ID mit?)
     - nach Änderung Datum alle Tasks aktualisieren
     - Panel für Ort / Datum = Akkordeon

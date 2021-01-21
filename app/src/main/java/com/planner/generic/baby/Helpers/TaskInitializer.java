@@ -107,11 +107,6 @@ public class TaskInitializer {
         xxx.addLink("", "");
         Task.addTask(xxx);
         */
-        // Ultraschall-Untersuchung
-        Task ultrasoundExam = new Task(context.getString(R.string.ultrasoundExam), context.getString(R.string.ultrasoundExamDesc), addMonthDaysToJavaUtilDate(targetDate, -6, 0), Priority.High, 0L,
-                new TaskType(TaskTypeBaby.Bureaucracy), null);
-        ultrasoundExam.addLink(context.getString(R.string.ultrasoundExamLinkName), context.getString(R.string.ultrasoundExamLinkHref));
-        Task.addTask(ultrasoundExam);
 
         // Die Hebammensprechstunde
         Task midwife = new Task(context.getString(R.string.midwife), context.getString(R.string.midwifeDesc), tomorrow, Priority.High, 0L,
@@ -131,6 +126,12 @@ public class TaskInitializer {
                 new TaskType(TaskTypeBaby.Bureaucracy), null);
         parentalLeave.addLink(context.getString(R.string.parentalLeaveLinkName), context.getString(R.string.parentalLeaveLinkHref));
         Task.addTask(parentalLeave);
+
+        // Ultraschall-Untersuchung
+        Task ultrasoundExam = new Task(context.getString(R.string.ultrasoundExam), context.getString(R.string.ultrasoundExamDesc), addMonthDaysToJavaUtilDate(targetDate, 0, 7), Priority.High, 0L,
+                new TaskType(TaskTypeBaby.Bureaucracy), null);
+        ultrasoundExam.addLink(context.getString(R.string.ultrasoundExamLinkName), context.getString(R.string.ultrasoundExamLinkHref));
+        Task.addTask(ultrasoundExam);
 
         // Wickeldecke und Schlafsack
         Task swaddle = new Task(context.getString(R.string.Bedding), context.getString(R.string.BeddingDesc), addMonthDaysToJavaUtilDate(targetDate, -5, 21), Priority.High, 0L,
