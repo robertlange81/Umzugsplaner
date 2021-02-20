@@ -191,4 +191,5 @@
     <string name="When">WHEN?</string>
     <string name="Where">WHERE?</string>
     <string name="change_date_or_location">Change Date or Location</string>
+    <string name="srcIncidence">https://covid19.who.int/region/euro/country/gb</string>
 </resources>

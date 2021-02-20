@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.github.paolorotolo.appintro.AppIntro;
 import com.planner.generic.virus.Fragments.IntroFragmentHello;
+import com.planner.generic.virus.Fragments.IntroFragmentIncidence;
 import com.planner.generic.virus.Fragments.IntroFragmentInput;
 import com.planner.generic.virus.Fragments.IntroFragmentLegend;
 import com.planner.generic.virus.Fragments.IntroFragmentOverview;
@@ -28,6 +29,7 @@ public class IntroActivity extends AppIntro {
     IntroFragmentHello fragmentHello;
     IntroFragmentInput fragmentInput;
     IntroFragmentLegend fragmentLegend;
+    IntroFragmentIncidence fragmentIncidence;
     IntroFragmentOverview fragmentCountdown;
     private Date removalDate;
     private Location removalLocation;
@@ -45,16 +47,20 @@ public class IntroActivity extends AppIntro {
             fragmentHello = new IntroFragmentHello();
             fragmentLegend = new IntroFragmentLegend();
             fragmentInput = new IntroFragmentInput();
+            fragmentIncidence = new IntroFragmentIncidence();
 
             if (getBaseContext().getResources().getInteger(R.integer.tablet) == 1) {
                 // xs/sm only
                 addSlide(fragmentHello);
             }
             addSlide(fragmentLegend);
+            addSlide(fragmentIncidence);
             addSlide(fragmentInput);
         } else {
             fragmentCountdown = new IntroFragmentOverview();
             addSlide(fragmentCountdown);
+            fragmentIncidence = new IntroFragmentIncidence();
+            addSlide(fragmentIncidence);
 
             SharedPreferences prefs = getSharedPreferences("checklist", 0);
             Long date_firstLaunch = prefs.getLong("date_firstlaunch", 0);
