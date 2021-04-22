@@ -53,21 +53,21 @@ public class Persistance {
             while(queue != null && queue.peek() != null) {
                 AsyncTask<Void, Void, Void> at = queue.peek();
 
-                if(at.getStatus() == AsyncTask.Status.FINISHED) {
+                if(at != null && at.getStatus() == AsyncTask.Status.FINISHED) {
                     queue.remove();
                 }
 
-                if(at.getStatus() == AsyncTask.Status.PENDING) {
+                if(at != null && at.getStatus() == AsyncTask.Status.PENDING) {
                     at.execute();
                     return false;
                 }
 
-                if(at.getStatus() == AsyncTask.Status.RUNNING) {
+                if(at != null && at.getStatus() == AsyncTask.Status.RUNNING) {
                     return false;
                 }
             }
         } catch (Exception ex) {
-            Log.e("Error", ex.getMessage());
+            Log.e("Error", "Exception CheckQueue");
         }
 
         return true;

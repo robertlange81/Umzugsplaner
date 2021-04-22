@@ -16,6 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-4833378974569102~9282983482"/>
         <activity android:name="com.planner.removal.removalplanner.Activities.SplashActivity"
             android:screenOrientation="sensor"
             android:configChanges="keyboardHidden|orientation|screenSize|layoutDirection"

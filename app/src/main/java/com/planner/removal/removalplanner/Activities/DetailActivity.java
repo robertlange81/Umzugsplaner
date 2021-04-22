@@ -1,7 +1,6 @@
 package com.planner.removal.removalplanner.Activities;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ActionMenuView;
@@ -9,7 +8,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-
 import com.planner.removal.removalplanner.Fragments.TaskDetailFragment;
 import com.planner.removal.removalplanner.Helpers.LoadingTask;
 import com.planner.removal.removalplanner.Helpers.Persistance;

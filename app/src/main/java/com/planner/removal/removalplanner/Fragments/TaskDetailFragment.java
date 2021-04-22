@@ -37,6 +37,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.planner.removal.removalplanner.Activities.DetailActivity;
 import com.planner.removal.removalplanner.Activities.MainActivity;
 import com.planner.removal.removalplanner.Activities.Refreshable;
@@ -149,6 +152,18 @@ public class TaskDetailFragment extends Fragment implements CompoundButton.OnChe
     rootView = inflater.inflate(R.layout.detail, container, false);
     Log.d("DEBUG", "onCreateView TaskDetailFragment 1");
     Log.d("DEBUG", "onCreateView TaskDetailFragment END");
+
+
+    AdView mAdView = rootView.findViewById(R.id.adView);
+    AdRequest adRequest = new AdRequest.Builder().build();
+    mAdView.loadAd(adRequest);
+
+    mAdView.setAdListener(new AdListener() {
+      @Override
+      public void onAdFailedToLoad(int errorCode) {
+        Log.d("Android","errorCode : " + errorCode);
+      }
+    });
 
     scrollView = rootView.findViewById(R.id.detail_scroll);
     txtName = rootView.findViewById(R.id.detail_name);
