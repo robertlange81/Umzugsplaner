@@ -72,6 +72,7 @@ import com.planner.removal.removalplanner.Model.TaskContract;
 import com.planner.removal.removalplanner.R;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
@@ -96,9 +97,9 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
     DialogFragment dialog;
     Menu topMenu;
     private static final String _START_FROM_PAUSED_ACTIVITY_FLAG = "START_FROM_PAUSED_ACTIVITY_FLAG";
-    private final static int _SAF_EXPORT_BIN = 200;
-    public final static int _SAF_IMPORT_BIN = 250;
-    private final static int _SAF_EXPORT_PDF = 300;
+    private static final int _SAF_EXPORT_BIN = 200;
+    public static final int _SAF_IMPORT_BIN = 250;
+    private static final int _SAF_EXPORT_PDF = 300;
 
     ImportExportReceiver receiver;
 
@@ -577,7 +578,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
                 selectFileForExport("application/pdf", "pdf");
                 return true;
             case R.id.save:
-                selectFileForExport("file/*", "todo");
+                selectFileForExport("application/*", "todo");
                 return true;
             case R.id.load:
                 MainActivity.showOpenDialog(this, instance);
@@ -601,15 +602,13 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         Intent fileIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         fileIntent.addCategory(Intent.CATEGORY_OPENABLE);
         fileIntent.setType(type);
-        String today = TaskFormater.formatDateToString(Calendar.getInstance(TimeZone.getDefault()).getTime());
-        today.replaceAll(".", "-");
-        fileIntent.putExtra(Intent.EXTRA_TITLE, today + "." + fileEnding);
+        String name = "Export_" + new SimpleDateFormat("yyyy_MM_dd").format(Calendar.getInstance().getTime());
+        fileIntent.putExtra(Intent.EXTRA_TITLE, name + "." + fileEnding);
         startActivityForResult(fileIntent, type.equals("application/pdf") ? _SAF_EXPORT_PDF : _SAF_EXPORT_BIN);
     }
 
     private void selectFileForImport(String type) {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType(type);
         startActivityForResult(intent, _SAF_IMPORT_BIN);
     }
@@ -1271,7 +1270,7 @@ public class MainActivity extends AppCompatActivity implements InitDialogListene
         {
             public void onClick(DialogInterface dialog, int whichButton)
             {
-                instance.selectFileForImport("file/*");
+                instance.selectFileForImport("application/*");
             }
         });
 
