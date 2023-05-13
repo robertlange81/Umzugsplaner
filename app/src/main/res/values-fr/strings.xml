@@ -76,7 +76,7 @@
     <string name="Amazon">Amazon</string>
     <string name="Ebay">Ebay</string>
     <string name="taskRentalContractOld3Months">Période de 3 mois?</string>
-    <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=3046d096eff9cd89bcd196c7c3cdba94&keywords=]]></string>
+    <string name="amazon_generic_link"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=kingofrap0e-21&linkCode=ll2&keywords=]]></string>
     <string name="taskRentalContractOld">Annuler l\'ancien bail</string>
     <string name="taskRentalContractOldDesc">Annulez votre ancienne location à temps. Vous pourrez peut-être raccourcir la période de préavis avec un nouveau locataire.</string>
     <string name="taskRentalContractOld3MonthsLINK">https://location-immobilier.ooreka.fr/fiche/voir/192779/location-immo-peut-on-annuler-son-preavis-de-depart</string>
@@ -91,7 +91,7 @@
     <string name="informOldAndNewNeighbours">Informer les anciens et les nouveaux voisins</string>
     <string name="informOldAndNewNeighboursDesc">Informez vos anciens et nouveaux voisins de votre déménagement sur le tableau d\'affichage.  Notez également les temps de repos.  Habituellement de 13 h à 15 h et de 20 h à 7 h.  Profitez-en également pour fixer vos panneaux de porte afin que les sociétés de poste et d\'expédition puissent vous joindre.</string>
     <string name="informOldAndNewNeighboursDoorSigns">Choisissez des panneaux de porte</string>
-    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.fr/gp/product/B085VW4RGP/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B085VW4RGP&linkCode=as2&tag=w1fxeor905-21&linkId=5c68e09ac603dfc993c6ded4ea6f00d2]]></string>
+    <string name="informOldAndNewNeighboursDoorSignsLINK"><![CDATA[https://www.amazon.fr/gp/product/B085VW4RGP/ref=as_li_tl?ie=UTF8&linkCode=ll2&tag=kingofrap0e-21&linkId=9a8a0b62754affa7964ad1da225f69fe]]></string>
     <string name="informAuthorities">Autorités d\'enregistrement</string>
     <string name="informAuthoritiesDesc">Après votre déménagement (mais pas avant!) Vous devez vous inscrire à votre bureau d\'enregistrement local. Transmettez également votre nouvelle adresse à vos partenaires contractuels et ne vous fiez pas à l\'ordre d\'expédition.</string>
     <string name="informAuthoritiesResidence">Enregistrer la résidence</string>
@@ -120,9 +120,9 @@
     <string name="fireAndBurglaryProtection">Protection contre les incendies et cambriolage</string>
     <string name="fireAndBurglaryProtectionDesc">Les détecteurs de fumée sont obligatoires dans certains États fédéraux et peuvent sauver des vies. N\'oubliez pas la protection contre le cambriolage.</string>
     <string name="fireAndBurglaryProtectionSmokeDetector">Comparez les alarmes incendie</string>
-    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.fr/gp/product/B07C8DB4QX/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B07C8DB4QX&linkCode=as2&tag=w1fxeor905-21&linkId=efc3d1237b44054057490762930719f3]]></string>
+    <string name="fireAndBurglaryProtectionSmokeDetectorLINK"><![CDATA[https://www.amazon.fr/gp/product/B07C8DB4QX/ref=as_li_tl?ie=UTF8&camp=1642&creative=6746&creativeASIN=B07C8DB4QX&linkCode=as2&tag=kingofrap0e-21&linkId=efc3d1237b44054057490762930719f3]]></string>
     <string name="fireAndBurglaryProtectionBurglary">protection contre le cambriolage</string>
-    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&keywords=protection contre le cambriolage&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
+    <string name="fireAndBurglaryProtectionBurglaryLINKI"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=kingofrap0e-21&keywords=protection contre le cambriolage&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=0fadff45f6a22d23cc726613b2929337]]></string>
     <string name="requestSpecialLeave">Demander des vacances (spéciales)</string>
     <string name="requestSpecialLeaveDesc">N\'oubliez pas de postuler pour des vacances.  En règle générale, votre employeur vous accordera un congé spécial pour le déménagement. Les questions ne coûtent rien!</string>
     <string name="requestSpecialLeaveLINK"><![CDATA[https://travail-emploi.gouv.fr/actualites/l-actualite-du-ministere/article/5-questions-reponses-les-conges-payes]]></string>
@@ -173,7 +173,7 @@
     <string name="organizeHelperhandTruck">Charrette à bras sur Ebay</string>
     <string name="organizeHelperHandTrucksEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP%2B90%2Bkg%26_sacat%3D0%26LH_TitleDesc%3D0%26_osacat%3D0%26_odkw%3DCHARIOT+DE+TRANSPORT+3IN1+BOIS+POIDS+LOURDS+BEAUCOUP]]></string>
     <string name="organizeHelperWorkGloves">Gants de travail</string>
-    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&keywords=Gants de travail&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=c2580c139f5c7166059cbce86a6e1e4c]]></string>
+    <string name="organizeHelperWorkGlovesAmazonLink"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=kingofrap0e-21&keywords=Gants de travail&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=c2580c139f5c7166059cbce86a6e1e4c]]></string>
     <string name="previousDay">Préparatifs la veille</string>
     <string name="previousDayDesc">Rechargez votre téléphone, obtenez de la nourriture, obtenez des conseils, gardez des documents importants à portée de main et vérifiez votre coffre à médicaments. Il est également judicieux d\'étiqueter vos produits de déménagement => contenu, destination (chambre). Marquez les boîtes mobiles qui contiennent des contenus fragiles. Dernier point mais non le moindre: n\'oubliez pas de vous coucher tôt.</string>
     <string name="oldRentDepositHowItWorks">Comment fonctionne le remboursement de la caution locative?</string>
@@ -189,9 +189,9 @@
     <string name="packingMaterialMovingBoxes">Boîtes de déménagement</string>
     <string name="packingMaterialMovingBoxesEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XBoîtes+de+déménagement.TRS0%26_nkw%3DBoîtes+de+déménagement%26_sacat%3D0]]></string>
     <string name="packingMaterialTrashBags">sac poubelle</string>
-    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&keywords=sac poubelle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=8f63d96814a9b2c1f03608c41ad6a8a6]]></string>
+    <string name="packingMaterialTrashBagsAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=kingofrap0e-21&keywords=sac poubelle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=8f63d96814a9b2c1f03608c41ad6a8a6]]></string>
     <string name="packingMaterialAirCushionFoil">Papier bulle</string>
-    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=w1fxeor905-21&keywords=Papier bulle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=1bae9161d893323b534b27aa564424fd]]></string>
+    <string name="packingMaterialAirCushionFoilAmazonLINK"><![CDATA[https://www.amazon.fr/gp/search/ref=as_li_qf_sp_sr_tl?ie=UTF8&tag=kingofrap0e-21&keywords=Papier bulle&index=aps&camp=1642&creative=6746&linkCode=ur2&linkId=1bae9161d893323b534b27aa564424fd]]></string>
     <string name="partyEbayLINK"><![CDATA[http://rover.ebay.fr/rover/1/707-53477-19255-0/1?ff3=4&pub=5575586086&toolid=10001&campid=5338680996&customid=&mpre=https%3A%2F%2Fwww.ebay.fr%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2380057.m570.l1313.TR12.TRC2.A0.H0.XParty.TRS0%26_nkw%3Darticles+de+fête%26_sacat%3D0]]></string>
     <string name="lookFor">Chercher</string>
     <string name="on">à</string>
