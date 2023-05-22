@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.planner.removal.removalplanner"
-        minSdkVersion 14
-        targetSdkVersion 29
-        versionCode 22
-        versionName "22.0"
+        minSdkVersion 15
+        targetSdkVersion 31
+        versionCode 24
+        versionName "24.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

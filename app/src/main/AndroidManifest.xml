@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:exported="true">
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-4833378974569102~9282983482"/>
@@ -46,10 +47,11 @@
             tools:ignore="ManifestResource"
             android:launchMode="singleInstance"
             android:alwaysRetainTaskState="true"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter android:label="@string/app_name">
                 <category android:name="android.intent.category.DEFAULT" />
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW" android:exported="true" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http" android:host="www.robert-lange.eu" android:pathPrefix="/removalPlanner" />
             </intent-filter>
@@ -65,11 +67,11 @@
 
         <provider
             android:name=".Model.TaskProvider"
-            android:authorities="com.planner.removal.removalplanner.provider" />
+            android:authorities="com.planner.removal.removalplanner.provider"/>
 
         <!-- Services -->
-        <service android:name=".Helpers.ExportService" />
-        <service android:name=".Helpers.ImportService" />
-        <service android:name=".Helpers.ExportPdfService" />
+        <service android:name=".Helpers.ExportService" android:exported="true" />
+        <service android:name=".Helpers.ImportService" android:exported="true" />
+        <service android:name=".Helpers.ExportPdfService" android:exported="true" />
     </application>
 </manifest>
